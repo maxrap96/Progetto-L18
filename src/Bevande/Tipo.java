@@ -1,5 +1,16 @@
 package Bevande;
 
 public enum Tipo {
-    MACINATO,SOLUBILE,CIALDA
+
+    /**
+     * Elenco dei tipi Bevande
+     */
+
+    MACINATO,
+    SOLUBILE,
+    CAPSULA
+
+    /**
+     * Commento di Dario: "Cambiato Cialda in Capsula per essere più rigoroso con la terminologia del testo"
+     */
 }

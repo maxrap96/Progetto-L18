@@ -8,18 +8,27 @@ import java.util.HashMap;
 import static java.lang.Integer.parseInt;
 
 public class Distributore {
+
+    /**
+     * Commento di Dario: "Qunado ragioni con le quantità massime prova a vedere se riesci a fare attributi final
+     * generici."
+     */
+
     private HashMap<String,Bevanda> list;
-    private int cup,cupMax, spoon,spoonmax;
-    private double water,watermax;
-    private double sugar,sugarMax;
-    private double credit,bank;
+    private int cup, cupMax, spoon, spoonmax;
+    private double water, watermax;
+    private double sugar, sugarMax;
+    private double credit, bank;
     private ArrayList<String[]> listFromFile;
     private String[] statistics;
-    private OpenFile input=new OpenFile(); //è una vecchia parte di un programma di Hexrebuilt. apre files e li splitta in base alla tabulazione. inoltre ha  già un metodo per recepire comandi da tastiera.
+    private OpenFile input = new OpenFile();    // è una vecchia parte di un programma di Hexrebuilt. apre files e
+                                                // li splitta in base alla tabulazione. inoltre ha  già un metodo per
+                                                // recepire comandi da tastiera.
 
     public Distributore(String pathFile) {
         this.list = new HashMap<>();
-        this.listFromFile=input.apriFile(pathFile);
+        listFromFile = new ArrayList<>();       // Commento di Dario: Non avevi inizializzato l'array
+        this.listFromFile = input.apriFile(pathFile);
         SetVendingMachine();
     }
 
@@ -29,14 +38,14 @@ public class Distributore {
          * 0            1           2       3           4
          *
         */
-        this.cupMax=parseInt(listFromFile.get(0)[0]);
-        this.cup=cupMax;
-        this.spoonmax=parseInt(listFromFile.get(0)[1]);
-        this.spoon=spoonmax;
-        this.watermax=parseInt(listFromFile.get(0)[2]);
-        this.water=watermax;
-        this.sugarMax=parseInt(listFromFile.get(0)[3]);
-        this.sugar=sugarMax;
+        this.cupMax = parseInt(listFromFile.get(0)[0]);
+        this.cup = cupMax;
+        this.spoonmax = parseInt(listFromFile.get(0)[1]);
+        this.spoon = spoonmax;
+        this.watermax = parseInt(listFromFile.get(0)[2]);
+        this.water = watermax;
+        this.sugarMax = parseInt(listFromFile.get(0)[3]);
+        this.sugar = sugarMax;
         //todo add server quando ci sarà
 
 
@@ -44,36 +53,51 @@ public class Distributore {
         CreateList();
     }
 
+    /**
+     * Per ogni riga di file leggo e analizzo il contenuto per creare la bevanda.
+     * Ricordandomi che la riga 0 è della macchinetta. quindi inizio da 1
+     */
+
+    /**
+     * Commento di Dario: "Appena possibile implementa un try - catch nel caso sia inserito un nome non valido"
+     */
+
     private void CreateList() {
         Bevanda tmp;
         Tipo type;
-        //per ogni riga di file leggo e analizzo il contenuto epr creare la bevanda. ricordandomi che la riga 0 è della macchinetta. quindi inizio da 1
-        for (int i=1; i<listFromFile.size();i++){
-            if (listFromFile.get(i)[1].equals(Tipo.CIALDA)) {
-                type = Tipo.CIALDA;
+
+        for (int i = 1; i < listFromFile.size(); i++){
+            if (listFromFile.get(i)[1].equals(Tipo.CAPSULA)) {
+                type = Tipo.CAPSULA;
             }
             else if (listFromFile.get(i)[1].equals(Tipo.MACINATO)){
-                type=Tipo.MACINATO;
+                type = Tipo.MACINATO;
             }
             else {
-                type=Tipo.SOLUBILE; // è l'ultimo che resta
+                type = Tipo.SOLUBILE; // è l'ultimo che resta
             }
 
             switch (type.ordinal()){
-                case 1: //Macinato
-                    tmp=new Macinato(listFromFile.get(i));
-                    //ora associo l'id alla bevanda
-                    list.put(listFromFile.get(i)[0],tmp);
-
-                    break;
-                case 2: //solubile
-                    tmp=new Solubile(listFromFile.get(i));
-                    //ora associo l'id alla bevanda
+                /**
+                 * Macinato
+                 */
+                case 1:
+                    tmp = new Macinato(listFromFile.get(i));
+                    // Ora associo l'id alla bevanda
                     list.put(listFromFile.get(i)[0],tmp);
                     break;
-                case 3: //cialda
-                    tmp=new Cialda(listFromFile.get(i));
-                    //ora associo l'id alla bevanda
+                /**
+                 * Solubile
+                 */
+                case 2:
+                    tmp = new Solubile(listFromFile.get(i));
+                    list.put(listFromFile.get(i)[0],tmp);
+                    break;
+                /**
+                 * Capsula
+                 */
+                case 3:
+                    tmp = new Capsula(listFromFile.get(i));
                     list.put(listFromFile.get(i)[0],tmp);
                     break;
             }

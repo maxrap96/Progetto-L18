@@ -3,6 +3,10 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class OpenFile {
+
+    /**
+     * Commento di Dario: "Siamo sicuri sia necessaria uníntera classe solo per leggere ad file?"
+     */
     private String nome_file;
     private BufferedReader lettore;
     private FileReader file;
@@ -10,15 +14,15 @@ public class OpenFile {
 
     public OpenFile(){
         this.nome_file = null;
-        this.lettore=null;
+        this.lettore = null;
         this.file = null;
-        this.fileaperto=new ArrayList<>();
+        this.fileaperto = new ArrayList<>();
 
     }
 
     public String tastiera()  {
-        InputStreamReader keyboard=new InputStreamReader(System.in);
-        BufferedReader bufferedReader=new BufferedReader(keyboard);
+        InputStreamReader keyboard = new InputStreamReader(System.in);
+        BufferedReader bufferedReader = new BufferedReader(keyboard);
         try {
             String letta= bufferedReader.readLine();
             keyboard.close();
@@ -32,11 +36,11 @@ public class OpenFile {
 
     public ArrayList<String[]> apriFile(String nome_file){
         try {
-            file= new FileReader(nome_file);
+            file = new FileReader(nome_file);
         } catch (FileNotFoundException e) {
             //TODO new fileNullo();
         }
-        lettore=new BufferedReader(file);
+        lettore = new BufferedReader(file);
         splitFile();
         //todo try catch
 
@@ -47,7 +51,7 @@ public class OpenFile {
     private void splitFile() /*todo throws fileNullo*/ {
         try{
             String letta;
-            while ((letta=lettore.readLine())!=null){
+            while ((letta = lettore.readLine())!=null){
                 if (letta.startsWith("*")){
                     continue; //è una riga da skippare
                 }

@@ -2,7 +2,7 @@ package Bevande;
 
 import static java.lang.Double.parseDouble;
 
-public class Solubile extends Bevanda {
+public class Capsula extends Bevanda {
 
     /**
      * Il file di testo è composto in forma
@@ -10,19 +10,24 @@ public class Solubile extends Bevanda {
      * 0    1     2     3       4                   5               6
      */
 
-    public Solubile(String[] rowSplitted) {
-        this.type = Tipo.SOLUBILE;
+    /**
+     * Non vedo nessun riferimento ad ID, dove lo salvi?
+     * @param rowSplitted: "A cosa serve?"
+     */
+
+    public Capsula(String[] rowSplitted) {
+        this.type = Tipo.CAPSULA;
         this.name = rowSplitted[2];
         this.price = parseDouble(rowSplitted[3]);
         this.quantityMax = parseDouble(rowSplitted[4]);
         this.quantityLeft = quantityMax; //lo inizializzo come pieno
         this.temperature = parseDouble(rowSplitted[5]);
-        this.dose = parseDouble(rowSplitted[6]);
-
+        this.dose = 1;
     }
+
+
     @Override
     public void subtractDose() {
-
-        this.quantityLeft = this.quantityMax - this.dose;
+        this.quantityLeft -= 1;
     }
 }
