@@ -11,14 +11,18 @@ import java.util.ArrayList;
 public class OpenFile {
 
     /**
-     * Vecchia classe di Hexrebuilt che ha dei metodi già fatti per leggere da tastiera, aprire e splittare un file in
-     * base ad un carattere. in questo caso usiamo la tabulazione
+     * Vecchia classe di Hexrebuilt che ha dei metodi già fatti per leggere da tastiera, aprire e dividere un file in
+     * base ad un carattere. In questo caso usiamo la tabulazione
      */
 
     public OpenFile(){
     }
 
-    public String keyboard()  {
+    /**
+     * A cosa serve sta funzione?
+     */
+
+    public String keyboard() {
         InputStreamReader keyboard = new InputStreamReader(System.in);
         BufferedReader bufferedReader = new BufferedReader(keyboard);
         try {
@@ -31,6 +35,10 @@ public class OpenFile {
         }
         return null;
     }
+
+    /**
+     * A cosa serve sta funzione?
+     */
 
     public ArrayList<String[]> apriFile(String nome_file){
          try {
@@ -52,14 +60,17 @@ public class OpenFile {
 
     }
 
+    /**
+     * A cosa serve sta funzione?
+     */
+
     private ArrayList<String[]> splitFile(BufferedReader lettore) throws FileNotReadable {
-        ArrayList<String[]> readed=new ArrayList<>();
+        ArrayList<String[]> readed = new ArrayList<>();
         try{
             String letta;
             while ((letta = lettore.readLine())!=null){
-                //è una riga da skippare se inizia con *
-                if (!letta.contains("*")){
-                    String[] splittata=letta.split("\t");
+                if (!letta.contains("*")){              // è una riga da saltare se inizia con *
+                    String[] splittata = letta.split("\t");
                     readed.add(splittata);
                 }
             }

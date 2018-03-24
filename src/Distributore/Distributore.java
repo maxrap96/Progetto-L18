@@ -32,7 +32,7 @@ public class Distributore {
         this.listFromFile = input.apriFile(pathFile);
         this.credit = 0;
         this.balance = 0;
-        SetVendingMachine();
+        setVendingMachine();
     }
     /** il file è impostato in modo tale che la prima riga siano le informazioni della macchinetta
      * bicchierini cucchianini acqua   zucchero    e poi server
@@ -41,7 +41,7 @@ public class Distributore {
      * inoltre è fatto in modo da ignorare le righe che iniziano con *
      */
 
-    private void SetVendingMachine() {
+    private void setVendingMachine() {
 
         this.cupMax = parseInt(listFromFile.get(0)[0]);
         this.cup = cupMax;
@@ -55,7 +55,7 @@ public class Distributore {
 
 
         //mi devo ricordare che dalla seconda riga in poi sono le bevande
-        CreateList();
+        createList();
     }
 
     /**
@@ -68,14 +68,15 @@ public class Distributore {
      *
      */
 
-    private void CreateList() {
-        /*
-         MACINATO, CAPSULA,SOLUBILE
-         l'uso degli enum mi permette di creare rapidamente un sistema per decidere il tipo della bevanda, permettendo di aggiungerne una nuova tipologia con facilità
+    private void createList() {
+        /**
+         * MACINATO, CAPSULA, SOLUBILE
+         * l'uso degli enum mi permette di creare rapidamente un sistema per decidere
+         * il tipo della bevanda, permettendo di aggiungerne una nuova tipologia con facilità.
          */
         for (int i = 1; i < listFromFile.size(); i++){
-            Tipo tipo=findType(listFromFile.get(i)[1]);
-            Bevanda bevanda=null;
+            Tipo tipo = findType(listFromFile.get(i)[1]);
+            Bevanda bevanda = null;
             switch (tipo.ordinal()) {
                 case 0:
                     bevanda = new Macinato(listFromFile.get(i));
@@ -94,9 +95,13 @@ public class Distributore {
         }
     }
 
+    /**
+     * Funzione grezza da raffinare per individuare il tipo della bevanda.
+     */
+
+    //TODO MIGLIORARE LA FUNZIONE PER CONFRONTARE UNA STRINGA CON GLI ENUM
+
     private Tipo findType(String s) {
-        //funzione grezza da raffinare per individuare il tipo della bevanda.
-        //TODO MIGLIORARE LA FUNZIONE PER CONFRONTARE UNA STRINGA CON GLI ENUM
             if (s.equals(String.valueOf((Tipo.MACINATO)))){
                 return Tipo.MACINATO;
             }

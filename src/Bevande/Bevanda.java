@@ -2,27 +2,20 @@ package Bevande;
 
 public abstract class Bevanda {
 
-    protected String name;
-    protected String id;
-    protected Tipo type;
-
     /**
-     * Commento di Dario: "Ti prego trova un altro nome per dose, sembra che spacciamo droga e aggiungi una classe
-     * Ingrediente, perchè dobbiamo fare in modo che ogni Bevanda abbia un certo numero di ingredienti anch'essi da
-     * ricaricare nel caso.
-     * Ho cambiato Costo in Price perchè così non mischi italiano e inglese"
+     * Il file di testo è composto in forma
+     * ID   TIPO  NOME  COSTO   QUANTITA_MASSIMA    TEMPERATURA    DOSE (NEL CASO CI SIA dato che la cialda è 1)
+     * 0    1     2     3       4                   5               6
      */
 
-    protected double price, dose, quantityLeft, quantityMax, temperature;
+    protected String id;
+    protected Tipo type;
+    protected String name;
+    protected double price, quantityMax, temperature, dose; // Trovare altro nome per dose
+    protected double quantityLeft;
 
     /**
      * Funzione da implementare nelle classi derivate per sottrarre quantità
-     */
-
-    /**
-     * Commento di Dario: "Troppo poco generica. O fai 2 funzioni, una che aggiunge (caso ricarica) e una che
-     * toglie, oppure fai una classe unica modifiyDose e gli passi un argomento positivo o negativo, sarebbe meglio
-     * la seconda, ma nel caso ne discutiamo"
      */
 
     public abstract void subtractDose();

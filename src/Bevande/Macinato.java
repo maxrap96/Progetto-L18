@@ -11,7 +11,7 @@ public class Macinato extends Bevanda {
      */
 
     public Macinato(String[] rowSplitted) {
-        this.id=rowSplitted[0];
+        this.id = rowSplitted[0];
         this.type = Tipo.MACINATO;
         this.name = rowSplitted[2];
         this.price = parseDouble(rowSplitted[3]);
@@ -24,6 +24,6 @@ public class Macinato extends Bevanda {
 
     @Override
     public void subtractDose() {
-        quantityLeft=quantityLeft-dose;
+        this.quantityLeft -= this.dose;
     }
 }
