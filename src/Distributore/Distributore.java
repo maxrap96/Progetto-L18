@@ -33,14 +33,14 @@ public class Distributore {
         this.balance = 0;
         SetVendingMachine();
     }
+    /** il file è impostato in modo tale che la prima riga siano le informazioni della macchinetta
+     * bicchierini  cucchianini acqua   zucchero    e poi server
+     * 0            1           2       3           4
+     *
+     * inoltre è fatto in modo da ignorare le righe che iniziano con *
+     */
 
     private void SetVendingMachine() {
-        /** il file è impostato in modo tale che la prima riga siano le informazioni della macchinetta
-         * bicchierini  cucchianini acqua   zucchero    e poi server
-         * 0            1           2       3           4
-         *
-        */
-
         int i=0;
         while(listFromFile.get(i)[0].startsWith("*")){
             i++;
