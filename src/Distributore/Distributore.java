@@ -73,40 +73,50 @@ public class Distributore {
 
 
         for (int i = 1; i < listFromFile.size(); i++){
-            
-            if (listFromFile.get(i)[1].equals(Tipo.CAPSULA)) {
-                type = Tipo.CAPSULA;
-            }
-            else if (listFromFile.get(i)[1].equals(Tipo.MACINATO)){
-                type = Tipo.MACINATO;
-            }
-            else {
-                type = Tipo.SOLUBILE; // è l'ultimo che resta
-            }
+
+            type=detectType(listFromFile.get(i)[1]);
 
             switch (type.ordinal()){
                 /**
-                 * Macinato
+                MACINATO,
+                CAPSULA,
+                SOLUBILE
                  */
                 case 1:
                     tmp = new Macinato(listFromFile.get(i));
                     // Ora associo l'id alla bevanda
                     list.put(listFromFile.get(i)[0],tmp);
                     break;
-                /**
-                 * Solubile
-                 */
                 case 2:
-                    tmp = new Solubile(listFromFile.get(i));
-                    list.put(listFromFile.get(i)[0],tmp);
-                    break;
-                /**
-                 * Capsula
-                 */
-                case 3:
                     tmp = new Capsula(listFromFile.get(i));
                     list.put(listFromFile.get(i)[0],tmp);
                     break;
+                case 3:
+                    tmp = new Solubile(listFromFile.get(i));
+                    list.put(listFromFile.get(i)[0],tmp);
+                    break;
+                //todo default:
+                 //todo gestisco errore
+            }
+        }
+    }
+
+    private Tipo detectType(String check) {
+
+        if (check.equals("CAPSULA")) {
+            return Tipo.CAPSULA;
+        }
+        else {
+            if (check.equals("MACINATO")) {
+                return Tipo.MACINATO;
+            }
+            else {
+                if (check.equals("SOLUBILE")) {
+                    return Tipo.SOLUBILE; // è l'ultimo che resta
+                }
+                else {
+                    return null; //todo errore da gestire nel caso non esista il tipo
+                }
             }
         }
     }

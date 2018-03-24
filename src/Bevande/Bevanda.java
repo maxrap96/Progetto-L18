@@ -3,6 +3,7 @@ package Bevande;
 public abstract class Bevanda {
 
     protected String name;
+    protected String id;
     protected Tipo type;
 
     /**

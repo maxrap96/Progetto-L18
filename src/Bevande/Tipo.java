@@ -7,10 +7,7 @@ public enum Tipo {
      */
 
     MACINATO,
-    SOLUBILE,
-    CAPSULA
+    CAPSULA,
+    SOLUBILE
 
-    /**
-     * Commento di Dario: "Cambiato Cialda in Capsula per essere più rigoroso con la terminologia del testo"
-     */
 }
