@@ -75,7 +75,8 @@ public class Distributore {
          */
         Tipo type;
         for (int i = 1; i < listFromFile.size(); i++){
-            type = ((Tipo) listFromFile.get(i)[1]).;
+            type = ((Tipo) listFromFile.get(i)[1]);
+            
             switch (type.ordinal()){
                 case 1:
                     // Ora associo l'id alla bevanda
