@@ -41,8 +41,13 @@ public class OpenFile {
             //TODO new fileNullo();
         }
         lettore = new BufferedReader(file);
-        splitFile();
-        //todo try catch
+
+        try{
+            splitFile();
+        }
+        catch (Exception e){
+            //todo try catch
+        }
 
         return fileaperto;
 
