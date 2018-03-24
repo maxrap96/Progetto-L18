@@ -18,7 +18,7 @@ public class Distributore {
     private int cup, cupMax, spoon, spoonmax;
     private double water, watermax;
     private double sugar, sugarMax;
-    private double credit, bank;
+    private double credit, balance;
     private ArrayList<String[]> listFromFile;
     private String[] statistics;
     private OpenFile input = new OpenFile();    // è una vecchia parte di un programma di Hexrebuilt. apre files e
@@ -29,6 +29,8 @@ public class Distributore {
         this.list = new HashMap<>();
         listFromFile = new ArrayList<>();       // Commento di Dario: Non avevi inizializzato l'array
         this.listFromFile = input.apriFile(pathFile);
+        this.credit = 0;
+        this.balance = 0;
         SetVendingMachine();
     }
 
