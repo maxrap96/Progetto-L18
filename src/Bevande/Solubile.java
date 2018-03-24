@@ -23,7 +23,6 @@ public class Solubile extends Bevanda {
     }
     @Override
     public void subtractDose() {
-
         this.quantityLeft = this.quantityMax - this.dose;
     }
 }

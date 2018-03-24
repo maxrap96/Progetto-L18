@@ -1,6 +1,7 @@
 package Distributore;
 
 import Bevande.*;
+import Errori.InvalidType;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -85,6 +86,9 @@ public class Distributore {
                 case 2:
                     bevanda = new Solubile(listFromFile.get(i));
                     break;
+                default:
+                    new InvalidType();
+                    continue;
             }
             list.put(listFromFile.get(i)[0],bevanda);
         }
@@ -92,6 +96,7 @@ public class Distributore {
 
     private Tipo findType(String s) {
         //funzione grezza da raffinare per individuare il tipo della bevanda.
+        //TODO MIGLIORARE LA FUNZIONE PER CONFRONTARE UNA STRINGA CON GLI ENUM
             if (s.equals(String.valueOf((Tipo.MACINATO)))){
                 return Tipo.MACINATO;
             }

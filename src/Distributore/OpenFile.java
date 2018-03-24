@@ -1,17 +1,24 @@
 package Distributore;
+
+
+import Errori.FileNotExisting;
+import Errori.FileNotReadable;
+import Errori.NoDigit;
+
 import java.io.*;
 import java.util.ArrayList;
 
 public class OpenFile {
 
     /**
-     * Commento di Dario: "Siamo sicuri sia necessaria uníntera classe solo per leggere ad file?"
+     * Vecchia classe di Hexrebuilt che ha dei metodi già fatti per leggere da tastiera, aprire e splittare un file in
+     * base ad un carattere. in questo caso usiamo la tabulazione
      */
 
     public OpenFile(){
     }
 
-    public String tastiera()  {
+    public String keyboard()  {
         InputStreamReader keyboard = new InputStreamReader(System.in);
         BufferedReader bufferedReader = new BufferedReader(keyboard);
         try {
@@ -20,14 +27,13 @@ public class OpenFile {
             bufferedReader.close();
             return letta;
         } catch (IOException e) {
-            //TODO new nessunaDigitata();
+            new NoDigit();
         }
         return null;
     }
 
     public ArrayList<String[]> apriFile(String nome_file){
-        //nome_file=tastiera();
-        try {
+         try {
             FileReader file = new FileReader(nome_file);
             BufferedReader lettore = new BufferedReader(file);
             ArrayList<String[]> fileaperto=splitFile(lettore);
@@ -36,15 +42,17 @@ public class OpenFile {
             return fileaperto;
 
         } catch (FileNotFoundException e) {
-            //TODO new fileNullo();
+            new FileNotExisting();
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        } catch (FileNotReadable fileNotReadable) {
+             fileNotReadable.printStackTrace();
+         }
         return null;
 
     }
 
-    private ArrayList<String[]> splitFile(BufferedReader lettore) /*todo throws fileNullo*/ {
+    private ArrayList<String[]> splitFile(BufferedReader lettore) throws FileNotReadable {
         ArrayList<String[]> readed=new ArrayList<>();
         try{
             String letta;
@@ -57,9 +65,8 @@ public class OpenFile {
             }
             return readed;
         }catch (Exception e){
-            //todo throw new fileNullo();
+            throw new FileNotReadable();
         }
-        return null;
     }
 
 }
