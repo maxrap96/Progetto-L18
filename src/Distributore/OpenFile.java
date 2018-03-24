@@ -26,16 +26,15 @@ public class OpenFile {
     }
 
     public ArrayList<String[]> apriFile(String nome_file){
-        ArrayList<String[]> fileaperto=new ArrayList<>();
-        FileReader file=null;
 
-        BufferedReader lettore;
+        ArrayList<String[]> fileaperto=new ArrayList<>();
+        BufferedReader lettore = null;
         try {
-            file = new FileReader(nome_file);
+            FileReader file = new FileReader(nome_file);
+            lettore = new BufferedReader(file);
         } catch (FileNotFoundException e) {
             //TODO new fileNullo();
         }
-        lettore = new BufferedReader(file);
 
         try{
             splitFile(lettore,fileaperto);
