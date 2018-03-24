@@ -63,14 +63,14 @@ public class Distributore {
      */
 
     /**
-     * Commento di Dario: "Appena possibile implementa un try - catch nel caso sia inserito un nome non valido"
+     * todo Appena possibile implementa un try - catch nel caso sia inserito un nome non valido
      *
      */
 
     private void CreateList() {
         /*
          MACINATO, CAPSULA,SOLUBILE
-         l'uso degli enum con ordinal creava bug
+         l'uso degli enum mi permette di creare rapidamente un sistema per decidere il tipo della bevanda, permettendo di aggiungerne una nuova tipologia con facilità
          */
         for (int i = 1; i < listFromFile.size(); i++){
             Tipo tipo=findType(listFromFile.get(i)[1]);
@@ -91,6 +91,7 @@ public class Distributore {
     }
 
     private Tipo findType(String s) {
+        //funzione grezza da raffinare per individuare il tipo della bevanda.
             if (s.equals(String.valueOf((Tipo.MACINATO)))){
                 return Tipo.MACINATO;
             }
