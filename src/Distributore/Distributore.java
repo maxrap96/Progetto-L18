@@ -73,20 +73,35 @@ public class Distributore {
          l'uso degli enum con ordinal creava bug
          */
         for (int i = 1; i < listFromFile.size(); i++){
-            if (listFromFile.get(i)[1].equals("MACINATO")){
-                list.put(listFromFile.get(i)[0],new Macinato(listFromFile.get(i)));
+            Tipo tipo=findType(listFromFile.get(i)[1]);
+            Bevanda bevanda=null;
+            switch (tipo.ordinal()) {
+                case 0:
+                    bevanda = new Macinato(listFromFile.get(i));
+                    break;
+                case 1:
+                    bevanda = new Capsula(listFromFile.get(i));
+                    break;
+                case 2:
+                    bevanda = new Solubile(listFromFile.get(i));
+                    break;
             }
-            else {
-                if (listFromFile.get(i)[1].equals("CAPSULA")){
-                    list.put(listFromFile.get(i)[0],new Capsula(listFromFile.get(i)));
-                }
-                else {
-                    if (listFromFile.get(i)[1].equals("SOLUBILE")){
-                        list.put(listFromFile.get(i)[0],new Solubile(listFromFile.get(i)));
-                    }
-                }
-            }
+            list.put(listFromFile.get(i)[0],bevanda);
         }
     }
 
+    private Tipo findType(String s) {
+            if (s.equals(String.valueOf((Tipo.MACINATO)))){
+                return Tipo.MACINATO;
+            }
+            else {
+                if (s.equals(String.valueOf((Tipo.CAPSULA)))){
+                    return Tipo.CAPSULA;
+                }
+                else {
+                    return Tipo.SOLUBILE;
+                }
+            }
+    }
 }
+
