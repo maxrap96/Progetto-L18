@@ -26,6 +26,7 @@ public class OpenFile {
     }
 
     public ArrayList<String[]> apriFile(String nome_file){
+        //nome_file=tastiera();
         try {
             FileReader file = new FileReader(nome_file);
             BufferedReader lettore = new BufferedReader(file);
