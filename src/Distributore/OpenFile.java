@@ -49,12 +49,11 @@ public class OpenFile {
         try{
             String letta;
             while ((letta = lettore.readLine())!=null){
-                if (letta.startsWith("*")){
-                    continue; //è una riga da skippare
+                //è una riga da skippare se inizia con *
+                if (!letta.contains("*")){
+                    String[] splittata=letta.split("\t");
+                    readed.add(splittata);
                 }
-
-                String[] splittata=letta.split("\t");
-                readed.add(splittata);
             }
             return readed;
         }catch (Exception e){

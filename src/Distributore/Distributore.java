@@ -34,7 +34,7 @@ public class Distributore {
         SetVendingMachine();
     }
     /** il file è impostato in modo tale che la prima riga siano le informazioni della macchinetta
-     * bicchierini  cucchianini acqua   zucchero    e poi server
+     * bicchierini cucchianini acqua   zucchero    e poi server
      * 0            1           2       3           4
      *
      * inoltre è fatto in modo da ignorare le righe che iniziano con *
@@ -73,11 +73,7 @@ public class Distributore {
 
 
         for (int i = 1; i < listFromFile.size(); i++){
-
-            if (listFromFile.get(i)[0].startsWith("*")){
-                continue; //significa che è una riga da ignorare
-            }
-
+            
             if (listFromFile.get(i)[1].equals(Tipo.CAPSULA)) {
                 type = Tipo.CAPSULA;
             }

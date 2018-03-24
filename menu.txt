@@ -1,7 +1,0 @@
-*le righe con * vengono skippate nella lettura
-*bicchierini  cucchianini acqua   zucchero    e poi server
-2000    1000    10000   10000
-* ID   TIPO  NOME  COSTO   QUANTITA_MASSIMA    TEMPERATURA    DOSE (NEL CASO CI SIA dato che la cialda è 1)
-01  MACINATO    ESPRESSO    0.45    50  85  0.25
-02  CIALDA  TE'     0.50    30  90
-03  SOLUBILE    GINSENG     0.55    25  80  0.30
