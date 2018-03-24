@@ -26,10 +26,9 @@ public class OpenFile {
     }
 
     public ArrayList<String[]> apriFile(String nome_file){
-        BufferedReader lettore;
         try {
             FileReader file = new FileReader(nome_file);
-            lettore = new BufferedReader(file);
+            BufferedReader lettore = new BufferedReader(file);
             ArrayList<String[]> fileaperto=splitFile(lettore);
             lettore.close();
             file.close();
@@ -45,7 +44,7 @@ public class OpenFile {
     }
 
     private ArrayList<String[]> splitFile(BufferedReader lettore) /*todo throws fileNullo*/ {
-        ArrayList<String[]> fileaperto=new ArrayList<>();
+        ArrayList<String[]> readed=new ArrayList<>();
         try{
             String letta;
             while ((letta = lettore.readLine())!=null){
@@ -54,9 +53,9 @@ public class OpenFile {
                 }
 
                 String[] splittata=letta.split("\t");
-                fileaperto.add(splittata);
+                readed.add(splittata);
             }
-            return fileaperto;
+            return readed;
         }catch (Exception e){
             //todo throw new fileNullo();
         }
