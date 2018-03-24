@@ -11,6 +11,7 @@ public class Solubile extends Bevanda {
      */
 
     public Solubile(String[] rowSplitted) {
+        this.id=rowSplitted[0];
         this.type = Tipo.SOLUBILE;
         this.name = rowSplitted[2];
         this.price = parseDouble(rowSplitted[3]);

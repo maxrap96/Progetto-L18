@@ -1,11 +1,9 @@
 package Bevande;
 
+/**
+ * Elenco dei tipi Bevande
+ */
 public enum Tipo {
-
-    /**
-     * Elenco dei tipi Bevande
-     */
-
     MACINATO,
     CAPSULA,
     SOLUBILE

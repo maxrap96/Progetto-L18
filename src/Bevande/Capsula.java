@@ -16,6 +16,7 @@ public class Capsula extends Bevanda {
      */
 
     public Capsula(String[] rowSplitted) {
+        this.id=rowSplitted[0];
         this.type = Tipo.CAPSULA;
         this.name = rowSplitted[2];
         this.price = parseDouble(rowSplitted[3]);

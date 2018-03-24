@@ -11,6 +11,7 @@ public class Macinato extends Bevanda {
      */
 
     public Macinato(String[] rowSplitted) {
+        this.id=rowSplitted[0];
         this.type = Tipo.MACINATO;
         this.name = rowSplitted[2];
         this.price = parseDouble(rowSplitted[3]);
