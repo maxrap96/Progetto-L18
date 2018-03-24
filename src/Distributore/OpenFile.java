@@ -26,32 +26,31 @@ public class OpenFile {
     }
 
     public ArrayList<String[]> apriFile(String nome_file){
-
-        ArrayList<String[]> fileaperto=new ArrayList<>();
-        BufferedReader lettore = null;
+        ArrayList<String[]> fileaperto=null;
+        BufferedReader lettore;
         try {
             FileReader file = new FileReader(nome_file);
             lettore = new BufferedReader(file);
+            try{
+                fileaperto=splitFile(lettore);
+            }
+            catch (Exception e){
+                //todo try catch
+            }
+            try {
+                lettore.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } catch (FileNotFoundException e) {
             //TODO new fileNullo();
-        }
-
-        try{
-            splitFile(lettore,fileaperto);
-        }
-        catch (Exception e){
-            //todo try catch
-        }
-        try {
-            lettore.close();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
         return fileaperto;
 
     }
 
-    private void splitFile(BufferedReader lettore, ArrayList<String[]> fileaperto) /*todo throws fileNullo*/ {
+    private ArrayList<String[]> splitFile(BufferedReader lettore) /*todo throws fileNullo*/ {
+        ArrayList<String[]> fileaperto=new ArrayList<>();
         try{
             String letta;
             while ((letta = lettore.readLine())!=null){
@@ -62,10 +61,11 @@ public class OpenFile {
                 String[] splittata=letta.split("\t");
                 fileaperto.add(splittata);
             }
-
+            return fileaperto;
         }catch (Exception e){
             //todo throw new fileNullo();
         }
+        return null;
     }
 
 }
