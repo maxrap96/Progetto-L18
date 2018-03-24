@@ -69,14 +69,12 @@ public class Distributore {
 
     private void CreateList() {
         /*
-         MACINATO,
-         CAPSULA,
-         SOLUBILE
+         MACINATO, CAPSULA,SOLUBILE
          */
         Tipo type;
         for (int i = 1; i < listFromFile.size(); i++){
-            type = ((Tipo) listFromFile.get(i)[1]);
-            
+            type = findType(listFromFile.get(i)[1]);
+
             switch (type.ordinal()){
                 case 1:
                     // Ora associo l'id alla bevanda
@@ -90,6 +88,20 @@ public class Distributore {
                 default:
                     break;
                 //todo gestisco errore
+            }
+        }
+    }
+
+    private Tipo findType(String s) {
+        if (s.equals(Tipo.MACINATO)){
+            return Tipo.MACINATO;
+        }
+        else {
+            if (s.equals(Tipo.CAPSULA)){
+                return Tipo.CAPSULA;
+            }
+            else {
+                return Tipo.SOLUBILE;
             }
         }
     }
