@@ -7,17 +7,8 @@ public class OpenFile {
     /**
      * Commento di Dario: "Siamo sicuri sia necessaria uníntera classe solo per leggere ad file?"
      */
-    private String nome_file;
-    private BufferedReader lettore;
-    private FileReader file;
-    private ArrayList<String[]> fileaperto;
 
     public OpenFile(){
-        this.nome_file = null;
-        this.lettore = null;
-        this.file = null;
-        this.fileaperto = new ArrayList<>();
-
     }
 
     public String tastiera()  {
@@ -35,6 +26,10 @@ public class OpenFile {
     }
 
     public ArrayList<String[]> apriFile(String nome_file){
+        ArrayList<String[]> fileaperto=new ArrayList<>();
+        FileReader file=null;
+
+        BufferedReader lettore;
         try {
             file = new FileReader(nome_file);
         } catch (FileNotFoundException e) {
@@ -43,26 +38,32 @@ public class OpenFile {
         lettore = new BufferedReader(file);
 
         try{
-            splitFile();
+            splitFile(lettore,fileaperto);
         }
         catch (Exception e){
             //todo try catch
         }
-
+        try {
+            lettore.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return fileaperto;
 
     }
 
-    private void splitFile() /*todo throws fileNullo*/ {
+    private void splitFile(BufferedReader lettore, ArrayList<String[]> fileaperto) /*todo throws fileNullo*/ {
         try{
             String letta;
             while ((letta = lettore.readLine())!=null){
                 if (letta.startsWith("*")){
                     continue; //è una riga da skippare
                 }
+
                 String[] splittata=letta.split("\t");
                 fileaperto.add(splittata);
             }
+
         }catch (Exception e){
             //todo throw new fileNullo();
         }
