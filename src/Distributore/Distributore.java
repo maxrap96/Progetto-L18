@@ -38,19 +38,25 @@ public class Distributore {
          * 0            1           2       3           4
          *
         */
-        this.cupMax = parseInt(listFromFile.get(0)[0]);
+
+        int i=0;
+        while(listFromFile.get(i)[0].startsWith("*")){
+            i++;
+        }
+
+        this.cupMax = parseInt(listFromFile.get(i)[0]);
         this.cup = cupMax;
-        this.spoonmax = parseInt(listFromFile.get(0)[1]);
+        this.spoonmax = parseInt(listFromFile.get(i)[1]);
         this.spoon = spoonmax;
-        this.watermax = parseInt(listFromFile.get(0)[2]);
+        this.watermax = parseInt(listFromFile.get(i)[2]);
         this.water = watermax;
-        this.sugarMax = parseInt(listFromFile.get(0)[3]);
+        this.sugarMax = parseInt(listFromFile.get(i)[3]);
         this.sugar = sugarMax;
         //todo add server quando ci sarà
 
 
         //mi devo ricordare che dalla seconda riga in poi sono le bevande
-        CreateList();
+        CreateList(i);
     }
 
     /**
@@ -60,13 +66,20 @@ public class Distributore {
 
     /**
      * Commento di Dario: "Appena possibile implementa un try - catch nel caso sia inserito un nome non valido"
+     * @param infoVendingmachine riga delle informazioni della macchinetta
      */
 
-    private void CreateList() {
+    private void CreateList(int infoVendingmachine) {
         Bevanda tmp;
         Tipo type;
 
-        for (int i = 1; i < listFromFile.size(); i++){
+
+        for (int i = infoVendingmachine + 1; i < listFromFile.size(); i++){
+
+            if (listFromFile.get(i)[0].startsWith("*")){
+                continue; //significa che è una riga da ignorare
+            }
+
             if (listFromFile.get(i)[1].equals(Tipo.CAPSULA)) {
                 type = Tipo.CAPSULA;
             }
