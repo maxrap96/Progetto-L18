@@ -11,13 +11,8 @@ public class Solubile extends Bevanda {
      */
 
     public Solubile(String[] rowSplitted) {
-        this.id = rowSplitted[0];
+        super(rowSplitted);
         this.type = Tipo.SOLUBILE;
-        this.name = rowSplitted[2];
-        this.price = parseDouble(rowSplitted[3]);
-        this.quantityMax = parseDouble(rowSplitted[4]);
-        this.quantityLeft = quantityMax;                //lo inizializzo come pieno
-        this.temperature = parseDouble(rowSplitted[5]);
         this.dose = parseDouble(rowSplitted[6]);
 
     }
@@ -26,8 +21,4 @@ public class Solubile extends Bevanda {
      * Commento di Dario: "Ma così non rimane sempre lo stesso valore?
      */
 
-    @Override
-    public void subtractDose() {
-        this.quantityLeft = this.quantityMax - this.dose;
-    }
 }

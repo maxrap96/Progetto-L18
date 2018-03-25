@@ -11,19 +11,10 @@ public class Macinato extends Bevanda {
      */
 
     public Macinato(String[] rowSplitted) {
-        this.id = rowSplitted[0];
+        super(rowSplitted);
         this.type = Tipo.MACINATO;
-        this.name = rowSplitted[2];
-        this.price = parseDouble(rowSplitted[3]);
-        this.quantityMax = parseDouble(rowSplitted[4]);
-        this.quantityLeft = quantityMax;                //lo inizializzo come pieno
-        this.temperature = parseDouble(rowSplitted[5]);
         this.dose = parseDouble(rowSplitted[6]);
 
     }
 
-    @Override
-    public void subtractDose() {
-        this.quantityLeft -= this.dose;
-    }
 }

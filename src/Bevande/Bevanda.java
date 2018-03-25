@@ -1,5 +1,7 @@
 package Bevande;
 
+import static java.lang.Double.parseDouble;
+
 public abstract class Bevanda {
 
     /**
@@ -14,11 +16,24 @@ public abstract class Bevanda {
     protected double price, quantityMax, temperature, dose; // Trovare altro nome per dose
     protected double quantityLeft;
 
-    /**
-     * Funzione da implementare nelle classi derivate per sottrarre quantità
+    public Bevanda(String[] rowSplitted) {
+        //inizializzo solo le parti comuni. quindi tutto tranne type e dose che verranno inizializzati nelle singole classi in base alle differenze
+        this.id = rowSplitted[0];
+        this.name = rowSplitted[2];
+        this.price = parseDouble(rowSplitted[3]);
+        this.quantityMax = parseDouble(rowSplitted[4]);
+        this.quantityLeft = quantityMax; //lo inizializzo come pieno
+        this.temperature = parseDouble(rowSplitted[5]);
+    }
+
+
+    /*
+      Funzione da implementare nelle classi derivate per sottrarre quantità
      */
 
-    public abstract void subtractDose();
+    public void subtractDose() {
+        this.quantityLeft -= this.dose;
+    }
 
     /**
      * Commento di Dario: "Se vuoi esagerare con la finezza, fai un'interfaccia con una funzione modifyQuantity(float ..)
