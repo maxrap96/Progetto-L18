@@ -15,11 +15,11 @@ public class OpenFile {
      * base ad un carattere. In questo caso usiamo la tabulazione
      */
 
-    public OpenFile(){
-    }
+
 
     /**
-     * A cosa serve sta funzione?
+     * Funzione per recepire input da tastiera e restituirli sotto forma di stringa. Essa poi dovrà essere analizzata
+     * adeguatamente dalla funzione che la va a richiamare.
      */
 
     public String keyboard() {
@@ -37,7 +37,12 @@ public class OpenFile {
     }
 
     /**
-     * A cosa serve sta funzione?
+     * Funzione per aprire un file e restituire un arraylist composto dalle singole righe del file di testo aperto. ogni
+     * riga per praticità viene separata in base ad un carattere, in questo caso la tabulazione, così da rendere più
+     * veloce la creazione della lista delle bevande nel distributore.
+     *
+     * @param nome_file è il nome_file, compreso di estensione .txt, riferito al percorso relativo rispetto alla route
+     *                  del programma.
      */
 
     public ArrayList<String[]> apriFile(String nome_file){
@@ -61,7 +66,9 @@ public class OpenFile {
     }
 
     /**
-     * A cosa serve sta funzione?
+     * Funzione che presa un BufferedReader, lo legge riga per riga. Una volta letta una row, essa viene separata in
+     * base ad un carattere specifico, in questo caso la tabulazione, che identifica i singoli campi nel file di testo
+     * @param lettore è il BufferedReader associato al file di testo da aprire per ottenere le informazioni necessarie.
      */
 
     private ArrayList<String[]> splitFile(BufferedReader lettore) throws FileNotReadable {

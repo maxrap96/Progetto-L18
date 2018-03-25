@@ -4,10 +4,8 @@
     <list default="true" id="6598f7f7-e3a2-45bc-8427-0bb79eddb02d" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/Bevande/Bevanda.java" afterPath="$PROJECT_DIR$/src/Bevande/Bevanda.java" />
-      <change beforePath="$PROJECT_DIR$/src/Bevande/Capsula.java" afterPath="$PROJECT_DIR$/src/Bevande/Capsula.java" />
-      <change beforePath="$PROJECT_DIR$/src/Bevande/Macinato.java" afterPath="$PROJECT_DIR$/src/Bevande/Macinato.java" />
-      <change beforePath="$PROJECT_DIR$/src/Bevande/Solubile.java" afterPath="$PROJECT_DIR$/src/Bevande/Solubile.java" />
-      <change beforePath="$PROJECT_DIR$/src/Bevande/Tipo.java" afterPath="$PROJECT_DIR$/src/Bevande/Tipo.java" />
+      <change beforePath="$PROJECT_DIR$/src/Distributore/Distributore.java" afterPath="$PROJECT_DIR$/src/Distributore/Distributore.java" />
+      <change beforePath="$PROJECT_DIR$/src/Distributore/OpenFile.java" afterPath="$PROJECT_DIR$/src/Distributore/OpenFile.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,36 +20,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Distributore.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Distributore.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Distributore/Distributore.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OpenFile.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Distributore/OpenFile.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1139">
-              <caret line="73" column="0" lean-forward="true" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+            <state relative-caret-position="617">
+              <caret line="100" column="7" lean-forward="true" selection-start-line="100" selection-start-column="7" selection-end-line="100" selection-end-column="7" />
               <folding>
-                <element signature="method#OpenFile#0;class#OpenFile#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Bevanda.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Bevande/Bevanda.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="35" column="5" lean-forward="false" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
-              <folding>
-                <element signature="e#1167#1168#0" expanded="true" />
-                <element signature="e#1213#1214#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -137,13 +112,13 @@
         <option value="$PROJECT_DIR$/src/Errori/FileNotReadable.java" />
         <option value="$PROJECT_DIR$/src/Errori/NoDigit.java" />
         <option value="$PROJECT_DIR$/src/Errori/InvalidType.java" />
-        <option value="$PROJECT_DIR$/src/Distributore/OpenFile.java" />
-        <option value="$PROJECT_DIR$/src/Distributore/Distributore.java" />
         <option value="$PROJECT_DIR$/src/Bevande/Capsula.java" />
         <option value="$PROJECT_DIR$/src/Bevande/Solubile.java" />
         <option value="$PROJECT_DIR$/src/Bevande/Macinato.java" />
-        <option value="$PROJECT_DIR$/src/Bevande/Bevanda.java" />
         <option value="$PROJECT_DIR$/src/Bevande/Tipo.java" />
+        <option value="$PROJECT_DIR$/src/Distributore/OpenFile.java" />
+        <option value="$PROJECT_DIR$/src/Bevande/Bevanda.java" />
+        <option value="$PROJECT_DIR$/src/Distributore/Distributore.java" />
       </list>
     </option>
   </component>
@@ -354,7 +329,7 @@
       <workItem from="1521883797147" duration="960000" />
       <workItem from="1521885107330" duration="6653000" />
       <workItem from="1521900113491" duration="3873000" />
-      <workItem from="1521965617498" duration="684000" />
+      <workItem from="1521965617498" duration="1912000" />
     </task>
     <task id="LOCAL-00001" summary="ripristino del modo per ignorare le riche nel file di testo">
       <created>1521885690565</created>
@@ -367,7 +342,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12170000" />
+    <option name="totallyTimeSpent" value="13398000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1056" extended-state="6" />
@@ -453,7 +428,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -469,7 +446,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -486,8 +465,8 @@
         <state relative-caret-position="85">
           <caret line="5" column="24" lean-forward="false" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
           <folding>
-            <element signature="e#1167#1168#0" expanded="true" />
-            <element signature="e#1213#1214#0" expanded="true" />
+            <element signature="e#1334#1335#0" expanded="true" />
+            <element signature="e#1380#1381#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -504,7 +483,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1122">
           <caret line="66" column="12" lean-forward="false" selection-start-line="66" selection-start-column="12" selection-end-line="66" selection-end-column="12" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -642,14 +623,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Distributore/Distributore.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Bevande/Solubile.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
@@ -692,21 +665,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Bevande/Bevanda.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="35" column="5" lean-forward="false" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+        <state relative-caret-position="255">
+          <caret line="15" column="97" lean-forward="false" selection-start-line="15" selection-start-column="97" selection-end-line="15" selection-end-column="97" />
           <folding>
-            <element signature="e#1167#1168#0" expanded="true" />
-            <element signature="e#1213#1214#0" expanded="true" />
+            <element signature="e#1334#1335#0" expanded="true" />
+            <element signature="e#1380#1381#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Distributore/OpenFile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1139">
-          <caret line="73" column="0" lean-forward="true" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+        <state relative-caret-position="153">
+          <caret line="14" column="4" lean-forward="true" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Distributore/Distributore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="617">
+          <caret line="100" column="7" lean-forward="true" selection-start-line="100" selection-start-column="7" selection-end-line="100" selection-end-column="7" />
           <folding>
-            <element signature="method#OpenFile#0;class#OpenFile#0" expanded="false" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

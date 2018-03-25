@@ -13,6 +13,9 @@ public class Distributore {
     /**
      * Commento di Dario: "Qunado ragioni con le quantità massime prova a vedere se riesci a fare attributi final
      * generici."
+     * -- non so bene come farlo dato che devo inizializzarli dentro al costruttore e non so a priori quanto siano
+     * finchè non apro il file.
+     * se hai soluzioni in merito si fa subito.
      */
 
     private HashMap<String,Bevanda> list;
@@ -29,16 +32,17 @@ public class Distributore {
     public Distributore(String pathFile) {
         this.list = new HashMap<>();
         listFromFile = new ArrayList<>();       // Commento di Dario: Non avevi inizializzato l'array
+                                                // commento simo: non serve tanto ce ne schiaffo sopra un'altro già fatto
         this.listFromFile = input.apriFile(pathFile);
         this.credit = 0;
         this.balance = 0;
         setVendingMachine();
     }
+
     /** il file è impostato in modo tale che la prima riga siano le informazioni della macchinetta
      * bicchierini cucchianini acqua   zucchero    e poi server
      * 0            1           2       3           4
      *
-     * inoltre è fatto in modo da ignorare le righe che iniziano con *
      */
 
     private void setVendingMachine() {
@@ -53,27 +57,23 @@ public class Distributore {
         this.sugar = sugarMax;
         //todo add server quando ci sarà
 
-
         //mi devo ricordare che dalla seconda riga in poi sono le bevande
         createList();
     }
 
     /**
-     * Per ogni riga di file leggo e analizzo il contenuto per creare la bevanda.
-     * Ricordandomi che la riga 0 è della macchinetta. quindi inizio da 1
-     */
-
-    /**
-     * todo Appena possibile implementa un try - catch nel caso sia inserito un nome non valido
+     * Per ogni riga di file letto, analizzo il contenuto per creare la bevanda.
+     * Ricordandomi che la riga 0 sono le informazioni della macchinetta. quindi inizio dall'elemento 1 dell'arraylist
+     * per le bevande.
      *
+     * MACINATO,
+     * CAPSULA,
+     * SOLUBILE
+     * l'uso degli enum mi permette di creare rapidamente un sistema per decidere
+     * il tipo della bevanda, permettendo di aggiungerne una nuova tipologia con facilità.
      */
-
     private void createList() {
-        /**
-         * MACINATO, CAPSULA, SOLUBILE
-         * l'uso degli enum mi permette di creare rapidamente un sistema per decidere
-         * il tipo della bevanda, permettendo di aggiungerne una nuova tipologia con facilità.
-         */
+
         for (int i = 1; i < listFromFile.size(); i++){
             Tipo tipo = findType(listFromFile.get(i)[1]);
             Bevanda bevanda = null;
@@ -97,6 +97,7 @@ public class Distributore {
 
     /**
      * Funzione grezza da raffinare per individuare il tipo della bevanda.
+     * @param s stringa proveniente dal campo tipo del file di testo
      */
 
     //TODO MIGLIORARE LA FUNZIONE PER CONFRONTARE UNA STRINGA CON GLI ENUM
