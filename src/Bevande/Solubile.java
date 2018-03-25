@@ -13,12 +13,7 @@ public class Solubile extends Bevanda {
     public Solubile(String[] rowSplitted) {
         super(rowSplitted);
         this.type = Tipo.SOLUBILE;
-        this.dose = parseDouble(rowSplitted[6]);
+        this.quantityDelivered = parseDouble(rowSplitted[6]);
 
     }
-
-    /**
-     * Commento di Dario: "Ma così non rimane sempre lo stesso valore?
-     */
-
 }

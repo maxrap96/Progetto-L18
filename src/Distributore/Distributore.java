@@ -2,20 +2,14 @@ package Distributore;
 
 import Bevande.*;
 import Errori.InvalidType;
-
 import java.util.ArrayList;
 import java.util.HashMap;
-
 import static java.lang.Integer.parseInt;
 
 public class Distributore {
 
     /**
-     * Commento di Dario: "Qunado ragioni con le quantità massime prova a vedere se riesci a fare attributi final
-     * generici."
-     * -- non so bene come farlo dato che devo inizializzarli dentro al costruttore e non so a priori quanto siano
-     * finchè non apro il file.
-     * se hai soluzioni in merito si fa subito.
+     * Commento di Dario: "Per i campi final ne parliamo".
      */
 
     private HashMap<String,Bevanda> list;
@@ -30,16 +24,16 @@ public class Distributore {
                                                 // recepire comandi da tastiera.
 
     public Distributore(String pathFile) {
+
         this.list = new HashMap<>();
-        listFromFile = new ArrayList<>();       // Commento di Dario: Non avevi inizializzato l'array
-                                                // commento simo: non serve tanto ce ne schiaffo sopra un'altro già fatto
+        listFromFile = new ArrayList<>();
         this.listFromFile = input.apriFile(pathFile);
         this.credit = 0;
         this.balance = 0;
         setVendingMachine();
     }
 
-    /** il file è impostato in modo tale che la prima riga siano le informazioni della macchinetta
+    /** Il file è impostato in modo tale che la prima riga siano le informazioni della macchinetta
      * bicchierini cucchianini acqua   zucchero    e poi server
      * 0            1           2       3           4
      *

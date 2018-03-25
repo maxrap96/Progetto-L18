@@ -7,7 +7,7 @@ public abstract class Bevanda {
     protected String id;
     protected Tipo type;
     protected String name;
-    protected double price, quantityMax, temperature, dose; // Trovare altro nome per dose
+    protected double price, quantityMax, temperature, quantityDelivered;
     protected double quantityLeft;
 
     /**
@@ -20,7 +20,8 @@ public abstract class Bevanda {
      */
 
     public Bevanda(String[] rowSplitted) {
-        //inizializzo solo le parti comuni. quindi tutto tranne type e dose che verranno inizializzati nelle singole classi in base alle differenze
+        // Inizializzo solo le parti comuni. quindi tutto tranne type e quantityDelivered che verranno inizializzati
+        // nelle singole classi in base alle differenze
         this.id = rowSplitted[0];
         this.name = rowSplitted[2];
         this.price = parseDouble(rowSplitted[3]);
@@ -31,16 +32,14 @@ public abstract class Bevanda {
 
 
     /**
-      Funzione per sottrarre quantità dopo aver selezionato la bevanda
+     * Funzione per sottrarre quantità dopo aver selezionato la bevanda
      */
 
     public void subtractDose() {
-        this.quantityLeft -= this.dose;
+        this.quantityLeft -= this.quantityDelivered;
     }
 
     /**
-     * Commento di Dario: "Se vuoi esagerare con la finezza, fai un'interfaccia con una funzione modifyQuantity(float ..)
-     * e la implmenti alle bisogna"
-     * TODO: mi piace tanto è da inserire per il lato server.
+     * TODO: Eventuale interfaccia.
      */
 }
