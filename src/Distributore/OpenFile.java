@@ -15,8 +15,6 @@ public class OpenFile {
      * base ad un carattere. In questo caso usiamo la tabulazione
      */
 
-
-
     /**
      * Funzione per recepire input da tastiera e restituirli sotto forma di stringa. Essa poi dovrà essere analizzata
      * adeguatamente dalla funzione che la va a richiamare.
