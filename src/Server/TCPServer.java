@@ -11,7 +11,7 @@ public class TCPServer {
     public static void main(String args[]) throws Exception {
         String clientSentence;
         String capitalizedSentence;
-        ServerSocket welcomeSocket = new ServerSocket(6789);
+        ServerSocket welcomeSocket = new ServerSocket(2222);
 
         while(true) {
             Socket connectionSocket = welcomeSocket.accept();
