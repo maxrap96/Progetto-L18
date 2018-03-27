@@ -20,7 +20,7 @@ public abstract class Bevanda {
      */
 
     public Bevanda(String[] rowSplitted) {
-        // Inizializzo solo le parti comuni. quindi tutto tranne type e quantityDelivered che verranno inizializzati
+        // Inizializzo solo le parti comuni. Quindi tutto tranne type e quantityDelivered che verranno inizializzati
         // nelle singole classi in base alle differenze
         this.id = rowSplitted[0];
         this.name = rowSplitted[2];

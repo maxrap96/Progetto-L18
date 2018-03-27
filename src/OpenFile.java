@@ -5,21 +5,24 @@ import Errori.NoDigit;
 import java.io.*;
 import java.util.ArrayList;
 
-public class OpenFile {
-    private String nomefile;
-    public OpenFile(String nomefile) {
-    this.nomefile=nomefile;
-    }
 /**
-     * Vecchia classe di Hexrebuilt che ha dei metodi già fatti per leggere da tastiera, aprire e dividere un file in
-     * base ad un carattere. In questo caso usiamo la tabulazione
-     */
+ * Vecchia classe di Hexrebuilt che ha dei metodi già fatti per leggere da tastiera, aprire e dividere un file in
+ * base ad un carattere. In questo caso usiamo la tabulazione
+ */
+
+public class OpenFile {
+
+    private String nomefile;
+
+    public OpenFile(String nomefile) {
+    this.nomefile = nomefile;
+    }
+
 
     /**
-     * Funzione per aprire un file e restituire un arraylist composto dalle singole righe del file di testo aperto. ogni
-     * riga per praticità viene separata in base ad un carattere, in questo caso la tabulazione, così da rendere più
-     * veloce la creazione della lista delle bevande nel distributore.
-     *
+     * Funzione per aprire un file e restituire un arraylist composto dalle singole righe del file di testo aperto.
+     * Ogni riga per praticità viene separata in base ad un carattere, in questo caso la tabulazione,
+     * così da rendere più veloce la creazione della lista delle bevande nel distributore.
      */
 
     public ArrayList<String[]> apriFile(){

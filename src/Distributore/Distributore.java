@@ -17,10 +17,6 @@ import static java.lang.Integer.parseInt;
 
 public class Distributore {
 
-    /**
-     * Commento di Dario: "Per i campi final ne parliamo".
-     */
-
     private HashMap<String,Bevanda> list;
     private int cup, cupMax, spoon, spoonmax;
     private double water, watermax;
@@ -59,7 +55,7 @@ public class Distributore {
         this.sugarMax = parseDouble(listFromFile.get(0)[3]);
         this.sugar = sugarMax;
         this.milkMax = parseDouble(listFromFile.get(0)[4]);
-        this.milk=milkMax;
+        this.milk = milkMax;
         //todo add server quando ci sarà
 
         //mi devo ricordare che dalla seconda riga in poi sono le bevande
@@ -113,7 +109,7 @@ public class Distributore {
         System.out.println("Inserire il codice della bevanda, il numero di monete e la quantità di zucchero richiesta (da 0 a 5)\nseparate da uno spazio. Per i centesimi utilizzare il punto (.)");
         String input = keyboard();
         String[] splitted = input.split("\\s+");
-        credit+=parseDouble(splitted[1]);
+        credit += parseDouble(splitted[1]);
         //vera e propria funzione da usare nella interfaccia
         selectBeverage(splitted[0],parseInt(splitted[2]));
     }
@@ -127,7 +123,7 @@ public class Distributore {
         InputStreamReader keyboard = new InputStreamReader(System.in);
         BufferedReader bufferedReader = new BufferedReader(keyboard);
         try {
-            String letta= bufferedReader.readLine();
+            String letta = bufferedReader.readLine();
             keyboard.close();
             bufferedReader.close();
             return letta;
@@ -138,20 +134,21 @@ public class Distributore {
     }
 
     /**
-     * funzione per selezionare una bevanda. essa controlla che il credito sia sufficiente
+     * Funzione per selezionare una bevanda. Essa controlla che il credito sia sufficiente
      * @param beverage: è l'id della bevanda selezionata
      * @param sugar: è la qunatità di zucchero da 0 a 5
      */
 
-    private void selectBeverage(String beverage,int sugar) {
-        if (credit>=list.get(beverage).getPrice()){ //se il credito è uguale o più singifica che posso potenzialmente acquistare la bevanda
-            if (list.get(beverage).isAvaible()){ //controllo che sia disponibile
+    private void selectBeverage(String beverage, int sugar) {
+        if (credit >= list.get(beverage).getPrice()){       // se il credito è uguale o più singifica che
+                                                            // posso potenzialmente acquistare la bevanda
+            if (list.get(beverage).isAvaible()){            // controllo che sia disponibile
                 list.get(beverage).subtractDose();
                 subtractIngridients(beverage);
                 subtractSugar(sugar);
-                balance+=list.get(beverage).getPrice();
-                credit=credit-list.get(beverage).getPrice(); // nel caso non dia resto
-                if (credit!=0) {
+                balance += list.get(beverage).getPrice();
+                credit = credit - list.get(beverage).getPrice();    // nel caso non dia resto
+                if (credit != 0) {
                     giveChange();
                 }
             }
@@ -165,36 +162,36 @@ public class Distributore {
     }
 
     /**
-     * funzione per sottrarre quantità necessarie per preparare la bevanda
+     * Funzione per sottrarre quantità necessarie per preparare la bevanda
      * @param bevanda bevanda da cui sottrarre
      */
     private void subtractIngridients(String bevanda) {
-        milk-=list.get(bevanda).getMilk();
-        water-=list.get(bevanda).getWater();
+        milk -= list.get(bevanda).getMilk();
+        water -= list.get(bevanda).getWater();
         cup--;
 
     }
 
     private void subtractSugar(int qty){
-        if (qty!=0){
-            sugar-= (double) qty *0.022/5;
+        if (qty != 0){
+            sugar -= (double) qty * 0.022/5;
             spoon--;
         }
     }
 
     /**
-     * funzione per erogare il credito/resto. utile anche per l'interfaccia nel caso clickassi sul pulsante
+     * Funzione per erogare il credito/resto. Utile anche per l'interfaccia nel caso clickassi sul pulsante
      */
     private void giveChange() {
-        System.out.println("Erogazione il resto di: "+credit);
-        credit=0;
+        System.out.println("Erogazione il resto di: " + credit);
+        credit = 0;
     }
 
     /**
      * Funziona che mostra la lista delle bevande contenute nel distributore
      */
     private void showList() {
-        for (int i=0;i<list.size();i++){
+        for (int i = 0; i < list.size(); i++){
             //todo replecare lo string
             //list.get(i).toString();
             System.out.println(i);
