@@ -74,12 +74,15 @@ public class Distributore {
             switch (tipo.ordinal()) {
                 case 0:
                     bevanda = new Macinato(listFromFile.get(i));
+                    list.put(listFromFile.get(i)[0],bevanda);
                     break;
                 case 1:
                     bevanda = new Capsula(listFromFile.get(i));
+                    list.put(listFromFile.get(i)[0],bevanda);
                     break;
                 case 2:
                     bevanda = new Solubile(listFromFile.get(i));
+                    list.put(listFromFile.get(i)[0],bevanda);
                     break;
                 default:
                     new InvalidType();
