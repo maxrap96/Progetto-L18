@@ -120,7 +120,7 @@ public class Distributore {
         if (credit>=list.get(beverage).getPrice()){ //se il credito è uguale o più singifica che posso potenzialmente acquistare la bevanda
             if (list.get(beverage).isAvaible()){ //controllo che sia disponibile
                 list.get(beverage).subtractDose();
-                beverage+=list.get(beverage).getPrice();
+                balance+=list.get(beverage).getPrice();
                 credit=credit-list.get(beverage).getPrice();
             }
             else{
