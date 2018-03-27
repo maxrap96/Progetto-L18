@@ -26,7 +26,7 @@ public class Distributore {
     private double water, watermax;
     private double sugar, sugarMax;
     private double milk, milkMax;
-    private double credit, balance;
+    private Coins coins;
     private ArrayList<String[]> listFromFile;
     private String[] statistics;
     //private OpenFile file = new OpenFile();    // è una vecchia parte di un programma di Hexrebuilt. apre files e
@@ -37,9 +37,8 @@ public class Distributore {
 
         this.list = new HashMap<>();
         this.listFromFile = listFromFile;
-        this.credit = 0;
-        this.balance = 0;
         setVendingMachine();
+        this.coins = new Coins();
     }
 
     /** Il file è impostato in modo tale che la prima riga siano le informazioni della macchinetta
@@ -106,16 +105,41 @@ public class Distributore {
     /**
      * Funzione per recepire i comandi testuali ed analizzarli. una volta capito se si tratti di un Codice di una
      * bevanda o di un quantittativo di monete, chiamerò le rispettive funzioni.
+     *
+     * da tastiera le monete saranno inserite come "quantità inserita"
+     * tipo: 0.05 0.10. 0.20 0.50 1 2
+     * input: 1     0    3    1   0 0 ad esempio.
      */
 
     public void textualInput (){
         showList();
-        System.out.println("Inserire il codice della bevanda, il numero di monete e la quantità di zucchero richiesta (da 0 a 5)\nseparate da uno spazio. Per i centesimi utilizzare il punto (.)");
-        String input = keyboard();
+        System.out.println("Inserire il codice della bevanda e la quantità di zucchero richiesta (da 0 a 5)\nseparate da uno spazio.");
+        String input = null;
+        try {
+            input = keyboard();
+        } catch (NoDigit noDigit) {
+            noDigit.printStackTrace();
+        }
         String[] splitted = input.split("\\s+");
-        credit+=parseDouble(splitted[1]);
-        //vera e propria funzione da usare nella interfaccia
-        selectBeverage(splitted[0],parseInt(splitted[2]));
+        //mi chiedo se la bevanda è disponibile
+        if (list.get(splitted[0]).isAvaible()) {
+            System.out.println("Inserire il numero di monete inserite riferite al rispettivo taglio separandole con uno spazio.\ntipo: 0.05c 0.10c 0.20c 0.50c 1 2");
+            try {
+                input = keyboard();
+            } catch (NoDigit noDigit) {
+                noDigit.printStackTrace();
+            }
+            coins.addCredit(input);
+            //vera e propria funzione da usare nella interfaccia
+            try {
+                selectBeverage(splitted[0], parseInt(splitted[1]));
+            } catch (UnsufficientCredit unsufficientCredit) {
+                unsufficientCredit.printStackTrace();
+            }
+        }
+        else {
+            new BeverageNotAvaible();
+        }
     }
 
     /**
@@ -123,18 +147,17 @@ public class Distributore {
      * adeguatamente dalla funzione che la va a richiamare.
      */
 
-    public String keyboard() {
+    public String keyboard() throws NoDigit {
         InputStreamReader keyboard = new InputStreamReader(System.in);
         BufferedReader bufferedReader = new BufferedReader(keyboard);
         try {
             String letta= bufferedReader.readLine();
-            keyboard.close();
-            bufferedReader.close();
+            //bufferedReader.close();
+            //keyboard.close();
             return letta;
         } catch (IOException e) {
-            new NoDigit();
+            throw new NoDigit();
         }
-        return null;
     }
 
     /**
@@ -143,24 +166,20 @@ public class Distributore {
      * @param sugar: è la qunatità di zucchero da 0 a 5
      */
 
-    private void selectBeverage(String beverage,int sugar) {
-        if (credit>=list.get(beverage).getPrice()){ //se il credito è uguale o più singifica che posso potenzialmente acquistare la bevanda
-            if (list.get(beverage).isAvaible()){ //controllo che sia disponibile
+    private void selectBeverage(String beverage,int sugar) throws UnsufficientCredit {
+
+        if (coins.getCredit()>=list.get(beverage).getPrice()){ //se il credito è uguale o più singifica che posso potenzialmente acquistare la bevanda
                 list.get(beverage).subtractDose();
                 subtractIngridients(beverage);
                 subtractSugar(sugar);
-                balance+=list.get(beverage).getPrice();
-                credit=credit-list.get(beverage).getPrice(); // nel caso non dia resto
-                if (credit!=0) {
-                    giveChange();
+                coins.updateBalance(list.get(beverage).getPrice());
+                if (coins.getCredit()!= 0) {
+                    //TODO sta funzione è da fare
+                    coins.giveChange();
                 }
-            }
-            else{
-                new BeverageNotAvaible();
-            }
         }
         else {
-            new UnsufficientCredit();
+            throw new UnsufficientCredit();
         }
     }
 
@@ -180,14 +199,6 @@ public class Distributore {
             sugar-= (double) qty *0.022/5;
             spoon--;
         }
-    }
-
-    /**
-     * funzione per erogare il credito/resto. utile anche per l'interfaccia nel caso clickassi sul pulsante
-     */
-    private void giveChange() {
-        System.out.println("Erogazione il resto di: "+credit);
-        credit=0;
     }
 
     /**
