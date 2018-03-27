@@ -42,7 +42,6 @@ public class Coins {
             credit = parseInt(AddedCoins[0]) * 0.05 + parseInt(AddedCoins[1]) * 0.10 + parseInt(AddedCoins[2]) * 0.2 + parseInt(AddedCoins[3]) * 0.50 + parseInt(AddedCoins[4]) * 1 + parseInt(AddedCoins[5]) * 2;
         } //significa che ho inserito tutti i dati riferiti ai singoli tagli.
         else {
-            //TODO errore nel caso
             System.out.println("Restituzione delle monete data l'assenza di tutti i campi");
         }
     }
@@ -54,5 +53,6 @@ public class Coins {
 
     //TODO funzione da fare per dare il resto nel minor numero di monete se e solo se non ho esaurito alcun tipo di monete
     public void giveChange() {
+        //TODO si deve creare prima una funzione che mi corntrolli che ci sia almeno una moneta per poterlo restituire.
     }
 }
