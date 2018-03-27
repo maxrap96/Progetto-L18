@@ -3,8 +3,12 @@ package Distributore;
 import Bevande.*;
 import Errori.BeverageNotAvaible;
 import Errori.InvalidType;
+import Errori.NoDigit;
 import Errori.UnsufficientCredit;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -25,15 +29,14 @@ public class Distributore {
     private double credit, balance;
     private ArrayList<String[]> listFromFile;
     private String[] statistics;
-    private OpenFile file = new OpenFile();    // è una vecchia parte di un programma di Hexrebuilt. apre files e
+    //private OpenFile file = new OpenFile();    // è una vecchia parte di un programma di Hexrebuilt. apre files e
                                                 // li splitta in base alla tabulazione. inoltre ha  già un metodo per
                                                 // recepire comandi da tastiera.
 
-    public Distributore(String pathFile) {
+    public Distributore(ArrayList listFromFile) {
 
         this.list = new HashMap<>();
-        listFromFile = new ArrayList<>();
-        this.listFromFile = file.apriFile(pathFile);
+        this.listFromFile = listFromFile;
         this.credit = 0;
         this.balance = 0;
         setVendingMachine();
@@ -108,11 +111,30 @@ public class Distributore {
     public void textualInput (){
         showList();
         System.out.println("Inserire il codice della bevanda, il numero di monete e la quantità di zucchero richiesta (da 0 a 5)\nseparate da uno spazio. Per i centesimi utilizzare il punto (.)");
-        String input = file.keyboard();
+        String input = keyboard();
         String[] splitted = input.split("\\s+");
         credit+=parseDouble(splitted[1]);
         //vera e propria funzione da usare nella interfaccia
         selectBeverage(splitted[0],parseInt(splitted[2]));
+    }
+
+    /**
+     * Funzione per recepire input da tastiera e restituirli sotto forma di stringa. Essa poi dovrà essere analizzata
+     * adeguatamente dalla funzione che la va a richiamare.
+     */
+
+    public String keyboard() {
+        InputStreamReader keyboard = new InputStreamReader(System.in);
+        BufferedReader bufferedReader = new BufferedReader(keyboard);
+        try {
+            String letta= bufferedReader.readLine();
+            keyboard.close();
+            bufferedReader.close();
+            return letta;
+        } catch (IOException e) {
+            new NoDigit();
+        }
+        return null;
     }
 
     /**
