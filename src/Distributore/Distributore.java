@@ -21,6 +21,7 @@ public class Distributore {
     private int cup, cupMax, spoon, spoonmax;
     private double water, watermax;
     private double sugar, sugarMax;
+    private double milk, milkMax;
     private double credit, balance;
     private ArrayList<String[]> listFromFile;
     private String[] statistics;
@@ -39,8 +40,8 @@ public class Distributore {
     }
 
     /** Il file è impostato in modo tale che la prima riga siano le informazioni della macchinetta
-     * valore:  bicchierini cucchianini acqua   zucchero
-     * indice:  0            1           2       3
+     * valore:  bicchierini cucchianini acqua   zucchero    latte
+     * indice:  0            1           2       3          4
      *
      */
 
@@ -50,10 +51,12 @@ public class Distributore {
         this.cup = cupMax;
         this.spoonmax = parseInt(listFromFile.get(0)[1]);
         this.spoon = spoonmax;
-        this.watermax = parseInt(listFromFile.get(0)[2]);
+        this.watermax = parseDouble(listFromFile.get(0)[2]);
         this.water = watermax;
-        this.sugarMax = parseInt(listFromFile.get(0)[3]);
+        this.sugarMax = parseDouble(listFromFile.get(0)[3]);
         this.sugar = sugarMax;
+        this.milkMax = parseDouble(listFromFile.get(0)[4]);
+        this.milk=milkMax;
         //todo add server quando ci sarà
 
         //mi devo ricordare che dalla seconda riga in poi sono le bevande
@@ -103,6 +106,7 @@ public class Distributore {
      */
 
     public void textualInput (){
+        //TODO inserire anche la qtà di zucchero da 0 a 5
         showList();
         System.out.println("Inserire il codice della bevanda e il numero di monete separate da uno spazio. Per i centesimi utilizzare il punto (.)");
         String input = file.keyboard();
@@ -120,8 +124,12 @@ public class Distributore {
         if (credit>=list.get(beverage).getPrice()){ //se il credito è uguale o più singifica che posso potenzialmente acquistare la bevanda
             if (list.get(beverage).isAvaible()){ //controllo che sia disponibile
                 list.get(beverage).subtractDose();
+                subtractIngridients(list.get(beverage));
                 balance+=list.get(beverage).getPrice();
-                credit=credit-list.get(beverage).getPrice();
+                credit=credit-list.get(beverage).getPrice(); // nel caso non dia resto
+                if (credit!=0) {
+                    giveChange();
+                }
             }
             else{
                 new BeverageNotAvaible();
@@ -133,10 +141,26 @@ public class Distributore {
     }
 
     /**
+     * funzione per sottrarre quantità necessarie per preparare la bevanda
+     * @param bevanda bevanda da cui sottrarre
+     */
+    private void subtractIngridients(Bevanda bevanda) {
+    }
+
+    /**
+     * funzione per erogare il credito/resto. utile anche per l'interfaccia nel caso clickassi sul pulsante
+     */
+    private void giveChange() {
+        System.out.println("Erogazione il resto di: "+credit);
+        credit=0;
+    }
+
+    /**
      * Funziona che mostra la lista delle bevande contenute nel distributore
      */
     private void showList() {
         for (int i=0;i<list.size();i++){
+            //todo replecare lo string
             //list.get(i).toString();
             System.out.println(i);
         }

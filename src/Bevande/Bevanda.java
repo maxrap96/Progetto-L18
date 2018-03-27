@@ -7,14 +7,14 @@ public abstract class Bevanda {
     protected String id;
     protected Tipo type;
     protected String name;
-    protected double price, quantityMax, temperature, quantityDelivered;
+    protected double price, quantityMax, temperature, quantityDelivered, qtyWater, qtymilk;
     protected double quantityLeft;
 
     /**
      * Il file di testo è composto in forma. quindi dato che è splittato in stringhe singole per ogni campo risulta
      * semplice inizializzare una bevanda
-     * TIPO:    ID   TIPO  NOME  COSTO   QUANTITA_MASSIMA    TEMPERATURA    DOSE (NEL CASO CI SIA)
-     * indice:  0    1     2     3       4                   5               6
+     * TIPO:    ID   TIPO  NOME  COSTO   QUANTITA_MASSIMA    TEMPERATURA    DOSE    qtà latte   qtà acqua
+     * indice:  0    1     2     3       4                   5               6      7           8
 
      * @param rowSplitted riga proveniente dal file di testo
      */
@@ -28,6 +28,8 @@ public abstract class Bevanda {
         this.quantityMax = parseDouble(rowSplitted[4]);
         this.quantityLeft = quantityMax; //lo inizializzo come pieno
         this.temperature = parseDouble(rowSplitted[5]);
+        this.qtymilk = parseDouble(rowSplitted[7]);
+        this.qtyWater = parseDouble(rowSplitted[8]);
     }
 
 
