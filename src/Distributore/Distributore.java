@@ -69,7 +69,7 @@ public class Distributore {
     private void createList() {
 
         for (int i = 1; i < listFromFile.size(); i++){
-            Tipo tipo = findType(listFromFile.get(i)[1]);
+            Tipo tipo = Tipo.valueOf(listFromFile.get(i)[1]);
             Bevanda bevanda = null;
             switch (tipo.ordinal()) {
                 case 0:
@@ -88,29 +88,8 @@ public class Distributore {
                     new InvalidType();
                     continue;
             }
-            list.put(listFromFile.get(i)[0],bevanda);
         }
     }
 
-    /**
-     * Funzione grezza da raffinare per individuare il tipo della bevanda.
-     * @param s stringa proveniente dal campo tipo del file di testo
-     */
-
-    //TODO MIGLIORARE LA FUNZIONE PER CONFRONTARE UNA STRINGA CON GLI ENUM
-
-    private Tipo findType(String s) {
-            if (s.equals(String.valueOf((Tipo.MACINATO)))){
-                return Tipo.MACINATO;
-            }
-            else {
-                if (s.equals(String.valueOf((Tipo.CAPSULA)))){
-                    return Tipo.CAPSULA;
-                }
-                else {
-                    return Tipo.SOLUBILE;
-                }
-            }
-    }
 }
 
