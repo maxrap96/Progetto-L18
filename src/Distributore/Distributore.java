@@ -106,25 +106,27 @@ public class Distributore {
      */
 
     public void textualInput (){
-        //TODO inserire anche la qtà di zucchero da 0 a 5
         showList();
-        System.out.println("Inserire il codice della bevanda e il numero di monete separate da uno spazio. Per i centesimi utilizzare il punto (.)");
+        System.out.println("Inserire il codice della bevanda, il numero di monete e la quantità di zucchero richiesta (da 0 a 5)\nseparate da uno spazio. Per i centesimi utilizzare il punto (.)");
         String input = file.keyboard();
         String[] splitted = input.split("\\s+");
         credit+=parseDouble(splitted[1]);
-        selectBeverage(splitted[0]);
+        //vera e propria funzione da usare nella interfaccia
+        selectBeverage(splitted[0],parseInt(splitted[2]));
     }
 
     /**
      * funzione per selezionare una bevanda. essa controlla che il credito sia sufficiente
      * @param beverage: è l'id della bevanda selezionata
+     * @param sugar: è la qunatità di zucchero da 0 a 5
      */
 
-    private void selectBeverage(String beverage) {
+    private void selectBeverage(String beverage,int sugar) {
         if (credit>=list.get(beverage).getPrice()){ //se il credito è uguale o più singifica che posso potenzialmente acquistare la bevanda
             if (list.get(beverage).isAvaible()){ //controllo che sia disponibile
                 list.get(beverage).subtractDose();
-                subtractIngridients(list.get(beverage));
+                subtractIngridients(beverage);
+                subtractSugar(sugar);
                 balance+=list.get(beverage).getPrice();
                 credit=credit-list.get(beverage).getPrice(); // nel caso non dia resto
                 if (credit!=0) {
@@ -144,7 +146,18 @@ public class Distributore {
      * funzione per sottrarre quantità necessarie per preparare la bevanda
      * @param bevanda bevanda da cui sottrarre
      */
-    private void subtractIngridients(Bevanda bevanda) {
+    private void subtractIngridients(String bevanda) {
+        milk-=list.get(bevanda).getMilk();
+        water-=list.get(bevanda).getWater();
+        cup--;
+
+    }
+
+    private void subtractSugar(int qty){
+        if (qty!=0){
+            sugar-= (double) qty *0.022/5;
+            spoon--;
+        }
     }
 
     /**

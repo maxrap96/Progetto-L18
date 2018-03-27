@@ -7,7 +7,7 @@ public abstract class Bevanda {
     protected String id;
     protected Tipo type;
     protected String name;
-    protected double price, quantityMax, temperature, quantityDelivered, qtyWater, qtymilk;
+    protected double price, quantityMax, temperature, quantityDelivered, water, milk;
     protected double quantityLeft;
 
     /**
@@ -28,8 +28,8 @@ public abstract class Bevanda {
         this.quantityMax = parseDouble(rowSplitted[4]);
         this.quantityLeft = quantityMax; //lo inizializzo come pieno
         this.temperature = parseDouble(rowSplitted[5]);
-        this.qtymilk = parseDouble(rowSplitted[7]);
-        this.qtyWater = parseDouble(rowSplitted[8]);
+        this.milk = parseDouble(rowSplitted[7]);
+        this.water = parseDouble(rowSplitted[8]);
     }
 
 
@@ -52,6 +52,14 @@ public abstract class Bevanda {
         else {
             return false;
         }
+    }
+
+    public double getMilk() {
+        return milk;
+    }
+
+    public double getWater() {
+        return water;
     }
 
     //TODO X LUCE. IL TOSTRING OVVERRIDE CHE RESTITUISCA: ID, NAME, PRICE

@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ad3d90cd-3e3c-49a3-98d2-397debd1cdcd" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/menu.txt" afterPath="$PROJECT_DIR$/menu.txt" />
       <change beforePath="$PROJECT_DIR$/src/Bevande/Bevanda.java" afterPath="$PROJECT_DIR$/src/Bevande/Bevanda.java" />
       <change beforePath="$PROJECT_DIR$/src/Distributore/Distributore.java" afterPath="$PROJECT_DIR$/src/Distributore/Distributore.java" />
     </list>
@@ -19,31 +18,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="Distributore.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Distributore.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Distributore/Distributore.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="87" column="0" lean-forward="false" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+            <state relative-caret-position="409">
+              <caret line="120" column="55" lean-forward="false" selection-start-line="120" selection-start-column="55" selection-end-line="120" selection-end-column="55" />
               <folding>
+                <element signature="method#Distributore#0;class#Distributore#0" expanded="false" />
+                <element signature="docComment;method#setVendingMachine#0;class#Distributore#0" expanded="false" />
+                <element signature="method#setVendingMachine#0;class#Distributore#0" expanded="false" />
                 <element signature="docComment;method#createList#0;class#Distributore#0" expanded="false" />
+                <element signature="method#createList#0;class#Distributore#0" expanded="false" />
+                <element signature="docComment;method#textualInput#0;class#Distributore#0" expanded="false" />
+                <element signature="method#textualInput#0;class#Distributore#0" expanded="false" />
+                <element signature="docComment;method#subtractIngridients#0;class#Distributore#0" expanded="false" />
+                <element signature="method#subtractIngridients#0;class#Distributore#0" expanded="false" />
+                <element signature="method#subtractSugar#0;class#Distributore#0" expanded="false" />
+                <element signature="docComment;method#giveChange#0;class#Distributore#0" expanded="false" />
+                <element signature="method#giveChange#0;class#Distributore#0" expanded="false" />
+                <element signature="docComment;method#showList#0;class#Distributore#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Bevanda.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Bevande/Bevanda.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="413">
-              <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-              <folding>
-                <element signature="method#isAvaible#0;class#Bevanda#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Test.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Test.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Test.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="168">
@@ -280,12 +279,12 @@
       <option name="presentableId" value="Default" />
       <updated>1522137539284</updated>
       <workItem from="1522137545460" duration="213000" />
-      <workItem from="1522138402548" duration="5649000" />
+      <workItem from="1522138402548" duration="7050000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5862000" />
+    <option name="totallyTimeSpent" value="7263000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -312,7 +311,7 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -336,7 +335,7 @@
           <properties />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="11" />
+      <option name="time" value="15" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -397,20 +396,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Bevande/Bevanda.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+        <state relative-caret-position="553">
+          <caret line="60" column="4" lean-forward="true" selection-start-line="60" selection-start-column="4" selection-end-line="60" selection-end-column="4" />
           <folding>
             <element signature="method#isAvaible#0;class#Bevanda#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Distributore/Distributore.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="87" column="0" lean-forward="false" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;method#createList#0;class#Distributore#0" expanded="false" />
+            <element signature="e#1803#1804#0" expanded="true" />
+            <element signature="e#1830#1831#0" expanded="true" />
+            <element signature="e#1862#1863#0" expanded="true" />
+            <element signature="e#1890#1891#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -420,6 +413,28 @@
         <state relative-caret-position="168">
           <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Distributore/Distributore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="409">
+          <caret line="120" column="55" lean-forward="false" selection-start-line="120" selection-start-column="55" selection-end-line="120" selection-end-column="55" />
+          <folding>
+            <element signature="method#Distributore#0;class#Distributore#0" expanded="false" />
+            <element signature="docComment;method#setVendingMachine#0;class#Distributore#0" expanded="false" />
+            <element signature="method#setVendingMachine#0;class#Distributore#0" expanded="false" />
+            <element signature="docComment;method#createList#0;class#Distributore#0" expanded="false" />
+            <element signature="method#createList#0;class#Distributore#0" expanded="false" />
+            <element signature="docComment;method#textualInput#0;class#Distributore#0" expanded="false" />
+            <element signature="method#textualInput#0;class#Distributore#0" expanded="false" />
+            <element signature="docComment;method#subtractIngridients#0;class#Distributore#0" expanded="false" />
+            <element signature="method#subtractIngridients#0;class#Distributore#0" expanded="false" />
+            <element signature="method#subtractSugar#0;class#Distributore#0" expanded="false" />
+            <element signature="docComment;method#giveChange#0;class#Distributore#0" expanded="false" />
+            <element signature="method#giveChange#0;class#Distributore#0" expanded="false" />
+            <element signature="docComment;method#showList#0;class#Distributore#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
