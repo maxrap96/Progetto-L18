@@ -123,6 +123,7 @@ public class Distributore {
         String[] splitted = input.split("\\s+");
         //mi chiedo se la bevanda è disponibile
         if (list.get(splitted[0]).isAvaible()) {
+            //nel caso proseguo con l'operazione
             System.out.println("Inserire il numero di monete inserite riferite al rispettivo taglio separandole con uno spazio.\ntipo: 0.05c 0.10c 0.20c 0.50c 1 2");
             try {
                 input = keyboard();
@@ -150,8 +151,11 @@ public class Distributore {
     public String keyboard() throws NoDigit {
         InputStreamReader keyboard = new InputStreamReader(System.in);
         BufferedReader bufferedReader = new BufferedReader(keyboard);
+
         try {
+
             String letta= bufferedReader.readLine();
+            //TODO CHIEDERE A MARTIRE PERCHè SE LE CHIUDO E RIAPRO NON FUNZIONA UNA SEGA
             //bufferedReader.close();
             //keyboard.close();
             return letta;
