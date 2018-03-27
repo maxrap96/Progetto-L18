@@ -39,6 +39,21 @@ public abstract class Bevanda {
         this.quantityLeft -= this.quantityDelivered;
     }
 
+    public double getPrice() {
+        return price;
+    }
+
+    public boolean isAvaible() {
+        if (quantityLeft > quantityDelivered){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    //TODO X LUCE. IL TOSTRING OVVERRIDE CHE RESTITUISCA: ID, NAME, PRICE
+
     /**
      * TODO: Eventuale interfaccia.
      */
