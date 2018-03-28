@@ -62,7 +62,11 @@ public abstract class Bevanda {
         return water;
     }
 
-    //TODO X LUCE. IL TOSTRING OVVERRIDE CHE RESTITUISCA: ID, NAME, PRICE
+    @Override
+    public String toString() {
+        return "ID: "+id+"\tNAME: "+name+"\tPRICE: "+getPrice()+"\n";
+    }
+
 
     /**
      * TODO: Eventuale interfaccia.
