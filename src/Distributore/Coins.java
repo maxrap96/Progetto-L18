@@ -54,5 +54,30 @@ public class Coins {
     //TODO funzione da fare per dare il resto nel minor numero di monete se e solo se non ho esaurito alcun tipo di monete
     public void giveChange() {
         //TODO si deve creare prima una funzione che mi corntrolli che ci sia almeno una moneta per poterlo restituire.
+
+        if(cent5 != 0 || cent10 != 0 || cent20 != 0 || cent50 != 0 || euro1 != 0 || euro2 != 0){
+            int Rcent5, Rcent10, Rcent20, Rcent50, Reuro1, Reuro2;
+            double resto;
+
+            Reuro2 =(int)(credit*100)/200;
+            resto = (int)(credit*100) % 200;
+
+            Reuro1 =(int)(resto)/100;
+            resto = (int)(resto) % 100;
+
+            Rcent50 =(int)(resto)/50;
+            resto = (int)(resto) % 50;
+
+            Rcent20 =(int)(resto)/20;
+            resto = (int)(resto) % 20;
+
+            Rcent10 =(int)(resto)/10;
+            resto = (int)(resto) % 10;
+
+            Rcent5 =(int)(resto)/5;
+            resto = (int)(resto) % 5;
+
+            System.out.println("5c:"+Rcent5+"\n10c:" +Rcent10+"\n20c:" +Rcent20+"\n50c:" +Rcent50+"\n1E:" +Reuro1+"\n2E:" +Reuro2);
+        }
     }
 }
