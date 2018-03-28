@@ -55,19 +55,27 @@ public class Coins {
     public void giveChange() {
         //TODO si deve creare prima una funzione che mi corntrolli che ci sia almeno una moneta per poterlo restituire.
 
+        //come mai un or? così dacendo ne basta una che sia diversa da 0 no? pensavo ad un and dato che se solo una non è disponibile non do resto
+        //basterebbe un if(checkChange()) che restituisce un true o false nel caso sia possibile o meno erogare il resto. quella funzione aggiorna
+        //changeAvaible così è possibile tenere traccia della possibilità di dare resto. può essere utile anche per le interfacce
+
         if(cent5 != 0 || cent10 != 0 || cent20 != 0 || cent50 != 0 || euro1 != 0 || euro2 != 0){
             int Rcent5, Rcent10, Rcent20, Rcent50, Reuro1, Reuro2;
             double resto;
 
-            Reuro2 =(int)(credit*100)/200;
+            Reuro2 =(int)(credit*100)/200; //questo è il numero di monete che da oppure è quanto do di resto?
             resto = (int)(credit*100) % 200;
+
+            //per calcolare le monete, nel caso quello sia il quantitativo in euro, si potrebbe fare euro2+=Reuro2/2
 
             Reuro1 =(int)(resto)/100;
             resto = (int)(resto) % 100;
 
+            //per calcolare le monete, nel caso quello sia il quantitativo in euro, si potrebbe fare cent50+=Rcent50/0.50 NB non so se funzia
+
             Rcent50 =(int)(resto)/50;
             resto = (int)(resto) % 50;
-
+            
             Rcent20 =(int)(resto)/20;
             resto = (int)(resto) % 20;
 
@@ -76,7 +84,9 @@ public class Coins {
 
             Rcent5 =(int)(resto)/5;
             resto = (int)(resto) % 5;
-
+            //abbellirei un pochino l'outpoot ma sticazzi va bene così per adesso. Sarebbe cos' schifoso metterlo sotto forma di stringa?
+            //perchè così sarebbe più comoda da usare nell'interfaccia e basterebbe un s....out.println(resto). si possono accodare caratteri alle
+            //stringhe senza troppi fastidi
             System.out.println("5c:"+Rcent5+"\n10c:" +Rcent10+"\n20c:" +Rcent20+"\n50c:" +Rcent50+"\n1E:" +Reuro1+"\n2E:" +Reuro2);
         }
     }
