@@ -192,7 +192,6 @@ public class Distributore {
      */
     private void showList() {
         for (int i = 1; i < list.size()+1; i++){
-            //todo replecare lo string
             System.out.println(list.get("0"+i));
         }
     }
