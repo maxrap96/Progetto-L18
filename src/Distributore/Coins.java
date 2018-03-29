@@ -7,7 +7,7 @@ public class Coins {
     private double balance, profit;
     private double credit;
     private boolean changeAvailbe;
-    private String[] AddedCoins;
+    private String[] addedCoins;
 
     public Coins() {
         this.cent5 = 20;
@@ -16,10 +16,10 @@ public class Coins {
         this.cent50 = 20;
         this.euro1 = 5;
         this.euro2 = 5;
-        this.balance = cent5*0.05 +cent10*0.10 +cent20*0.2 + cent50*0.50 + euro1*1 + euro2*2;
+        this.balance = cent5*0.05 + cent10*0.10 + cent20*0.2 + cent50*0.50 + euro1*1 + euro2*2;
         this.credit = 0;
-        this.profit=0;
-        this.changeAvailbe=true;
+        this.profit = 0;
+        this.changeAvailbe = true;
     }
 
     public void updateBalance(double vendita) {
@@ -37,9 +37,9 @@ public class Coins {
      */
 
     public void addCredit(String input){
-        AddedCoins = input.split("\\s+"); //i tagli sono separati da spazi.
-        if (AddedCoins.length == 6 ) {
-            credit = parseInt(AddedCoins[0]) * 0.05 + parseInt(AddedCoins[1]) * 0.10 + parseInt(AddedCoins[2]) * 0.2 + parseInt(AddedCoins[3]) * 0.50 + parseInt(AddedCoins[4]) * 1 + parseInt(AddedCoins[5]) * 2;
+        addedCoins = input.split("\\s+"); //i tagli sono separati da spazi.
+        if (addedCoins.length == 6 ) {
+            credit = parseInt(addedCoins[0]) * 0.05 + parseInt(addedCoins[1]) * 0.10 + parseInt(addedCoins[2]) * 0.2 + parseInt(addedCoins[3]) * 0.50 + parseInt(addedCoins[4]) * 1 + parseInt(addedCoins[5]) * 2;
         } //significa che ho inserito tutti i dati riferiti ai singoli tagli.
         else {
             System.out.println("Restituzione delle monete data l'assenza di tutti i campi");

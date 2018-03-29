@@ -4,7 +4,7 @@ import Bevande.*;
 import Errori.BeverageNotAvaible;
 import Errori.InvalidType;
 import Errori.NoDigit;
-import Errori.UnsufficientCredit;
+import Errori.InsufficientCredit;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -157,7 +157,7 @@ public class Distributore {
             }
         }
         else {
-            new UnsufficientCredit();
+            new InsufficientCredit();
         }
     }
 
