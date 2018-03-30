@@ -1,14 +1,9 @@
 package Distributore;
 
 import Bevande.*;
-import Errori.BeverageNotAvaible;
-import Errori.InvalidType;
-import Errori.NoDigit;
-import Errori.InsufficientCredit;
+import Errori.*;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -25,9 +20,6 @@ public class Distributore {
     private double credit, balance;
     private ArrayList<String[]> listFromFile;
     private String[] statistics;
-    //private OpenFile file = new OpenFile();    // è una vecchia parte di un programma di Hexrebuilt. apre files e
-                                                // li splitta in base alla tabulazione. inoltre ha  già un metodo per
-                                                // recepire comandi da tastiera.
 
     public Distributore(ArrayList listFromFile) {
 
@@ -38,11 +30,11 @@ public class Distributore {
         setVendingMachine();
     }
 
-    /** Il file è impostato in modo tale che la prima riga siano le informazioni della macchinetta
-     * valore:  bicchierini cucchianini acqua   zucchero    latte
-     * indice:  0            1           2       3          4
-     *
+    /**
+     * Carica i valori massimi nella macchinetta
      */
+
+    // Da rivedere, troppe azioni ripetitive
 
     private void setVendingMachine() {
 
@@ -63,16 +55,9 @@ public class Distributore {
     }
 
     /**
-     * Per ogni riga di file letto, analizzo il contenuto per creare la bevanda.
-     * Ricordandomi che la riga 0 sono le informazioni della macchinetta. quindi inizio dall'elemento 1 dell'arraylist
-     * per le bevande.
-     *
-     * MACINATO,
-     * CAPSULA,
-     * SOLUBILE
-     * l'uso degli enum mi permette di creare rapidamente un sistema per decidere
-     * il tipo della bevanda, permettendo di aggiungerne una nuova tipologia con facilità.
+     * Creo il menu nella macchinetta
      */
+
     private void createList() {
 
         for (int i = 1; i < listFromFile.size(); i++){
@@ -100,13 +85,13 @@ public class Distributore {
     }
 
     /**
-     * Funzione per recepire i comandi testuali ed analizzarli. una volta capito se si tratti di un Codice di una
-     * bevanda o di un quantittativo di monete, chiamerò le rispettive funzioni.
+     * Funzione per recepire i comandi testuali ed analizzarli.
      */
 
     public void textualInput (){
         showList();
-        System.out.println("Inserire il codice della bevanda, il numero di monete e la quantità di zucchero richiesta (da 0 a 5)\nseparate da uno spazio. Per i centesimi utilizzare il punto (.)");
+        System.out.println("Inserire il codice della bevanda, il numero di monete e la quantità di zucchero" +
+                " richiesta (da 0 a 5)\nseparate da uno spazio. Per i centesimi utilizzare il punto (.)");
         String input = keyboard();
         String[] splitted = input.split("\\s+");
         credit += parseDouble(splitted[1]);
@@ -115,8 +100,7 @@ public class Distributore {
     }
 
     /**
-     * Funzione per recepire input da tastiera e restituirli sotto forma di stringa. Essa poi dovrà essere analizzata
-     * adeguatamente dalla funzione che la va a richiamare.
+     * Funzione per recepire input da tastiera e restituirli sotto forma di stringa.
      */
 
     public String keyboard() {
@@ -158,6 +142,8 @@ public class Distributore {
         }
         else {
             new InsufficientCredit();
+
+            // If beverage doesn't exist? Or if not digited correctly?
         }
     }
 
@@ -172,6 +158,11 @@ public class Distributore {
 
     }
 
+    /**
+     * Funzione che sottrae lo zucchero usato
+     * @param qty, valore tra 0 e 5
+     */
+
     private void subtractSugar(int qty){
         if (qty != 0){
             sugar -= (double) qty * 0.022/5;
@@ -180,7 +171,7 @@ public class Distributore {
     }
 
     /**
-     * Funzione per erogare il credito/resto. Utile anche per l'interfaccia nel caso clickassi sul pulsante
+     * Funzione per erogare il resto.
      */
     private void giveChange() {
         System.out.println("Erogazione il resto di: " + credit);
@@ -188,11 +179,11 @@ public class Distributore {
     }
 
     /**
-     * Funziona che mostra la lista delle bevande contenute nel distributore
+     * Funziona che mostra la lista delle bevande contenute nel distributore.
      */
     private void showList() {
-        for (int i = 1; i < list.size()+1; i++){
-            System.out.println(list.get("0"+i));
+        for (int i = 1; i < list.size() + 1; i++){
+            System.out.println(list.get("0" + i));
         }
     }
 }

@@ -13,7 +13,7 @@ public class Solubile extends Bevanda {
     public Solubile(String[] rowSplitted) {
         super(rowSplitted);
         this.type = Tipo.SOLUBILE;
-        this.quantityDelivered = parseDouble(rowSplitted[6]);
+        this.quantityUsed = parseDouble(rowSplitted[6]);
 
     }
 }
