@@ -128,8 +128,9 @@ public class Distributore {
         BufferedReader bufferedReader = new BufferedReader(keyboard);
         try {
             String letta = bufferedReader.readLine();
-            keyboard.close();
-            bufferedReader.close();
+            //TODO C'è DA CAPIRE PERCHè SE LE CHIUDO ESPLODE IL MONDO
+            // keyboard.close();
+            //bufferedReader.close();
             return letta;
         } catch (IOException e) {
             throw new NoDigit();
