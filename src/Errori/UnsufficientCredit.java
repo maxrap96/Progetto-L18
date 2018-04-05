@@ -1,7 +1,7 @@
 package Errori;
 
-public class InsufficientCredit extends Exception{
-    public InsufficientCredit(){
+public class UnsufficientCredit extends Exception{
+    public UnsufficientCredit(){
         super("Insufficient credit. Please insert more money.");
     }
 }
