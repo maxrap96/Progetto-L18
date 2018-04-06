@@ -98,7 +98,7 @@ public class Distributore {
         }
         String[] splitted = input.split("\\s+");
         //mi chiedo se la bevanda è disponibile
-        if (list.get(splitted[0]).isAvaible()) {
+        if (list.get(splitted[0]).isAvailable()) {
             System.out.println("Inserire il numero di monete inserite riferite al rispettivo taglio separandole con uno spazio.\ntipo: 0.05c 0.10c 0.20c 0.50c 1 2");
             try {
                 input = keyboard();
@@ -114,7 +114,7 @@ public class Distributore {
             }
         }
         else {
-            new BeverageNotAvaible();
+            new BeverageNotAvailable();
         }
 
     }

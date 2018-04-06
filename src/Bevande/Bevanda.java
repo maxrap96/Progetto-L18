@@ -46,7 +46,7 @@ public abstract class Bevanda {
      * Funzione che mi dice se la bevanda é disponibile
      */
 
-    public boolean isAvaible() {
+    public boolean isAvailable() {
         if (quantityLeft > quantityUsed){
             return true;
         }
