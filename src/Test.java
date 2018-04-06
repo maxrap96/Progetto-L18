@@ -1,11 +1,15 @@
 import Distributore.Distributore;
 
+import java.util.ArrayList;
+
 public class Test {
 
     public static void main(String[] args) {
 
-        Distributore macchinetta = new Distributore("menu.txt");
-        System.out.println("check");    //out utile solo per metterci un debug e
-                                        // controllare che tutto sia corretto in memoria.
+        OpenFile openFile = new OpenFile("menu.txt");
+        ArrayList<String[]> fileAperto = openFile.apriFile();
+        Distributore macchinetta = new Distributore(fileAperto);
+        macchinetta.textualInput();
+        System.out.println("check");
     }
 }

@@ -13,7 +13,7 @@ public class Macinato extends Bevanda {
     public Macinato(String[] rowSplitted) {
         super(rowSplitted);
         this.type = Tipo.MACINATO;
-        this.quantityDelivered = parseDouble(rowSplitted[6]);
+        this.quantityUsed = parseDouble(rowSplitted[6]);
 
     }
 

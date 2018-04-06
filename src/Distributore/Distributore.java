@@ -1,43 +1,39 @@
 package Distributore;
 
 import Bevande.*;
-import Errori.InvalidType;
+import Errori.*;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
 
 public class Distributore {
-
-    /**
-     * Commento di Dario: "Per i campi final ne parliamo".
-     */
 
     private HashMap<String,Bevanda> list;
     private int cup, cupMax, spoon, spoonmax;
     private double water, watermax;
     private double sugar, sugarMax;
-    private double credit, balance;
+    private double milk, milkMax;
+    private Coins coins;
     private ArrayList<String[]> listFromFile;
     private String[] statistics;
-    private OpenFile input = new OpenFile();    // è una vecchia parte di un programma di Hexrebuilt. apre files e
-                                                // li splitta in base alla tabulazione. inoltre ha  già un metodo per
-                                                // recepire comandi da tastiera.
 
-    public Distributore(String pathFile) {
+    public Distributore(ArrayList listFromFile) {
 
         this.list = new HashMap<>();
-        listFromFile = new ArrayList<>();
-        this.listFromFile = input.apriFile(pathFile);
-        this.credit = 0;
-        this.balance = 0;
+        this.listFromFile = listFromFile;
+        this.coins = new Coins();
         setVendingMachine();
     }
 
-    /** Il file è impostato in modo tale che la prima riga siano le informazioni della macchinetta
-     * bicchierini cucchianini acqua   zucchero    e poi server
-     * 0            1           2       3           4
-     *
+    /**TODO AGGIUNGERE LE INTERFACCE PER I CAMPI FINAL
+     * Carica i valori massimi nella macchinetta
      */
+
+    // Da rivedere, troppe azioni ripetitive
 
     private void setVendingMachine() {
 
@@ -45,10 +41,12 @@ public class Distributore {
         this.cup = cupMax;
         this.spoonmax = parseInt(listFromFile.get(0)[1]);
         this.spoon = spoonmax;
-        this.watermax = parseInt(listFromFile.get(0)[2]);
+        this.watermax = parseDouble(listFromFile.get(0)[2]);
         this.water = watermax;
-        this.sugarMax = parseInt(listFromFile.get(0)[3]);
+        this.sugarMax = parseDouble(listFromFile.get(0)[3]);
         this.sugar = sugarMax;
+        this.milkMax = parseDouble(listFromFile.get(0)[4]);
+        this.milk = milkMax;
         //todo add server quando ci sarà
 
         //mi devo ricordare che dalla seconda riga in poi sono le bevande
@@ -56,58 +54,149 @@ public class Distributore {
     }
 
     /**
-     * Per ogni riga di file letto, analizzo il contenuto per creare la bevanda.
-     * Ricordandomi che la riga 0 sono le informazioni della macchinetta. quindi inizio dall'elemento 1 dell'arraylist
-     * per le bevande.
-     *
-     * MACINATO,
-     * CAPSULA,
-     * SOLUBILE
-     * l'uso degli enum mi permette di creare rapidamente un sistema per decidere
-     * il tipo della bevanda, permettendo di aggiungerne una nuova tipologia con facilità.
+     * Creo il menu nella macchinetta
      */
+
     private void createList() {
 
         for (int i = 1; i < listFromFile.size(); i++){
-            Tipo tipo = findType(listFromFile.get(i)[1]);
+            Tipo tipo = Tipo.valueOf(listFromFile.get(i)[1]);
             Bevanda bevanda = null;
             switch (tipo.ordinal()) {
                 case 0:
                     bevanda = new Macinato(listFromFile.get(i));
+                    list.put(listFromFile.get(i)[0],bevanda);
                     break;
                 case 1:
                     bevanda = new Capsula(listFromFile.get(i));
+                    list.put(listFromFile.get(i)[0],bevanda);
                     break;
                 case 2:
                     bevanda = new Solubile(listFromFile.get(i));
+                    list.put(listFromFile.get(i)[0],bevanda);
                     break;
                 default:
                     new InvalidType();
                     continue;
             }
-            list.put(listFromFile.get(i)[0],bevanda);
+        }
+
+    }
+
+    /**
+     * Funzione per recepire i comandi testuali ed analizzarli.
+     */
+
+    public void textualInput (){
+        showList();
+        System.out.println("Inserire il codice della bevanda e la quantità di zucchero richiesta (da 0 a 5)\nseparate da uno spazio.");
+        String input = null;
+        try {
+            input = keyboard();
+        } catch (NoDigit noDigit) {
+            noDigit.printStackTrace();
+        }
+        String[] splitted = input.split("\\s+");
+        //mi chiedo se la bevanda è disponibile
+        if (list.get(splitted[0]).isAvaible()) {
+            System.out.println("Inserire il numero di monete inserite riferite al rispettivo taglio separandole con uno spazio.\ntipo: 0.05c 0.10c 0.20c 0.50c 1 2");
+            try {
+                input = keyboard();
+            } catch (NoDigit noDigit) {
+                noDigit.printStackTrace();
+            }
+            coins.addCredit(input);
+            //vera e propria funzione da usare nella interfaccia
+            try {
+                selectBeverage(splitted[0], parseInt(splitted[1]));
+            } catch (UnsufficientCredit unsufficientCredit) {
+                unsufficientCredit.printStackTrace();
+            }
+        }
+        else {
+            new BeverageNotAvaible();
+        }
+
+    }
+
+    /**
+     * Funzione per recepire input da tastiera e restituirli sotto forma di stringa.
+     */
+
+    public String keyboard() throws NoDigit{
+        InputStreamReader keyboard = new InputStreamReader(System.in);
+        BufferedReader bufferedReader = new BufferedReader(keyboard);
+        try {
+            String letta = bufferedReader.readLine();
+            //TODO C'è DA CAPIRE PERCHè SE LE CHIUDO ESPLODE IL MONDO
+            // keyboard.close();
+            //bufferedReader.close();
+            return letta;
+        } catch (IOException e) {
+            throw new NoDigit();
         }
     }
 
     /**
-     * Funzione grezza da raffinare per individuare il tipo della bevanda.
-     * @param s stringa proveniente dal campo tipo del file di testo
+     * Funzione per selezionare una bevanda. Essa controlla che il credito sia sufficiente
+     * @param beverage: è l'id della bevanda selezionata
+     * @param sugar: è la qunatità di zucchero da 0 a 5
      */
 
-    //TODO MIGLIORARE LA FUNZIONE PER CONFRONTARE UNA STRINGA CON GLI ENUM
+    private void selectBeverage(String beverage,int sugar) throws UnsufficientCredit{
+        if (coins.getCredit()>=list.get(beverage).getPrice()){ //se il credito è uguale o più singifica che posso potenzialmente acquistare la bevanda
+                subtractIngridients(beverage);
+                subtractSugar(sugar);
+                coins.updateBalance(list.get(beverage).getPrice());
+                if (coins.getCredit()!= 0) {
+                    coins.giveChange();
+                }
+            }
+        else{
+            throw new UnsufficientCredit();
+        }
+            // If beverage doesn't exist? Or if not digited correctly?
+    }
 
-    private Tipo findType(String s) {
-            if (s.equals(String.valueOf((Tipo.MACINATO)))){
-                return Tipo.MACINATO;
-            }
-            else {
-                if (s.equals(String.valueOf((Tipo.CAPSULA)))){
-                    return Tipo.CAPSULA;
-                }
-                else {
-                    return Tipo.SOLUBILE;
-                }
-            }
+    /**
+     * Funzione per sottrarre quantità necessarie per preparare la bevanda
+     * @param bevanda bevanda da cui sottrarre
+     */
+    private void subtractIngridients(String bevanda) {
+        milk -= list.get(bevanda).getMilk();
+        water -= list.get(bevanda).getWater();
+        cup--;
+
+    }
+
+    /**
+     * Funzione che sottrae lo zucchero usato
+     * @param qty, valore tra 0 e 5
+     */
+
+    private void subtractSugar(int qty){
+        if (qty != 0){
+            sugar -= (double) qty * 0.022/5;
+            spoon--;
+        }
+    }
+
+    /**
+     * Funzione per erogare il resto.
+     */
+    private void giveChange() {
+        coins.giveChange();
+        //TODO sistemare il resto
+        System.out.println("Erogazione il resto di: " + coins);;
+    }
+
+    /**
+     * Funziona che mostra la lista delle bevande contenute nel distributore.
+     */
+    private void showList() {
+        for (int i = 1; i < list.size() + 1; i++){
+            System.out.println(list.get("0" + i));
+        }
     }
 }
 
