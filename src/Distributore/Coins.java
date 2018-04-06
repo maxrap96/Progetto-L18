@@ -41,6 +41,14 @@ public class Coins {
         if (addedCoins.length == 6 ) {
             credit = parseInt(addedCoins[0]) * 0.05 + parseInt(addedCoins[1]) * 0.10 + parseInt(addedCoins[2]) * 0.2 +
                     parseInt(addedCoins[3]) * 0.50 + parseInt(addedCoins[4]) * 1 + parseInt(addedCoins[5]) * 2;
+
+            cent5 += parseInt(addedCoins[0]);
+            cent10 += parseInt(addedCoins[1]);
+            cent20 += parseInt(addedCoins[2]);
+            cent50 += parseInt(addedCoins[3]);
+            euro1 += parseInt(addedCoins[4]);
+            euro2 += parseInt(addedCoins[5]);
+
         } // Significa che ho inserito tutti i dati riferiti ai singoli tagli.
         else {
             System.out.println("Restituzione delle monete data l'assenza di tutti i campi");
@@ -70,28 +78,27 @@ public class Coins {
                 resto = (credit*100) % 200;
 
 
-                if(Reuro2 <= euro2) {
-                }
-                else{
+                if(Reuro2 > euro2){
                     resto += (Reuro2-euro2)*200;
                     Reuro2 = euro2;
                 }
+                euro2 -= Reuro2;
 
                 Reuro1 = (int) (resto) / 100;
                 resto = (resto) % 100;
+                
 
-                if(Reuro1 <= euro1) {
-                }
-                else {
+                if(Reuro1 > euro1) {
                     resto += (Reuro1-euro1)*100;
                     Reuro1 = euro1;
                 }
+                euro1 -= Reuro1;
 
                 Rcent50 = (int)(resto)/50;
                 resto = (resto) % 50;
+                cent50 -= Rcent50;
 
-                if(Rcent50 <= cent50){}
-                else {
+                if(Rcent50 > cent50){
                     resto += (Rcent50-cent50)*50;
                     Rcent50 = cent50;
                 }
@@ -100,30 +107,32 @@ public class Coins {
                 resto = (resto) % 20;
 
 
-                if(Rcent20 <= cent20){}
-                else {
+
+                if(Rcent20 > cent20){
                     resto += (Rcent20-cent20)*20;
                     Rcent20 = cent20;
                 }
+                cent20 -= Rcent20;
 
                 Rcent10 =(int)(resto)/10;
                 resto = (resto) % 10;
 
 
-                if(Rcent10 <= cent10){}
-                else {
+
+                if(Rcent10 > cent10){
                     resto += (Rcent10-cent10)*10;
                     Rcent10 = cent10;
                 }
+                cent10 -= Rcent10;
                 Rcent5 =(int)(resto)/5;
 
 
-                if(Rcent5 <= cent5){}
-                else {
-                    resto += (Rcent50-cent50)*5;
-                    Rcent50 = cent50;
+                if(Rcent5 > cent5){
+                    resto += (Rcent5-cent5)*5;
+                    Rcent5 = cent5;
                     System.out.println("Resto NON erogabile pari a: "+(resto/100)+" euro\r");
                 }
+                cent5 -= Rcent5;
 
                 // Abbellirei un pochino l'output.
                 // Metterlo sotto forma di stringa? Forse più comodo da usare nell'interfaccia con un
