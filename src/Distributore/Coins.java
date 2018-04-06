@@ -13,7 +13,7 @@ public class Coins {
         this.cent5 = 20;
         this.cent10 = 30;
         this.cent20 = 20;
-        this.cent50 = 20;
+        this.cent50 = 10;
         this.euro1 = 5;
         this.euro2 = 5;
         this.balance = cent5*0.05 + cent10*0.10 + cent20*0.2 + cent50*0.50 + euro1*1 + euro2*2;
@@ -62,39 +62,79 @@ public class Coins {
         // nel caso sia possibile o meno erogare il resto. Quella funzione aggiorna changeAvaible così è possibile
         // tenere traccia della possibilità di dare resto. Può essere utile anche per le interfacce
 
-        if(cent5 != 0 || cent10 != 0 || cent20 != 0 || cent50 != 0 || euro1 != 0 || euro2 != 0){
-            int Rcent5, Rcent10, Rcent20, Rcent50, Reuro1, Reuro2;
-            double resto;
+            if(cent5 != 0 || cent10 != 0 || cent20 != 0 || cent50 != 0 || euro1 != 0 || euro2 != 0){
+                int Rcent5, Rcent10, Rcent20, Rcent50, Reuro1, Reuro2; //(Rcent5, Rcent10, ecc...) è il numero di monete
+                double resto;                                          // del tipo segnato
 
-            Reuro2 =(int)(credit*100)/200; //questo è il numero di monete che da oppure è quanto do di resto?
-            resto = (int)(credit*100) % 200;
+                Reuro2 =(int)(credit*100)/200;
+                resto = (credit*100) % 200;
 
-            // Per calcolare le monete, nel caso quello sia il quantitativo in euro, si potrebbe fare euro2+=Reuro2/2
 
-            Reuro1 =(int)(resto)/100;
-            resto = (int)(resto) % 100;
+                if(Reuro2 <= euro2) {
+                }
+                else{
+                    resto += (Reuro2-euro2)*200;
+                    Reuro2 = euro2;
+                }
 
-            // Per calcolare le monete, nel caso quello sia il quantitativo in euro, si potrebbe fare
-            // cent50 += Rcent50/0.50 NB non so se funzia
+                Reuro1 = (int) (resto) / 100;
+                resto = (resto) % 100;
 
-            Rcent50 =(int)(resto)/50;
-            resto = (int)(resto) % 50;
-            
-            Rcent20 =(int)(resto)/20;
-            resto = (int)(resto) % 20;
+                if(Reuro1 <= euro1) {
+                }
+                else {
+                    resto += (Reuro1-euro1)*100;
+                    Reuro1 = euro1;
+                }
 
-            Rcent10 =(int)(resto)/10;
-            resto = (int)(resto) % 10;
+                Rcent50 = (int)(resto)/50;
+                resto = (resto) % 50;
 
-            Rcent5 =(int)(resto)/5;
-            resto = (int)(resto) % 5;
+                if(Rcent50 <= cent50){}
+                else {
+                    resto += (Rcent50-cent50)*50;
+                    Rcent50 = cent50;
+                }
 
-            // Abbellirei un pochino l'output.
-            // Metterlo sotto forma di stringa? Forse più comodo da usare nell'interfaccia con un
-            // s....out.println(resto). Si possono accodare caratteri alle stringhe senza troppi fastidi (?)
+                Rcent20 =(int)(resto)/20;
+                resto = (resto) % 20;
 
-            System.out.println("5c:"+Rcent5 + "\n10c:" + Rcent10+"\n20c:" + Rcent20+"\n50c:" + Rcent50+"\n1E:"
-                    + Reuro1 + "\n2E:" + Reuro2);
-        }
+
+                if(Rcent20 <= cent20){}
+                else {
+                    resto += (Rcent20-cent20)*20;
+                    Rcent20 = cent20;
+                }
+
+                Rcent10 =(int)(resto)/10;
+                resto = (resto) % 10;
+
+
+                if(Rcent10 <= cent10){}
+                else {
+                    resto += (Rcent10-cent10)*10;
+                    Rcent10 = cent10;
+                }
+                Rcent5 =(int)(resto)/5;
+
+
+                if(Rcent5 <= cent5){}
+                else {
+                    resto += (Rcent50-cent50)*5;
+                    Rcent50 = cent50;
+                    System.out.println("Resto NON erogabile pari a: "+(resto/100)+" euro\r");
+                }
+
+                // Abbellirei un pochino l'output.
+                // Metterlo sotto forma di stringa? Forse più comodo da usare nell'interfaccia con un
+                // s....out.println(resto). Si possono accodare caratteri alle stringhe senza troppi fastidi (?)
+
+                System.out.println("5c:" + Rcent5 + "\n10c:" + Rcent10 + "\n20c:" + Rcent20 + "\n50c:" + Rcent50 + "\n1E:"
+                        + Reuro1 + "\n2E:" + Reuro2);
+            }
     }
 }
+
+
+
+
