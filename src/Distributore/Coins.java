@@ -42,6 +42,7 @@ public class Coins {
             credit = parseInt(addedCoins[0]) * 0.05 + parseInt(addedCoins[1]) * 0.10 + parseInt(addedCoins[2]) * 0.2 +
                     parseInt(addedCoins[3]) * 0.50 + parseInt(addedCoins[4]) * 1 + parseInt(addedCoins[5]) * 2;
 
+            //Utilizzo le motenete inserite al credit per dare resto
             cent5 += parseInt(addedCoins[0]);
             cent10 += parseInt(addedCoins[1]);
             cent20 += parseInt(addedCoins[2]);
@@ -63,16 +64,15 @@ public class Coins {
     //TODO funzione da fare per dare il resto nel minor numero di monete se e solo se non ho esaurito
     //TODO alcun tipo di monete
     public void giveChange() {
-        //TODO si deve creare prima una funzione che mi corntrolli che ci sia almeno una moneta per poterlo restituire.
 
-        // Come mai un OR? Così facendo ne basta una che sia diversa da 0 no? Pensavo ad un AND dato che,
-        // se solo una non è disponibile non do resto. Basterebbe un if(checkChange()) che restituisca true o false
+
+        //Basterebbe un if(checkChange()) che restituisca true o false
         // nel caso sia possibile o meno erogare il resto. Quella funzione aggiorna changeAvaible così è possibile
         // tenere traccia della possibilità di dare resto. Può essere utile anche per le interfacce
 
-            if(cent5 != 0 || cent10 != 0 || cent20 != 0 || cent50 != 0 || euro1 != 0 || euro2 != 0){
+            if(checkChange()){
                 int Rcent5, Rcent10, Rcent20, Rcent50, Reuro1, Reuro2; //(Rcent5, Rcent10, ecc...) è il numero di monete
-                double resto;                                          // del tipo segnato
+                double resto;                                          // del tipo indicato
 
                 Reuro2 =(int)(credit*100)/200;
                 resto = (credit*100) % 200;
@@ -86,7 +86,7 @@ public class Coins {
 
                 Reuro1 = (int) (resto) / 100;
                 resto = (resto) % 100;
-                
+
 
                 if(Reuro1 > euro1) {
                     resto += (Reuro1-euro1)*100;
@@ -96,12 +96,13 @@ public class Coins {
 
                 Rcent50 = (int)(resto)/50;
                 resto = (resto) % 50;
-                cent50 -= Rcent50;
 
                 if(Rcent50 > cent50){
                     resto += (Rcent50-cent50)*50;
                     Rcent50 = cent50;
                 }
+
+                cent50 -= Rcent50;
 
                 Rcent20 =(int)(resto)/20;
                 resto = (resto) % 20;
@@ -130,7 +131,11 @@ public class Coins {
                 if(Rcent5 > cent5){
                     resto += (Rcent5-cent5)*5;
                     Rcent5 = cent5;
+
+                    //Se avanza resto dico che resto rimane affinche possa essere riutilizzato
+
                     System.out.println("Resto NON erogabile pari a: "+(resto/100)+" euro\r");
+
                 }
                 cent5 -= Rcent5;
 
@@ -138,9 +143,16 @@ public class Coins {
                 // Metterlo sotto forma di stringa? Forse più comodo da usare nell'interfaccia con un
                 // s....out.println(resto). Si possono accodare caratteri alle stringhe senza troppi fastidi (?)
 
-                System.out.println("5c:" + Rcent5 + "\n10c:" + Rcent10 + "\n20c:" + Rcent20 + "\n50c:" + Rcent50 + "\n1E:"
-                        + Reuro1 + "\n2E:" + Reuro2);
+                System.out.println("5c:" + Rcent5 + "\n10c:" + Rcent10 + "\n20c:" + Rcent20 + "\n50c:" + Rcent50
+                        + "\n1E:" + Reuro1 + "\n2E:" + Reuro2);
             }
+    }
+
+    public boolean checkChange(){
+        if(cent5 != 0 && cent10 != 0 && cent20 != 0 && cent50 != 0 && euro1 != 0 && euro2 != 0){
+            return true;
+        }
+        return false;
     }
 }
 
