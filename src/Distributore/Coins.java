@@ -9,7 +9,7 @@ public class Coins {
     private boolean changeAvailable;
     private String[] addedCoins;
     //aggiunto da simo per il balance in modo alternativo
-    private double valueCoins[]= new double[6];
+    private double valueCoins[] = new double[6];
 
     public Coins() {
         //todo aggiungere funzione che legga da file il quantitativo di monete presente e le inserisca nel vettore.
@@ -19,18 +19,18 @@ public class Coins {
         this.money[3] = 10;
         this.money[4] = 5;
         this.money[5] = 5;
-        this.balance = money[0]*0.05 + money[1]*0.10 + money[2]*0.2 + money[3]*0.50 + money[4]*1 + money[5]*2;
+        this.balance = money[0] * 0.05 + money[1] * 0.10 + money[2] * 0.2 + money[3] * 0.50 + money[4] * 1 + money[5] * 2;
         this.credit = 0;
         this.profit = 0;
         this.changeAvailable = true;
 
         //vettore usato per il calcolo velocizzato del creti inserito e del balance
-        this.valueCoins[0]=0.05;
-        this.valueCoins[1]=0.10;
-        this.valueCoins[2]=0.20;
-        this.valueCoins[3]=0.50;
-        this.valueCoins[4]=1.00;
-        this.valueCoins[5]=2.00;
+        this.valueCoins[0] = 0.05;
+        this.valueCoins[1] = 0.10;
+        this.valueCoins[2] = 0.20;
+        this.valueCoins[3] = 0.50;
+        this.valueCoins[4] = 1.00;
+        this.valueCoins[5] = 2.00;
     }
 
     public void updateBalance(double vendita) {
@@ -41,17 +41,18 @@ public class Coins {
 
     /**
      * Funzione per identificare le monete inserite in base alla stringa in input (da tastiera o interfaccia)
+     *
      * @param input è la stringa da analizzare per identificare, in base alla posizione.
-     * taglio: 0.05 0.10. 0.20 0.50 1 2
-     * input:  1     0    3    1   0 0
-     * ad esempio posso capire quante monete per ogni taglio relativo alla posizione essendo separate da spazi.
+     *              taglio: 0.05 0.10. 0.20 0.50 1 2
+     *              input:  1     0    3    1   0 0
+     *              ad esempio posso capire quante monete per ogni taglio relativo alla posizione essendo separate da spazi.
      */
 
-    public void addCreditNEW(String input){
+    public void addCreditNEW(String input) {
         addedCoins = input.split("\\s+"); //i tagli sono separati da spazi.
-        if (addedCoins.length == 6 ) {
-            for (int i=0;i<addedCoins.length;i++){
-                credit+=parseInt(addedCoins[i])*valueCoins[i];
+        if (addedCoins.length == 6) {
+            for (int i = 0; i < addedCoins.length; i++) {
+                credit += parseInt(addedCoins[i]) * valueCoins[i];
                 //Utilizzo le motenete inserite al credit per dare resto
                 money[i] += parseInt(addedCoins[i]);
             }
@@ -61,15 +62,15 @@ public class Coins {
         }
     }
 
-    public void addCredit(String input){
+    public void addCredit(String input) {
         addedCoins = input.split("\\s+"); //i tagli sono separati da spazi.
-        if (addedCoins.length == 6 ) {
+        if (addedCoins.length == 6) {
 
             credit = parseInt(addedCoins[0]) * 0.05 + parseInt(addedCoins[1]) * 0.10 + parseInt(addedCoins[2]) * 0.2 +
                     parseInt(addedCoins[3]) * 0.50 + parseInt(addedCoins[4]) * 1 + parseInt(addedCoins[5]) * 2;
 
             //Utilizzo le motenete inserite al credit per dare resto
-            for(int i = 0; i < 6; i++){
+            for (int i = 0; i < 6; i++) {
                 money[i] += parseInt(addedCoins[i]);
             }
 
@@ -83,12 +84,52 @@ public class Coins {
         return credit;
     }
 
-    private double getBalance(){
-        double balance=0;
-        for (int i=0; i<money.length;i++){
-            balance+=money[i]*valueCoins[i];
+    private double getBalance() {
+        double balance = 0;
+        for (int i = 0; i < money.length; i++) {
+            balance += money[i] * valueCoins[i];
         }
         return balance;
+    }
+
+    public void giveChangeNEW() {
+
+        //Basterebbe un if(checkChange()) che restituisca true o false
+        // nel caso sia possibile o meno erogare il resto. Quella funzione aggiorna changeAvailable così è possibile
+        // tenere traccia della possibilità di dare resto. Può essere utile anche per le interfacce
+
+        if (checkChangeNEW()) {
+            int[] change = new int[6];                        //(change[0], change[1], ecc...) è il numero di monete
+            int[] divisor = {5, 10, 20, 50, 100, 200};            // del tipo indicato
+            double resto;
+
+            resto = (credit * 100);
+            //dal più grande al più piccolo
+
+            for (int i = 5; i > -1; i--) {
+                change[i] = (int) (resto) / divisor[i];
+                resto = resto % divisor[i];
+                //singifica che ho monete a disposizione
+                if (change[i] < money[i]) {
+                    resto += (change[i] - money[i]) * divisor[i];
+                    money[i] -= change[i];
+                } else {
+                    //significa che non ho il quantitatvo di monete richieste da erogare, ma che comunque posso dar
+                    //il resto datro che il balance me lo permette
+                    resto += (money[i]) * divisor[i];
+                    money[i] = 0; //le ho erogate tutte
+                }
+            }
+
+            //TODO abbellire output
+            System.out.println("5c:" + change[0] + "\n10c:" + change[1] + "\n20c:" + change[2] + "\n50c:"
+                    + change[3] + "\n1E:" + change[4] + "\n2E:" + change[5]);
+        }
+        else {
+            double abb = credit - balance;
+            System.out.println("Resto NON erogabile pari a: " + (float) abb);
+        }
+
     }
 
     public void giveChange() {
@@ -97,36 +138,35 @@ public class Coins {
         // nel caso sia possibile o meno erogare il resto. Quella funzione aggiorna changeAvailable così è possibile
         // tenere traccia della possibilità di dare resto. Può essere utile anche per le interfacce
 
-            if(checkChange()){
-                int[] change = new int[6];                        //(change[0], change[1], ecc...) è il numero di monete
-                int [] divisor = {5,10,20,50,100,200};            // del tipo indicato
-                double resto;
+        if (checkChange()) {
+            int[] change = new int[6];                        //(change[0], change[1], ecc...) è il numero di monete
+            int[] divisor = {5, 10, 20, 50, 100, 200};            // del tipo indicato
+            double resto;
 
-                resto = (credit*100);
+            resto = (credit * 100);
 
-                for(int i = 5; i > -1; i--){
-                    change[i] = (int)(resto)/ divisor[i];
-                    resto = resto % divisor[i];
+            for (int i = 5; i > -1; i--) {
+                change[i] = (int) (resto) / divisor[i];
+                resto = resto % divisor[i];
 
-                    if(change[i] > money[i]){
-                        change[i] = money[i];
-                        resto += (change[i] - money[i])* divisor[i];
-                    }
-                    money[i] -= change[i];
+                if (change[i] > money[i]) {
+                    change[i] = money[i];
+                    resto += (change[i] - money[i]) * divisor[i];
                 }
+                money[i] -= change[i];
+            }
 
-                if(credit > balance){
-                    double abb = credit-balance;
-                    System.out.println("Resto NON erogabile pari a: "+(float)abb);
-                }
+            if (credit > balance) {
+                double abb = credit - balance;
+                System.out.println("Resto NON erogabile pari a: " + (float) abb);
+            }
 
-                //TODO Abbellire output
-                System.out.println("5c:" + change[0] + "\n10c:" + change[1] + "\n20c:" + change[2] + "\n50c:"
-                        + change[3] + "\n1E:" +change[4] + "\n2E:" + change[5]);
+            //TODO Abbellire output
+            System.out.println("5c:" + change[0] + "\n10c:" + change[1] + "\n20c:" + change[2] + "\n50c:"
+                    + change[3] + "\n1E:" + change[4] + "\n2E:" + change[5]);
 
 
-
-                //TODO Decidere se va bene l'utilizzo di array oppure tenere il metodo vecchio
+            //TODO Decidere se va bene l'utilizzo di array oppure tenere il metodo vecchio
                 /*
                 Reuro2 = (int)credit*100/200;
                     resto = credit % 200;
@@ -198,20 +238,28 @@ public class Coins {
 
                 System.out.println("5c:" + Rcent5 + "\n10c:" + Rcent10 + "\n20c:" + Rcent20 + "\n50c:" + Rcent50
                         + "\n1E:" + Reuro1 + "\n2E:" + Reuro2); */
-            }
+        }
 
     }
 
-    public boolean checkChange(){
-        for(int i= 0; i <6; i++) {
-            if (money[i] == 0) {
-                return false;
-            }
+    private boolean checkChangeNEW() {
+        if (credit<=getBalance()){
+            return true;
         }
-        return true;
+        else {
+            return false;
+        }
+    }
+
+    public boolean checkChange () {
+            for (int i = 0; i < 6; i++) {
+                if (money[i] == 0) {
+                    return false;
+                }
+            }
+            return true;
     }
 }
-
 
 
 
