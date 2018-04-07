@@ -48,7 +48,7 @@ public class Coins {
      *              ad esempio posso capire quante monete per ogni taglio relativo alla posizione essendo separate da spazi.
      */
 
-    public void addCreditNEW(String input) {
+    public void addCredit(String input) {
         addedCoins = input.split("\\s+"); //i tagli sono separati da spazi.
         if (addedCoins.length == 6) {
             for (int i = 0; i < addedCoins.length; i++) {
@@ -62,7 +62,7 @@ public class Coins {
         }
     }
 
-    public void addCredit(String input) {
+    public void addCreditOLD(String input) {
         addedCoins = input.split("\\s+"); //i tagli sono separati da spazi.
         if (addedCoins.length == 6) {
 
@@ -92,47 +92,7 @@ public class Coins {
         return balance;
     }
 
-    public void giveChangeNEW() {
-
-        //Basterebbe un if(checkChange()) che restituisca true o false
-        // nel caso sia possibile o meno erogare il resto. Quella funzione aggiorna changeAvailable così è possibile
-        // tenere traccia della possibilità di dare resto. Può essere utile anche per le interfacce
-
-        if (checkChangeNEW()) {
-            int[] change = new int[6];                        //(change[0], change[1], ecc...) è il numero di monete
-            int[] divisor = {5, 10, 20, 50, 100, 200};            // del tipo indicato
-            double resto;
-
-            resto = (credit * 100);
-            //dal più grande al più piccolo
-
-            for (int i = 5; i > -1; i--) {
-                change[i] = (int) (resto) / divisor[i];
-                resto = resto % divisor[i];
-                //singifica che ho monete a disposizione
-                if (change[i] < money[i]) {
-                    resto += (change[i] - money[i]) * divisor[i];
-                    money[i] -= change[i];
-                } else {
-                    //significa che non ho il quantitatvo di monete richieste da erogare, ma che comunque posso dar
-                    //il resto datro che il balance me lo permette
-                    resto += (money[i]) * divisor[i];
-                    money[i] = 0; //le ho erogate tutte
-                }
-            }
-
-            //TODO abbellire output
-            System.out.println("5c:" + change[0] + "\n10c:" + change[1] + "\n20c:" + change[2] + "\n50c:"
-                    + change[3] + "\n1E:" + change[4] + "\n2E:" + change[5]);
-        }
-        else {
-            double abb = credit - balance;
-            System.out.println("Resto NON erogabile pari a: " + (float) abb);
-        }
-
-    }
-
-    public void giveChange() {
+    public void giveChangeOLD() {
 
         //Basterebbe un if(checkChange()) che restituisca true o false
         // nel caso sia possibile o meno erogare il resto. Quella funzione aggiorna changeAvailable così è possibile
@@ -242,22 +202,62 @@ public class Coins {
 
     }
 
-    private boolean checkChangeNEW() {
+    public boolean checkChangeOLD () {
+        for (int i = 0; i < 6; i++) {
+            if (money[i] == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void giveChange() {
+
+        //Basterebbe un if(checkChange()) che restituisca true o false
+        // nel caso sia possibile o meno erogare il resto. Quella funzione aggiorna changeAvailable così è possibile
+        // tenere traccia della possibilità di dare resto. Può essere utile anche per le interfacce
+
+        if (checkChange()) {
+            int[] change = new int[6];                        //(change[0], change[1], ecc...) è il numero di monete
+            int[] divisor = {5, 10, 20, 50, 100, 200};            // del tipo indicato
+            double resto;
+
+            resto = (credit * 100);
+            //dal più grande al più piccolo
+
+            for (int i = 5; i > -1; i--) {
+                change[i] = (int) (resto) / divisor[i];
+                resto = resto % divisor[i];
+                //singifica che ho monete a disposizione
+                if (change[i] < money[i]) {
+                    resto += (change[i] - money[i]) * divisor[i];
+                    money[i] -= change[i];
+                } else {
+                    //significa che non ho il quantitatvo di monete richieste da erogare, ma che comunque posso dar
+                    //il resto datro che il balance me lo permette
+                    resto += (money[i]) * divisor[i];
+                    money[i] = 0; //le ho erogate tutte
+                }
+            }
+
+            //TODO abbellire output
+            System.out.println("5c:" + change[0] + "\n10c:" + change[1] + "\n20c:" + change[2] + "\n50c:"
+                    + change[3] + "\n1E:" + change[4] + "\n2E:" + change[5]);
+        }
+        else {
+            double abb = credit - balance;
+            System.out.println("Resto NON erogabile pari a: " + (float) abb);
+        }
+
+    }
+
+    private boolean checkChange() {
         if (credit<=getBalance()){
             return true;
         }
         else {
             return false;
         }
-    }
-
-    public boolean checkChange () {
-            for (int i = 0; i < 6; i++) {
-                if (money[i] == 0) {
-                    return false;
-                }
-            }
-            return true;
     }
 }
 
