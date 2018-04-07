@@ -47,6 +47,20 @@ public class Coins {
      * ad esempio posso capire quante monete per ogni taglio relativo alla posizione essendo separate da spazi.
      */
 
+    public void addCreditNEW(String input){
+        addedCoins = input.split("\\s+"); //i tagli sono separati da spazi.
+        if (addedCoins.length == 6 ) {
+            for (int i=0;i<addedCoins.length;i++){
+                credit+=parseInt(addedCoins[i])*valueCoins[i];
+                //Utilizzo le motenete inserite al credit per dare resto
+                money[i] += parseInt(addedCoins[i]);
+            }
+        } // Significa che non ho inserito tutti i dati riferiti ai singoli tagli.
+        else {
+            System.out.println("Restituzione delle monete data l'assenza di tutti i campi");
+        }
+    }
+
     public void addCredit(String input){
         addedCoins = input.split("\\s+"); //i tagli sono separati da spazi.
         if (addedCoins.length == 6 ) {
@@ -55,9 +69,9 @@ public class Coins {
                     parseInt(addedCoins[3]) * 0.50 + parseInt(addedCoins[4]) * 1 + parseInt(addedCoins[5]) * 2;
 
             //Utilizzo le motenete inserite al credit per dare resto
-           for(int i = 0; i < 6; i++){
-               money[i] += parseInt(addedCoins[i]);
-           }
+            for(int i = 0; i < 6; i++){
+                money[i] += parseInt(addedCoins[i]);
+            }
 
         } // Significa che ho inserito tutti i dati riferiti ai singoli tagli.
         else {
