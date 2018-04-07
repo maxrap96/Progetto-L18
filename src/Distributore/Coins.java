@@ -8,8 +8,11 @@ public class Coins {
     private double credit;
     private boolean changeAvailable;
     private String[] addedCoins;
+    //aggiunto da simo per il balance in modo alternativo
+    private double valueCoins[]= new double[6];
 
     public Coins() {
+        //todo aggiungere funzione che legga da file il quantitativo di monete presente e le inserisca nel vettore.
         this.money[0] = 20;
         this.money[1] = 30;
         this.money[2] = 20;
@@ -20,6 +23,14 @@ public class Coins {
         this.credit = 0;
         this.profit = 0;
         this.changeAvailable = true;
+
+        //vettore usato per il calcolo velocizzato del creti inserito e del balance
+        this.valueCoins[0]=0.05;
+        this.valueCoins[1]=0.10;
+        this.valueCoins[2]=0.20;
+        this.valueCoins[3]=0.50;
+        this.valueCoins[4]=1.00;
+        this.valueCoins[5]=2.00;
     }
 
     public void updateBalance(double vendita) {
@@ -39,6 +50,7 @@ public class Coins {
     public void addCredit(String input){
         addedCoins = input.split("\\s+"); //i tagli sono separati da spazi.
         if (addedCoins.length == 6 ) {
+
             credit = parseInt(addedCoins[0]) * 0.05 + parseInt(addedCoins[1]) * 0.10 + parseInt(addedCoins[2]) * 0.2 +
                     parseInt(addedCoins[3]) * 0.50 + parseInt(addedCoins[4]) * 1 + parseInt(addedCoins[5]) * 2;
 
@@ -57,6 +69,13 @@ public class Coins {
         return credit;
     }
 
+    private double getBalance(){
+        double balance=0;
+        for (int i=0; i<money.length;i++){
+            balance+=money[i]*valueCoins[i];
+        }
+        return balance;
+    }
 
     public void giveChange() {
 
