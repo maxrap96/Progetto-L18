@@ -92,7 +92,7 @@ public class Coins {
         return balance;
     }
 
-    public void giveChangeOLD() {
+    public void giveChange() {
 
         //Basterebbe un if(checkChange()) che restituisca true o false
         // nel caso sia possibile o meno erogare il resto. Quella funzione aggiorna changeAvailable così è possibile
@@ -211,7 +211,7 @@ public class Coins {
         return true;
     }
 
-    public void giveChange() {
+    public void giveChangeNew() {
 
         //Basterebbe un if(checkChange()) che restituisca true o false
         // nel caso sia possibile o meno erogare il resto. Quella funzione aggiorna changeAvailable così è possibile
