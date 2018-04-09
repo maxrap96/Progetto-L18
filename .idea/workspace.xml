@@ -12,13 +12,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Distributore.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Distributore.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/InterfacciaDistributore/Distributore.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="715">
-              <caret line="49" column="48" lean-forward="false" selection-start-line="49" selection-start-column="48" selection-end-line="49" selection-end-column="48" />
+            <state relative-caret-position="205">
+              <caret line="74" column="36" lean-forward="false" selection-start-line="74" selection-start-column="36" selection-end-line="74" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RoundedBorder.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/InterfacciaDistributore/RoundedBorder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="476">
+              <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#184#185#0" expanded="true" />
+                <element signature="e#220#221#0" expanded="true" />
+                <element signature="e#402#403#0" expanded="true" />
+                <element signature="e#429#430#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -72,7 +88,10 @@
         <option value="$PROJECT_DIR$/src/Distributore/Coins.java" />
         <option value="$PROJECT_DIR$/src/InterfacciaDistributore/ChiudiFinestra.java" />
         <option value="$PROJECT_DIR$/src/InterfacciaDistributore/SwingProgressBarExample.java" />
+        <option value="$PROJECT_DIR$/src/InterfacciaDistributore/d.java" />
+        <option value="$PROJECT_DIR$/src/InterfacciaDistributore/RoundButton.java" />
         <option value="$PROJECT_DIR$/src/InterfacciaDistributore/Distributore.java" />
+        <option value="$PROJECT_DIR$/src/InterfacciaDistributore/RoundedBorder.java" />
       </list>
     </option>
   </component>
@@ -82,7 +101,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1382" />
@@ -315,15 +334,15 @@
       <workItem from="1523092533136" duration="3218000" />
       <workItem from="1523097933432" duration="237000" />
       <workItem from="1523098336483" duration="2414000" />
-      <workItem from="1523285554700" duration="2558000" />
+      <workItem from="1523285554700" duration="6056000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8427000" />
+    <option name="totallyTimeSpent" value="11925000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -487,14 +506,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/InterfacciaDistributore/SwingProgressBarExample.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/InterfacciaDistributore/ChiudiFinestra.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -507,12 +518,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/InterfacciaDistributore/SwingProgressBarExample.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/InterfacciaDistributore/RoundButton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-51">
+          <caret line="33" column="42" lean-forward="false" selection-start-line="33" selection-start-column="42" selection-end-line="33" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/InterfacciaDistributore/Distributore.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="715">
-          <caret line="49" column="48" lean-forward="false" selection-start-line="49" selection-start-column="48" selection-end-line="49" selection-end-column="48" />
+        <state relative-caret-position="205">
+          <caret line="74" column="36" lean-forward="false" selection-start-line="74" selection-start-column="36" selection-end-line="74" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/InterfacciaDistributore/RoundedBorder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#184#185#0" expanded="true" />
+            <element signature="e#220#221#0" expanded="true" />
+            <element signature="e#402#403#0" expanded="true" />
+            <element signature="e#429#430#0" expanded="true" />
           </folding>
         </state>
       </provider>
