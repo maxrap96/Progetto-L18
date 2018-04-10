@@ -2,12 +2,13 @@ package Distributore;
 
 import Errori.FileNotExisting;
 import Errori.FileNotReadable;
+import Errori.FileNotWritable;
 
 import java.io.*;
 import java.util.ArrayList;
 
 public class Data {
-    public String pathFile;
+    private String pathFile;
 
     public Data(String pathFile) {
         this.pathFile = pathFile;
@@ -48,6 +49,15 @@ public class Data {
         }
     }
 
-    
+    public void writeFile(String scrittura) throws FileNotWritable {
+        try {
+            FileOutputStream outputStream = new FileOutputStream(pathFile);
+            PrintStream write = new PrintStream(outputStream);
+            write.println(scrittura);
+
+        } catch (FileNotFoundException e) {
+            throw new FileNotWritable();
+        }
+    }
 
 }
