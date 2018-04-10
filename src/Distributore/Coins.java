@@ -13,7 +13,7 @@ public class Coins {
     private String[] addedCoins;
     private final double valueCoins[] = {0.05, 0.10, 0.20, 0.50 , 1.00, 2.00};
 
-    private Data data = new Data("monete.txt");
+    private Data data = new Data("src/Distributore/monete.txt");
 
     public Coins() {
         initCoins();
@@ -26,10 +26,11 @@ public class Coins {
 
     public void initCoins() {
         try {
-            ArrayList<String[]> coins = data.readFile();
+            ArrayList<String[]> coinsText = data.readFile();
+            int last = coinsText.size() - 1;    // last e' l'ultima riga del file che mi serve.
 
             for (int i = 0; i < money.length; i++) {
-                money[i] = parseInt(coins.get(0)[i]);
+                money[i] = parseInt(coinsText.get(last)[i]);
             }
         } catch (FileNotReadable fileNotReadable) {
             fileNotReadable.printStackTrace();

@@ -139,15 +139,15 @@ public class Distributore {
 
     /**
      * Funzione per selezionare una bevanda. Essa controlla che il credito sia sufficiente
-     * @param beverage: è l'id della bevanda selezionata
+     * @param ID: è l'id della bevanda selezionata
      * @param sugar: è la qunatità di zucchero da 0 a 5
      */
 
-    private void selectBeverage(String beverage,int sugar) throws UnsufficientCredit{
-        if (coins.getCredit()>=list.get(beverage).getPrice()){ //se il credito è uguale o più singifica che posso potenzialmente acquistare la bevanda
-                subtractIngredients(beverage);
+    private void selectBeverage(String ID,int sugar) throws UnsufficientCredit{
+        if (coins.getCredit()>=list.get(ID).getPrice()){ //se il credito è uguale o più singifica che posso potenzialmente acquistare la bevanda
+                subtractIngredients(ID);
                 subtractSugar(sugar);
-                coins.updateBalance(list.get(beverage).getPrice());
+                coins.updateBalance(list.get(ID).getPrice());
                 if (coins.getCredit()!= 0) {
                     coins.giveChange();
                 }
@@ -160,11 +160,11 @@ public class Distributore {
 
     /**
      * Funzione per sottrarre quantità necessarie per preparare la bevanda
-     * @param bevanda bevanda da cui sottrarre
+     * @param ID bevanda da cui sottrarre
      */
-    private void subtractIngredients(String bevanda) {
-        milk -= list.get(bevanda).getMilk();
-        water -= list.get(bevanda).getWater();
+    private void subtractIngredients(String ID) {
+        milk -= list.get(ID).getMilk();
+        water -= list.get(ID).getWater();
         cup--;
 
     }
