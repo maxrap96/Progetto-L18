@@ -34,6 +34,7 @@ public class Coins {
             }
         } catch (FileNotReadable fileNotReadable) {
             fileNotReadable.printStackTrace();
+
             this.money[0] = 20;
             this.money[1] = 30;
             this.money[2] = 20;
@@ -41,6 +42,8 @@ public class Coins {
             this.money[4] = 5;
             this.money[5] = 5;
         }
+
+        // TODO: Catch nel caso il file venga scritto male
     }
 
 
@@ -63,11 +66,9 @@ public class Coins {
         if (addedCoins.length == 6) {
             for (int i = 0; i < addedCoins.length; i++) {
                 credit += parseInt(addedCoins[i]) * valueCoins[i];
-
-                //Utilizzo le motenete inserite al credit per dare resto
-                //money[i] += parseInt(addedCoins[i]);
-
             }
+
+            // TODO: Scrivere su file le monete inserite
         } // Significa che non ho inserito tutti i dati riferiti ai singoli tagli.
         else {
             System.out.println("Restituzione delle monete data l'assenza di tutti i campi");
@@ -106,7 +107,7 @@ public class Coins {
                 money[i] -= change[i];
             }
 
-            //TODO Abbellire output
+            //TODO Abbellire output e scrivere su file le monete dopo il resto
             System.out.println("5c:" + change[0] + "\n10c:" + change[1] + "\n20c:" + change[2] + "\n50c:"
                     + change[3] + "\n1E:" + change[4] + "\n2E:" + change[5]);
 
