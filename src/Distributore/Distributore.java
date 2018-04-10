@@ -103,7 +103,8 @@ public class Distributore {
             double[] value=coins.getCOINS_VALUE();
             for(int i = 0; i < value.length; i++) {
                 try {
-                    System.out.println("Inserire le monete da " + value[i] + " cent");
+                    //System.out.println("Inserire le monete da " + value[i] + " cent");
+                    System.out.println("Inserire le monete da " + String.format("%.2f", value[i]) + " cent");
                     input = keyboard();
                     coins.addCredit(input,i);
                 } catch (NoDigit noDigit) {
@@ -192,7 +193,7 @@ public class Distributore {
     private void giveChange() {
         coins.giveChange();
         //TODO sistemare il resto
-        System.out.println("Erogazione il resto di: " + coins);;
+        System.out.println("Erogazione resto di: " + coins);
     }
 
     /**

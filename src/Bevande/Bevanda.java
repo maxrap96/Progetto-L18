@@ -65,7 +65,7 @@ public abstract class Bevanda {
 
     @Override
     public String toString() {
-        return "ID: " + id + "\tName: " + name + "\nPrice: " + price + "\n";
+        return "ID: " + id + "\tName: " + name + "\nPrice: " + String.format("%.2f", price) + "\n";
     }
 
 

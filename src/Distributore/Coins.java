@@ -76,7 +76,7 @@ public class Coins {
     /**
      * Funzione per identificare le monete inserite in base alla stringa in input (da tastiera o interfaccia)
      *
-     * @param input è la stringa da analizzare per identificare, in base alla posizione.
+     * @param index è la stringa da analizzare per identificare, in base alla posizione.
      *              taglio: 0.05 0.10. 0.20 0.50 1 2
      *              input:  1     0    3    1   0 0
      *              ad esempio posso capire quante monete per ogni taglio relativo alla posizione essendo separate da spazi.
@@ -86,7 +86,7 @@ public class Coins {
         credit += parseInt(number) * COINS_VALUE[index];
         money[index] += parseInt(number);
 
-        if (index==money.length){
+        if (index == money.length - 1){
             try {
                 data.writeFile(moneyOnFile());
             } catch (FileNotWritable fileNotWritable) {
@@ -134,8 +134,9 @@ public class Coins {
             }
 
             //TODO Abbellire output
-            System.out.println("5c:" + change[0] + "\n10c:" + change[1] + "\n20c:" + change[2] + "\n50c:"
-                    + change[3] + "\n1E:" + change[4] + "\n2E:" + change[5]);
+            System.out.println("Erogazione resto: " +credit);
+            System.out.println("5c: " + change[0] + "\n10c: " + change[1] + "\n20c: " + change[2] + "\n50c: "
+                    + change[3] + "\n1E: " + change[4] + "\n2E: " + change[5]);
 
 
         }  else if(!checkChange()) {
