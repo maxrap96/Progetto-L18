@@ -4,7 +4,7 @@ import static java.lang.Integer.parseInt;
 
 public class Coins {
     private int money[] = new int[6];
-    private double balance=0, profit=0;
+    private double profit=0;
     private double credit=0;
     private String[] addedCoins;
     private final double valueCoins[] = {0.05, 0.10, 0.20, 0.50 , 1.00, 2.00};
@@ -19,14 +19,8 @@ public class Coins {
         this.money[3] = 10;
         this.money[4] = 5;
         this.money[5] = 5;
-        initializeBalance();
     }
 
-    private void initializeBalance() {
-        for(int i=0;i<money.length;i++){
-            balance+=money[i]*valueCoins[i];
-        }
-    }
 
     public void updateBalance(double vendita) {
         balance += vendita;

@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8a7e1018-de56-49fa-be27-ae9e2aa9dda7" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/Distributore/monete.txt" />
-      <change beforePath="$PROJECT_DIR$/src/Distributore/dati.txt" afterPath="$PROJECT_DIR$/src/Distributore/dati.txt" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/src/Distributore/Coins.java" afterPath="$PROJECT_DIR$/src/Distributore/Coins.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,7 +35,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Data.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Data.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Distributore/Data.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="147">
@@ -47,19 +47,18 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Coins.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Coins.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Distributore/Coins.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="9" column="26" lean-forward="true" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
+            <state relative-caret-position="441">
+              <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
               <folding>
                 <element signature="method#updateBalance#0;class#Coins#0" expanded="false" />
                 <element signature="docComment;method#addCredit#0;class#Coins#0" expanded="false" />
                 <element signature="method#addCredit#0;class#Coins#0" expanded="false" />
-                <element signature="e#2090#2091#0" expanded="true" />
-                <element signature="e#2119#2120#0" expanded="true" />
+                <element signature="e#1909#1910#0" expanded="true" />
+                <element signature="e#1938#1939#0" expanded="true" />
                 <element signature="method#getBalance#0;class#Coins#0" expanded="false" />
-                <element signature="method#checkChange#0;class#Coins#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -88,9 +87,9 @@
         <option value="$PROJECT_DIR$/src/InterfacciaDistributore/RoundedBorder.java" />
         <option value="$PROJECT_DIR$/src/OpenFile.java" />
         <option value="$PROJECT_DIR$/src/Distributore/Data.java" />
-        <option value="$PROJECT_DIR$/src/Distributore/Coins.java" />
         <option value="$PROJECT_DIR$/src/Distributore/dati.txt" />
         <option value="$PROJECT_DIR$/src/Distributore/monete.txt" />
+        <option value="$PROJECT_DIR$/src/Distributore/Coins.java" />
       </list>
     </option>
   </component>
@@ -316,7 +315,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1050000" />
+    <option name="totallyTimeSpent" value="1694000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-1359" width="2418" height="1318" extended-state="6" />
@@ -424,10 +423,9 @@
             <element signature="method#updateBalance#0;class#Coins#0" expanded="false" />
             <element signature="docComment;method#addCredit#0;class#Coins#0" expanded="false" />
             <element signature="method#addCredit#0;class#Coins#0" expanded="false" />
-            <element signature="e#2090#2091#0" expanded="true" />
-            <element signature="e#2119#2120#0" expanded="true" />
+            <element signature="e#1909#1910#0" expanded="true" />
+            <element signature="e#1938#1939#0" expanded="true" />
             <element signature="method#getBalance#0;class#Coins#0" expanded="false" />
-            <element signature="method#checkChange#0;class#Coins#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -511,22 +509,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Distributore/Coins.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="9" column="26" lean-forward="true" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
-          <folding>
-            <element signature="method#updateBalance#0;class#Coins#0" expanded="false" />
-            <element signature="docComment;method#addCredit#0;class#Coins#0" expanded="false" />
-            <element signature="method#addCredit#0;class#Coins#0" expanded="false" />
-            <element signature="e#2090#2091#0" expanded="true" />
-            <element signature="e#2119#2120#0" expanded="true" />
-            <element signature="method#getBalance#0;class#Coins#0" expanded="false" />
-            <element signature="method#checkChange#0;class#Coins#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Distributore/monete.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="21">
@@ -549,6 +531,21 @@
           <caret line="11" column="34" lean-forward="false" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
           <folding>
             <element signature="e#255#256#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Distributore/Coins.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding>
+            <element signature="method#updateBalance#0;class#Coins#0" expanded="false" />
+            <element signature="docComment;method#addCredit#0;class#Coins#0" expanded="false" />
+            <element signature="method#addCredit#0;class#Coins#0" expanded="false" />
+            <element signature="e#1909#1910#0" expanded="true" />
+            <element signature="e#1938#1939#0" expanded="true" />
+            <element signature="method#getBalance#0;class#Coins#0" expanded="false" />
           </folding>
         </state>
       </provider>
