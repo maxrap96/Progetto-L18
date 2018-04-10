@@ -13,7 +13,7 @@ public class Data {
         this.pathFile = pathFile;
     }
 
-    public ArrayList<String[]> readFile() {
+    public ArrayList<String[]> readFile() throws FileNotReadable {
         try {
             BufferedReader Breader = new BufferedReader(new FileReader(pathFile));
             ArrayList<String[]> openedFile = split(Breader);
@@ -23,7 +23,7 @@ public class Data {
         } catch (IOException e) {
             e.printStackTrace();
         } catch (FileNotReadable fileNotReadable) {
-            fileNotReadable.printStackTrace();
+            throw new FileNotReadable();
         }
 
         return null;

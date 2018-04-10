@@ -1,5 +1,9 @@
 package Distributore;
 
+import Errori.FileNotReadable;
+
+import java.util.ArrayList;
+
 import static java.lang.Integer.parseInt;
 
 public class Coins {
@@ -12,13 +16,30 @@ public class Coins {
     private Data data = new Data("monete.txt");
 
     public Coins() {
-        //todo aggiungere funzione che legga da file il quantitativo di monete presente e le inserisca nel vettore.
-        this.money[0] = 20;
-        this.money[1] = 30;
-        this.money[2] = 20;
-        this.money[3] = 10;
-        this.money[4] = 5;
-        this.money[5] = 5;
+        initCoins();
+    }
+
+    /**
+     * Inizializziamo i tagli delle monete tramite lettura da file. Nel
+     * caso di errori usiamo una inizializzazione di default.
+     */
+
+    public void initCoins() {
+        try {
+            ArrayList<String[]> coins = data.readFile();
+
+            for (int i = 0; i < money.length; i++) {
+                money[i] = parseInt(coins.get(0)[i]);
+            }
+        } catch (FileNotReadable fileNotReadable) {
+            fileNotReadable.printStackTrace();
+            this.money[0] = 20;
+            this.money[1] = 30;
+            this.money[2] = 20;
+            this.money[3] = 10;
+            this.money[4] = 5;
+            this.money[5] = 5;
+        }
     }
 
 
