@@ -23,7 +23,6 @@ public class Coins {
 
 
     public void updateBalance(double vendita) {
-        balance += vendita;
         profit += vendita;
         credit -= vendita;
     }
