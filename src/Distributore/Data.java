@@ -7,9 +7,15 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class Data {
+    public String pathFile;
+
+    public Data(String pathFile) {
+        this.pathFile = pathFile;
+    }
+
     public ArrayList<String[]> readFile() {
         try {
-            BufferedReader Breader = new BufferedReader(new FileReader("dati.txt"));
+            BufferedReader Breader = new BufferedReader(new FileReader(pathFile));
             ArrayList<String[]> openedFile = split(Breader);
             Breader.close();
 
