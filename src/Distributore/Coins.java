@@ -20,11 +20,15 @@ public class Coins {
         initCoins();
     }
 
+
+    public double[] getCOINS_VALUE() {
+        return COINS_VALUE;
+    }
+
     /**
      * Inizializziamo i tagli delle monete tramite lettura da file. Nel
      * caso di errori usiamo una inizializzazione di default.
      */
-
     public void initCoins() {
         try {
             ArrayList<String[]> coinsText = data.readFile();
@@ -78,23 +82,16 @@ public class Coins {
      *              ad esempio posso capire quante monete per ogni taglio relativo alla posizione essendo separate da spazi.
      */
 
-    public void addCredit(String input) {
-        addedCoins = input.split("\\s+"); //i tagli sono separati da spazi.
-        if (addedCoins.length == 6) {
-            for (int i = 0; i < addedCoins.length; i++) {
-                credit += parseInt(addedCoins[i]) * COINS_VALUE[i];
-                money[i] += parseInt(addedCoins[i]);
-            }
+    public void addCredit(String number, int index) {
+        credit += parseInt(number) * COINS_VALUE[index];
+        money[index] += parseInt(number);
 
+        if (index==money.length){
             try {
                 data.writeFile(moneyOnFile());
             } catch (FileNotWritable fileNotWritable) {
                 fileNotWritable.printStackTrace();
             }
-
-        } // Significa che non ho inserito tutti i dati riferiti ai singoli tagli.
-        else {
-            System.out.println("Restituzione delle monete data l'assenza di tutti i campi");
         }
     }
 

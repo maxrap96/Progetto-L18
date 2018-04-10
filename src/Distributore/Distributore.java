@@ -96,16 +96,21 @@ public class Distributore {
         } catch (NoDigit noDigit) {
             noDigit.printStackTrace();
         }
+
         String[] splitted = input.split("\\s+");
         //mi chiedo se la bevanda è disponibile
         if (list.get(splitted[0]).isAvailable()) {
-            System.out.println("Inserire il numero di monete inserite riferite al rispettivo taglio separandole con uno spazio.\ntipo: 0.05c 0.10c 0.20c 0.50c 1 2");
-            try {
-                input = keyboard();
-            } catch (NoDigit noDigit) {
-                noDigit.printStackTrace();
+            double[] value=coins.getCOINS_VALUE();
+            for(int i = 0; i < value.length; i++) {
+                try {
+                    System.out.println("Inserire le monete da " + value[i] + " cent");
+                    input = keyboard();
+                    coins.addCredit(input,i);
+                } catch (NoDigit noDigit) {
+                    noDigit.printStackTrace();
+                }
             }
-            coins.addCredit(input);
+
             //vera e propria funzione da usare nella interfaccia
             try {
                 selectBeverage(splitted[0], parseInt(splitted[1]));
