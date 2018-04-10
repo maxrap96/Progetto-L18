@@ -4,14 +4,12 @@ import static java.lang.Integer.parseInt;
 
 public class Coins {
     private int money[] = new int[6];
-    private double balance, profit;
-    private double credit;
-    private boolean changeAvailable;
+    private double balance=0, profit=0;
+    private double credit=0;
     private String[] addedCoins;
-    //aggiunto da simo per il balance in modo alternativo
-    private double valueCoins[] = new double[6];
+    private final double valueCoins[] = {0.05, 0.10, 0.20, 0.50 , 1.00, 2.00};
 
-    private Data data = new Data();
+    private Data data = new Data("monete.txt");
 
     public Coins() {
         //todo aggiungere funzione che legga da file il quantitativo di monete presente e le inserisca nel vettore.
@@ -21,18 +19,13 @@ public class Coins {
         this.money[3] = 10;
         this.money[4] = 5;
         this.money[5] = 5;
-        this.balance = money[0] * 0.05 + money[1] * 0.10 + money[2] * 0.2 + money[3] * 0.50 + money[4] * 1 + money[5] * 2;
-        this.credit = 0;
-        this.profit = 0;
-        this.changeAvailable = true;
+        initializeBalance();
+    }
 
-        //vettore usato per il calcolo velocizzato del creti inserito e del balance
-        this.valueCoins[0] = 0.05;
-        this.valueCoins[1] = 0.10;
-        this.valueCoins[2] = 0.20;
-        this.valueCoins[3] = 0.50;
-        this.valueCoins[4] = 1.00;
-        this.valueCoins[5] = 2.00;
+    private void initializeBalance() {
+        for(int i=0;i<money.length;i++){
+            balance+=money[i]*valueCoins[i];
+        }
     }
 
     public void updateBalance(double vendita) {
@@ -108,41 +101,6 @@ public class Coins {
         }
 
     }
-
-    /*//Todo da guardare
-    public void giveChangeNew() {
-
-        if (checkChange()) {
-            int[] change = new int[6];                        //(change[0], change[1], ecc...) è il numero di monete
-            int[] divisor = {5, 10, 20, 50, 100, 200};            // del tipo indicato
-            double resto;
-
-            resto = (credit * 100);
-            //dal più grande al più piccolo
-
-            for (int i = 5; i > -1; i--) {
-                change[i] = (int) (resto) / divisor[i];
-                resto = resto % divisor[i];
-                //singifica che ho monete a disposizione
-                if (change[i] < money[i]) {
-                    resto += (change[i] - money[i]) * divisor[i];
-                    money[i] -= change[i];
-                } else {
-                    //significa che non ho il quantitatvo di monete richieste da erogare, ma che comunque posso dar
-                    //il resto datro che il balance me lo permette
-                    resto += (money[i]) * divisor[i];
-                    money[i] = 0; //le ho erogate tutte
-                }
-            }
-            System.out.println("5c:" + change[0] + "\n10c:" + change[1] + "\n20c:" + change[2] + "\n50c:"
-                    + change[3] + "\n1E:" + change[4] + "\n2E:" + change[5]);
-        }
-        else {
-            double abb = credit - balance;
-            System.out.println("Resto NON erogabile pari a: " + (float) abb);
-        }
-
-    }*/
 
     private boolean checkChange() {
         if (credit<=getBalance()){
