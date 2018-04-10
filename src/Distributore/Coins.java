@@ -83,6 +83,7 @@ public class Coins {
         if (addedCoins.length == 6) {
             for (int i = 0; i < addedCoins.length; i++) {
                 credit += parseInt(addedCoins[i]) * COINS_VALUE[i];
+                money[i] += parseInt(addedCoins[i]);
             }
 
             try {

@@ -51,13 +51,11 @@ public class Data {
 
     public void writeFile(String scrittura) throws FileNotWritable {
         try {
-            FileOutputStream outputStream = new FileOutputStream(pathFile);
-            PrintStream write = new PrintStream(outputStream);
-            write.write((scrittura+"\n").getBytes());
+            FileWriter writer = new FileWriter(pathFile, true);
 
-            write.close();
-            outputStream.close();
+            writer.write(scrittura + "\n");
 
+            writer.close();
         } catch (FileNotFoundException e) {
             throw new FileNotWritable();
         } catch (IOException e) {
