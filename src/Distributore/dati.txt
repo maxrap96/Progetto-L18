@@ -1,0 +1,16 @@
+* Soldi, qta rimasta, latte, acqua, bicchierini, cucchiaini, zucchero.
+*
+* monete
+20	30	20	10	5	5
+* Qtà rimaste bevande
+50	30	25	60
+* Latte
+15
+* Acqua
+50
+* Zucchero
+20
+* Cucchiaini
+1000
+* Bicchierini
+2000
