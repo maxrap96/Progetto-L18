@@ -53,10 +53,15 @@ public class Data {
         try {
             FileOutputStream outputStream = new FileOutputStream(pathFile);
             PrintStream write = new PrintStream(outputStream);
-            write.println(scrittura);
+            write.write((scrittura+"\n").getBytes());
+
+            write.close();
+            outputStream.close();
 
         } catch (FileNotFoundException e) {
             throw new FileNotWritable();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

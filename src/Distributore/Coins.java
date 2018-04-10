@@ -1,6 +1,7 @@
 package Distributore;
 
 import Errori.FileNotReadable;
+import Errori.FileNotWritable;
 
 import java.util.ArrayList;
 
@@ -11,7 +12,7 @@ public class Coins {
     private double profit=0;
     private double credit=0;
     private String[] addedCoins;
-    private final double valueCoins[] = {0.05, 0.10, 0.20, 0.50 , 1.00, 2.00};
+    private final double COINS_VALUE[] = {0.05, 0.10, 0.20, 0.50 , 1.00, 2.00};
 
     private Data data = new Data("src/Distributore/monete.txt");
 
@@ -46,10 +47,26 @@ public class Coins {
         // TODO: Catch nel caso il file venga scritto male
     }
 
+    /**
+     * Funzione che scrive il numero delle monete rimanenti sul file.
+     * @return s: stringa contenente numero di monete per il file di statistiche.
+     */
+
+    public String moneyOnFile() {
+        String s = "";
+
+        for (int i = 0; i < money.length; i++) {
+            s += (money[i] + "\t");
+        }
+
+        return s;
+    }
+
 
     public void updateBalance(double vendita) {
         profit += vendita;
-        credit -= vendita;
+        credit = (credit)*100 - (vendita)*100;  //Commenti Luce..
+        credit = credit/100;
     }
 
     /**
@@ -65,10 +82,15 @@ public class Coins {
         addedCoins = input.split("\\s+"); //i tagli sono separati da spazi.
         if (addedCoins.length == 6) {
             for (int i = 0; i < addedCoins.length; i++) {
-                credit += parseInt(addedCoins[i]) * valueCoins[i];
+                credit += parseInt(addedCoins[i]) * COINS_VALUE[i];
             }
 
-            // TODO: Scrivere su file le monete inserite
+            try {
+                data.writeFile(moneyOnFile());
+            } catch (FileNotWritable fileNotWritable) {
+                fileNotWritable.printStackTrace();
+            }
+
         } // Significa che non ho inserito tutti i dati riferiti ai singoli tagli.
         else {
             System.out.println("Restituzione delle monete data l'assenza di tutti i campi");
@@ -82,7 +104,7 @@ public class Coins {
     private double getBalance() {
         double balance = 0;
         for (int i = 0; i < money.length; i++) {
-            balance += money[i] * valueCoins[i];
+            balance += money[i] * COINS_VALUE[i];
         }
         return balance;
     }
@@ -107,7 +129,13 @@ public class Coins {
                 money[i] -= change[i];
             }
 
-            //TODO Abbellire output e scrivere su file le monete dopo il resto
+            try {
+                data.writeFile(moneyOnFile());
+            } catch (FileNotWritable fileNotWritable) {
+                fileNotWritable.printStackTrace();
+            }
+
+            //TODO Abbellire output
             System.out.println("5c:" + change[0] + "\n10c:" + change[1] + "\n20c:" + change[2] + "\n50c:"
                     + change[3] + "\n1E:" + change[4] + "\n2E:" + change[5]);
 
