@@ -17,12 +17,11 @@ public class OpenFile {
      */
 
     public ArrayList<String[]> apriFile(){
-         try {
+        try {
 
             BufferedReader bufferedReader = new BufferedReader(new FileReader(nomeFile));
             ArrayList<String[]> fileAperto = splitFile(bufferedReader);
             bufferedReader.close();
-            // Ma serviva chiudere il File?
 
             return fileAperto;
 
@@ -32,7 +31,8 @@ public class OpenFile {
             e.printStackTrace();
         } catch (FileNotReadable fileNotReadable) {
              fileNotReadable.printStackTrace();
-         }
+        }
+
         return null;
 
     }

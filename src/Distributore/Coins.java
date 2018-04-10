@@ -11,6 +11,8 @@ public class Coins {
     //aggiunto da simo per il balance in modo alternativo
     private double valueCoins[] = new double[6];
 
+    private Data data = new Data();
+
     public Coins() {
         //todo aggiungere funzione che legga da file il quantitativo di monete presente e le inserisca nel vettore.
         this.money[0] = 20;
@@ -107,7 +109,7 @@ public class Coins {
 
     }
 
-    //Todo da guardare
+    /*//Todo da guardare
     public void giveChangeNew() {
 
         if (checkChange()) {
@@ -140,7 +142,7 @@ public class Coins {
             System.out.println("Resto NON erogabile pari a: " + (float) abb);
         }
 
-    }
+    }*/
 
     private boolean checkChange() {
         if (credit<=getBalance()){

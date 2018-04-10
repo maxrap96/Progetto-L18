@@ -2,7 +2,7 @@
 *
 * monete
 20	30	20	10	5	5
-* Qtà rimaste bevande
+* Qta rimaste bevande
 50	30	25	60
 * Latte
 15
