@@ -1,5 +1,5 @@
 ﻿*	le righe con * vengono saltate nella lettura
-*	bicchierini  cucchianini
+*	cup  spoon
 2000	1000
 *	ID   	TIPO  		NOME  	COSTO   QUANTITA_MASSIMA    TEMPERATURA    DOSE		latte		acqua
 01	MACINATO	ESPRESSO	0.45	50	85	0.25	0	0.050

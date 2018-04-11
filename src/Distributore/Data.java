@@ -16,6 +16,12 @@ public class Data {
         this.pathFile = pathFile;
     }
 
+    /**
+     * Che cosa fa?
+     * @return
+     * @throws FileNotReadable
+     */
+
     public ArrayList<String[]> readFile() throws FileNotReadable {
         try {
             BufferedReader Breader = new BufferedReader(new FileReader(pathFile));
@@ -31,6 +37,13 @@ public class Data {
 
         return null;
     }
+
+    /**
+     * Che cosa fa?
+     * @param bReader
+     * @return
+     * @throws FileNotReadable
+     */
 
     public ArrayList<String[]> split(BufferedReader bReader) throws FileNotReadable {
         ArrayList<String[]> dataSplit = new ArrayList<>();
@@ -52,7 +65,7 @@ public class Data {
     }
 
     /**
-     * funzione per la scrittura su file per tenere traccia di ciò che accade nella macchinetta
+     * Funzione per la scrittura su file. Tengo traccia di ciò che accade nella macchinetta
      * @param scrittura è la stringa da accodare al file contenente le informazioni necessarie
      * @throws FileNotWritable è l'eccezione lanciata nel caso non sia possibile scrivere sul file indicato da pathfile
      * in tal caso, la classe chiamante questa funzione si occuperà di gestire l'eccezione
@@ -70,8 +83,13 @@ public class Data {
         }
     }
 
+    /**
+     * Ok, questa già si capisce dal nome, ma comunque sempre meglio dire cosa fa
+     * @return
+     */
+
     public static String getCurrentTimeStamp() {
-        SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS"); //stringa per data ora e tempo
+        SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS"); //stringa per data ora tempo
         Date now = new Date();
         String strDate = sdfDate.format(now);
         return strDate;
