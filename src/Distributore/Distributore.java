@@ -140,16 +140,18 @@ public class Distributore {
      */
 
     private void selectBeverage(String ID, int sugar) throws UnsufficientCredit{
+
         if (coins.getCredit() >= list.get(ID).getPrice()){  //se il credito è uguale o più singifica che posso
                                                             // potenzialmente acquistare la bevanda
-                subtractIngredients(ID);
-                subtractSugar(sugar);
-                coins.updateBalance(list.get(ID).getPrice());
-                if (coins.getCredit()!= 0) {
-                    coins.giveChange();
-                }
+            subtractIngredients(ID);
+            subtractSugar(sugar);
+            coins.updateBalance(list.get(ID).getPrice());
+
+            if (coins.getCredit()!= 0) {
+                coins.giveChange();
             }
-        else{
+        }
+        else {
             throw new UnsufficientCredit();
         }
             // If I digit a wrong number from keyboard?
