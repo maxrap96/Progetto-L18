@@ -5,7 +5,9 @@ import Errori.FileNotReadable;
 import Errori.FileNotWritable;
 
 import java.io.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Data {
     private String pathFile;
@@ -49,18 +51,30 @@ public class Data {
         }
     }
 
+    /**
+     * funzione per la scrittura su file per tenere traccia di ciò che accade nella macchinetta
+     * @param scrittura è la stringa da accodare al file contenente le informazioni necessarie
+     * @throws FileNotWritable è l'eccezione lanciata nel caso non sia possibile scrivere sul file indicato da pathfile
+     * in tal caso, la classe chiamante questa funzione si occuperà di gestire l'eccezione
+     */
+
     public void writeFile(String scrittura) throws FileNotWritable {
         try {
             FileWriter writer = new FileWriter(pathFile, true);
-
-            writer.write(scrittura + "\n");
-
+            writer.write(scrittura + "\t" + getCurrentTimeStamp() + "\n");
             writer.close();
         } catch (FileNotFoundException e) {
             throw new FileNotWritable();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static String getCurrentTimeStamp() {
+        SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS"); //stringa per data ora e tempo
+        Date now = new Date();
+        String strDate = sdfDate.format(now);
+        return strDate;
     }
 
 }
