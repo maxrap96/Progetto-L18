@@ -17,8 +17,10 @@ public class Data {
     }
 
     /**
-     * Che cosa fa?
-     * @return
+     * Funzione che apre e legge i dati iniziali da un file esterno passato come parametro.
+     * Il file viene chiuso, ma i dati vengono salvati per poi essere modificati da altre funzioni che
+     * aggiornano i dati dopo ogni transazione della macchinetta
+     * @return openedFile
      * @throws FileNotReadable
      */
 
@@ -39,9 +41,10 @@ public class Data {
     }
 
     /**
-     * Che cosa fa?
+     * Funzione che riceve i dati copiati dal file e li divide. Dopo ogni carattere di "Tab" viene effettuata la
+     * divisione.
      * @param bReader
-     * @return
+     * @return dataSplit
      * @throws FileNotReadable
      */
 
@@ -84,8 +87,9 @@ public class Data {
     }
 
     /**
-     * Ok, questa già si capisce dal nome, ma comunque sempre meglio dire cosa fa
-     * @return
+     * Funzione per ottenere la data e ora locali. Questi dati vengono usati nei file di statistiche e nei file di
+     * aggiornamento dei dati della macchinetta.
+     * @return strDate
      */
 
     public static String getCurrentTimeStamp() {

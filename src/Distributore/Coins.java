@@ -140,7 +140,6 @@ public class Coins {
                 fileNotWritable.printStackTrace();
             }
 
-            //TODO Abbellire output
             System.out.println("Erogazione resto: " +credit);
             System.out.println("5c: " + change[0] + "\n10c: " + change[1] + "\n20c: " + change[2] + "\n50c: "
                     + change[3] + "\n1E: " + change[4] + "\n2E: " + change[5]);
