@@ -6,8 +6,6 @@ import Errori.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
 
 public class Distributore {
@@ -33,6 +31,8 @@ public class Distributore {
 
         this.cup = this.cupMax = parseInt(listFromFile.get(0)[0]);
         this.spoon = this.spoonmax = parseInt(listFromFile.get(0)[1]);
+        //MJ: perche' nell'interfaccia MaxValue non ho cupmax e spoonmax??
+
         this.water = MaxValue.WATERMAX;
         this.sugar = MaxValue.SUGARMAX;
         this.milk = MaxValue.MILKMAX;

@@ -76,5 +76,4 @@ public class Data {
         String strDate = sdfDate.format(now);
         return strDate;
     }
-
 }
