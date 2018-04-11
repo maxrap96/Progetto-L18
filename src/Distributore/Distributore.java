@@ -81,6 +81,7 @@ public class Distributore {
         System.out.println("Inserire il codice della bevanda e la quantità di zucchero richiesta (da 0 a 5)\n" +
                 "separate da uno spazio.");
         String input = null;
+
         try {
             input = keyboard();
         } catch (NoDigit noDigit) {
@@ -123,11 +124,11 @@ public class Distributore {
         InputStreamReader keyboard = new InputStreamReader(System.in);
         BufferedReader bufferedReader = new BufferedReader(keyboard);
         try {
-            String letta = bufferedReader.readLine();
+            //String letta = bufferedReader.readLine(); // MJ: La stringa letta e' ridondante, possiamo toglierla.
             //TODO C'è DA CAPIRE PERCHè SE LE CHIUDO ESPLODE IL MONDO
             // keyboard.close();
             //bufferedReader.close();
-            return letta;
+            return bufferedReader.readLine();
         } catch (IOException e) {
             throw new NoDigit();
         }
