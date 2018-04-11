@@ -19,6 +19,8 @@ public class Distributore {
     private ArrayList<String[]> listFromFile;
     private String[] statistics;
 
+    private Data data = new Data("src/Distributore/stats.txt");
+
     public Distributore(ArrayList listFromFile) {
 
         this.list = new HashMap<>();
@@ -166,7 +168,6 @@ public class Distributore {
         milk -= list.get(ID).getMilk();
         water -= list.get(ID).getWater();
         cup--;
-
     }
 
     /**

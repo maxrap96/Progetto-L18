@@ -152,7 +152,7 @@ public class Coins {
     }
 
     /**
-     * Che cosa fa?
+     * Funzione che controlla che il resto possa essere erogato. (SUPPONGO!)
      * @return
      */
 
