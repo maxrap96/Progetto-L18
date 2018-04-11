@@ -14,9 +14,9 @@ public class Distributore {
 
     private HashMap<String,Bevanda> list;
     private int cup, cupMax, spoon, spoonmax;
-    private double water, watermax;
-    private double sugar, sugarMax;
-    private double milk, milkMax;
+    private double water;
+    private double sugar;
+    private double milk;
     private Coins coins;
     private ArrayList<String[]> listFromFile;
     private String[] statistics;
@@ -29,24 +29,13 @@ public class Distributore {
         setVendingMachine();
     }
 
-    /**TODO AGGIUNGERE LE INTERFACCE PER I CAMPI FINAL
-     * Carica i valori massimi nella macchinetta
-     */
-
-    // Da rivedere, troppe azioni ripetitive
-
     private void setVendingMachine() {
 
-        this.cupMax = parseInt(listFromFile.get(0)[0]);
-        this.cup = cupMax;
-        this.spoonmax = parseInt(listFromFile.get(0)[1]);
-        this.spoon = spoonmax;
-        this.watermax = parseDouble(listFromFile.get(0)[2]);
-        this.water = watermax;
-        this.sugarMax = parseDouble(listFromFile.get(0)[3]);
-        this.sugar = sugarMax;
-        this.milkMax = parseDouble(listFromFile.get(0)[4]);
-        this.milk = milkMax;
+        this.cup = this.cupMax = parseInt(listFromFile.get(0)[0]);
+        this.spoon = this.spoonmax = parseInt(listFromFile.get(0)[1]);
+        this.water = MaxValue.WATERMAX;
+        this.sugar = MaxValue.SUGARMAX;
+        this.milk = MaxValue.MILKMAX;
         //todo add server quando ci sarà
 
         //mi devo ricordare che dalla seconda riga in poi sono le bevande
@@ -89,7 +78,8 @@ public class Distributore {
 
     public void textualInput (){
         showList();
-        System.out.println("Inserire il codice della bevanda e la quantità di zucchero richiesta (da 0 a 5)\nseparate da uno spazio.");
+        System.out.println("Inserire il codice della bevanda e la quantità di zucchero richiesta (da 0 a 5)\n" +
+                "separate da uno spazio.");
         String input = null;
         try {
             input = keyboard();
@@ -100,7 +90,7 @@ public class Distributore {
         String[] splitted = input.split("\\s+");
         //mi chiedo se la bevanda è disponibile
         if (list.get(splitted[0]).isAvailable()) {
-            double[] value=coins.getCOINS_VALUE();
+            double[] value = coins.getCOINS_VALUE();
             for(int i = 0; i < value.length; i++) {
                 try {
                     //System.out.println("Inserire le monete da " + value[i] + " cent");
@@ -112,7 +102,7 @@ public class Distributore {
                 }
             }
 
-            //vera e propria funzione da usare nella interfaccia
+            //vera e propria funzione da usare nell'interfaccia
             try {
                 selectBeverage(splitted[0], parseInt(splitted[1]));
             } catch (UnsufficientCredit unsufficientCredit) {
@@ -149,8 +139,9 @@ public class Distributore {
      * @param sugar: è la qunatità di zucchero da 0 a 5
      */
 
-    private void selectBeverage(String ID,int sugar) throws UnsufficientCredit{
-        if (coins.getCredit()>=list.get(ID).getPrice()){ //se il credito è uguale o più singifica che posso potenzialmente acquistare la bevanda
+    private void selectBeverage(String ID, int sugar) throws UnsufficientCredit{
+        if (coins.getCredit() >= list.get(ID).getPrice()){  //se il credito è uguale o più singifica che posso
+                                                            // potenzialmente acquistare la bevanda
                 subtractIngredients(ID);
                 subtractSugar(sugar);
                 coins.updateBalance(list.get(ID).getPrice());
@@ -161,7 +152,7 @@ public class Distributore {
         else{
             throw new UnsufficientCredit();
         }
-            // If beverage doesn't exist? Or if not digited correctly?
+            // If I digit a wrong number from keyboard?
     }
 
     /**
