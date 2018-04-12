@@ -9,6 +9,8 @@ public class Distributore extends JFrame{
     public static final int LUNGHEZZA = 600;
     public static final int ALTEZZA = 500;
 
+    // Dario: quando hai tempo facci un po' di commenti
+
     public Distributore() {
         setSize(LUNGHEZZA, ALTEZZA);
         setTitle("Hot Drinks Vending Machine");
