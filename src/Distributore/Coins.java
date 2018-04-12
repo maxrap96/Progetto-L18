@@ -14,7 +14,7 @@ public class Coins {
     private String[] addedCoins;
     private final double COINS_VALUE[] = {0.05, 0.10, 0.20, 0.50 , 1.00, 2.00};
 
-    private Data data = new Data("src/Distributore/monete.txt");
+    private Data data = new Data("src/File_Testo/monete.txt");
 
     public Coins() {
         initCoins();
@@ -96,7 +96,7 @@ public class Coins {
     }
 
     /**
-     * Che cosa fa?
+     * Restituisce quanti soldi  in totale nella macchinetta
      * @return
      */
 
@@ -116,7 +116,7 @@ public class Coins {
     public void giveChange() {
 
         if (checkChange()) {
-            int[] change = new int[6];                      //(change[0], change[1], ecc...) è il numero di
+            int[] change = new int[6];                      // (change[0], change[1], ecc...) è il numero di
                                                             // monete  del tipo indicato
             int[] divisor = {5, 10, 20, 50, 100, 200};
             double resto;
@@ -157,7 +157,7 @@ public class Coins {
      */
 
     private boolean checkChange() {
-        if (credit<=getBalance()){
+        if (credit <= getBalance()){
             return true;
         }
         else {

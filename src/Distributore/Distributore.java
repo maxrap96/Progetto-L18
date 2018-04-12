@@ -17,8 +17,8 @@ public class Distributore {
     private int cup, spoon;
     private double sugar, milk;
     private Coins coins;
-    private Data stats = new Data("src/Distributore/stats.txt");
-    private Data menu = new Data("src/Distributore/menu.txt");
+    private Data stats = new Data("src/File_Testo/stats.txt");
+    private Data menu = new Data("src/File_Testo/menu.txt");
 
     public Distributore() {
         this.list = new HashMap<>();
@@ -92,21 +92,23 @@ public class Distributore {
 
         String[] splitted = input.split("\\s+");
         //mi chiedo se la bevanda è disponibile
-        if (list.get(splitted[0]).isAvailable()) {
-            double[] value = coins.getCOINS_VALUE();
-            for(int i = 0; i < value.length; i++) {
-                try {
-                    System.out.println("Inserire le monete da " + String.format("%.2f", value[i]) + " cent");
-                    input = keyboard();
-                    coins.addCredit(input,i);
-                } catch (NoDigit noDigit) {
-                    noDigit.printStackTrace();
+        try {
+            if (list.get(splitted[0]).isAvailable()) {
+                double[] value = coins.getCOINS_VALUE();
+                for (int i = 0; i < value.length; i++) {
+                    try {
+                        System.out.println("Inserire le monete da " + String.format("%.2f", value[i]) + " cent");
+                        input = keyboard();
+                        coins.addCredit(input, i);
+                    } catch (NoDigit noDigit) {
+                        noDigit.printStackTrace();
+                    }
                 }
-            }
-            //vera e propria funzione da usare nell'interfaccia per l'erogazione della bevanda
+                //vera e propria funzione da usare nell'interfaccia per l'erogazione della bevanda
                 selectBeverage(splitted[0], parseInt(splitted[1]));
+            }
         }
-        else {
+        catch (Exception e){
             new BeverageNotAvailable();
         }
 
@@ -151,7 +153,6 @@ public class Distributore {
         else {
             new UnsufficientCredit();
         }
-            // If I digit a wrong number from keyboard? answer: non arrivi nemmeno qui
     }
 
     /**
