@@ -7,47 +7,45 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import static Distributore.MaxValue.SUGARDOSE;
 import static java.lang.Integer.MAX_VALUE;
 import static java.lang.Integer.parseInt;
 
 public class Distributore {
 
     private HashMap<String,Bevanda> list;
-    private int cup, cupMax, spoon, spoonmax;
-    private double water;
-    private double sugar;
-    private double milk;
+    private int cup, spoon;
+    private double sugar, milk;
     private Coins coins;
-    private ArrayList<String[]> listFromFile;
-    private String[] statistics;
+    private Data stats = new Data("src/Distributore/stats.txt");
+    private Data menu = new Data("src/Distributore/menu.txt");
 
-    private Data data = new Data("src/Distributore/stats.txt");
-
-    public Distributore(ArrayList listFromFile) {
-
+    public Distributore() {
         this.list = new HashMap<>();
-        this.listFromFile = listFromFile;
         this.coins = new Coins();
         setVendingMachine();
+        try {
+            createList(menu.readFile());
+        } catch (FileNotReadable fileNotReadable) {
+            fileNotReadable.printStackTrace();
+        }
     }
 
+
     private void setVendingMachine() {
-        this.water = MaxValue.WATERMAX;
         this.sugar = MaxValue.SUGARMAX;
         this.milk = MaxValue.MILKMAX;
         this.cup = MaxValue.CUPMAX;
         this.spoon = MaxValue.SPOONMAX;
-        //todo add server quando ci sarà
 
-        //mi devo ricordare che dalla seconda riga in poi sono le bevande
-        createList();
     }
 
     /**
      * Creo il menu nella macchinetta
+     * @param listFromFile arraylist di stringhe fornito all'apertura del file
      */
 
-    private void createList() {
+    private void createList(ArrayList<String[]> listFromFile) {
 
         for (int i = 0; i < listFromFile.size(); i++){
             Tipo tipo = Tipo.valueOf(listFromFile.get(i)[1]);
@@ -156,16 +154,15 @@ public class Distributore {
         else {
             throw new UnsufficientCredit();
         }
-            // If I digit a wrong number from keyboard?
+            // If I digit a wrong number from keyboard? answer: non arrivi nemmeno qui
     }
 
     /**
      * Funzione per sottrarre quantità necessarie per preparare la bevanda
-     * @param ID bevanda da cui sottrarre
+     * @param ID bevanda da cui prendere le dosi
      */
     private void subtractIngredients(String ID) {
         milk -= list.get(ID).getMilk();
-        water -= list.get(ID).getWater();
         cup--;
     }
 
@@ -176,18 +173,9 @@ public class Distributore {
 
     private void subtractSugar(int qty){
         if (qty != 0){
-            sugar -= (double) qty * 0.022/5;
+            sugar -= (double) qty * MaxValue.SUGARDOSE;
             spoon--;
         }
-    }
-
-    /**
-     * Funzione per erogare il resto.
-     */
-    private void giveChange() {
-        coins.giveChange();
-        //TODO sistemare il resto
-        System.out.println("Erogazione resto di: " + coins);
     }
 
     /**
