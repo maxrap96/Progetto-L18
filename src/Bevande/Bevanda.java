@@ -68,6 +68,9 @@ public abstract class Bevanda {
         return "ID: " + id + "\tName: " + name + "\nPrice: " + String.format("%.2f", price) + "\n";
     }
 
+    public String getName() {
+        return name;
+    }
 
     /**
      * TODO: Eventuale interfaccia.

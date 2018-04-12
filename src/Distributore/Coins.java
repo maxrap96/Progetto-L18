@@ -14,7 +14,7 @@ public class Coins {
     private String[] addedCoins;
     private final double COINS_VALUE[] = {0.05, 0.10, 0.20, 0.50 , 1.00, 2.00};
 
-    private Data data = new Data("src/Distributore/monete.txt");
+    private Data data = new Data("src/File_Testo/monete.txt");
 
     public Coins() {
         initCoins();
@@ -26,8 +26,8 @@ public class Coins {
     }
 
     /**
-     * Inizializziamo i tagli delle monete tramite lettura da file. Nel
-     * caso di errori usiamo una inizializzazione di default.
+     * Inizializza i tagli delle monete tramite lettura da file. Nel caso di errori usiamo una inizializzazione
+     * di default.
      */
     public void initCoins() {
         try {
@@ -69,17 +69,13 @@ public class Coins {
 
     public void updateBalance(double vendita) {
         profit += vendita;
-        credit = (credit)*100 - (vendita)*100;  //Commenti Luce..
+        credit = (credit)*100 - (vendita)*100;
         credit = credit/100;
     }
 
     /**
-     * Funzione per identificare le monete inserite in base alla stringa in input (da tastiera o interfaccia)
-     *
+     * Funzione per identificare il tipo e la quantità di monete inserite
      * @param index è la stringa da analizzare per identificare, in base alla posizione.
-     *              taglio: 0.05 0.10. 0.20 0.50 1 2
-     *              input:  1     0    3    1   0 0
-     *              ad esempio posso capire quante monete per ogni taglio relativo alla posizione essendo separate da spazi.
      */
 
     public void addCredit(String number, int index) {
@@ -99,6 +95,11 @@ public class Coins {
         return credit;
     }
 
+    /**
+     * Restituisce quanti soldi  in totale nella macchinetta
+     * @return
+     */
+
     private double getBalance() {
         double balance = 0;
         for (int i = 0; i < money.length; i++) {
@@ -107,11 +108,17 @@ public class Coins {
         return balance;
     }
 
+    /**
+     * Che cosa fa?
+     * Per altro troppa roba in cascata, un If con dentro un For con dentro un If, fate delle sotto funzioni
+     */
+
     public void giveChange() {
 
         if (checkChange()) {
-            int[] change = new int[6];                        //(change[0], change[1], ecc...) è il numero di monete
-            int[] divisor = {5, 10, 20, 50, 100, 200};            // del tipo indicato
+            int[] change = new int[6];                      // (change[0], change[1], ecc...) è il numero di
+                                                            // monete  del tipo indicato
+            int[] divisor = {5, 10, 20, 50, 100, 200};
             double resto;
 
             resto = (credit * 100);
@@ -133,20 +140,24 @@ public class Coins {
                 fileNotWritable.printStackTrace();
             }
 
-            //TODO Abbellire output
-            System.out.println("Erogazione resto: " +credit);
+            System.out.println("Erogazione resto: " +String.format("%.2f",credit));
             System.out.println("5c: " + change[0] + "\n10c: " + change[1] + "\n20c: " + change[2] + "\n50c: "
                     + change[3] + "\n1E: " + change[4] + "\n2E: " + change[5]);
 
 
-        }  else if(!checkChange()) {
+        }  else {
             System.out.println("Resto NON disponibile");
         }
 
     }
 
+    /**
+     * Funzione che controlla che il resto possa essere erogato. (SUPPONGO!)
+     * @return
+     */
+
     private boolean checkChange() {
-        if (credit<=getBalance()){
+        if (credit <= getBalance()){
             return true;
         }
         else {

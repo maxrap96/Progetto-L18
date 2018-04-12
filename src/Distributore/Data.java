@@ -12,11 +12,19 @@ import java.util.Date;
 public class Data {
     private String pathFile;
 
-    public Data(String pathFile) {
+    protected Data(String pathFile) {
         this.pathFile = pathFile;
     }
 
-    public ArrayList<String[]> readFile() throws FileNotReadable {
+    /**
+     * Funzione che apre e legge i dati iniziali da un file esterno passato come parametro.
+     * Il file viene chiuso, ma i dati vengono salvati per poi essere modificati da altre funzioni che
+     * aggiornano i dati dopo ogni transazione della macchinetta
+     * @return openedFile
+     * @throws FileNotReadable
+     */
+
+    protected ArrayList<String[]> readFile() throws FileNotReadable {
         try {
             BufferedReader Breader = new BufferedReader(new FileReader(pathFile));
             ArrayList<String[]> openedFile = split(Breader);
@@ -32,7 +40,15 @@ public class Data {
         return null;
     }
 
-    public ArrayList<String[]> split(BufferedReader bReader) throws FileNotReadable {
+    /**
+     * Funzione che riceve i dati copiati dal file e li divide. Dopo ogni carattere di "Tab" viene effettuata la
+     * divisione.
+     * @param bReader
+     * @return dataSplit
+     * @throws FileNotReadable
+     */
+
+    private ArrayList<String[]> split(BufferedReader bReader) throws FileNotReadable {
         ArrayList<String[]> dataSplit = new ArrayList<>();
         String row;
 
@@ -52,13 +68,13 @@ public class Data {
     }
 
     /**
-     * funzione per la scrittura su file per tenere traccia di ciò che accade nella macchinetta
+     * Funzione per la scrittura su file. Tengo traccia di ciò che accade nella macchinetta
      * @param scrittura è la stringa da accodare al file contenente le informazioni necessarie
      * @throws FileNotWritable è l'eccezione lanciata nel caso non sia possibile scrivere sul file indicato da pathfile
-     * in tal caso, la classe chiamante questa funzione si occuperà di gestire l'eccezione
+     *                         in tal caso, la classe chiamante questa funzione si occuperà di gestire l'eccezione
      */
 
-    public void writeFile(String scrittura) throws FileNotWritable {
+    protected void writeFile(String scrittura) throws FileNotWritable {
         try {
             FileWriter writer = new FileWriter(pathFile, true);
             writer.write(scrittura + "\t" + getCurrentTimeStamp() + "\n");
@@ -70,11 +86,16 @@ public class Data {
         }
     }
 
-    public static String getCurrentTimeStamp() {
-        SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS"); //stringa per data ora e tempo
+    /**
+     * Funzione per ottenere la data e ora locali. Questi dati vengono usati nei file di statistiche e nei file di
+     * aggiornamento dei dati della macchinetta.
+     * @return strDate
+     */
+
+    private static String getCurrentTimeStamp() {
+        SimpleDateFormat sdfDate = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss"); //stringa per data ora tempo
         Date now = new Date();
         String strDate = sdfDate.format(now);
         return strDate;
     }
-
 }

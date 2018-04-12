@@ -1,0 +1,1 @@
+* File di statistiche, vuoto e riempito dal programma successivamente.

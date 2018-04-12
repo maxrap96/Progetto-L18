@@ -1,6 +1,4 @@
-﻿*	le righe con * vengono skippate nella lettura
-*	bicchierini  cucchianini acqua   zucchero    latte
-2000	1000	1000	100	50	20	15
+﻿*	le righe con * vengono saltate nella lettura
 *	ID   	TIPO  		NOME  	COSTO   QUANTITA_MASSIMA    TEMPERATURA    DOSE		latte		acqua
 01	MACINATO	ESPRESSO	0.45	50	85	0.25	0	0.050
 02	CAPSULA	TE' al limone	0.50	30	90	1	0	0.200
