@@ -3,7 +3,7 @@ package InterfacciaDistributore;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-public class ChiudiFinestra extends WindowAdapter {
+public class WindowCloser extends WindowAdapter {
     @Override
     public void windowClosing(WindowEvent e) {
         System.exit(0);
