@@ -6,6 +6,8 @@ import Errori.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import static java.lang.Integer.MAX_VALUE;
 import static java.lang.Integer.parseInt;
 
 public class Distributore {
@@ -30,14 +32,11 @@ public class Distributore {
     }
 
     private void setVendingMachine() {
-
-        this.cup = this.cupMax = parseInt(listFromFile.get(0)[0]);
-        this.spoon = this.spoonmax = parseInt(listFromFile.get(0)[1]);
-        //MJ: perche' nell'interfaccia MaxValue non ho cupmax e spoonmax??
-
         this.water = MaxValue.WATERMAX;
         this.sugar = MaxValue.SUGARMAX;
         this.milk = MaxValue.MILKMAX;
+        this.cup = MaxValue.CUPMAX;
+        this.spoon = MaxValue.SPOONMAX;
         //todo add server quando ci sarà
 
         //mi devo ricordare che dalla seconda riga in poi sono le bevande
@@ -50,7 +49,7 @@ public class Distributore {
 
     private void createList() {
 
-        for (int i = 1; i < listFromFile.size(); i++){
+        for (int i = 0; i < listFromFile.size(); i++){
             Tipo tipo = Tipo.valueOf(listFromFile.get(i)[1]);
             Bevanda bevanda = null;
             switch (tipo.ordinal()) {

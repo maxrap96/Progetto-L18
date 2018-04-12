@@ -12,7 +12,7 @@ import java.util.Date;
 public class Data {
     private String pathFile;
 
-    public Data(String pathFile) {
+    protected Data(String pathFile) {
         this.pathFile = pathFile;
     }
 
@@ -24,7 +24,7 @@ public class Data {
      * @throws FileNotReadable
      */
 
-    public ArrayList<String[]> readFile() throws FileNotReadable {
+    protected ArrayList<String[]> readFile() throws FileNotReadable {
         try {
             BufferedReader Breader = new BufferedReader(new FileReader(pathFile));
             ArrayList<String[]> openedFile = split(Breader);
@@ -48,7 +48,7 @@ public class Data {
      * @throws FileNotReadable
      */
 
-    public ArrayList<String[]> split(BufferedReader bReader) throws FileNotReadable {
+    private ArrayList<String[]> split(BufferedReader bReader) throws FileNotReadable {
         ArrayList<String[]> dataSplit = new ArrayList<>();
         String row;
 
@@ -74,7 +74,7 @@ public class Data {
      * in tal caso, la classe chiamante questa funzione si occuperà di gestire l'eccezione
      */
 
-    public void writeFile(String scrittura) throws FileNotWritable {
+    protected void writeFile(String scrittura) throws FileNotWritable {
         try {
             FileWriter writer = new FileWriter(pathFile, true);
             writer.write(scrittura + "\t" + getCurrentTimeStamp() + "\n");
@@ -92,7 +92,7 @@ public class Data {
      * @return strDate
      */
 
-    public static String getCurrentTimeStamp() {
+    private static String getCurrentTimeStamp() {
         SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS"); //stringa per data ora tempo
         Date now = new Date();
         String strDate = sdfDate.format(now);
