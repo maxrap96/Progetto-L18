@@ -27,8 +27,9 @@ public class Distributore extends JFrame{
         add(pannelloBevande, BorderLayout.WEST);
 
         JPanel pannelloSelezione = new JPanel();
-        pannelloSelezione.setPreferredSize(new Dimension(600, 500));
+        pannelloSelezione.setPreferredSize(new Dimension(550, 500));
         pannelloSelezione.setBackground(Color.LIGHT_GRAY);
+        pannelloSelezione.setLayout(new BorderLayout());
         add(pannelloSelezione, BorderLayout.EAST);
 
         JButton caffeEspresso = new JButton("Caffè Espresso");
@@ -63,11 +64,18 @@ public class Distributore extends JFrame{
         JButton vuoto3 = new JButton();
         vuoto3.setBackground(Color.WHITE);
         pannelloBevande.add(vuoto3);
+
+        JTextArea display = new JTextArea(19, 30);
+        pannelloSelezione.add(display, BorderLayout.NORTH);
+
+        JPanel pannelloMonete = new JPanel();
+        pannelloMonete.setBackground(Color.BLUE);
+        pannelloMonete.setPreferredSize(new Dimension(550, 400));
+        pannelloSelezione.add(pannelloMonete, BorderLayout.SOUTH);
     }
 
     public static void main(String[] args) {
         Distributore d = new Distributore();
         d.setVisible(true);
     }
-
 }
