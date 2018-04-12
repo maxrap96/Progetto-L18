@@ -1,1 +1,2 @@
 * File di statistiche, vuoto e riempito dal programma successivamente.
+999.875	499	999		Transazione avvenuta il:	12-04-2018 16:08:53

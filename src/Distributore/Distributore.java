@@ -111,7 +111,6 @@ public class Distributore {
         catch (Exception e){
             new BeverageNotAvailable();
         }
-
     }
 
     /**
@@ -145,6 +144,13 @@ public class Distributore {
                                                             // potenzialmente acquistare la bevanda
             subtractIngredients(ID,sugar);
             coins.updateBalance(list.get(ID).getPrice());
+
+            // Scrittura su file di statistiche:
+            try {
+                stats.writeFile(statisticsFile());
+            } catch (FileNotWritable fileNotWritable) {
+                fileNotWritable.printStackTrace();
+            }
 
             if (coins.getCredit()!= 0) {
                 coins.giveChange();
@@ -185,5 +191,10 @@ public class Distributore {
         for (int i = 1; i < list.size() + 1; i++){
             System.out.println(list.get("0" + i));
         }
+    }
+
+    // MJ: Funzione da rinominare con nome piu' significativo:
+    protected String statisticsFile() {
+        return this.sugar + "\t" + this.cup + "\t" + this.spoon + "\t\tTransazione avvenuta il:";
     }
 }

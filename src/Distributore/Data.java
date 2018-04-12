@@ -93,7 +93,7 @@ public class Data {
      */
 
     private static String getCurrentTimeStamp() {
-        SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS"); //stringa per data ora tempo
+        SimpleDateFormat sdfDate = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss"); //stringa per data ora tempo
         Date now = new Date();
         String strDate = sdfDate.format(now);
         return strDate;
