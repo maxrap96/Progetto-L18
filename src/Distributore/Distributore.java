@@ -31,13 +31,16 @@ public class Distributore {
         }
     }
 
+    /**
+     * Imposto i valori massimi di alcuni parametri del distributore, come la quantità di zucchero, latte, bicchierini
+     * e cucchiani.
+     */
 
     private void setVendingMachine() {
         this.sugar = MaxValue.SUGARMAX;
         this.milk = MaxValue.MILKMAX;
         this.cup = MaxValue.CUPMAX;
         this.spoon = MaxValue.SPOONMAX;
-
     }
 
     /**
@@ -93,7 +96,6 @@ public class Distributore {
             double[] value = coins.getCOINS_VALUE();
             for(int i = 0; i < value.length; i++) {
                 try {
-                    //System.out.println("Inserire le monete da " + value[i] + " cent");
                     System.out.println("Inserire le monete da " + String.format("%.2f", value[i]) + " cent");
                     input = keyboard();
                     coins.addCredit(input,i);
@@ -101,13 +103,8 @@ public class Distributore {
                     noDigit.printStackTrace();
                 }
             }
-
-            //vera e propria funzione da usare nell'interfaccia
-            try {
+            //vera e propria funzione da usare nell'interfaccia per l'erogazione della bevanda
                 selectBeverage(splitted[0], parseInt(splitted[1]));
-            } catch (UnsufficientCredit unsufficientCredit) {
-                unsufficientCredit.printStackTrace();
-            }
         }
         else {
             new BeverageNotAvailable();
@@ -134,17 +131,17 @@ public class Distributore {
     }
 
     /**
-     * Funzione per selezionare una bevanda. Essa controlla che il credito sia sufficiente
+     * Funzione per selezionare una bevanda. Essa controlla che il credito sia sufficiente.
+     * il credito è già contenuto dentro a credit.
      * @param ID: è l'id della bevanda selezionata
      * @param sugar: è la qunatità di zucchero da 0 a 5
      */
 
-    private void selectBeverage(String ID, int sugar) throws UnsufficientCredit{
+    private void selectBeverage(String ID, int sugar){
 
         if (coins.getCredit() >= list.get(ID).getPrice()){  //se il credito è uguale o più singifica che posso
                                                             // potenzialmente acquistare la bevanda
-            subtractIngredients(ID);
-            subtractSugar(sugar);
+            subtractIngredients(ID,sugar);
             coins.updateBalance(list.get(ID).getPrice());
 
             if (coins.getCredit()!= 0) {
@@ -152,7 +149,7 @@ public class Distributore {
             }
         }
         else {
-            throw new UnsufficientCredit();
+            new UnsufficientCredit();
         }
             // If I digit a wrong number from keyboard? answer: non arrivi nemmeno qui
     }
@@ -160,9 +157,11 @@ public class Distributore {
     /**
      * Funzione per sottrarre quantità necessarie per preparare la bevanda
      * @param ID bevanda da cui prendere le dosi
+     * @param sugar
      */
-    private void subtractIngredients(String ID) {
+    private void subtractIngredients(String ID, int sugar) {
         milk -= list.get(ID).getMilk();
+        subtractSugar(sugar);
         cup--;
     }
 
@@ -187,4 +186,3 @@ public class Distributore {
         }
     }
 }
-

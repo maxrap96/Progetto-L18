@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8a7e1018-de56-49fa-be27-ae9e2aa9dda7" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/menu.txt" afterPath="$PROJECT_DIR$/src/Distributore/menu.txt" />
-      <change beforePath="$PROJECT_DIR$/out/production/Progetto-L18/Distributore/monete.txt" afterPath="$PROJECT_DIR$/out/production/Progetto-L18/Distributore/monete.txt" />
-      <change beforePath="$PROJECT_DIR$/src/Distributore/Coins.java" afterPath="$PROJECT_DIR$/src/Distributore/Coins.java" />
+      <change beforePath="$PROJECT_DIR$/src/Distributore/Data.java" afterPath="$PROJECT_DIR$/src/Distributore/Data.java" />
       <change beforePath="$PROJECT_DIR$/src/Distributore/Distributore.java" afterPath="$PROJECT_DIR$/src/Distributore/Distributore.java" />
-      <change beforePath="$PROJECT_DIR$/src/Distributore/MaxValue.java" afterPath="$PROJECT_DIR$/src/Distributore/MaxValue.java" />
-      <change beforePath="$PROJECT_DIR$/src/Distributore/monete.txt" afterPath="$PROJECT_DIR$/src/Distributore/monete.txt" />
-      <change beforePath="$PROJECT_DIR$/src/OpenFile.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/Test.java" afterPath="$PROJECT_DIR$/src/Test.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,26 +28,27 @@
       <file leaf-file-name="Distributore.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Distributore/Distributore.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="469">
-              <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+            <state relative-caret-position="609">
+              <caret line="38" column="37" lean-forward="false" selection-start-line="38" selection-start-column="37" selection-end-line="38" selection-end-column="37" />
               <folding>
-                <element signature="docComment;method#selectBeverage#0;class#Distributore#0" expanded="false" />
-                <element signature="method#selectBeverage#0;class#Distributore#0" expanded="false" />
+                <element signature="method#setVendingMachine#0;class#Distributore#0" expanded="false" />
+                <element signature="method#createList#0;class#Distributore#0" expanded="false" />
+                <element signature="method#textualInput#0;class#Distributore#0" expanded="false" />
+                <element signature="docComment;method#keyboard#0;class#Distributore#0" expanded="false" />
+                <element signature="method#keyboard#0;class#Distributore#0" expanded="false" />
                 <element signature="docComment;method#subtractIngredients#0;class#Distributore#0" expanded="false" />
-                <element signature="method#subtractIngredients#0;class#Distributore#0" expanded="false" />
                 <element signature="docComment;method#subtractSugar#0;class#Distributore#0" expanded="false" />
-                <element signature="method#subtractSugar#0;class#Distributore#0" expanded="false" />
                 <element signature="docComment;method#showList#0;class#Distributore#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="menu.txt" pinned="false" current-in-tab="false">
+      <file leaf-file-name="menu.txt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Distributore/menu.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
-              <caret line="5" column="65" lean-forward="true" selection-start-line="5" selection-start-column="65" selection-end-line="5" selection-end-column="65" />
+              <caret line="5" column="64" lean-forward="true" selection-start-line="5" selection-start-column="64" selection-end-line="5" selection-end-column="64" />
               <folding />
             </state>
           </provider>
@@ -64,8 +57,8 @@
       <file leaf-file-name="MaxValue.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Distributore/MaxValue.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="4" column="20" lean-forward="false" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
+            <state relative-caret-position="168">
+              <caret line="8" column="24" lean-forward="false" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -74,41 +67,8 @@
       <file leaf-file-name="Data.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Distributore/Data.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1449">
-              <caret line="78" column="63" lean-forward="false" selection-start-line="78" selection-start-column="63" selection-end-line="78" selection-end-column="63" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Test.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Test.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="6" column="44" lean-forward="false" selection-start-line="6" selection-start-column="44" selection-end-line="6" selection-end-column="44" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Coins.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Distributore/Coins.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="637">
-              <caret line="142" column="78" lean-forward="false" selection-start-line="142" selection-start-column="78" selection-end-line="142" selection-end-column="78" />
-              <folding>
-                <element signature="e#474#475#0" expanded="true" />
-                <element signature="e#501#502#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="monete.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Distributore/monete.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="588">
-              <caret line="28" column="51" lean-forward="false" selection-start-line="28" selection-start-column="51" selection-end-line="28" selection-end-column="51" />
+            <state relative-caret-position="721">
+              <caret line="83" column="33" lean-forward="true" selection-start-line="83" selection-start-column="33" selection-end-line="83" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -137,13 +97,14 @@
         <option value="$PROJECT_DIR$/src/InterfacciaDistributore/RoundedBorder.java" />
         <option value="$PROJECT_DIR$/src/OpenFile.java" />
         <option value="$PROJECT_DIR$/src/Distributore/dati.txt" />
-        <option value="$PROJECT_DIR$/src/Distributore/Data.java" />
         <option value="$PROJECT_DIR$/src/Distributore/monete.txt" />
-        <option value="$PROJECT_DIR$/src/Distributore/MaxValue.java" />
         <option value="$PROJECT_DIR$/src/Distributore/menu.txt" />
-        <option value="$PROJECT_DIR$/src/Distributore/Distributore.java" />
         <option value="$PROJECT_DIR$/src/Test.java" />
         <option value="$PROJECT_DIR$/src/Distributore/Coins.java" />
+        <option value="$PROJECT_DIR$/src/Distributore/Data.java" />
+        <option value="$PROJECT_DIR$/src/Errori/InvalidType.java" />
+        <option value="$PROJECT_DIR$/src/Distributore/Distributore.java" />
+        <option value="$PROJECT_DIR$/src/Distributore/MaxValue.java" />
       </list>
     </option>
   </component>
@@ -200,6 +161,12 @@
               <item name="Progetto-L18" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Distributore" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Progetto-L18" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Progetto-L18" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Errori" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -382,7 +349,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4864000" />
+    <option name="totallyTimeSpent" value="5510000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -477,22 +444,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Distributore/Distributore.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1218">
-          <caret line="58" column="0" lean-forward="true" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;method#selectBeverage#0;class#Distributore#0" expanded="false" />
-            <element signature="method#selectBeverage#0;class#Distributore#0" expanded="false" />
-            <element signature="docComment;method#subtractIngredients#0;class#Distributore#0" expanded="false" />
-            <element signature="method#subtractIngredients#0;class#Distributore#0" expanded="false" />
-            <element signature="docComment;method#subtractSugar#0;class#Distributore#0" expanded="false" />
-            <element signature="method#subtractSugar#0;class#Distributore#0" expanded="false" />
-            <element signature="docComment;method#showList#0;class#Distributore#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Bevande/Bevanda.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
@@ -506,12 +457,13 @@
         <state relative-caret-position="651">
           <caret line="39" column="13" lean-forward="false" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
           <folding>
-            <element signature="docComment;method#selectBeverage#0;class#Distributore#0" expanded="false" />
-            <element signature="method#selectBeverage#0;class#Distributore#0" expanded="false" />
+            <element signature="method#setVendingMachine#0;class#Distributore#0" expanded="false" />
+            <element signature="method#createList#0;class#Distributore#0" expanded="false" />
+            <element signature="method#textualInput#0;class#Distributore#0" expanded="false" />
+            <element signature="docComment;method#keyboard#0;class#Distributore#0" expanded="false" />
+            <element signature="method#keyboard#0;class#Distributore#0" expanded="false" />
             <element signature="docComment;method#subtractIngredients#0;class#Distributore#0" expanded="false" />
-            <element signature="method#subtractIngredients#0;class#Distributore#0" expanded="false" />
             <element signature="docComment;method#subtractSugar#0;class#Distributore#0" expanded="false" />
-            <element signature="method#subtractSugar#0;class#Distributore#0" expanded="false" />
             <element signature="docComment;method#showList#0;class#Distributore#0" expanded="false" />
           </folding>
         </state>
@@ -575,6 +527,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -776,12 +729,13 @@
         <state relative-caret-position="-294">
           <caret line="39" column="13" lean-forward="false" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
           <folding>
-            <element signature="docComment;method#selectBeverage#0;class#Distributore#0" expanded="false" />
-            <element signature="method#selectBeverage#0;class#Distributore#0" expanded="false" />
+            <element signature="method#setVendingMachine#0;class#Distributore#0" expanded="false" />
+            <element signature="method#createList#0;class#Distributore#0" expanded="false" />
+            <element signature="method#textualInput#0;class#Distributore#0" expanded="false" />
+            <element signature="docComment;method#keyboard#0;class#Distributore#0" expanded="false" />
+            <element signature="method#keyboard#0;class#Distributore#0" expanded="false" />
             <element signature="docComment;method#subtractIngredients#0;class#Distributore#0" expanded="false" />
-            <element signature="method#subtractIngredients#0;class#Distributore#0" expanded="false" />
             <element signature="docComment;method#subtractSugar#0;class#Distributore#0" expanded="false" />
-            <element signature="method#subtractSugar#0;class#Distributore#0" expanded="false" />
             <element signature="docComment;method#showList#0;class#Distributore#0" expanded="false" />
           </folding>
         </state>
@@ -800,12 +754,13 @@
         <state relative-caret-position="527">
           <caret line="39" column="13" lean-forward="false" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
           <folding>
-            <element signature="docComment;method#selectBeverage#0;class#Distributore#0" expanded="false" />
-            <element signature="method#selectBeverage#0;class#Distributore#0" expanded="false" />
+            <element signature="method#setVendingMachine#0;class#Distributore#0" expanded="false" />
+            <element signature="method#createList#0;class#Distributore#0" expanded="false" />
+            <element signature="method#textualInput#0;class#Distributore#0" expanded="false" />
+            <element signature="docComment;method#keyboard#0;class#Distributore#0" expanded="false" />
+            <element signature="method#keyboard#0;class#Distributore#0" expanded="false" />
             <element signature="docComment;method#subtractIngredients#0;class#Distributore#0" expanded="false" />
-            <element signature="method#subtractIngredients#0;class#Distributore#0" expanded="false" />
             <element signature="docComment;method#subtractSugar#0;class#Distributore#0" expanded="false" />
-            <element signature="method#subtractSugar#0;class#Distributore#0" expanded="false" />
             <element signature="docComment;method#showList#0;class#Distributore#0" expanded="false" />
           </folding>
         </state>
@@ -843,12 +798,13 @@
         <state relative-caret-position="651">
           <caret line="39" column="13" lean-forward="false" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
           <folding>
-            <element signature="docComment;method#selectBeverage#0;class#Distributore#0" expanded="false" />
-            <element signature="method#selectBeverage#0;class#Distributore#0" expanded="false" />
+            <element signature="method#setVendingMachine#0;class#Distributore#0" expanded="false" />
+            <element signature="method#createList#0;class#Distributore#0" expanded="false" />
+            <element signature="method#textualInput#0;class#Distributore#0" expanded="false" />
+            <element signature="docComment;method#keyboard#0;class#Distributore#0" expanded="false" />
+            <element signature="method#keyboard#0;class#Distributore#0" expanded="false" />
             <element signature="docComment;method#subtractIngredients#0;class#Distributore#0" expanded="false" />
-            <element signature="method#subtractIngredients#0;class#Distributore#0" expanded="false" />
             <element signature="docComment;method#subtractSugar#0;class#Distributore#0" expanded="false" />
-            <element signature="method#subtractSugar#0;class#Distributore#0" expanded="false" />
             <element signature="docComment;method#showList#0;class#Distributore#0" expanded="false" />
           </folding>
         </state>
@@ -937,59 +893,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Distributore/Data.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1449">
-          <caret line="78" column="63" lean-forward="false" selection-start-line="78" selection-start-column="63" selection-end-line="78" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Distributore/monete.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="588">
           <caret line="28" column="51" lean-forward="false" selection-start-line="28" selection-start-column="51" selection-end-line="28" selection-end-column="51" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Distributore/MaxValue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="4" column="20" lean-forward="false" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Distributore/menu.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" column="65" lean-forward="true" selection-start-line="5" selection-start-column="65" selection-end-line="5" selection-end-column="65" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="6" column="44" lean-forward="false" selection-start-line="6" selection-start-column="44" selection-end-line="6" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Distributore/Distributore.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="469">
-          <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;method#selectBeverage#0;class#Distributore#0" expanded="false" />
-            <element signature="method#selectBeverage#0;class#Distributore#0" expanded="false" />
-            <element signature="docComment;method#subtractIngredients#0;class#Distributore#0" expanded="false" />
-            <element signature="method#subtractIngredients#0;class#Distributore#0" expanded="false" />
-            <element signature="docComment;method#subtractSugar#0;class#Distributore#0" expanded="false" />
-            <element signature="method#subtractSugar#0;class#Distributore#0" expanded="false" />
-            <element signature="docComment;method#showList#0;class#Distributore#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1001,6 +909,63 @@
             <element signature="e#474#475#0" expanded="true" />
             <element signature="e#501#502#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="6" column="44" lean-forward="false" selection-start-line="6" selection-start-column="44" selection-end-line="6" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Distributore/Data.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="721">
+          <caret line="83" column="33" lean-forward="true" selection-start-line="83" selection-start-column="33" selection-end-line="83" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Errori/InvalidType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="4" column="40" lean-forward="false" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Distributore/Distributore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="609">
+          <caret line="38" column="37" lean-forward="false" selection-start-line="38" selection-start-column="37" selection-end-line="38" selection-end-column="37" />
+          <folding>
+            <element signature="method#setVendingMachine#0;class#Distributore#0" expanded="false" />
+            <element signature="method#createList#0;class#Distributore#0" expanded="false" />
+            <element signature="method#textualInput#0;class#Distributore#0" expanded="false" />
+            <element signature="docComment;method#keyboard#0;class#Distributore#0" expanded="false" />
+            <element signature="method#keyboard#0;class#Distributore#0" expanded="false" />
+            <element signature="docComment;method#subtractIngredients#0;class#Distributore#0" expanded="false" />
+            <element signature="docComment;method#subtractSugar#0;class#Distributore#0" expanded="false" />
+            <element signature="docComment;method#showList#0;class#Distributore#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Distributore/MaxValue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="8" column="24" lean-forward="false" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Distributore/menu.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="5" column="64" lean-forward="true" selection-start-line="5" selection-start-column="64" selection-end-line="5" selection-end-column="64" />
+          <folding />
         </state>
       </provider>
     </entry>

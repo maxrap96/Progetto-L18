@@ -71,7 +71,7 @@ public class Data {
      * Funzione per la scrittura su file. Tengo traccia di ciò che accade nella macchinetta
      * @param scrittura è la stringa da accodare al file contenente le informazioni necessarie
      * @throws FileNotWritable è l'eccezione lanciata nel caso non sia possibile scrivere sul file indicato da pathfile
-     * in tal caso, la classe chiamante questa funzione si occuperà di gestire l'eccezione
+     *                         in tal caso, la classe chiamante questa funzione si occuperà di gestire l'eccezione
      */
 
     protected void writeFile(String scrittura) throws FileNotWritable {
