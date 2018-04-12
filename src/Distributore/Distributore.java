@@ -147,7 +147,7 @@ public class Distributore {
 
             // Scrittura su file di statistiche:
             try {
-                stats.writeFile(statisticsFile());
+                stats.writeFile(statisticsFile(ID));
             } catch (FileNotWritable fileNotWritable) {
                 fileNotWritable.printStackTrace();
             }
@@ -194,7 +194,8 @@ public class Distributore {
     }
 
     // MJ: Funzione da rinominare con nome piu' significativo:
-    protected String statisticsFile() {
-        return this.sugar + "\t" + this.cup + "\t" + this.spoon + "\t\tTransazione avvenuta il:";
+    protected String statisticsFile(String ID) {
+        return  list.get(ID).getName() + "\t" + String.format("%.3f", sugar) + "\t" + cup + "\t" + spoon +
+                "\t\tTransazione avvenuta il:";
     }
 }
