@@ -14,7 +14,7 @@ public class ListenerTry implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        jTextArea.setText("Caffé espresso costo 0.50");
+        jTextArea.setText("Caffé espresso" + "\n" + "Costo 0.50");
         jTextArea.repaint();
     }
 }
