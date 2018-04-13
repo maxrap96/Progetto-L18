@@ -5,9 +5,11 @@ import Errori.FileNotReadable;
 import Errori.FileNotWritable;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Data {
     private String pathFile;
@@ -98,4 +100,28 @@ public class Data {
         String strDate = sdfDate.format(now);
         return strDate;
     }
+
+    /**
+     * Funzione per la sovrascrittura di una specifica riga di testo.
+     * @param current è la riga da aggiornare.
+     * @param scrittura è la nuova riga che sovrascriverà la riga selezionata.
+     */
+
+    protected void overwriteFile(String scrittura, String current) throws IOException{
+        BufferedReader file = new BufferedReader(new FileReader(pathFile));
+        String line;
+        String input = "";
+
+        while ((line = file.readLine()) != null)
+            input += line + System.lineSeparator();
+
+        input = input.replace(current, scrittura);
+
+        FileOutputStream os = new FileOutputStream(pathFile);
+        os.write(input.getBytes());
+
+        file.close();
+        os.close();
+    }
+
 }

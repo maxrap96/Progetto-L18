@@ -2,6 +2,7 @@ package Distributore;
 import Errori.FileNotReadable;
 import Errori.FileNotWritable;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import static java.lang.Double.parseDouble;
 
@@ -10,6 +11,7 @@ public class Chiavetta {
     private double Saldo = 0;
     private int Linea;
     private Data data = new Data("src/File_Testo/dati_chiavetta.txt");
+    private String current;
 
     public Chiavetta(String ID) {
         this.ID = ID;
@@ -25,6 +27,7 @@ public class Chiavetta {
                  if(ID.equals(id)){
                      Saldo = parseDouble(chiavText.get(i)[1]);
                      Linea = i;
+                     current = chiavText.get(i)[0]+"\t"+chiavText.get(i)[1];
                  }
             }
 
@@ -35,15 +38,14 @@ public class Chiavetta {
 
     //TODO capire come riscrivere le sigole righe di un file.txt
 
-    public void AggSaldo(double importo){
+    public void AggSaldo(double importo) {
         Saldo += importo;
         String c = ID+"\t"+Saldo;
 
         try {
 
-            data.writeFile(c);
-        }catch (FileNotWritable fileNotWritable){
-            fileNotWritable.printStackTrace();
+            data.overwriteFile(c, current);
+        }catch (IOException e){
         }
     }
 
@@ -54,9 +56,8 @@ public class Chiavetta {
 
             try {
 
-                data.writeFile(c);
-            }catch (FileNotWritable fileNotWritable){
-                fileNotWritable.printStackTrace();
+                data.overwriteFile(c, current);
+            }catch (IOException e){
             }
             return true;
         }
