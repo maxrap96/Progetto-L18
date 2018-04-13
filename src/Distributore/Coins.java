@@ -109,7 +109,7 @@ public class Coins {
     }
 
     /**
-     * Che cosa fa?
+     * Funzione per erogare il resto, massimizzando il numero di monete di taglio maggiore.
      * Per altro troppa roba in cascata, un If con dentro un For con dentro un If, fate delle sotto funzioni
      */
 
@@ -152,8 +152,8 @@ public class Coins {
     }
 
     /**
-     * Funzione che controlla che il resto possa essere erogato. (SUPPONGO!)
-     * @return
+     * Funzione che controlla che il resto possa essere erogato.
+     * @return boolean
      */
 
     private boolean checkChange() {
