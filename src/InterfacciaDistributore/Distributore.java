@@ -73,8 +73,39 @@ public class Distributore extends JFrame{
 
         JPanel pannelloMonete = new JPanel();
         pannelloMonete.setBackground(Color.BLUE);
+        pannelloMonete.setLayout(null);
         pannelloMonete.setPreferredSize(new Dimension(550, 400));
         pannelloSelezione.add(pannelloMonete, BorderLayout.SOUTH);
+
+        JButton euro2 = new RoundButton("2");
+        euro2.setBackground(Color.green);
+        euro2.setBounds(50, 50, 100 ,100);
+        pannelloMonete.add(euro2);
+
+        JButton euro1 = new RoundButton("1");
+        euro1.setBounds(200, 50, 100, 100);
+        euro1.setBackground(Color.green);
+        pannelloMonete.add(euro1);
+
+        JButton cent50 = new RoundButton("50");
+        cent50.setBounds(350, 50, 100, 100);
+        cent50.setBackground(Color.green);
+        pannelloMonete.add(cent50);
+
+        JButton cent20 = new RoundButton("20");
+        cent20.setBounds(50, 200, 100, 100);
+        cent20.setBackground(Color.green);
+        pannelloMonete.add(cent20);
+
+        JButton cent10 = new RoundButton("10");
+        cent10.setBounds(200, 200, 100, 100);
+        cent10.setBackground(Color.green);
+        pannelloMonete.add(cent10);
+
+        JButton cent5 = new RoundButton("5");
+        cent5.setBounds(350, 200, 100, 100);
+        cent5.setBackground(Color.green);
+        pannelloMonete.add(cent5);
 
         caffeEspresso.addActionListener(new ListenerTry(display));
     }
