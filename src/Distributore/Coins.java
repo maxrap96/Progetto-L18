@@ -118,21 +118,7 @@ public class Coins {
         if (checkChange()) {
             int[] change = new int[6];                      // (change[0], change[1], ecc...) è il numero di
                                                             // monete  del tipo indicato
-            int[] divisor = {5, 10, 20, 50, 100, 200};
-            double resto;
-
-            resto = (credit * 100);
-
-            for (int i = 5; i > -1; i--) {
-                change[i] = (int) (resto) / divisor[i];
-                resto = resto % divisor[i];
-
-                if (change[i] > money[i]) {
-                    resto += (change[i] - money[i]) * divisor[i];
-                    change[i] = money[i];
-                }
-                money[i] -= change[i];
-            }
+            optimizeChange(change);
 
             try {
                 data.writeFile(moneyOnFile());
@@ -163,6 +149,24 @@ public class Coins {
         else {
             return false;
         }
+    }
+
+    private int[] optimizeChange(int[] change){
+
+        double resto = (credit * 100);
+        int[] divisor = {5, 10, 20, 50, 100, 200};
+
+        for (int i = 5; i > -1; i--) {
+            change[i] = (int) (resto) / divisor[i];
+            resto = resto % divisor[i];
+
+            if (change[i] > money[i]) {
+                resto += (change[i] - money[i]) * divisor[i];
+                change[i] = money[i];
+            }
+            money[i] -= change[i];
+        }
+        return change;
     }
 }
 
