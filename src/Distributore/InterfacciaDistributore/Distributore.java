@@ -59,57 +59,31 @@ public class Distributore extends JFrame{
         pannelloMonete.setPreferredSize(new Dimension(560, 545));
         pannelloSelezione.add(pannelloMonete, BorderLayout.SOUTH);
 
-        JButton euro2 = new RoundButton("2");
-        euro2.setFont(new Font("", Font.ITALIC,25));
-        euro2.setBackground(Color.WHITE);
-        euro2.setBounds(43, 290, 100 ,100);
+        JButton euro2 = makeRoundButton("2", 43, 290);
         pannelloMonete.add(euro2);
 
-        JButton euro1 = new RoundButton("1");
-        euro1.setFont(new Font("", Font.ITALIC,25));
-        euro1.setBounds(229, 290, 100, 100);
-        euro1.setBackground(Color.WHITE);
+        JButton euro1 = makeRoundButton("1", 229, 290);
         pannelloMonete.add(euro1);
 
-        JButton cent50 = new RoundButton("50");
-        cent50.setFont(new Font("", Font.ITALIC,25));
-        cent50.setBounds(416, 290, 100, 100);
-        cent50.setBackground(Color.WHITE);
+        JButton cent50 = makeRoundButton("0.50", 416, 290);
         pannelloMonete.add(cent50);
 
-        JButton cent20 = new RoundButton("20");
-        cent20.setFont(new Font("", Font.ITALIC,25));
-        cent20.setBounds(43, 426, 100, 100);
-        cent20.setBackground(Color.WHITE);
+        JButton cent20 = makeRoundButton("0.20", 43, 426);
         pannelloMonete.add(cent20);
 
-        JButton cent10 = new RoundButton("10");
-        cent10.setFont(new Font("", Font.ITALIC,25));
-        cent10.setBounds(229, 426, 100, 100);
-        cent10.setBackground(Color.WHITE);
+        JButton cent10 = makeRoundButton("0.10", 229, 426);
         pannelloMonete.add(cent10);
 
-        JButton cent5 = new RoundButton("5");
-        cent5.setFont(new Font("", Font.ITALIC,25));
-        cent5.setBounds(416, 426, 100, 100);
-        cent5.setBackground(Color.WHITE);
+        JButton cent5 = makeRoundButton("0.05", 416, 426);
         pannelloMonete.add(cent5);
 
-        JButton piuZucchero = new RoundButton("+");
-        piuZucchero.setFont(new Font("", Font.ITALIC,25));
-        piuZucchero.setBounds(229, 154, 100, 100);
-        piuZucchero.setBackground(Color.WHITE);
+        JButton piuZucchero = makeRoundButton("+", 229, 154);
         pannelloMonete.add(piuZucchero);
 
-        JButton menoZucchero = new RoundButton("-");
-        menoZucchero.setFont(new Font("", Font.ITALIC,25));
-        menoZucchero.setBounds(416, 154, 100, 100);
-        menoZucchero.setBackground(Color.WHITE);
+        JButton menoZucchero = makeRoundButton("-", 416, 154);
         pannelloMonete.add(menoZucchero);
 
-        JButton resto = new RoundButton("");
-        resto.setBounds(43, 154, 100, 100);
-        resto.setBackground(Color.WHITE);
+        JButton resto = makeRoundButton("Resto", 43, 154);
         pannelloMonete.add(resto);
 
         JButton chiavetta = new RoundRectButton("Chiavetta");
@@ -121,6 +95,14 @@ public class Distributore extends JFrame{
         caffeEspresso.addActionListener(new ListenerTry(display));
     }
 
+    /**
+     * Funzione per creare pannelli standard
+     * @param width
+     * @param height
+     * @param color
+     * @param layoutManager
+     * @return
+     */
     private JPanel makePanel(int width, int height, Color color, LayoutManager layoutManager){
         JPanel panel = new JPanel();
         panel.setPreferredSize(new Dimension(width, height));
@@ -129,10 +111,31 @@ public class Distributore extends JFrame{
         return panel;
     }
 
+    /**
+     * Funzione per creare bottoni a rettangolo con angoli smussati
+     * @param string
+     * @return
+     */
+
     private JButton makeRoundRectButton(String string){
         JButton button = new RoundRectButton(string);
         button.setBackground(Color.WHITE);
         button.setFont(new Font("", Font.ITALIC,25));
+        return button;
+    }
+
+    /**
+     * Funzione per creare bottoni circolari
+     * @param string
+     * @param x
+     * @param y
+     * @return
+     */
+    private JButton makeRoundButton(String string, int x, int y){
+        JButton button = new RoundButton(string);
+        button.setFont(new Font("", Font.ITALIC,25));
+        button.setBounds(x, y, 100, 100);
+        button.setBackground(Color.WHITE);
         return button;
     }
 
