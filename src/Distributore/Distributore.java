@@ -80,7 +80,7 @@ public class Distributore {
 
     public void textualInput (){
         showList();
-        System.out.println("Inserire il codice della bevanda e la quantità di zucchero richiesta (da 0 a 5)\n" +
+        System.out.println("Inserire l'ID della bevanda e la quantità di zucchero richiesta (da 0 a 5)\n" +
                 "separate da uno spazio.");
         String input = null;
 
