@@ -24,8 +24,9 @@ public class Distributore extends JFrame{
         setLayout(new BorderLayout());
 
         JPanel pannelloBevande = new JPanel();
+        pannelloBevande.setPreferredSize(new Dimension(750, 500));
         pannelloBevande.setBackground(Color.BLACK);
-        pannelloBevande.setLayout(new GridLayout(4, 2, 30, 20));
+        pannelloBevande.setLayout(null);
         add(pannelloBevande, BorderLayout.WEST);
 
         JPanel pannelloSelezione = new JPanel();
@@ -35,46 +36,53 @@ public class Distributore extends JFrame{
         add(pannelloSelezione, BorderLayout.EAST);
 
         JButton caffeEspresso = new RoundRectButton("Caffè Espresso");
+        caffeEspresso.setBounds(20, 20, 300, 100);
         caffeEspresso.setBackground(Color.WHITE);
-        caffeEspresso.setPreferredSize(new Dimension(375, 100));
         pannelloBevande.add(caffeEspresso);
 
         JButton cappuccino = new RoundRectButton("Cappuccino");
+        cappuccino.setBounds(400, 20, 300, 100);
         cappuccino.setBackground(Color.WHITE);
         pannelloBevande.add(cappuccino);
 
         JButton te = new RoundRectButton("Tè");
+        te.setBounds(20, 250, 300, 100);
         te.setBackground(Color.WHITE);
         pannelloBevande.add(te);
 
         JButton caffeCorretto = new RoundRectButton("Caffè Corretto");
+        caffeCorretto.setBounds(400, 250, 300, 100);
         caffeCorretto.setBackground(Color.WHITE);
         pannelloBevande.add(caffeCorretto);
 
         JButton caffeLungo = new RoundRectButton("Caffè Lungo");
+        caffeLungo.setBounds(20, 400, 300, 100);
         caffeLungo.setBackground(Color.WHITE);
         pannelloBevande.add(caffeLungo);
 
         JButton vuoto1 = new RoundRectButton("Vuoto");
+        vuoto1.setBounds(400, 400, 300, 100);
         vuoto1.setBackground(Color.WHITE);
         pannelloBevande.add(vuoto1);
 
         JButton vuoto2 = new RoundRectButton("Vuoto");
+        vuoto2.setBounds(20, 600, 300, 100);
         vuoto2.setBackground(Color.WHITE);
         pannelloBevande.add(vuoto2);
 
         JButton vuoto3 = new RoundRectButton("Vuoto");
+        vuoto3.setBounds(400, 600, 300, 100);
         vuoto3.setBackground(Color.WHITE);
         pannelloBevande.add(vuoto3);
 
-        JTextArea display = new JTextArea(19, 30);
+        JTextArea display = new JTextArea(10, 30);
         pannelloSelezione.add(display, BorderLayout.NORTH);
-        display.setEditable(false);                 //Cosi non posso scriverci sopra da interfaccia
+        display.setEditable(true);
 
         JPanel pannelloMonete = new JPanel();
         pannelloMonete.setBackground(Color.BLUE);
         pannelloMonete.setLayout(null);
-        pannelloMonete.setPreferredSize(new Dimension(550, 400));
+        pannelloMonete.setPreferredSize(new Dimension(550, 545));
         pannelloSelezione.add(pannelloMonete, BorderLayout.SOUTH);
 
         JButton euro2 = new RoundButton("2");
@@ -106,6 +114,26 @@ public class Distributore extends JFrame{
         cent5.setBounds(350, 200, 100, 100);
         cent5.setBackground(Color.green);
         pannelloMonete.add(cent5);
+
+        JButton piuZucchero = new RoundButton("+");
+        piuZucchero.setBounds(30, 300, 100, 100);
+        piuZucchero.setBackground(Color.green);
+        pannelloMonete.add(piuZucchero);
+
+        JButton menoZucchero = new RoundButton("-");
+        menoZucchero.setBounds(150, 300, 100, 100);
+        menoZucchero.setBackground(Color.green);
+        pannelloMonete.add(menoZucchero);
+
+        JButton resto = new RoundButton("");
+        resto.setBounds(350, 300, 100, 100);
+        resto.setBackground(Color.green);
+        pannelloMonete.add(resto);
+
+        JButton chiavetta = new RoundRectButton("Chiavetta");
+        chiavetta.setBounds(100, 400, 300, 100);
+        chiavetta.setBackground(Color.WHITE);
+        pannelloMonete.add(chiavetta);
 
         caffeEspresso.addActionListener(new ListenerTry(display));
     }
