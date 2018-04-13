@@ -9,6 +9,8 @@ public class Distributore extends JFrame{
     public static final int LUNGHEZZA = 600;
     public static final int ALTEZZA = 500;
 
+    // Dario: quando hai tempo facci un po' di commenti
+
     public Distributore() {
         setSize(LUNGHEZZA, ALTEZZA);
         setTitle("Hot Drinks Vending Machine");
@@ -67,11 +69,14 @@ public class Distributore extends JFrame{
 
         JTextArea display = new JTextArea(19, 30);
         pannelloSelezione.add(display, BorderLayout.NORTH);
+        display.setEditable(false);                 //Cosi non posso scriverci sopra da interfaccia
 
         JPanel pannelloMonete = new JPanel();
         pannelloMonete.setBackground(Color.BLUE);
         pannelloMonete.setPreferredSize(new Dimension(550, 400));
         pannelloSelezione.add(pannelloMonete, BorderLayout.SOUTH);
+
+        caffeEspresso.addActionListener(new ListenerTry(display));
     }
 
     public static void main(String[] args) {

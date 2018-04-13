@@ -5,7 +5,7 @@ public class Capsula extends Bevanda {
     public Capsula(String[] rowSplitted) {
         super(rowSplitted);
         this.type = Tipo.CAPSULA;
-        this.quantityUsed = 1;
+        this.usedQuantity = 1;
     }
 
 }
