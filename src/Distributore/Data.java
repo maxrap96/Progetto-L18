@@ -88,6 +88,21 @@ public class Data {
         }
     }
 
+    // MJ: funzione creata. Vediamo se serve o se si puo' togliere.
+    /**
+     * Funzione di scrittura su file stats.txt in caso di errore nella transazione.
+     */
+
+    protected void writeFile() {
+        try {
+            FileWriter writer = new FileWriter(pathFile, true);
+            writer.write("Transazione fallita.\t" + getCurrentTimeStamp() + "\n");
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * Funzione per ottenere la data e ora locali. Questi dati vengono usati nei file di statistiche e nei file di
      * aggiornamento dei dati della macchinetta.

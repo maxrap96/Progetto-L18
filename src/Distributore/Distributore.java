@@ -150,8 +150,6 @@ public class Distributore {
                 stats.writeFile(statisticsFile(ID));
             } catch (FileNotWritable fileNotWritable) {
                 fileNotWritable.printStackTrace();
-            } catch (FileNotReadable fileNotReadable) {
-                fileNotReadable.printStackTrace();
             }
 
             if (coins.getCredit()!= 0) {
@@ -159,6 +157,7 @@ public class Distributore {
             }
         }
         else {
+            stats.writeFile();
             new UnsufficientCredit();
         }
     }
@@ -195,21 +194,11 @@ public class Distributore {
         }
     }
 
-    // MJ: Funzione da rinominare con nome piu' significativo e da parametrizzare:
-    protected String statisticsFile(String ID) throws FileNotReadable {
-        double statistiche[] = new double[4];
-        String s = list.get(ID).getName();
-        ArrayList<String[]> statisticheTesto = stats.readFile();
-        int lastRow = statisticheTesto.size() - 1;
-
-        /*System.out.println("DEBUG Stringa s: " + s);
-
-        System.out.println("DEBUG 2: " + statisticheTesto.get(lastRow)[2]);*/
-
-        //System.out.println("DEBUG Stringa s: " + s);
+    // MJ: Funzione da rinominare con nome piu' significativo:
+    protected String statisticsFile(String ID) {
+        String s = "";
+        s += list.get(ID).getName() + "\t" + sugar + "\t" + milk + "\t" +
+                cup + "\t" + spoon + "\t\tTransazione avvenuta il:";
         return s;
-
-        //return  list.get(ID).getName() + "\t" + String.format("%.3f", sugar) + "\t" + milk + "\t"
-        //        + cup + "\t" + spoon + "\t\tTransazione avvenuta il:";
     }
 }
