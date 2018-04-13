@@ -17,6 +17,7 @@ public class Distributore {
     private Coins coins;
     private Data stats = new Data("src/File_Testo/stats.txt");
     private Data menu = new Data("src/File_Testo/menu.txt");
+    double data[] = new double[4];  // 4 parametri: sugar, milk, cup, spoon. Da parametrizzare...
 
     public Distributore() {
         this.list = new HashMap<>();
@@ -197,7 +198,7 @@ public class Distributore {
     protected String statisticsToFile(String ID) {
         String s = list.get(ID).getName() + "\t";
 
-        double data[] = statsInit();
+        //double data[] = statsInit();
 
         for (int i = 0; i < data.length; i++) {
             s += (data[i] + "\t");
@@ -210,8 +211,6 @@ public class Distributore {
     }
     
     protected double[] statsInit() {
-        double data[] = new double[4];  // 4 parametri: sugar, milk, cup, spoon. Da parametrizzare...
-
         data[0] = this.sugar;
         data[1] = this.cup;
         data[2] = this.spoon;

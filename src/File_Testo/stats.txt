@@ -1,3 +1,2 @@
-* File di statistiche, vuoto e riempito dal programma successivamente.
-GINSENG	999,875	499	999		Transazione avvenuta il:	12-04-2018 16:20:58
-Caffè Espresso	999.975	1000.0	499	999		Transazione avvenuta il:	13-04-2018 17:59:50
+﻿* File di statistiche, vuoto e riempito dal programma successivamente. Prima riga con dati di default.
+Caffè Espresso	1000	1000.0	500	1000		Transazione avvenuta il:	13-04-2018 17:59:50
