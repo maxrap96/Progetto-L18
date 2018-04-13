@@ -11,7 +11,6 @@ public class Coins {
     private int money[] = new int[6];
     private double profit=0;
     private double credit=0;
-    private String[] addedCoins;
     private final double COINS_VALUE[] = {0.05, 0.10, 0.20, 0.50 , 1.00, 2.00};
 
     private Data data = new Data("src/File_Testo/monete.txt");

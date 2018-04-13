@@ -4,6 +4,7 @@ import Bevande.*;
 import Errori.*;
 
 import java.io.*;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -17,7 +18,6 @@ public class Distributore {
     private Coins coins;
     private Data stats = new Data("src/File_Testo/stats.txt");
     private Data menu = new Data("src/File_Testo/menu.txt");
-    double data[] = new double[4];  // 4 parametri: sugar, milk, cup, spoon. Da parametrizzare...
 
     public Distributore() {
         this.list = new HashMap<>();
@@ -120,7 +120,6 @@ public class Distributore {
         InputStreamReader keyboard = new InputStreamReader(System.in);
         BufferedReader bufferedReader = new BufferedReader(keyboard);
         try {
-            //String letta = bufferedReader.readLine(); // MJ: La stringa letta e' ridondante, possiamo toglierla.
             //TODO C'è DA CAPIRE PERCHè SE LE CHIUDO ESPLODE IL MONDO
             // keyboard.close();
             //bufferedReader.close();
@@ -144,13 +143,6 @@ public class Distributore {
             subtractIngredients(ID,sugar);
             coins.updateBalance(list.get(ID).getPrice());
 
-            // Scrittura su file di statistiche:
-            try {
-                stats.writeFile(statisticsToFile(ID));
-            } catch (FileNotWritable fileNotWritable) {
-                fileNotWritable.printStackTrace();
-            }
-
             if (coins.getCredit()!= 0) {
                 coins.giveChange();
             }
@@ -170,7 +162,6 @@ public class Distributore {
         milk -= list.get(ID).getMilk();
         subtractSugar(sugar);
         cup--;
-        System.out.println("DEBUG:" + cup + spoon + milk + this.sugar);
     }
 
     /**
@@ -194,28 +185,5 @@ public class Distributore {
         }
     }
 
-    // MJ: Funzione da rinominare con nome piu' significativo:
-    protected String statisticsToFile(String ID) {
-        String s = list.get(ID).getName() + "\t";
 
-        //double data[] = statsInit();
-
-        for (int i = 0; i < data.length; i++) {
-            s += (data[i] + "\t");
-        }
-
-        s += "\tTransazione avvenuta il:";
-
-        //s += sugar + "\t" + milk + "\t" + cup + "\t" + spoon + "\tTransazione avvenuta il:";
-        return s;
-    }
-    
-    protected double[] statsInit() {
-        data[0] = this.sugar;
-        data[1] = this.cup;
-        data[2] = this.spoon;
-        data[3] = this.milk;
-
-        return data;
-    }
 }
