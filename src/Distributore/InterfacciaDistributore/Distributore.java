@@ -1,8 +1,7 @@
-package InterfacciaDistributore;
+package Distributore.InterfacciaDistributore;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.WindowFocusListener;
 
 public class Distributore extends JFrame{
 
@@ -23,7 +22,6 @@ public class Distributore extends JFrame{
 
         setLayout(new BorderLayout());
 
-<<<<<<< HEAD
         JPanel pannelloBevande = new JPanel();
         pannelloBevande.setPreferredSize(new Dimension(805, 1000));
         pannelloBevande.setBackground(Color.BLACK);
@@ -35,13 +33,13 @@ public class Distributore extends JFrame{
         pannelloSelezione.setBackground(Color.blue);
         pannelloSelezione.setLayout(new BorderLayout());
         add(pannelloSelezione, BorderLayout.EAST);
-=======
-        JPanel pannelloBevande = makePanel(805, 1000, Color.BLACK, null);
+
+     /* JPanel pannelloBevande = makePanel(805, 1000, Color.BLACK, null);
         container.add(pannelloBevande, BorderLayout.WEST);
 
         JPanel pannelloSelezione = makePanel(560, 1000, Color.LIGHT_GRAY, new BorderLayout());
-        container.add(pannelloSelezione, BorderLayout.EAST);
->>>>>>> 18a0415fdac7feda2593b7613f2987658248bc06
+        container.add(pannelloSelezione, BorderLayout.EAST);*/
+
 
         JButton caffeEspresso = new RoundRectButton("Caffè Espresso");
         caffeEspresso.setFont(new Font("", Font.ITALIC,25));
