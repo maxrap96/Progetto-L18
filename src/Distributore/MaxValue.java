@@ -3,7 +3,8 @@ package Distributore;
 public interface MaxValue {
 
     /**
-     * Interfaccia che racchiude alcuni valori masssimi. Rappresentano la capienza della macchinetta.
+     * Interfaccia che racchiude alcuni valori fissi. Rappresentano la capienza della macchinetta, o le dosi
+     * utlizzate.
      */
 
     double SUGARDOSE = 0.025;
