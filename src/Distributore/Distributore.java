@@ -7,8 +7,6 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import static Distributore.MaxValue.SUGARDOSE;
-import static java.lang.Integer.MAX_VALUE;
 import static java.lang.Integer.parseInt;
 
 public class Distributore {
@@ -147,7 +145,7 @@ public class Distributore {
 
             // Scrittura su file di statistiche:
             try {
-                stats.writeFile(statisticsFile(ID));
+                stats.writeFile(statisticsToFile(ID));
             } catch (FileNotWritable fileNotWritable) {
                 fileNotWritable.printStackTrace();
             }
@@ -157,7 +155,7 @@ public class Distributore {
             }
         }
         else {
-            stats.writeFile();
+            //stats.writeFile();        decommentare e aggiungere in futuro se necessario.
             new UnsufficientCredit();
         }
     }
@@ -171,6 +169,7 @@ public class Distributore {
         milk -= list.get(ID).getMilk();
         subtractSugar(sugar);
         cup--;
+        System.out.println("DEBUG:" + cup + spoon + milk + this.sugar);
     }
 
     /**
@@ -195,10 +194,29 @@ public class Distributore {
     }
 
     // MJ: Funzione da rinominare con nome piu' significativo:
-    protected String statisticsFile(String ID) {
-        String s = "";
-        s += list.get(ID).getName() + "\t" + sugar + "\t" + milk + "\t" +
-                cup + "\t" + spoon + "\t\tTransazione avvenuta il:";
+    protected String statisticsToFile(String ID) {
+        String s = list.get(ID).getName() + "\t";
+
+        double data[] = statsInit();
+
+        for (int i = 0; i < data.length; i++) {
+            s += (data[i] + "\t");
+        }
+
+        s += "\tTransazione avvenuta il:";
+
+        //s += sugar + "\t" + milk + "\t" + cup + "\t" + spoon + "\tTransazione avvenuta il:";
         return s;
+    }
+    
+    protected double[] statsInit() {
+        double data[] = new double[4];  // 4 parametri: sugar, milk, cup, spoon. Da parametrizzare...
+
+        data[0] = this.sugar;
+        data[1] = this.cup;
+        data[2] = this.spoon;
+        data[3] = this.milk;
+
+        return data;
     }
 }
