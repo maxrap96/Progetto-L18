@@ -1,4 +1,4 @@
-package InterfacciaDistributore;
+package Distributore.InterfacciaDistributore;
 
 import javax.swing.*;
 import java.awt.*;

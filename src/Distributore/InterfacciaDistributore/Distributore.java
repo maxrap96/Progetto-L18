@@ -1,8 +1,7 @@
-package InterfacciaDistributore;
+package Distributore.InterfacciaDistributore;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.WindowFocusListener;
 
 public class Distributore extends JFrame{
 
@@ -26,11 +25,9 @@ public class Distributore extends JFrame{
         JPanel pannelloBevande = makePanel(805, 1000, Color.BLACK, null);
         container.add(pannelloBevande, BorderLayout.WEST);
 
-        JPanel pannelloSelezione = new JPanel();
-        pannelloSelezione.setPreferredSize(new Dimension(560, 1000));
-        pannelloSelezione.setBackground(Color.LIGHT_GRAY);
-        pannelloSelezione.setLayout(new BorderLayout());
-        add(pannelloSelezione, BorderLayout.EAST);
+        JPanel pannelloSelezione = makePanel(560, 1000, Color.LIGHT_GRAY, new BorderLayout());
+        container.add(pannelloSelezione, BorderLayout.EAST);
+
 
         JButton caffeEspresso = new RoundRectButton("Caffè Espresso");
         caffeEspresso.setFont(new Font("", Font.ITALIC,25));
@@ -83,7 +80,7 @@ public class Distributore extends JFrame{
         JTextArea display = new JTextArea(5, 1);
         pannelloSelezione.add(display, BorderLayout.NORTH);
         display.setFont(new Font("", Font.ITALIC,25));
-        display.setEditable(true);                 //Cosi non posso scriverci sopra da interfaccia
+        display.setEditable(false);                 //Cosi non posso scriverci sopra da interfaccia
 
         JPanel pannelloMonete = new JPanel();
         pannelloMonete.setBackground(Color.LIGHT_GRAY);

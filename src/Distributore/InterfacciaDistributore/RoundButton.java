@@ -1,9 +1,8 @@
-package InterfacciaDistributore;
+package Distributore.InterfacciaDistributore;
 
 import java.awt.*;
 import java.awt.geom.*;
 import javax.swing.*;
-import java.awt.event.*;
 
 /* Questa classe definisce un pulsante di forma circolare */
 

@@ -116,8 +116,7 @@ public class Coins {
     public void giveChange() {
 
         if (checkChange()) {
-            int[] change = new int[6];                      // (change[0], change[1], ecc...) è il numero di
-                                                            // monete  del tipo indicato
+            int[] change = new int[6];         // change[0], change[1], ecc. è il numero di monete  del tipo indicato
             optimizeChange(change);
 
             try {
@@ -126,7 +125,7 @@ public class Coins {
                 fileNotWritable.printStackTrace();
             }
 
-            System.out.println("Erogazione resto: " +String.format("%.2f",credit));
+            System.out.println("Erogazione resto: " + String.format("%.2f",credit));
             System.out.println("5c: " + change[0] + "\n10c: " + change[1] + "\n20c: " + change[2] + "\n50c: "
                     + change[3] + "\n1E: " + change[4] + "\n2E: " + change[5]);
 

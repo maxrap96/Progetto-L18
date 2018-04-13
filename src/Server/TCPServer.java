@@ -8,6 +8,8 @@ import java.net.*;
  */
 
 public class TCPServer {
+
+
     public static void main(String args[]) throws Exception {
         String clientSentence;
         String capitalizedSentence;
