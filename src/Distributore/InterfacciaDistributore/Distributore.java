@@ -22,23 +22,11 @@ public class Distributore extends JFrame{
 
         setLayout(new BorderLayout());
 
-        JPanel pannelloBevande = new JPanel();
-        pannelloBevande.setPreferredSize(new Dimension(805, 1000));
-        pannelloBevande.setBackground(Color.BLACK);
-        pannelloBevande.setLayout(null);
-        add(pannelloBevande, BorderLayout.WEST);
-
-        JPanel pannelloSelezione = new JPanel();
-        pannelloSelezione.setPreferredSize(new Dimension(560, 1000));
-        pannelloSelezione.setBackground(Color.blue);
-        pannelloSelezione.setLayout(new BorderLayout());
-        add(pannelloSelezione, BorderLayout.EAST);
-
-     /* JPanel pannelloBevande = makePanel(805, 1000, Color.BLACK, null);
+        JPanel pannelloBevande = makePanel(805, 1000, Color.BLACK, null);
         container.add(pannelloBevande, BorderLayout.WEST);
 
         JPanel pannelloSelezione = makePanel(560, 1000, Color.LIGHT_GRAY, new BorderLayout());
-        container.add(pannelloSelezione, BorderLayout.EAST);*/
+        container.add(pannelloSelezione, BorderLayout.EAST);
 
 
         JButton caffeEspresso = new RoundRectButton("Caffè Espresso");
