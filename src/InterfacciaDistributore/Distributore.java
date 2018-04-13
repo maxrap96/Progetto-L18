@@ -23,6 +23,7 @@ public class Distributore extends JFrame{
 
         setLayout(new BorderLayout());
 
+<<<<<<< HEAD
         JPanel pannelloBevande = new JPanel();
         pannelloBevande.setPreferredSize(new Dimension(805, 1000));
         pannelloBevande.setBackground(Color.BLACK);
@@ -34,6 +35,13 @@ public class Distributore extends JFrame{
         pannelloSelezione.setBackground(Color.blue);
         pannelloSelezione.setLayout(new BorderLayout());
         add(pannelloSelezione, BorderLayout.EAST);
+=======
+        JPanel pannelloBevande = makePanel(805, 1000, Color.BLACK, null);
+        container.add(pannelloBevande, BorderLayout.WEST);
+
+        JPanel pannelloSelezione = makePanel(560, 1000, Color.LIGHT_GRAY, new BorderLayout());
+        container.add(pannelloSelezione, BorderLayout.EAST);
+>>>>>>> 18a0415fdac7feda2593b7613f2987658248bc06
 
         JButton caffeEspresso = new RoundRectButton("Caffè Espresso");
         caffeEspresso.setFont(new Font("", Font.ITALIC,25));
@@ -154,6 +162,18 @@ public class Distributore extends JFrame{
         pannelloMonete.add(chiavetta);
 
         caffeEspresso.addActionListener(new ListenerTry(display));
+    }
+
+    private JPanel makePanel(int width, int height, Color color, LayoutManager layoutManager){
+        JPanel panel = new JPanel();
+        panel.setPreferredSize(new Dimension(width, height));
+        panel.setBackground(color);
+        panel.setLayout(layoutManager);
+        return panel;
+    }
+
+    private JButton makeRoundRectButton(){
+        return null;
     }
 
     public static void main(String[] args) {

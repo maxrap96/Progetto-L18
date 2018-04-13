@@ -195,7 +195,14 @@ public class Distributore {
 
     // MJ: Funzione da rinominare con nome piu' significativo:
     protected String statisticsFile(String ID) {
-        return  list.get(ID).getName() + "\t" + String.format("%.3f", sugar) + "\t" + cup + "\t" + spoon +
-                "\t\tTransazione avvenuta il:";
+        try {
+            ArrayList<String[]> statisticheTesto = stats.readFile();
+        } catch (FileNotReadable fileNotReadable) {
+            fileNotReadable.printStackTrace();
+        }
+
+        return "";
+        /*return  list.get(ID).getName() + "\t" + String.format("%.3f", sugar) + "\t" + milk + "\t"
+                + cup + "\t" + spoon + "\t\tTransazione avvenuta il:";*/
     }
 }
