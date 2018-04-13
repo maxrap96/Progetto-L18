@@ -75,9 +75,10 @@ public class Distributore extends JFrame{
         vuoto3.setBackground(Color.WHITE);
         pannelloBevande.add(vuoto3);
 
-        JTextArea display = new JTextArea(10, 30);
+        JTextArea display = new JTextArea(4, 1);
         pannelloSelezione.add(display, BorderLayout.NORTH);
-        display.setEditable(true);
+        display.setFont(new Font("", Font.ITALIC,45));
+        display.setEditable(false);                 //Cosi non posso scriverci sopra da interfaccia
 
         JPanel pannelloMonete = new JPanel();
         pannelloMonete.setBackground(Color.LIGHT_GRAY);
