@@ -22,60 +22,31 @@ public class Distributore extends JFrame{
 
         setLayout(new BorderLayout());
 
-        JPanel pannelloBevande = makePanel(805, 1000, Color.BLACK, null);
+        JPanel pannelloBevande = makePanel(805, 1000, Color.BLACK, new GridLayout(4,2,
+                40,40));
         container.add(pannelloBevande, BorderLayout.WEST);
 
         JPanel pannelloSelezione = makePanel(560, 1000, Color.LIGHT_GRAY, new BorderLayout());
         container.add(pannelloSelezione, BorderLayout.EAST);
 
 
-        JButton caffeEspresso = new RoundRectButton("Caffè Espresso");
-        caffeEspresso.setFont(new Font("", Font.ITALIC,25));
-        caffeEspresso.setBounds(61, 50, 300, 100);
-        caffeEspresso.setBackground(Color.WHITE);
+        JButton caffeEspresso = makeRoundRectButton("Caffè Espresso");
         pannelloBevande.add(caffeEspresso);
 
-        JButton cappuccino = new RoundRectButton("Cappuccino");
-        cappuccino.setFont(new Font("", Font.ITALIC,25));
-        cappuccino.setBounds(443, 50, 300, 100);
-        cappuccino.setBackground(Color.WHITE);
+        JButton cappuccino = makeRoundRectButton("Cappuccino");
         pannelloBevande.add(cappuccino);
 
-        JButton te = new RoundRectButton("Tè");
-        te.setFont(new Font("", Font.ITALIC,25));
-        te.setBounds(61, 220, 300, 100);
-        te.setBackground(Color.WHITE);
+        JButton te = makeRoundRectButton("Tè");
         pannelloBevande.add(te);
 
-        JButton caffeCorretto = new RoundRectButton("Caffè Corretto");
-        caffeCorretto.setFont(new Font("", Font.ITALIC,25));
-        caffeCorretto.setBounds(443, 220, 300, 100);
-        caffeCorretto.setBackground(Color.WHITE);
+        JButton caffeCorretto = makeRoundRectButton("Caffè Corretto");
         pannelloBevande.add(caffeCorretto);
 
-        JButton caffeLungo = new RoundRectButton("Caffè Lungo");
-        caffeLungo.setFont(new Font("", Font.ITALIC,25));
-        caffeLungo.setBounds(61, 390, 300, 100);
-        caffeLungo.setBackground(Color.WHITE);
+        JButton caffeLungo = makeRoundRectButton("Caffè Lungo");
         pannelloBevande.add(caffeLungo);
 
-        JButton vuoto1 = new RoundRectButton("");
-        vuoto1.setFont(new Font("", Font.ITALIC,25));
-        vuoto1.setBounds(443, 390, 300, 100);
-        vuoto1.setBackground(Color.WHITE);
+        JButton vuoto1 = makeRoundRectButton("");
         pannelloBevande.add(vuoto1);
-
-        JButton vuoto2 = new RoundRectButton("");
-        vuoto2.setFont(new Font("", Font.ITALIC,25));
-        vuoto2.setBounds(61, 560, 300, 100);
-        vuoto2.setBackground(Color.WHITE);
-        pannelloBevande.add(vuoto2);
-
-        JButton vuoto3 = new RoundRectButton("");
-        vuoto3.setFont(new Font("", Font.ITALIC,25));
-        vuoto3.setBounds(443, 560, 300, 100);
-        vuoto3.setBackground(Color.WHITE);
-        pannelloBevande.add(vuoto3);
 
         JTextArea display = new JTextArea(5, 1);
         pannelloSelezione.add(display, BorderLayout.NORTH);
@@ -158,8 +129,11 @@ public class Distributore extends JFrame{
         return panel;
     }
 
-    private JButton makeRoundRectButton(){
-        return null;
+    private JButton makeRoundRectButton(String string){
+        JButton button = new RoundRectButton(string);
+        button.setBackground(Color.WHITE);
+        button.setFont(new Font("", Font.ITALIC,25));
+        return button;
     }
 
     public static void main(String[] args) {
