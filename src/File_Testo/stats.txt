@@ -1,4 +1,2 @@
 ﻿* File di statistiche, vuoto e riempito dal programma successivamente. Prima riga con dati di default.
-Tè al limone	999.9	499.0	999.0	1000.0		Transazione avvenuta il:	13-04-2018 23:03:57
-Caffè Espresso	999.9	499.0	999.0	1000.0		Transazione avvenuta il:	13-04-2018 23:04:48
-Caffè Espresso	999.9	499.0	999.0	1000.0		Transazione avvenuta il:	13-04-2018 23:13:56
+Tè al limone	499	999	999.875	1000.0	Transazione avvenuta il:		14-04-2018 00:08:23

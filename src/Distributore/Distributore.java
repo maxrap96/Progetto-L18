@@ -143,6 +143,13 @@ public class Distributore {
             subtractIngredients(ID,sugar);
             coins.updateBalance(list.get(ID).getPrice());
 
+            // Scrittura statistiche su file:
+            try {
+                stats.writeFile(statsText(ID));
+            } catch (FileNotWritable fileNotWritable) {
+                fileNotWritable.printStackTrace();
+            }
+
             if (coins.getCredit()!= 0) {
                 coins.giveChange();
             }
@@ -185,5 +192,13 @@ public class Distributore {
         }
     }
 
+    // statistiche:
 
+    public String statsText(String ID) {
+        String s = list.get(ID).getName() + "\t";
+
+        s += cup + "\t" + spoon + "\t" + sugar + "\t" + milk + "\tTransazione avvenuta il:\t";
+
+        return s;
+    }
 }
