@@ -31,7 +31,7 @@ public class Distributore extends JFrame{
 
         JPanel pannelloSelezione = new JPanel();
         pannelloSelezione.setPreferredSize(new Dimension(560, 1000));
-        pannelloSelezione.setBackground(Color.LIGHT_GRAY);
+        pannelloSelezione.setBackground(Color.blue);
         pannelloSelezione.setLayout(new BorderLayout());
         add(pannelloSelezione, BorderLayout.EAST);
 
@@ -86,7 +86,7 @@ public class Distributore extends JFrame{
         JTextArea display = new JTextArea(5, 1);
         pannelloSelezione.add(display, BorderLayout.NORTH);
         display.setFont(new Font("", Font.ITALIC,25));
-        display.setEditable(true);                 //Cosi non posso scriverci sopra da interfaccia
+        display.setEditable(false);                 //Cosi non posso scriverci sopra da interfaccia
 
         JPanel pannelloMonete = new JPanel();
         pannelloMonete.setBackground(Color.LIGHT_GRAY);
