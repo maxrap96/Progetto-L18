@@ -1,14 +1,13 @@
 package Client_Server;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
 public class TesterServer {
     public static void main(String[] args) throws IOException{
+        File fileStats =
+                new File("src/Client_Server/statsServer.txt");
 
         try{
             ServerSocket serverSocket =
@@ -22,7 +21,9 @@ public class TesterServer {
 
             String stringFromClient;
             while ((stringFromClient = inFromClient.readLine()) != null) {
-                // Do Something like save in a .txt file
+                FileOutputStream fileOutputStream =
+                        new FileOutputStream(fileStats.getPath());
+                fileOutputStream.write(stringFromClient.getBytes());
                 outToClient.println(stringFromClient + " Server");  // Reinvio di file, questo caso é un esempio per
                                                                     // vedere se funziona
             }

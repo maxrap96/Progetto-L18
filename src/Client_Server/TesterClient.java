@@ -6,6 +6,7 @@ import java.net.Socket;
 public class TesterClient {
     public static void main(String[] args) throws IOException{
         File fileMenu = new File("src/File_Testo/menu.txt");
+        File fileStats = new File("src/File_Testo/stats.txt");
         try {
             Socket clientSocket =
                     new Socket("localhost", 2222); // Creo il socket attraverso cui inviare i dati
@@ -18,7 +19,7 @@ public class TesterClient {
             String stringFromFile;
             BufferedReader inFromFile =
                     new BufferedReader(
-                            new FileReader(fileMenu.getPath())); // Oggetto da cui prendo i dati
+                            new FileReader(fileStats.getPath())); // Oggetto da cui prendo i dati
 
             while ((stringFromFile = inFromFile.readLine()) != null) { // Invio al Server
                 outToServer.println(stringFromFile);
