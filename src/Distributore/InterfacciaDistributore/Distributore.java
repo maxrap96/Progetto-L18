@@ -5,8 +5,8 @@ import java.awt.*;
 
 public class Distributore extends JFrame{
 
-    public static final int LUNGHEZZA = 600;
-    public static final int ALTEZZA = 500;
+    private static final int LUNGHEZZA = 600;
+    private static final int ALTEZZA = 500;
 
     /** Creazione interfaccia grafica distributore*/
 
@@ -114,15 +114,20 @@ public class Distributore extends JFrame{
         cent10.addActionListener(new ListenerTry(display));
         cent5.addActionListener(new ListenerTry(display));
 
+        //Listener zucchero e chiavetta
+        piuZucchero.addActionListener(new ListenerTry(display));
+        menoZucchero.addActionListener(new ListenerTry(display));
+        chiavetta.addActionListener(new ListenerTry(display));
+
     }
 
     /**
      * Funzione per creare pannelli standard
-     * @param width
-     * @param height
-     * @param color
-     * @param layoutManager
-     * @return
+     * @param width: lunghezza  del pannello
+     * @param height: altezza  del pannello
+     * @param color: colore dello sfondo
+     * @param layoutManager: tipo di layout del pannello
+     * @return ritorna il pannello
      */
     private JPanel makePanel(int width, int height, Color color, LayoutManager layoutManager){
         JPanel panel = new JPanel();
@@ -134,8 +139,8 @@ public class Distributore extends JFrame{
 
     /**
      * Funzione per creare bottoni a rettangolo con angoli smussati
-     * @param string
-     * @return
+     * @param string: etichetta del pulsante
+     * @return ritorna il pulsante
      */
     private JButton makeRoundRectButton(String string){
         JButton button = new RoundRectButton(string);
@@ -146,8 +151,8 @@ public class Distributore extends JFrame{
 
     /**
      * Funzione per creare bottoni circolari
-     * @param string
-     * @return
+     * @param string: etichetta del pulsante
+     * @return ritorna il pulsante
      */
     private JButton makeRoundButton(String string){
         JButton button = new RoundButton(string);
