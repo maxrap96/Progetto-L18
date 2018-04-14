@@ -22,20 +22,25 @@ public class Distributore extends JFrame{
 
         setLayout(new BorderLayout());
 
-        JPanel pannelloBevande = makePanel(805, 1000, Color.BLACK, new GridLayout(4,2,
-                40,40)); //GridLayout mi dispone in forma di griglia
-        container.add(pannelloBevande, BorderLayout.WEST);
+        JPanel pannelloBevande = makePanel(805, 1000, Color.BLACK, null);
+        add(pannelloBevande, BorderLayout.WEST);
 
         JPanel pannelloSelezione = makePanel(560, 1000, Color.LIGHT_GRAY, new BorderLayout());
-        container.add(pannelloSelezione, BorderLayout.EAST);
+        add(pannelloSelezione, BorderLayout.EAST);
 
         // Creo i tasti delle bevande e li aggiungo
         JButton caffeEspresso = makeRoundRectButton("Caffè Espresso");
+        caffeEspresso.setBounds(61, 50, 300, 100);
         JButton cappuccino = makeRoundRectButton("Cappuccino");
+        cappuccino.setBounds(443, 50, 300, 100);
         JButton te = makeRoundRectButton("Tè");
+        te.setBounds(61, 220, 300, 100);
         JButton caffeCorretto = makeRoundRectButton("Caffè Corretto");
+        caffeCorretto.setBounds(443, 220, 300, 100);
         JButton caffeLungo = makeRoundRectButton("Caffè Lungo");
+        caffeLungo.setBounds(61, 390, 300, 100);
         JButton vuoto1 = makeRoundRectButton("");
+        vuoto1.setBounds(443, 390, 300, 100);
 
         pannelloBevande.add(caffeEspresso);
         pannelloBevande.add(cappuccino);
@@ -49,33 +54,34 @@ public class Distributore extends JFrame{
         display.setFont(new Font("", Font.ITALIC,25));
         display.setEditable(false);                 //Cosi non posso scriverci sopra da interfaccia
 
-        // Ho creato 2 pannelli, uno per i tasti e uno per la chiavetta, se no non riuscivo a fare la disposizione
-        JPanel pannelloChiavetta = makePanel(560, 109, Color.LIGHT_GRAY, new BorderLayout());
-        pannelloSelezione.add(pannelloChiavetta, BorderLayout.CENTER);
-
-        JButton chiavetta = makeRoundRectButton("Chiavetta") ;
-        pannelloChiavetta.add(chiavetta, BorderLayout.SOUTH);
-
-        JPanel pannelloMonete = makePanel(560,545, Color.LIGHT_GRAY, new GridLayout(4,3,
-                50, 10));
+        JPanel pannelloMonete = makePanel(560,545, Color.LIGHT_GRAY, null);
         pannelloSelezione.add(pannelloMonete, BorderLayout.SOUTH);
 
         // Creo i vari tasti della sezione moenete
         JButton euro2 = makeRoundButton("2");
+        euro2.setBounds(43, 290, 100, 100);
         JButton euro1 = makeRoundButton("1");
+        euro1.setBounds(229, 290, 100, 100);
         JButton cent50 = makeRoundButton("0.50");
+        cent50.setBounds(416, 290, 100, 100);
         JButton cent20 = makeRoundButton("0.20");
+        cent20.setBounds(43, 426, 100, 100);
         JButton cent10 = makeRoundButton("0.10");
+        cent10.setBounds(229, 426, 100, 100);
         JButton cent5 = makeRoundButton("0.05");
+        cent5.setBounds(416, 426, 100, 100);
         JButton piuZucchero = makeRoundButton("+");
+        piuZucchero.setBounds(229, 154, 100, 100);
         JButton menoZucchero = makeRoundButton("-");
+        menoZucchero.setBounds(416, 154, 100, 100);
         JButton resto = makeRoundButton("Resto");
+        resto.setBounds(43, 154, 100, 100);
+        JButton chiavetta = makeRoundRectButton("Chiavetta") ;
+        chiavetta.setBounds(155, 36, 250, 80);
 
-
-        // Questa disposizione non influisce sulla loro effettiva posizione nell'interfaccia
         pannelloMonete.add(resto); pannelloMonete.add(menoZucchero); pannelloMonete.add(piuZucchero);
         pannelloMonete.add(euro2); pannelloMonete.add(euro1); pannelloMonete.add(cent50);
-        pannelloMonete.add(cent20); pannelloMonete.add(cent10); pannelloMonete.add(cent5);
+        pannelloMonete.add(cent20); pannelloMonete.add(cent10); pannelloMonete.add(cent5); pannelloMonete.add(chiavetta);
 
         caffeEspresso.addActionListener(new ListenerTry(display));
     }
