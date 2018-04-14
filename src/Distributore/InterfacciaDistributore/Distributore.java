@@ -8,9 +8,10 @@ public class Distributore extends JFrame{
     public static final int LUNGHEZZA = 600;
     public static final int ALTEZZA = 500;
 
-    // Dario: quando hai tempo facci un po' di commenti
+    /** Creazione interfaccia grafica distributore*/
 
     public Distributore() {
+        //Inizializzazione JFrame
         setSize(LUNGHEZZA, ALTEZZA);
         setTitle("Hot Drinks Vending Machine");
 
@@ -22,13 +23,15 @@ public class Distributore extends JFrame{
 
         setLayout(new BorderLayout());
 
+        // Creazione pannello dove vengono disposte le bevande
         JPanel pannelloBevande = makePanel(805, 1000, Color.BLACK, null);
         add(pannelloBevande, BorderLayout.WEST);
 
+        // Creazione pannello contenente il display e i pulsanti monete, zucchero ecc...
         JPanel pannelloSelezione = makePanel(560, 1000, Color.LIGHT_GRAY, new BorderLayout());
         add(pannelloSelezione, BorderLayout.EAST);
 
-        // Creo i tasti delle bevande e li aggiungo
+        // Creazione dei tasti delle bevande e successiva aggiunta al pannelloBevande
         JButton caffeEspresso = makeRoundRectButton("Caffè Espresso");
         caffeEspresso.setBounds(61, 50, 300, 100);
         JButton cappuccino = makeRoundRectButton("Cappuccino");
@@ -55,6 +58,7 @@ public class Distributore extends JFrame{
         pannelloBevande.add(bicchiere);
         pannelloBevande.add(vuoto);
 
+        // Creazione del display e aggiunta al pannelloSelezione
         JTextArea display = new JTextArea(5, 1);
         display.setBackground(Color.BLUE);
         display.setForeground(Color.WHITE);
@@ -62,10 +66,11 @@ public class Distributore extends JFrame{
         display.setEditable(false);                 //Cosi non posso scriverci sopra da interfaccia
         pannelloSelezione.add(display, BorderLayout.NORTH);
 
+        // Creazione pannelle delle monete e aggiunta al pannelloSelezione
         JPanel pannelloMonete = makePanel(560,545, Color.LIGHT_GRAY, null);
         pannelloSelezione.add(pannelloMonete, BorderLayout.SOUTH);
 
-        // Creo i vari tasti della sezione moenete
+        // Creazione dei vari tasti della sezione moenete e aggiunta al pannelloMonete
         JButton euro2 = makeRoundButton("2");
         euro2.setBounds(43, 290, 100, 100);
         JButton euro1 = makeRoundButton("1");
