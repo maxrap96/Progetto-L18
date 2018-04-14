@@ -20,9 +20,13 @@ public class TesterClient {
                     new BufferedReader(
                             new FileReader(fileMenu.getPath())); // Oggetto da cui prendo i dati
 
-            while ((stringFromFile = inFromFile.readLine()) != null) {
+            while ((stringFromFile = inFromFile.readLine()) != null) { // Invio al Server
                 outToServer.println(stringFromFile);
-                System.out.println("Client sent succesfully");
+            }
+
+            String stringFromServer;
+            while((stringFromServer = inFromServer.readLine()) != null){ // Ricevo dal Server
+                System.out.println(stringFromServer);
             }
         } catch (IOException e){
             e.printStackTrace();

@@ -22,7 +22,9 @@ public class TesterServer {
 
             String stringFromClient;
             while ((stringFromClient = inFromClient.readLine()) != null) {
-                System.out.println(stringFromClient);
+                // Do Something like save in a .txt file
+                outToClient.println(stringFromClient + " Server");  // Reinvio di file, questo caso é un esempio per
+                                                                    // vedere se funziona
             }
         } catch (IOException e){
             e.printStackTrace();
