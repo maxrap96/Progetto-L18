@@ -16,22 +16,22 @@ public class ListenerTry implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String stringaPulsante = e.getActionCommand();
         if (stringaPulsante.equals("Caffè Espresso")) {
-            jTextArea.setText("Caffé espresso" + "\n" + "Costo 0.50");
+            jTextArea.setText("CAFFE' ESPRESSO" + "\n" + "COSTO: 0.50" + "\n\n\n" + "CREDITO:");
         }
         else if (stringaPulsante.equals("Cappuccino")) {
-            jTextArea.setText("Cappuccino" + "\n" + "Costo 0.50");
+            jTextArea.setText("CAPPUCCINO" + "\n" + "COSTO: 0.50" + "\n\n\n" + "CREDITO:");
         }
         else if (stringaPulsante.equals("Tè")){
-            jTextArea.setText("Tè" + "\n" + "Costo 0.50");
+            jTextArea.setText("TE'" + "\n" + "COSTO: 0.50" + "\n\n\n" + "CREDITO:");
         }
         else if (stringaPulsante.equals("Caffè Corretto")){
-            jTextArea.setText("Caffè Corretto" + "\n" + "Costo 0.50");
+            jTextArea.setText("CAFFE' CORRETTO" + "\n" + "COSTO: 0.50" + "\n\n\n" + "CREDITO:");
         }
         else if (stringaPulsante.equals("Caffè Lungo")){
-            jTextArea.setText("Caffè Lungo" + "\n" + "Costo 0.50");
+            jTextArea.setText("CAFFE' LUNGO" + "\n" + "COSTO: 0.50" + "\n\n\n" + "CREDITO:");
         }
         else if (stringaPulsante.equals("")){
-            jTextArea.setText("Bevanda non disponibile");
+            jTextArea.setText("BEVANDA NON DISPONIBILE" + "\n\n\n\n" + "CREDITO:");
         }
         jTextArea.repaint();
     }

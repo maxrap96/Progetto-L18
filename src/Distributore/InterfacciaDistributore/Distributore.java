@@ -52,7 +52,7 @@ public class Distributore extends JFrame{
         JTextArea display = new JTextArea(5, 1);
         display.setBackground(Color.BLUE);
         display.setForeground(Color.WHITE);
-        display.setFont(new Font("", Font.ITALIC,25));
+        display.setFont(new Font("", Font.BOLD & Font.ITALIC,25));
         display.setEditable(false);                 //Cosi non posso scriverci sopra da interfaccia
         pannelloSelezione.add(display, BorderLayout.NORTH);
 
@@ -85,6 +85,7 @@ public class Distributore extends JFrame{
         pannelloMonete.add(euro2); pannelloMonete.add(euro1); pannelloMonete.add(cent50);
         pannelloMonete.add(cent20); pannelloMonete.add(cent10); pannelloMonete.add(cent5); pannelloMonete.add(chiavetta);
 
+        // Listener bevande
         caffeEspresso.addActionListener(new ListenerTry(display));
         cappuccino.addActionListener(new ListenerTry(display));
         te.addActionListener(new ListenerTry(display));
@@ -115,7 +116,6 @@ public class Distributore extends JFrame{
      * @param string
      * @return
      */
-
     private JButton makeRoundRectButton(String string){
         JButton button = new RoundRectButton(string);
         button.setBackground(Color.WHITE);
@@ -133,10 +133,5 @@ public class Distributore extends JFrame{
         button.setFont(new Font("", Font.ITALIC,25));
         button.setBackground(Color.WHITE);
         return button;
-    }
-
-    public static void main(String[] args) {
-        Distributore d = new Distributore();
-        d.setVisible(true);
     }
 }
