@@ -39,15 +39,21 @@ public class Distributore extends JFrame{
         caffeCorretto.setBounds(443, 220, 300, 100);
         JButton caffeLungo = makeRoundRectButton("Caffè Lungo");
         caffeLungo.setBounds(61, 390, 300, 100);
-        JButton vuoto1 = makeRoundRectButton("");
-        vuoto1.setBounds(443, 390, 300, 100);
+        JButton ginseng = makeRoundRectButton("Ginseng");
+        ginseng.setBounds(443, 390, 300, 100);
+        JButton bicchiere = makeRoundRectButton("Bicchiere");
+        bicchiere.setBounds(61, 560, 300, 100);
+        JButton vuoto = makeRoundRectButton("");
+        vuoto.setBounds(443, 560, 300, 100);
 
         pannelloBevande.add(caffeEspresso);
         pannelloBevande.add(cappuccino);
         pannelloBevande.add(te);
         pannelloBevande.add(caffeCorretto);
         pannelloBevande.add(caffeLungo);
-        pannelloBevande.add(vuoto1);
+        pannelloBevande.add(ginseng);
+        pannelloBevande.add(bicchiere);
+        pannelloBevande.add(vuoto);
 
         JTextArea display = new JTextArea(5, 1);
         display.setBackground(Color.BLUE);
@@ -91,7 +97,17 @@ public class Distributore extends JFrame{
         te.addActionListener(new ListenerTry(display));
         caffeCorretto.addActionListener(new ListenerTry(display));
         caffeLungo.addActionListener(new ListenerTry(display));
-        vuoto1.addActionListener(new ListenerTry(display));
+        ginseng.addActionListener(new ListenerTry(display));
+        bicchiere.addActionListener(new ListenerTry(display));
+        vuoto.addActionListener(new ListenerTry(display));
+
+        //Listener monete
+        euro2.addActionListener(new ListenerTry(display));
+        euro1.addActionListener(new ListenerTry(display));
+        cent50.addActionListener(new ListenerTry(display));
+        cent20.addActionListener(new ListenerTry(display));
+        cent10.addActionListener(new ListenerTry(display));
+        cent5.addActionListener(new ListenerTry(display));
 
     }
 

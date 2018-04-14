@@ -15,18 +15,8 @@
       <file leaf-file-name="Distributore.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Distributore/InterfacciaDistributore/Distributore.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="239">
-              <caret line="135" column="5" lean-forward="false" selection-start-line="135" selection-start-column="5" selection-end-line="135" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TesterInterfaccia.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Distributore/InterfacciaDistributore/TesterInterfaccia.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="5" lean-forward="false" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
+            <state relative-caret-position="341">
+              <caret line="109" column="13" lean-forward="false" selection-start-line="109" selection-start-column="13" selection-end-line="109" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -35,8 +25,8 @@
       <file leaf-file-name="ListenerTry.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Distributore/InterfacciaDistributore/ListenerTry.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="290">
-              <caret line="33" column="67" lean-forward="false" selection-start-line="33" selection-start-column="67" selection-end-line="33" selection-end-column="67" />
+            <state relative-caret-position="222">
+              <caret line="54" column="85" lean-forward="false" selection-start-line="54" selection-start-column="85" selection-end-line="54" selection-end-column="85" />
               <folding />
             </state>
           </provider>
@@ -69,8 +59,8 @@
         <option value="$PROJECT_DIR$/src/InterfacciaDistributore/RoundRectButton.java" />
         <option value="$PROJECT_DIR$/src/InterfacciaDistributore/ImagePanel.java" />
         <option value="$PROJECT_DIR$/src/InterfacciaDistributore/Distributore.java" />
-        <option value="$PROJECT_DIR$/src/Distributore/InterfacciaDistributore/Distributore.java" />
         <option value="$PROJECT_DIR$/src/Distributore/InterfacciaDistributore/TesterInterfaccia.java" />
+        <option value="$PROJECT_DIR$/src/Distributore/InterfacciaDistributore/Distributore.java" />
         <option value="$PROJECT_DIR$/src/Distributore/InterfacciaDistributore/ListenerTry.java" />
       </list>
     </option>
@@ -302,12 +292,12 @@
       <updated>1523556639872</updated>
       <workItem from="1523556643489" duration="2741000" />
       <workItem from="1523618823176" duration="8568000" />
-      <workItem from="1523690473613" duration="3615000" />
+      <workItem from="1523690473613" duration="4871000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14924000" />
+    <option name="totallyTimeSpent" value="16180000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -430,16 +420,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Distributore/InterfacciaDistributore/Distributore.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="135" column="5" lean-forward="false" selection-start-line="135" selection-start-column="5" selection-end-line="135" selection-end-column="5" />
+        <state relative-caret-position="341">
+          <caret line="109" column="13" lean-forward="false" selection-start-line="109" selection-start-column="13" selection-end-line="109" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Distributore/InterfacciaDistributore/ListenerTry.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="33" column="67" lean-forward="false" selection-start-line="33" selection-start-column="67" selection-end-line="33" selection-end-column="67" />
+        <state relative-caret-position="222">
+          <caret line="54" column="85" lean-forward="false" selection-start-line="54" selection-start-column="85" selection-end-line="54" selection-end-column="85" />
           <folding />
         </state>
       </provider>

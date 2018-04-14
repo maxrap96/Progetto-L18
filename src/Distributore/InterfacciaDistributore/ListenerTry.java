@@ -30,6 +30,30 @@ public class ListenerTry implements ActionListener {
         else if (stringaPulsante.equals("Caffè Lungo")){
             jTextArea.setText("CAFFE' LUNGO" + "\n" + "COSTO: 0.50" + "\n\n\n" + "CREDITO:");
         }
+        else if (stringaPulsante.equals("Ginseng")){
+            jTextArea.setText("GINSENG" + "\n" + "COSTO: 0.50" + "\n\n\n" + "CREDITO:");
+        }
+        else if (stringaPulsante.equals("Bicchiere")){
+            jTextArea.setText("BICCHIERE" + "\n" + "COSTO: 0.50" + "\n\n\n" + "CREDITO:");
+        }
+        else if (stringaPulsante.equals("2")){
+            jTextArea.setText("INSERITI: " + "\n" + "COSTO: " + "\n\n\n" + "CREDITO:");
+        }
+        else if (stringaPulsante.equals("1")){
+            jTextArea.setText("INSERITI: " + "\n" + "COSTO: " + "\n\n\n" + "CREDITO:");
+        }
+        else if (stringaPulsante.equals("0.50")){
+            jTextArea.setText("INSERITI: " + "\n" + "COSTO: " + "\n\n\n" + "CREDITO:");
+        }
+        else if (stringaPulsante.equals("0.20")){
+            jTextArea.setText("INSERITI: " + "\n" + "COSTO: " + "\n\n\n" + "CREDITO:");
+        }
+        else if (stringaPulsante.equals("0.10")){
+            jTextArea.setText("INSERITI: " + "\n" + "COSTO: " + "\n\n\n" + "CREDITO:");
+        }
+        else if (stringaPulsante.equals("0.05")){
+            jTextArea.setText("INSERITI: " + "\n" + "COSTO: " + "\n\n\n" + "CREDITO:");
+        }
         else if (stringaPulsante.equals("")){
             jTextArea.setText("BEVANDA NON DISPONIBILE" + "\n\n\n\n" + "CREDITO:");
         }
