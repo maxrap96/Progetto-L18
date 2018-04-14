@@ -50,9 +50,11 @@ public class Distributore extends JFrame{
         pannelloBevande.add(vuoto1);
 
         JTextArea display = new JTextArea(5, 1);
-        pannelloSelezione.add(display, BorderLayout.NORTH);
+        display.setBackground(Color.BLUE);
+        display.setForeground(Color.WHITE);
         display.setFont(new Font("", Font.ITALIC,25));
         display.setEditable(false);                 //Cosi non posso scriverci sopra da interfaccia
+        pannelloSelezione.add(display, BorderLayout.NORTH);
 
         JPanel pannelloMonete = makePanel(560,545, Color.LIGHT_GRAY, null);
         pannelloSelezione.add(pannelloMonete, BorderLayout.SOUTH);
@@ -84,6 +86,12 @@ public class Distributore extends JFrame{
         pannelloMonete.add(cent20); pannelloMonete.add(cent10); pannelloMonete.add(cent5); pannelloMonete.add(chiavetta);
 
         caffeEspresso.addActionListener(new ListenerTry(display));
+        cappuccino.addActionListener(new ListenerTry(display));
+        te.addActionListener(new ListenerTry(display));
+        caffeCorretto.addActionListener(new ListenerTry(display));
+        caffeLungo.addActionListener(new ListenerTry(display));
+        vuoto1.addActionListener(new ListenerTry(display));
+
     }
 
     /**
