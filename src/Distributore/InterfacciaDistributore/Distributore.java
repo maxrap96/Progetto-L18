@@ -8,7 +8,9 @@ public class Distributore extends JFrame{
     private static final int LUNGHEZZA = 600;
     private static final int ALTEZZA = 500;
 
-    /** Creazione interfaccia grafica distributore*/
+    /**
+     * Creazione interfaccia grafica distributore
+     */
 
     public Distributore() {
         //Inizializzazione JFrame
@@ -23,11 +25,11 @@ public class Distributore extends JFrame{
 
         setLayout(new BorderLayout());
 
-        // Creazione pannello dove vengono disposte le bevande
+        // Creazione del pannello dove vengono disposte le bevande
         JPanel pannelloBevande = makePanel(805, 1000, Color.BLACK, null);
         add(pannelloBevande, BorderLayout.WEST);
 
-        // Creazione pannello contenente il display e i pulsanti monete, zucchero ecc...
+        // Creazione del pannello contenente il display e i pulsanti monete, zucchero ecc...
         JPanel pannelloSelezione = makePanel(560, 1000, Color.LIGHT_GRAY, new BorderLayout());
         add(pannelloSelezione, BorderLayout.EAST);
 
@@ -49,14 +51,9 @@ public class Distributore extends JFrame{
         JButton vuoto = makeRoundRectButton("");
         vuoto.setBounds(443, 560, 300, 100);
 
-        pannelloBevande.add(caffeEspresso);
-        pannelloBevande.add(cappuccino);
-        pannelloBevande.add(te);
-        pannelloBevande.add(caffeCorretto);
-        pannelloBevande.add(caffeLungo);
-        pannelloBevande.add(ginseng);
-        pannelloBevande.add(bicchiere);
-        pannelloBevande.add(vuoto);
+        pannelloBevande.add(caffeEspresso); pannelloBevande.add(cappuccino); pannelloBevande.add(te);
+        pannelloBevande.add(caffeCorretto); pannelloBevande.add(caffeLungo); pannelloBevande.add(ginseng);
+        pannelloBevande.add(bicchiere); pannelloBevande.add(vuoto);
 
         // Creazione del display e aggiunta al pannelloSelezione
         JTextArea display = new JTextArea(5, 1);
@@ -66,7 +63,7 @@ public class Distributore extends JFrame{
         display.setEditable(false);                 //Cosi non posso scriverci sopra da interfaccia
         pannelloSelezione.add(display, BorderLayout.NORTH);
 
-        // Creazione pannelle delle monete e aggiunta al pannelloSelezione
+        // Creazione del pannello delle monete e aggiunta al pannelloSelezione
         JPanel pannelloMonete = makePanel(560,545, Color.LIGHT_GRAY, null);
         pannelloSelezione.add(pannelloMonete, BorderLayout.SOUTH);
 
@@ -106,7 +103,7 @@ public class Distributore extends JFrame{
         bicchiere.addActionListener(new ListenerTry(display));
         vuoto.addActionListener(new ListenerTry(display));
 
-        //Listener monete
+        // Listener monete
         euro2.addActionListener(new ListenerTry(display));
         euro1.addActionListener(new ListenerTry(display));
         cent50.addActionListener(new ListenerTry(display));
@@ -114,7 +111,7 @@ public class Distributore extends JFrame{
         cent10.addActionListener(new ListenerTry(display));
         cent5.addActionListener(new ListenerTry(display));
 
-        //Listener zucchero e chiavetta
+        // Listener zucchero e chiavetta
         piuZucchero.addActionListener(new ListenerTry(display));
         menoZucchero.addActionListener(new ListenerTry(display));
         chiavetta.addActionListener(new ListenerTry(display));
