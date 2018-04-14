@@ -1,15 +1,12 @@
 package Distributore;
 
-import Errori.FileNotExisting;
 import Errori.FileNotReadable;
 import Errori.FileNotWritable;
 
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public class Data {
     private String pathFile;

@@ -1,20 +1,21 @@
-package Server;
+package Client_Server;
 
 import java.io.*;
 import java.net.*;
 
 /**
- * In questo esempio il client manda sentence e il server rimanda indietro la scritta in CAPS
+ *
  */
 
 public class TCPServer {
 
+    private int portNumber;
 
-    public static void main(String args[]) throws Exception {
+    public TCPServer(int port) {
+        this.portNumber = port;
+    }
 
-        int portNumber = 2222;
-
-        try (
+    /*try (
                 ServerSocket serverSocket =
                         new ServerSocket(portNumber);
                 Socket clientSocket = serverSocket.accept();
@@ -31,6 +32,5 @@ public class TCPServer {
             System.out.println("Exception caught when trying to listen on port "
                     + portNumber + " or listening for a connection");
             System.out.println(e.getMessage());
-        }
-    }
+        }*/
 }
