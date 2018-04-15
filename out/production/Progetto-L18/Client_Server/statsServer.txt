@@ -1,1 +1,2 @@
-Tè al limone	499	999	999.875	1000.0	Transazione avvenuta il:		14-04-2018 00:08:24
+﻿* File di statistiche, vuoto e riempito dal programma successivamente. Prima riga con dati di default.
+Tè al limone	499	999	999.875	1000.0	Transazione avvenuta il:		14-04-2018 00:08:23
