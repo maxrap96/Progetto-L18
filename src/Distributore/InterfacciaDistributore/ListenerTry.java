@@ -32,8 +32,8 @@ public class ListenerTry implements ActionListener {
             jTextArea.setText("BEVANDA NON DISPONIBILE" + "\n\n\n\n" + "CREDITO: " + credito);
         }
 
-        // Stampa il credito disponibile dopo aver inserito una moneta
-        for (int i = 0; i < monete.length; i++) {
+        // Stampa il credito disponibile dopo avers inserito una moneta
+        /*for (int i = 0; i < monete.length; i++) {
             if (stringaPulsante.equals(monete[i])) {
                 credito += Double.parseDouble(monete[i]);
                 //jTextArea.setText("INSERITI: " + "\n" + "COSTO: " + "\n\n\n" + "CREDITO: " + credit[i]);
@@ -46,6 +46,6 @@ public class ListenerTry implements ActionListener {
         }
 
 
-        //jTextArea.repaint();
+        //jTextArea.repaint();*/
     }
 }
