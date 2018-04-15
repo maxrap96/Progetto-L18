@@ -5,8 +5,10 @@ import java.net.Socket;
 
 public class TesterClient {
     public static void main(String[] args) throws IOException{
-        File fileMenu = new File("src/File_Testo/menu.txt");
-        File fileStats = new File("src/File_Testo/stats.txt");
+        File fileMenu =
+                new File("src/File_Testo/menu.txt");
+        File fileStats =
+                new File("src/File_Testo/stats.txt");
 
         try {
             Socket clientSocket =

@@ -13,6 +13,8 @@ public class TesterServer {
     //TODO Una funzione che mi permetta di switchare (forse proprio uno switch) tra la ricezione e l'invio di un file
 
     public static void main(String[] args) throws IOException{
+        File fileMenu =
+                new File("src/File_Testo/menu.txt");
         File fileStats =
                 new File("src/Client_Server/statsServer.txt");
         try{

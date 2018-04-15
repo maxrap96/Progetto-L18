@@ -3,7 +3,7 @@ package Distributore.InterfacciaDistributore;
 import javax.swing.*;
 import java.awt.*;
 
-public class Distributore extends JFrame{
+public class VendingMachine extends JFrame{
 
     private static final int LUNGHEZZA = 600;
     private static final int ALTEZZA = 500;
@@ -12,7 +12,7 @@ public class Distributore extends JFrame{
      * Creazione interfaccia grafica distributore
      */
 
-    public Distributore() {
+    public VendingMachine() {
         //Inizializzazione JFrame
         setSize(LUNGHEZZA, ALTEZZA);
         setTitle("Hot Drinks Vending Machine");

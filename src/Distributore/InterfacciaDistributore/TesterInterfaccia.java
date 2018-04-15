@@ -2,7 +2,7 @@ package Distributore.InterfacciaDistributore;
 
 public class TesterInterfaccia {
     public static void main(String[] args) {
-        Distributore d = new Distributore();
+        VendingMachine d = new VendingMachine();
         d.setVisible(true);
     }
 }
