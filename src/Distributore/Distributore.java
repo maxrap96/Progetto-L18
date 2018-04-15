@@ -2,13 +2,9 @@ package Distributore;
 
 import Bevande.*;
 import Errori.*;
-
 import java.io.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import static java.lang.Integer.divideUnsigned;
 import static java.lang.Integer.parseInt;
 
 public class Distributore implements MaxValue{
@@ -23,9 +19,41 @@ public class Distributore implements MaxValue{
     public Distributore() {
         this.list = new HashMap<>();
         this.coins = new Coins();
-        setVendingMachine();
+        setValues();
+
         try {
             createList(menu.readFile());
+        } catch (FileNotReadable fileNotReadable) {
+            fileNotReadable.printStackTrace();
+        }
+    }
+
+
+    // Funzione che assegna i valori agli elementi della macchinetta leggendoli da file per
+    // tenere conto anche delle transazioni precedenti.
+    // Sul file stats.txt salvo i valori dell'ultima transazione che saranno i nuovi valori
+    // iniziali della macchinetta alla prossima esecuzione.
+
+    public void setValues() {
+        String[] data = new String[5];
+
+        try {
+            ArrayList<String[]> statistiche = stats.readFile();
+            int last = statistiche.size() - 1;
+
+
+            for(int i = 0; i < data.length; i++) {
+                data[i] = statistiche.get(last)[i];
+            }
+
+            this.cup = parseInt(data[1]);
+            this.spoon = parseInt(data[2]);
+            /*sugar data[3]
+            milk data[4]*/
+
+            this.sugar = SUGARMAX;
+            this.milk = MILKMAX;
+
         } catch (FileNotReadable fileNotReadable) {
             fileNotReadable.printStackTrace();
         }
@@ -71,7 +99,6 @@ public class Distributore implements MaxValue{
                     continue;
             }
         }
-
     }
 
     /**
@@ -140,13 +167,13 @@ public class Distributore implements MaxValue{
     private void selectBeverage(String ID, int sugar){
 
         if (coins.getCredit() >= list.get(ID).getPrice()){  //se il credito è uguale o più singifica che posso
-                                                            // potenzialmente acquistare la bevanda
+            // potenzialmente acquistare la bevanda
             subtractIngredients(ID,sugar);
             coins.updateBalance(list.get(ID).getPrice());
 
             // Scrittura statistiche su file:
             try {
-                stats.writeFile(statsText(ID));
+                stats.writeFile(statsToText(ID));
             } catch (FileNotWritable fileNotWritable) {
                 fileNotWritable.printStackTrace();
             }
@@ -156,7 +183,7 @@ public class Distributore implements MaxValue{
             }
         }
         else {
-            //stats.writeFile();        decommentare e aggiungere in futuro se necessario.
+            //stats.writeFile();        // MJ: decommentare e aggiungere in futuro se necessario.
             new UnsufficientCredit();
         }
     }
@@ -195,12 +222,20 @@ public class Distributore implements MaxValue{
     }
 
     /**
-     * Funzione per tener traccia di ciò che accade nella macchinetta per poi estrapolarne le stataistiche di utilizzo
+     * Funzione per tener traccia di ciò che accade nella macchinetta per poi estrapolarne le statistiche di utilizzo
      * @param ID è la bevanda selezionata dal cliente
-     * @return restituisce una stringa che poi sarà salvata nel file stats.txt
+     * @return s: restituisce una stringa che poi sarà salvata nel file stats.txt
      */
 
-    public String statsText(String ID) {
+    public String statsToText(String ID) {
+        try {
+            ArrayList<String[]> statistiche = stats.readFile();
+            //int lastRow = statistiche.size() -1;
+
+        } catch (FileNotReadable fileNotReadable) {
+            fileNotReadable.printStackTrace();
+        }
+
         String s = list.get(ID).getName() + "\t";
 
         s += cup + "\t" + spoon + "\t" + sugar + "\t" + milk + "\tTransazione avvenuta il:\t";
@@ -212,6 +247,7 @@ public class Distributore implements MaxValue{
      * funziuone da usare nell'interfaccia per aggiungere i soldi
      * @param inserted è il valore associato al tasto di riferimento
      */
+
     public void addCredit(double inserted){
         double[] value=coins.getCOINS_VALUE();
         //cerco di capire la moneta inserita
