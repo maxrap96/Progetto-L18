@@ -178,7 +178,7 @@ public class Distributore implements MaxValue{
 
     private void subtractSugar(int qty){
         if (qty != 0){
-            sugar -= (double) qty * MaxValue.SUGARDOSE;
+            sugar -= (double) qty * SUGARDOSE;
             spoon--;
         }
     }
@@ -192,7 +192,11 @@ public class Distributore implements MaxValue{
         }
     }
 
-    // statistiche:
+    /**
+     * Funzione per tener traccia di ciò che accade nella macchinetta per poi estrapolarne le stataistiche di utilizzo
+     * @param ID è la bevanda selezionata dal cliente
+     * @return restituisce una stringa che poi sarà salvata nel file stats.txt
+     */
 
     public String statsText(String ID) {
         String s = list.get(ID).getName() + "\t";
