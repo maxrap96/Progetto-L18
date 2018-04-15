@@ -7,6 +7,7 @@ public class TesterClient {
 
     static PrintWriter outToServer; // Dati diretti al Server
     static BufferedReader inFromServer; // Dati in entrata
+    static String stringFromServer;
     static File fileMenu =
             new File("src/File_Testo/menu.txt");
     static File fileStats =
@@ -16,6 +17,7 @@ public class TesterClient {
 
         try {
             connectionPreRequisite("localhost",2222);
+            emptyFile(fileMenu);
 
             String stringFromFile;
             BufferedReader inFromFile =
@@ -26,9 +28,8 @@ public class TesterClient {
                 outToServer.println(stringFromFile);
             }
 
-            String stringFromServer;
             while((stringFromServer = inFromServer.readLine()) != null){ // Ricevo dal Server
-                System.out.println(stringFromServer);
+                writeFileReceived(fileMenu);
             }
         } catch (IOException e){
             e.printStackTrace();
@@ -53,4 +54,36 @@ public class TesterClient {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Svuoto il file su cui poi scriverò
+     * @param file
+     * @throws IOException
+     */
+    private static void emptyFile(File file) throws IOException{
+        try {
+            PrintWriter emptyFile =
+                    new PrintWriter(file.getPath());
+            emptyFile.write(""); // Svuoto il file
+            emptyFile.close();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Scrivo il file arrivato da Client e reinvio una verifica (che in futuro portà essere tolta)
+     * @param file
+     * @throws IOException
+     */
+    private static void writeFileReceived(File file)throws IOException{
+        try {
+            FileOutputStream fileOutputStream =
+                    new FileOutputStream(file.getPath(), true); // Scrivo il file
+            fileOutputStream.write((stringFromServer + "\n").getBytes());
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
 }

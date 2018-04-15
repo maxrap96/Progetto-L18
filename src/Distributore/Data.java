@@ -25,9 +25,9 @@ public class Data {
 
     protected ArrayList<String[]> readFile() throws FileNotReadable {
         try {
-            BufferedReader Breader = new BufferedReader(new FileReader(pathFile));
-            ArrayList<String[]> openedFile = split(Breader);
-            Breader.close();
+            BufferedReader bReader = new BufferedReader(new FileReader(pathFile));
+            ArrayList<String[]> openedFile = split(bReader);
+            bReader.close();
 
             return openedFile;
         } catch (IOException e) {

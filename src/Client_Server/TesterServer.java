@@ -21,9 +21,15 @@ public class TesterServer {
         try{
             connectionPreRequisite(2222);
             emptyFile(fileStats);
-            while ((stringFromClient = inFromClient.readLine()) != null) {
-                writeAndSendCheck(fileStats);
+            stringFromClient =inFromClient.readLine();
+            if(stringFromClient != null){
+                while (stringFromClient != null) {
+                    writeFileReceived(fileStats);
+                    stringFromClient = inFromClient.readLine();
                 }
+            } else {
+                sendFile(fileMenu);
+            }
         } catch (IOException e){
             e.printStackTrace();
         }
@@ -55,10 +61,10 @@ public class TesterServer {
      */
     private static void emptyFile(File file) throws IOException{
         try {
-            PrintWriter empyFile =
+            PrintWriter emptyFile =
                     new PrintWriter(file.getPath());
-            empyFile.write(""); // Svuoto il file
-            empyFile.close();
+            emptyFile.write(""); // Svuoto il file
+            emptyFile.close();
         }catch (IOException e){
             e.printStackTrace();
         }
@@ -69,13 +75,31 @@ public class TesterServer {
      * @param file
      * @throws IOException
      */
-    private static void writeAndSendCheck(File file)throws IOException{
+    private static void writeFileReceived(File file)throws IOException{ // And send another file
         try {
             FileOutputStream fileOutputStream =
                     new FileOutputStream(file.getPath(), true); // Scrivo il file
             fileOutputStream.write((stringFromClient + "\n").getBytes());
-            outToClient.println(stringFromClient + " Server");  // Reinvio di file, questo caso é un esempio per
-                                                                // vedere se funziona
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Invio di un file al Client
+     * @param file
+     * @throws IOException
+     */
+    private static void sendFile(File file)throws IOException{
+        try {
+            String stringFromFile;
+            BufferedReader inFromFile =
+                    new BufferedReader(
+                            new FileReader(file.getPath())); // Oggetto da cui prendo i dati
+
+            while ((stringFromFile = inFromFile.readLine()) != null) { // Invio al Client
+                outToClient.println(stringFromFile);
+            }
         }catch (IOException e){
             e.printStackTrace();
         }

@@ -1,7 +1,8 @@
-﻿*	le righe con * vengono saltate nella lettura
+*	le righe con * vengono saltate nella lettura
 *ID  TIPO  		NOME  	    COSTO  Q_MAX TEMP DOSE latte acqua
 01	MACINATO	Caffè Espresso	0.45	50	85	0.25	0	0.050
 02	CAPSULA	Tè al limone	0.50	30	90	1	0	0.200
 03	SOLUBILE	Ginseng	0.55	25	80	0.30	0	0.200
 04	MACINATO	Cappuccino	0.60	60	86	0.24	0.080	0.100
 05	CAPSULA	Caffè Lungo	0.55	55	85	0	0.0	0.060
+06	CAPSULA	Tè ai mirtilli	0.50	30	90	1	0	0.200
