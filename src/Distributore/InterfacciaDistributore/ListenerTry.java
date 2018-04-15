@@ -21,6 +21,7 @@ public class ListenerTry implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String stringaPulsante = e.getActionCommand();
 
+        // Stampa nome e prezzo della bevanda selezionata e il credito disponibile
         for (int j = 0; j < bevande.length; j++) {
             if (stringaPulsante.equals(bevande[j])) {
                 jTextArea.setText(bevande[j].toUpperCase() + "\n" + "COSTO: " + costo[j] + "\n\n\n" + "CREDITO: " + credit);
@@ -30,7 +31,7 @@ public class ListenerTry implements ActionListener {
             jTextArea.setText("BEVANDA NON DISPONIBILE" + "\n\n\n\n" + "CREDITO:");
         }
 
-        
+        // Stampa il credito disponibile dopo avers inserito una moneta
        /* for (int i = 0; i < monete.length; i++) {
             if (stringaPulsante.equals(monete[i])) {
                 credit += Double.parseDouble(monete[i]);
