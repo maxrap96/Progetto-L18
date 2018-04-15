@@ -17,7 +17,7 @@ public class TesterClient {
 
         try {
             connectionPreRequisite("localhost",2222);
-            emptyFile(fileMenu);
+            // emptyFile(fileMenu);
 
             String stringFromFile;
             BufferedReader inFromFile =

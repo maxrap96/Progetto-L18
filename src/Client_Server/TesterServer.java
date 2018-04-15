@@ -21,14 +21,8 @@ public class TesterServer {
         try{
             connectionPreRequisite(2222);
             emptyFile(fileStats);
-            stringFromClient =inFromClient.readLine();
-            if(stringFromClient != null){
-                while (stringFromClient != null) {
-                    writeFileReceived(fileStats);
-                    stringFromClient = inFromClient.readLine();
-                }
-            } else {
-                sendFile(fileMenu);
+            while ((stringFromClient = inFromClient.readLine()) != null) {
+                writeFileReceived(fileStats);
             }
         } catch (IOException e){
             e.printStackTrace();
