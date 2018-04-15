@@ -8,9 +8,9 @@ public class TesterClient {
     static PrintWriter outToServer; // Dati diretti al Server
     static BufferedReader inFromServer; // Dati in entrata
     static File fileMenu =
-            new File("src/Client_Server/serverMenu.txt");
+            new File("src/File_Testo/menu.txt");
     static File fileStats =
-            new File("src/Client_Server/serverStats.txt");
+            new File("src/File_Testo/stats.txt");
 
     public static void main(String[] args) throws IOException{
 
