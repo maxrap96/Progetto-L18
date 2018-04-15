@@ -7,6 +7,8 @@ import java.awt.event.ActionListener;
 public class ListenerTry implements ActionListener {
 
     private JTextArea jTextArea;
+    private double credit = 0.0;
+    private final String monete[] = {"0.05", "0.10", "0.20", "0.50", "1", "2"};
 
     public ListenerTry(JTextArea textArea) {
         this.jTextArea = textArea;
@@ -15,8 +17,8 @@ public class ListenerTry implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String stringaPulsante = e.getActionCommand();
-        Distributore d = new Distributore();
-        double credit = d.getCredit();
+        ///Distributore d = new Distributore();
+       // double credit = d.getCredit();
         if (stringaPulsante.equals("Caffè Espresso")) {
             jTextArea.setText("CAFFE' ESPRESSO" + "\n" + "COSTO: 0.50" + "\n\n\n" + "CREDITO: " + credit);
         }
@@ -38,7 +40,18 @@ public class ListenerTry implements ActionListener {
         else if (stringaPulsante.equals("Bicchiere")){
             jTextArea.setText("BICCHIERE" + "\n" + "COSTO: 0.50" + "\n\n\n" + "CREDITO: " + credit);
         }
-        else if (stringaPulsante.equals("2")){
+
+
+        for (int i = 0; i < monete.length; i++) {
+            if (stringaPulsante.equals(monete[i])) {
+                credit += Double.parseDouble(monete[i]);
+
+            }
+            jTextArea.setText("INSERITI: " + "\n" + "COSTO: " + "\n\n\n" + "CREDITO: " + credit);
+
+        }
+
+        /*else if (stringaPulsante.equals("2")){
             credit += 2;
             jTextArea.setText("INSERITI: " + "\n" + "COSTO: " + "\n\n\n" + "CREDITO: " + credit);
         }
@@ -65,6 +78,6 @@ public class ListenerTry implements ActionListener {
         else if (stringaPulsante.equals("")){
             jTextArea.setText("BEVANDA NON DISPONIBILE" + "\n\n\n\n" + "CREDITO:");
         }
-        jTextArea.repaint();
+        jTextArea.repaint();*/
     }
 }

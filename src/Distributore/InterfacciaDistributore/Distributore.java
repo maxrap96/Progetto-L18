@@ -7,7 +7,6 @@ public class Distributore extends JFrame{
 
     private static final int LUNGHEZZA = 600;
     private static final int ALTEZZA = 500;
-    private double credit = 0.0;
 
     /**
      * Creazione interfaccia grafica distributore
@@ -157,9 +156,5 @@ public class Distributore extends JFrame{
         button.setFont(new Font("", Font.ITALIC,25));
         button.setBackground(Color.WHITE);
         return button;
-    }
-
-    public double getCredit() {
-        return credit;
     }
 }
