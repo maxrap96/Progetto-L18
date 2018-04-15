@@ -16,9 +16,7 @@ public class Data {
     }
 
     /**
-     * Funzione che apre e legge i dati iniziali da un file esterno passato come parametro.
-     * Il file viene chiuso, ma i dati vengono salvati per poi essere modificati da altre funzioni che
-     * aggiornano i dati dopo ogni transazione della macchinetta
+     * Funzione che legge da un file esterno i dati su cui bisogna lavorare.
      * @return openedFile
      * @throws FileNotReadable
      */
@@ -135,5 +133,4 @@ public class Data {
         file.close();
         os.close();
     }
-
 }

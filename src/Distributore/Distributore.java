@@ -35,24 +35,21 @@ public class Distributore implements MaxValue{
     // iniziali della macchinetta alla prossima esecuzione.
 
     public void setValues() {
-        String[] data = new String[5];
+        String[] valuesToTrack = new String[5]; // MJ: Valore 5 impostato a random.
+                                                // Sarebbe da parametrizzare ma al momento non saprei che metterci.
 
         try {
             ArrayList<String[]> statistiche = stats.readFile();
             int last = statistiche.size() - 1;
 
-
-            for(int i = 0; i < data.length; i++) {
-                data[i] = statistiche.get(last)[i];
+            for(int i = 0; i < valuesToTrack.length; i++) {
+                valuesToTrack[i] = statistiche.get(last)[i];
             }
 
-            this.cup = parseInt(data[1]);
-            this.spoon = parseInt(data[2]);
-            /*sugar data[3]
-            milk data[4]*/
-
-            this.sugar = SUGARMAX;
-            this.milk = MILKMAX;
+            this.cup = parseInt(valuesToTrack[1]);
+            this.spoon = parseInt(valuesToTrack[2]);
+            this.sugar = Double.parseDouble(valuesToTrack[3]);
+            this.milk = Double.parseDouble(valuesToTrack[4]);
 
         } catch (FileNotReadable fileNotReadable) {
             fileNotReadable.printStackTrace();
@@ -63,13 +60,13 @@ public class Distributore implements MaxValue{
      * Imposto i valori massimi di alcuni parametri del distributore, come la quantità di zucchero, latte, bicchierini
      * e cucchiani.
      */
-
-    private void setVendingMachine() {
+    // MJ: funzione utile per simulare la ricarica della macchinetta da remoto. Implementare in futuro.
+    /*private void resetToMaxVendingMachine() {
         this.sugar = SUGARMAX;
         this.milk = MILKMAX;
         this.cup = CUPMAX;
         this.spoon = SPOONMAX;
-    }
+    }*/
 
     /**
      * Creo il menu nella macchinetta
@@ -228,19 +225,11 @@ public class Distributore implements MaxValue{
      */
 
     public String statsToText(String ID) {
-        try {
-            ArrayList<String[]> statistiche = stats.readFile();
-            //int lastRow = statistiche.size() -1;
-
-        } catch (FileNotReadable fileNotReadable) {
-            fileNotReadable.printStackTrace();
-        }
-
         String s = list.get(ID).getName() + "\t";
 
-        s += cup + "\t" + spoon + "\t" + sugar + "\t" + milk + "\tTransazione avvenuta il:\t";
-
-        return s;
+        // MJ: Da parametrizzare se possibile.
+        return s + cup + "\t" + spoon + "\t" + String.format("%.3f", sugar) + "\t" + String.format("%.3f", milk)
+                + "\tTransazione avvenuta il:\t";
     }
 
     /**
@@ -257,8 +246,5 @@ public class Distributore implements MaxValue{
                 coins.addCoin(inserted,i);
             }
         }
-
-
     }
-
 }
