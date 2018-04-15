@@ -34,6 +34,7 @@ public class Distributore extends JFrame{
         add(pannelloSelezione, BorderLayout.EAST);
 
         // Creazione dei tasti delle bevande e successiva aggiunta al pannelloBevande
+        //todo rendere automatica la creazione. prendendo i campi dalla classe distributore e relative posizioni
         JButton caffeEspresso = makeRoundRectButton("Caffè Espresso");
         caffeEspresso.setBounds(61, 50, 300, 100);
         JButton cappuccino = makeRoundRectButton("Cappuccino");
@@ -94,6 +95,7 @@ public class Distributore extends JFrame{
         pannelloMonete.add(cent20); pannelloMonete.add(cent10); pannelloMonete.add(cent5); pannelloMonete.add(chiavetta);
 
         // Listener bevande
+        //todo crearlo direttamente nella creazione dinamica del bottone. così da renderlo più veloce
         caffeEspresso.addActionListener(new ListenerTry(display));
         cappuccino.addActionListener(new ListenerTry(display));
         te.addActionListener(new ListenerTry(display));

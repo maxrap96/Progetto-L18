@@ -7,6 +7,9 @@ import java.awt.event.ActionListener;
 public class ListenerTry implements ActionListener {
 
     private JTextArea jTextArea;
+
+    //todo tutta sta roba non va proprio bene. tutto questo è già presente nel distributore. non vedo perchè riscrivere
+    //todo cose già fatte.
    // private double credit[] = {0, 0 , 0, 0, 0, 0};
     private double credito = 0;
     private final String monete[] = {"0.05", "0.10", "0.20", "0.50", "1", "2"};

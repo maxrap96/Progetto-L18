@@ -10,7 +10,7 @@ import java.util.HashMap;
 
 import static java.lang.Integer.parseInt;
 
-public class Distributore {
+public class Distributore implements MaxValue{
 
     private HashMap<String,Bevanda> list;
     private int cup, spoon;
@@ -36,10 +36,10 @@ public class Distributore {
      */
 
     private void setVendingMachine() {
-        this.sugar = MaxValue.SUGARMAX;
-        this.milk = MaxValue.MILKMAX;
-        this.cup = MaxValue.CUPMAX;
-        this.spoon = MaxValue.SPOONMAX;
+        this.sugar = SUGARMAX;
+        this.milk = MILKMAX;
+        this.cup = CUPMAX;
+        this.spoon = SPOONMAX;
     }
 
     /**
