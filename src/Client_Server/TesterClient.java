@@ -4,20 +4,18 @@ import java.io.*;
 import java.net.Socket;
 
 public class TesterClient {
+
+    static PrintWriter outToServer; // Dati diretti al Server
+    static BufferedReader inFromServer; // Dati in entrata
+    static File fileMenu =
+            new File("src/Client_Server/serverMenu.txt");
+    static File fileStats =
+            new File("src/Client_Server/serverStats.txt");
+
     public static void main(String[] args) throws IOException{
-        File fileMenu =
-                new File("src/File_Testo/menu.txt");
-        File fileStats =
-                new File("src/File_Testo/stats.txt");
 
         try {
-            Socket clientSocket =
-                    new Socket("localhost", 2222); // Creo il socket attraverso cui inviare i dati
-            PrintWriter outToServer =
-                    new PrintWriter(clientSocket.getOutputStream(), true); // Oggetto per scrivere
-            BufferedReader inFromServer =
-                    new BufferedReader(
-                            new InputStreamReader(clientSocket.getInputStream())); // Oggetto per ricevere
+            connectionPreRequisite("localhost",2222);
 
             String stringFromFile;
             BufferedReader inFromFile =
@@ -33,6 +31,25 @@ public class TesterClient {
                 System.out.println(stringFromServer);
             }
         } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Creo le basi per la connessione
+     * @throws IOException
+     */
+    private static void connectionPreRequisite (String hostName, int connectionPort) throws IOException{
+        try{
+            Socket clientSocket =
+                    new Socket(hostName, connectionPort); // Creo il socket attraverso cui inviare i dati
+            outToServer =
+                    new PrintWriter(clientSocket.getOutputStream(), true); // Oggetto per scrivere
+            inFromServer =
+                    new BufferedReader(
+                            new InputStreamReader(clientSocket.getInputStream())); // Oggetto per ricevere
+
+        }catch (IOException e){
             e.printStackTrace();
         }
     }

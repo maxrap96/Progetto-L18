@@ -6,19 +6,20 @@ import java.net.Socket;
 
 public class TesterServer {
 
-    static PrintWriter outToClient; // Stringa diretta al Client
+    static PrintWriter outToClient; // Dati diretti al Client
     static BufferedReader inFromClient; // Dati in entrata
     static String stringFromClient; // Stringa letta dai dati in entrata
+    static File fileMenu =
+            new File("src/Client_Server/serverMenu.txt");
+    static File fileStats =
+            new File("src/Client_Server/serverStats.txt");
 
     //TODO Una funzione che mi permetta di switchare (forse proprio uno switch) tra la ricezione e l'invio di un file
 
     public static void main(String[] args) throws IOException{
-        File fileMenu =
-                new File("src/File_Testo/menu.txt");
-        File fileStats =
-                new File("src/Client_Server/statsServer.txt");
+
         try{
-            connectionPreRequisite();
+            connectionPreRequisite(2222);
             emptyFile(fileStats);
             while ((stringFromClient = inFromClient.readLine()) != null) {
                 writeAndSendCheck(fileStats);
@@ -32,10 +33,10 @@ public class TesterServer {
      * Creo le basi per la connessione
      * @throws IOException
      */
-    private static void connectionPreRequisite () throws IOException{
+    private static void connectionPreRequisite (int connectionPort) throws IOException{
         try{
             ServerSocket serverSocket =
-                    new ServerSocket(2222); // Creo socket di benvenuto
+                    new ServerSocket(connectionPort); // Creo socket di benvenuto
             Socket clientSocket = serverSocket.accept(); // Accetto la connessione di un client
             outToClient =
                     new PrintWriter(clientSocket.getOutputStream(), true); // Oggetto per scrivere al Client
@@ -45,7 +46,6 @@ public class TesterServer {
         }catch (IOException e){
             e.printStackTrace();
         }
-
     }
 
     /**
