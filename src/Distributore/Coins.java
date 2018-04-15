@@ -166,6 +166,16 @@ public class Coins {
         }
         return change;
     }
+
+    /**
+     * funzione sfruttata dall'interfaccia per aggiungere monete ed aggiornare il credito
+     * @param inserted è il valore della moneta inserita
+     * @param i è l'indice corrispondente al valore della moneta inserita in COINS_VALUE[]
+     */
+    public void addCoin(double inserted, int i) {
+        credit += inserted;
+        money[i]++;
+    }
 }
 
 

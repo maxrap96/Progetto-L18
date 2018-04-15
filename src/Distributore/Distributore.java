@@ -8,6 +8,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import static java.lang.Integer.divideUnsigned;
 import static java.lang.Integer.parseInt;
 
 public class Distributore implements MaxValue{
@@ -166,6 +167,7 @@ public class Distributore implements MaxValue{
      * @param sugar
      */
     private void subtractIngredients(String ID, int sugar) {
+        list.get(ID).subtractDose();
         milk -= list.get(ID).getMilk();
         subtractSugar(sugar);
         cup--;
@@ -205,4 +207,22 @@ public class Distributore implements MaxValue{
 
         return s;
     }
+
+    /**
+     * funziuone da usare nell'interfaccia per aggiungere i soldi
+     * @param inserted è il valore associato al tasto di riferimento
+     */
+    public void addCredit(double inserted){
+        double[] value=coins.getCOINS_VALUE();
+        //cerco di capire la moneta inserita
+        for (int i=0;i<value.length;i++){
+            if (inserted == value[i]){
+                //significa che ho trovato il valore corrispondente
+                coins.addCoin(inserted,i);
+            }
+        }
+
+
+    }
+
 }
