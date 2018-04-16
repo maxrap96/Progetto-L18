@@ -14,7 +14,6 @@ public class ServerSide extends Thread{
     static File fileStatsServer =
             new File("src/Client_Server/serverStats.txt");
 
-    static boolean threadFlag = true;
 
     @Override
     public void run() {

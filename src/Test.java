@@ -1,3 +1,5 @@
+import Client_Server.ClientSide;
+import Client_Server.ServerSide;
 import Distributore.Distributore;
 
 import java.util.ArrayList;
@@ -8,5 +10,20 @@ public class Test {
         Distributore macchinetta = new Distributore();
         macchinetta.textualInput();
         System.out.println("check");
+
+        // startConnection(); // Funziona, ma non so come farlo fermare da solo
+    }
+
+    /**
+     * Invio stats.txt a Server e ricevo serverMenu.txt
+     */
+
+    // Per essere più chiari: stats.txt sovrascrive serverStats.txt, mentre serverMenu.txt sovrascrive menu.txt
+
+    private static void startConnection(){
+        ServerSide serverSide = new ServerSide();
+        ClientSide clientSide = new ClientSide();
+        serverSide.start();
+        clientSide.start();
     }
 }
