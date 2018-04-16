@@ -111,11 +111,11 @@ public class Data {
 
     /**
      * Funzione per la sovrascrittura di una specifica riga di testo.
-     * @param current è la riga da aggiornare.
-     * @param scrittura è la nuova riga che sovrascriverà la riga selezionata.
+     * @param currentLine è la riga da aggiornare.
+     * @param newLine è la nuova riga che sovrascriverà la riga selezionata.
      */
 
-    protected void overwriteFile(String scrittura, String current) throws IOException{
+    protected void overwriteFile(String newLine, String currentLine) throws IOException{
         BufferedReader file = new BufferedReader(new FileReader(pathFile));
         String line;
         String input = "";
@@ -123,7 +123,7 @@ public class Data {
         while ((line = file.readLine()) != null)
             input += line + System.lineSeparator();
 
-        input = input.replace(current, scrittura);
+        input = input.replace(currentLine, newLine);
 
         FileOutputStream os = new FileOutputStream(pathFile);
         os.write(input.getBytes());

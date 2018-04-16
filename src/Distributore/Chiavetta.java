@@ -11,7 +11,7 @@ public class Chiavetta {
     private double Saldo = 0;
     private int Linea;
     private Data data = new Data("src/File_Testo/dati_chiavetta.txt");
-    private String current;
+    private String currentLine;
 
     public Chiavetta(String ID) {
         this.ID = ID;
@@ -27,7 +27,7 @@ public class Chiavetta {
                  if(ID.equals(id)){
                      Saldo = parseDouble(chiavText.get(i)[1]);
                      Linea = i;
-                     current = chiavText.get(i)[0]+"\t"+chiavText.get(i)[1];
+                     currentLine = chiavText.get(i)[0]+"\t"+chiavText.get(i)[1];
                  }
             }
 
@@ -36,15 +36,13 @@ public class Chiavetta {
         }
     }
 
-    //TODO capire come riscrivere le sigole righe di un file.txt
-
     public void AggSaldo(double importo) {
         Saldo += importo;
-        String c = ID+"\t"+Saldo;
+        String newLine = ID+"\t"+Saldo;
 
         try {
 
-            data.overwriteFile(c, current);
+            data.overwriteFile(newLine, currentLine);
         }catch (IOException e){
         }
     }
@@ -52,11 +50,11 @@ public class Chiavetta {
     public boolean Pay(double Costo){
         if(Saldo > Costo){
             Saldo -= Costo;
-            String c = ID+"\t"+Saldo;
+            String newLine = ID+"\t"+Saldo;
 
             try {
 
-                data.overwriteFile(c, current);
+                data.overwriteFile(newLine, currentLine);
             }catch (IOException e){
             }
             return true;
