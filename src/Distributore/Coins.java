@@ -111,7 +111,6 @@ public class Coins {
 
     /**
      * Funzione per erogare il resto, massimizzando il numero di monete di taglio maggiore.
-     * Per altro troppa roba in cascata, un If con dentro un For con dentro un If, fate delle sotto funzioni
      */
     public void giveChange() {
 
@@ -126,11 +125,9 @@ public class Coins {
                 fileNotWritable.printStackTrace();
             }
 
-            System.out.println("Erogazione resto: " + String.format("%.2f",credit));
+            System.out.println("Resto erogato: " + String.format("%.2f",credit));
             System.out.println("5c: " + change[0] + "\n10c: " + change[1] + "\n20c: " + change[2] + "\n50c: "
                     + change[3] + "\n1E: " + change[4] + "\n2E: " + change[5]);
-
-
         }  else {
             System.out.println("Resto NON disponibile");
         }
