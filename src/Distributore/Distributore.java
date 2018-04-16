@@ -251,7 +251,7 @@ public class Distributore implements MaxValue{
      */
 
     public void addCredit(double inserted){
-        double[] value=coins.getCOINS_VALUE();
+        double[] value = coins.getCOINS_VALUE();
         //cerco di capire la moneta inserita
         for (int i=0;i<value.length;i++){
             if (inserted == value[i]){

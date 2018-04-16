@@ -6,4 +6,3 @@
 04	MACINATO	Cappuccino	0.60	60	86	0.24	0.080	0.100
 05	CAPSULA	Caffè Lungo	0.55	55	85	0	0.0	0.060
 06	CAPSULA	Tè ai mirtilli	0.50	30	90	1	0	0.200
-
