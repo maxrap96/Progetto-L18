@@ -1,4 +1,7 @@
-﻿* File di statistiche, vuoto e riempito dal programma successivamente. Prima riga con dati di default.
-Tè al limone	499	999	999.875	1000.0	Transazione avvenuta il:		14-04-2018 00:08:23
-Cappuccino	498	998	999.9	999.92	Transazione avvenuta il:		15-04-2018 20:05:17
-Tè al limone	497	997	999.875	1000.0	Transazione avvenuta il:		15-04-2018 20:05:40
+﻿* File di statistiche, vuoto e riempito dal programma successivamente. Prima riga con dati di default di prova.
+Tè al limone	500	1000	1000.0	1000.0	Transazione avvenuta il:	14-04-2018 00:08:23
+Caffè Espresso	499	999	999.9	1000.0	Transazione avvenuta il:		16-04-2018 00:32:07
+Cappuccino	498	998	999.8	999.92	Transazione avvenuta il:		16-04-2018 00:32:41
+Tè ai mirtilli	497	997	999.775	999.92	Transazione avvenuta il:		16-04-2018 00:33:26
+Caffè Espresso	496	996	999.65	999.92	Transazione avvenuta il:		16-04-2018 00:37:26
+Ciao
