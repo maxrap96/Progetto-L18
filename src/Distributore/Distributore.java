@@ -232,7 +232,7 @@ public class Distributore implements MaxValue{
     }
 
     /**
-     * Funzione per tener traccia di ciò che accade nella macchinetta per poi estrapolarne le statistiche di utilizzo
+     * Funzione per tener traccia di ciò che accade nella macchinetta
      * @param ID è la bevanda selezionata dal cliente
      * @return s: restituisce una stringa che poi sarà salvata nel file stats.txt
      */
@@ -246,7 +246,7 @@ public class Distributore implements MaxValue{
     }
 
     /**
-     * funziuone da usare nell'interfaccia per aggiungere i soldi
+     * Funziuone da usare nell'interfaccia per aggiungere i soldi
      * @param inserted è il valore associato al tasto di riferimento
      */
 
