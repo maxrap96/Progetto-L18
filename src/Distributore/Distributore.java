@@ -38,10 +38,10 @@ public class Distributore implements MaxValue{
 
         try {
             ArrayList<String[]> statistiche = stats.readFile();
-            int last = statistiche.size() - 1;
+            int lastRow = statistiche.size() - 1;
 
             for(int i = 0; i < valuesToTrack.length; i++) {
-                valuesToTrack[i] = statistiche.get(last)[i];
+                valuesToTrack[i] = statistiche.get(lastRow)[i];
             }
 
             this.cup = parseInt(valuesToTrack[1]);
@@ -57,7 +57,7 @@ public class Distributore implements MaxValue{
         }
     }
 
-    protected void checkIfMachineIsEmpty() {
+    private void checkIfMachineIsEmpty() {
         if(cup==0 || spoon==0 || sugar==0 || milk==0) {
             resetToMaxVendingMachine();
         }
@@ -169,14 +169,15 @@ public class Distributore implements MaxValue{
 
     private void selectBeverage(String ID, int sugar){
 
-        if (coins.getCredit() >= list.get(ID).getPrice()){  //se il credito è uguale o più singifica che posso
-            // potenzialmente acquistare la bevanda
+        if (coins.getCredit() >= list.get(ID).getPrice()){  // Se il credito è uguale o maggiore singifica che posso
+                                                            // potenzialmente acquistare la bevanda
             subtractIngredients(ID,sugar);
             coins.updateBalance(list.get(ID).getPrice());
 
             // Scrittura statistiche su file:
             try {
                 stats.writeFile(statsToText(ID));
+                //stats.writeFile(statsToText(ID), true);   // MJ: Variante. Controllare con gli "amici" quale usare.
             } catch (FileNotWritable fileNotWritable) {
                 fileNotWritable.printStackTrace();
             }
@@ -186,7 +187,13 @@ public class Distributore implements MaxValue{
             }
         }
         else {
-            //stats.writeFile();        // MJ: decommentare e aggiungere in futuro se necessario.
+            try {
+                stats.writeFile(statsToText(ID));    // Nel caso non ci sia credito sufficiente la
+                //stats.writeFile(statsToText(ID), false);    // Nel caso non ci sia credito sufficiente la
+                                                                       // transazione fallisce.
+            } catch (FileNotWritable fileNotWritable) {
+                fileNotWritable.printStackTrace();
+            }
             new UnsufficientCredit();
         }
     }
@@ -234,8 +241,8 @@ public class Distributore implements MaxValue{
         String s = list.get(ID).getName() + "\t";
 
         // MJ: Da parametrizzare se possibile.
-        return s + cup + "\t" + spoon + "\t" + sugar + "\t" + milk
-                + "\tTransazione avvenuta il:";
+        return s + cup + "\t" + spoon + "\t" + sugar + "\t" + milk + "\t";
+        //TODO Sistemare output del numero di cifre decimali dei valori double.
     }
 
     /**

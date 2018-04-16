@@ -82,12 +82,33 @@ public class Data {
         }
     }
 
+    // MJ: Funzione di stampa sul file nel caso di transazioni corrette ed errate. Variante della funzione precedente.
+    /*protected void writeFile(String scrittura, boolean transaction) throws FileNotWritable {
+        try {
+            FileWriter writer = new FileWriter(pathFile, true);
+
+            if(transaction) {
+                writer.write(scrittura + "Transazione avvenuta il:\t" + getCurrentTimeStamp() + "\n");
+            }
+
+            if(! transaction) {
+                writer.write(scrittura + "Transazione fallita.\t" + getCurrentTimeStamp() + "\n");
+            }
+
+            writer.close();
+        } catch (FileNotFoundException e) {
+            throw new FileNotWritable();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }*/
+
     // MJ: funzione creata. Vediamo se serve o se si puo' togliere.
     /**
      * Funzione di scrittura su file stats.txt in caso di errore nella transazione.
      */
 
-    protected void writeFile() {
+    /*protected void writeFile() {
         try {
             FileWriter writer = new FileWriter(pathFile, true);
             writer.write("Transazione fallita.\t" + getCurrentTimeStamp() + "\n");
@@ -95,7 +116,7 @@ public class Data {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
     /**
      * Funzione per ottenere la data e ora locali.
