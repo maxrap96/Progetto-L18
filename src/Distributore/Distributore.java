@@ -28,14 +28,12 @@ public class Distributore implements MaxValue{
         }
     }
 
-
-    // Funzione che assegna i valori agli elementi della macchinetta leggendoli da file per
-    // tenere conto anche delle transazioni precedenti.
-    // Sul file stats.txt salvo i valori dell'ultima transazione che saranno i nuovi valori
-    // iniziali della macchinetta alla prossima esecuzione.
+    /**
+     * Funzione che carica le quantità residue leggendole da file.
+     */
 
     public void setValues() {
-        String[] valuesToTrack = new String[5]; // MJ: Valore 5 impostato a random.
+        String[] valuesToTrack = new String[5]; // MJ: Valore 5 impostato.
                                                 // Sarebbe da parametrizzare ma al momento non saprei che metterci.
 
         try {
@@ -60,7 +58,7 @@ public class Distributore implements MaxValue{
      * Imposto i valori massimi di alcuni parametri del distributore, come la quantità di zucchero, latte, bicchierini
      * e cucchiani.
      */
-    // MJ: funzione utile per simulare la ricarica della macchinetta da remoto. Implementare in futuro.
+    // TODO:  MJ: funzione utile per simulare la ricarica della macchinetta da remoto. Implementare in futuro.
     /*private void resetToMaxVendingMachine() {
         this.sugar = SUGARMAX;
         this.milk = MILKMAX;
@@ -228,8 +226,8 @@ public class Distributore implements MaxValue{
         String s = list.get(ID).getName() + "\t";
 
         // MJ: Da parametrizzare se possibile.
-        return s + cup + "\t" + spoon + "\t" + String.format("%.3f", sugar) + "\t" + String.format("%.3f", milk)
-                + "\tTransazione avvenuta il:\t";
+        return s + cup + "\t" + spoon + "\t" + sugar + "\t" + milk
+                + "\tTransazione avvenuta il:";
     }
 
     /**

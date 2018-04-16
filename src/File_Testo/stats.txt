@@ -4,4 +4,3 @@ Caffè Espresso	499	999	999.9	1000.0	Transazione avvenuta il:		16-04-2018 00:32:
 Cappuccino	498	998	999.8	999.92	Transazione avvenuta il:		16-04-2018 00:32:41
 Tè ai mirtilli	497	997	999.775	999.92	Transazione avvenuta il:		16-04-2018 00:33:26
 Caffè Espresso	496	996	999.65	999.92	Transazione avvenuta il:		16-04-2018 00:37:26
-Caffè Lungo	495	995	999,550	999,920	Transazione avvenuta il:		16-04-2018 00:54:11

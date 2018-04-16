@@ -7,7 +7,7 @@ public abstract class Bevanda {
     protected String id;
     protected Tipo type;
     protected String name;
-    protected double price, maxQuantity, temperature, usedQuantity, water, milk;
+    protected double price, maxQuantity, temperature, dispensedQuantity, water, milk;
     protected double leftQuantity;
 
     /**
@@ -17,7 +17,7 @@ public abstract class Bevanda {
      */
 
     public Bevanda(String[] rowSplitted) {
-        // Inizializzo tutto tranne type e usedQuantity che verranno inizializzati
+        // Inizializzo tutto tranne type e dispensedQuantity che verranno inizializzati
         // nelle singole classi in base alle differenze.
         this.id = rowSplitted[0];
         this.name = rowSplitted[2];
@@ -35,7 +35,7 @@ public abstract class Bevanda {
      */
 
     public void subtractDose() {
-        this.leftQuantity -= this.usedQuantity;
+        this.leftQuantity -= this.dispensedQuantity;
     }
 
     public double getPrice() {
@@ -47,7 +47,7 @@ public abstract class Bevanda {
      */
 
     public boolean isAvailable() {
-        if (leftQuantity > usedQuantity){
+        if (leftQuantity > dispensedQuantity){
             return true;
         }
         else {
