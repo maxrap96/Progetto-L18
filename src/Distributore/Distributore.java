@@ -260,4 +260,21 @@ public class Distributore implements MaxValue{
             }
         }
     }
+
+    /**
+     * funzione per fornire alla interfaccia l'etichetta da mettere sui bottoni
+     * @param i bevanda da inserire nella macchinetta
+     * @return restituisce una stringa contenente il nome ed il costo della bevanda
+     */
+    public String getLabel(int i){
+        return (list.get("0"+i).getName() + "\tCosto: " + list.get("0"+i).getPrice());
+    }
+
+    /**
+     * funzione per restituire alla macchinetta la quantità di bevande da aggiungere
+     * @return è il numero di bevande presenti nel distributore
+     */
+    public int getListSize(){
+        return list.size();
+    }
 }

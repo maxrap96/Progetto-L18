@@ -36,12 +36,10 @@ public class Chiavetta {
         }
     }
 
-    public void AggSaldo(double importo) {
+    public void AddSaldo(double importo) {
         Saldo += importo;
         String newLine = ID+"\t"+Saldo;
-
         try {
-
             data.overwriteFile(newLine, currentLine);
         }catch (IOException e){
         }
@@ -62,6 +60,8 @@ public class Chiavetta {
         return false;
 
     }
+
+    //todo aggiungere la scrittura sul file sovrascrivendo la specifica linea
 
     @Override
     public String toString() {
