@@ -62,8 +62,7 @@ public class TesterClient {
      */
     private static void emptyFile(File file) throws IOException{
         try {
-            PrintWriter emptyFile =
-                    new PrintWriter(file.getPath());
+            PrintWriter emptyFile = new PrintWriter(file.getPath());
             emptyFile.write(""); // Svuoto il file
             emptyFile.close();
         }catch (IOException e){

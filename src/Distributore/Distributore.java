@@ -33,7 +33,7 @@ public class Distributore implements MaxValue{
      */
 
     public void setValues() {
-        String[] valuesToTrack = new String[5]; // MJ: Valore 5 impostato.
+        String[] valuesToTrack = new String[5]; // MJ: Valore impostato a 5.
                                                 // Sarebbe da parametrizzare ma al momento non saprei che metterci.
 
         try {
@@ -49,8 +49,17 @@ public class Distributore implements MaxValue{
             this.sugar = Double.parseDouble(valuesToTrack[3]);
             this.milk = Double.parseDouble(valuesToTrack[4]);
 
+            // MJ: Controllo se c'è bisogno di ricaricare la macchinetta.
+            checkIfMachineIsEmpty();
+
         } catch (FileNotReadable fileNotReadable) {
             fileNotReadable.printStackTrace();
+        }
+    }
+
+    protected void checkIfMachineIsEmpty() {
+        if(cup==0 || spoon==0 || sugar==0 || milk==0) {
+            resetToMaxVendingMachine();
         }
     }
 
@@ -58,13 +67,12 @@ public class Distributore implements MaxValue{
      * Imposto i valori massimi di alcuni parametri del distributore, come la quantità di zucchero, latte, bicchierini
      * e cucchiani.
      */
-    // TODO:  MJ: funzione utile per simulare la ricarica della macchinetta da remoto. Implementare in futuro.
-    /*private void resetToMaxVendingMachine() {
+    private void resetToMaxVendingMachine() {
         this.sugar = SUGARMAX;
         this.milk = MILKMAX;
         this.cup = CUPMAX;
         this.spoon = SPOONMAX;
-    }*/
+    }
 
     /**
      * Creo il menu nella macchinetta
