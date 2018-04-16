@@ -68,8 +68,8 @@ public class Coins {
 
     public void updateBalance(double vendita) {
         profit += vendita;
-        credit = (credit)*100 - (vendita)*100;
-        credit = credit/100;
+        credit = (credit)*1000 - (vendita)*1000;    //moltiplico per 1000 per evitare errori strani di approsimazione
+        credit = credit/1000;
     }
 
     /**
