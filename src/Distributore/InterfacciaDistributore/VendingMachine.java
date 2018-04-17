@@ -43,7 +43,7 @@ public class VendingMachine extends JFrame{
         // Creazione del pannello dove vengono disposte le bevande
         JPanel pannelloBevande = makePanel( 3 * screenSize.width / 4, 3 * screenSize.height / 4, Color.BLACK, null);
         container.add(pannelloBevande, BorderLayout.WEST);
-/*        // Creazione del display e aggiunta al pannelloSelezione
+       // Creazione del display e aggiunta al pannelloSelezione
         JTextArea display = new JTextArea(5, 1);
         display.setBackground(Color.BLUE);
         display.setForeground(Color.WHITE);
@@ -102,9 +102,9 @@ public class VendingMachine extends JFrame{
         pannelloMonete.add(resto); pannelloMonete.add(menoZucchero); pannelloMonete.add(piuZucchero);
         pannelloMonete.add(euro2); pannelloMonete.add(euro1); pannelloMonete.add(cent50);
         pannelloMonete.add(cent20); pannelloMonete.add(cent10); pannelloMonete.add(cent5); //pannelloMonete.add(chiavetta);
-/*
+
         // Listener bevande
-        //todo crearlo direttamente nella creazione dinamica del bottone. così da renderlo più veloce
+   /*     //todo crearlo direttamente nella creazione dinamica del bottone. così da renderlo più veloce
         button1.addActionListener(new ListenerTry(display));
         button2.addActionListener(new ListenerTry(display));
         button3.addActionListener(new ListenerTry(display));
