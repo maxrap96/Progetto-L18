@@ -164,9 +164,9 @@ public class Distributore implements MaxValue{
      * @param sugar: è la qunatità di zucchero da 0 a 5
      */
 
-    private void selectBeverage(String ID, int sugar){
+    public String selectBeverage(String ID, int sugar){
 
-        if (coins.getCredit() >= list.get(ID).getPrice()){  // Se il credito è uguale o maggiore singifica che posso
+        if (coins.getCredit() >= list.get(ID).getPrice() && list.get(ID).isAvailable()){  // Se il credito è uguale o maggiore singifica che posso
                                                             // potenzialmente acquistare la bevanda
             subtractIngredients(ID,sugar);
             coins.updateBalance(list.get(ID).getPrice());
@@ -178,9 +178,12 @@ public class Distributore implements MaxValue{
             } catch (FileNotWritable fileNotWritable) {
                 fileNotWritable.printStackTrace();
             }
-
             if (coins.getCredit()!= 0) {
-                coins.giveChange();
+                return "bevanda erogata " + coins.giveChange();
+            }
+            else {
+                System.out.println("Bevanda erogata");
+                return "Bevanda erogata";
             }
         }
         else {
@@ -192,6 +195,7 @@ public class Distributore implements MaxValue{
                 fileNotWritable.printStackTrace();
             }
             new UnsufficientCredit();
+            return "Credito insufficiente o bevanda non disponibile";
         }
     }
 

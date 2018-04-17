@@ -112,7 +112,7 @@ public class Coins {
     /**
      * Funzione per erogare il resto, massimizzando il numero di monete di taglio maggiore.
      */
-    public void giveChange() {
+    public String giveChange() {
 
         if (checkChange()) {
             int[] change = new int[COINS_VALUE.length]; // change[0], change[1], ecc. è il numero di monete
@@ -128,8 +128,10 @@ public class Coins {
             System.out.println("Resto erogato: " + String.format("%.2f",credit));
             System.out.println("5c: " + change[0] + "\n10c: " + change[1] + "\n20c: " + change[2] + "\n50c: "
                     + change[3] + "\n1E: " + change[4] + "\n2E: " + change[5]);
+            return ("Resto erogato: " + String.format("%.2f",credit)) + ("5c: " + change[0] + "\n10c: " + change[1] + "\n20c: " + change[2] + "\n50c: "
+                    + change[3] + "\n1E: " + change[4] + "\n2E: " + change[5]);
         }  else {
-            System.out.println("Resto NON disponibile");
+            return ("Resto NON disponibile");
         }
 
     }
