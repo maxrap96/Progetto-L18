@@ -3,11 +3,11 @@
 * Latte
 milk	15.0
 * Zucchero
-Sugar	99.95
+Sugar	99.7
 * Cucchiaini
-Spoons	991
+Spoons	990
 * Bicchierini
-Cups	484
+Cups	483
 *id quantityleft
 01	29
 02	10

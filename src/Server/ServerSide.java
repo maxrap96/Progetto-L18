@@ -1,28 +1,29 @@
-package Client_Server;
+package Server;
 
 import java.io.*;
+import java.net.ServerSocket;
 import java.net.Socket;
 
-public class ClientSide {
+public class ServerSide {
 
-    static String stringFromServer;
-    static PrintWriter outToServer; // Dati diretti al Server
-    static BufferedReader inFromServer; // Dati in entrata
-    static File fileMenuClient =
-            new File("src/File_Testo/menu.txt");
-    static File fileStatsClient =
-            new File("src/File_Testo/stats.txt");
+    static String stringFromClient; // Stringa letta dai dati in entrata
+    static PrintWriter outToClient; // Dati diretti al Client
+    static BufferedReader inFromClient; // Dati in entrata
+    static File fileMenuServer =
+            new File("src/Server/serverMenu.txt");
+    static File fileStatsServer =
+            new File("src/Server/serverStats.txt");
 
-    public static void main(String[] args) {
-        try {
-            connectionPreRequisite("localhost",2222);
-            emptyFile(fileMenuClient);
-            sendFile(outToServer, fileStatsClient);
-
-            outToServer.println("SEND");
-
-            while((stringFromServer = inFromServer.readLine()) != null){ // Ricevo dal Server
-                writeFileReceived(stringFromServer, fileMenuClient);
+    public static void main(String[] args){
+        try{
+            connectionPreRequisite(2222);
+            emptyFile(fileStatsServer);
+            while ((stringFromClient = inFromClient.readLine()) != null) {
+                if (!stringFromClient.equals("SEND")) {
+                    writeFileReceived(stringFromClient, fileStatsServer);
+                }else {
+                    sendFile(outToClient, fileMenuServer);
+                }
             }
         } catch (IOException e){
             e.printStackTrace();
@@ -30,19 +31,19 @@ public class ClientSide {
     }
 
     /**
-     * Creo le basi per la connessione Client
+     * Creo le basi per la connessione Server
      * @throws IOException
      */
-    protected static void connectionPreRequisite (String hostName, int connectionPort) throws IOException{
+    protected static void connectionPreRequisite (int connectionPort) throws IOException{
         try{
-            Socket clientSocket =
-                    new Socket(hostName, connectionPort); // Creo il socket attraverso cui inviare i dati
-            outToServer =
-                    new PrintWriter(clientSocket.getOutputStream(), true); // Oggetto per scrivere
-            inFromServer =
+            ServerSocket serverSocket =
+                    new ServerSocket(connectionPort); // Creo socket di benvenuto
+            Socket clientSocket = serverSocket.accept(); // Accetto la connessione di un client
+            outToClient =
+                    new PrintWriter(clientSocket.getOutputStream(), true); // Oggetto per scrivere al Client
+            inFromClient =
                     new BufferedReader(
-                            new InputStreamReader(clientSocket.getInputStream())); // Oggetto per ricevere
-
+                            new InputStreamReader(clientSocket.getInputStream())); // Oggetto per leggere da Client
         }catch (IOException e){
             e.printStackTrace();
         }
@@ -100,5 +101,4 @@ public class ClientSide {
             e.printStackTrace();
         }
     }
-
 }
