@@ -8,7 +8,8 @@ public class ListenerTry implements ActionListener {
 
     private JTextArea jTextArea;
 
-    //todo tutta sta roba non va proprio bene. tutto questo è già presente nel distributore. non vedo perchè riscrivere
+    private String id;
+    //todo tutto questo è già presente nel distributore. non vedo perchè riscrivere
     //todo cose già fatte.
    // private double credit[] = {0, 0 , 0, 0, 0, 0};
     private double credito = 0;
@@ -19,11 +20,13 @@ public class ListenerTry implements ActionListener {
 
     public ListenerTry(JTextArea textArea, String id) {
         this.jTextArea = textArea;
+        this.id = id;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         String stringaPulsante = e.getActionCommand();
+
 
         // Stampa nome e prezzo della bevanda selezionata e il credito disponibile
         for (int j = 0; j < bevande.length; j++) {
