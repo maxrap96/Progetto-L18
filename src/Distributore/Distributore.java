@@ -5,6 +5,8 @@ import Errori.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Scanner;
+
 import static java.lang.Integer.parseInt;
 
 public class Distributore implements MaxValue{
@@ -151,17 +153,8 @@ public class Distributore implements MaxValue{
      */
 
     public String keyboard() throws NoDigit{
-        InputStreamReader keyboard = new InputStreamReader(System.in);
-        BufferedReader bufferedReader = new BufferedReader(keyboard);
-        try {
-            String letta=bufferedReader.readLine();
-            //TODO C'è DA CAPIRE PERCHè SE LE CHIUDO ESPLODE IL MONDO
-            //bufferedReader.close();
-            //keyboard.close();
-            return letta;
-        } catch (IOException e) {
-            throw new NoDigit();
-        }
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine();
     }
 
     /**

@@ -8,8 +8,7 @@ public class Test {
 
     public static void main(String[] args) {
         Distributore macchinetta = new Distributore();
-        macchinetta.textualInput();
-        System.out.println("check");
+        macchinetta.textualInput();;
 
         // startConnection(); // Funziona, ma non so come farlo fermare da solo
     }
