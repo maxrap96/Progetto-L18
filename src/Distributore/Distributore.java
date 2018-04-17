@@ -287,7 +287,7 @@ public class Distributore implements MaxValue{
     }
 
     public String getID(int id){
-        list.get(id).getId();
+        return list.get(id).getId();
     }
 
 }
