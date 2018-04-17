@@ -1,6 +1,7 @@
 import Distributore.Distributore;
 
 import java.io.*;
+import java.net.ConnectException;
 import java.net.Socket;
 
 public class Test {
@@ -15,27 +16,31 @@ public class Test {
 
 
     public static void main(String[] args) {
-
         Distributore macchinetta = new Distributore();
         macchinetta.textualInput();
 
-        startClient(); // Funziona solo se sta runnando il Server
+        try {
+            startClient(); // Funziona solo se sta runnando il Server
+        } catch (ConnectException e){
+            e.printStackTrace();
+        }
     }
 
     /**
      * Avvia la comunicazione al server
      */
-    private static void startClient(){
+    private static void startClient() throws ConnectException{
         try {
-            connectionPreRequisite("localhost",2222);   // Da modificare se voglio cambiare le
-                                                                                // impostazioni di connessione
-            emptyFile(fileMenuClient);
-            sendFile(outToServer, fileStatsClient);
+            if(connectionPreRequisite("localhost",2222)) {   // Da modificare se voglio
+                                                                            // cambiare le impostazioni di connessione
+                emptyFile(fileMenuClient);
+                sendFile(outToServer, fileStatsClient);
 
-            outToServer.println("SEND");
+                outToServer.println("SEND");
 
-            while((stringFromServer = inFromServer.readLine()) != null){ // Ricevo dal Server
-                writeFileReceived(stringFromServer, fileMenuClient);
+                while ((stringFromServer = inFromServer.readLine()) != null) { // Ricevo dal Server
+                    writeFileReceived(stringFromServer, fileMenuClient);
+                }
             }
         } catch (IOException e){
             e.printStackTrace();
@@ -46,7 +51,7 @@ public class Test {
      * Creo le basi per la connessione Client
      * @throws IOException
      */
-    protected static void connectionPreRequisite (String hostName, int connectionPort) throws IOException{
+    protected static boolean connectionPreRequisite (String hostName, int connectionPort) throws IOException{
         try{
             Socket clientSocket =
                     new Socket(hostName, connectionPort); // Creo il socket attraverso cui inviare i dati
@@ -58,7 +63,9 @@ public class Test {
 
         }catch (IOException e){
             e.printStackTrace();
+            return false;
         }
+        return true;
     }
 
     /**

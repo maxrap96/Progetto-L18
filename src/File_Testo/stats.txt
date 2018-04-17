@@ -5,4 +5,6 @@ Cappuccino	498	998	999.8	999.92	Transazione avvenuta il:		16-04-2018 00:32:41
 Tè ai mirtilli	497	997	999.775	999.92	Transazione avvenuta il:		16-04-2018 00:33:26
 Caffè Espresso	496	996	999.65	999.92	Transazione avvenuta il:		16-04-2018 00:37:26
 Cioccolata	483	990	99.7	15.0	Transazione avvenuta il:	17-04-2018 18:33:35
-Ciao
+Cioccolata	483	990	99.7	15.0	Transazione fallita.	17-04-2018 19:01:27
+Caffè Espresso	483	990	99.7	15.0	Transazione fallita.	17-04-2018 19:09:56
+Caffè Espresso	483	990	99.7	15.0	Transazione fallita.	17-04-2018 19:10:25
