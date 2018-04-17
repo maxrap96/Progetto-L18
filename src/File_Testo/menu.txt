@@ -1,13 +1,12 @@
-*	le righe con * vengono saltate nella lettura
-*ID  TIPO  		NOME  	    COSTO  Q_MAX TEMP DOSE latte acqua
+﻿* le righe con * vengono saltate nella lettura
+* ID  TIPO  	NOME  	    COSTO  Q_MAX TEMP DOSE latte acqua
 01	CAPSULA	Cioccolata	0.50	30	90	1	0	0.200
 02	CAPSULA	Latte Caldo	0.55	25	80	0.30	0	0.200
-03	CAPSULA	Caffè Lungo	0.55	55	85	0	0.0	0.060
+03	CAPSULA	Caffè Lungo	0.55	55	85	0	0	0.060
 04	CAPSULA	Tè al Limone	0.50	30	90	1	0	0.200
-05	CAPSULA Decaffeinato	0.50	30	90	1	0	0.200
-06	MACINATO	Caffè Espresso	0.45	50	85	0.25	0	0.050
-07	MACINATO	Cappuccino	0.60	60	86	0.24	0.080	0.100
-08	SOLUBILE	Caffè Arabica	0.55	55	85	0	0.0	0.060
-09	SOLUBILE	Cappuccino	0.60	60	86	0.24	0.080	0.100
-010	SOLUBILE	Ginseng	0.55	25	80	0.30	0	0.200
-
+05	MACINATO	Caffè Espresso	0.45	50	85	0.25	0	0.050
+06	MACINATO	Cappuccino	0.60	60	86	0.24	0.080	0.100
+07	SOLUBILE	Caffè Arabica	0.55	55	85	0	0	0.060
+08	SOLUBILE	Cappuccino	0.60	60	86	0.24	0.080	0.100
+09	SOLUBILE	Ginseng	0.55	25	80	0.30	0	0.200
+*

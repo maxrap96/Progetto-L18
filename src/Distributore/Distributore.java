@@ -137,9 +137,12 @@ public class Distributore implements MaxValue{
                 //vera e propria funzione da usare nell'interfaccia per l'erogazione della bevanda
                 selectBeverage(splitted[0], parseInt(splitted[1]));
             }
+            else{
+                new BeverageNotAvailable();
+            }
         }
         catch (Exception e){
-            new BeverageNotAvailable();
+            e.printStackTrace();
         }
     }
 
@@ -152,8 +155,8 @@ public class Distributore implements MaxValue{
         BufferedReader bufferedReader = new BufferedReader(keyboard);
         try {
             //TODO C'è DA CAPIRE PERCHè SE LE CHIUDO ESPLODE IL MONDO
-            // keyboard.close();
             //bufferedReader.close();
+            //keyboard.close();
             return bufferedReader.readLine();
         } catch (IOException e) {
             throw new NoDigit();
