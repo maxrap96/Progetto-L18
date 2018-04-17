@@ -138,7 +138,7 @@ public class Distributore implements MaxValue{
                     }
                 }
                 //vera e propria funzione da usare nell'interfaccia per l'erogazione della bevanda
-                selectBeverage(splitted[0], selected_sugar);
+                selectBeverage(splitted[0]);
             }
             else{
                 new BeverageNotAvailable();
@@ -162,21 +162,20 @@ public class Distributore implements MaxValue{
      * Funzione per selezionare una bevanda. Essa controlla che il credito sia sufficiente.
      * il credito è già contenuto dentro a credit.
      * @param ID: è l'id della bevanda selezionata
-     * @param sugar: è la qunatità di zucchero da 0 a 5
      */
 
-    public String selectBeverage(String ID, int sugar){
+    public String selectBeverage(String ID){
 
         if (coins.getCredit() >= list.get(ID).getPrice() && list.get(ID).isAvailable()){  // Se il credito è uguale o maggiore singifica che posso
                                                             // potenzialmente acquistare la bevanda
-            subtractIngredients(ID,sugar);
+            subtractIngredients(ID,selected_sugar);
             coins.updateBalance(list.get(ID).getPrice());
             resetSugar();
 
             // Scrittura statistiche su file:
             try {
-                stats.writeFile(statsToText(ID));
-                //stats.writeFile(statsToText(ID), true);   // MJ: Variante. Controllare con gli "amici" quale usare.
+                //stats.writeFile(statsToText(ID));
+                stats.writeFile(statsToText(ID), true);   // MJ: Variante. Controllare con gli "amici" quale usare.
             } catch (FileNotWritable fileNotWritable) {
                 fileNotWritable.printStackTrace();
             }
@@ -190,8 +189,8 @@ public class Distributore implements MaxValue{
         }
         else {
             try {
-                stats.writeFile(statsToText(ID));    // Nel caso non ci sia credito sufficiente la
-                //stats.writeFile(statsToText(ID), false);    // Nel caso non ci sia credito sufficiente la
+                //stats.writeFile(statsToText(ID));    // Nel caso non ci sia credito sufficiente la
+                stats.writeFile(statsToText(ID), false);    // Nel caso non ci sia credito sufficiente la
                                                                        // transazione fallisce.
             } catch (FileNotWritable fileNotWritable) {
                 fileNotWritable.printStackTrace();
@@ -241,11 +240,8 @@ public class Distributore implements MaxValue{
      */
 
     public String statsToText(String ID) {
-        String s = list.get(ID).getName() + "\t";
-
         // MJ: Da parametrizzare se possibile.
-        return s + cup + "\t" + spoon + "\t" + sugar + "\t" + milk + "\t";
-        //TODO Sistemare output del numero di cifre decimali dei valori double.
+        return (list.get(ID).getName() + "\t" + cup + "\t" + spoon + "\t" + sugar + "\t" + milk + "\t");
     }
 
     /**

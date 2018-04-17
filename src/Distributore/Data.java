@@ -83,7 +83,7 @@ public class Data {
     }
 
     // MJ: Funzione di stampa sul file nel caso di transazioni corrette ed errate. Variante della funzione precedente.
-    /*protected void writeFile(String scrittura, boolean transaction) throws FileNotWritable {
+    protected void writeFile(String scrittura, boolean transaction) throws FileNotWritable {
         try {
             FileWriter writer = new FileWriter(pathFile, true);
 
@@ -101,7 +101,7 @@ public class Data {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }*/
+    }
 
     // MJ: funzione creata. Vediamo se serve o se si puo' togliere.
     /**

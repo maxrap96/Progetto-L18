@@ -19,7 +19,6 @@ public class Coins {
     protected Coins() {
         this.money = new int[COINS_VALUE.length];
         initCoins();
-
     }
 
     public double[] getCOINS_VALUE() {
@@ -72,8 +71,9 @@ public class Coins {
      */
     public void updateBalance(double vendita) {
         profit += vendita;
-        credit = (credit)*1000 - (vendita)*1000;    //moltiplico per 1000 per evitare errori strani di approsimazione
-        credit = credit/1000;
+        float tmp = (float)(credit - vendita);
+        //credit = (credit)*1000 - (vendita)*1000;    //moltiplico per 1000 per evitare errori strani di approsimazione
+        credit = tmp;
     }
 
     /**
@@ -116,7 +116,7 @@ public class Coins {
 
         if (checkChange()) {
             int[] change = new int[COINS_VALUE.length]; // change[0], change[1], ecc. è il numero di monete
-                                                        // del tipo indicato
+            // del tipo indicato
             optimizeChange(change);
 
             try {

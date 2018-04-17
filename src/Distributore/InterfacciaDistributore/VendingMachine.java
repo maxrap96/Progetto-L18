@@ -9,7 +9,7 @@ public class VendingMachine extends JFrame{
 
     private final int XBUTTONINDEX = 27;
     private final int YBUTTONINDEX = 50;
-    private final int[] XINDEX = {27 , 332, 637};
+    private final int[] XINDEX = {60 , 365, 670};
     private final int[] YINDEX = {50, 220, 390, 560} ;
 
     private Distributore distributore;
@@ -19,12 +19,17 @@ public class VendingMachine extends JFrame{
      * @param distributore è il distributore a cui fa riferimento l'interfaccia
      */
 
+
+
     public VendingMachine(Distributore distributore) {
-        this.distributore=distributore;
+
+
+        this.distributore = distributore;
 
         //Inizializzazione JFrame
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension screenSize = kit.getScreenSize();
+        int screenW = screenSize.width;
         pack();
         setSize(screenSize.width,screenSize.height);
         setTitle("Hot Drinks Vending Machine");
@@ -38,13 +43,15 @@ public class VendingMachine extends JFrame{
         container.setLayout(new BorderLayout());
 
         // Creazione del pannello contenente il display e i pulsanti monete, zucchero ecc...
-        JPanel pannelloSelezione = makePanel(screenSize.width / 4, screenSize.width / 4, Color.LIGHT_GRAY, new BorderLayout());
+        JPanel pannelloSelezione = makePanel(2 * screenSize.width / 7, 2 * screenSize.width / 7,
+                Color.LIGHT_GRAY, new BorderLayout());
         container.add(pannelloSelezione, BorderLayout.EAST);
 
         // Creazione del pannello dove vengono disposte le bevande
-        JPanel pannelloBevande = makePanel( 3 * screenSize.width / 4, 3 * screenSize.height / 4, Color.BLACK, null);
+        JPanel pannelloBevande = makePanel( 5 * screenSize.width / 7, 5 * screenSize.height / 7,
+                Color.BLACK, null);
         container.add(pannelloBevande, BorderLayout.WEST);
-/*        // Creazione del display e aggiunta al pannelloSelezione
+       // Creazione del display e aggiunta al pannelloSelezione
         JTextArea display = new JTextArea(5, 1);
         display.setBackground(Color.BLUE);
         display.setForeground(Color.WHITE);
@@ -66,11 +73,13 @@ public class VendingMachine extends JFrame{
             }
             JButton button;
             if (i < distributore.getListSize()) {
-                button = makeRoundRectButton(distributore.getLabel(i + 1), XINDEX[x], YINDEX[y]);
+                button = makeRoundRectButton(distributore.getLabel(i + 1), XINDEX[x], YINDEX[y],
+                        screenSize.width / 6, screenSize.height / 8);
                 button.addActionListener(new ListenerTry( display, distributore.getID(i+1) ));
             }
             else {
-                button = makeRoundRectButton("", XINDEX[x], YINDEX[y]);
+                button = makeRoundRectButton("", XINDEX[x], YINDEX[y],
+                        screenSize.width / 6, screenSize.height / 8);
             }
             pannelloBevande.add(button);
             x++;
@@ -103,9 +112,9 @@ public class VendingMachine extends JFrame{
         pannelloMonete.add(resto); pannelloMonete.add(menoZucchero); pannelloMonete.add(piuZucchero);
         pannelloMonete.add(euro2); pannelloMonete.add(euro1); pannelloMonete.add(cent50);
         pannelloMonete.add(cent20); pannelloMonete.add(cent10); pannelloMonete.add(cent5); //pannelloMonete.add(chiavetta);
-/*
+
         // Listener bevande
-        //todo crearlo direttamente nella creazione dinamica del bottone. così da renderlo più veloce
+   /*     //todo crearlo direttamente nella creazione dinamica del bottone. così da renderlo più veloce
         button1.addActionListener(new ListenerTry(display));
         button2.addActionListener(new ListenerTry(display));
         button3.addActionListener(new ListenerTry(display));
@@ -152,11 +161,11 @@ public class VendingMachine extends JFrame{
      * @param string: etichetta del pulsante
      * @return ritorna il pulsante
      */
-    private JButton makeRoundRectButton(String string, int x, int y){
+    private JButton makeRoundRectButton(String string, int x, int y, int screenW, int screenH){
         JButton button = new RoundRectButton(string);
         button.setBackground(Color.WHITE);
         button.setFont(new Font("", Font.ITALIC,25));
-        button.setBounds(x, y, 250, 100);
+        button.setBounds(x, y, screenW, screenH);
         return button;
     }
 
