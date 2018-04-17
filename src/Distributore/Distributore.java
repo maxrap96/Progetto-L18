@@ -138,7 +138,7 @@ public class Distributore implements MaxValue{
                     }
                 }
                 //vera e propria funzione da usare nell'interfaccia per l'erogazione della bevanda
-                selectBeverage(splitted[0], selected_sugar);
+                selectBeverage(splitted[0]);
             }
             else{
                 new BeverageNotAvailable();
@@ -162,14 +162,13 @@ public class Distributore implements MaxValue{
      * Funzione per selezionare una bevanda. Essa controlla che il credito sia sufficiente.
      * il credito è già contenuto dentro a credit.
      * @param ID: è l'id della bevanda selezionata
-     * @param sugar: è la qunatità di zucchero da 0 a 5
      */
 
-    public String selectBeverage(String ID, int sugar){
+    public String selectBeverage(String ID){
 
         if (coins.getCredit() >= list.get(ID).getPrice() && list.get(ID).isAvailable()){  // Se il credito è uguale o maggiore singifica che posso
                                                             // potenzialmente acquistare la bevanda
-            subtractIngredients(ID,sugar);
+            subtractIngredients(ID,selected_sugar);
             coins.updateBalance(list.get(ID).getPrice());
             resetSugar();
 
