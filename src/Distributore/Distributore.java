@@ -174,8 +174,8 @@ public class Distributore implements MaxValue{
 
             // Scrittura statistiche su file:
             try {
-                stats.writeFile(statsToText(ID));
-                //stats.writeFile(statsToText(ID), true);   // MJ: Variante. Controllare con gli "amici" quale usare.
+                //stats.writeFile(statsToText(ID));
+                stats.writeFile(statsToText(ID), true);   // MJ: Variante. Controllare con gli "amici" quale usare.
             } catch (FileNotWritable fileNotWritable) {
                 fileNotWritable.printStackTrace();
             }
@@ -189,8 +189,8 @@ public class Distributore implements MaxValue{
         }
         else {
             try {
-                stats.writeFile(statsToText(ID));    // Nel caso non ci sia credito sufficiente la
-                //stats.writeFile(statsToText(ID), false);    // Nel caso non ci sia credito sufficiente la
+                //stats.writeFile(statsToText(ID));    // Nel caso non ci sia credito sufficiente la
+                stats.writeFile(statsToText(ID), false);    // Nel caso non ci sia credito sufficiente la
                                                                        // transazione fallisce.
             } catch (FileNotWritable fileNotWritable) {
                 fileNotWritable.printStackTrace();
@@ -240,11 +240,8 @@ public class Distributore implements MaxValue{
      */
 
     public String statsToText(String ID) {
-        String s = list.get(ID).getName() + "\t";
-
         // MJ: Da parametrizzare se possibile.
-        return s + cup + "\t" + spoon + "\t" + sugar + "\t" + milk + "\t";
-        //TODO Sistemare output del numero di cifre decimali dei valori double.
+        return (list.get(ID).getName() + "\t" + cup + "\t" + spoon + "\t" + sugar + "\t" + milk + "\t");
     }
 
     /**
