@@ -5,16 +5,15 @@ import java.awt.*;
 
 public class VendingMachine extends JFrame{
 
-    private static final int LUNGHEZZA = 600;
-    private static final int ALTEZZA = 500;
-
     /**
      * Creazione interfaccia grafica distributore
      */
 
     public VendingMachine() {
         //Inizializzazione JFrame
-        setSize(LUNGHEZZA, ALTEZZA);
+        Toolkit kit = Toolkit.getDefaultToolkit();
+        Dimension screenSize = kit.getScreenSize();
+        setSize(screenSize.width,screenSize.height);
         setTitle("Hot Drinks Vending Machine");
 
         Container container = getContentPane();

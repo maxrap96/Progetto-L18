@@ -261,6 +261,10 @@ public class Distributore implements MaxValue{
         }
     }
 
+    public HashMap<String, Bevanda> getList() {
+        return list;
+    }
+
     /**
      * funzione per fornire alla interfaccia l'etichetta da mettere sui bottoni
      * @param i bevanda da inserire nella macchinetta
