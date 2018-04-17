@@ -7,11 +7,6 @@ import java.awt.*;
 
 public class VendingMachine extends JFrame{
 
-    private final int XBUTTONINDEX = 27;
-    private final int YBUTTONINDEX = 50;
-    private final int[] XINDEX = {60 , 365, 670};
-    private final int[] YINDEX = {50, 220, 390, 560} ;
-
     private Distributore distributore;
 
     /**
@@ -30,6 +25,8 @@ public class VendingMachine extends JFrame{
         setTitle("Hot Drinks Vending Machine");
 
         int[] XINDEX = {5 * screenSize.width /99, 27 * screenSize.width / 99, 49 * screenSize.width / 99};
+        int[] YINDEX = {7 * screenSize.height / 100, 29 * screenSize.height / 100,
+                        51 * screenSize.height / 100, 73 * screenSize.height / 100} ;
 
         Container container = getContentPane();
         container.setBackground(Color.YELLOW);
