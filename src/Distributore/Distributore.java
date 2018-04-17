@@ -12,7 +12,7 @@ import static java.lang.Integer.parseInt;
 public class Distributore implements MaxValue{
 
     private HashMap<String,Bevanda> list;
-    private int cup, spoon;
+    private int cup, spoon, selected_sugar;
     private double sugar, milk;
     private Coins coins;
     private Data stats = new Data("src/File_Testo/stats.txt");
@@ -123,6 +123,7 @@ public class Distributore implements MaxValue{
         }
 
         String[] splitted = input.split("\\s+");
+        selected_sugar=parseInt( splitted[1]);
         //mi chiedo se la bevanda è disponibile
         try {
             if (list.get(splitted[0]).isAvailable()) {
@@ -137,7 +138,7 @@ public class Distributore implements MaxValue{
                     }
                 }
                 //vera e propria funzione da usare nell'interfaccia per l'erogazione della bevanda
-                selectBeverage(splitted[0], parseInt(splitted[1]));
+                selectBeverage(splitted[0], selected_sugar);
             }
             else{
                 new BeverageNotAvailable();
@@ -170,6 +171,7 @@ public class Distributore implements MaxValue{
                                                             // potenzialmente acquistare la bevanda
             subtractIngredients(ID,sugar);
             coins.updateBalance(list.get(ID).getPrice());
+            resetSugar();
 
             // Scrittura statistiche su file:
             try {
@@ -293,4 +295,19 @@ public class Distributore implements MaxValue{
         return list.get("0"+id).getId();
     }
 
+    private void resetSugar() {
+        selected_sugar=3;
+    }
+
+    public void upSugar(){
+        if (selected_sugar < 5){
+            selected_sugar++;
+        }
+    }
+
+    public void downSugar(){
+        if (selected_sugar > 0){
+            selected_sugar--;
+        }
+    }
 }

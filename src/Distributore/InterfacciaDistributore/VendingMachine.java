@@ -13,6 +13,7 @@ public class VendingMachine extends JFrame{
     private final int[] YINDEX = {50, 220, 390, 560} ;
 
     private Distributore distributore;
+
     /**
      * Creazione interfaccia grafica distributore
      * @param distributore è il distributore a cui fa riferimento l'interfaccia
@@ -57,16 +58,16 @@ public class VendingMachine extends JFrame{
 
         //creazione ed aggiunta dei pulsanti
 
-        int x=0,y=0; //per i vettori delle coordinate
-        for (int i=0;i<12;i++){ //perchè abbiamo 12 pulsanti
-            if (x==3){
-                x=0;
+        int x = 0, y = 0; //per i vettori delle coordinate
+        for (int i = 0; i < 12; i++ ){ //perchè abbiamo 12 pulsanti
+            if (x == 3){
+                x = 0;
                 y++;
             }
             JButton button;
-            if (i<distributore.getListSize()) {
+            if (i < distributore.getListSize()) {
                 button = makeRoundRectButton(distributore.getLabel(i + 1), XINDEX[x], YINDEX[y]);
-                button.addActionListener(new ListenerTry(display,distributore.getID(i+1)));
+                button.addActionListener(new ListenerTry( display, distributore.getID(i+1) ));
             }
             else {
                 button = makeRoundRectButton("", XINDEX[x], YINDEX[y]);
