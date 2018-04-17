@@ -265,10 +265,6 @@ public class Distributore implements MaxValue{
         }
     }
 
-    public HashMap<String, Bevanda> getList() {
-        return list;
-    }
-
     /**
      * funzione per fornire alla interfaccia l'etichetta da mettere sui bottoni
      * @param i bevanda da inserire nella macchinetta
@@ -286,8 +282,14 @@ public class Distributore implements MaxValue{
         return list.size();
     }
 
+    /**
+     * returna l'id corrispondente della bevanda da associare al bottone
+     * @param id è il numero della bevanda per ricaverne l'id
+     * @return ritorna l'id della bevanda corrispondente
+     */
+
     public String getID(int id){
-        return list.get(id).getId();
+        return list.get("0"+id).getId();
     }
 
 }
