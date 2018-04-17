@@ -2,7 +2,8 @@ package Distributore;
 
 import Bevande.*;
 import Errori.*;
-import java.io.*;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -160,10 +161,13 @@ public class Distributore implements MaxValue{
             resetSugar();
 
             // Scrittura statistiche su file:
+
             try {
+
                 //stats.writeFile(statsToText(ID));
                 stats.writeFile(statsToText(ID), true);   // MJ: Variante.
                 //ingredientsData.overwriteFile(capire cosa metterci dentro...);
+                updateDati(ID);
             } catch (FileNotWritable fileNotWritable) {
                 fileNotWritable.printStackTrace();
             }
@@ -294,6 +298,28 @@ public class Distributore implements MaxValue{
     public void downSugar(){
         if (selected_sugar > 0){
             selected_sugar--;
+        }
+    }
+
+    public void updateDati(String ID) {
+        String dati[] = {"" + milk, "" + sugar, "" + spoon, "" + cup};
+        String newLine;
+        String current;
+        try {
+            ArrayList<String[]> statistics = ingredientsData.readFile();
+            for (int i = 0; i < dati.length; i++) {
+                current = statistics.get(i)[0] + "\t" + statistics.get(i)[1];
+                newLine = statistics.get(i)[0] + "\t" + dati[i];
+                ingredientsData.overwriteFile(newLine, current);
+            }
+
+            //current = ""+ID;
+            //newLine = ""+ID+"\t"+list.get(ID).getLeftQuantity();
+            //ingredientsData.overwriteFile(newLine, current);
+
+        } catch (IOException e) {
+        } catch (FileNotReadable fileNotReadable) {
+            fileNotReadable.printStackTrace();
         }
     }
 }

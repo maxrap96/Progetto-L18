@@ -7,7 +7,7 @@ public interface MaxValue {
      * utlizzate.
      */
 
-    double SUGARDOSE = 0.025;
+    double SUGARDOSE = 0.25;
     double SUGARMAX = 1000.0;
     double MILKMAX = 1000.0;
     int CUPMAX = 500;

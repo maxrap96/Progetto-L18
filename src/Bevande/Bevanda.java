@@ -71,4 +71,8 @@ public abstract class Bevanda {
     public String getId() {
         return id;
     }
+
+    public double getLeftQuantity() {
+        return leftQuantity;
+    }
 }
