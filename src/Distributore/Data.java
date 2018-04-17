@@ -40,9 +40,9 @@ public class Data {
     /**
      * Funzione che riceve i dati copiati dal file e li divide. Dopo ogni carattere di "Tab" viene effettuata la
      * divisione.
-     * @param bReader
-     * @return dataSplit
-     * @throws FileNotReadable
+     * @param bReader è il reader associato al file
+     * @return dataSplit è il file aperto e separato in base alle tabulazioni
+     * @throws FileNotReadable è l'eccezione lanciata nel caso il file non sia presente o leggibile
      */
 
     private ArrayList<String[]> split(BufferedReader bReader) throws FileNotReadable {
@@ -120,7 +120,7 @@ public class Data {
 
     /**
      * Funzione per ottenere la data e ora locali.
-     * @return strDate
+     * @return strDate è la stringa con i dati necessari
      */
 
     private static String getCurrentTimeStamp() {

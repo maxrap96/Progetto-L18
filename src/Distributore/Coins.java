@@ -16,7 +16,7 @@ public class Coins {
     private Data moneteTxt =
             new Data("src/File_Testo/monete.txt");
 
-    public Coins() {
+    protected Coins() {
         this.money = new int[COINS_VALUE.length];
         initCoins();
 
@@ -30,7 +30,7 @@ public class Coins {
      * Inizializza i tagli delle monete tramite lettura da file. Nel caso di errori usiamo una inizializzazione
      * di default.
      */
-    public void initCoins() {
+    private void initCoins() {
         try {
             ArrayList<String[]> coinsText = moneteTxt.readFile();
             int last = coinsText.size() - 1;    // last e' l'ultima riga del file che mi serve.
@@ -56,7 +56,7 @@ public class Coins {
      * Funzione che crea una stringa contenente il numero di monete all'interno della macchinetta
      * @return s: stringa contenente il numero di ogni moneta nella macchinetta
      */
-    public String moneyOnFile() {
+    private String moneyOnFile() {
         String s = "";
 
         for (int i = 0; i < money.length; i++) {
@@ -67,8 +67,8 @@ public class Coins {
     }
 
     /**
-     *
-     * @param vendita
+     * funzione che aggiora il bilancio ed il credito rimanente
+     * @param vendita è il costo della bevanda richiesta
      */
     public void updateBalance(double vendita) {
         profit += vendita;
@@ -99,7 +99,7 @@ public class Coins {
 
     /**
      * Restituisce quanti soldi  in totale nella macchinetta
-     * @return
+     * @return la quantità di soldi presenti nella macchinetta
      */
     private double getBalance() {
         double balance = 0;
@@ -149,8 +149,8 @@ public class Coins {
         }
     }
 
-    /**
-     *
+    /** todo c'è da aggiungere la documentazione
+     * funzione che restituisce il resto con il numero minimo di monete
      * @param change
      * @return
      */
