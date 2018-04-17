@@ -46,15 +46,19 @@ public class Distributore implements MaxValue{
         checkIfMachineIsEmpty();
     }
 
+    /**
+     * Invece che farli scendere a zero, non sarebbe meglio metterli sotto una certa soglia? Soprattutto dato che
+     * il latto non viene scalato in maniera uniforme. Poi se funziona così va bene.
+     */
+
     private void checkIfMachineIsEmpty() {
-        if(cup==0 || spoon==0 || sugar==0 || milk==0) {
+        if(cup == 0 || spoon == 0 || sugar == 0 || milk == 0) {
             resetToMaxVendingMachine();
         }
     }
 
     /**
-     * Imposto i valori massimi di alcuni parametri del distributore, come la quantità di zucchero, latte, bicchierini
-     * e cucchiani.
+     * Ricarica alcuni ingredienti della macchinetta
      */
     private void resetToMaxVendingMachine() {
         this.sugar = SUGARMAX;
@@ -64,7 +68,7 @@ public class Distributore implements MaxValue{
     }
 
     /**
-     * Creo il menu nella macchinetta
+     * Funzione che crea il menu nella macchinetta
      * @param listFromFile arraylist di stringhe fornito all'apertura del file
      */
 
@@ -147,15 +151,14 @@ public class Distributore implements MaxValue{
 
     /**
      * Funzione per selezionare una bevanda. Essa controlla che il credito sia sufficiente.
-     * il credito è già contenuto dentro a credit.
      * @param ID: è l'id della bevanda selezionata
      */
 
     public String selectBeverage(String ID){
 
-        if (coins.getCredit() >= list.get(ID).getPrice() && list.get(ID).isAvailable()){  // Se il credito è uguale
-                                                                                // o maggiore singifica che posso
-                                                                                // potenzialmente acquistare la bevanda
+        if (coins.getCredit() >= list.get(ID).getPrice()
+                && list.get(ID).isAvailable()){     // Se il credito è uguale o maggiore singifica che posso
+                                                    // potenzialmente acquistare la bevanda
             subtractIngredients(ID,selected_sugar);
             coins.updateBalance(list.get(ID).getPrice());
             resetSugar();
@@ -181,9 +184,9 @@ public class Distributore implements MaxValue{
         }
         else {
             try {
-                //stats.writeFile(statsToText(ID));    // Nel caso non ci sia credito sufficiente la
+                //stats.writeFile(statsToText(ID));  // Nel caso non ci sia credito sufficiente la transazione fallisce.
                 stats.writeFile(statsToText(ID), false);    // Nel caso non ci sia credito sufficiente la
-                // transazione fallisce.
+                                                                        // transazione fallisce.
             } catch (FileNotWritable fileNotWritable) {
                 fileNotWritable.printStackTrace();
             }
@@ -194,7 +197,7 @@ public class Distributore implements MaxValue{
 
     /**
      * Funzione per sottrarre quantità necessarie per preparare la bevanda
-     * @param ID bevanda da cui prendere le dosi
+     * @param ID della bevanda da cui prendere le dosi
      * @param sugar
      */
     private void subtractIngredients(String ID, int sugar) {
@@ -206,7 +209,7 @@ public class Distributore implements MaxValue{
 
     /**
      * Funzione che sottrae lo zucchero usato
-     * @param qty, valore tra 0 e 5
+     * @param qty valore tra 0 e 5
      */
 
     private void subtractSugar(int qty){
@@ -228,11 +231,11 @@ public class Distributore implements MaxValue{
     /**
      * Funzione per tener traccia di ciò che accade nella macchinetta
      * @param ID è la bevanda selezionata dal cliente
-     * @return s: restituisce una stringa che poi sarà salvata nel file stats.txt
+     * @return s: restituisce una stringa con dei dati
      */
 
     public String statsToText(String ID) {
-        // MJ: Da parametrizzare se possibile.
+        // TODO MJ: Da parametrizzare se possibile.
         return (list.get(ID).getName() + "\t" + cup + "\t" + spoon + "\t" + sugar + "\t" + milk + "\t");
     }
 
@@ -253,17 +256,17 @@ public class Distributore implements MaxValue{
     }
 
     /**
-     * funzione per fornire alla interfaccia l'etichetta da mettere sui bottoni
-     * @param i bevanda da inserire nella macchinetta
-     * @return restituisce una stringa contenente il nome ed il costo della bevanda
+     * Cosa fa? Non come la si usa nel programma, quello va bene come commento al più
+     * @param i
+     * @return
      */
     public String getLabel(int i){
-        return (list.get("0"+i).getName());//+ " Costo: " + list.get("0"+i).getPrice());
+        return (list.get("0" + i).getName());//+ " Costo: " + list.get("0"+i).getPrice());
     }
 
     /**
-     * funzione per restituire alla macchinetta la quantità di bevande da aggiungere
-     * @return è il numero di bevande presenti nel distributore
+     * // TODO spiegare solo cosa fa
+     * @return numero di bevande presenti nel distributore
      */
     public int getListSize(){
         return list.size();
@@ -274,39 +277,49 @@ public class Distributore implements MaxValue{
     }
 
     /**
-     * returna l'id corrispondente della bevanda da associare al bottone
-     * @param id è il numero della bevanda per ricaverne l'id
+     * // TODO spiegare solo cosa fa
+     * @param id della bevanda
      * @return ritorna l'id della bevanda corrispondente
      */
 
     public String getID(int id){
-        return list.get("0"+id).getId();
+        return list.get("0" + id).getId();
     }
 
-    // Che fa sta funzione?
+    /**
+     * //TODO che fa?
+     */
     private void resetSugar() {
         selected_sugar = 3;
     }
 
+    /**
+     * //TODO che fa?
+     */
     public void upSugar(){
         if (selected_sugar < 5){
             selected_sugar++;
         }
     }
 
-
+    /**
+     * //TODO che fa?
+     */
     public void downSugar(){
         if (selected_sugar > 0){
             selected_sugar--;
         }
     }
 
+    /**
+     * //TODO che fa?
+     */
     public void updateDati(String ID) {
         String dati[] = {"" + milk, "" + sugar, "" + spoon, "" + cup};
         String newLine;
         String current;
         try {
-            ArrayList<String[]> statistics = ingredientsData.readFile();
+            ArrayList<String[] > statistics = ingredientsData.readFile();
             for (int i = 0; i < dati.length; i++) {
                 current = statistics.get(i)[0] + "\t" + statistics.get(i)[1];
                 newLine = statistics.get(i)[0] + "\t" + dati[i];
