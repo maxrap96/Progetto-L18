@@ -17,7 +17,7 @@ public class ListenerTry implements ActionListener {
             "Ginseng", "Bicchiere"};
     private final double costo[] = {0.5, 0.6, 0.5, 0.7, 0.55, 0.65, 0.2};
 
-    public ListenerTry(JTextArea textArea) {
+    public ListenerTry(JTextArea textArea, String id) {
         this.jTextArea = textArea;
     }
 

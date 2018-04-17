@@ -268,7 +268,7 @@ public class Distributore implements MaxValue{
      * @return restituisce una stringa contenente il nome ed il costo della bevanda
      */
     public String getLabel(int i){
-        return (list.get("0"+i).getName() + "\tCosto: " + list.get("0"+i).getPrice());
+        return (list.get("0"+i).getName());//+ " Costo: " + list.get("0"+i).getPrice());
     }
 
     /**
@@ -277,6 +277,10 @@ public class Distributore implements MaxValue{
      */
     public int getListSize(){
         return list.size();
+    }
+
+    public double getCredit(){
+        return coins.getCredit();
     }
 
     /**

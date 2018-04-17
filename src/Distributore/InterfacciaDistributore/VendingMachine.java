@@ -1,5 +1,7 @@
 package Distributore.InterfacciaDistributore;
 
+import Distributore.Distributore;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -7,12 +9,18 @@ public class VendingMachine extends JFrame{
 
     private final int XBUTTONINDEX = 27;
     private final int YBUTTONINDEX = 50;
+    private final int[] XINDEX = {27 , 332, 637};
+    private final int[] YINDEX = {50, 220, 390, 560} ;
 
+    private Distributore distributore;
     /**
      * Creazione interfaccia grafica distributore
+     * @param distributore è il distributore a cui fa riferimento l'interfaccia
      */
 
-    public VendingMachine() {
+    public VendingMachine(Distributore distributore) {
+        this.distributore=distributore;
+
         //Inizializzazione JFrame
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension screenSize = kit.getScreenSize();
@@ -27,44 +35,13 @@ public class VendingMachine extends JFrame{
 
         setLayout(new BorderLayout());
 
-        // Creazione del pannello dove vengono disposte le bevande
-        JPanel pannelloBevande = makePanel(915, 1000, Color.BLACK, null);
-        container.add(pannelloBevande, BorderLayout.WEST);
-
         // Creazione del pannello contenente il display e i pulsanti monete, zucchero ecc...
         JPanel pannelloSelezione = makePanel(450, 1000, Color.LIGHT_GRAY, new BorderLayout());
         container.add(pannelloSelezione, BorderLayout.EAST);
 
-        // Creazione dei tasti delle bevande e successiva aggiunta al pannelloBevande
-        //todo rendere automatica la creazione. prendendo i campi dalla classe distributore e relative posizioni
-        JButton button1 = makeRoundRectButton("Caffè Espresso", XBUTTONINDEX, YBUTTONINDEX);
-
-        JButton button2 = makeRoundRectButton("Cappuccino", XBUTTONINDEX + 305, YBUTTONINDEX);
-
-        JButton button3 = makeRoundRectButton("Tè", XBUTTONINDEX + 610, YBUTTONINDEX);
-
-        JButton button4 = makeRoundRectButton("Caffè Corretto", XBUTTONINDEX, YBUTTONINDEX + 170);
-
-        JButton button5 = makeRoundRectButton("Caffè Lungo", XBUTTONINDEX + 305, YBUTTONINDEX + 170);
-
-        JButton button6 = makeRoundRectButton("Ginseng", XBUTTONINDEX + 610, YBUTTONINDEX + 170);
-
-        JButton button7 = makeRoundRectButton("Bicchiere", XBUTTONINDEX, YBUTTONINDEX + 340);
-
-        JButton button8 = makeRoundRectButton("", XBUTTONINDEX + 305, YBUTTONINDEX + 340);
-        JButton button9 = makeRoundRectButton("", XBUTTONINDEX + 610, YBUTTONINDEX + 340);
-        JButton button10 = makeRoundRectButton("", XBUTTONINDEX, YBUTTONINDEX + 510);
-        JButton button11 = makeRoundRectButton("", XBUTTONINDEX + 305, YBUTTONINDEX + 510);
-        JButton button12 = makeRoundRectButton("", XBUTTONINDEX + 610, YBUTTONINDEX + 510);
-
-
-        pannelloBevande.add(button1); pannelloBevande.add(button2); pannelloBevande.add(button3);
-        pannelloBevande.add(button4); pannelloBevande.add(button5); pannelloBevande.add(button6);
-        pannelloBevande.add(button7); pannelloBevande.add(button8); pannelloBevande.add(button9);
-        pannelloBevande.add(button10);
-        pannelloBevande.add(button11);
-        pannelloBevande.add(button12);
-
+        // Creazione del pannello dove vengono disposte le bevande
+        JPanel pannelloBevande = makePanel(915, 1000, Color.BLACK, null);
+        container.add(pannelloBevande, BorderLayout.WEST);
         // Creazione del display e aggiunta al pannelloSelezione
         JTextArea display = new JTextArea(5, 1);
         display.setBackground(Color.BLUE);
@@ -76,6 +53,28 @@ public class VendingMachine extends JFrame{
         // Creazione del pannello delle monete e aggiunta al pannelloSelezione
         JPanel pannelloMonete = makePanel(560,545, Color.LIGHT_GRAY, null);
         pannelloSelezione.add(pannelloMonete, BorderLayout.SOUTH);
+
+        //creazione ed aggiunta dei pulsanti
+
+        int x=0,y=0; //per i vettori delle coordinate
+        for (int i=0;i<12;i++){ //perchè abbiamo 12 pulsanti
+            if (x==3){
+                x=0;
+                y++;
+            }
+            JButton button;
+            if (i<distributore.getListSize()) {
+                button = makeRoundRectButton(distributore.getLabel(i + 1), XINDEX[x], YINDEX[y]);
+                button.addActionListener(new ListenerTry(display,distributore.getID(i+1)));
+            }
+            else {
+                button = makeRoundRectButton("", XINDEX[x], YINDEX[y]);
+            }
+            pannelloBevande.add(button);
+            x++;
+        }
+
+
 
         // Creazione dei vari tasti della sezione moenete e aggiunta al pannelloMonete
         JButton euro2 = makeRoundButton("2");
@@ -102,7 +101,7 @@ public class VendingMachine extends JFrame{
         pannelloMonete.add(resto); pannelloMonete.add(menoZucchero); pannelloMonete.add(piuZucchero);
         pannelloMonete.add(euro2); pannelloMonete.add(euro1); pannelloMonete.add(cent50);
         pannelloMonete.add(cent20); pannelloMonete.add(cent10); pannelloMonete.add(cent5); //pannelloMonete.add(chiavetta);
-
+/*
         // Listener bevande
         //todo crearlo direttamente nella creazione dinamica del bottone. così da renderlo più veloce
         button1.addActionListener(new ListenerTry(display));
@@ -126,8 +125,9 @@ public class VendingMachine extends JFrame{
         piuZucchero.addActionListener(new ListenerTry(display));
         menoZucchero.addActionListener(new ListenerTry(display));
         //chiavetta.addActionListener(new ListenerTry(display));
-
+*/
     }
+
 
     /**
      * Funzione per creare pannelli standard

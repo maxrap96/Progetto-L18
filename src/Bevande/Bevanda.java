@@ -4,11 +4,11 @@ import static java.lang.Double.parseDouble;
 
 public abstract class Bevanda {
 
-    private String id;
+    protected String id;
     protected Tipo type;
-    private String name;
-    private double price, maxQuantity, temperature, dispensedQuantity, water, milk;
-    private double leftQuantity;
+    protected String name;
+    protected double price, maxQuantity, temperature, dispensedQuantity, water, milk;
+    protected double leftQuantity;
 
     /**
      * TIPO:    ID   TIPO  NOME  COSTO   QUANTITA_MASSIMA    TEMPERATURA    DOSE
