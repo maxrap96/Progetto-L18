@@ -290,6 +290,7 @@ public class Distributore implements MaxValue{
         }
     }
 
+    // Funzione per monitorare lo zucchero con 23 cromosomi.
     public void downSugar(){
         if (selected_sugar > 0){
             selected_sugar--;
