@@ -25,6 +25,7 @@ public class VendingMachine extends JFrame{
         //Inizializzazione JFrame
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension screenSize = kit.getScreenSize();
+        pack();
         setSize(screenSize.width,screenSize.height);
         setTitle("Hot Drinks Vending Machine");
 
@@ -34,16 +35,16 @@ public class VendingMachine extends JFrame{
         WindowCloser windowCloserListener = new WindowCloser();
         addWindowListener(windowCloserListener);
 
-        setLayout(new BorderLayout());
+        container.setLayout(new BorderLayout());
 
         // Creazione del pannello contenente il display e i pulsanti monete, zucchero ecc...
-        JPanel pannelloSelezione = makePanel(450, 1000, Color.LIGHT_GRAY, new BorderLayout());
+        JPanel pannelloSelezione = makePanel(screenSize.width / 4, screenSize.width / 4, Color.LIGHT_GRAY, new BorderLayout());
         container.add(pannelloSelezione, BorderLayout.EAST);
 
         // Creazione del pannello dove vengono disposte le bevande
-        JPanel pannelloBevande = makePanel(915, 1000, Color.BLACK, null);
+        JPanel pannelloBevande = makePanel( 3 * screenSize.width / 4, 3 * screenSize.height / 4, Color.BLACK, null);
         container.add(pannelloBevande, BorderLayout.WEST);
-        // Creazione del display e aggiunta al pannelloSelezione
+/*        // Creazione del display e aggiunta al pannelloSelezione
         JTextArea display = new JTextArea(5, 1);
         display.setBackground(Color.BLUE);
         display.setForeground(Color.WHITE);
