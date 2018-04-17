@@ -4,11 +4,11 @@ import static java.lang.Double.parseDouble;
 
 public abstract class Bevanda {
 
-    protected String id;
+    private String id;
     protected Tipo type;
-    protected String name;
-    protected double price, maxQuantity, temperature, dispensedQuantity, water, milk;
-    protected double leftQuantity;
+    private String name;
+    private double price, maxQuantity, temperature, dispensedQuantity, water, milk;
+    private double leftQuantity;
 
     /**
      * TIPO:    ID   TIPO  NOME  COSTO   QUANTITA_MASSIMA    TEMPERATURA    DOSE
@@ -23,7 +23,7 @@ public abstract class Bevanda {
         this.name = rowSplitted[2];
         this.price = parseDouble(rowSplitted[3]);
         this.maxQuantity = parseDouble(rowSplitted[4]);
-        this.leftQuantity = maxQuantity; // Inizializzo come pieno
+        this.leftQuantity = maxQuantity; // todo Inizializzo come pieno ma c'è da sistemarlo
         this.temperature = parseDouble(rowSplitted[5]);
         this.milk = parseDouble(rowSplitted[7]);
         this.water = parseDouble(rowSplitted[8]);
@@ -59,10 +59,6 @@ public abstract class Bevanda {
         return milk;
     }
 
-    public double getWater() {
-        return water;
-    }
-
     @Override
     public String toString() {
         return "ID: " + id + "\tName: " + name + "\nPrice: " + String.format("%.2f", price) + "\n";
@@ -75,8 +71,4 @@ public abstract class Bevanda {
     public String getId() {
         return id;
     }
-
-    /**
-     * TODO: Eventuale interfaccia.
-     */
 }

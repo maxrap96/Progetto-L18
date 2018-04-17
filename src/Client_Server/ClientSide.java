@@ -3,7 +3,7 @@ package Client_Server;
 import java.io.*;
 import java.net.Socket;
 
-public class ClientSide extends Thread{
+public class ClientSide {
 
     static String stringFromServer;
     static PrintWriter outToServer; // Dati diretti al Server
@@ -13,8 +13,7 @@ public class ClientSide extends Thread{
     static File fileStatsClient =
             new File("src/File_Testo/stats.txt");
 
-    @Override
-    public void run() {
+    public static void main(String[] args) {
         try {
             connectionPreRequisite("localhost",2222);
             emptyFile(fileMenuClient);

@@ -4,7 +4,7 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class ServerSide extends Thread{
+public class ServerSide {
 
     static String stringFromClient; // Stringa letta dai dati in entrata
     static PrintWriter outToClient; // Dati diretti al Client
@@ -14,9 +14,7 @@ public class ServerSide extends Thread{
     static File fileStatsServer =
             new File("src/Client_Server/serverStats.txt");
 
-
-    @Override
-    public void run() {
+    public static void main(String[] args){
         try{
             connectionPreRequisite(2222);
             emptyFile(fileStatsServer);

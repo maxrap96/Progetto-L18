@@ -152,7 +152,7 @@ public class Distributore implements MaxValue{
      * Funzione per recepire input da tastiera e restituirli sotto forma di stringa.
      */
 
-    public String keyboard() throws NoDigit{
+    private String keyboard() throws NoDigit{
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
     }
