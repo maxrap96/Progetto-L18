@@ -72,6 +72,10 @@ public abstract class Bevanda {
         return name;
     }
 
+    public String getId() {
+        return id;
+    }
+
     /**
      * TODO: Eventuale interfaccia.
      */

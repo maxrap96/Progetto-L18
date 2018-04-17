@@ -154,10 +154,11 @@ public class Distributore implements MaxValue{
         InputStreamReader keyboard = new InputStreamReader(System.in);
         BufferedReader bufferedReader = new BufferedReader(keyboard);
         try {
+            String letta=bufferedReader.readLine();
             //TODO C'è DA CAPIRE PERCHè SE LE CHIUDO ESPLODE IL MONDO
             //bufferedReader.close();
             //keyboard.close();
-            return bufferedReader.readLine();
+            return letta;
         } catch (IOException e) {
             throw new NoDigit();
         }
@@ -284,4 +285,9 @@ public class Distributore implements MaxValue{
     public int getListSize(){
         return list.size();
     }
+
+    public String getID(int id){
+        list.get(id).getId();
+    }
+
 }
