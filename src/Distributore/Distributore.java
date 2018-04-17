@@ -16,15 +16,16 @@ public class Distributore implements MaxValue{
     private double sugar, milk;
     private Coins coins;
     private Data stats = new Data("src/File_Testo/stats.txt");
+    private Data ingredientsData = new Data("src/File_Testo/dati.txt");
     private Data menu = new Data("src/File_Testo/menu.txt");
 
     public Distributore() {
         this.list = new HashMap<>();
         this.coins = new Coins();
-        setValues();
 
         try {
             createList(menu.readFile());
+            setValues(ingredientsData.readFile());
         } catch (FileNotReadable fileNotReadable) {
             fileNotReadable.printStackTrace();
         }
@@ -34,29 +35,17 @@ public class Distributore implements MaxValue{
      * Funzione che carica le quantità residue leggendole da file.
      */
 
-    public void setValues() {
-        String[] valuesToTrack = new String[5]; // MJ: Valore impostato a 5.
-                                                // Sarebbe da parametrizzare ma al momento non saprei che metterci.
+    public void setValues(ArrayList<String[]> statistics) {
+        //String[] valuesToTrack = new String[5]; // MJ: Valore impostato a 5.
+        // Sarebbe da parametrizzare ma al momento non saprei che metterci.
 
-        try {
-            ArrayList<String[]> statistiche = stats.readFile();
-            int lastRow = statistiche.size() - 1;
+        this.cup = parseInt(statistics.get(0)[0]);
+        this.spoon = parseInt(statistics.get(0)[0]);
+        this.sugar = Double.parseDouble(statistics.get(0)[0]);
+        this.milk = Double.parseDouble(statistics.get(0)[0]);
 
-            for(int i = 0; i < valuesToTrack.length; i++) {
-                valuesToTrack[i] = statistiche.get(lastRow)[i];
-            }
-
-            this.cup = parseInt(valuesToTrack[1]);
-            this.spoon = parseInt(valuesToTrack[2]);
-            this.sugar = Double.parseDouble(valuesToTrack[3]);
-            this.milk = Double.parseDouble(valuesToTrack[4]);
-
-            // MJ: Controllo se c'è bisogno di ricaricare la macchinetta.
-            checkIfMachineIsEmpty();
-
-        } catch (FileNotReadable fileNotReadable) {
-            fileNotReadable.printStackTrace();
-        }
+        // MJ: Controllo se c'è bisogno di ricaricare la macchinetta.
+        checkIfMachineIsEmpty();
     }
 
     private void checkIfMachineIsEmpty() {
@@ -167,7 +156,7 @@ public class Distributore implements MaxValue{
     public String selectBeverage(String ID){
 
         if (coins.getCredit() >= list.get(ID).getPrice() && list.get(ID).isAvailable()){  // Se il credito è uguale o maggiore singifica che posso
-                                                            // potenzialmente acquistare la bevanda
+            // potenzialmente acquistare la bevanda
             subtractIngredients(ID,selected_sugar);
             coins.updateBalance(list.get(ID).getPrice());
             resetSugar();
@@ -191,7 +180,7 @@ public class Distributore implements MaxValue{
             try {
                 //stats.writeFile(statsToText(ID));    // Nel caso non ci sia credito sufficiente la
                 stats.writeFile(statsToText(ID), false);    // Nel caso non ci sia credito sufficiente la
-                                                                       // transazione fallisce.
+                // transazione fallisce.
             } catch (FileNotWritable fileNotWritable) {
                 fileNotWritable.printStackTrace();
             }
@@ -301,6 +290,7 @@ public class Distributore implements MaxValue{
         }
     }
 
+    // Funzione per monitorare lo zucchero con 23 cromosomi.
     public void downSugar(){
         if (selected_sugar > 0){
             selected_sugar--;
