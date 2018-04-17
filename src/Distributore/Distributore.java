@@ -36,15 +36,12 @@ public class Distributore implements MaxValue{
      */
 
     public void setValues(ArrayList<String[]> statistics) {
-        //String[] valuesToTrack = new String[5]; // MJ: Valore impostato a 5.
-        // Sarebbe da parametrizzare ma al momento non saprei che metterci.
+        this.milk = Double.parseDouble(statistics.get(0)[1]);
+        this.sugar = Double.parseDouble(statistics.get(1)[1]);
+        this.spoon = parseInt(statistics.get(2)[1]);
+        this.cup = parseInt(statistics.get(3)[1]);
 
-        this.cup = parseInt(statistics.get(0)[0]);
-        this.spoon = parseInt(statistics.get(0)[0]);
-        this.sugar = Double.parseDouble(statistics.get(0)[0]);
-        this.milk = Double.parseDouble(statistics.get(0)[0]);
-
-        // MJ: Controllo se c'è bisogno di ricaricare la macchinetta.
+        // Controllo se c'è bisogno di ricaricare la macchinetta.
         checkIfMachineIsEmpty();
     }
 
@@ -155,8 +152,9 @@ public class Distributore implements MaxValue{
 
     public String selectBeverage(String ID){
 
-        if (coins.getCredit() >= list.get(ID).getPrice() && list.get(ID).isAvailable()){  // Se il credito è uguale o maggiore singifica che posso
-            // potenzialmente acquistare la bevanda
+        if (coins.getCredit() >= list.get(ID).getPrice() && list.get(ID).isAvailable()){  // Se il credito è uguale
+                                                                                // o maggiore singifica che posso
+                                                                                // potenzialmente acquistare la bevanda
             subtractIngredients(ID,selected_sugar);
             coins.updateBalance(list.get(ID).getPrice());
             resetSugar();
@@ -164,7 +162,8 @@ public class Distributore implements MaxValue{
             // Scrittura statistiche su file:
             try {
                 //stats.writeFile(statsToText(ID));
-                stats.writeFile(statsToText(ID), true);   // MJ: Variante. Controllare con gli "amici" quale usare.
+                stats.writeFile(statsToText(ID), true);   // MJ: Variante.
+                //ingredientsData.overwriteFile(capire cosa metterci dentro...);
             } catch (FileNotWritable fileNotWritable) {
                 fileNotWritable.printStackTrace();
             }
@@ -280,8 +279,9 @@ public class Distributore implements MaxValue{
         return list.get("0"+id).getId();
     }
 
+    // Che fa sta funzione?
     private void resetSugar() {
-        selected_sugar=3;
+        selected_sugar = 3;
     }
 
     public void upSugar(){
@@ -290,7 +290,7 @@ public class Distributore implements MaxValue{
         }
     }
 
-    // Funzione per monitorare lo zucchero con 23 cromosomi.
+
     public void downSugar(){
         if (selected_sugar > 0){
             selected_sugar--;
