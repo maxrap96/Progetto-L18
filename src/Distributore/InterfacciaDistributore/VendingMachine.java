@@ -19,20 +19,17 @@ public class VendingMachine extends JFrame{
      * @param distributore è il distributore a cui fa riferimento l'interfaccia
      */
 
-
-
     public VendingMachine(Distributore distributore) {
-
-
         this.distributore = distributore;
 
         //Inizializzazione JFrame
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension screenSize = kit.getScreenSize();
-        int screenW = screenSize.width;
         pack();
         setSize(screenSize.width,screenSize.height);
         setTitle("Hot Drinks Vending Machine");
+
+        int[] XINDEX = {5 * screenSize.width /99, 27 * screenSize.width / 99, 49 * screenSize.width / 99};
 
         Container container = getContentPane();
         container.setBackground(Color.YELLOW);
@@ -44,13 +41,14 @@ public class VendingMachine extends JFrame{
 
         // Creazione del pannello contenente il display e i pulsanti monete, zucchero ecc...
         JPanel pannelloSelezione = makePanel(2 * screenSize.width / 7, 2 * screenSize.width / 7,
-                Color.LIGHT_GRAY, new BorderLayout());
+                                              Color.LIGHT_GRAY, new BorderLayout());
         container.add(pannelloSelezione, BorderLayout.EAST);
 
         // Creazione del pannello dove vengono disposte le bevande
-        JPanel pannelloBevande = makePanel( 5 * screenSize.width / 7, 5 * screenSize.height / 7,
-                Color.BLACK, null);
+        JPanel pannelloBevande = makePanel(5 * screenSize.width / 7, 5 * screenSize.height / 7,
+                                            Color.BLACK, null);
         container.add(pannelloBevande, BorderLayout.WEST);
+
        // Creazione del display e aggiunta al pannelloSelezione
         JTextArea display = new JTextArea(5, 1);
         display.setBackground(Color.BLUE);
@@ -60,7 +58,7 @@ public class VendingMachine extends JFrame{
         pannelloSelezione.add(display, BorderLayout.NORTH);
 
         // Creazione del pannello delle monete e aggiunta al pannelloSelezione
-        JPanel pannelloMonete = makePanel(560,545, Color.LIGHT_GRAY, null);
+        JPanel pannelloMonete = makePanel(5 * screenSize.width / 7,4 * screenSize.height / 7, Color.LIGHT_GRAY, null);
         pannelloSelezione.add(pannelloMonete, BorderLayout.SOUTH);
 
         //creazione ed aggiunta dei pulsanti
