@@ -7,6 +7,7 @@ import java.awt.*;
 
 public class VendingMachine extends JFrame{
 
+    private final int NUMERO_PULSANTI = 12;
     private Distributore distributore;
 
     /**
@@ -24,9 +25,9 @@ public class VendingMachine extends JFrame{
         setSize(screenSize.width,screenSize.height);
         setTitle("Hot Drinks Vending Machine");
 
-        int[] XINDEX = {5 * screenSize.width /99, 27 * screenSize.width / 99, 49 * screenSize.width / 99};
-        int[] YINDEX = {7 * screenSize.height / 100, 29 * screenSize.height / 100,
-                        51 * screenSize.height / 100, 73 * screenSize.height / 100} ;
+        final int[] X_SCREEN_INDEX = {5 * screenSize.width / 99, 27 * screenSize.width / 99, 49 * screenSize.width / 99};
+        final int[] Y_SCREEN_INDEX = {7 * screenSize.height / 100, 29 * screenSize.height / 100,
+                                    51 * screenSize.height / 100, 73 * screenSize.height / 100} ;
 
         Container container = getContentPane();
         container.setBackground(Color.YELLOW);
@@ -46,7 +47,12 @@ public class VendingMachine extends JFrame{
                                             Color.BLACK, null);
         container.add(pannelloBevande, BorderLayout.WEST);
 
-       // Creazione del display e aggiunta al pannelloSelezione
+        // Creazione del pannello delle monete e aggiunta al pannelloSelezione
+        JPanel pannelloMonete = makePanel(5 * screenSize.width / 7,4 * screenSize.height / 7,
+                                           Color.LIGHT_GRAY, null);
+        pannelloSelezione.add(pannelloMonete, BorderLayout.SOUTH);
+
+        // Creazione del display e aggiunta al pannelloSelezione
         JTextArea display = new JTextArea(5, 1);
         display.setBackground(Color.BLUE);
         display.setForeground(Color.WHITE);
@@ -54,30 +60,27 @@ public class VendingMachine extends JFrame{
         display.setEditable(false);                 //Cosi non posso scriverci sopra da interfaccia
         pannelloSelezione.add(display, BorderLayout.NORTH);
 
-        // Creazione del pannello delle monete e aggiunta al pannelloSelezione
-        JPanel pannelloMonete = makePanel(5 * screenSize.width / 7,4 * screenSize.height / 7, Color.LIGHT_GRAY, null);
-        pannelloSelezione.add(pannelloMonete, BorderLayout.SOUTH);
+        // Creazione e aggiunta dei dodici pulsanti delle bevande
+        int xButton = 0, yButton = 0; // coordinate dei pulsanti
 
-        //creazione ed aggiunta dei pulsanti
-
-        int x = 0, y = 0; //per i vettori delle coordinate
-        for (int i = 0; i < 12; i++ ){ //perchè abbiamo 12 pulsanti
-            if (x == 3){
-                x = 0;
-                y++;
+        for (int i = 0; i < NUMERO_PULSANTI; i++ ){
+            if (xButton == 3){
+                xButton = 0;
+                yButton++;
             }
             JButton button;
             if (i < distributore.getListSize()) {
-                button = makeRoundRectButton(distributore.getLabel(i + 1), XINDEX[x], YINDEX[y],
-                        screenSize.width / 6, screenSize.height / 8);
-                button.addActionListener(new ListenerTry( display, distributore.getID(i+1) ));
+                button = makeRoundRectButton(distributore.getLabel(i + 1), X_SCREEN_INDEX[xButton],
+                                             Y_SCREEN_INDEX[yButton],screenSize.width / 6,
+                                            screenSize.height / 8);
+                button.addActionListener(new ListenerTry( display, distributore.getID(i + 1)));
             }
             else {
-                button = makeRoundRectButton("", XINDEX[x], YINDEX[y],
-                        screenSize.width / 6, screenSize.height / 8);
+                button = makeRoundRectButton("", X_SCREEN_INDEX[xButton], Y_SCREEN_INDEX[yButton],
+                                             screenSize.width / 6, screenSize.height / 8);
             }
             pannelloBevande.add(button);
-            x++;
+            xButton++;
         }
 
 
