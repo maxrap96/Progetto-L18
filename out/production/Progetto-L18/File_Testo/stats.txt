@@ -21,3 +21,11 @@ Cioccolata	474	990	99.7	15.0	Transazione avvenuta il:	18-04-2018 15:38:09
 Caffè Espresso	473	990	99.7	15.0	Transazione avvenuta il:	18-04-2018 15:38:42
 Caffè corretto	472	990	99.7	15.0	Transazione avvenuta il:	18-04-2018 16:10:47
 Cappuccino	471	989	98.95	14.92	Transazione avvenuta il:	18-04-2018 16:11:57
+Caffè corretto	470	989	98.95	14.92	Transazione avvenuta il:	18-04-2018 17:27:54
+Caffè corretto	469	989	98.95	14.92	Transazione avvenuta il:	18-04-2018 17:29:53
+Caffè Arabica	469	989	98.95	14.92	Transazione fallita.	18-04-2018 17:32:34
+Caffè Arabica	469	989	98.95	14.92	Transazione fallita.	18-04-2018 17:33:14
+Tè al Limone	468	988	97.7	14.92	Transazione avvenuta il:	18-04-2018 17:37:18
+Tè al Limone	467	987	96.7	14.92	Transazione avvenuta il:	18-04-2018 17:38:38
+Tè al Limone	466	986	95.7	14.92	Transazione avvenuta il:	18-04-2018 17:39:11
+*

@@ -42,7 +42,6 @@ public class Distributore implements MaxValue{
         this.sugar = Double.parseDouble(statistics.get(1)[1]);
         this.spoon = parseInt(statistics.get(2)[1]);
         this.cup = parseInt(statistics.get(3)[1]);
-
         dati = statistics;
         // Controllo se c'è bisogno di ricaricare la macchinetta.
         checkIfMachineIsEmpty();
@@ -80,26 +79,27 @@ public class Distributore implements MaxValue{
         // MJ: Penso che mettere For, If e switch renda poco leggibile la funzione. Si può cercare di semplificare?
 
         for (int i = 0; i < listFromFile.size(); i++){
+
+            int j = i+4; //dato che le prime 3 righe del file data sono per la macchinetta
             Tipo tipo = Tipo.valueOf(listFromFile.get(i)[1]);
             Bevanda bevanda = null;
-            String storedID = data.get(i+4)[0];
-            String currentID = listFromFile.get(i)[0];
+            //String storedID = data.get(j)[0];
+            //String currentID = listFromFile.get(i)[0];
 
-            if (currentID.equals(storedID) && !storedID.isEmpty()) {
-                String quantityLeft = data.get(i+4)[1];
-
+            if (!data.get(j)[0].isEmpty() && listFromFile.get(i)[0].equals(data.get(j)[0])) {
+                String quantityLeft = data.get(j)[1];
                 switch (tipo.ordinal()) {
                     case 0:
                         bevanda = new Macinato(listFromFile.get(i), quantityLeft);
-                        list.put(currentID, bevanda);
+                        list.put(listFromFile.get(i)[0], bevanda);
                         break;
                     case 1:
                         bevanda = new Capsula(listFromFile.get(i), quantityLeft);
-                        list.put(currentID, bevanda);
+                        list.put(listFromFile.get(i)[0], bevanda);
                         break;
                     case 2:
                         bevanda = new Solubile(listFromFile.get(i), quantityLeft);
-                        list.put(currentID, bevanda);
+                        list.put(listFromFile.get(i)[0], bevanda);
                         break;
                     default:
                         new InvalidType();
@@ -111,15 +111,15 @@ public class Distributore implements MaxValue{
                 switch (tipo.ordinal()) {
                     case 0:
                         bevanda = new Macinato(listFromFile.get(i));
-                        list.put(currentID, bevanda);
+                        list.put(listFromFile.get(i)[0], bevanda);
                         break;
                     case 1:
                         bevanda = new Capsula(listFromFile.get(i));
-                        list.put(currentID, bevanda);
+                        list.put(listFromFile.get(i)[0], bevanda);
                         break;
                     case 2:
                         bevanda = new Solubile(listFromFile.get(i));
-                        list.put(currentID, bevanda);
+                        list.put(listFromFile.get(i)[0], bevanda);
                         break;
                     default:
                         new InvalidType();
