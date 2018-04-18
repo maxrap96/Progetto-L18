@@ -10,4 +10,12 @@ public class Solubile extends Bevanda {
         this.dispensedQuantity = parseDouble(rowSplitted[6]);
 
     }
+
+    public Solubile(String[] rowSplitted, String quantityLeft) {
+        super(rowSplitted, quantityLeft);
+        this.type = Tipo.SOLUBILE;
+        this.dispensedQuantity = parseDouble(rowSplitted[6]);
+
+
+    }
 }
