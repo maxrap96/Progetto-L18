@@ -19,8 +19,6 @@ public class VendingMachine extends JFrame{
      */
 
     public VendingMachine() {
-
-
         //Inizializzazione JFrame
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension screenSize = kit.getScreenSize();
@@ -124,8 +122,6 @@ public class VendingMachine extends JFrame{
                                                 9 * screenSize.height / 100) ;
         pannelloMonete.add(chiavetta);
 
-
-
         // Listener bevande
    /*   //todo crearlo direttamente nella creazione dinamica del bottone. così da renderlo più veloce
         button1.addActionListener(new ListenerTry(display));
@@ -150,8 +146,7 @@ public class VendingMachine extends JFrame{
         menoZucchero.addActionListener(new ListenerTry(display));
         //chiavetta.addActionListener(new ListenerTry(display));
 */
-        }
-
+    }
 
     /**
      * Funzione per creare pannelli standard
@@ -184,7 +179,7 @@ public class VendingMachine extends JFrame{
 
     /**
      * Funzione per creare bottoni circolari
-     *
+     * @param string: etichetta del pulsante
      * @return ritorna il pulsante
      */
     private JButton makeRoundButton(String string, int x, int y, int screenW, int screenH){
