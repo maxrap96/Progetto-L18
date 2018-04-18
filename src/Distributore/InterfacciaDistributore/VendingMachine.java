@@ -12,15 +12,14 @@ public class VendingMachine extends JFrame{
     private final int NUMERO_MONETE = 6;
     private final int NUMERO_ALTRI_PULSANTI = 3;
     private final String[] ALTRI_PULSANTI = {"", "+", "-"};
-    private Distributore distributore;
+    private Distributore distributore = new Distributore();
 
     /**
      * Creazione interfaccia grafica distributore
-     * @param distributore è il distributore a cui fa riferimento l'interfaccia
      */
 
-    public VendingMachine(Distributore distributore) {
-        this.distributore = distributore;
+    public VendingMachine() {
+
 
         //Inizializzazione JFrame
         Toolkit kit = Toolkit.getDefaultToolkit();
