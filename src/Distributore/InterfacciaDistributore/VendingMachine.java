@@ -13,7 +13,6 @@ public class VendingMachine extends JFrame{
     private final int NUMERO_ALTRI_PULSANTI = 3;
     private final String[] ALTRI_PULSANTI = {"", "+", "-"};
     private Distributore distributore;
-    private Coins coins = new Coins();
 
     /**
      * Creazione interfaccia grafica distributore
@@ -40,7 +39,7 @@ public class VendingMachine extends JFrame{
         final int[] Y_MON_INDEX = {6 * screenSize.height / 100, 23 * screenSize.height / 100, 40 * screenSize.height / 100};
 
         Container container = getContentPane();
-        container.setBackground(Color.YELLOW);
+        container.setBackground(Color.BLACK);
 
         WindowCloser windowCloserListener = new WindowCloser();
         addWindowListener(windowCloserListener);
@@ -96,14 +95,7 @@ public class VendingMachine extends JFrame{
 
         // Creazione dei vari tasti della sezione moenete e aggiunta al pannelloMonete
         int xButtonMon = 0, yButtonMon = 0; // coordinate dei pulsanti
-        int j = 5;
-        String coinsValue[] = {"","","","","",""};
-        double[] cValue = coins.getCOINS_VALUE();
-
-        for (int i = 0; i < cValue.length; i++) {
-            coinsValue[j] = Double.toString(cValue[i]);
-            j--;
-        }
+        String[] coinsValue = distributore.getCoinsValue();
 
         for (int i = -NUMERO_ALTRI_PULSANTI; i < NUMERO_MONETE; i++) {
             if (xButtonMon == 3) {
@@ -125,9 +117,8 @@ public class VendingMachine extends JFrame{
             xButtonMon++;
         }
 
+       // JButton chiavetta = makeRoundRectButton("Chiavetta", ) ;
 
-//        JButton chiavetta = makeRoundRectButton("Chiavetta") ;
-//        chiavetta.setBounds(155, 36, 250, 80);
 
 
         // Listener bevande

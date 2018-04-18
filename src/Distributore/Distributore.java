@@ -368,7 +368,15 @@ public class Distributore implements MaxValue{
      * funzione che serve all'interfaccia per associare i nomi dei pulsanti ai relativi valori
      * @return sono i valori delle monete in forma vettore
      */
-    public double[] getCoinsValue(){
-        return coins.getCOINS_VALUE();
+    public String[] getCoinsValue(){
+        int j = 5;
+        String coinsValue[] = {"","","","","",""};
+        double[] cValue = coins.getCOINS_VALUE();
+
+        for (int i = 0; i < cValue.length; i++) {
+            coinsValue[j] = Double.toString(cValue[i]);
+            j--;
+        }
+        return coinsValue;
     }
 }
