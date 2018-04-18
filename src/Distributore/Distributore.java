@@ -317,7 +317,7 @@ public class Distributore implements MaxValue{
     }
 
     /**
-     * //TODO che fa? TU FAMMELA FINIRE E POI TI DICO GNE GNE
+     * Funzione per aggiornare il file dati.txt, contenente le quantità di oggetti e le quantità di ingredienti.
      */
     public void updateDati(String ID) {
         String valDati[] = {"" + milk, "" + sugar, "" + spoon, "" + cup};
