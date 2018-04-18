@@ -19,6 +19,7 @@ public class Distributore implements MaxValue{
     private Data stats = new Data("src/File_Testo/stats.txt");
     private Data ingredientsData = new Data("src/File_Testo/dati.txt");
     private Data menu = new Data("src/File_Testo/menu.txt");
+    private ArrayList<String[]> dati;
 
     public Distributore() {
         this.list = new HashMap<>();
@@ -42,6 +43,7 @@ public class Distributore implements MaxValue{
         this.spoon = parseInt(statistics.get(2)[1]);
         this.cup = parseInt(statistics.get(3)[1]);
 
+        dati = statistics;
         // Controllo se c'è bisogno di ricaricare la macchinetta.
         checkIfMachineIsEmpty();
     }
@@ -286,6 +288,10 @@ public class Distributore implements MaxValue{
         return list.get("0" + id).getId();
     }
 
+    public ArrayList<String[]> getDati() {
+        return dati;
+    }
+
     /**
      * //TODO che fa?
      */
@@ -312,27 +318,23 @@ public class Distributore implements MaxValue{
     }
 
     /**
-     * //TODO che fa?
+     * //TODO che fa? TU FAMMELA FINIRE E POI TI DICO GNE GNE
      */
     public void updateDati(String ID) {
-        String dati[] = {"" + milk, "" + sugar, "" + spoon, "" + cup};
+        String valDati[] = {"" + milk, "" + sugar, "" + spoon, "" + cup};
         String newLine;
         String current;
         try {
-            ArrayList<String[] > statistics = ingredientsData.readFile();
-            for (int i = 0; i < dati.length; i++) {
-                current = statistics.get(i)[0] + "\t" + statistics.get(i)[1];
-                newLine = statistics.get(i)[0] + "\t" + dati[i];
+            for (int i = 0; i < valDati.length; i++) {
+                current = dati.get(i)[0] + "\t" + dati.get(i)[1];
+                newLine = dati.get(i)[0] + "\t" + valDati[i];
                 ingredientsData.overwriteFile(newLine, current);
             }
 
-            //current = ""+ID;
+            //current = ""+ID+"\t";
             //newLine = ""+ID+"\t"+list.get(ID).getLeftQuantity();
             //ingredientsData.overwriteFile(newLine, current);
 
-        } catch (IOException e) {
-        } catch (FileNotReadable fileNotReadable) {
-            fileNotReadable.printStackTrace();
-        }
+        } catch (IOException e) {}
     }
 }
