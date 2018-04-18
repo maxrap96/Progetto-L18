@@ -17,7 +17,7 @@ public class Data {
 
     /**
      * Funzione che legge da un file esterno i dati su cui bisogna lavorare.
-     * @return openedFile
+     * @return openedFile: è il file aperto e letto.
      * @throws FileNotReadable
      */
 
@@ -38,8 +38,7 @@ public class Data {
     }
 
     /**
-     * Funzione che riceve i dati copiati dal file e li divide. Dopo ogni carattere di "Tab" viene effettuata la
-     * divisione.
+     * Funzione che riceve i dati copiati dal file e li divide dopo ogni carattere di "Tab".
      * @param bReader è il reader associato al file
      * @return dataSplit è il file aperto e separato in base alle tabulazioni
      * @throws FileNotReadable è l'eccezione lanciata nel caso il file non sia presente o leggibile
@@ -65,8 +64,8 @@ public class Data {
     }
 
     /**
-     * Funzione per la scrittura su file. Tengo traccia di ciò che accade nella macchinetta
-     * @param scrittura è la stringa da accodare al file contenente le informazioni necessarie
+     * Funzione per la scrittura su file dei dati di interesse.
+     * @param scrittura è la stringa da accodare al file contenente le informazioni necessarie.
      * @throws FileNotWritable è l'eccezione lanciata nel caso non sia possibile scrivere sul file indicato da pathfile.
      */
 
@@ -81,6 +80,13 @@ public class Data {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Funzione per la scrittura su file dei dati di interesse.
+     * @param scrittura è la stringa da accodare al file contenente le informazioni necessarie.
+     * @param transaction parametro che mi dice se la transazione avviene o fallisce.
+     * @throws FileNotWritable è l'eccezione lanciata nel caso non sia possibile scrivere sul file indicato da pathfile.
+     */
 
     // MJ: Funzione di stampa sul file nel caso di transazioni corrette ed errate. Variante della funzione precedente.
     protected void writeFile(String scrittura, boolean transaction) throws FileNotWritable {
@@ -103,23 +109,8 @@ public class Data {
         }
     }
 
-    // MJ: funzione creata. Vediamo se serve o se si puo' togliere.
     /**
-     * Funzione di scrittura su file stats.txt in caso di errore nella transazione.
-     */
-
-    /*protected void writeFile() {
-        try {
-            FileWriter writer = new FileWriter(pathFile, true);
-            writer.write("Transazione fallita.\t" + getCurrentTimeStamp() + "\n");
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }*/
-
-    /**
-     * Funzione per ottenere la data e ora locali.
+     * Funzione per ottenere data e ora locali.
      * @return strDate è la stringa con i dati necessari
      */
 

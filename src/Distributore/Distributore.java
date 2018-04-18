@@ -49,19 +49,18 @@ public class Distributore implements MaxValue{
     }
 
     /**
-     * Invece che farli scendere a zero, non sarebbe meglio metterli sotto una certa soglia? Soprattutto dato che
-     * il latto non viene scalato in maniera uniforme. Poi se funziona così va bene.
-     * MJ: Si io li ho messi a zero solo per comodità, anche sotto soglia mi va bene. Aspetto risposte
+     * Funzione che controlla se la macchinetta deve essere ricaricata
      */
 
     private void checkIfMachineIsEmpty() {
-        if(cup == 0 || spoon == 0 || sugar == 0 || milk == 0) {
+        if(cup < 20 || spoon < 10 || sugar < 0.5 || milk < 0.2) {
+            System.out.println("Refilling machine...\n");
             resetToMaxVendingMachine();
         }
     }
 
     /**
-     * Ricarica alcuni ingredienti della macchinetta
+     * Ricarica alcuni elementi della macchinetta
      */
     private void resetToMaxVendingMachine() {
         this.sugar = SUGARMAX;
@@ -88,9 +87,10 @@ public class Distributore implements MaxValue{
 
             if (currentID.equals(storedID) && !storedID.isEmpty()) {
                 String quantityLeft = data.get(i+4)[1];
+
                 switch (tipo.ordinal()) {
                     case 0:
-                        bevanda = new Macinato(listFromFile.get(i),quantityLeft);
+                        bevanda = new Macinato(listFromFile.get(i), quantityLeft);
                         list.put(currentID, bevanda);
                         break;
                     case 1:
@@ -201,8 +201,7 @@ public class Distributore implements MaxValue{
 
             try {
                 //stats.writeFile(statsToText(ID));
-                stats.writeFile(statsToText(ID), true);   // MJ: Variante.
-                //ingredientsData.overwriteFile(capire cosa metterci dentro...);
+                stats.writeFile(statsToText(ID), true);
                 updateDati(ID);
             } catch (FileNotWritable fileNotWritable) {
                 fileNotWritable.printStackTrace();

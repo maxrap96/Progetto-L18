@@ -56,11 +56,12 @@ public class Test {
         try{
             Socket clientSocket =
                     new Socket(hostName, connectionPort); // Creo il socket attraverso cui inviare i dati
+
             outToServer =
                     new PrintWriter(clientSocket.getOutputStream(), true); // Oggetto per scrivere
+
             inFromServer =
-                    new BufferedReader(
-                            new InputStreamReader(clientSocket.getInputStream())); // Oggetto per ricevere
+                    new BufferedReader(new InputStreamReader(clientSocket.getInputStream())); // Oggetto per ricevere
 
         }catch (IOException e){
             e.printStackTrace();
@@ -76,8 +77,8 @@ public class Test {
      */
     protected static void emptyFile(File file) throws IOException{
         try {
-            PrintWriter emptyFile =
-                    new PrintWriter(file.getPath());
+            PrintWriter emptyFile = new PrintWriter(file.getPath());
+
             emptyFile.write(""); // Svuoto il file
             emptyFile.close();
         }catch (IOException e){
@@ -93,8 +94,8 @@ public class Test {
      */
     protected static void writeFileReceived(String stringToWrite, File file)throws IOException{
         try {
-            FileOutputStream fileOutputStream =
-                    new FileOutputStream(file.getPath(), true); // Scrivo il file
+            FileOutputStream fileOutputStream = new FileOutputStream(file.getPath(), true); // Scrivo il file
+
             fileOutputStream.write((stringToWrite + "\n").getBytes());
         }catch (IOException e){
             e.printStackTrace();
@@ -111,8 +112,7 @@ public class Test {
         try {
             String stringFromFile;
             BufferedReader inFromFile =
-                    new BufferedReader(
-                            new FileReader(file.getPath())); // Oggetto da cui prendo i dati
+                    new BufferedReader(new FileReader(file.getPath())); // Oggetto da cui prendo i dati
 
             while ((stringFromFile = inFromFile.readLine()) != null) { // Invio al Client
                 whereToWrite.println(stringFromFile);
