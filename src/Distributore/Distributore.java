@@ -363,4 +363,12 @@ public class Distributore implements MaxValue{
 
         } catch (IOException e) {}
     }
+
+    /**
+     * funzione che serve all'interfaccia per associare i nomi dei pulsanti ai relativi valori
+     * @return sono i valori delle monete in forma vettore
+     */
+    public double[] getCoinsValue(){
+        return coins.getCOINS_VALUE();
+    }
 }
