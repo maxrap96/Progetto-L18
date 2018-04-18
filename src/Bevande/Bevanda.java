@@ -30,6 +30,24 @@ public abstract class Bevanda {
     }
 
     /**
+     * Costruttore alternativo che serve a ripristinare la quantità rimanente, se presente, all'ultimo uso della macchina
+     * @param rowSplitted è la stringa contenente i dati della bevanda
+     * @param valueleft è la stringa contenente il double della quantità rimanente
+     */
+
+    public Bevanda(String[] rowSplitted, String valueleft) {
+        // Inizializzo tutto tranne type e dispensedQuantity che verranno inizializzati
+        // nelle singole classi in base alle differenze.
+        this.id = rowSplitted[0];
+        this.name = rowSplitted[2];
+        this.price = parseDouble(rowSplitted[3]);
+        this.maxQuantity = parseDouble(rowSplitted[4]);
+        this.leftQuantity = parseDouble(valueleft); // todo Inizializzo come pieno ma c'è da sistemarlo
+        this.temperature = parseDouble(rowSplitted[5]);
+        this.milk = parseDouble(rowSplitted[7]);
+        this.water = parseDouble(rowSplitted[8]);
+    }
+    /**
      * Funzione per sottrarre quantità dopo aver selezionato la bevanda
      */
 
