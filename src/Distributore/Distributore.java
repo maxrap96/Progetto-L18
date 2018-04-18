@@ -203,7 +203,6 @@ public class Distributore implements MaxValue{
      * @param sugar
      */
     private void subtractIngredients(String ID, int sugar) {
-        list.get(ID).subtractDose();
         milk -= list.get(ID).getMilk();
         subtractSugar(sugar);
         cup--;
@@ -322,8 +321,8 @@ public class Distributore implements MaxValue{
      */
     public void updateDati(String ID) {
         String valDati[] = {"" + milk, "" + sugar, "" + spoon, "" + cup};
-        String newLine;
-        String current;
+        String newLine = "";
+        String current = "";
         try {
             for (int i = 0; i < valDati.length; i++) {
                 current = dati.get(i)[0] + "\t" + dati.get(i)[1];
@@ -331,9 +330,10 @@ public class Distributore implements MaxValue{
                 ingredientsData.overwriteFile(newLine, current);
             }
 
-            //current = ""+ID+"\t";
-            //newLine = ""+ID+"\t"+list.get(ID).getLeftQuantity();
-            //ingredientsData.overwriteFile(newLine, current);
+            current = ID+ "\t" +list.get(ID).getLeftQuantity();
+            list.get(ID).subtractDose();
+            newLine = ID+ "\t" +list.get(ID).getLeftQuantity();
+            ingredientsData.overwriteFile(newLine, current);
 
         } catch (IOException e) {}
     }

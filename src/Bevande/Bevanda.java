@@ -29,7 +29,6 @@ public abstract class Bevanda {
         this.water = parseDouble(rowSplitted[8]);
     }
 
-
     /**
      * Funzione per sottrarre quantità dopo aver selezionato la bevanda
      */
