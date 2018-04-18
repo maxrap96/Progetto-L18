@@ -51,6 +51,7 @@ public class Distributore implements MaxValue{
     /**
      * Invece che farli scendere a zero, non sarebbe meglio metterli sotto una certa soglia? Soprattutto dato che
      * il latto non viene scalato in maniera uniforme. Poi se funziona così va bene.
+     * MJ: Si io li ho messi a zero solo per comodità, anche sotto soglia mi va bene. Aspetto risposte
      */
 
     private void checkIfMachineIsEmpty() {
@@ -77,11 +78,14 @@ public class Distributore implements MaxValue{
 
     private void createList(ArrayList<String[]> listFromFile, ArrayList<String[]> data) {
 
+        // MJ: Penso che mettere For, If e switch renda poco leggibile la funzione. Si può cercare di semplificare?
+
         for (int i = 0; i < listFromFile.size(); i++){
             Tipo tipo = Tipo.valueOf(listFromFile.get(i)[1]);
             Bevanda bevanda = null;
             String storedID = data.get(i+4)[0];
             String currentID = listFromFile.get(i)[0];
+
             if (currentID.equals(storedID) && !storedID.isEmpty()) {
                 String quantityLeft = data.get(i+4)[1];
                 switch (tipo.ordinal()) {
@@ -147,6 +151,7 @@ public class Distributore implements MaxValue{
         try {
             if (list.get(splitted[0]).isAvailable()) {
                 double[] value = coins.getCOINS_VALUE();
+
                 for (int i = 0; i < value.length; i++) {
                     try {
                         System.out.println("Inserire le monete da " + String.format("%.2f", value[i]) + " cent");
@@ -156,6 +161,7 @@ public class Distributore implements MaxValue{
                         noDigit.printStackTrace();
                     }
                 }
+
                 //vera e propria funzione da usare nell'interfaccia per l'erogazione della bevanda
                 selectBeverage(splitted[0]);
             }
@@ -187,14 +193,13 @@ public class Distributore implements MaxValue{
         if (coins.getCredit() >= list.get(ID).getPrice()
                 && list.get(ID).isAvailable()){     // Se il credito è uguale o maggiore singifica che posso
                                                     // potenzialmente acquistare la bevanda
-            subtractIngredients(ID,selected_sugar);
+            subtractIngredients(ID, selected_sugar);
             coins.updateBalance(list.get(ID).getPrice());
-            resetSugar();
+            setSugarToDefault();
 
             // Scrittura statistiche su file:
 
             try {
-
                 //stats.writeFile(statsToText(ID));
                 stats.writeFile(statsToText(ID), true);   // MJ: Variante.
                 //ingredientsData.overwriteFile(capire cosa metterci dentro...);
@@ -213,8 +218,7 @@ public class Distributore implements MaxValue{
         else {
             try {
                 //stats.writeFile(statsToText(ID));  // Nel caso non ci sia credito sufficiente la transazione fallisce.
-                stats.writeFile(statsToText(ID), false);    // Nel caso non ci sia credito sufficiente la
-                                                                        // transazione fallisce.
+                stats.writeFile(statsToText(ID), false);
             } catch (FileNotWritable fileNotWritable) {
                 fileNotWritable.printStackTrace();
             }
@@ -247,7 +251,7 @@ public class Distributore implements MaxValue{
     }
 
     /**
-     * Funziona che mostra la lista delle bevande contenute nel distributore.
+     * Funzione che mostra la lista delle bevande contenute nel distributore.
      */
     private void showList() {
         for (int i = 1; i < list.size() + 1; i++){
@@ -320,14 +324,14 @@ public class Distributore implements MaxValue{
     /**
      * //TODO che fa?
      */
-    private void resetSugar() {
+    private void setSugarToDefault() {
         selected_sugar = 3;
     }
 
     /**
      * //TODO che fa?
      */
-    public void upSugar(){
+    public void moreSugar(){
         if (selected_sugar < 5){
             selected_sugar++;
         }
@@ -336,19 +340,20 @@ public class Distributore implements MaxValue{
     /**
      * //TODO che fa?
      */
-    public void downSugar(){
+    public void lessSugar(){
         if (selected_sugar > 0){
             selected_sugar--;
         }
     }
 
     /**
-     * Funzione per aggiornare il file dati.txt, contenente le quantità di oggetti e le quantità di ingredienti.
+     * Funzione per aggiornare il file dati.txt, contenente le quantità di oggetti e di ingredienti.
      */
     public void updateDati(String ID) {
         String valDati[] = {"" + milk, "" + sugar, "" + spoon, "" + cup};
         String newLine = "";
         String current = "";
+
         try {
             for (int i = 0; i < valDati.length; i++) {
                 current = dati.get(i)[0] + "\t" + dati.get(i)[1];
@@ -356,9 +361,9 @@ public class Distributore implements MaxValue{
                 ingredientsData.overwriteFile(newLine, current);
             }
 
-            current = ID+ "\t" +list.get(ID).getLeftQuantity();
+            current = ID + "\t" +list.get(ID).getLeftQuantity();
             list.get(ID).subtractDose();
-            newLine = ID+ "\t" +list.get(ID).getLeftQuantity();
+            newLine = ID + "\t" +list.get(ID).getLeftQuantity();
             ingredientsData.overwriteFile(newLine, current);
 
         } catch (IOException e) {}
