@@ -9,6 +9,9 @@ import java.awt.*;
 public class VendingMachine extends JFrame{
 
     private final int NUMERO_PULSANTI_BEVANDE = 12;
+    private final int NUMERO_MONETE = 6;
+    private final int NUMERO_ALTRI_PULSANTI = -3;
+    private final String[] ALTRI_PULSANTI = {"", "+", "-"};
     private Distributore distributore;
     private Coins coins;
 
@@ -87,40 +90,37 @@ public class VendingMachine extends JFrame{
                 button = makeRoundRectButton("", X_SCREEN_INDEX[xButton], Y_SCREEN_INDEX[yButton],
                                              screenSize.width / 6, screenSize.height / 8);
             }
+            
             pannelloBevande.add(button);
             xButton++;
         }
 
         // Creazione dei vari tasti della sezione moenete e aggiunta al pannelloMonete
-
-
         int xButtonMon = 0, yButtonMon = 0; // coordinate dei pulsanti
-        String s[] = {"","","","","",""};
-        double[] d = coins.getCOINS_VALUE();
         int j = 5;
-        for (int i = 0; i < d.length; i++) {
+        String coinsValue[] = {"","","","","",""};
+        double[] cValue = coins.getCOINS_VALUE();
 
-            s[j] = Double.toString(d[i]);
+        for (int i = 0; i < cValue.length; i++) {
+            coinsValue[j] = Double.toString(cValue[i]);
             j--;
         }
-        for (int i = -3; i < 6; i++ ) {
+
+        for (int i = NUMERO_ALTRI_PULSANTI; i < NUMERO_MONETE; i++) {
             if (xButtonMon == 3) {
                 xButtonMon = 0;
                 yButtonMon++;
             }
             JButton button;
             if (i >= 0) {
-            button = makeRoundButton(s[i],  X_MON_INDEX[xButtonMon],
-                    Y_MON_INDEX[yButtonMon],screenSize.height / 8,
-                    screenSize.height / 8);
-           // button.addActionListener(new ListenerTry(display, distributore.getID(i + 1)));
-                }
-                else {
-                    button = makeRoundButton("ee",  X_MON_INDEX[xButtonMon],
-                            Y_MON_INDEX[yButtonMon],screenSize.height / 8,
-                            screenSize.height / 8);
-                }
-
+                button = makeRoundButton(coinsValue[i],  X_MON_INDEX[xButtonMon], Y_MON_INDEX[yButtonMon],
+                                        screenSize.height / 8,screenSize.height / 8);
+              //button.addActionListener(new ListenerTry(display, distributore.getID(i + 1)));
+            }
+            else {
+                button = makeRoundButton(ALTRI_PULSANTI[i + 3], X_MON_INDEX[xButtonMon], Y_MON_INDEX[yButtonMon],
+                                        screenSize.height / 8,screenSize.height / 8);
+            }
 
             pannelloMonete.add(button);
             xButtonMon++;

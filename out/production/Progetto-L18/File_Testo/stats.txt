@@ -18,3 +18,4 @@ Cioccolata	477	990	99.7	15.0	Transazione avvenuta il:	18-04-2018 15:24:11
 Cioccolata	476	990	99.7	15.0	Transazione avvenuta il:	18-04-2018 15:28:13
 Caffè Espresso	475	990	99.7	15.0	Transazione avvenuta il:	18-04-2018 15:31:28
 Cioccolata	474	990	99.7	15.0	Transazione avvenuta il:	18-04-2018 15:38:09
+Caffè Espresso	473	990	99.7	15.0	Transazione avvenuta il:	18-04-2018 15:38:42
