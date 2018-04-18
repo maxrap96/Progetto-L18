@@ -87,15 +87,15 @@ public class Distributore implements MaxValue{
                 switch (tipo.ordinal()) {
                     case 0:
                         bevanda = new Macinato(listFromFile.get(i),quantityLeft);
-                        list.put(listFromFile.get(i)[0], bevanda);
+                        list.put(currentID, bevanda);
                         break;
                     case 1:
                         bevanda = new Capsula(listFromFile.get(i), quantityLeft);
-                        list.put(listFromFile.get(i)[0], bevanda);
+                        list.put(currentID, bevanda);
                         break;
                     case 2:
                         bevanda = new Solubile(listFromFile.get(i), quantityLeft);
-                        list.put(listFromFile.get(i)[0], bevanda);
+                        list.put(currentID, bevanda);
                         break;
                     default:
                         new InvalidType();
@@ -107,15 +107,15 @@ public class Distributore implements MaxValue{
                 switch (tipo.ordinal()) {
                     case 0:
                         bevanda = new Macinato(listFromFile.get(i));
-                        list.put(listFromFile.get(i)[0], bevanda);
+                        list.put(currentID, bevanda);
                         break;
                     case 1:
                         bevanda = new Capsula(listFromFile.get(i));
-                        list.put(listFromFile.get(i)[0], bevanda);
+                        list.put(currentID, bevanda);
                         break;
                     case 2:
                         bevanda = new Solubile(listFromFile.get(i));
-                        list.put(listFromFile.get(i)[0], bevanda);
+                        list.put(currentID, bevanda);
                         break;
                     default:
                         new InvalidType();
