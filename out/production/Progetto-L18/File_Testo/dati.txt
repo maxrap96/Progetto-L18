@@ -1,21 +1,21 @@
 * qta rimasta, latte, acqua, bicchierini, cucchiaini, zucchero.
 *
 * Latte
-milk	15.0
+milk	14.92
 * Zucchero
-Sugar	99.7
+Sugar	98.95
 * Cucchiaini
-Spoons	990
+Spoons	989
 * Bicchierini
-Cups	474
+Cups	471
 *id quantityleft
-01	29.0
+01	30.0
 02	25.0
 03	55.0
-04	30.0
+04	29.0
 05	50.0
 06	60.0
 07	55.0
-08	60.0
+08	59.76
 09	25.0
 

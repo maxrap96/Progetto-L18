@@ -26,8 +26,8 @@ public class Distributore implements MaxValue{
         this.coins = new Coins();
 
         try {
-            createList(menu.readFile());
             setValues(ingredientsData.readFile());
+            createList(menu.readFile(),ingredientsData.readFile());
         } catch (FileNotReadable fileNotReadable) {
             fileNotReadable.printStackTrace();
         }
@@ -72,29 +72,55 @@ public class Distributore implements MaxValue{
     /**
      * Funzione che crea il menu nella macchinetta
      * @param listFromFile arraylist di stringhe fornito all'apertura del file
+     * @param data è l'arraylist contenente le quantità rimanenti delle bevande a partire dalla riga 5 (indice 4)
      */
 
-    private void createList(ArrayList<String[]> listFromFile) {
+    private void createList(ArrayList<String[]> listFromFile, ArrayList<String[]> data) {
 
         for (int i = 0; i < listFromFile.size(); i++){
             Tipo tipo = Tipo.valueOf(listFromFile.get(i)[1]);
             Bevanda bevanda = null;
-            switch (tipo.ordinal()) {
-                case 0:
-                    bevanda = new Macinato(listFromFile.get(i));
-                    list.put(listFromFile.get(i)[0],bevanda);
-                    break;
-                case 1:
-                    bevanda = new Capsula(listFromFile.get(i));
-                    list.put(listFromFile.get(i)[0],bevanda);
-                    break;
-                case 2:
-                    bevanda = new Solubile(listFromFile.get(i));
-                    list.put(listFromFile.get(i)[0],bevanda);
-                    break;
-                default:
-                    new InvalidType();
-                    continue;
+            String storedID = data.get(i+4)[0];
+            String currentID = listFromFile.get(i)[0];
+            if (currentID.equals(storedID) && !storedID.isEmpty()) {
+                String quantityLeft = data.get(i+4)[1];
+                switch (tipo.ordinal()) {
+                    case 0:
+                        bevanda = new Macinato(listFromFile.get(i),quantityLeft);
+                        list.put(listFromFile.get(i)[0], bevanda);
+                        break;
+                    case 1:
+                        bevanda = new Capsula(listFromFile.get(i), quantityLeft);
+                        list.put(listFromFile.get(i)[0], bevanda);
+                        break;
+                    case 2:
+                        bevanda = new Solubile(listFromFile.get(i), quantityLeft);
+                        list.put(listFromFile.get(i)[0], bevanda);
+                        break;
+                    default:
+                        new InvalidType();
+                        continue;
+                }
+
+            }
+            else {
+                switch (tipo.ordinal()) {
+                    case 0:
+                        bevanda = new Macinato(listFromFile.get(i));
+                        list.put(listFromFile.get(i)[0], bevanda);
+                        break;
+                    case 1:
+                        bevanda = new Capsula(listFromFile.get(i));
+                        list.put(listFromFile.get(i)[0], bevanda);
+                        break;
+                    case 2:
+                        bevanda = new Solubile(listFromFile.get(i));
+                        list.put(listFromFile.get(i)[0], bevanda);
+                        break;
+                    default:
+                        new InvalidType();
+                        continue;
+                }
             }
         }
     }

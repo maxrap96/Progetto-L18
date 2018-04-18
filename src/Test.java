@@ -18,6 +18,7 @@ public class Test {
     public static void main(String[] args) {
         Distributore macchinetta = new Distributore();
         macchinetta.textualInput();
+        System.out.println("ckeck");
 
         try {
             startClient(); // Funziona solo se sta runnando il Server
