@@ -81,12 +81,17 @@ public class Distributore implements MaxValue{
         for (int i = 0; i < listFromFile.size(); i++){
 
             int j = i+4; //dato che le prime 3 righe del file data sono per la macchinetta
+
+            String currentID = listFromFile.get(i)[0];
+            String storedID = "";
             Tipo tipo = Tipo.valueOf(listFromFile.get(i)[1]);
             Bevanda bevanda = null;
-            //String storedID = data.get(j)[0];
-            //String currentID = listFromFile.get(i)[0];
 
-            if (!data.get(j)[0].isEmpty() && listFromFile.get(i)[0].equals(data.get(j)[0])) {
+            if (j < data.size()){
+                storedID = data.get(j)[0];
+            }
+
+            if (!storedID.isEmpty() && currentID.equals(storedID)) {
                 String quantityLeft = data.get(j)[1];
                 switch (tipo.ordinal()) {
                     case 0:
