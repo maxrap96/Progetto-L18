@@ -1,22 +1,25 @@
 package Distributore.InterfacciaDistributore;
 
 import Distributore.Distributore;
+import Distributore.Coins;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class VendingMachine extends JFrame{
 
-    private final int NUMERO_PULSANTI = 12;
+    private final int NUMERO_PULSANTI_BEVANDE = 12;
     private Distributore distributore;
+    private Coins coins;
 
     /**
      * Creazione interfaccia grafica distributore
      * @param distributore è il distributore a cui fa riferimento l'interfaccia
      */
 
-    public VendingMachine(Distributore distributore) {
+    public VendingMachine(Distributore distributore, Coins coins) {
         this.distributore = distributore;
+        this.coins = coins;
 
         //Inizializzazione JFrame
         Toolkit kit = Toolkit.getDefaultToolkit();
@@ -25,9 +28,14 @@ public class VendingMachine extends JFrame{
         setSize(screenSize.width,screenSize.height);
         setTitle("Hot Drinks Vending Machine");
 
-        final int[] X_SCREEN_INDEX = {5 * screenSize.width / 99, 27 * screenSize.width / 99, 49 * screenSize.width / 99};
+        // Indici coordinate pulsanti bevande
+        final int[] X_SCREEN_INDEX = {5 * screenSize.width / 100, 27 * screenSize.width / 100, 49 * screenSize.width / 100};
         final int[] Y_SCREEN_INDEX = {7 * screenSize.height / 100, 29 * screenSize.height / 100,
-                                    51 * screenSize.height / 100, 73 * screenSize.height / 100} ;
+                                      51 * screenSize.height / 100, 73 * screenSize.height / 100} ;
+
+        // Indici coordinate pulsanti monete, zucchero e resto
+        final int[] X_MON_INDEX = {2 * screenSize.width / 100, 11 * screenSize.width / 100, 20 * screenSize.width / 100};
+        final int[] Y_MON_INDEX = {6 * screenSize.height / 100, 23 * screenSize.height / 100, 40 * screenSize.height / 100};
 
         Container container = getContentPane();
         container.setBackground(Color.YELLOW);
@@ -63,7 +71,7 @@ public class VendingMachine extends JFrame{
         // Creazione e aggiunta dei dodici pulsanti delle bevande
         int xButton = 0, yButton = 0; // coordinate dei pulsanti
 
-        for (int i = 0; i < NUMERO_PULSANTI; i++ ){
+        for (int i = 0; i < NUMERO_PULSANTI_BEVANDE; i++ ){
             if (xButton == 3){
                 xButton = 0;
                 yButton++;
@@ -73,7 +81,7 @@ public class VendingMachine extends JFrame{
                 button = makeRoundRectButton(distributore.getLabel(i + 1), X_SCREEN_INDEX[xButton],
                                              Y_SCREEN_INDEX[yButton],screenSize.width / 6,
                                             screenSize.height / 8);
-                button.addActionListener(new ListenerTry( display, distributore.getID(i + 1)));
+                //button.addActionListener(new ListenerTry( display, distributore.getID(i + 1)));
             }
             else {
                 button = makeRoundRectButton("", X_SCREEN_INDEX[xButton], Y_SCREEN_INDEX[yButton],
@@ -83,10 +91,42 @@ public class VendingMachine extends JFrame{
             xButton++;
         }
 
-
-
         // Creazione dei vari tasti della sezione moenete e aggiunta al pannelloMonete
-        JButton euro2 = makeRoundButton("2");
+
+
+        int xButtonMon = 0, yButtonMon = 0; // coordinate dei pulsanti
+        String s[] = {"","","","","",""};
+        double[] d = coins.getCOINS_VALUE();
+        int j = 5;
+        for (int i = 0; i < d.length; i++) {
+
+            s[j] = Double.toString(d[i]);
+            j--;
+        }
+        for (int i = -3; i < 6; i++ ) {
+            if (xButtonMon == 3) {
+                xButtonMon = 0;
+                yButtonMon++;
+            }
+            JButton button;
+            if (i >= 0) {
+            button = makeRoundButton(s[i],  X_MON_INDEX[xButtonMon],
+                    Y_MON_INDEX[yButtonMon],screenSize.height / 8,
+                    screenSize.height / 8);
+           // button.addActionListener(new ListenerTry(display, distributore.getID(i + 1)));
+                }
+                else {
+                    button = makeRoundButton("ee",  X_MON_INDEX[xButtonMon],
+                            Y_MON_INDEX[yButtonMon],screenSize.height / 8,
+                            screenSize.height / 8);
+                }
+
+
+            pannelloMonete.add(button);
+            xButtonMon++;
+        }
+
+       /* JButton euro2 = makeRoundButton("2");
         euro2.setBounds(43, 290, 100, 100);
         JButton euro1 = makeRoundButton("1");
         euro1.setBounds(229, 290, 100, 100);
@@ -110,8 +150,8 @@ public class VendingMachine extends JFrame{
         pannelloMonete.add(resto); pannelloMonete.add(menoZucchero); pannelloMonete.add(piuZucchero);
         pannelloMonete.add(euro2); pannelloMonete.add(euro1); pannelloMonete.add(cent50);
         pannelloMonete.add(cent20); pannelloMonete.add(cent10); pannelloMonete.add(cent5); //pannelloMonete.add(chiavetta);
-
-        // Listener bevande
+*/
+            // Listener bevande
    /*     //todo crearlo direttamente nella creazione dinamica del bottone. così da renderlo più veloce
         button1.addActionListener(new ListenerTry(display));
         button2.addActionListener(new ListenerTry(display));
@@ -135,7 +175,7 @@ public class VendingMachine extends JFrame{
         menoZucchero.addActionListener(new ListenerTry(display));
         //chiavetta.addActionListener(new ListenerTry(display));
 */
-    }
+        }
 
 
     /**
@@ -169,13 +209,14 @@ public class VendingMachine extends JFrame{
 
     /**
      * Funzione per creare bottoni circolari
-     * @param string: etichetta del pulsante
+     *
      * @return ritorna il pulsante
      */
-    private JButton makeRoundButton(String string){
+    private JButton makeRoundButton(String string, int x, int y, int screenW, int screenH){
         JButton button = new RoundButton(string);
-        button.setFont(new Font("", Font.ITALIC,25));
         button.setBackground(Color.WHITE);
+        button.setFont(new Font("", Font.ITALIC,25));
+        button.setBounds(x, y, screenW, screenH);
         return button;
     }
 }

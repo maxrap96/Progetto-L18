@@ -16,7 +16,7 @@ public class Coins {
     private Data moneteTxt =
             new Data("src/File_Testo/monete.txt");
 
-    protected Coins() {
+    public Coins() {
         this.money = new int[COINS_VALUE.length];
         initCoins();
     }
