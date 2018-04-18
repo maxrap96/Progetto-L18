@@ -7,11 +7,7 @@ Sugar	98.95
 * Cucchiaini
 Spoons	989
 * Bicchierini
-<<<<<<< HEAD
-Cups	473
-=======
 Cups	471
->>>>>>> 46475c67d01411b032dbef106008151dc4796aa2
 *id quantityleft
 01	30.0
 02	25.0

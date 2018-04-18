@@ -10,19 +10,18 @@ public class VendingMachine extends JFrame{
 
     private final int NUMERO_PULSANTI_BEVANDE = 12;
     private final int NUMERO_MONETE = 6;
-    private final int NUMERO_ALTRI_PULSANTI = -3;
+    private final int NUMERO_ALTRI_PULSANTI = 3;
     private final String[] ALTRI_PULSANTI = {"", "+", "-"};
     private Distributore distributore;
-    private Coins coins;
+    private Coins coins = new Coins();
 
     /**
      * Creazione interfaccia grafica distributore
      * @param distributore è il distributore a cui fa riferimento l'interfaccia
      */
 
-    public VendingMachine(Distributore distributore, Coins coins) {
+    public VendingMachine(Distributore distributore) {
         this.distributore = distributore;
-        this.coins = coins;
 
         //Inizializzazione JFrame
         Toolkit kit = Toolkit.getDefaultToolkit();
@@ -90,7 +89,7 @@ public class VendingMachine extends JFrame{
                 button = makeRoundRectButton("", X_SCREEN_INDEX[xButton], Y_SCREEN_INDEX[yButton],
                                              screenSize.width / 6, screenSize.height / 8);
             }
-            
+
             pannelloBevande.add(button);
             xButton++;
         }
@@ -106,7 +105,7 @@ public class VendingMachine extends JFrame{
             j--;
         }
 
-        for (int i = NUMERO_ALTRI_PULSANTI; i < NUMERO_MONETE; i++) {
+        for (int i = -NUMERO_ALTRI_PULSANTI; i < NUMERO_MONETE; i++) {
             if (xButtonMon == 3) {
                 xButtonMon = 0;
                 yButtonMon++;
@@ -126,33 +125,13 @@ public class VendingMachine extends JFrame{
             xButtonMon++;
         }
 
-       /* JButton euro2 = makeRoundButton("2");
-        euro2.setBounds(43, 290, 100, 100);
-        JButton euro1 = makeRoundButton("1");
-        euro1.setBounds(229, 290, 100, 100);
-        JButton cent50 = makeRoundButton("0.50");
-        cent50.setBounds(416, 290, 100, 100);
-        JButton cent20 = makeRoundButton("0.20");
-        cent20.setBounds(43, 426, 100, 100);
-        JButton cent10 = makeRoundButton("0.10");
-        cent10.setBounds(229, 426, 100, 100);
-        JButton cent5 = makeRoundButton("0.05");
-        cent5.setBounds(416, 426, 100, 100);
-        JButton piuZucchero = makeRoundButton("+");
-        piuZucchero.setBounds(229, 154, 100, 100);
-        JButton menoZucchero = makeRoundButton("-");
-        menoZucchero.setBounds(416, 154, 100, 100);
-        JButton resto = makeRoundButton("Resto");
-        resto.setBounds(43, 154, 100, 100);
+
 //        JButton chiavetta = makeRoundRectButton("Chiavetta") ;
 //        chiavetta.setBounds(155, 36, 250, 80);
 
-        pannelloMonete.add(resto); pannelloMonete.add(menoZucchero); pannelloMonete.add(piuZucchero);
-        pannelloMonete.add(euro2); pannelloMonete.add(euro1); pannelloMonete.add(cent50);
-        pannelloMonete.add(cent20); pannelloMonete.add(cent10); pannelloMonete.add(cent5); //pannelloMonete.add(chiavetta);
-*/
-            // Listener bevande
-   /*     //todo crearlo direttamente nella creazione dinamica del bottone. così da renderlo più veloce
+
+        // Listener bevande
+   /*   //todo crearlo direttamente nella creazione dinamica del bottone. così da renderlo più veloce
         button1.addActionListener(new ListenerTry(display));
         button2.addActionListener(new ListenerTry(display));
         button3.addActionListener(new ListenerTry(display));

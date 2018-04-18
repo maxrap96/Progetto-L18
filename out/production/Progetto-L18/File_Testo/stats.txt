@@ -19,8 +19,5 @@ Cioccolata	476	990	99.7	15.0	Transazione avvenuta il:	18-04-2018 15:28:13
 Caffè Espresso	475	990	99.7	15.0	Transazione avvenuta il:	18-04-2018 15:31:28
 Cioccolata	474	990	99.7	15.0	Transazione avvenuta il:	18-04-2018 15:38:09
 Caffè Espresso	473	990	99.7	15.0	Transazione avvenuta il:	18-04-2018 15:38:42
-<<<<<<< HEAD
-=======
 Caffè corretto	472	990	99.7	15.0	Transazione avvenuta il:	18-04-2018 16:10:47
 Cappuccino	471	989	98.95	14.92	Transazione avvenuta il:	18-04-2018 16:11:57
->>>>>>> 46475c67d01411b032dbef106008151dc4796aa2
