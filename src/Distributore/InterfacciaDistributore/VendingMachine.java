@@ -30,13 +30,16 @@ public class VendingMachine extends JFrame{
         setTitle("Hot Drinks Vending Machine");
 
         // Indici coordinate pulsanti bevande
-        final int[] X_SCREEN_INDEX = {5 * screenSize.width / 100, 27 * screenSize.width / 100, 49 * screenSize.width / 100};
+        final int[] X_SCREEN_INDEX = {5 * screenSize.width / 100, 27 * screenSize.width / 100,
+                                      49 * screenSize.width / 100};
         final int[] Y_SCREEN_INDEX = {7 * screenSize.height / 100, 29 * screenSize.height / 100,
                                       51 * screenSize.height / 100, 73 * screenSize.height / 100} ;
 
         // Indici coordinate pulsanti monete, zucchero e resto
-        final int[] X_MON_INDEX = {2 * screenSize.width / 100, 11 * screenSize.width / 100, 20 * screenSize.width / 100};
-        final int[] Y_MON_INDEX = {6 * screenSize.height / 100, 23 * screenSize.height / 100, 40 * screenSize.height / 100};
+        final int[] X_MON_INDEX = {2 * screenSize.width / 100, 11 * screenSize.width / 100,
+                                   20 * screenSize.width / 100};
+        final int[] Y_MON_INDEX = {20 * screenSize.height / 100, 37 * screenSize.height / 100,
+                                   54 * screenSize.height / 100};
 
         Container container = getContentPane();
         container.setBackground(Color.BLACK);
@@ -57,7 +60,7 @@ public class VendingMachine extends JFrame{
         container.add(pannelloBevande, BorderLayout.WEST);
 
         // Creazione del pannello delle monete e aggiunta al pannelloSelezione
-        JPanel pannelloMonete = makePanel(5 * screenSize.width / 7,4 * screenSize.height / 7,
+        JPanel pannelloMonete = makePanel(5 * screenSize.width / 7,5 * screenSize.height / 7,
                                            Color.LIGHT_GRAY, null);
         pannelloSelezione.add(pannelloMonete, BorderLayout.SOUTH);
 
@@ -117,7 +120,10 @@ public class VendingMachine extends JFrame{
             xButtonMon++;
         }
 
-       // JButton chiavetta = makeRoundRectButton("Chiavetta", ) ;
+        JButton chiavetta = makeRoundRectButton("Chiavetta", 9 * screenSize.width / 200,
+                                                3 * screenSize.width / 100, 20 * screenSize.width / 100,
+                                                9 * screenSize.height / 100) ;
+        pannelloMonete.add(chiavetta);
 
 
 
