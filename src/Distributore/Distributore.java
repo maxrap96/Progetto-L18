@@ -101,7 +101,8 @@ public class Distributore implements MaxValue{
                 createDrink(tipo.ordinal(), listFromFile, i, quantityLeft);
             }
             else {
-                ingredientsData.writeData(dataToWrite(listFromFile, i));   // <-----------------------------------------------O
+                ingredientsData.writeData(dataToWrite(listFromFile, i));    // MJ: review necessaria poichè vengono
+                                                                            //stampati solo i valori massimi dei drink.
                 createDrink(tipo.ordinal(), listFromFile, i, listFromFile.get(i)[4]);
             }
 
