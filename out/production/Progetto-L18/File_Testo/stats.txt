@@ -36,3 +36,4 @@ Cioccolata	496	996	995.75	1000.0	Transazione fallita.	19-04-2018 11:32:29
 Cioccolata	495	995	994.75	1000.0	Transazione avvenuta il:	19-04-2018 11:42:28
 Caffè corretto	494	995	994.75	1000.0	Transazione avvenuta il:	19-04-2018 15:48:03
 Cioccolata	493	994	993.75	1000.0	Transazione avvenuta il:	19-04-2018 17:16:38
+Caffè top	493	994	994.25	1000.0	Transazione avvenuta il:	19-04-2018 17:36:31

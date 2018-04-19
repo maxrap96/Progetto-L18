@@ -91,39 +91,18 @@ public class Distributore implements MaxValue{
             String storedID = "";
             Tipo tipo = Tipo.valueOf(listFromFile.get(i)[1]);
 
-            if (j < data.size()){
+            if (j < data.size()){ // controllo di non aver superato la lunghezza del file contenente le quantià rimaste
                 storedID = data.get(j)[0];
             }
 
             if (!storedID.isEmpty() && currentID.equals(storedID)) {
                 String quantityLeft = data.get(j)[1];
-
                 createDrink(tipo.ordinal(), listFromFile, i, quantityLeft);
             }
             else {
                 ingredientsData.writeData(dataToWrite(listFromFile, i));   // <-----------------------------------------------O
                 createDrink(tipo.ordinal(), listFromFile, i);
             }
-
-            /*else {
-                switch (tipo.ordinal()) {
-                    case 0:
-                        bevanda = new Macinato(listFromFile.get(i));
-                        list.put(listFromFile.get(i)[0], bevanda);
-                        break;
-                    case 1:
-                        bevanda = new Capsula(listFromFile.get(i));
-                        list.put(listFromFile.get(i)[0], bevanda);
-                        break;
-                    case 2:
-                        bevanda = new Solubile(listFromFile.get(i));
-                        list.put(listFromFile.get(i)[0], bevanda);
-                        break;
-                    default:
-                        new InvalidType();
-                        continue;
-                }
-            }*/
         }
     }
 
@@ -290,7 +269,6 @@ public class Distributore implements MaxValue{
         }
         else {
             try {
-                //stats.writeFile(statsToText(ID));  // Nel caso non ci sia credito sufficiente la transazione fallisce.
                 stats.writeFile(statsToText(ID), false);
             } catch (FileNotWritable fileNotWritable) {
                 fileNotWritable.printStackTrace();
@@ -395,14 +373,14 @@ public class Distributore implements MaxValue{
     }
 
     /**
-     * //TODO che fa?
+     * dopo l'erogazione della bevanda lo zucchero viene riportato alla quantità di default
      */
     private void setSugarToDefault() {
         selected_sugar = 3;
     }
 
     /**
-     * //TODO che fa?
+     * funzione da collegare all'interfaccia per aggiungere zucchero
      */
     public void moreSugar(){
         if (selected_sugar < 5){
@@ -411,7 +389,7 @@ public class Distributore implements MaxValue{
     }
 
     /**
-     * //TODO che fa?
+     * funzione da collegare all'interfaccia per sottrarre zucchero
      */
     public void lessSugar(){
         if (selected_sugar > 0){
