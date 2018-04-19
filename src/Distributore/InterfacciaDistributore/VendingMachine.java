@@ -11,7 +11,7 @@ public class VendingMachine extends JFrame{
     private final int NUMERO_PULSANTI_BEVANDE = 12;
     private final int NUMERO_MONETE = 6;
     private final int NUMERO_ALTRI_PULSANTI = 3;
-    private final String[] ALTRI_PULSANTI = {"", "+", "-"};
+    private final String[] ALTRI_PULSANTI = {"-", "+", ""};
     private Distributore distributore = new Distributore();
 
     /**
@@ -145,6 +145,10 @@ public class VendingMachine extends JFrame{
     /**
      * Funzione per creare bottoni a rettangolo con angoli smussati
      * @param string: etichetta del pulsante
+     * @param x: coordinata x nello schermo
+     * @param y: coordinata y nello schermo
+     * @param screenW: lunghezza pulsante
+     * @param screenH: altezza pulsante
      * @return ritorna il pulsante
      */
     private JButton makeRoundRectButton(String string, int x, int y, int screenW, int screenH){
@@ -158,6 +162,10 @@ public class VendingMachine extends JFrame{
     /**
      * Funzione per creare bottoni circolari
      * @param string: etichetta del pulsante
+     * @param x: coordinata x nello schermo
+     * @param y: coordinata y nello schermo
+     * @param screenW: lunghezza pulsante
+     * @param screenH: altezza pulsante
      * @return ritorna il pulsante
      */
     private JButton makeRoundButton(String string, int x, int y, int screenW, int screenH){
