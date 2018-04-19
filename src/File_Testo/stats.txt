@@ -36,10 +36,4 @@ Cioccolata	496	996	995.75	1000.0	Transazione fallita.	19-04-2018 11:32:29
 Cioccolata	495	995	994.75	1000.0	Transazione avvenuta il:	19-04-2018 11:42:28
 Caffè corretto	494	995	994.75	1000.0	Transazione avvenuta il:	19-04-2018 15:48:03
 Cioccolata	493	994	993.75	1000.0	Transazione avvenuta il:	19-04-2018 17:16:38
-<<<<<<< HEAD
 Caffè top	493	994	994.25	1000.0	Transazione avvenuta il:	19-04-2018 17:36:31
-=======
-Tè al Limone	493	994	993.75	1000.0	Transazione avvenuta il:	19-04-2018 17:24:16
-Latte Macchiato	493	994	993.5	1000.0	Transazione avvenuta il:	19-04-2018 17:24:54
-Latte Macchiato	492	993	992.5	1000.0	Transazione avvenuta il:	19-04-2018 17:25:16
->>>>>>> b84cb0305c6e97afe93d7c2080cf551693554c90
