@@ -27,7 +27,7 @@ public class Distributore implements MaxValue{
 
         try {
             setValues(ingredientsData.readFile());
-            createList(menu.readFile(),ingredientsData.readFile());
+            createList(menu.readFile(), ingredientsData.readFile());
         } catch (FileNotReadable fileNotReadable) {
             fileNotReadable.printStackTrace();
         }
@@ -76,16 +76,13 @@ public class Distributore implements MaxValue{
 
     private void createList(ArrayList<String[]> listFromFile, ArrayList<String[]> data) {
 
-        // MJ: Penso che mettere For, If e switch renda poco leggibile la funzione. Si può cercare di semplificare?
-
         for (int i = 0; i < listFromFile.size(); i++){
 
-            int j = i+4; //dato che le prime 3 righe del file data sono per la macchinetta
+            int j = i + 4; //dato che le prime 3 righe del file data sono per la macchinetta
 
             String currentID = listFromFile.get(i)[0];
             String storedID = "";
             Tipo tipo = Tipo.valueOf(listFromFile.get(i)[1]);
-            Bevanda bevanda = null;
 
             if (j < data.size()){
                 storedID = data.get(j)[0];
@@ -93,26 +90,45 @@ public class Distributore implements MaxValue{
 
             if (!storedID.isEmpty() && currentID.equals(storedID)) {
                 String quantityLeft = data.get(j)[1];
-                switch (tipo.ordinal()) {
-                    case 0:
-                        bevanda = new Macinato(listFromFile.get(i), quantityLeft);
-                        list.put(listFromFile.get(i)[0], bevanda);
-                        break;
-                    case 1:
-                        bevanda = new Capsula(listFromFile.get(i), quantityLeft);
-                        list.put(listFromFile.get(i)[0], bevanda);
-                        break;
-                    case 2:
-                        bevanda = new Solubile(listFromFile.get(i), quantityLeft);
-                        list.put(listFromFile.get(i)[0], bevanda);
-                        break;
-                    default:
-                        new InvalidType();
-                        continue;
-                }
 
+                createDrink(tipo.ordinal(), listFromFile, i, quantityLeft);
             }
             else {
+                createDrink(tipo.ordinal(), listFromFile, i, listFromFile.get(i)[4]);
+            }
+        }
+    }
+
+    /**
+     * Funzione che semplifica la funzione createList.
+     * @param type
+     * @param listFromFile
+     * @param index
+     * @param qtyLeft
+     */
+
+    public void createDrink(int type, ArrayList<String[]> listFromFile, int index, String qtyLeft) {
+        Bevanda bevanda = null;
+
+        switch (type) {
+            case 0:
+                bevanda = new Macinato(listFromFile.get(index), qtyLeft);
+                list.put(listFromFile.get(index)[0], bevanda);
+                break;
+            case 1:
+                bevanda = new Capsula(listFromFile.get(index), qtyLeft);
+                list.put(listFromFile.get(index)[0], bevanda);
+                break;
+            case 2:
+                bevanda = new Solubile(listFromFile.get(index), qtyLeft);
+                list.put(listFromFile.get(index)[0], bevanda);
+                break;
+            default:
+                new InvalidType();
+        }
+    }
+
+    /*else {
                 switch (tipo.ordinal()) {
                     case 0:
                         bevanda = new Macinato(listFromFile.get(i));
@@ -130,9 +146,7 @@ public class Distributore implements MaxValue{
                         new InvalidType();
                         continue;
                 }
-            }
-        }
-    }
+            }*/
 
     /**
      * Funzione per recepire i comandi testuali ed analizzarli.

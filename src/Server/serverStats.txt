@@ -28,3 +28,7 @@ Caffè Arabica	469	989	98.95	14.92	Transazione fallita.	18-04-2018 17:33:14
 Tè al Limone	468	988	97.7	14.92	Transazione avvenuta il:	18-04-2018 17:37:18
 Tè al Limone	467	987	96.7	14.92	Transazione avvenuta il:	18-04-2018 17:38:38
 Tè al Limone	466	986	95.7	14.92	Transazione avvenuta il:	18-04-2018 17:39:11
+*Caffè corretto	465	986	95.7	14.92	Transazione avvenuta il:	18-04-2018 22:15:26
+Cioccolata	498	998	998.0	1000.0	Transazione avvenuta il:	19-04-2018 11:25:43
+Cioccolata	497	997	996.75	1000.0	Transazione avvenuta il:	19-04-2018 11:28:40
+Caffè top	496	996	995.75	1000.0	Transazione avvenuta il:	19-04-2018 11:30:29

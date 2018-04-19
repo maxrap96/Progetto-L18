@@ -14,17 +14,16 @@ public class Test {
     static File fileStatsClient =
             new File("src/File_Testo/stats.txt");
 
-
     public static void main(String[] args) {
         Distributore macchinetta = new Distributore();
         macchinetta.textualInput();
-        System.out.println("ckeck");
+        System.out.println("\ncheck");
 
-        try {
+        /*try {
             startClient(); // Funziona solo se sta runnando il Server
         } catch (ConnectException e){
             e.printStackTrace();
-        }
+        }*/
     }
 
     /**
