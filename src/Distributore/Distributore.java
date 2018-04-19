@@ -44,8 +44,7 @@ public class Distributore implements MaxValue{
         this.spoon = parseInt(statistics.get(2)[1]);
         this.cup = parseInt(statistics.get(3)[1]);
         dati = statistics;
-        // Controllo se c'è bisogno di ricaricare la macchinetta.
-        checkIfMachineIsEmpty();
+        checkIfMachineIsEmpty(); // Controllo se c'è bisogno di ricaricare la macchinetta.
     }
 
     /**
@@ -108,7 +107,7 @@ public class Distributore implements MaxValue{
 
 
     /**
-     * funzione per identificare il tipo della bevanda e aggiungerla al distributore nel caso non siano presenti dati
+     * Funzione per identificare il tipo della bevanda e aggiungerla al distributore nel caso non siano presenti dati
      * riguardanti la sua quantià residua
      * @param type tipo della bevanda
      * @param listFromFile è il file aperto contenente il menù
