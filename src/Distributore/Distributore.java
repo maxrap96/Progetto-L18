@@ -102,7 +102,7 @@ public class Distributore implements MaxValue{
             }
             else {
                 ingredientsData.writeData(dataToWrite(listFromFile, i));   // <-----------------------------------------------O
-                createDrink(tipo.ordinal(), listFromFile, i, listFromFile.get(i)[4]);
+                createDrink(tipo.ordinal(), listFromFile, i);
             }
 
             /*else {
@@ -127,12 +127,44 @@ public class Distributore implements MaxValue{
         }
     }
 
+
     /**
-     * Funzione che semplifica la funzione createList.
-     * @param type
-     * @param listFromFile
-     * @param index
-     * @param qtyLeft
+     * funzione per identificare il tipo della bevanda e aggiungerla al distributore nel caso non siano presenti dati
+     * riguardanti la sua quantià residua
+     * @param type tipo della bevanda
+     * @param listFromFile è il file aperto contenente il menù
+     * @param i è la riga a cui si è arrivati a leggere
+     */
+
+    private void createDrink(int type, ArrayList<String[]> listFromFile, int i) {
+        Bevanda bevanda;
+
+        switch (type) {
+            case 0:
+                bevanda = new Macinato(listFromFile.get(i));
+                list.put(listFromFile.get(i)[0], bevanda);
+                break;
+            case 1:
+                bevanda = new Capsula(listFromFile.get(i));
+                list.put(listFromFile.get(i)[0], bevanda);
+                break;
+            case 2:
+                bevanda = new Solubile(listFromFile.get(i));
+                list.put(listFromFile.get(i)[0], bevanda);
+                break;
+            default:
+                new InvalidType();
+        }
+
+    }
+
+    /**
+     * funzione per identificare il tipo della bevanda e aggiungerla al distributore nel caso siano presenti dati
+     * riguardanti la sua quantià residua
+     * @param type tipo della bevanda
+     * @param listFromFile è il file aperto contenente il menù
+     * @param index è la riga a cui si è arrivati a leggere
+     * @param qtyLeft è la quantità rimanente nella macchinetta
      */
 
     public void createDrink(int type, ArrayList<String[]> listFromFile, int index, String qtyLeft) {

@@ -7,7 +7,7 @@ Sugar	994.75
 * Cucchiaini
 Spoons	995
 * Bicchierini
-Cups	495
+Cups	494
 *id quantityleft
 01	27.0
 02	25.0
@@ -17,3 +17,6 @@ Cups	495
 06	60.0
 07	55.0
 08	59.76
+09	25
+010	10
+011	10
