@@ -76,6 +76,9 @@ public class Distributore implements MaxValue{
 
     private void createList(ArrayList<String[]> listFromFile, ArrayList<String[]> data) {
 
+        // MJ: Funzione semplificata. Diteci se vi piace, altrimenti si ripristina come prima con l'else che
+        // è sotto questa funzione.
+
         for (int i = 0; i < listFromFile.size(); i++){
 
             int j = i + 4; //dato che le prime 3 righe del file data sono per la macchinetta

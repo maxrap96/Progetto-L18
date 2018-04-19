@@ -3,13 +3,13 @@
 * Latte (Litri)
 Milk	1000.0
 * Zucchero (hg)
-Sugar	995.75
+Sugar	994.75
 * Cucchiaini
-Spoons	996
+Spoons	995
 * Bicchierini
-Cups	496
+Cups	495
 *id quantityleft
-01	28.0
+01	27.0
 02	25.0
 03	55.0
 04	25.0
@@ -17,4 +17,3 @@ Cups	496
 06	60.0
 07	55.0
 08	59.76
-09	25.0
