@@ -10,9 +10,9 @@ public class ServerSide {
     static PrintWriter outToClient; // Dati diretti al Client
     static BufferedReader inFromClient; // Dati in entrata
     static File fileMenuServer =
-            new File("src/Server/serverMenu.txt");
+            new File("src/FIle_Testo_Server/serverMenu.txt");
     static File fileStatsServer =
-            new File("src/Server/serverStats.txt");
+            new File("src/FIle_Testo_Server/serverStats.txt");
 
     public static void main(String[] args){
         try{

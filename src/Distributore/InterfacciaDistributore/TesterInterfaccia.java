@@ -1,6 +1,5 @@
 package Distributore.InterfacciaDistributore;
 
-import Distributore.Distributore;
 
 public class TesterInterfaccia {
     public static void main(String[] args) {
