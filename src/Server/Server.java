@@ -17,6 +17,7 @@ public class Server extends JFrame {
         Dimension screenSize = kit.getScreenSize();
         pack();
         setSize(screenSize.width,screenSize.height);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         setTitle("Remote Management System");
 
         Container container = getContentPane();
@@ -24,5 +25,6 @@ public class Server extends JFrame {
 
         WindowCloser windowCloserListener = new WindowCloser();
         addWindowListener(windowCloserListener);
+
     }
 }
