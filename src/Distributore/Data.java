@@ -109,6 +109,16 @@ public class Data {
         }
     }
 
+    public void writeData(String scrittura) {
+        try {
+            FileWriter writer = new FileWriter(pathFile, true);
+            writer.write(scrittura);
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * Funzione per ottenere data e ora locali.
      * @return strDate è la stringa con i dati necessari

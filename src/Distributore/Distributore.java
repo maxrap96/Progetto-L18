@@ -38,6 +38,7 @@ public class Distributore implements MaxValue{
      */
 
     public void setValues(ArrayList<String[]> statistics) {
+
         this.milk = Double.parseDouble(statistics.get(0)[1]);
         this.sugar = Double.parseDouble(statistics.get(1)[1]);
         this.spoon = parseInt(statistics.get(2)[1]);
@@ -51,6 +52,7 @@ public class Distributore implements MaxValue{
      * Funzione che controlla se la macchinetta deve essere ricaricata
      */
 
+    //TODO MJ: ci sarebbe anche da estendere il controllo ai vari ingredienti.
     private void checkIfMachineIsEmpty() {
         if(cup < 20 || spoon < 10 || sugar < 0.5 || milk < 0.2) {
             System.out.println("Refilling machine...\n");
@@ -83,6 +85,8 @@ public class Distributore implements MaxValue{
 
             int j = i + 4; //dato che le prime 3 righe del file data sono per la macchinetta
 
+            // variabile "i" riferita a menu.txt;  variabile "j" riferita a dati.txt
+
             String currentID = listFromFile.get(i)[0];
             String storedID = "";
             Tipo tipo = Tipo.valueOf(listFromFile.get(i)[1]);
@@ -97,8 +101,29 @@ public class Distributore implements MaxValue{
                 createDrink(tipo.ordinal(), listFromFile, i, quantityLeft);
             }
             else {
+                ingredientsData.writeData(dataToWrite(listFromFile, i));   // <-----------------------------------------------O
                 createDrink(tipo.ordinal(), listFromFile, i, listFromFile.get(i)[4]);
             }
+
+            /*else {
+                switch (tipo.ordinal()) {
+                    case 0:
+                        bevanda = new Macinato(listFromFile.get(i));
+                        list.put(listFromFile.get(i)[0], bevanda);
+                        break;
+                    case 1:
+                        bevanda = new Capsula(listFromFile.get(i));
+                        list.put(listFromFile.get(i)[0], bevanda);
+                        break;
+                    case 2:
+                        bevanda = new Solubile(listFromFile.get(i));
+                        list.put(listFromFile.get(i)[0], bevanda);
+                        break;
+                    default:
+                        new InvalidType();
+                        continue;
+                }
+            }*/
         }
     }
 
@@ -131,25 +156,19 @@ public class Distributore implements MaxValue{
         }
     }
 
-    /*else {
-                switch (tipo.ordinal()) {
-                    case 0:
-                        bevanda = new Macinato(listFromFile.get(i));
-                        list.put(listFromFile.get(i)[0], bevanda);
-                        break;
-                    case 1:
-                        bevanda = new Capsula(listFromFile.get(i));
-                        list.put(listFromFile.get(i)[0], bevanda);
-                        break;
-                    case 2:
-                        bevanda = new Solubile(listFromFile.get(i));
-                        list.put(listFromFile.get(i)[0], bevanda);
-                        break;
-                    default:
-                        new InvalidType();
-                        continue;
-                }
-            }*/
+    // MJ: Dario dacci un'occhiata please e vediamo se abbiamo risolto.
+    /**
+     * Funzione per scrivere su file i dati di nuove bevande aggiunte sul menù
+     * @param Menu: File menù, da cui ottengo ID e quantità iniziale delle bevande.
+     * @param index: indice della riga in cui aggiungo la bevanda
+     * @return
+     */
+
+    protected String dataToWrite(ArrayList<String[]> Menu, int index) {
+        String s = "";
+
+        return s += (Menu.get(index)[0] + "\t" + Menu.get(index)[4] + "\n");  // scrivo ID + quantità massima;
+    }
 
     /**
      * Funzione per recepire i comandi testuali ed analizzarli.
@@ -212,9 +231,10 @@ public class Distributore implements MaxValue{
 
     public String selectBeverage(String ID){
 
-        if (coins.getCredit() >= list.get(ID).getPrice()
-                && list.get(ID).isAvailable()){     // Se il credito è uguale o maggiore singifica che posso
+        if (coins.getCredit() >= list.get(ID).getPrice() && list.get(ID).isAvailable()) {
+                                                    // Se il credito è uguale o maggiore singifica che posso
                                                     // potenzialmente acquistare la bevanda
+
             subtractIngredients(ID, selected_sugar);
             coins.updateBalance(list.get(ID).getPrice());
             setSugarToDefault();
@@ -292,7 +312,7 @@ public class Distributore implements MaxValue{
     }
 
     /**
-     * Funziuone da usare nell'interfaccia per aggiungere i soldi
+     * Funzione da usare nell'interfaccia per aggiungere i soldi
      * @param inserted è il valore associato al tasto di riferimento
      */
 
