@@ -33,10 +33,10 @@ public class VendingMachine extends JFrame{
                                       51 * screenSize.height / 100, 73 * screenSize.height / 100} ;
 
         // Indici coordinate pulsanti monete, zucchero e resto
-        final int[] X_MON_INDEX = {2 * screenSize.width / 100, 11 * screenSize.width / 100,
-                                   20 * screenSize.width / 100};
-        final int[] Y_MON_INDEX = {20 * screenSize.height / 100, 37 * screenSize.height / 100,
-                                   54 * screenSize.height / 100};
+        final int[] X_MON_INDEX = {20 * screenSize.width / 100, 11 * screenSize.width / 100,
+                                   2 * screenSize.width / 100};
+        final int[] Y_MON_INDEX = {20 * screenSize.height / 100, 54 * screenSize.height / 100,
+                                   37 * screenSize.height / 100};
 
         Container container = getContentPane();
         container.setBackground(Color.BLACK);
@@ -95,7 +95,10 @@ public class VendingMachine extends JFrame{
 
         // Creazione dei vari tasti della sezione moenete e aggiunta al pannelloMonete
         int xButtonMon = 0, yButtonMon = 0; // coordinate dei pulsanti
-        String[] coinsValue = distributore.getCoinsValue();
+        String[] coinsValue = {"","","","","",""};
+        for (int i = 0; i < NUMERO_MONETE; i++) {
+            coinsValue[i] = Double.toString(distributore.getCoinsValue()[i]);
+        }
 
         for (int i = -NUMERO_ALTRI_PULSANTI; i < NUMERO_MONETE; i++) {
             if (xButtonMon == 3) {
