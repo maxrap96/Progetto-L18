@@ -97,9 +97,9 @@ public class VendingMachine extends JFrame{
         int xButtonMon = 0, yButtonMon = 0; // coordinate dei pulsanti
         String[] coinsValue = {"","","","","",""};
         for (int i = 0; i < NUMERO_MONETE; i++) {
-            coinsValue[i] = Double.toString(distributore.getCoinsValue()[i]);
+             coinsValue[i] = String.format("%.2f", distributore.getCoinsValue()[i]);
         }
-
+        
         for (int i = -NUMERO_ALTRI_PULSANTI; i < NUMERO_MONETE; i++) {
             if (xButtonMon == 3) {
                 xButtonMon = 0;
