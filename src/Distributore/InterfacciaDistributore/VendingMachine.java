@@ -99,7 +99,7 @@ public class VendingMachine extends JFrame{
         for (int i = 0; i < NUMERO_MONETE; i++) {
              coinsValue[i] = String.format("%.2f", distributore.getCoinsValue()[i]);
         }
-        
+
         for (int i = -NUMERO_ALTRI_PULSANTI; i < NUMERO_MONETE; i++) {
             if (xButtonMon == 3) {
                 xButtonMon = 0;
@@ -109,7 +109,7 @@ public class VendingMachine extends JFrame{
             if (i >= 0) {
                 button = makeRoundButton(coinsValue[i],  X_MON_INDEX[xButtonMon], Y_MON_INDEX[yButtonMon],
                                         screenSize.height / 8,screenSize.height / 8);
-              //button.addActionListener(new ListenerTry(display, distributore.getID(i + 1)));
+                //button.addActionListener(new ListenerTry(display, distributore.getID(i + 1)));
             }
             else {
                 button = makeRoundButton(ALTRI_PULSANTI[i + 3], X_MON_INDEX[xButtonMon], Y_MON_INDEX[yButtonMon],
@@ -124,31 +124,6 @@ public class VendingMachine extends JFrame{
                                                 3 * screenSize.width / 100, 20 * screenSize.width / 100,
                                                 9 * screenSize.height / 100) ;
         pannelloMonete.add(chiavetta);
-
-        // Listener bevande
-   /*   //todo crearlo direttamente nella creazione dinamica del bottone. così da renderlo più veloce
-        button1.addActionListener(new ListenerTry(display));
-        button2.addActionListener(new ListenerTry(display));
-        button3.addActionListener(new ListenerTry(display));
-        button4.addActionListener(new ListenerTry(display));
-        button5.addActionListener(new ListenerTry(display));
-        button6.addActionListener(new ListenerTry(display));
-        button7.addActionListener(new ListenerTry(display));
-        button8.addActionListener(new ListenerTry(display));
-
-        // Listener monete
-        euro2.addActionListener(new ListenerTry(display));
-        euro1.addActionListener(new ListenerTry(display));
-        cent50.addActionListener(new ListenerTry(display));
-        cent20.addActionListener(new ListenerTry(display));
-        cent10.addActionListener(new ListenerTry(display));
-        cent5.addActionListener(new ListenerTry(display));
-
-        // Listener zucchero e chiavetta
-        piuZucchero.addActionListener(new ListenerTry(display));
-        menoZucchero.addActionListener(new ListenerTry(display));
-        //chiavetta.addActionListener(new ListenerTry(display));
-*/
     }
 
     /**
