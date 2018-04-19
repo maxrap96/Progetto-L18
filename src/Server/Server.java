@@ -1,5 +1,6 @@
 package Server;
 
+import Distributore.InterfacciaDistributore.ImagePanel;
 import Distributore.InterfacciaDistributore.WindowCloser;
 
 import javax.swing.*;
@@ -25,6 +26,5 @@ public class Server extends JFrame {
 
         WindowCloser windowCloserListener = new WindowCloser();
         addWindowListener(windowCloserListener);
-
     }
 }
