@@ -40,3 +40,4 @@ Caffè top	493	994	994.25	1000.0	Transazione avvenuta il:	19-04-2018 17:36:31
 Caffè Espresso	492	993	993.5	1000.0	Transazione avvenuta il:	19-04-2018 18:39:57
 Cioccolata	491	993	993.5	1000.0	Transazione avvenuta il:	20-04-2018 11:48:46
 Cioccolata	490	993	993.5	1000.0	Transazione avvenuta il:	20-04-2018 11:49:18
+Cioccolata	489	993	993.5	1000.0	Transazione avvenuta il:	20-04-2018 11:50:38

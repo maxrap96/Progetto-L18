@@ -80,27 +80,27 @@ public class Distributore implements MaxValue{
         // MJ: Funzione semplificata. Diteci se vi piace, altrimenti si ripristina come prima con l'else che
         // è sotto questa funzione.
 
-        for (int i = 0; i < listFromFile.size(); i++){
+        for (int i_menu = 0; i_menu < listFromFile.size(); i_menu++){
 
-            int j = i + 4; //dato che le prime 3 righe del file data sono per la macchinetta
+            int j_dati = i_menu + 4; //dato che le prime 3 righe del file data sono per la macchinetta
 
             // variabile "i" riferita a menu.txt;  variabile "j" riferita a dati.txt
 
-            String currentID = listFromFile.get(i)[0];
+            String currentID = listFromFile.get(i_menu)[0];
             String storedID = "";
-            Tipo tipo = Tipo.valueOf(listFromFile.get(i)[1]);
+            Tipo tipo = Tipo.valueOf(listFromFile.get(i_menu)[1]);
 
-            if (j < data.size()){ // controllo di non aver superato la lunghezza del file contenente le quantià rimaste
-                storedID = data.get(j)[0];
+            if (j_dati < data.size()){ // controllo di non aver superato la lunghezza del file delle quantità rimaste
+                storedID = data.get(j_dati)[0];
             }
 
             if (!storedID.isEmpty() && currentID.equals(storedID)) {
-                String quantityLeft = data.get(j)[1];
-                createDrink(tipo.ordinal(), listFromFile, i, quantityLeft);
+                String quantityLeft = data.get(j_dati)[1];
+                createDrink(tipo.ordinal(), listFromFile, i_menu, quantityLeft);
             }
             else {
-                ingredientsData.writeData(dataToWrite(listFromFile, i));   // <-----------------------------------------------O
-                createDrink(tipo.ordinal(), listFromFile, i);
+                ingredientsData.writeData(dataToWrite(listFromFile, i_menu));   // <---------------------------------O
+                createDrink(tipo.ordinal(), listFromFile, i_menu);
             }
         }
     }
@@ -137,7 +137,7 @@ public class Distributore implements MaxValue{
     }
 
     /**
-     * funzione per identificare il tipo della bevanda e aggiungerla al distributore nel caso siano presenti dati
+     * Funzione per identificare il tipo della bevanda e aggiungerla al distributore nel caso siano presenti dati
      * riguardanti la sua quantià residua
      * @param type tipo della bevanda
      * @param listFromFile è il file aperto contenente il menù
@@ -197,7 +197,7 @@ public class Distributore implements MaxValue{
         }
 
         String[] splitted = input.split("\\s+");
-        selected_sugar=parseInt( splitted[1]);
+        selected_sugar = parseInt( splitted[1]);
         //mi chiedo se la bevanda è disponibile
         try {
             if (list.get(splitted[0]).isAvailable()) {
@@ -213,7 +213,7 @@ public class Distributore implements MaxValue{
                     }
                 }
 
-                //vera e propria funzione da usare nell'interfaccia per l'erogazione della bevanda
+                // Funzione da usare nell'interfaccia per l'erogazione della bevanda
                 selectBeverage(splitted[0]);
             }
             else{
@@ -235,7 +235,7 @@ public class Distributore implements MaxValue{
     }
 
     /**
-     * Funzione per selezionare una bevanda. Essa controlla che il credito sia sufficiente.
+     * Funzione per selezionare una bevanda. Essa controlla anche che il credito sia sufficiente.
      * @param ID: è l'id della bevanda selezionata
      */
 
@@ -259,7 +259,7 @@ public class Distributore implements MaxValue{
                 fileNotWritable.printStackTrace();
             }
             if (coins.getCredit()!= 0) {
-                return "bevanda erogata " + coins.giveChange();
+                return "Bevanda erogata " + coins.giveChange();
             }
             else {
                 System.out.println("Bevanda erogata");
@@ -279,7 +279,7 @@ public class Distributore implements MaxValue{
 
     /**
      * Funzione per sottrarre quantità necessarie per preparare la bevanda
-     * @param ID della bevanda da cui prendere le dosi
+     * @param ID: della bevanda da cui prendere le dosi
      * @param sugar
      */
     private void subtractIngredients(String ID, int sugar) {
@@ -292,7 +292,6 @@ public class Distributore implements MaxValue{
      * Funzione che sottrae lo zucchero usato
      * @param qty valore tra 0 e 5
      */
-
     private void subtractSugar(int qty){
         if (qty != 0){
             sugar -= (double) qty * SUGARDOSE;
@@ -328,7 +327,7 @@ public class Distributore implements MaxValue{
     public void addCredit(double inserted){
         double[] value = coins.getCOINS_VALUE();
         //cerco di capire la moneta inserita
-        for (int i=0;i<value.length;i++){
+        for (int i = 0; i < value.length; i++){
             if (inserted == value[i]){
                 //significa che ho trovato il valore corrispondente
                 coins.addCoin(inserted,i);
@@ -337,7 +336,7 @@ public class Distributore implements MaxValue{
     }
 
     /**
-     * Cosa fa? Non come la si usa nel programma, quello va bene come commento al più
+     *
      * @param i
      * @return
      */
@@ -346,19 +345,22 @@ public class Distributore implements MaxValue{
     }
 
     /**
-     * // TODO spiegare solo cosa fa
      * @return numero di bevande presenti nel distributore
      */
     public int getListSize(){
         return list.size();
     }
 
+    /**
+     *
+     * @return
+     */
+
     public double getCredit(){
         return coins.getCredit();
     }
 
     /**
-     * // TODO spiegare solo cosa fa
      * @param id della bevanda
      * @return ritorna l'id della bevanda corrispondente
      */
@@ -367,19 +369,24 @@ public class Distributore implements MaxValue{
         return list.get("0" + id).getId();
     }
 
+    /**
+     *
+     * @return
+     */
+
     public ArrayList<String[]> getDati() {
         return dati;
     }
 
     /**
-     * dopo l'erogazione della bevanda lo zucchero viene riportato alla quantità di default
+     * Dopo l'erogazione della bevanda lo zucchero viene riportato alla quantità di default
      */
     private void setSugarToDefault() {
         selected_sugar = 3;
     }
 
     /**
-     * funzione da collegare all'interfaccia per aggiungere zucchero
+     * Funzione per aumentare lo zucchero selezionato (Tasto +)
      */
     public void moreSugar(){
         if (selected_sugar < 5){
@@ -388,7 +395,7 @@ public class Distributore implements MaxValue{
     }
 
     /**
-     * funzione da collegare all'interfaccia per sottrarre zucchero
+     * Funzione per diminuire lo zucchero selezionato (Tasto -)
      */
     public void lessSugar(){
         if (selected_sugar > 0){
@@ -420,7 +427,7 @@ public class Distributore implements MaxValue{
     }
 
     /**
-     * funzione che serve all'interfaccia per associare i nomi dei pulsanti ai relativi valori
+     * Funzione che serve all'interfaccia per associare i nomi dei pulsanti ai relativi valori
      * @return sono i valori delle monete in forma vettore
      */
     public double[] getCoinsValue(){

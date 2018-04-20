@@ -128,8 +128,8 @@ public class Coins {
             System.out.println("Resto erogato: " + String.format("%.2f",credit));
             System.out.println("5c: " + change[0] + "\n10c: " + change[1] + "\n20c: " + change[2] + "\n50c: "
                     + change[3] + "\n1E: " + change[4] + "\n2E: " + change[5]);
-            return ("Resto erogato: " + String.format("%.2f",credit)) + ("5c: " + change[0] + "\n10c: " + change[1] + "\n20c: " + change[2] + "\n50c: "
-                    + change[3] + "\n1E: " + change[4] + "\n2E: " + change[5]);
+            return ("Resto erogato: " + String.format("%.2f",credit)) + ("5c: " + change[0] + "\n10c: " + change[1] +
+                    "\n20c: " + change[2] + "\n50c: " + change[3] + "\n1E: " + change[4] + "\n2E: " + change[5]);
         }  else {
             return ("Resto NON disponibile");
         }
