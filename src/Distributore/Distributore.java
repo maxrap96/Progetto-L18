@@ -77,9 +77,6 @@ public class Distributore implements MaxValue{
      */
     private void createList(ArrayList<String[]> listFromFile, ArrayList<String[]> data) {
 
-        // MJ: Funzione semplificata. Diteci se vi piace, altrimenti si ripristina come prima con l'else che
-        // è sotto questa funzione.
-
         for (int i_menu = 0; i_menu < listFromFile.size(); i_menu++){
 
             int j_dati = i_menu + 4; //dato che le prime 3 righe del file data sono per la macchinetta
@@ -429,5 +426,20 @@ public class Distributore implements MaxValue{
     public double[] getCoinsValue(){
         double[] cValue = coins.getCOINS_VALUE();
         return cValue;
+    }
+
+
+    /**
+     * Funzione per chiamare un dog-sitter da remoto.
+     */
+    public Dog(String name, String breed, int size, int age, int weight, String ownerName, String ownerSurname, int ID) {
+        name = name;
+        breed = breed;
+        size = size;
+        age = age;
+        weight = weight;
+        ownerName = ownerName;
+        ownerSurname = ownerSurname;
+        ID = ID;
     }
 }
