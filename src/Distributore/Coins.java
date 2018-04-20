@@ -26,7 +26,7 @@ public class Coins {
     }
 
     /**
-     * Inizializza i tagli delle monete tramite lettura da file. Nel caso di errori usiamo una inizializzazione
+     * Inizializza i tagli delle monete tramite lettura da file. Nel caso di errori si usa un'inizializzazione
      * di default.
      */
     private void initCoins() {
@@ -66,7 +66,7 @@ public class Coins {
     }
 
     /**
-     * funzione che aggiora il bilancio ed il credito rimanente
+     * Funzione che aggiora il bilancio ed il credito rimanente
      * @param vendita è il costo della bevanda richiesta
      */
     public void updateBalance(double vendita) {
@@ -93,12 +93,16 @@ public class Coins {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public double getCredit() {
         return credit;
     }
 
     /**
-     * Restituisce quanti soldi  in totale nella macchinetta
+     * Restituisce il totale dei nella macchinetta
      * @return la quantità di soldi presenti nella macchinetta
      */
     private double getBalance() {
@@ -119,17 +123,19 @@ public class Coins {
                                                         // del tipo indicato
             optimizeChange(change);
 
+            String coinsList = "5c: " + change[0] + "\n10c: " + change[1] + "\n20c: " + change[2] + "\n50c: "
+                    + change[3] + "\n1E: " + change[4] + "\n2E: " + change[5];
+            String changeSupplied = "Resto erogato: " + String.format("%.2f",credit);
+
             try {
                 moneteTxt.writeFile(moneyOnFile());
             } catch (FileNotWritable fileNotWritable) {
                 fileNotWritable.printStackTrace();
             }
 
-            System.out.println("Resto erogato: " + String.format("%.2f",credit));
-            System.out.println("5c: " + change[0] + "\n10c: " + change[1] + "\n20c: " + change[2] + "\n50c: "
-                    + change[3] + "\n1E: " + change[4] + "\n2E: " + change[5]);
-            return ("Resto erogato: " + String.format("%.2f",credit)) + ("5c: " + change[0] + "\n10c: " + change[1] +
-                    "\n20c: " + change[2] + "\n50c: " + change[3] + "\n1E: " + change[4] + "\n2E: " + change[5]);
+            System.out.println(changeSupplied);
+            System.out.println(coinsList);
+            return (changeSupplied + coinsList);
         }  else {
             return ("Resto NON disponibile");
         }
@@ -150,7 +156,7 @@ public class Coins {
     }
 
     /** todo c'è da aggiungere la documentazione
-     * funzione che restituisce il resto con il numero minimo di monete
+     * Funzione che restituisce il resto con il numero minimo di monete
      * @param change vettore di interi per il numero di monete da erogare come resto
      * @return change vettore contenente il numero di monete ottimizzate per ogni taglio
      */
@@ -173,7 +179,10 @@ public class Coins {
     }
 
     /**
-     * funzione sfruttata dall'interfaccia per aggiungere monete ed aggiornare il credito
+     * Funzione per aggiungere monete ed aggiornare il credito
+     *
+     * Nota: utilizzata dall'interfaccia
+     *
      * @param inserted è il valore della moneta inserita
      * @param i è l'indice corrispondente al valore della moneta inserita in COINS_VALUE[]
      */

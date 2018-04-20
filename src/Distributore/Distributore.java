@@ -36,7 +36,6 @@ public class Distributore implements MaxValue{
     /**
      * Funzione che carica le quantità residue leggendole da file.
      */
-
     public void setValues(ArrayList<String[]> statistics) {
 
         this.milk = Double.parseDouble(statistics.get(0)[1]);
@@ -50,7 +49,6 @@ public class Distributore implements MaxValue{
     /**
      * Funzione che controlla se la macchinetta deve essere ricaricata
      */
-
     //TODO MJ: ci sarebbe anche da estendere il controllo ai vari ingredienti.
     private void checkIfMachineIsEmpty() {
         if(cup < 20 || spoon < 10 || sugar < 0.5 || milk < 0.2) {
@@ -74,7 +72,6 @@ public class Distributore implements MaxValue{
      * @param listFromFile arraylist di stringhe fornito all'apertura del file
      * @param data è l'arraylist contenente le quantità rimanenti delle bevande a partire dalla riga 5 (indice 4)
      */
-
     private void createList(ArrayList<String[]> listFromFile, ArrayList<String[]> data) {
 
         // MJ: Funzione semplificata. Diteci se vi piace, altrimenti si ripristina come prima con l'else che
@@ -113,7 +110,6 @@ public class Distributore implements MaxValue{
      * @param listFromFile è il file aperto contenente il menù
      * @param i è la riga a cui si è arrivati a leggere
      */
-
     private void createDrink(int type, ArrayList<String[]> listFromFile, int i) {
         Bevanda bevanda;
 
@@ -144,7 +140,6 @@ public class Distributore implements MaxValue{
      * @param index è la riga a cui si è arrivati a leggere
      * @param qtyLeft è la quantità rimanente nella macchinetta
      */
-
     public void createDrink(int type, ArrayList<String[]> listFromFile, int index, String qtyLeft) {
         Bevanda bevanda = null;
 
@@ -173,7 +168,6 @@ public class Distributore implements MaxValue{
      * @param index: indice della riga in cui aggiungo la bevanda
      * @return
      */
-
     protected String dataToWrite(ArrayList<String[]> Menu, int index) {
         String s = "";
 
@@ -183,7 +177,6 @@ public class Distributore implements MaxValue{
     /**
      * Funzione per recepire i comandi testuali ed analizzarli.
      */
-
     public void textualInput (){
         showList();
         System.out.println("Inserire l'ID della bevanda e la quantità di zucchero richiesta (da 0 a 5)\n" +
@@ -228,7 +221,6 @@ public class Distributore implements MaxValue{
     /**
      * Funzione per recepire input da tastiera e restituirli sotto forma di stringa.
      */
-
     private String keyboard() throws NoDigit{
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
@@ -238,7 +230,6 @@ public class Distributore implements MaxValue{
      * Funzione per selezionare una bevanda. Essa controlla anche che il credito sia sufficiente.
      * @param ID: è l'id della bevanda selezionata
      */
-
     public String selectBeverage(String ID){
 
         if (coins.getCredit() >= list.get(ID).getPrice() && list.get(ID).isAvailable()) {
@@ -313,7 +304,6 @@ public class Distributore implements MaxValue{
      * @param ID è la bevanda selezionata dal cliente
      * @return s: restituisce una stringa con dei dati
      */
-
     public String statsToText(String ID) {
         // TODO MJ: Da parametrizzare se possibile.
         return (list.get(ID).getName() + "\t" + cup + "\t" + spoon + "\t" + sugar + "\t" + milk + "\t");
@@ -323,7 +313,6 @@ public class Distributore implements MaxValue{
      * Funzione da usare nell'interfaccia per aggiungere i soldi
      * @param inserted è il valore associato al tasto di riferimento
      */
-
     public void addCredit(double inserted){
         double[] value = coins.getCOINS_VALUE();
         //cerco di capire la moneta inserita
@@ -355,7 +344,6 @@ public class Distributore implements MaxValue{
      *
      * @return
      */
-
     public double getCredit(){
         return coins.getCredit();
     }
@@ -364,7 +352,6 @@ public class Distributore implements MaxValue{
      * @param id della bevanda
      * @return ritorna l'id della bevanda corrispondente
      */
-
     public String getID(int id){
         return list.get("0" + id).getId();
     }
@@ -373,7 +360,6 @@ public class Distributore implements MaxValue{
      *
      * @return
      */
-
     public ArrayList<String[]> getDati() {
         return dati;
     }
