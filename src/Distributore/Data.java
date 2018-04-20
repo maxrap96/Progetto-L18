@@ -20,7 +20,6 @@ public class Data {
      * @return openedFile: è il file aperto e letto.
      * @throws FileNotReadable
      */
-
     protected ArrayList<String[]> readFile() throws FileNotReadable {
         try {
             BufferedReader bReader = new BufferedReader(new FileReader(pathFile));
@@ -39,11 +38,10 @@ public class Data {
 
     /**
      * Funzione che riceve i dati copiati dal file e li divide dopo ogni carattere di "Tab".
-     * @param bReader è il reader associato al file
-     * @return dataSplit è il file aperto e separato in base alle tabulazioni
-     * @throws FileNotReadable è l'eccezione lanciata nel caso il file non sia presente o leggibile
+     * @param bReader è il reader associato al file.
+     * @return dataSplit è il file aperto e separato in base alle tabulazioni.
+     * @throws FileNotReadable è l'eccezione lanciata nel caso il file non sia presente o leggibile.
      */
-
     private ArrayList<String[]> split(BufferedReader bReader) throws FileNotReadable {
         ArrayList<String[]> dataSplit = new ArrayList<>();
         String row;
@@ -68,7 +66,6 @@ public class Data {
      * @param scrittura è la stringa da accodare al file contenente le informazioni necessarie.
      * @throws FileNotWritable è l'eccezione lanciata nel caso non sia possibile scrivere sul file indicato da pathfile.
      */
-
     protected void writeFile(String scrittura) throws FileNotWritable {
         try {
             FileWriter writer = new FileWriter(pathFile, true);
@@ -87,7 +84,6 @@ public class Data {
      * @param transaction parametro che mi dice se la transazione avviene o fallisce.
      * @throws FileNotWritable è l'eccezione lanciata nel caso non sia possibile scrivere sul file indicato da pathfile.
      */
-
     // MJ: Funzione di stampa sul file nel caso di transazioni corrette ed errate. Variante della funzione precedente.
     protected void writeFile(String scrittura, boolean transaction) throws FileNotWritable {
         try {
@@ -109,6 +105,10 @@ public class Data {
         }
     }
 
+    /**
+     *
+     * @param scrittura
+     */
     public void writeData(String scrittura) {
         try {
             FileWriter writer = new FileWriter(pathFile, true);
@@ -121,9 +121,8 @@ public class Data {
 
     /**
      * Funzione per ottenere data e ora locali.
-     * @return strDate è la stringa con i dati necessari
+     * @return strDate è la stringa con i dati necessari.
      */
-
     private static String getCurrentTimeStamp() {
         SimpleDateFormat sdfDate = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss"); //stringa per data ora tempo
         Date now = new Date();
@@ -136,7 +135,6 @@ public class Data {
      * @param currentLine è la riga da aggiornare.
      * @param newLine è la nuova riga che sovrascriverà la riga selezionata.
      */
-
     protected void overwriteFile(String newLine, String currentLine) throws IOException{
         BufferedReader file = new BufferedReader(new FileReader(pathFile));
         String line;

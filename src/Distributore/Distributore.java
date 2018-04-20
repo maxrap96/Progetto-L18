@@ -47,7 +47,7 @@ public class Distributore implements MaxValue{
     }
 
     /**
-     * Funzione che controlla se la macchinetta deve essere ricaricata
+     * Funzione che controlla se la macchinetta deve essere ricaricata.
      */
     //TODO MJ: ci sarebbe anche da estendere il controllo ai vari ingredienti.
     private void checkIfMachineIsEmpty() {
@@ -58,7 +58,7 @@ public class Distributore implements MaxValue{
     }
 
     /**
-     * Ricarica alcuni elementi della macchinetta
+     * Ricarica alcuni elementi della macchinetta.
      */
     private void resetToMaxVendingMachine() {
         this.sugar = SUGARMAX;
@@ -68,9 +68,12 @@ public class Distributore implements MaxValue{
     }
 
     /**
-     * Funzione che crea il menu nella macchinetta
-     * @param listFromFile arraylist di stringhe fornito all'apertura del file
-     * @param data è l'arraylist contenente le quantità rimanenti delle bevande a partire dalla riga 5 (indice 4)
+     * Funzione che crea il menu nella macchinetta.
+     *
+     * Nota: data viene utilizzata a partire dalla riga 5 (indice 4).
+     *
+     * @param listFromFile arraylist di stringhe fornito all'apertura del file.
+     * @param data è l'arraylist contenente le quantità rimanenti delle bevande.
      */
     private void createList(ArrayList<String[]> listFromFile, ArrayList<String[]> data) {
 
@@ -105,10 +108,10 @@ public class Distributore implements MaxValue{
 
     /**
      * Funzione per identificare il tipo della bevanda e aggiungerla al distributore nel caso non siano presenti dati
-     * riguardanti la sua quantià residua
-     * @param type tipo della bevanda
-     * @param listFromFile è il file aperto contenente il menù
-     * @param i è la riga a cui si è arrivati a leggere
+     * riguardanti la sua quantià residua.
+     * @param type tipo della bevanda.
+     * @param listFromFile è il file aperto contenente il menù.
+     * @param i è la riga a cui si è arrivati a leggere.
      */
     private void createDrink(int type, ArrayList<String[]> listFromFile, int i) {
         Bevanda bevanda;
@@ -134,11 +137,11 @@ public class Distributore implements MaxValue{
 
     /**
      * Funzione per identificare il tipo della bevanda e aggiungerla al distributore nel caso siano presenti dati
-     * riguardanti la sua quantià residua
-     * @param type tipo della bevanda
-     * @param listFromFile è il file aperto contenente il menù
-     * @param index è la riga a cui si è arrivati a leggere
-     * @param qtyLeft è la quantità rimanente nella macchinetta
+     * riguardanti la sua quantià residua.
+     * @param type tipo della bevanda.
+     * @param listFromFile è il file aperto contenente il menù.
+     * @param index è la riga a cui si è arrivati a leggere.
+     * @param qtyLeft è la quantità rimanente nella macchinetta.
      */
     public void createDrink(int type, ArrayList<String[]> listFromFile, int index, String qtyLeft) {
         Bevanda bevanda = null;
@@ -163,9 +166,9 @@ public class Distributore implements MaxValue{
 
     // MJ: Dario dacci un'occhiata please e vediamo se abbiamo risolto.
     /**
-     * Funzione per scrivere su file i dati di nuove bevande aggiunte sul menù
+     * Funzione per scrivere su file i dati di nuove bevande aggiunte sul menù.
      * @param Menu: File menù, da cui ottengo ID e quantità iniziale delle bevande.
-     * @param index: indice della riga in cui aggiungo la bevanda
+     * @param index: indice della riga in cui aggiungo la bevanda.
      * @return
      */
     protected String dataToWrite(ArrayList<String[]> Menu, int index) {
@@ -228,7 +231,7 @@ public class Distributore implements MaxValue{
 
     /**
      * Funzione per selezionare una bevanda. Essa controlla anche che il credito sia sufficiente.
-     * @param ID: è l'id della bevanda selezionata
+     * @param ID: è l'id della bevanda selezionata.
      */
     public String selectBeverage(String ID){
 
@@ -269,8 +272,8 @@ public class Distributore implements MaxValue{
     }
 
     /**
-     * Funzione per sottrarre quantità necessarie per preparare la bevanda
-     * @param ID: della bevanda da cui prendere le dosi
+     * Funzione per sottrarre quantità necessarie per preparare la bevanda.
+     * @param ID: della bevanda da cui prendere le dosi.
      * @param sugar
      */
     private void subtractIngredients(String ID, int sugar) {
@@ -280,8 +283,8 @@ public class Distributore implements MaxValue{
     }
 
     /**
-     * Funzione che sottrae lo zucchero usato
-     * @param qty valore tra 0 e 5
+     * Funzione che sottrae lo zucchero usato.
+     * @param qty valore tra 0 e 5.
      */
     private void subtractSugar(int qty){
         if (qty != 0){
@@ -300,9 +303,9 @@ public class Distributore implements MaxValue{
     }
 
     /**
-     * Funzione per tener traccia di ciò che accade nella macchinetta
-     * @param ID è la bevanda selezionata dal cliente
-     * @return s: restituisce una stringa con dei dati
+     * Funzione per tener traccia di ciò che accade nella macchinetta.
+     * @param ID è la bevanda selezionata dal cliente.
+     * @return s: restituisce una stringa con dei dati.
      */
     public String statsToText(String ID) {
         // TODO MJ: Da parametrizzare se possibile.
@@ -310,8 +313,8 @@ public class Distributore implements MaxValue{
     }
 
     /**
-     * Funzione da usare nell'interfaccia per aggiungere i soldi
-     * @param inserted è il valore associato al tasto di riferimento
+     * Funzione da usare nell'interfaccia per aggiungere i soldi.
+     * @param inserted è il valore associato al tasto di riferimento.
      */
     public void addCredit(double inserted){
         double[] value = coins.getCOINS_VALUE();
@@ -334,7 +337,7 @@ public class Distributore implements MaxValue{
     }
 
     /**
-     * @return numero di bevande presenti nel distributore
+     * @return numero di bevande presenti nel distributore.
      */
     public int getListSize(){
         return list.size();
@@ -349,8 +352,8 @@ public class Distributore implements MaxValue{
     }
 
     /**
-     * @param id della bevanda
-     * @return ritorna l'id della bevanda corrispondente
+     * @param id della bevanda.
+     * @return ritorna l'id della bevanda corrispondente.
      */
     public String getID(int id){
         return list.get("0" + id).getId();
@@ -365,14 +368,16 @@ public class Distributore implements MaxValue{
     }
 
     /**
-     * Dopo l'erogazione della bevanda lo zucchero viene riportato alla quantità di default
+     * Dopo l'erogazione della bevanda lo zucchero viene riportato alla quantità di default.
      */
     private void setSugarToDefault() {
         selected_sugar = 3;
     }
 
     /**
-     * Funzione per aumentare lo zucchero selezionato (Tasto +)
+     * Funzione per aumentare lo zucchero selezionato (Tasto +).
+     *
+     * Nota: Da utilizzare nell'interfaccia.
      */
     public void moreSugar(){
         if (selected_sugar < 5){
@@ -381,7 +386,9 @@ public class Distributore implements MaxValue{
     }
 
     /**
-     * Funzione per diminuire lo zucchero selezionato (Tasto -)
+     * Funzione per diminuire lo zucchero selezionato (Tasto -).
+     *
+     * Nota: Da utilizzare nell'interfaccia.
      */
     public void lessSugar(){
         if (selected_sugar > 0){
@@ -413,8 +420,11 @@ public class Distributore implements MaxValue{
     }
 
     /**
-     * Funzione che serve all'interfaccia per associare i nomi dei pulsanti ai relativi valori
-     * @return sono i valori delle monete in forma vettore
+     * Funzione che associa i nomi dei pulsanti ai relativi valori.
+     *
+     * Nota: Da utilizzare nell'interfaccia
+     *
+     * @return sono i valori delle monete in forma vettore.
      */
     public double[] getCoinsValue(){
         double[] cValue = coins.getCOINS_VALUE();

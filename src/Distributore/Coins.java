@@ -52,8 +52,8 @@ public class Coins {
     }
 
     /**
-     * Funzione che crea una stringa contenente il numero di monete all'interno della macchinetta
-     * @return s: stringa contenente il numero di ogni moneta nella macchinetta
+     * Funzione che crea una stringa contenente il numero di monete all'interno della macchinetta.
+     * @return s: stringa contenente il numero di ogni moneta nella macchinetta.
      */
     private String moneyOnFile() {
         String s = "";
@@ -66,8 +66,8 @@ public class Coins {
     }
 
     /**
-     * Funzione che aggiora il bilancio ed il credito rimanente
-     * @param vendita è il costo della bevanda richiesta
+     * Funzione che aggiora il bilancio ed il credito rimanente.
+     * @param vendita è il costo della bevanda richiesta.
      */
     public void updateBalance(double vendita) {
         profit += vendita;
@@ -77,7 +77,7 @@ public class Coins {
     }
 
     /**
-     * Funzione per identificare il tipo e la quantità di monete inserite
+     * Funzione per identificare il tipo e la quantità di monete inserite.
      * @param index è la stringa da analizzare per identificare, in base alla posizione.
      */
     public void addCredit(String number, int index) {
@@ -102,8 +102,8 @@ public class Coins {
     }
 
     /**
-     * Restituisce il totale dei nella macchinetta
-     * @return la quantità di soldi presenti nella macchinetta
+     * Restituisce il totale dei nella macchinetta.
+     * @return la quantità di soldi presenti nella macchinetta.
      */
     private double getBalance() {
         double balance = 0;
@@ -155,10 +155,10 @@ public class Coins {
         }
     }
 
-    /** todo c'è da aggiungere la documentazione
-     * Funzione che restituisce il resto con il numero minimo di monete
-     * @param change vettore di interi per il numero di monete da erogare come resto
-     * @return change vettore contenente il numero di monete ottimizzate per ogni taglio
+    /**
+     * Funzione che restituisce il resto con il numero minimo di monete.
+     * @param change vettore di interi per il numero di monete da erogare come resto.
+     * @return change vettore contenente il numero di monete ottimizzate per ogni taglio.
      */
     private int[] optimizeChange(int[] change){
 
@@ -179,12 +179,12 @@ public class Coins {
     }
 
     /**
-     * Funzione per aggiungere monete ed aggiornare il credito
+     * Funzione per aggiungere monete ed aggiornare il credito.
      *
-     * Nota: utilizzata dall'interfaccia
+     * Nota: utilizzata dall'interfaccia.
      *
-     * @param inserted è il valore della moneta inserita
-     * @param i è l'indice corrispondente al valore della moneta inserita in COINS_VALUE[]
+     * @param inserted è il valore della moneta inserita.
+     * @param i è l'indice corrispondente al valore della moneta inserita in COINS_VALUE[].
      */
     public void addCoin(double inserted, int i) {
         credit += inserted;
