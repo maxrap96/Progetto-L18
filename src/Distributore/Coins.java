@@ -116,7 +116,7 @@ public class Coins {
 
         if (checkChange()) {
             int[] change = new int[COINS_VALUE.length]; // change[0], change[1], ecc. è il numero di monete
-            // del tipo indicato
+                                                        // del tipo indicato
             optimizeChange(change);
 
             try {
@@ -151,15 +151,15 @@ public class Coins {
 
     /** todo c'è da aggiungere la documentazione
      * funzione che restituisce il resto con il numero minimo di monete
-     * @param change
-     * @return
+     * @param change vettore di interi per il numero di monete da erogare come resto
+     * @return change vettore contenente il numero di monete ottimizzate per ogni taglio
      */
     private int[] optimizeChange(int[] change){
 
         double resto = (credit * 100);
         int[] divisor = {5, 10, 20, 50, 100, 200};
 
-        for (int i = 5; i > -1; i--) {
+        for (int i = COINS_VALUE.length-1; i > -1; i--) {
             change[i] = (int) (resto) / divisor[i];
             resto = resto % divisor[i];
 
