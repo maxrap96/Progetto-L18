@@ -432,7 +432,8 @@ public class Distributore implements MaxValue{
     /**
      * Funzione per chiamare un dog-sitter da remoto.
      */
-    public Dog(String name, String breed, int size, int age, int weight, String ownerName, String ownerSurname, int ID) {
+    public void Dog(String name, String breed, int size, int age, int weight, String ownerName,
+                    String ownerSurname, int ID) {
         name = name;
         breed = breed;
         size = size;
