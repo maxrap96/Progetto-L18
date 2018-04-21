@@ -2,7 +2,7 @@ package Bevande;
 
 import static java.lang.Double.parseDouble;
 
-public abstract class Bevanda {
+public abstract class HotDrink {
 
     protected String id;
     protected Tipo type;
@@ -15,7 +15,7 @@ public abstract class Bevanda {
      * indice:  0    1     2     3       4                   5               6
      * @param rowSplitted riga proveniente dal file di testo.
      */
-    public Bevanda(String[] rowSplitted) {
+    public HotDrink(String[] rowSplitted) {
         // Inizializzo tutto tranne type e dispensedQuantity che verranno inizializzati
         // nelle singole classi in base alle differenze.
         this.id = rowSplitted[0];
@@ -29,13 +29,12 @@ public abstract class Bevanda {
     }
 
     /**
-     * Costruttore alternativo che serve a ripristinare la quantità rimanente, se presente, all'ultimo uso della macchina
-     * @param rowSplitted è la stringa contenente i dati della bevanda
-     * @param valueleft è la stringa contenente il double della quantità rimanente
+     * Costruttore alternativo che serve a ripristinare la quantità rimanente, se presente, all'ultimo uso della
+     * macchina.
+     * @param rowSplitted è la stringa contenente i dati della bevanda.
+     * @param valueleft è la stringa contenente il double della quantità rimanente.
      */
-    public Bevanda(String[] rowSplitted, String valueleft) {
-        // Inizializzo tutto tranne type e dispensedQuantity che verranno inizializzati
-        // nelle singole classi in base alle differenze.
+    public HotDrink(String[] rowSplitted, String valueleft) {
         this.id = rowSplitted[0];
         this.name = rowSplitted[2];
         this.price = parseDouble(rowSplitted[3]);
@@ -47,7 +46,7 @@ public abstract class Bevanda {
     }
 
     /**
-     * Funzione per sottrarre quantità dopo aver selezionato la bevanda
+     * Funzione per sottrarre quantità dopo aver selezionato la bevanda.
      */
     public void subtractDose() {
         this.leftQuantity -= this.dispensedQuantity;
@@ -61,7 +60,7 @@ public abstract class Bevanda {
     }
 
     /**
-     * Funzione che mi dice se la bevanda é disponibile
+     * Funzione che mi dice se la bevanda é disponibile.
      */
     public boolean isAvailable() {
         if (leftQuantity > dispensedQuantity){

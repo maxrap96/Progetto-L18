@@ -12,7 +12,7 @@ import static java.lang.Integer.parseInt;
 
 public class Distributore implements MaxValue{
 
-    private HashMap<String,Bevanda> list;
+    private HashMap<String, HotDrink> list;
     private int cup, spoon, selected_sugar;
     private double sugar, milk;
     private Coins coins;
@@ -111,20 +111,20 @@ public class Distributore implements MaxValue{
      * @param i è la riga a cui si è arrivati a leggere.
      */
     private void createDrink(int type, ArrayList<String[]> listFromFile, int i) {
-        Bevanda bevanda;
+        HotDrink hotDrink;
 
         switch (type) {
             case 0:
-                bevanda = new Macinato(listFromFile.get(i));
-                list.put(listFromFile.get(i)[0], bevanda);
+                hotDrink = new Macinato(listFromFile.get(i));
+                list.put(listFromFile.get(i)[0], hotDrink);
                 break;
             case 1:
-                bevanda = new Capsula(listFromFile.get(i));
-                list.put(listFromFile.get(i)[0], bevanda);
+                hotDrink = new Capsula(listFromFile.get(i));
+                list.put(listFromFile.get(i)[0], hotDrink);
                 break;
             case 2:
-                bevanda = new Solubile(listFromFile.get(i));
-                list.put(listFromFile.get(i)[0], bevanda);
+                hotDrink = new Solubile(listFromFile.get(i));
+                list.put(listFromFile.get(i)[0], hotDrink);
                 break;
             default:
                 new InvalidType();
@@ -141,20 +141,20 @@ public class Distributore implements MaxValue{
      * @param qtyLeft è la quantità rimanente nella macchinetta.
      */
     public void createDrink(int type, ArrayList<String[]> listFromFile, int index, String qtyLeft) {
-        Bevanda bevanda = null;
+        HotDrink hotDrink = null;
 
         switch (type) {
             case 0:
-                bevanda = new Macinato(listFromFile.get(index), qtyLeft);
-                list.put(listFromFile.get(index)[0], bevanda);
+                hotDrink = new Macinato(listFromFile.get(index), qtyLeft);
+                list.put(listFromFile.get(index)[0], hotDrink);
                 break;
             case 1:
-                bevanda = new Capsula(listFromFile.get(index), qtyLeft);
-                list.put(listFromFile.get(index)[0], bevanda);
+                hotDrink = new Capsula(listFromFile.get(index), qtyLeft);
+                list.put(listFromFile.get(index)[0], hotDrink);
                 break;
             case 2:
-                bevanda = new Solubile(listFromFile.get(index), qtyLeft);
-                list.put(listFromFile.get(index)[0], bevanda);
+                hotDrink = new Solubile(listFromFile.get(index), qtyLeft);
+                list.put(listFromFile.get(index)[0], hotDrink);
                 break;
             default:
                 new InvalidType();
@@ -250,11 +250,11 @@ public class Distributore implements MaxValue{
                 fileNotWritable.printStackTrace();
             }
             if (coins.getCredit()!= 0) {
-                return "Bevanda erogata " + coins.giveChange();
+                return "HotDrink erogata " + coins.giveChange();
             }
             else {
-                System.out.println("Bevanda erogata");
-                return "Bevanda erogata";
+                System.out.println("HotDrink erogata");
+                return "HotDrink erogata";
             }
         }
         else {

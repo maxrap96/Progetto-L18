@@ -2,7 +2,7 @@ package Bevande;
 
 import static java.lang.Double.parseDouble;
 
-public class Solubile extends Bevanda {
+public class Solubile extends HotDrink {
 
     public Solubile(String[] rowSplitted) {
         super(rowSplitted);
