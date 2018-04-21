@@ -12,11 +12,12 @@ public class Server extends JFrame {
             new File("src/FIle_Testo_Server/serverMenu.txt");
     static File fileStatsServer =
             new File("src/FIle_Testo_Server/serverStats.txt");
+    private int panelRows = 12;
+    private int panelCols = 9;
 
     /**
-     * Creazione interfaccia grafica Server
+     * Creazione interfaccia grafica Server.
      */
-
     public Server() {
         // Inizializzazione JFrame
         initJFrame("Remote Management System");
@@ -28,12 +29,10 @@ public class Server extends JFrame {
         WindowCloser windowCloserListener = new WindowCloser();
         addWindowListener(windowCloserListener);
 
-        JPanel textPanel = new JPanel(new FlowLayout());
+        JPanel textPanel = new JPanel(new GridLayout(this.panelRows, this.panelCols));
         textPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
 
-        JTextArea textArea = new JTextArea();
-        textArea.setFont(new Font("", Font.ITALIC, 20));
-        textPanel.add(textArea, FlowLayout.LEFT);
+        addTextAreas(textPanel, panelCols * panelRows);
 
         JButton buttonMenu = makeButton("MENU");
         JButton buttonStats = makeButton("STATS");
@@ -46,8 +45,8 @@ public class Server extends JFrame {
     }
 
     /**
-     * Funzione che inizializza il JFrame secondo alcuni standard
-     * @param title Nome della finestra
+     * Funzione che inizializza il JFrame secondo alcuni standard.
+     * @param title nome della finestra.
      */
     private void initJFrame(String title){
         Toolkit kit = Toolkit.getDefaultToolkit();
@@ -59,14 +58,38 @@ public class Server extends JFrame {
         setTitle(title);
     }
 
+    /**
+     * Funzione che crea un bottone.
+     * @param nameButton nome da assegnare al bottone.
+     * @return il bottone creato.
+     */
     private JButton makeButton(String nameButton){
         JButton buttonTmp = new JButton(nameButton);
         buttonTmp.setFont(new Font("", Font.ITALIC, 100));
         return buttonTmp;
 
     }
+
+    /**
+     * Funzione che aggiunge un certo numero di textArea.
+     * @param panel pannello a cui aggiungo le textArea.
+     * @param size quante textArea aggiungere.
+     */
+    private void addTextAreas(JPanel panel, int size){
+        for(int i = 0; i < size; i++){
+            JTextArea textArea = new JTextArea("A");
+            textArea.setFont(new Font("", Font.ITALIC, 20));
+            textArea.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+            panel.add(textArea);
+        }
+    }
 }
 
+/**
+ * Pannello contenente i bottoni.
+ *
+ * Nota: viene utilizzato il GridBagLayout.
+ */
 class ButtonPanel extends JPanel{
 
     public ButtonPanel(JButton button1, JButton button2) {

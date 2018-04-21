@@ -31,7 +31,7 @@ public class ServerSide {
     }
 
     /**
-     * Creo le basi per la connessione Server
+     * Creo le basi per la connessione Server.
      * @throws IOException
      */
     protected static void connectionPreRequisite (int connectionPort) throws IOException{
@@ -50,8 +50,8 @@ public class ServerSide {
     }
 
     /**
-     * Svuoto il file
-     * @param file file svuotato
+     * Svuoto il file.
+     * @param file il file da svuotare.
      * @throws IOException
      */
     protected static void emptyFile(File file) throws IOException{
@@ -66,9 +66,9 @@ public class ServerSide {
     }
 
     /**
-     * Scrivo il file ricevuto
-     * @param stringToWrite
-     * @param file dove salvo ciò che arriva
+     * Scrivo il file ricevuto.
+     * @param stringToWrite stringa da scrivere su file.
+     * @param file dove salvo ciò che arriva.
      * @throws IOException
      */
     protected static void writeFileReceived(String stringToWrite, File file)throws IOException{
@@ -82,9 +82,9 @@ public class ServerSide {
     }
 
     /**
-     * Invio di un file al Client
-     * @param file
-     * @param whereToWrite
+     * Invio di un file al Client.
+     * @param file da inviare al Client.
+     * @param whereToWrite PrintWriter impiegato per inviare il file.
      * @throws IOException
      */
     protected static void sendFile(PrintWriter whereToWrite, File file)throws IOException{
