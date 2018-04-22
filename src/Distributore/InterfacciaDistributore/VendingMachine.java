@@ -148,14 +148,13 @@ public class VendingMachine extends JFrame{
      */
 
     private ActionListener value(double moneyInserted) {
-        ActionListener inserction = new ActionListener() {
+        return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Sono stati inseriti €\t"+ moneyInserted);
                 distributore.addCredit(moneyInserted);
             }
         };
-        return inserction;
     }
 
     /**
@@ -165,14 +164,13 @@ public class VendingMachine extends JFrame{
      */
 
     private ActionListener selectBeverage(String index) {
-        ActionListener selection = new ActionListener() {
+        return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("la bevanda selezionata è "+ distributore.getLabel(Integer.parseInt(index)));
                 distributore.selectBeverage("0"+index);
             }
         };
-        return selection;
     }
 
     /**
