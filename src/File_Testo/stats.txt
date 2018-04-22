@@ -70,3 +70,4 @@ Caffè Espresso	481	986	988.75	1000.0	Transazione avvenuta il:	22-04-2018 23:11:
 Caffè Espresso	480	985	988.0	1000.0	Transazione avvenuta il:	22-04-2018 23:12:01
 Caffè Espresso	480	985	988.0	1000.0	Transazione avvenuta il:	22-04-2018 23:12:54
 Caffè Espresso	479	985	988.0	1000.0	Transazione avvenuta il:	22-04-2018 23:21:35
+Tè al Limone	478	985	988.0	1000.0	Transazione avvenuta il:	22-04-2018 23:45:16
