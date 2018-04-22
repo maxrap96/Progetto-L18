@@ -14,6 +14,8 @@ public class VendingMachine extends JFrame{
     private final String[] ALTRI_PULSANTI = {"-", "+", ""};
     private Distributore distributore = new Distributore();
 
+    private int index=1;
+
     /**
      * Creazione interfaccia grafica distributore
      */
@@ -85,8 +87,13 @@ public class VendingMachine extends JFrame{
                                              Y_SCREEN_INDEX[yButton],screenSize.width / 6,
                                             screenSize.height / 8);
                 //button.addActionListener(new ListenerTry( display, distributore.getID(i + 1)));
+                button.addActionListener(select -> {
+                    String id= "0"+index;
+                    distributore.selectBeverage(id);
+                });
             }
             else {
+                //bottone vuoto
                 button = makeRoundRectButton("", X_SCREEN_INDEX[xButton], Y_SCREEN_INDEX[yButton],
                                              screenSize.width / 6, screenSize.height / 8);
             }
@@ -112,6 +119,13 @@ public class VendingMachine extends JFrame{
                 button = makeRoundButton(coinsValue[i],  X_MON_INDEX[xButtonMon], Y_MON_INDEX[yButtonMon],
                                         screenSize.height / 8,screenSize.height / 8);
                 //button.addActionListener(new ListenerTry(display, distributore.getID(i + 1)));
+
+                //aggiunta action listener associato ad ogni bottore con relativo valore
+                index=i;
+                button.addActionListener(value -> {
+                    distributore.addCredit(distributore.getCoinsValue()[index]);
+                });
+
             }
             else {
                 button = makeRoundButton(ALTRI_PULSANTI[i + 3], X_MON_INDEX[xButtonMon], Y_MON_INDEX[yButtonMon],
@@ -177,4 +191,5 @@ public class VendingMachine extends JFrame{
         button.setBounds(x, y, screenW, screenH);
         return button;
     }
+
 }

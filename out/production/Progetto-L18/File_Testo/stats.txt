@@ -46,3 +46,15 @@ Cioccolata	487	992	993.0	1000.0	Transazione avvenuta il:	20-04-2018 18:27:49
 Cioccolata	486	992	993.0	1000.0	Transazione avvenuta il:	20-04-2018 18:28:32
 Cioccolata	486	992	993.0	1000.0	Transazione fallita.	21-04-2018 00:09:15
 Vodka	485	992	993.0	1000.0	Transazione avvenuta il:	21-04-2018 00:09:40
+Caffè Espresso	486	990	991.75	1000.0	Transazione fallita.	21-04-2018 10:31:08
+Caffè Espresso	485	990	991.75	1000.0	Transazione avvenuta il:	22-04-2018 22:56:58
+Caffè Espresso	484	989	991.0	1000.0	Transazione avvenuta il:	22-04-2018 22:57:36
+Caffè Espresso	484	989	991.0	1000.0	Transazione avvenuta il:	22-04-2018 22:59:22
+Caffè Espresso	483	988	990.25	1000.0	Transazione avvenuta il:	22-04-2018 22:59:31
+Caffè Espresso	482	987	989.5	1000.0	Transazione avvenuta il:	22-04-2018 22:59:34
+Caffè Espresso	481	986	988.75	1000.0	Transazione avvenuta il:	22-04-2018 22:59:35
+Caffè Espresso	481	986	988.75	1000.0	Transazione fallita.	22-04-2018 22:59:37
+Caffè Espresso	481	986	988.75	1000.0	Transazione fallita.	22-04-2018 22:59:37
+Caffè Espresso	481	986	988.75	1000.0	Transazione fallita.	22-04-2018 22:59:38
+Caffè Espresso	481	986	988.75	1000.0	Transazione fallita.	22-04-2018 22:59:44
+Caffè Espresso	480	985	988.0	1000.0	Transazione avvenuta il:	22-04-2018 22:59:55

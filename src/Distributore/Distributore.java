@@ -239,6 +239,7 @@ public class Distributore implements MaxValue{
             subtractIngredients(ID, selected_sugar);
             coins.updateBalance(list.get(ID).getPrice());
             setSugarToDefault();
+            coins.giveChange();
 
             // Scrittura statistiche su file:
 
