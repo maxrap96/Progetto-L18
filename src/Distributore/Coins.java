@@ -127,6 +127,8 @@ public class Coins {
                     + change[3] + "\n1E: " + change[4] + "\n2E: " + change[5];
             String changeSupplied = "Resto erogato: " + String.format("%.2f",credit);
 
+            resetCredit(change);
+
             try {
                 moneteTxt.writeFile(moneyOnFile());
             } catch (FileNotWritable fileNotWritable) {
@@ -138,6 +140,17 @@ public class Coins {
             return (changeSupplied + coinsList);
         }  else {
             return ("Resto NON disponibile");
+        }
+
+    }
+
+    /**
+     * funzione per aggiornare il credito dopo l'erogazione della bevanda
+     * @param change è il vettore contente il quantitativo di monete restituito
+     */
+    private void resetCredit(int[] change) {
+        for (int i=0 ;i < change.length; i++){
+            credit = credit - change[i]*COINS_VALUE[i];
         }
 
     }
@@ -172,6 +185,7 @@ public class Coins {
             if (change[i] > money[i]) {
                 resto += (change[i] - money[i]) * divisor[i];
                 change[i] = money[i];
+
             }
             money[i] -= change[i];
         }

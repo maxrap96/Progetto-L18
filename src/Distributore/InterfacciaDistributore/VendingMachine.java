@@ -83,12 +83,14 @@ public class VendingMachine extends JFrame{
             }
             JButton button;
             if (i < distributore.getListSize()) {
-                button = makeRoundRectButton(distributore.getLabel(i + 1), X_SCREEN_INDEX[xButton],
+                index=i+1;
+                button = makeRoundRectButton(distributore.getLabel(index), X_SCREEN_INDEX[xButton],
                                              Y_SCREEN_INDEX[yButton],screenSize.width / 6,
                                             screenSize.height / 8);
                 //button.addActionListener(new ListenerTry( display, distributore.getID(i + 1)));
                 button.addActionListener(select -> {
-                    String id= "0"+index;
+                    String id= "0" + index;
+                    System.out.println(id);
                     distributore.selectBeverage(id);
                 });
             }
