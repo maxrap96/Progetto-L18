@@ -5,6 +5,8 @@ import Distributore.Coins;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class VendingMachine extends JFrame{
 
@@ -84,15 +86,12 @@ public class VendingMachine extends JFrame{
             JButton button;
             if (i < distributore.getListSize()) {
                 index=i+1;
+                String id= String.valueOf(index);
                 button = makeRoundRectButton(distributore.getLabel(index), X_SCREEN_INDEX[xButton],
                                              Y_SCREEN_INDEX[yButton],screenSize.width / 6,
                                             screenSize.height / 8);
                 //button.addActionListener(new ListenerTry( display, distributore.getID(i + 1)));
-                button.addActionListener(select -> {
-                    String id= "0" + index;
-                    System.out.println(id);
-                    distributore.selectBeverage(id);
-                });
+                button.addActionListener(selectBeverage(id));
             }
             else {
                 //bottone vuoto
@@ -124,9 +123,7 @@ public class VendingMachine extends JFrame{
 
                 //aggiunta action listener associato ad ogni bottore con relativo valore
                 index=i;
-                button.addActionListener(value -> {
-                    distributore.addCredit(distributore.getCoinsValue()[index]);
-                });
+                button.addActionListener(value(distributore.getCoinsValue()[index]));
 
             }
             else {
@@ -142,6 +139,40 @@ public class VendingMachine extends JFrame{
                                                 3 * screenSize.width / 100, 20 * screenSize.width / 100,
                                                 9 * screenSize.height / 100) ;
         pannelloMonete.add(chiavetta);
+    }
+
+    /**
+     * serve per associare dinamicamente il valore monetario al tasto corrisponente
+     * @param moneyInserted indica il valore booleano della moneta inserita
+     * @return è l'action listener da associare al pulsante
+     */
+
+    private ActionListener value(double moneyInserted) {
+        ActionListener inserction = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Sono stati inseriti €\t"+ moneyInserted);
+                distributore.addCredit(moneyInserted);
+            }
+        };
+        return inserction;
+    }
+
+    /**
+     * funzione per creare dinamicamente
+     * @param index è l'indice corrispondente al nome della bevanda da associare
+     * @return selection è l'action listener da associare al pulsante
+     */
+
+    private ActionListener selectBeverage(String index) {
+        ActionListener selection = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("la bevanda selezionata è "+ distributore.getLabel(Integer.parseInt(index)));
+                distributore.selectBeverage(index);
+            }
+        };
+        return selection;
     }
 
     /**
