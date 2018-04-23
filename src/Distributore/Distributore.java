@@ -242,12 +242,11 @@ public class Distributore implements MaxValue{
             subtractIngredients(ID, selected_sugar);
             coins.updateBalance(list.get(ID).getPrice());
             setSugarToDefault();
-            //coins.giveChange();
+
 
             // Scrittura statistiche su file:
 
             try {
-                //stats.writeFile(statsToText(ID));
                 stats.writeFile(statsToText(ID), true);
                 updateDati(ID);
             } catch (FileNotWritable fileNotWritable) {
@@ -262,13 +261,16 @@ public class Distributore implements MaxValue{
             }
         }
         else {
+            if (!list.get(ID).isAvailable()){
+                return "Bevanda non disponibile";
+            }
             try {
                 stats.writeFile(statsToText(ID), false);
             } catch (FileNotWritable fileNotWritable) {
                 fileNotWritable.printStackTrace();
             }
             new UnsufficientCredit();
-            return "Credito insufficiente o bevanda non disponibile";
+            return "Credito insufficiente";
         }
     }
 
