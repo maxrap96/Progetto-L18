@@ -61,7 +61,6 @@ public class Chiavetta {
 
     }
 
-    //todo aggiungere la scrittura sul file sovrascrivendo la specifica linea
 
     @Override
     public String toString() {

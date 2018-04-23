@@ -175,7 +175,7 @@ public class Coins {
      */
     private int[] optimizeChange(int[] change){
 
-        double resto = (credit * 100);
+        float resto = (float)(credit * 100);
         int[] divisor = {5, 10, 20, 50, 100, 200};
 
         for (int i = COINS_VALUE.length-1; i > -1; i--) {

@@ -70,3 +70,9 @@ Caffè Espresso	481	986	988.75	1000.0	Transazione avvenuta il:	22-04-2018 23:11:
 Caffè Espresso	480	985	988.0	1000.0	Transazione avvenuta il:	22-04-2018 23:12:01
 Caffè Espresso	480	985	988.0	1000.0	Transazione avvenuta il:	22-04-2018 23:12:54
 Caffè Espresso	479	985	988.0	1000.0	Transazione avvenuta il:	22-04-2018 23:21:35
+Tè al Limone	478	985	988.0	1000.0	Transazione avvenuta il:	22-04-2018 23:45:16
+Ginseng	477	985	988.0	1000.0	Transazione avvenuta il:	23-04-2018 18:40:33
+Ginseng	476	985	988.0	1000.0	Transazione avvenuta il:	23-04-2018 18:43:34
+Ginseng	475	985	988.0	1000.0	Transazione avvenuta il:	23-04-2018 18:47:00
+Ginseng	474	985	988.0	1000.0	Transazione avvenuta il:	23-04-2018 18:47:43
+Ginseng	473	985	988.0	1000.0	Transazione avvenuta il:	23-04-2018 18:49:22
