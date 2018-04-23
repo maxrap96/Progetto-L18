@@ -17,6 +17,7 @@ public class VendingMachine extends JFrame{
     private Distributore distributore = new Distributore();
 
     private int index=1;
+    private String message;
 
     /**
      * Creazione interfaccia grafica distributore
@@ -153,6 +154,8 @@ public class VendingMachine extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Sono stati inseriti €\t"+ moneyInserted);
                 distributore.addCredit(moneyInserted);
+                message = String.format("%.2f", distributore.getCredit());
+                System.out.println("Sono stati inseriti €\t"+ moneyInserted + "\t Credito: " + message);
             }
         };
     }
@@ -167,8 +170,11 @@ public class VendingMachine extends JFrame{
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("la bevanda selezionata è "+ distributore.getLabel(Integer.parseInt(index)));
+                System.out.println("Bevanda selezionata_:" + distributore.getLabel(Integer.parseInt(index)) + " Costo: "
+                        + distributore.getPrice("0" + index) );
                 distributore.selectBeverage("0"+index);
+                message = distributore.selectBeverage("0"+index) + " Costo: " + distributore.getPrice("0" + index);
+                System.out.println(message);
             }
         };
     }
