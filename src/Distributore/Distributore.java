@@ -65,12 +65,14 @@ public class Distributore implements MaxValue{
         this.milk = MILKMAX;
         this.cup = CUPMAX;
         this.spoon = SPOONMAX;
+
+        //TODO MJ: Inserire anche refill degli ingredienti.
     }
 
     /**
      * Funzione che crea il menu nella macchinetta.
      *
-     * Nota: data viene utilizzata a partire dalla riga 5 (indice 4).
+     * Nota: "data" viene utilizzata a partire dalla riga 5 (indice 4).
      *
      * @param listFromFile arraylist di stringhe fornito all'apertura del file.
      * @param data è l'arraylist contenente le quantità rimanenti delle bevande.
@@ -96,7 +98,7 @@ public class Distributore implements MaxValue{
                 createDrink(tipo.ordinal(), listFromFile, i_menu, quantityLeft);
             }
             else {
-                ingredientsData.writeData(dataToWrite(listFromFile, i_menu));   // <---------------------------------O
+                ingredientsData.writeData(dataToWrite(listFromFile, i_menu));
                 createDrink(tipo.ordinal(), listFromFile, i_menu);
             }
         }
@@ -191,6 +193,7 @@ public class Distributore implements MaxValue{
 
         String[] splitted = input.split("\\s+");
         selected_sugar = parseInt( splitted[1]);
+
         //mi chiedo se la bevanda è disponibile
         try {
             if (list.get(splitted[0]).isAvailable()) {
@@ -251,11 +254,11 @@ public class Distributore implements MaxValue{
                 fileNotWritable.printStackTrace();
             }
             if (coins.getCredit()!= 0) {
-                return "HotDrink erogata " + coins.giveChange();
+                return "HotDrink dispensed " + coins.giveChange();
             }
             else {
-                System.out.println("HotDrink erogata");
-                return "HotDrink erogata";
+                System.out.println("HotDrink dispensed");
+                return "HotDrink dispensed";
             }
         }
         else {
@@ -301,7 +304,7 @@ public class Distributore implements MaxValue{
     }
 
     /**
-     * Funzione per tener traccia di ciò che accade nella macchinetta.
+     * Funzione che genera la stringa di statistiche.
      * @param ID è la bevanda selezionata dal cliente.
      * @return s: restituisce una stringa con dei dati.
      */
