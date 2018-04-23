@@ -109,7 +109,7 @@ public class Data {
      *
      * @param scrittura
      */
-    public void writeData(String scrittura) {
+    protected void writeData(String scrittura) {
         try {
             FileWriter writer = new FileWriter(pathFile, true);
             writer.write(scrittura);

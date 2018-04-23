@@ -18,7 +18,7 @@ public class Chiavetta {
         initChiavetta();
     }
 
-    public void initChiavetta(){
+    private void initChiavetta(){
         try{
             ArrayList<String[]> chiavText = data.readFile();
 
@@ -36,29 +36,28 @@ public class Chiavetta {
         }
     }
 
-    public void AddSaldo(double importo) {
+    private void AddSaldo(double importo) {
         Saldo += importo;
-        String newLine = ID+"\t"+Saldo;
+        String newLine = ID + "\t" + Saldo;
         try {
             data.overwriteFile(newLine, currentLine);
-        }catch (IOException e){
+        } catch (IOException e) {
         }
     }
 
-    public boolean Pay(double Costo){
+    private boolean Pay(double Costo){
         if(Saldo > Costo){
             Saldo -= Costo;
             String newLine = ID+"\t"+Saldo;
 
             try {
-
                 data.overwriteFile(newLine, currentLine);
-            }catch (IOException e){
+            } catch (IOException e){
             }
             return true;
         }
-        return false;
 
+        return false;
     }
 
 
@@ -66,6 +65,4 @@ public class Chiavetta {
     public String toString() {
         return "ID: "+ID+"\nSaldo: "+Saldo;
     }
-
-
 }

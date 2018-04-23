@@ -36,7 +36,7 @@ public class Distributore implements MaxValue{
     /**
      * Funzione che carica le quantità residue leggendole da file.
      */
-    public void setValues(ArrayList<String[]> statistics) {
+    private void setValues(ArrayList<String[]> statistics) {
 
         this.milk = Double.parseDouble(statistics.get(0)[1]);
         this.sugar = Double.parseDouble(statistics.get(1)[1]);
@@ -142,7 +142,7 @@ public class Distributore implements MaxValue{
      * @param index è la riga a cui si è arrivati a leggere.
      * @param qtyLeft è la quantità rimanente nella macchinetta.
      */
-    public void createDrink(int type, ArrayList<String[]> listFromFile, int index, String qtyLeft) {
+    private void createDrink(int type, ArrayList<String[]> listFromFile, int index, String qtyLeft) {
         HotDrink hotDrink = null;
 
         switch (type) {
@@ -170,7 +170,7 @@ public class Distributore implements MaxValue{
      * @param index: indice della riga in cui aggiungo la bevanda.
      * @return
      */
-    protected String dataToWrite(ArrayList<String[]> Menu, int index) {
+    private String dataToWrite(ArrayList<String[]> Menu, int index) {
         String s = "";
 
         return s += (Menu.get(index)[0] + "\t" + Menu.get(index)[4] + "\n");  // scrivo ID + quantità massima;
@@ -233,7 +233,7 @@ public class Distributore implements MaxValue{
      * Funzione per selezionare una bevanda. Essa controlla anche che il credito sia sufficiente.
      * @param ID: è l'id della bevanda selezionata.
      */
-    public String selectBeverage(String ID){
+    protected String selectBeverage(String ID){
 
         if (coins.getCredit() >= list.get(ID).getPrice() && list.get(ID).isAvailable()) {
                                                     // Se il credito è uguale o maggiore singifica che posso
@@ -310,7 +310,7 @@ public class Distributore implements MaxValue{
      * @param ID è la bevanda selezionata dal cliente.
      * @return s: restituisce una stringa con dei dati.
      */
-    public String statsToText(String ID) {
+    private String statsToText(String ID) {
         // TODO MJ: Da parametrizzare se possibile.
         return (list.get(ID).getName() + "\t" + cup + "\t" + spoon + "\t" + sugar + "\t" + milk + "\t");
     }
@@ -402,7 +402,7 @@ public class Distributore implements MaxValue{
     /**
      * Funzione per aggiornare il file dati.txt, contenente le quantità di oggetti e di ingredienti.
      */
-    public void updateDati(String ID) {
+    private void updateDati(String ID) {
         String valDati[] = {"" + milk, "" + sugar, "" + spoon, "" + cup};
         String newLine = "";
         String current = "";
@@ -433,7 +433,6 @@ public class Distributore implements MaxValue{
         double[] cValue = coins.getCOINS_VALUE();
         return cValue;
     }
-
 
     /**
      * Funzione per chiamare un dog-sitter da remoto.
