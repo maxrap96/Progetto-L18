@@ -233,7 +233,7 @@ public class Distributore implements MaxValue{
      * Funzione per selezionare una bevanda. Essa controlla anche che il credito sia sufficiente.
      * @param ID: è l'id della bevanda selezionata.
      */
-    protected String selectBeverage(String ID){
+    public String selectBeverage(String ID) {
 
         if (coins.getCredit() >= list.get(ID).getPrice() && list.get(ID).isAvailable()) {
                                                     // Se il credito è uguale o maggiore singifica che posso
