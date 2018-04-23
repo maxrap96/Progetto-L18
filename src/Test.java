@@ -17,6 +17,7 @@ public class Test {
     public static void main(String[] args) {
         Distributore macchinetta = new Distributore();
         macchinetta.textualInput();
+        System.out.println(macchinetta.getPrice("01"));
         System.out.println("\ncheck");
 
         /*try {
