@@ -448,6 +448,8 @@ public class Distributore implements MaxValue{
         ownerName = ownerName;
         ownerSurname = ownerSurname;
         ID = ID;
+
+        System.out.println("Amen\n");
     }
 
     /**
