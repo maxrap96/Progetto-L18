@@ -84,3 +84,7 @@ Cappuccino	472	984	987.25	1000.0	Transazione fallita.	23-04-2018 18:36:33
 Cappuccino	472	984	987.25	1000.0	Transazione fallita.	23-04-2018 18:36:42
 Cioccolata	471	984	987.25	1000.0	Transazione avvenuta il:	23-04-2018 18:48:04
 Cioccolata	470	984	987.25	1000.0	Transazione avvenuta il:	23-04-2018 18:49:25
+Caffè Espresso	469	983	986.75	1000.0	Transazione avvenuta il:	23-04-2018 18:52:33
+Caffè Lungo	469	983	986.75	1000.0	Transazione fallita.	23-04-2018 18:55:04
+Caffè top	468	983	986.75	1000.0	Transazione avvenuta il:	23-04-2018 18:57:02
+Cappuccino	468	983	986.75	1000.0	Transazione fallita.	23-04-2018 19:00:16

@@ -170,8 +170,8 @@ public class VendingMachine extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Bevanda selezionata_:" + distributore.getLabel(Integer.parseInt(index)) + " Costo: "
-                        + distributore.getPrice("0" + index));
-                message = distributore.selectBeverage("0"+index) + "Costo: " + distributore.getPrice("0" + index);
+                        + distributore.getPrice("0" + index) );
+                message = distributore.selectBeverage("0"+index) + " Costo: " + distributore.getPrice("0" + index);
                 System.out.println(message);
             }
         };

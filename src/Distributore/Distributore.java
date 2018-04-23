@@ -450,12 +450,11 @@ public class Distributore implements MaxValue{
 
     /**
      * funzione per passare all'interfaccia il costo della bevanda
-     * @param index è l'id della bevanda richiesta
+     * @param ID è l'id della bevanda richiesta
      * @return è il costo della bevanda richiesta
      */
 
-    public String getPrice(String index) {
-        String message = String.valueOf(list.get(index).getPrice());
-        return String.format("%.2f",message);
+    public String getPrice(String ID) {
+        return String.valueOf(list.get(ID).getPrice());
     }
 }
