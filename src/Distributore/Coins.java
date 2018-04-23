@@ -125,7 +125,7 @@ public class Coins {
 
             String coinsList = "5c: " + change[0] + "\n10c: " + change[1] + "\n20c: " + change[2] + "\n50c: "
                     + change[3] + "\n1E: " + change[4] + "\n2E: " + change[5];
-            String changeSupplied = "Resto erogato:\n" + String.format("%.2f",credit);
+            String changeSupplied = "Resto erogato: " + String.format("%.2f",credit);
 
             resetCredit(change);
 
@@ -152,6 +152,7 @@ public class Coins {
         for (int i=0 ;i < change.length; i++){
             credit = credit - change[i]*COINS_VALUE[i];
         }
+
     }
 
     /**
