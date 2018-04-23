@@ -242,7 +242,7 @@ public class Distributore implements MaxValue{
             subtractIngredients(ID, selected_sugar);
             coins.updateBalance(list.get(ID).getPrice());
             setSugarToDefault();
-            //coins.giveChange();
+            coins.giveChange();
 
             // Scrittura statistiche su file:
 
@@ -254,10 +254,10 @@ public class Distributore implements MaxValue{
                 fileNotWritable.printStackTrace();
             }
             if (coins.getCredit()!= 0) {
-                return "Bevanda erogata.\n" + coins.giveChange(); //gli  output è meglio che siano in italiano
+                return "HotDrink dispensed " + coins.giveChange();
             }
             else {
-                System.out.println("Bevanda erogata.");
+                System.out.println("HotDrink dispensed");
                 return "HotDrink dispensed";
             }
         }
@@ -448,15 +448,5 @@ public class Distributore implements MaxValue{
         ID = ID;
 
         System.out.println("Amen\n");
-    }
-
-    /**
-     * funzione per passare all'interfaccia il costo della bevanda
-     * @param ID è l'id della bevanda richiesta
-     * @return è il costo della bevanda richiesta
-     */
-
-    public String getPrice(String ID) {
-        return String.valueOf(list.get(ID).getPrice());
     }
 }
