@@ -400,6 +400,15 @@ public class Distributore implements MaxValue{
     }
 
     /**
+     * funzione che restituisce la quantità di zucchero selezionata
+     * @return è la quantità dello zucchero
+     */
+
+    public int getSelected_sugar(){
+        return selected_sugar;
+    }
+
+    /**
      * Funzione per aggiornare il file dati.txt, contenente le quantità di oggetti e di ingredienti.
      */
     private void updateDati(String ID) {
