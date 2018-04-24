@@ -3,8 +3,6 @@ package Distributore.InterfacciaDistributore;
 import Distributore.Distributore;
 
 import javax.swing.*;
-import javax.swing.text.Style;
-import javax.swing.text.StyleConstants;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -120,9 +118,10 @@ public class VendingMachine extends JFrame{
             JButton  button = makeRoundButton( cValue,
                     X_MON_INDEX[xButtonMon], Y_MON_INDEX[yButtonMon], screenSize.height / 8,
                     screenSize.height / 8);
+            
             //Aggiunta action listener associato ad ogni pulsante con relativo valore
             index = i;
-            button.addActionListener(new CretiListener(distributore, display, distributore.getCoinsValue()[i]));
+            button.addActionListener(new CreditListener(distributore, display, distributore.getCoinsValue()[i]));
             pannelloMonete.add(button);
             xButtonMon++;
         }
