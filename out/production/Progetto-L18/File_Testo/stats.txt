@@ -93,3 +93,10 @@ Latte Caldo	472	985	988.0	1000.0	Transazione fallita.	24-04-2018 09:38:36
 Latte Caldo	472	985	988.0	1000.0	Transazione fallita.	24-04-2018 09:38:36
 Caffè Espresso	472	985	988.0	1000.0	Transazione fallita.	24-04-2018 09:38:38
 Caffè Espresso	472	985	988.0	1000.0	Transazione fallita.	24-04-2018 09:38:38
+Tè al Limone	471	985	988.0	1000.0	Transazione avvenuta il:	24-04-2018 11:55:17
+Tè al Limone	470	984	987.25	1000.0	Transazione avvenuta il:	24-04-2018 11:57:07
+Caffè Miscela Top	471	984	987.25	1000.0	Transazione fallita.	24-04-2018 14:25:59
+Tè al Limone	471	984	987.25	1000.0	Transazione fallita.	24-04-2018 14:26:06
+Caffè Espresso	471	984	987.25	1000.0	Transazione fallita.	24-04-2018 14:26:07
+Cappuccino	471	984	987.25	1000.0	Transazione fallita.	24-04-2018 14:26:08
+Caffè Miscela Top	471	984	987.25	1000.0	Transazione fallita.	24-04-2018 14:26:09
