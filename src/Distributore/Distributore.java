@@ -332,42 +332,23 @@ public class Distributore implements MaxValue{
         }
     }
 
-    /**
-     *
-     * @param i
-     * @return
-     */
+
     public String getLabel(int i){
         return (list.get("0" + i).getName());//+ " Costo: " + list.get("0"+i).getPrice());
     }
 
-    /**
-     * @return numero di bevande presenti nel distributore.
-     */
     public int getListSize(){
         return list.size();
     }
 
-    /**
-     *
-     * @return
-     */
     public double getCredit(){
         return coins.getCredit();
     }
 
-    /**
-     * @param id della bevanda.
-     * @return ritorna l'id della bevanda corrispondente.
-     */
     public String getID(int id){
         return list.get("0" + id).getId();
     }
 
-    /**
-     *
-     * @return
-     */
     public ArrayList<String[]> getDati() {
         return dati;
     }
@@ -400,11 +381,6 @@ public class Distributore implements MaxValue{
             selected_sugar--;
         }
     }
-
-    /**
-     * funzione che restituisce la quantità di zucchero selezionata
-     * @return è la quantità dello zucchero
-     */
 
     public int getSelected_sugar(){
         return selected_sugar;
@@ -444,29 +420,6 @@ public class Distributore implements MaxValue{
         double[] cValue = coins.getCOINS_VALUE();
         return cValue;
     }
-
-    /**
-     * Funzione per chiamare un dog-sitter da remoto.
-     */
-    public void Dog(String name, String breed, int size, int age, int weight, String ownerName,
-                    String ownerSurname, int ID) {
-        name = name;
-        breed = breed;
-        size = size;
-        age = age;
-        weight = weight;
-        ownerName = ownerName;
-        ownerSurname = ownerSurname;
-        ID = ID;
-
-        System.out.println("Amen\n");
-    }
-
-    /**
-     * funzione per passare all'interfaccia il costo della bevanda
-     * @param ID è l'id della bevanda richiesta
-     * @return è il costo della bevanda richiesta
-     */
 
     public double getPrice(String ID) {
         return list.get(ID).getPrice();
