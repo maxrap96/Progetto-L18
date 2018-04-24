@@ -22,8 +22,8 @@ public class BeverageListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String s = e.getActionCommand();
         if (s.equals(distributoreL.getLabel(indexL))) {
-            textAreaL.setText(distributoreL.getLabel(indexL).toUpperCase());
+            textAreaL.setText(distributoreL.getLabel(indexL).toUpperCase() + "\n" + "COSTO: "
+                              + String.format("%.2f", distributoreL.getPrice("0" + indexL)));
         }
-
     }
 }

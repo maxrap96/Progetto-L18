@@ -457,7 +457,7 @@ public class Distributore implements MaxValue{
      * @return è il costo della bevanda richiesta
      */
 
-    public String getPrice(String ID) {
-        return String.valueOf(list.get(ID).getPrice());
+    public double getPrice(String ID) {
+        return list.get(ID).getPrice();
     }
 }
