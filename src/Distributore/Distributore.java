@@ -201,7 +201,7 @@ public class Distributore implements MaxValue{
 
                 for (int i = 0; i < value.length; i++) {
                     try {
-                        System.out.println("Inserire le monete da " + String.format("%.2f", value[i]) + " cent");
+                        System.out.println("Inserire le monete da " + String.format("%.2f", value[i]/100) + " cent");
                         input = keyboard();
                         if (parseInt(input)>0) {
                             coins.addCredit(input, i);
