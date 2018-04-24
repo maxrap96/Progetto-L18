@@ -4,6 +4,8 @@ import java.net.Socket;
 
 public class Client {
 
+    // TODO implementare Thread
+
     static String stringFromServer; // Stringa in ingresso dal Server
     static PrintWriter outToServer; // Dati diretti al Server
     static BufferedReader inFromServer; // Dati in entrata

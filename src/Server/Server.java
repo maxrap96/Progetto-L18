@@ -1,6 +1,6 @@
 package Server;
 
-import Distributore.InterfacciaDistributore.WindowCloser;
+import InterfacciaDistributore.WindowCloser;
 
 import javax.swing.*;
 import java.awt.*;
@@ -46,6 +46,7 @@ public class Server extends JFrame {
 
     /**
      * Funzione che inizializza il JFrame secondo alcuni standard.
+     *
      * @param title nome della finestra.
      */
     private void initJFrame(String title){
@@ -60,6 +61,7 @@ public class Server extends JFrame {
 
     /**
      * Funzione che crea un bottone.
+     *
      * @param nameButton nome da assegnare al bottone.
      * @return il bottone creato.
      */
@@ -72,6 +74,7 @@ public class Server extends JFrame {
 
     /**
      * Funzione che aggiunge un certo numero di textArea.
+     *
      * @param panel pannello a cui aggiungo le textArea.
      * @param size quante textArea aggiungere.
      */

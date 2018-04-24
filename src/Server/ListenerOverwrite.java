@@ -30,6 +30,7 @@ public class ListenerOverwrite implements ActionListener {
 
     /**
      * Svuoto il file.
+     *
      * @param file il file da svuotare.
      * @throws IOException
      */
@@ -46,6 +47,7 @@ public class ListenerOverwrite implements ActionListener {
 
     /**
      * Scrivo il file ricevuto.
+     *
      * @param stringToWrite stringa da scrivere su file.
      * @param file dove salvo ciò che arriva.
      * @throws IOException
@@ -61,7 +63,8 @@ public class ListenerOverwrite implements ActionListener {
     }
 
     /**
-     * Funzione che crea una stringa unica dai campi di JTextField
+     * Funzione che crea una stringa unica dai campi di JTextField.
+     *
      * @param jTextFields vettore di JTextField che contengono i dati da scrivere nelle stringa
      * @return la stringa creata
      */

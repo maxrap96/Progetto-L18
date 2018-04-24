@@ -1,4 +1,4 @@
-package Distributore.InterfacciaDistributore;
+package InterfacciaDistributore;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;

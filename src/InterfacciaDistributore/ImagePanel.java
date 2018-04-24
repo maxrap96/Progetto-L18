@@ -1,4 +1,4 @@
-package Distributore.InterfacciaDistributore;
+package InterfacciaDistributore;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
