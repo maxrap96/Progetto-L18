@@ -13,8 +13,7 @@ public class Coins {
     private int credit = 0;
     private final double[] COINS_VALUE= new double[]{5, 10, 20, 50 , 100, 200};
 
-    private Data moneteTxt =
-            new Data("src/File_Testo/monete.txt");
+    private Data moneteTxt = new Data("src/File_Testo/monete.txt");
 
     public Coins() {
         this.money = new int[COINS_VALUE.length];
@@ -203,10 +202,17 @@ public class Coins {
      * Nota: utilizzata dall'interfaccia.
      *
      * @param inserted è il valore della moneta inserita.
-     * @param i è l'indice corrispondente al valore della moneta inserita in COINS_VALUE[].
+     *
      */
-    public void addCoin(double inserted, int i) {
-        credit += inserted;
-        money[i]++;
+    public void addCoin(double inserted) {
+        credit += inserted * 100;
+        //cerco di capire la moneta inserita
+        for (int i = 0; i < COINS_VALUE.length; i++){
+            if (inserted == COINS_VALUE[i]){
+                //significa che ho trovato il valore corrispondente
+                money[i]++;
+                break;
+            }
+        }
     }
 }

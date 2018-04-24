@@ -322,14 +322,7 @@ public class Distributore implements MaxValue{
      * @param inserted è il valore associato al tasto di riferimento.
      */
     public void addCredit(double inserted){
-        double[] value = coins.getCOINS_VALUE();
-        //cerco di capire la moneta inserita
-        for (int i = 0; i < value.length; i++){
-            if (inserted == value[i]){
-                //significa che ho trovato il valore corrispondente
-                coins.addCoin(inserted,i);
-            }
-        }
+        coins.addCoin(inserted);
     }
 
 
@@ -339,10 +332,6 @@ public class Distributore implements MaxValue{
 
     public int getListSize(){
         return list.size();
-    }
-
-    public double getCredit(){
-        return coins.getCredit();
     }
 
     public String getID(int id){
@@ -407,6 +396,10 @@ public class Distributore implements MaxValue{
             ingredientsData.overwriteFile(newLine, current);
 
         } catch (IOException e) {}
+    }
+
+    public double getCredit(){
+        return coins.getCredit();
     }
 
     /**
