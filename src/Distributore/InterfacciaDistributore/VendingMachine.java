@@ -105,7 +105,7 @@ public class VendingMachine extends JFrame{
 
 
         // Creazione dei vari tasti della sezione moenete e aggiunta al pannelloMonete
-        
+
         int xButtonMon = 0, yButtonMon = 0; // coordinate dei pulsanti
 
         for (int i = 0; i < NUMERO_MONETE; i++) {
@@ -114,7 +114,8 @@ public class VendingMachine extends JFrame{
                 yButtonMon++;
             }
 
-            JButton  button = makeRoundButton(String.format("%.2f", distributore.getCoinsValue()[i]),
+            String cValue = String.format("%.2f", distributore.getCoinsValue()[i]);
+            JButton  button = makeRoundButton( cValue,
                     X_MON_INDEX[xButtonMon], Y_MON_INDEX[yButtonMon], screenSize.height / 8,
                     screenSize.height / 8);
             
