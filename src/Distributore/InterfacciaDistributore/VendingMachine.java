@@ -106,7 +106,7 @@ public class VendingMachine extends JFrame{
         int xButtonMon = 0, yButtonMon = 0; // coordinate dei pulsanti
         String[] coinsValue = {"","","","","",""};
         for (int i = 0; i < NUMERO_MONETE; i++) {
-             coinsValue[i] = String.format("%.2f", distributore.getCoinsValue()[i] / 100);
+             coinsValue[i] = String.format("%.2f", distributore.getCoinsValue()[i]);
         }
 
         for (int i = 0; i < NUMERO_MONETE; i++) {

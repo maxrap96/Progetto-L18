@@ -1,13 +1,13 @@
 * qta rimasta, latte, acqua, bicchierini, cucchiaini, zucchero.
 *
 * Latte (Litri)
-Milk	1000.0
+Milk	999.66
 * Zucchero (hg)
 Sugar	986.75
 * Cucchiaini
 Spoons	983
 * Bicchierini
-Cups	469
+Cups	468
 *id quantityleft
 01	19.0
 02	25.0
