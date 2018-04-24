@@ -76,6 +76,7 @@ public class ServerSide {
             FileOutputStream fileOutputStream =
                     new FileOutputStream(file.getPath(), true); // Scrivo il file
             fileOutputStream.write((stringToWrite + "\n").getBytes());
+            fileOutputStream.close();
         }catch (IOException e){
             e.printStackTrace();
         }
@@ -97,6 +98,7 @@ public class ServerSide {
             while ((stringFromFile = inFromFile.readLine()) != null) { // Invio al Client
                 whereToWrite.println(stringFromFile);
             }
+            inFromFile.close();
         }catch (IOException e){
             e.printStackTrace();
         }

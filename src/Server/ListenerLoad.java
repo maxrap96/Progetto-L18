@@ -7,11 +7,11 @@ import java.io.*;
 
 public class ListenerLoad implements ActionListener {
     File fileListener;
-    JTextArea textAreaListener;
+    JTextField[] textFieldListener;
 
-    public ListenerLoad(File file, JTextArea jTextArea) {
+    public ListenerLoad(File file, JTextField[] jTextField) {
         this.fileListener = file;
-        this.textAreaListener = jTextArea;
+        this.textFieldListener = jTextField;
     }
 
     @Override
@@ -20,9 +20,7 @@ public class ListenerLoad implements ActionListener {
             BufferedReader bufferedReader =
                     new BufferedReader(new FileReader(fileListener.getPath()));
 
-            textAreaListener.read(bufferedReader, null);
             bufferedReader.close();
-            textAreaListener.repaint();
         } catch (IOException exc){
             exc.printStackTrace();
         }
