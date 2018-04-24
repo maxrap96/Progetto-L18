@@ -3,6 +3,8 @@ package Distributore.InterfacciaDistributore;
 import Distributore.Distributore;
 
 import javax.swing.*;
+import javax.swing.text.Style;
+import javax.swing.text.StyleConstants;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -68,6 +70,8 @@ public class VendingMachine extends JFrame{
         display.setForeground(Color.WHITE);
         display.setFont(new Font("", Font.BOLD & Font.ITALIC,25));
         display.setEditable(false);                 //Cosi non posso scriverci sopra da interfaccia
+
+        display.setText("      SCEGLIERE LA BEVANDA");
         pannelloSelezione.add(display, BorderLayout.NORTH);
 
         // Creazione e aggiunta dei dodici pulsanti delle bevande
@@ -102,7 +106,7 @@ public class VendingMachine extends JFrame{
         int xButtonMon = 0, yButtonMon = 0; // coordinate dei pulsanti
         String[] coinsValue = {"","","","","",""};
         for (int i = 0; i < NUMERO_MONETE; i++) {
-             coinsValue[i] = String.format("%.2f", distributore.getCoinsValue()[i]);
+             coinsValue[i] = String.format("%.2f", distributore.getCoinsValue()[i] / 100);
         }
 
         for (int i = 0; i < NUMERO_MONETE; i++) {
