@@ -23,12 +23,8 @@ public class BeverageListener implements ActionListener {
         String s = e.getActionCommand();
         if (s.equals(distributoreL.getLabel(indexL))) {
             textAreaL.setText(distributoreL.getLabel(indexL).toUpperCase() + "\n" + "COSTO: "
-<<<<<<< HEAD
-                    + String.format("%.2f", distributoreL.getPrice("0" + indexL)));
-=======
-                              + String.format("%.2f", distributoreL.getPrice("0" + indexL)) + "\n\n\n"
-                              + " - \u26aa \u26aa \u26aa \u26aa \u26aa +");
->>>>>>> 85e15af3732e01095cfd98431ab9d1f265fce6a9
+                    + String.format("%.2f", distributoreL.getPrice("0" + indexL)) + "\n\n\n"
+                    + " - \u26aa \u26aa \u26aa \u26aa \u26aa +");
         }
     }
 }
