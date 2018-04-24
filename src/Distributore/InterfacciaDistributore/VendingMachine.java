@@ -115,9 +115,8 @@ public class VendingMachine extends JFrame{
             }
 
             String cValue = String.format("%.2f", distributore.getCoinsValue()[i]);
-            JButton  button = makeRoundButton( cValue,
-                    X_MON_INDEX[xButtonMon], Y_MON_INDEX[yButtonMon], screenSize.height / 8,
-                    screenSize.height / 8);
+            JButton  button = makeRoundButton(cValue, X_MON_INDEX[xButtonMon], Y_MON_INDEX[yButtonMon],
+                                              screenSize.height / 8,screenSize.height / 8);
             
             //Aggiunta action listener associato ad ogni pulsante con relativo valore
             index = i;
