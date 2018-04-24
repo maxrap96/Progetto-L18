@@ -124,7 +124,7 @@ public class VendingMachine extends JFrame{
 
                 //aggiunta action listener associato ad ogni bottore con relativo valore
                 index=i;
-                button.addActionListener(value(distributore.getCoinsValue()[index]));
+                button.addActionListener( new CretiListener(distributore, display, distributore.getCoinsValue()[i]));
 
             }
             else {
