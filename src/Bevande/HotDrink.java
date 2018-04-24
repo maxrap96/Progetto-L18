@@ -44,6 +44,7 @@ public abstract class HotDrink {
         this.temperature = parseDouble(rowSplitted[5]);
         this.milk = parseDouble(rowSplitted[7]);
         this.water = parseDouble(rowSplitted[8]);
+        this.vodka = parseDouble(rowSplitted[9]);
     }
 
     /**

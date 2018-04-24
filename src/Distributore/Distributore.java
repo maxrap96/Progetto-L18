@@ -42,7 +42,7 @@ public class Distributore implements MaxValue {
         this.sugar = Double.parseDouble(statistics.get(1)[1]);
         this.spoon = parseInt(statistics.get(2)[1]);
         this.cup = parseInt(statistics.get(3)[1]);
-        this.vodka = parseInt(statistics.get(4)[1]);
+        this.vodka = Double.parseDouble(statistics.get(4)[1]);
         dati = statistics;
         checkIfMachineIsEmpty(); // Controllo se c'è bisogno di ricaricare la macchinetta.
     }
