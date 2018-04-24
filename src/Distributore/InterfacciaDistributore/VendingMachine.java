@@ -16,6 +16,9 @@ public class VendingMachine extends JFrame{
     private Distributore distributore = new Distributore();
     private int index = 1;
     private int sugar = 3;
+    private final String DEFAULTMESSAGE = "     Selezionare una bevanda";
+
+
 
     /**
      * Creazione interfaccia grafica distributore
@@ -71,7 +74,7 @@ public class VendingMachine extends JFrame{
         display.setFont(new Font("", Font.BOLD & Font.ITALIC,25));
         display.setEditable(false);                 //Cosi non posso scriverci sopra da interfaccia
 
-        display.setText("      SCEGLIERE LA BEVANDA");
+        display.setText(DEFAULTMESSAGE);
         pannelloSelezione.add(display, BorderLayout.NORTH);
 
         // Creazione e aggiunta dei dodici pulsanti delle bevande
@@ -102,12 +105,10 @@ public class VendingMachine extends JFrame{
             xButton++;
         }
 
+
         // Creazione dei vari tasti della sezione moenete e aggiunta al pannelloMonete
+        
         int xButtonMon = 0, yButtonMon = 0; // coordinate dei pulsanti
-        String[] coinsValue = {"","","","","",""};
-        for (int i = 0; i < NUMERO_MONETE; i++) {
-             coinsValue[i] = String.format("%.2f", distributore.getCoinsValue()[i]);
-        }
 
         for (int i = 0; i < NUMERO_MONETE; i++) {
             if (xButtonMon == 3) {
@@ -115,13 +116,12 @@ public class VendingMachine extends JFrame{
                 yButtonMon++;
             }
 
-            JButton  button = makeRoundButton(coinsValue[i],  X_MON_INDEX[xButtonMon], Y_MON_INDEX[yButtonMon],
-                                             screenSize.height / 8,screenSize.height / 8);
-
+            JButton  button = makeRoundButton(String.format("%.2f", distributore.getCoinsValue()[i]),
+                    X_MON_INDEX[xButtonMon], Y_MON_INDEX[yButtonMon], screenSize.height / 8,
+                    screenSize.height / 8);
             //Aggiunta action listener associato ad ogni pulsante con relativo valore
             index = i;
             button.addActionListener(new CretiListener(distributore, display, distributore.getCoinsValue()[i]));
-
             pannelloMonete.add(button);
             xButtonMon++;
         }
