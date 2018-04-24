@@ -10,8 +10,8 @@ import static java.lang.Integer.parseInt;
 public class Coins {
     private int[] money;
     private double profit = 0.0;
-    private double credit = 0.0;
-    private final double COINS_VALUE[] = {0.05, 0.10, 0.20, 0.50 , 1.00, 2.00};
+    private int credit = 0;
+    private final double COINS_VALUE[] = {5, 10, 20, 50 , 100, 200};
 
     private Data moneteTxt =
             new Data("src/File_Testo/monete.txt");
@@ -71,9 +71,8 @@ public class Coins {
      */
     public void updateBalance(double vendita) {
         profit += vendita;
-        float tmp = (float)(credit - vendita);
+        credit = credit - (int)((vendita)*100);
         //credit = (credit)*1000 - (vendita)*1000;    //moltiplico per 1000 per evitare errori strani di approsimazione
-        credit = tmp;
     }
 
     /**
@@ -125,7 +124,7 @@ public class Coins {
 
             String coinsList = "5c: " + change[0] + "\n10c: " + change[1] + "\n20c: " + change[2] + "\n50c: "
                     + change[3] + "\n1E: " + change[4] + "\n2E: " + change[5];
-            String changeSupplied = "Resto erogato: " + String.format("%.2f",credit);
+            String changeSupplied = "Resto erogato: " + ((double)credit/100);
 
             resetCredit(change);
 
@@ -150,7 +149,7 @@ public class Coins {
      */
     private void resetCredit(int[] change) {
         for (int i=0 ;i < change.length; i++){
-            credit = credit - change[i]*COINS_VALUE[i];
+            credit = credit - (int)(change[i]*COINS_VALUE[i]);
         }
 
     }
@@ -175,11 +174,11 @@ public class Coins {
      */
     private int[] optimizeChange(int[] change){
 
-        float resto = (float)(credit * 100);
+        int resto = (credit);
         int[] divisor = {5, 10, 20, 50, 100, 200};
 
         for (int i = COINS_VALUE.length-1; i > -1; i--) {
-            change[i] = (int) (resto) / divisor[i];
+            change[i] = (resto) / divisor[i];
             resto = resto % divisor[i];
 
             if (change[i] > money[i]) {
