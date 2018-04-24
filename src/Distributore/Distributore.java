@@ -417,11 +417,7 @@ public class Distributore implements MaxValue{
      * @return sono i valori delle monete in forma vettore.
      */
     public double[] getCoinsValue(){
-        double[] cValue = new double[ coins.getCOINS_VALUE().length];
-        for(int i = 0; i < coins.getCOINS_VALUE().length; i++){
-            cValue[i] = coins.getCOINS_VALUE()[i]/100;
-        }
-        return cValue;
+        return coins.getCOINS_VALUE();
     }
 
     public double getPrice(String ID) {

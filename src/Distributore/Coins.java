@@ -11,7 +11,7 @@ public class Coins {
     private int[] money;
     private double profit = 0.0;
     private int credit = 0;
-    private final double COINS_VALUE[] = {5, 10, 20, 50 , 100, 200};
+    private final double[] COINS_VALUE= new double[]{5, 10, 20, 50 , 100, 200};
 
     private Data moneteTxt =
             new Data("src/File_Testo/monete.txt");
@@ -22,7 +22,12 @@ public class Coins {
     }
 
     public double[] getCOINS_VALUE() {
-        return COINS_VALUE;
+        double[] cValue =new double[COINS_VALUE.length];
+        for (int i=0 ; i<COINS_VALUE.length; i++){
+
+            cValue[i] = COINS_VALUE[i] / 100;
+        }
+        return cValue;
     }
 
     /**
@@ -97,7 +102,7 @@ public class Coins {
      * @return
      */
     public double getCredit() {
-        double c = credit/100;
+        double c = ((double)credit) /100 ;
         return c;
     }
 

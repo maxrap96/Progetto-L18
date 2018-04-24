@@ -107,3 +107,4 @@ Latte Caldo	471	984	987.25	1000.0	Transazione fallita.	24-04-2018 14:42:35
 Ginseng	471	984	987.25	1000.0	Transazione fallita.	24-04-2018 14:52:51
 Caffè Lungo	471	984	987.25	1000.0	Transazione fallita.	24-04-2018 15:07:04
 Cioccolata	471	984	987.25	1000.0	Transazione fallita.	24-04-2018 15:36:32
+Cioccolata	470	983	986.75	1000.0	Transazione avvenuta il:	24-04-2018 15:36:50
