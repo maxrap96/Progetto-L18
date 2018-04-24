@@ -37,7 +37,7 @@ public class Distributore implements MaxValue{
      * Funzione che carica le quantità residue leggendole da file.
      */
     private void setValues(ArrayList<String[]> statistics) {
-
+        setSugarToDefault();
         this.milk = Double.parseDouble(statistics.get(0)[1]);
         this.sugar = Double.parseDouble(statistics.get(1)[1]);
         this.spoon = parseInt(statistics.get(2)[1]);
