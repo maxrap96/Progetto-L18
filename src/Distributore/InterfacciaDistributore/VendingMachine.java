@@ -132,6 +132,7 @@ public class VendingMachine extends JFrame{
         pannelloMonete.add(giveChange);
         giveChange.addActionListener(change -> {
             distributore.giveChange();
+            display.setText("\n\n\nCREDITO: " +  String.format("%.2f", distributore.getCredit()));
             //c'è  da aggiornare il valore del credito
         });
 
@@ -140,7 +141,7 @@ public class VendingMachine extends JFrame{
         pannelloMonete.add(minus);
         minus.addActionListener(subtract -> {
             distributore.lessSugar();
-            sugar = distributore.getSelected_sugar();
+
         });
 
         JButton plus = makeRoundButton("+",20 * screenSize.width / 100,20 * screenSize.height / 100,
@@ -148,7 +149,6 @@ public class VendingMachine extends JFrame{
         pannelloMonete.add(plus);
         plus.addActionListener(add -> {
             distributore.moreSugar();
-            sugar = distributore.getSelected_sugar();
             //c'è da aggiungere un repaint sui pallini basati su sugar. sugar è il nuemro di pallini
         });
 
@@ -159,19 +159,17 @@ public class VendingMachine extends JFrame{
     }
 
     /**
-     * serve per associare dinamicamente il valore monetario al tasto corrisponente
-     * @param moneyInserted indica il valore booleano della moneta inserita
-     * @return è l'action listener da associare al pulsante
+     * serve a capire quanti pallini devo mostrare per lo zucchero ed a aggiornare il display
      */
 
-    private ActionListener value(double moneyInserted) {
-        return new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Sono stati inseriti €\t"+ moneyInserted);
-                distributore.addCredit(moneyInserted);
-                }
-        };
+    private void getDots(){
+        sugar = distributore.getSelected_sugar();
+        switch (sugar){
+
+        default:
+
+        }
+
     }
 
     /**

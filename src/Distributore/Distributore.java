@@ -421,3 +421,6 @@ public class Distributore implements MaxValue{
         coins.giveChange();
     }
 }
+
+
+//TODO aggiungere il thread per la gestione del timer per far cambiare la scritta
