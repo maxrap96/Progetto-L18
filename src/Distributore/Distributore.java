@@ -469,4 +469,8 @@ public class Distributore implements MaxValue{
     public double getPrice(String ID) {
         return list.get(ID).getPrice();
     }
+
+    public void giveChange() {
+        coins.giveChange();
+    }
 }

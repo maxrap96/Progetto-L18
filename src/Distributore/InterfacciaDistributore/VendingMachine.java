@@ -16,7 +16,7 @@ public class VendingMachine extends JFrame{
     private Distributore distributore = new Distributore();
 
     private int index = 1;
-    private String message;
+    private int sugar = 3;
 
     /**
      * Creazione interfaccia grafica distributore
@@ -136,6 +136,28 @@ public class VendingMachine extends JFrame{
             xButtonMon++;
         }
 
+        //creo i pulsanti + - e return dei soldi inseriti
+        /*
+        Button giveChange= makeRoundButton("C", X_MON_INDEX[], Y_MON_INDEX[], screenSize.height / 8,screenSize.height / 8 );
+        giveChange.addActionListener( change -> {
+            distributore.giveChange();
+            //c'è  da aggiornare il valore del credito
+        });
+        Button plus = makeRoundButton("+", X_MON_INDEX[], Y_MON_INDEX[], screenSize.height / 8,screenSize.height / 8 );
+        plus.addActionListener( add ->{
+            distributore.moreSugar();
+            sugar = distributore.getSelected_sugar();
+            //c'è da aggiungere un repaint sui pallini basati su sugar. sugar è il nuemro di pallini
+        });
+
+        Button minus = makeRoundButton("-", X_MON_INDEX[], Y_MON_INDEX[], screenSize.height / 8,screenSize.height / 8 );
+        minus.addActionListener( subtract -> {
+            distributore.lessSugar();
+            sugar = distributore.getSelected_sugar();
+        });
+        */
+
+
         JButton chiavetta = makeRoundRectButton("Chiavetta", 9 * screenSize.width / 200,
                                                 3 * screenSize.width / 100, 20 * screenSize.width / 100,
                                                 9 * screenSize.height / 100) ;
@@ -154,9 +176,7 @@ public class VendingMachine extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Sono stati inseriti €\t"+ moneyInserted);
                 distributore.addCredit(moneyInserted);
-                message = String.format("%.2f", distributore.getCredit());
-                System.out.println("Sono stati inseriti €\t"+ moneyInserted + "\t Credito: " + message);
-            }
+                }
         };
     }
 
