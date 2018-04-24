@@ -119,3 +119,5 @@ Cappuccino	468	983	986.75	999.66	Transazione fallita.	24-04-2018 16:13:49
 Caffè Espresso	468	983	986.75	999.66	Transazione fallita.	24-04-2018 16:13:50
 Caffè Lungo	468	983	986.75	999.66	Transazione fallita.	24-04-2018 16:13:51
 Cappuccino	468	983	986.75	999.66	Transazione fallita.	24-04-2018 16:20:54
+Caffè Lungo	468	983	986.75	999.66	Transazione fallita.	24-04-2018 16:23:04
+Latte Caldo	468	983	986.75	999.66	Transazione fallita.	24-04-2018 16:23:05
