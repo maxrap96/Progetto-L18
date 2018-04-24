@@ -4,8 +4,6 @@ import Distributore.Distributore;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class VendingMachine extends JFrame{
 
@@ -140,7 +138,7 @@ public class VendingMachine extends JFrame{
         pannelloMonete.add(minus);
         minus.addActionListener(subtract -> {
             distributore.lessSugar();
-
+            setDots(display);
         });
 
         JButton plus = makeRoundButton("+",20 * screenSize.width / 100,20 * screenSize.height / 100,
@@ -148,7 +146,7 @@ public class VendingMachine extends JFrame{
         pannelloMonete.add(plus);
         plus.addActionListener(add -> {
             distributore.moreSugar();
-            //c'è da aggiungere un repaint sui pallini basati su sugar. sugar è il nuemro di pallini
+            setDots(display);
         });
 
         JButton chiavetta = makeRoundRectButton("Chiavetta", 9 * screenSize.width / 200,
@@ -159,15 +157,36 @@ public class VendingMachine extends JFrame{
 
     /**
      * serve a capire quanti pallini devo mostrare per lo zucchero ed a aggiornare il display
+     * @param display
      */
 
-    private void getDots(){
+    private void setDots(JTextArea display){
         sugar = distributore.getSelected_sugar();
+        String quantity = null;
         switch (sugar){
-
-        default:
-
+            //u25cf è pallino pieno
+            //u25cb è pallino vuoto
+            case 0:
+                quantity = "    Senza zucchero";
+                break;
+            case 1:
+                quantity = " - \u25cf \u25cb \u25cb \u25cb \u25cb +";
+                break;
+            case 2:
+                quantity = " - \u25cf \u25cf \u25cb \u25cb \u25cb +";
+                break;
+            case 3:
+                quantity = " - \u25cf \u25cf \u25cf \u25cb \u25cb +";
+                break;
+            case 4:
+                quantity = " - \u25cf \u25cf \u25cf \u25cf \u25cb +";
+                break;
+            case 5:
+                quantity = " - \u25cf \u25cf \u25cf \u25cf \u25cf +";
+                break;
         }
+
+        display.setText(quantity);
 
     }
 
