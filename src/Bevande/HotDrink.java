@@ -7,7 +7,7 @@ public abstract class HotDrink {
     protected String id;
     protected Tipo type;
     protected String name;
-    protected double price, maxQuantity, temperature, dispensedQuantity, water, milk;
+    protected double price, maxQuantity, temperature, dispensedQuantity, water, milk, vodka;
     protected double leftQuantity;
 
     /**
@@ -26,6 +26,7 @@ public abstract class HotDrink {
         this.temperature = parseDouble(rowSplitted[5]);
         this.milk = parseDouble(rowSplitted[7]);
         this.water = parseDouble(rowSplitted[8]);
+        this.vodka = parseDouble(rowSplitted[9]);
     }
 
     /**
@@ -76,6 +77,10 @@ public abstract class HotDrink {
      */
     public double getMilk() {
         return milk;
+    }
+
+    public  double getVodka(){
+        return vodka;
     }
 
     /**
