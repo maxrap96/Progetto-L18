@@ -100,3 +100,8 @@ Tè al Limone	471	984	987.25	1000.0	Transazione fallita.	24-04-2018 14:26:06
 Caffè Espresso	471	984	987.25	1000.0	Transazione fallita.	24-04-2018 14:26:07
 Cappuccino	471	984	987.25	1000.0	Transazione fallita.	24-04-2018 14:26:08
 Caffè Miscela Top	471	984	987.25	1000.0	Transazione fallita.	24-04-2018 14:26:09
+Caffè Lungo	471	984	987.25	1000.0	Transazione fallita.	24-04-2018 14:42:30
+Cappuccino	471	984	987.25	1000.0	Transazione fallita.	24-04-2018 14:42:32
+Caffè Espresso	471	984	987.25	1000.0	Transazione fallita.	24-04-2018 14:42:34
+Latte Caldo	471	984	987.25	1000.0	Transazione fallita.	24-04-2018 14:42:35
+Ginseng	471	984	987.25	1000.0	Transazione fallita.	24-04-2018 14:52:51
