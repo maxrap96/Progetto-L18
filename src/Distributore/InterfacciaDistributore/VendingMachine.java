@@ -1,7 +1,6 @@
 package Distributore.InterfacciaDistributore;
 
 import Distributore.Distributore;
-import Distributore.Coins;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,7 +15,7 @@ public class VendingMachine extends JFrame{
     private final String[] ALTRI_PULSANTI = {"-", "+", ""};
     private Distributore distributore = new Distributore();
 
-    private int index=1;
+    private int index = 1;
     private String message;
 
     /**
@@ -30,6 +29,7 @@ public class VendingMachine extends JFrame{
         pack();
         setSize(screenSize.width,screenSize.height);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
+
         setTitle("Hot Drinks Vending Machine");
 
 
@@ -86,13 +86,13 @@ public class VendingMachine extends JFrame{
             }
             JButton button;
             if (i < distributore.getListSize()) {
-                index=i+1;
-                String id= String.valueOf(index);
+                index = i + 1;
+                String id = String.valueOf(index);
                 button = makeRoundRectButton(distributore.getLabel(index), X_SCREEN_INDEX[xButton],
                                              Y_SCREEN_INDEX[yButton],screenSize.width / 6,
                                             screenSize.height / 8);
-                //button.addActionListener(new ListenerTry( display, distributore.getID(i + 1)));
-                button.addActionListener(selectBeverage(id));
+
+                button.addActionListener(new BeverageListener(distributore,display, index));
             }
             else {
                 //bottone vuoto
@@ -156,25 +156,6 @@ public class VendingMachine extends JFrame{
                 distributore.addCredit(moneyInserted);
                 message = String.format("%.2f", distributore.getCredit());
                 System.out.println("Sono stati inseriti €\t"+ moneyInserted + "\t Credito: " + message);
-            }
-        };
-    }
-
-    /**
-     * funzione per creare dinamicamente
-     * @param index è l'indice corrispondente al nome della bevanda da associare
-     * @return selection è l'action listener da associare al pulsante
-     */
-
-    private ActionListener selectBeverage(String index) {
-        return new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Bevanda selezionata_:" + distributore.getLabel(Integer.parseInt(index)) + " Costo: "
-                        + distributore.getPrice("0" + index) );
-                distributore.selectBeverage("0"+index);
-                message = distributore.selectBeverage("0"+index) + " Costo: " + distributore.getPrice("0" + index);
-                System.out.println(message);
             }
         };
     }
