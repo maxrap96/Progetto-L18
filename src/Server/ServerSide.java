@@ -4,15 +4,11 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class ServerSide {
+public class ServerSide implements FileServer{
 
     static String stringFromClient; // Stringa letta dai dati in entrata
     static PrintWriter outToClient; // Dati diretti al Client
     static BufferedReader inFromClient; // Dati in entrata
-    static File fileMenuServer =
-            new File("src/FIle_Testo_Server/serverMenu.txt");
-    static File fileStatsServer =
-            new File("src/FIle_Testo_Server/serverStats.txt");
 
     public static void main(String[] args){
         try{

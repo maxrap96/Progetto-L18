@@ -4,16 +4,12 @@ import InterfacciaDistributore.WindowCloser;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
 
-public class Server extends JFrame {
+public class Server extends JFrame implements FileServer{
 
-    static File fileMenuServer =
-            new File("src/FIle_Testo_Server/serverMenu.txt");
-    static File fileStatsServer =
-            new File("src/FIle_Testo_Server/serverStats.txt");
-    private int panelRows = 12;
-    private int panelCols = 9;
+    private int panelRows;
+    private int panelCols;
+    private JTextField[][] textFieldsVect;
 
     /**
      * Creazione interfaccia grafica Server.
@@ -32,12 +28,9 @@ public class Server extends JFrame {
         JPanel textPanel = new JPanel(new GridLayout(this.panelRows, this.panelCols));
         textPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
 
-        addTextAreas(textPanel, panelCols * panelRows);
-
         JButton buttonMenu = makeButton("MENU");
         JButton buttonStats = makeButton("STATS");
 
-        //buttonMenu.addActionListener(new ListenerLoad(fileMenuServer, textArea));
         ButtonPanel buttonPanel = new ButtonPanel(buttonMenu, buttonStats);
 
         container.add(buttonPanel);
@@ -59,6 +52,14 @@ public class Server extends JFrame {
         setTitle(title);
     }
 
+    private void initRowsAndCols(){
+
+    }
+
+    private void initJTextField(){
+
+    }
+
     /**
      * Funzione che crea un bottone.
      *
@@ -71,45 +72,4 @@ public class Server extends JFrame {
         return buttonTmp;
 
     }
-
-    /**
-     * Funzione che aggiunge un certo numero di textArea.
-     *
-     * @param panel pannello a cui aggiungo le textArea.
-     * @param size quante textArea aggiungere.
-     */
-    private void addTextAreas(JPanel panel, int size){
-        for(int i = 0; i < size; i++){
-            JTextArea textArea = new JTextArea("A");
-            textArea.setFont(new Font("", Font.ITALIC, 20));
-            textArea.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-            panel.add(textArea);
-        }
-    }
-}
-
-/**
- * Pannello contenente i bottoni.
- *
- * Nota: viene utilizzato il GridBagLayout.
- */
-class ButtonPanel extends JPanel{
-
-    public ButtonPanel(JButton button1, JButton button2) {
-        this.setLayout(new GridBagLayout());
-        this.setBackground(Color.LIGHT_GRAY);
-        GridBagConstraints c = new GridBagConstraints();
-
-        c.fill = GridBagConstraints.BOTH;
-        c.insets = new Insets(60,60,60,60); // Spazio dai bordi
-        c.gridx = 0;    // Prima colonna
-        c.gridy = 0;    // Prima riga
-        c.weightx = 1;  // Riempio la metà orizzontale dello spazio del bottone. Valori ammessi 0..1
-        c.weighty = 1;  // Riempio la metà verticale dello spazio del bottone. Valori ammessi 0..1
-        this.add(button1, c);
-
-        c.gridy = 1; // Seconda riga
-        this.add(button2, c);
-    }
-
 }
