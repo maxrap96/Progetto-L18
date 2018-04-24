@@ -38,3 +38,4 @@ hs_err_pid*
 src/Distributore/Distributore.java
 src/Distributore/Distributore.java
 src/File_Testo/monete.txt
+*.xml___jb_old___

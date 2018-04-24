@@ -97,7 +97,8 @@ public class Coins {
      * @return
      */
     public double getCredit() {
-        return credit;
+        double c = credit/100;
+        return c;
     }
 
     /**
