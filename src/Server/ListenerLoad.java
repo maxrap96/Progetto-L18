@@ -25,8 +25,7 @@ public class ListenerLoad implements ActionListener, FileServer {
     }
 
     /**
-     * Funzione che aggiunge i textField al JPanel passato come argomento.
-     *
+     * Funzione che aggiunge i textField.
      */
     private void addTextField(){
         for (int i = 0; i < textFieldListener.length; i++){
@@ -34,9 +33,24 @@ public class ListenerLoad implements ActionListener, FileServer {
         }
     }
 
+    /**
+     * Funzione che scrive il testo nei textField.
+     */
     private void setTextField(){
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(fileListener.getPath()));
+            String tmp;
+            int index = 0;
+            while((tmp = bufferedReader.readLine()) != null){
+                if(tmp.contains("ID")){
+
+                } else if (!tmp.contains("*")){
+                    for (String pieceOfString : tmp.split("\t")){
+                        textFieldListener[index].setText(pieceOfString);
+                        index++;
+                    }
+                }
+            }
         }catch (IOException e){
             e.printStackTrace();
         }
