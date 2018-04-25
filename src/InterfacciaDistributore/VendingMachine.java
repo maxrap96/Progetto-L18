@@ -143,38 +143,49 @@ public class VendingMachine extends JFrame{
         JButton minus = makeRoundButton("-",11 * screenSize.width / 100,20 * screenSize.height / 100,
                                         screenSize.height / 8,screenSize.height / 8);
         pannelloMonete.add(minus);
+
         minus.addActionListener(subtract -> {
             distributore.lessSugar();
             setDots(sugarDisplay);
-          /*  Timer timer = new Timer();
+
+          Timer timer = new Timer();
             TimerTask timerTask = new TimerTask() {
                 @Override
                 public void run() {
-
-                    distributore.setSugarToDefault();
-                    sugar = distributore.getSelected_sugar() //c'è la funzione apposta e così lo resetti anche nel distrubutore
-                                                               //e non solo nell'interfaccia
-                    // sugarDisplay.setText("- \u25cf \u25cf \u25cf \u25cb \u25cb +"); //c'è la funzione apposta
-                    setDots(sugarDisplay);
+                    if (distributore.getCredit() == 0) {
+                        display.setText(DEFAULTMESSAGE);
+                        distributore.setSugarToDefault();
+                        sugar = distributore.getSelected_sugar();  //c'è la funzione apposta e così lo resetti anche nel
+                        // distrubutore e non solo nell'interfaccia
+                        setDots(sugarDisplay);
+                    }
                 }
             };
-            timer.schedule(timerTask, 5000);*/
+            timer.schedule(timerTask, 5000);
         });
+
+
         JButton plus = makeRoundButton("+",20 * screenSize.width / 100,20 * screenSize.height / 100,
                                        screenSize.height / 8,screenSize.height / 8);
         pannelloMonete.add(plus);
         plus.addActionListener(add -> {
             distributore.moreSugar();
             setDots(sugarDisplay);
-           /* Timer timer = new Timer();
+
+            Timer timer = new Timer();
             TimerTask timerTask = new TimerTask() {
                 @Override
                 public void run() {
-                    sugar = 3;
-                    setDots(sugarDisplay);
+                    if (distributore.getCredit() == 0) {
+                        display.setText(DEFAULTMESSAGE);
+                        distributore.setSugarToDefault();
+                        sugar = distributore.getSelected_sugar();  //c'è la funzione apposta e così lo resetti anche nel
+                        // distrubutore e non solo nell'interfaccia
+                        setDots(sugarDisplay);
+                    }
                 }
             };
-            timer.schedule(timerTask, 5000);*/
+            timer.schedule(timerTask, 5000);
         });
 
         JButton chiavetta = makeRoundRectButton("Chiavetta", 9 * screenSize.width / 200,
