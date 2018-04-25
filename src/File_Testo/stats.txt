@@ -175,3 +175,7 @@ Ginseng	460	978	982.5	999.4999999999999	Transazione fallita.	25-04-2018 16:50:36
 Cappuccino	459	977	981.75	999.4199999999998	Transazione avvenuta il:	25-04-2018 16:51:16
 Caffè Miscela Top	459	977	981.75	999.4199999999998	Transazione fallita.	25-04-2018 16:55:25
 Caffè Espresso	459	977	981.75	999.4199999999998	Transazione fallita.	25-04-2018 16:59:24
+Caffè Corretto	458	976	980.75	999.4199999999998	Transazione avvenuta il:	25-04-2018 20:13:58
+Tè al Limone	457	975	979.5	999.4199999999998	Transazione avvenuta il:	25-04-2018 20:16:52
+Caffè Corretto	456	975	979.5	999.4199999999998	Transazione avvenuta il:	25-04-2018 20:17:23
+Caffè Corretto	455	975	979.5	999.4199999999998	Transazione avvenuta il:	25-04-2018 20:17:58

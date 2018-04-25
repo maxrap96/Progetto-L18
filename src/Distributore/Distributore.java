@@ -98,7 +98,8 @@ public class Distributore implements MaxValue {
                 String quantityLeft = data.get(j_dati)[1];
                 createDrink(tipo.ordinal(), listFromFile, i_menu, quantityLeft);
             } else {
-                ingredientsData.writeData(dataToWrite(listFromFile, i_menu));
+                //ingredientsData.writeData(dataToWrite(listFromFile, i_menu));     // Togliendo la funzione ho il
+                                                // numero corretto di righe di output ma non aggiorno i dati.
                 createDrink(tipo.ordinal(), listFromFile, i_menu);
             }
         }
