@@ -62,8 +62,9 @@ public class VendingMachine extends JFrame{
 
         // Creazione display zucchero aggiunta al pannelloSelezione
         JTextField sugarDisplay = new JTextField();
-        sugarDisplay.setBackground(Color.green);
+        sugarDisplay.setBackground(Color.BLACK);
         sugarDisplay.setForeground(Color.WHITE);
+        sugarDisplay.setHorizontalAlignment(SwingConstants.CENTER);
         sugarDisplay.setFont(new Font("", Font.BOLD & Font.ITALIC,25));
         sugarDisplay.setEditable(false);
         pannelloSelezione.add(sugarDisplay, BorderLayout.CENTER);
@@ -160,8 +161,10 @@ public class VendingMachine extends JFrame{
     }
 
     /**
-     * serve a capire quanti pallini devo mostrare per lo zucchero ed a aggiornare il display
-     * @param display
+     * Funzione che aggiorna il display dello zucchero
+     * in base alla quantità scelta
+     * @param display: l'area di testo dove viene mostrata
+     *                 la quantità di zucchero
      */
 
     private void setDots(JTextField display){
@@ -171,27 +174,26 @@ public class VendingMachine extends JFrame{
             //u25cf è pallino pieno
             //u25cb è pallino vuoto
             case 0:
-                quantity = "    Senza zucchero";
+                quantity = "Senza zucchero";
                 break;
             case 1:
-                quantity = " - \u25cf \u25cb \u25cb \u25cb \u25cb +";
+                quantity = "- \u25cf \u25cb \u25cb \u25cb \u25cb +";
                 break;
             case 2:
-                quantity = " - \u25cf \u25cf \u25cb \u25cb \u25cb +";
+                quantity = "- \u25cf \u25cf \u25cb \u25cb \u25cb +";
                 break;
             case 3:
-                quantity = " - \u25cf \u25cf \u25cf \u25cb \u25cb +";
+                quantity = "- \u25cf \u25cf \u25cf \u25cb \u25cb +";
                 break;
             case 4:
-                quantity = " - \u25cf \u25cf \u25cf \u25cf \u25cb +";
+                quantity = "- \u25cf \u25cf \u25cf \u25cf \u25cb +";
                 break;
             case 5:
-                quantity = " - \u25cf \u25cf \u25cf \u25cf \u25cf +";
+                quantity = "- \u25cf \u25cf \u25cf \u25cf \u25cf +";
                 break;
         }
 
         display.setText(quantity);
-
     }
 
     /**
