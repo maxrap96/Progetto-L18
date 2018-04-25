@@ -351,7 +351,7 @@ public class Distributore implements MaxValue {
     /**
      * Dopo l'erogazione della bevanda lo zucchero viene riportato alla quantità di default.
      */
-    private void setSugarToDefault() {
+    public void setSugarToDefault() {
         selected_sugar = 3;
     }
 

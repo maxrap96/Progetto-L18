@@ -150,12 +150,16 @@ public class VendingMachine extends JFrame{
             TimerTask timerTask = new TimerTask() {
                 @Override
                 public void run() {
-                    sugarDisplay.setText("- \u25cf \u25cf \u25cf \u25cb \u25cb +");
+
+                    distributore.setSugarToDefault();
+                    sugar = distributore.getSelected_sugar() //c'è la funzione apposta e così lo resetti anche nel distrubutore
+                                                               //e non solo nell'interfaccia
+                    // sugarDisplay.setText("- \u25cf \u25cf \u25cf \u25cb \u25cb +"); //c'è la funzione apposta
+                    setDots(sugarDisplay);
                 }
             };
             timer.schedule(timerTask, 5000);*/
         });
-
         JButton plus = makeRoundButton("+",20 * screenSize.width / 100,20 * screenSize.height / 100,
                                        screenSize.height / 8,screenSize.height / 8);
         pannelloMonete.add(plus);
