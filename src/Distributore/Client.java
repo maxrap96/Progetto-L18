@@ -1,10 +1,10 @@
+package Distributore;
+
 import java.io.*;
 import java.net.ConnectException;
 import java.net.Socket;
 
-public class Client {
-
-    // TODO implementare Thread
+public class Client extends Thread{
 
     static String stringFromServer; // Stringa in ingresso dal Server
     static PrintWriter outToServer; // Dati diretti al Server
@@ -13,6 +13,14 @@ public class Client {
             new File("src/File_Testo/menu.txt");
     static File fileStatsClient =
             new File("src/File_Testo/stats.txt");
+
+    public void run(){
+        try {
+            startClient();
+        } catch (ConnectException ce){
+            ce.printStackTrace();
+        }
+    }
 
     /**
      * Avvia la comunicazione al server
@@ -30,13 +38,13 @@ public class Client {
                     writeFileReceived(stringFromServer, fileMenuClient);
                 }
             }
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     /**
-     * Creo le basi per la connessione Client
+     * Creo le basi per la connessione Distributore.Client
      * @throws IOException
      */
     protected static boolean connectionPreRequisite (String hostName, int connectionPort) throws IOException{
@@ -90,7 +98,7 @@ public class Client {
     }
 
     /**
-     * Invio di un file al Client
+     * Invio di un file al Distributore.Client
      * @param file file da inviare
      * @param whereToWrite mezzo attraverso cui invio il file
      * @throws IOException
@@ -101,7 +109,7 @@ public class Client {
             BufferedReader inFromFile =
                     new BufferedReader(new FileReader(file.getPath())); // Oggetto da cui prendo i dati
 
-            while ((stringFromFile = inFromFile.readLine()) != null) { // Invio al Client
+            while ((stringFromFile = inFromFile.readLine()) != null) { // Invio al Distributore.Client
                 whereToWrite.println(stringFromFile);
             }
         }catch (IOException e){

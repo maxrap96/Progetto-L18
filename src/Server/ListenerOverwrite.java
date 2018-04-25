@@ -5,15 +5,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 
-public class ListenerOverwrite implements ActionListener {
+public class ListenerOverwrite implements ActionListener, FileServer {
 
     File fileListener;
-    JTextField[] jTextFieldsVect;
+    JTextField[] jTextFieldsVectL;
     int columns;
 
-    public ListenerOverwrite(File file, JTextField[] vectTextFields, int howManyCols) {
-        this.fileListener = file;
-        this.jTextFieldsVect = vectTextFields;
+    public ListenerOverwrite(JTextField[] vectTextFields, int howManyCols) {
+        this.fileListener = fileMenuServer;
+        this.jTextFieldsVectL = vectTextFields;
         this.columns = howManyCols;
     }
 
@@ -21,7 +21,7 @@ public class ListenerOverwrite implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         try {
             emptyFile(fileListener);
-            String tmp = createFileString(jTextFieldsVect);
+            String tmp = createFileString(jTextFieldsVectL);
             writeFileReceived(tmp, fileListener);
         }catch (IOException e1){
             e1.printStackTrace();
@@ -34,7 +34,7 @@ public class ListenerOverwrite implements ActionListener {
      * @param file il file da svuotare.
      * @throws IOException
      */
-    protected static void emptyFile(File file) throws IOException{
+    private static void emptyFile(File file) throws IOException{
         try {
             PrintWriter emptyFile =
                     new PrintWriter(file.getPath());
@@ -52,7 +52,7 @@ public class ListenerOverwrite implements ActionListener {
      * @param file dove salvo ciò che arriva.
      * @throws IOException
      */
-    protected static void writeFileReceived(String stringToWrite, File file)throws IOException{
+    private static void writeFileReceived(String stringToWrite, File file)throws IOException{
         try {
             FileOutputStream fileOutputStream =
                     new FileOutputStream(file.getPath(), true); // Scrivo il file
@@ -64,24 +64,26 @@ public class ListenerOverwrite implements ActionListener {
     }
 
     /**
-     * Funzione che crea una stringa unica dai campi di JTextField.
+     * Funzione che crea una stringa unica dai JTextField.
      *
-     * @param jTextFields vettore di JTextField che contengono i dati da scrivere nelle stringa
-     * @return la stringa creata
+     * @param jTextFields vettore di JTextField che contengono i dati da scrivere nelle stringa.
+     * @return la stringa creata.
      */
     private String createFileString(JTextField[] jTextFields){
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("* le righe con * vengono saltate nella lettura\n" +
-                "* ID  TIPO  \tNOME  \t    COSTO  Q_MAX TEMP DOSE latte acqua\n");
+                "* ID  TIPO  \tNOME  \t    COSTO  Q_MAX TEMP DOSE latte acqua\tvodka\n");
         int jTmp;
-        for (int i = 9; i < jTextFields.length; i++){ // Salto i primo 8 JTextField
+        for (int i = columns; i < jTextFields.length; i++){
             jTmp = i;
-            if ((jTmp + 1) % 9 == 0) { // i + 1 perchè il vettore parte da 0
-                stringBuilder.append(jTextFields[i].getText());
-                stringBuilder.append("\n");
-            } else {
-                stringBuilder.append(jTextFields[i].getText());
-                stringBuilder.append("\t");
+            if (!jTextFields[i].getText().isEmpty()) {
+                if ((jTmp + 1) % columns == 0) { // i + 1 perchè il vettore parte da 0
+                    stringBuilder.append(jTextFields[i].getText());
+                    stringBuilder.append("\n");
+                } else {
+                    stringBuilder.append(jTextFields[i].getText());
+                    stringBuilder.append("\t");
+                }
             }
         }
         stringBuilder.append("*"); // Carattere finale al file come convenzione

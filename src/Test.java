@@ -1,8 +1,5 @@
 import Distributore.Distributore;
-
-import java.io.*;
-import java.net.ConnectException;
-import java.net.Socket;
+import Distributore.Client;
 
 public class Test {
 
@@ -10,5 +7,7 @@ public class Test {
         Distributore macchinetta = new Distributore();
         macchinetta.textualInput();
         System.out.println("\ncheck");
+        Client client = new Client();
+        client.start();
     }
 }
