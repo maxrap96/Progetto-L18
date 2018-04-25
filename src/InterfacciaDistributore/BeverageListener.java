@@ -36,6 +36,3 @@ public class BeverageListener implements ActionListener {
         distributoreL.selectBeverage("0" + indexL);
     }
 }
-
-
-

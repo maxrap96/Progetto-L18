@@ -4,6 +4,7 @@ import Distributore.Distributore;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Timer;
 import java.util.TimerTask;
 
 public class VendingMachine extends JFrame{
@@ -145,6 +146,14 @@ public class VendingMachine extends JFrame{
         minus.addActionListener(subtract -> {
             distributore.lessSugar();
             setDots(sugarDisplay);
+          /*  Timer timer = new Timer();
+            TimerTask timerTask = new TimerTask() {
+                @Override
+                public void run() {
+                    sugarDisplay.setText("- \u25cf \u25cf \u25cf \u25cb \u25cb +");
+                }
+            };
+            timer.schedule(timerTask, 5000);*/
         });
 
         JButton plus = makeRoundButton("+",20 * screenSize.width / 100,20 * screenSize.height / 100,
@@ -153,6 +162,15 @@ public class VendingMachine extends JFrame{
         plus.addActionListener(add -> {
             distributore.moreSugar();
             setDots(sugarDisplay);
+           /* Timer timer = new Timer();
+            TimerTask timerTask = new TimerTask() {
+                @Override
+                public void run() {
+                    sugar = 3;
+                    setDots(sugarDisplay);
+                }
+            };
+            timer.schedule(timerTask, 5000);*/
         });
 
         JButton chiavetta = makeRoundRectButton("Chiavetta", 9 * screenSize.width / 200,

@@ -148,3 +148,5 @@ Latte Caldo	465	981	985.0	999.66	Transazione fallita.	25-04-2018 09:08:15
 Caffè Lungo	465	981	985.0	999.66	Transazione fallita.	25-04-2018 09:12:18
 Latte Caldo	465	981	985.0	999.66	Transazione fallita.	25-04-2018 09:13:35
 Latte Caldo	465	981	985.0	999.66	Transazione fallita.	25-04-2018 09:14:48
+Caffè Lungo	465	981	985.0	999.66	Transazione fallita.	25-04-2018 09:25:24
+Caffè Lungo	464	981	985.0	999.66	Transazione avvenuta il:	25-04-2018 09:27:23
