@@ -154,3 +154,4 @@ Cappuccino	464	981	985.0	999.66	Transazione fallita.	25-04-2018 12:53:36
 Tè al Limone	464	981	985.0	999.66	Transazione fallita.	25-04-2018 12:54:14
 Caffè Lungo	464	981	985.0	999.66	Transazione fallita.	25-04-2018 12:57:51
 Caffè Lungo	463	980	984.25	999.66	Transazione avvenuta il:	25-04-2018 12:58:01
+Caffè Espresso	462	980	984.25	999.66	Transazione avvenuta il:	25-04-2018 14:34:15

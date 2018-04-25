@@ -7,7 +7,7 @@ Sugar	984.25
 * Cucchiaini
 Spoons	980
 * Bicchierini
-Cups	463
+Cups	462
 * Vodka
 Vodka	99.0
 *id quantityleft
@@ -19,6 +19,17 @@ Vodka	99.0
 06	60.0
 07	55.0
 08	59.76
+09	25
+010	10
+011	10
+01	30
+02	25
+03	55
+04	30
+05	50
+06	60
+07	55
+08	60
 09	25
 010	10
 011	10
