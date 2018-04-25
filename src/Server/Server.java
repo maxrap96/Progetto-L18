@@ -4,6 +4,8 @@ import InterfacciaDistributore.WindowCloser;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -13,7 +15,7 @@ public class Server extends JFrame implements FileServer{
 
     private int panelRows;
     private int panelCols;
-    private JTextField[][] textFieldsVect;
+    private JTextField[] jTextFieldsVect;
 
     /**
      * Creazione interfaccia grafica Server.
@@ -21,24 +23,31 @@ public class Server extends JFrame implements FileServer{
     public Server() {
         // Inizializzazione JFrame
         initJFrame("Remote Management System");
-
         Container container = this.getContentPane();
         container.setBackground(Color.BLACK);
         container.setLayout(new GridLayout(1,2));
-
         WindowCloser windowCloserListener = new WindowCloser();
         addWindowListener(windowCloserListener);
 
-        initJTextFieldVect();
+        // Inizializzo Righe e Colonne
+        this.panelRows = initiRows();
+        this.panelCols = initCols();
 
+        // Inizializzo il vettore dei textField
+        jTextFieldsVect = new JTextField[panelRows * panelCols];
+        initJTextFieldVect(jTextFieldsVect);
+
+        // Creo il pannello in cui mostrare le informazioni
         JPanel textPanel = new JPanel(new GridLayout(this.panelRows, this.panelCols));
         textPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
-        addTextField(textPanel);
+
 
         JButton buttonMenu = makeButton("MENU");
         JButton buttonStats = makeButton("STATS");
 
         ButtonPanel buttonPanel = new ButtonPanel(buttonMenu, buttonStats);
+
+        buttonMenu.addActionListener(new ListenerLoad(jTextFieldsVect, textPanel));
 
         container.add(buttonPanel);
         container.add(textPanel);
@@ -60,69 +69,61 @@ public class Server extends JFrame implements FileServer{
     }
 
     /**
-     * Inizializzo righe e colonne del textPanel.
-     */
-    private void initRowsAndCols(){
-        initiRows();
-        initCols();
-    }
-
-    /**
      * Inizializzo le colonne del textPanel.
      */
-    private void initCols(){
+    private int initCols(){
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(fileMenuServer.getPath()));
             String firstLine = null;
             String tmp;
             int cols = 0;
+            // Leggo la riga con ID TIPO....
             while((tmp  = bufferedReader.readLine()) != null){
                 if(tmp.contains("ID")){
                     firstLine = tmp.substring(1);
                 }
             }
+            // Calcolo di quanti elemente è composta
             StringTokenizer stringTokenizer = new StringTokenizer(firstLine);
             while (stringTokenizer.hasMoreTokens()){
                 stringTokenizer.nextToken();
                 cols++;
             }
             bufferedReader.close();
-            this.panelCols = cols;
+            return cols;
         } catch (IOException e){
             e.printStackTrace();
         }
+        return 0;
     }
 
     /**
      * Inizializzo le righe del textPanel.
      */
-    private void initiRows(){
+    private int initiRows(){
         try{
             BufferedReader bufferedReader = new BufferedReader( new FileReader(fileMenuServer.getPath()));
             String tmp;
-            int rows = 2; // Parto da 2, una riga per ID... e una vuota.
+            int rows = 2; // Parto da 2, una riga per ID... e una vuota nel caso di aggiunte future.
             while ((tmp = bufferedReader.readLine()) != null){
                 if (!tmp.contains("*")){
                     rows++;
                 }
             }
             bufferedReader.close();
-            this.panelRows = rows;
+            return rows;
         } catch (IOException e){
             e.printStackTrace();
         }
+        return 0;
     }
 
     /**
      * Funzione che inizializza il vettore di textField.
      */
-    private void initJTextFieldVect(){
-        initRowsAndCols();
-        textFieldsVect = new JTextField[panelRows][panelCols];
-        for (int row = 0; row < panelRows; row++ ){
-            for (int col = 0; col < panelCols; col++){
-                textFieldsVect[row][col] = makeTextField();
-            }
+    private void initJTextFieldVect(JTextField[] jTextFields){
+        for (int i = 0; i < jTextFields.length; i++ ){
+            jTextFields[i] = makeTextField();
         }
     }
 
@@ -149,13 +150,5 @@ public class Server extends JFrame implements FileServer{
         textFieldTmp.setFont(new Font("", Font.BOLD, 16));
         textFieldTmp.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         return textFieldTmp;
-    }
-
-    private void addTextField(JPanel whereToAdd){
-        for (int row = 0; row < panelRows; row++ ){
-            for (int col = 0; col < panelCols; col++){
-                whereToAdd.add(textFieldsVect[row][col]);
-            }
-        }
     }
 }

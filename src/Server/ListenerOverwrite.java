@@ -57,6 +57,7 @@ public class ListenerOverwrite implements ActionListener {
             FileOutputStream fileOutputStream =
                     new FileOutputStream(file.getPath(), true); // Scrivo il file
             fileOutputStream.write((stringToWrite).getBytes());
+            fileOutputStream.close();
         }catch (IOException e){
             e.printStackTrace();
         }

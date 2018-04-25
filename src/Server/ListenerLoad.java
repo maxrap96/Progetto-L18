@@ -1,45 +1,45 @@
 package Server;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 
-public class ListenerLoad implements ActionListener {
+public class ListenerLoad implements ActionListener, FileServer {
     File fileListener;
     JTextField[] textFieldListener;
+    JPanel panelListener;
 
-    public ListenerLoad(File file, JTextField[] jTextField) {
-        this.fileListener = file;
-        this.textFieldListener = jTextField;
+    public ListenerLoad(JTextField[] jTextFields, JPanel panelToAddInfo) {
+        this.fileListener = fileMenuServer;
+        this.textFieldListener = jTextFields;
+        this.panelListener = panelToAddInfo;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        try {
-            BufferedReader bufferedReader =
-                    new BufferedReader(new FileReader(fileListener.getPath()));
-
-            bufferedReader.close();
-        } catch (IOException exc){
-            exc.printStackTrace();
-        }
-
+        setTextField();
+        addTextField();
+        panelListener.validate();
+        panelListener.repaint();
     }
 
     /**
-     * Funzione che aggiunge un certo numero di textArea.
+     * Funzione che aggiunge i textField al JPanel passato come argomento.
      *
-     * @param panel pannello a cui aggiungo le textArea.
-     * @param size quante textArea aggiungere.
      */
-    private void addTextAreas(JPanel panel, int size){
-        for(int i = 0; i < size; i++){
-            JTextArea textArea = new JTextArea("A");
-            textArea.setFont(new Font("", Font.ITALIC, 20));
-            textArea.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-            panel.add(textArea);
+    private void addTextField(){
+        for (int i = 0; i < textFieldListener.length; i++){
+            panelListener.add(textFieldListener[i]);
         }
     }
+
+    private void setTextField(){
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(fileListener.getPath()));
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
 }
