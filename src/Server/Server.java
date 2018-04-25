@@ -4,8 +4,6 @@ import InterfacciaDistributore.WindowCloser;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -41,12 +39,15 @@ public class Server extends JFrame implements FileServer{
         JPanel textPanel = new JPanel(new GridLayout(this.panelRows, this.panelCols));
         textPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
 
-
+        // Creo i bottoni
         JButton buttonMenu = makeButton("MENU");
         JButton buttonStats = makeButton("STATS");
 
+        // Creo il pannello dei bottoni
         ButtonPanel buttonPanel = new ButtonPanel(buttonMenu, buttonStats);
 
+        // Aggiungo i listener
+        addListenerTextField(jTextFieldsVect, panelCols);
         buttonMenu.addActionListener(new ListenerLoad(jTextFieldsVect, textPanel));
 
         container.add(buttonPanel);
@@ -72,29 +73,15 @@ public class Server extends JFrame implements FileServer{
      * Inizializzo le colonne del textPanel.
      */
     private int initCols(){
-        try {
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(fileMenuServer.getPath()));
-            String firstLine = null;
-            String tmp;
-            int cols = 0;
-            // Leggo la riga con ID TIPO....
-            while((tmp  = bufferedReader.readLine()) != null){
-                if(tmp.contains("ID")){
-                    firstLine = tmp.substring(1);
-                }
-            }
-            // Calcolo di quanti elemente è composta
-            StringTokenizer stringTokenizer = new StringTokenizer(firstLine);
-            while (stringTokenizer.hasMoreTokens()){
-                stringTokenizer.nextToken();
-                cols++;
-            }
-            bufferedReader.close();
-            return cols;
-        } catch (IOException e){
-            e.printStackTrace();
+        String tmp = "ID\tTIPO\tNOME\tCOSTO\tQ_MAX\tTEMP\tDOSE\tlatte\tacqua\tvodka";
+        int cols = 0;
+        // Calcolo di quanti elemente è composta
+        StringTokenizer stringTokenizer = new StringTokenizer(tmp, "\t");
+        while (stringTokenizer.hasMoreTokens()){
+            stringTokenizer.nextToken();
+            cols++;
         }
-        return 0;
+        return cols;
     }
 
     /**
@@ -151,5 +138,17 @@ public class Server extends JFrame implements FileServer{
         textFieldTmp.setHorizontalAlignment(JTextField.LEFT);
         textFieldTmp.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         return textFieldTmp;
+    }
+
+    /**
+     *  Aggiungo ad ogni textField l'actionListener.
+     *
+     * @param jTextFields vettore dei textField.
+     * @param cols intero da passare al ListenerOverwrite.
+     */
+    private void addListenerTextField(JTextField[] jTextFields, int cols){
+        for (int i = 0; i < jTextFields.length; i++){
+            jTextFields[i].addActionListener(new ListenerOverwrite(jTextFields, cols));
+        }
     }
 }

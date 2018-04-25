@@ -43,7 +43,11 @@ public class ListenerLoad implements ActionListener, FileServer {
             int index = 0;
             while((tmp = bufferedReader.readLine()) != null){
                 if(tmp.contains("ID")){
-
+                    String standard = "ID\tTIPO\tNOME\tCOSTO\tQ_MAX\tTEMP\tDOSE\tlatte\tacqua\tvodka";
+                    for (String pieceOfString : standard.split("\t")){
+                        textFieldListener[index].setText(pieceOfString);
+                        index++;
+                    }
                 } else if (!tmp.contains("*")){
                     for (String pieceOfString : tmp.split("\t")){
                         textFieldListener[index].setText(pieceOfString);
@@ -51,9 +55,9 @@ public class ListenerLoad implements ActionListener, FileServer {
                     }
                 }
             }
+            bufferedReader.close();
         }catch (IOException e){
             e.printStackTrace();
         }
     }
-
 }
