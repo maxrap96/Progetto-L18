@@ -22,9 +22,8 @@ public class BeverageListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String s = e.getActionCommand();
         textAreaL.setText(distributoreL.getLabel(indexL).toUpperCase() + "\n" + "COSTO: "
-                    + String.format("%.2f", distributoreL.getPrice("0" + indexL)) + "\n\n\n"
-                    + " - \u26aa \u26aa \u26aa \u26aa \u26aa +");
-        distributoreL.selectBeverage("0"+indexL);
+                          + String.format("%.2f", distributoreL.getPrice("0" + indexL)));
+        distributoreL.selectBeverage("0" + indexL);
     }
 }
 

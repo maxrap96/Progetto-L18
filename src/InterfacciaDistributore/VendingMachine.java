@@ -56,16 +56,25 @@ public class VendingMachine extends JFrame{
         container.add(pannelloBevande, BorderLayout.WEST);
 
         // Creazione del pannello delle monete e aggiunta al pannelloSelezione
-        JPanel pannelloMonete = makePanel(5 * screenSize.width / 7,5 * screenSize.height / 7,
+        JPanel pannelloMonete = makePanel(5 * screenSize.width / 7,70 * screenSize.height / 100,
                                            Color.LIGHT_GRAY, null);
         pannelloSelezione.add(pannelloMonete, BorderLayout.SOUTH);
 
+        // Creazione display zucchero aggiunta al pannelloSelezione
+        JTextField sugarDisplay = new JTextField();
+        sugarDisplay.setBackground(Color.green);
+        sugarDisplay.setForeground(Color.WHITE);
+        sugarDisplay.setFont(new Font("", Font.BOLD & Font.ITALIC,25));
+        sugarDisplay.setEditable(false);
+        pannelloSelezione.add(sugarDisplay, BorderLayout.CENTER);
+        setDots(sugarDisplay);
+
         // Creazione del display e aggiunta al pannelloSelezione
-        JTextArea display = new JTextArea(5, 1);
+        JTextArea display = new JTextArea(4, 1);
         display.setBackground(Color.BLUE);
         display.setForeground(Color.WHITE);
         display.setFont(new Font("", Font.BOLD & Font.ITALIC,25));
-        display.setEditable(false);                 //Cosi non posso scriverci sopra da interfaccia
+        display.setEditable(false);
         display.setText(DEFAULTMESSAGE);
         pannelloSelezione.add(display, BorderLayout.NORTH);
 
@@ -133,7 +142,7 @@ public class VendingMachine extends JFrame{
         pannelloMonete.add(minus);
         minus.addActionListener(subtract -> {
             distributore.lessSugar();
-            setDots(display);
+            setDots(sugarDisplay);
         });
 
         JButton plus = makeRoundButton("+",20 * screenSize.width / 100,20 * screenSize.height / 100,
@@ -141,7 +150,7 @@ public class VendingMachine extends JFrame{
         pannelloMonete.add(plus);
         plus.addActionListener(add -> {
             distributore.moreSugar();
-            setDots(display);
+            setDots(sugarDisplay);
         });
 
         JButton chiavetta = makeRoundRectButton("Chiavetta", 9 * screenSize.width / 200,
@@ -155,7 +164,7 @@ public class VendingMachine extends JFrame{
      * @param display
      */
 
-    private void setDots(JTextArea display){
+    private void setDots(JTextField display){
         sugar = distributore.getSelected_sugar();
         String quantity = null;
         switch (sugar){

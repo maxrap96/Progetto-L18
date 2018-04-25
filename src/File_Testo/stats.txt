@@ -132,3 +132,9 @@ Caffè Arabica	467	983	986.75	999.66	Transazione fallita.	25-04-2018 07:52:31
 Tè al Limone	467	983	986.75	999.66	Transazione fallita.	25-04-2018 07:52:31
 Cioccolata	467	983	986.75	999.66	Transazione fallita.	25-04-2018 07:52:32
 Caffè Espresso	466	982	986.0	999.66	Transazione avvenuta il:	25-04-2018 07:52:46
+Caffè Espresso	466	982	986.0	999.66	Transazione fallita.	25-04-2018 07:58:02
+Caffè Lungo	466	982	986.0	999.66	Transazione fallita.	25-04-2018 07:58:39
+Latte Caldo	466	982	986.0	999.66	Transazione fallita.	25-04-2018 07:58:41
+Cioccolata	466	982	986.0	999.66	Transazione fallita.	25-04-2018 07:58:41
+Caffè Lungo	466	982	986.0	999.66	Transazione fallita.	25-04-2018 08:02:50
+Latte Caldo	466	982	986.0	999.66	Transazione fallita.	25-04-2018 08:02:51
