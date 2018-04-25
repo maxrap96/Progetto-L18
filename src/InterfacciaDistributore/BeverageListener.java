@@ -10,14 +10,16 @@ import java.util.TimerTask;
 
 public class BeverageListener implements ActionListener {
 
-    private Distributore distributoreL;
-    private JTextArea textAreaL;
-    private int indexL;
+    private Distributore distributore;
+    private JTextArea textArea;
+    private int index;
+    private VendingMachine.ResetListener resetListener;
 
-    public BeverageListener(Distributore distributore, JTextArea display, int index) {
-        this.distributoreL = distributore;
-        this.textAreaL = display;
-        this.indexL = index;
+    public BeverageListener(Distributore distributore, JTextArea display, int index, VendingMachine.ResetListener resetListener) {
+        this.distributore = distributore;
+        this.textArea = display;
+        this.index = index;
+        this.resetListener = resetListener;
     }
 
     @Override
@@ -27,12 +29,15 @@ public class BeverageListener implements ActionListener {
         TimerTask timerTask = new TimerTask() {
           @Override
           public void run() {
-              textAreaL.setText("     SCEGLIERE UNA BEVANDA");
+              textArea.setText("     SCEGLIERE UNA BEVANDA");
           }
         };
         timer.schedule(timerTask, 10000);
-        textAreaL.setText(distributoreL.getLabel(indexL).toUpperCase() + "\n" + "COSTO: "
-                          + String.format("%.2f", distributoreL.getPrice("0" + indexL)));
-        distributoreL.selectBeverage("0" + indexL);
+        textArea.setText(distributore.getLabel(index).toUpperCase() + "\n" + "COSTO: "
+                          + String.format("%.2f", distributore.getPrice("0" + index)));
+        distributore.selectBeverage("0" + index);
+        if (distributore.getCredit() == 0){
+            resetListener.run();
+        }
     }
 }

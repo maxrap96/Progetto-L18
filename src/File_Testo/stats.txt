@@ -28,7 +28,7 @@ Caffè Arabica	469	989	98.95	14.92	Transazione fallita.	18-04-2018 17:33:14
 Tè al Limone	468	988	97.7	14.92	Transazione avvenuta il:	18-04-2018 17:37:18
 Tè al Limone	467	987	96.7	14.92	Transazione avvenuta il:	18-04-2018 17:38:38
 Tè al Limone	466	986	95.7	14.92	Transazione avvenuta il:	18-04-2018 17:39:11
-*Caffè corretto	465	986	95.7	14.92	Transazione avvenuta il:	18-04-2018 22:15:26
+Caffè corretto	465	986	95.7	14.92	Transazione avvenuta il:	18-04-2018 22:15:26
 Cioccolata	498	998	998.0	1000.0	Transazione avvenuta il:	19-04-2018 11:25:43
 Cioccolata	497	997	996.75	1000.0	Transazione avvenuta il:	19-04-2018 11:28:40
 Caffè top	496	996	995.75	1000.0	Transazione avvenuta il:	19-04-2018 11:30:29
@@ -155,3 +155,18 @@ Tè al Limone	464	981	985.0	999.66	Transazione fallita.	25-04-2018 12:54:14
 Caffè Lungo	464	981	985.0	999.66	Transazione fallita.	25-04-2018 12:57:51
 Caffè Lungo	463	980	984.25	999.66	Transazione avvenuta il:	25-04-2018 12:58:01
 Caffè Lungo	463	980	984.25	999.66	Transazione fallita.	25-04-2018 13:01:16
+Caffè Espresso	462	980	984.25	999.66	Transazione avvenuta il:	25-04-2018 14:34:15
+Caffè Lungo	462	980	984.25	999.66	Transazione fallita.	25-04-2018 16:44:54
+Caffè Lungo	462	980	984.25	999.66	Transazione fallita.	25-04-2018 16:45:03
+Caffè Lungo	462	980	984.25	999.66	Transazione fallita.	25-04-2018 16:45:05
+Caffè Lungo	462	980	984.25	999.66	Transazione fallita.	25-04-2018 16:45:07
+Caffè Lungo	462	980	984.25	999.66	Transazione fallita.	25-04-2018 16:45:11
+Caffè Lungo	462	980	984.25	999.66	Transazione fallita.	25-04-2018 16:45:13
+Caffè Lungo	462	980	984.25	999.66	Transazione fallita.	25-04-2018 16:45:14
+Caffè Lungo	462	980	984.25	999.66	Transazione fallita.	25-04-2018 16:45:16
+Cappuccino	462	980	984.25	999.66	Transazione fallita.	25-04-2018 16:45:18
+Caffè Lungo	462	980	984.25	999.66	Transazione fallita.	25-04-2018 16:45:18
+Cappuccino	462	980	984.25	999.66	Transazione fallita.	25-04-2018 16:45:24
+Cappuccino	462	980	984.25	999.66	Transazione fallita.	25-04-2018 16:45:25
+Cappuccino	462	980	984.25	999.66	Transazione fallita.	25-04-2018 16:45:28
+Cappuccino	461	979	983.25	999.5799999999999	Transazione avvenuta il:	25-04-2018 16:46:04
