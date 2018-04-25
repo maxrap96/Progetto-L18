@@ -12,19 +12,16 @@ public class VendingMachine extends JFrame{
     private Distributore distributore = new Distributore();
     private int index = 1;
     private int sugar = 3;
-    private final String DEFAULTMESSAGE = "     Selezionare una bevanda";
-
-
+    private final String DEFAULTMESSAGE = "     SCEGLIERE UNA BEVANDA";
 
     /**
      * Creazione interfaccia grafica distributore
      */
 
     public VendingMachine() {
-        //Inizializzazione JFrame
+        // Inizializzazione JFrame
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension screenSize = kit.getScreenSize();
-        pack();
         setSize(screenSize.width,screenSize.height);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setTitle("Hot Drinks Vending Machine");
@@ -69,7 +66,6 @@ public class VendingMachine extends JFrame{
         display.setForeground(Color.WHITE);
         display.setFont(new Font("", Font.BOLD & Font.ITALIC,25));
         display.setEditable(false);                 //Cosi non posso scriverci sopra da interfaccia
-
         display.setText(DEFAULTMESSAGE);
         pannelloSelezione.add(display, BorderLayout.NORTH);
 
@@ -92,7 +88,7 @@ public class VendingMachine extends JFrame{
                 button.addActionListener(new BeverageListener(distributore,display, index));
             }
             else {
-                //Pulsante vuoto
+                // Pulsante vuoto
                 button = makeRoundRectButton("", X_SCREEN_INDEX[xButton], Y_SCREEN_INDEX[yButton],
                                              screenSize.width / 6, screenSize.height / 8);
             }
@@ -103,7 +99,6 @@ public class VendingMachine extends JFrame{
 
 
         // Creazione dei vari tasti della sezione moenete e aggiunta al pannelloMonete
-
         int xButtonMon = 0, yButtonMon = 0; // coordinate dei pulsanti
 
         for (int i = 0; i < NUMERO_MONETE; i++) {
@@ -116,14 +111,14 @@ public class VendingMachine extends JFrame{
             JButton  button = makeRoundButton(cValue, X_MON_INDEX[xButtonMon], Y_MON_INDEX[yButtonMon],
                                               screenSize.height / 8,screenSize.height / 8);
             
-            //Aggiunta action listener associato ad ogni pulsante con relativo valore
+            // Aggiunta action listener associato ad ogni pulsante con relativo valore
             index = i;
             button.addActionListener(new CreditListener(distributore, display, distributore.getCoinsValue()[i]));
             pannelloMonete.add(button);
             xButtonMon++;
         }
 
-        //Creazione dei pulsanti più zucchero, meno zucchero e resto
+        // Creazione dei pulsanti più zucchero, meno zucchero e resto
         JButton giveChange = makeRoundButton("C",2 * screenSize.width / 100,20 * screenSize.height / 100,
                                              screenSize.height / 8,screenSize.height / 8);
         pannelloMonete.add(giveChange);

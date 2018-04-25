@@ -121,3 +121,14 @@ Caffè Lungo	468	983	986.75	999.66	Transazione fallita.	24-04-2018 16:13:51
 Cappuccino	468	983	986.75	999.66	Transazione fallita.	24-04-2018 16:20:54
 Caffè Lungo	468	983	986.75	999.66	Transazione fallita.	24-04-2018 16:23:04
 Latte Caldo	468	983	986.75	999.66	Transazione fallita.	24-04-2018 16:23:05
+Cappuccino	467	983	986.75	999.66	Transazione fallita.	25-04-2018 07:52:22
+Caffè Espresso	467	983	986.75	999.66	Transazione fallita.	25-04-2018 07:52:24
+Cappuccino	467	983	986.75	999.66	Transazione fallita.	25-04-2018 07:52:25
+Ginseng	467	983	986.75	999.66	Transazione fallita.	25-04-2018 07:52:26
+Caffè Lungo	467	983	986.75	999.66	Transazione fallita.	25-04-2018 07:52:27
+Caffè Miscela Top	467	983	986.75	999.66	Transazione fallita.	25-04-2018 07:52:29
+Caffè Corretto	467	983	986.75	999.66	Transazione fallita.	25-04-2018 07:52:30
+Caffè Arabica	467	983	986.75	999.66	Transazione fallita.	25-04-2018 07:52:31
+Tè al Limone	467	983	986.75	999.66	Transazione fallita.	25-04-2018 07:52:31
+Cioccolata	467	983	986.75	999.66	Transazione fallita.	25-04-2018 07:52:32
+Caffè Espresso	466	982	986.0	999.66	Transazione avvenuta il:	25-04-2018 07:52:46
