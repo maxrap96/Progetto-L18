@@ -4,6 +4,7 @@ import Distributore.Distributore;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.TimerTask;
 
 public class VendingMachine extends JFrame{
 
@@ -56,13 +57,13 @@ public class VendingMachine extends JFrame{
         container.add(pannelloBevande, BorderLayout.WEST);
 
         // Creazione del pannello delle monete e aggiunta al pannelloSelezione
-        JPanel pannelloMonete = makePanel(5 * screenSize.width / 7,70 * screenSize.height / 100,
+        JPanel pannelloMonete = makePanel(5 * screenSize.width / 7,69 * screenSize.height / 100,
                                            Color.LIGHT_GRAY, null);
         pannelloSelezione.add(pannelloMonete, BorderLayout.SOUTH);
 
         // Creazione display zucchero aggiunta al pannelloSelezione
         JTextField sugarDisplay = new JTextField();
-        sugarDisplay.setBackground(Color.BLACK);
+        sugarDisplay.setBackground(Color.BLUE);
         sugarDisplay.setForeground(Color.WHITE);
         sugarDisplay.setHorizontalAlignment(SwingConstants.CENTER);
         sugarDisplay.setFont(new Font("", Font.BOLD & Font.ITALIC,25));
@@ -247,3 +248,4 @@ public class VendingMachine extends JFrame{
     }
 
 }
+
