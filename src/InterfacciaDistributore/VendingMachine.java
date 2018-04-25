@@ -148,10 +148,8 @@ public class VendingMachine extends JFrame{
         minus.addActionListener(subtract -> {
             distributore.lessSugar();
             setDots(sugarDisplay);
-            if (distributore.getCredit() == 0){
-                ResetListener resetListener = new ResetListener(display, sugarDisplay, distributore);
-                resetListener.run();
-            }
+            ResetListener resetListener = new ResetListener(display, sugarDisplay, distributore);
+            resetListener.run();
         });
 
 
@@ -161,10 +159,9 @@ public class VendingMachine extends JFrame{
         plus.addActionListener(add -> {
             distributore.moreSugar();
             setDots(sugarDisplay);
-            if (distributore.getCredit() == 0){
-                ResetListener resetListener = new ResetListener(display, sugarDisplay, distributore);
-                resetListener.run();
-            }
+            ResetListener resetListener = new ResetListener(display, sugarDisplay, distributore);
+            resetListener.run();
+
         });
 
         JButton chiavetta = makeRoundRectButton("Chiavetta", 9 * screenSize.width / 200,
@@ -262,12 +259,12 @@ public class VendingMachine extends JFrame{
     class ResetListener extends Thread {
         JTextArea display;
         JTextField sugarDisplay;
-        Distributore distributore;
+        Distributore distributoreR;
 
         public ResetListener(JTextArea display, JTextField sugarDisplay, Distributore distributore) {
             this.display = display;
             this.sugarDisplay = sugarDisplay;
-            this.distributore = distributore;
+            this.distributoreR = distributore;
         }
 
         public void run(){
@@ -275,11 +272,11 @@ public class VendingMachine extends JFrame{
             TimerTask timerTask = new TimerTask() {
                 @Override
                 public void run() {
-                    if (distributore.getCredit() == 0) {
+                    if (distributoreR.getCredit() == 0) {
                         display.setText(DEFAULTMESSAGE);
-                        distributore.setSugarToDefault();
-                        sugar = distributore.getSelected_sugar();  //c'è la funzione apposta e così lo resetti anche nel
-                        // distrubutore e non solo nell'interfaccia
+                        distributoreR.setSugarToDefault();
+                        sugar = distributoreR.getSelected_sugar();
+                        System.out.println(distributoreR.getCredit());
                         setDots(sugarDisplay);
                     }
                 }

@@ -170,3 +170,6 @@ Cappuccino	462	980	984.25	999.66	Transazione fallita.	25-04-2018 16:45:24
 Cappuccino	462	980	984.25	999.66	Transazione fallita.	25-04-2018 16:45:25
 Cappuccino	462	980	984.25	999.66	Transazione fallita.	25-04-2018 16:45:28
 Cappuccino	461	979	983.25	999.5799999999999	Transazione avvenuta il:	25-04-2018 16:46:04
+Cappuccino	460	978	982.5	999.4999999999999	Transazione avvenuta il:	25-04-2018 16:47:28
+Ginseng	460	978	982.5	999.4999999999999	Transazione fallita.	25-04-2018 16:50:36
+Cappuccino	459	977	981.75	999.4199999999998	Transazione avvenuta il:	25-04-2018 16:51:16

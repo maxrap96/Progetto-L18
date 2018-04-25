@@ -36,8 +36,6 @@ public class BeverageListener implements ActionListener {
         textArea.setText(distributore.getLabel(index).toUpperCase() + "\n" + "COSTO: "
                           + String.format("%.2f", distributore.getPrice("0" + index)));
         distributore.selectBeverage("0" + index);
-        if (distributore.getCredit() == 0){
-            resetListener.run();
-        }
+        resetListener.run();
     }
 }
