@@ -259,9 +259,9 @@ public class Distributore implements MaxValue {
                 fileNotWritable.printStackTrace();
             }
             if (coins.getCredit() != 0) {
-                return "Bevanda erogata.\n" + coins.giveChange(); //gli  output è meglio che siano in italiano
+                return "HotDrink dispensed.\n" + coins.giveChange(); // Gli  output è meglio che siano in italiano
             } else {
-                System.out.println("Bevanda erogata.");
+                System.out.println("HotDrink dispensed.");
                 return "HotDrink dispensed";
             }
         } else {
