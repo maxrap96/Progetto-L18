@@ -68,6 +68,7 @@ public class VendingMachine extends JFrame{
         sugarDisplay.setHorizontalAlignment(SwingConstants.CENTER);
         sugarDisplay.setFont(new Font("", Font.BOLD & Font.ITALIC,25));
         sugarDisplay.setEditable(false);
+        sugarDisplay.setBorder(BorderFactory.createLineBorder(Color.YELLOW));
         pannelloSelezione.add(sugarDisplay, BorderLayout.CENTER);
 
         // Creazione del display e aggiunta al pannelloSelezione
