@@ -263,7 +263,7 @@ public class Distributore implements MaxValue {
                 return "Bevanda erogata.\nErogazione resto" ; //gli  output è meglio che siano in italiano
             } else {
                 System.out.println("Bevanda erogata.");
-                return "HotDrink dispensed";
+                return "Bevanda erogata.";
             }
         } else {
             if (!list.get(ID).isAvailable()) {
