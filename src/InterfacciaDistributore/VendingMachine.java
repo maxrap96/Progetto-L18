@@ -1,11 +1,8 @@
 package InterfacciaDistributore;
 
 import Distributore.Distributore;
-
 import javax.swing.*;
 import java.awt.*;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class VendingMachine extends JFrame{
 
@@ -96,8 +93,8 @@ public class VendingMachine extends JFrame{
                 button = makeRoundRectButton(distributore.getLabel(index), X_SCREEN_INDEX[xButton],
                                              Y_SCREEN_INDEX[yButton],screenSize.width / 6,
                                             screenSize.height / 8);
-                ResetListener resetListener = new ResetListener(display, sugarDisplay, distributore);
-                button.addActionListener(new BeverageListener(distributore,display, index, resetListener));
+                ResetDisplay resetDisplay = new ResetDisplay(display, sugarDisplay, distributore);
+                button.addActionListener(new BeverageListener(distributore,display, index, resetDisplay));
             }
             else {
                 // Pulsante vuoto
@@ -137,8 +134,8 @@ public class VendingMachine extends JFrame{
         giveChange.addActionListener(change -> {
             distributore.giveChange();
             display.setText("\n\n\nCREDITO: " +  String.format("%.2f", distributore.getCredit()));
-            ResetListener resetListener = new ResetListener(display, sugarDisplay, distributore);
-            resetListener.run();
+            ResetDisplay resetTask = new ResetDisplay(display, sugarDisplay, distributore);
+            resetTask.run();
         });
 
         JButton minus = makeRoundButton("-",11 * screenSize.width / 100,20 * screenSize.height / 100,
@@ -148,8 +145,8 @@ public class VendingMachine extends JFrame{
         minus.addActionListener(subtract -> {
             distributore.lessSugar();
             setDots(sugarDisplay);
-            ResetListener resetListener = new ResetListener(display, sugarDisplay, distributore);
-            resetListener.run();
+            ResetDisplay resetDisplay = new ResetDisplay(display, sugarDisplay, distributore);
+            resetDisplay.run();
         });
 
 
@@ -159,8 +156,8 @@ public class VendingMachine extends JFrame{
         plus.addActionListener(add -> {
             distributore.moreSugar();
             setDots(sugarDisplay);
-            ResetListener resetListener = new ResetListener(display, sugarDisplay, distributore);
-            resetListener.run();
+            ResetDisplay resetDisplay = new ResetDisplay(display, sugarDisplay, distributore);
+            resetDisplay.run();
 
         });
 
@@ -255,13 +252,13 @@ public class VendingMachine extends JFrame{
         button.setBounds(x, y, screenW, screenH);
         return button;
     }
-
-    class ResetListener extends Thread {
+/*
+    class ResetTask extends Thread {
         JTextArea display;
         JTextField sugarDisplay;
         Distributore distributoreR;
 
-        public ResetListener(JTextArea display, JTextField sugarDisplay, Distributore distributore) {
+        public ResetTask(JTextArea display, JTextField sugarDisplay, Distributore distributore) {
             this.display = display;
             this.sugarDisplay = sugarDisplay;
             this.distributoreR = distributore;
@@ -284,5 +281,5 @@ public class VendingMachine extends JFrame{
             timer.schedule(timerTask, 5000);
         }
     }
-
+*/
 }

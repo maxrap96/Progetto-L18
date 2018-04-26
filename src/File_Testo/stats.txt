@@ -179,3 +179,7 @@ Caffè Corretto	458	976	980.75	999.4199999999998	Transazione avvenuta il:	25-04-
 Tè al Limone	457	975	979.5	999.4199999999998	Transazione avvenuta il:	25-04-2018 20:16:52
 Caffè Corretto	456	975	979.5	999.4199999999998	Transazione avvenuta il:	25-04-2018 20:17:23
 Caffè Corretto	455	975	979.5	999.4199999999998	Transazione avvenuta il:	25-04-2018 20:17:58
+Caffè Lungo	456	975	979.5	999.4199999999998	Transazione fallita.	26-04-2018 11:19:19
+Caffè Lungo	456	975	979.5	999.4199999999998	Transazione fallita.	26-04-2018 11:36:17
+Caffè Lungo	456	975	979.5	999.4199999999998	Transazione fallita.	26-04-2018 11:37:28
+Caffè Lungo	456	975	979.5	999.4199999999998	Transazione fallita.	26-04-2018 11:39:08

@@ -13,13 +13,13 @@ public class BeverageListener implements ActionListener {
     private Distributore distributore;
     private JTextArea textArea;
     private int index;
-    private VendingMachine.ResetListener resetListener;
+    private ResetDisplay resetDisplay;
 
-    public BeverageListener(Distributore distributore, JTextArea display, int index, VendingMachine.ResetListener resetListener) {
+    public BeverageListener(Distributore distributore, JTextArea display, int index, ResetDisplay resetDisplay) {
         this.distributore = distributore;
         this.textArea = display;
         this.index = index;
-        this.resetListener = resetListener;
+        this.resetDisplay = resetDisplay;
     }
 
     @Override
@@ -36,6 +36,6 @@ public class BeverageListener implements ActionListener {
         textArea.setText(distributore.getLabel(index).toUpperCase() + "\n" + "COSTO: "
                           + String.format("%.2f", distributore.getPrice("0" + index)));
         distributore.selectBeverage("0" + index);
-        resetListener.run();
+        resetDisplay.run();
     }
 }
