@@ -26,8 +26,8 @@ public class Distributore implements MaxValue {
         this.coins = new Coins();
 
         try {
-            setValues(ingredientsData.readFile());
-            createList(menu.readFile(), ingredientsData.readFile());
+            int lastrow = setValues(ingredientsData.readFile());
+            createList(menu.readFile(), ingredientsData.readFile(), lastrow);
         } catch (FileNotReadable fileNotReadable) {
             fileNotReadable.printStackTrace();
         }
@@ -36,15 +36,17 @@ public class Distributore implements MaxValue {
     /**
      * Funzione che carica le quantità residue leggendole da file.
      */
-    private void setValues(ArrayList<String[]> statistics) {
+    private int setValues(ArrayList<String[]> statistics) {
         setSugarToDefault();
         this.milk = Double.parseDouble(statistics.get(0)[1]);
         this.sugar = Double.parseDouble(statistics.get(1)[1]);
         this.spoon = parseInt(statistics.get(2)[1]);
         this.cup = parseInt(statistics.get(3)[1]);
         this.vodka = Double.parseDouble(statistics.get(4)[1]);
+        int lastrow = 4; //è l'ultima riga letta dal file
         dati = statistics;
         checkIfMachineIsEmpty(); // Controllo se c'è bisogno di ricaricare la macchinetta.
+        return lastrow;
     }
 
     /**
@@ -78,11 +80,11 @@ public class Distributore implements MaxValue {
      * @param listFromFile arraylist di stringhe fornito all'apertura del file.
      * @param data         è l'arraylist contenente le quantità rimanenti delle bevande.
      */
-    private void createList(ArrayList<String[]> listFromFile, ArrayList<String[]> data) {
+    private void createList(ArrayList<String[]> listFromFile, ArrayList<String[]> data, int datarow) {
 
         for (int i_menu = 0; i_menu < listFromFile.size(); i_menu++) {
 
-            int j_dati = i_menu + 5; //dato che le prime 4 righe del file data sono per la macchinetta
+            datarow++;
 
             // variabile "i" riferita a menu.txt;  variabile "j" riferita a dati.txt
 
@@ -90,12 +92,12 @@ public class Distributore implements MaxValue {
             String storedID = "";
             Tipo tipo = Tipo.valueOf(listFromFile.get(i_menu)[1]);
 
-            if (j_dati < data.size()) { // controllo di non aver superato la lunghezza del file delle quantità rimaste
-                storedID = data.get(j_dati)[0];
+            if (datarow < data.size()) { // controllo di non aver superato la lunghezza del file delle quantità rimaste
+                storedID = data.get(datarow)[0];
             }
 
             if (!storedID.isEmpty() && currentID.equals(storedID)) {
-                String quantityLeft = data.get(j_dati)[1];
+                String quantityLeft = data.get(datarow)[1];
                 createDrink(tipo.ordinal(), listFromFile, i_menu, quantityLeft);
             } else {
                 //ingredientsData.writeData(dataToWrite(listFromFile, i_menu));     // Togliendo la funzione ho il
