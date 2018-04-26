@@ -135,7 +135,7 @@ public class Server extends JFrame implements FileServer{
     private JTextField makeTextField(){
         JTextField textFieldTmp = new JTextField("");
         textFieldTmp.setFont(new Font("", Font.BOLD, 13));
-        textFieldTmp.setHorizontalAlignment(JTextField.LEFT);
+        textFieldTmp.setHorizontalAlignment(JTextField.CENTER);
         textFieldTmp.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         return textFieldTmp;
     }
