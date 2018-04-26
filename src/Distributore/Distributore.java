@@ -82,7 +82,7 @@ public class Distributore implements MaxValue {
 
         for (int i_menu = 0; i_menu < listFromFile.size(); i_menu++) {
 
-            int j_dati = i_menu + 4; //dato che le prime 3 righe del file data sono per la macchinetta
+            int j_dati = i_menu + 5; //dato che le prime 4 righe del file data sono per la macchinetta
 
             // variabile "i" riferita a menu.txt;  variabile "j" riferita a dati.txt
 
@@ -215,7 +215,6 @@ public class Distributore implements MaxValue {
                         noDigit.printStackTrace();
                     }
                 }
-
                 // Funzione da usare nell'interfaccia per l'erogazione della bevanda
                 selectBeverage(splitted[0]);
             } else {
@@ -332,7 +331,6 @@ public class Distributore implements MaxValue {
         coins.addCoin(inserted);
     }
 
-
     public String getLabel(int i) {
         return (list.get("0" + i).getName());//+ " Costo: " + list.get("0"+i).getPrice());
     }
@@ -429,4 +427,3 @@ public class Distributore implements MaxValue {
         coins.giveChange();
     }
 }
-//TODO aggiungere il thread per la gestione del timer per far cambiare la scritta
