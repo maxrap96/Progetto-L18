@@ -31,8 +31,9 @@ public class RoundRectButton extends JButton {
     }
 
     protected void paintBorder(Graphics g) {
-        g.setColor(Color.darkGray);
+        g.setColor(Color.BLUE);
         g.drawRoundRect(0, 0, getSize().width - 1, getSize().height - 1, 40, 40);
+
     }
 
     Shape shape;

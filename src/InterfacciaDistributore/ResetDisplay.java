@@ -25,18 +25,28 @@ public class ResetDisplay extends Thread{
 
     public void run(){
         java.util.Timer timer = new Timer();
+
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
-                if (distributoreR.getCredit() == 0) {
+                if (distributoreR.getCredit() == 0){
                     display.setText(DEFAULTMESSAGE);
-                    distributoreR.setSugarToDefault();
-                    System.out.println(distributoreR.getCredit());
-                    setDots();
                 }
+                else {
+                    display.setText(DEFAULTMESSAGE + "\n\n\nCredito: " + String.format("%.2f",distributoreR.getCredit()));
+                }
+                distributoreR.setSugarToDefault();
+                System.out.println(distributoreR.getCredit());
+                setDots();
             }
         };
-        timer.schedule(timerTask, 5000);
+
+        if (distributoreR.getCredit() == 0) {
+            timer.schedule(timerTask, 9000);
+        }
+        else {
+            timer.schedule(timerTask, 4000);
+        }
     }
 
 

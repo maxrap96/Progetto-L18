@@ -25,17 +25,19 @@ public class BeverageListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String s = e.getActionCommand();
-        Timer timer = new Timer();
-        TimerTask timerTask = new TimerTask() {
-          @Override
-          public void run() {
-              textArea.setText("     SCEGLIERE UNA BEVANDA");
-          }
-        };
-        timer.schedule(timerTask, 10000);
-        textArea.setText(distributore.getLabel(index).toUpperCase() + "\n" + "COSTO: "
-                          + String.format("%.2f", distributore.getPrice("0" + index)) + "\nCredito: " + distributore.getCredit());
-        distributore.selectBeverage("0" + index);
-        resetDisplay.run();
+
+        if (distributore.getCredit() != 0) {
+            String message = distributore.selectBeverage("0" + index);
+            textArea.setText(message+ "\n" + distributore.getLabel(index).toUpperCase() + "\n" + "COSTO: "
+                    + String.format("%.2f", distributore.getPrice("0" + index)) + "\nCREDITO: " +
+                    String.format("%.2f", distributore.getCredit()) );
+            resetDisplay.run();
+        }
+        else {
+            textArea.setText(distributore.getLabel(index).toUpperCase() + "\n" + "COSTO: "
+                    + String.format("%.2f", distributore.getPrice("0" + index)) + "\n\nCREDITO: " +
+                    String.format("%.2f", distributore.getCredit()));
+            resetDisplay.run();
+        }
     }
 }

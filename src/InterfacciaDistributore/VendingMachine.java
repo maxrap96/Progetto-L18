@@ -192,7 +192,6 @@ public class VendingMachine extends JFrame{
                 button = makeRoundRectButton("", X_SCREEN_INDEX[xButton], Y_SCREEN_INDEX[yButton],
                         screenSize.width / 6, screenSize.height / 8);
             }
-
             pannelloBevande.add(button);
             xButton++;
         }
