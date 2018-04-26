@@ -13,6 +13,8 @@ public class VendingMachine extends JFrame{
     private int sugar = 3;
     private final String DEFAULTMESSAGE = "     SCEGLIERE UNA BEVANDA";
 
+    private ResetDisplay resetDisplay;
+
     /**
      * Creazione interfaccia grafica distributore
      */
@@ -67,7 +69,6 @@ public class VendingMachine extends JFrame{
         sugarDisplay.setFont(new Font("", Font.BOLD & Font.ITALIC,25));
         sugarDisplay.setEditable(false);
         pannelloSelezione.add(sugarDisplay, BorderLayout.CENTER);
-        setDots(sugarDisplay);
 
         // Creazione del display e aggiunta al pannelloSelezione
         JTextArea display = new JTextArea(4, 1);
@@ -77,6 +78,9 @@ public class VendingMachine extends JFrame{
         display.setEditable(false);
         display.setText(DEFAULTMESSAGE);
         pannelloSelezione.add(display, BorderLayout.NORTH);
+
+        resetDisplay = new ResetDisplay(display, sugarDisplay, distributore);
+        resetDisplay.setDots();
 
         // Creazione e aggiunta dei dodici pulsanti delle bevande
         int xButton = 0, yButton = 0; // coordinate dei pulsanti
@@ -134,8 +138,7 @@ public class VendingMachine extends JFrame{
         giveChange.addActionListener(change -> {
             distributore.giveChange();
             display.setText("\n\n\nCREDITO: " +  String.format("%.2f", distributore.getCredit()));
-            ResetDisplay resetTask = new ResetDisplay(display, sugarDisplay, distributore);
-            resetTask.run();
+            resetDisplay.run();
         });
 
         JButton minus = makeRoundButton("-",11 * screenSize.width / 100,20 * screenSize.height / 100,
@@ -144,8 +147,8 @@ public class VendingMachine extends JFrame{
 
         minus.addActionListener(subtract -> {
             distributore.lessSugar();
-            setDots(sugarDisplay);
             ResetDisplay resetDisplay = new ResetDisplay(display, sugarDisplay, distributore);
+            resetDisplay.setDots();
             resetDisplay.run();
         });
 
@@ -155,8 +158,7 @@ public class VendingMachine extends JFrame{
         pannelloMonete.add(plus);
         plus.addActionListener(add -> {
             distributore.moreSugar();
-            setDots(sugarDisplay);
-            ResetDisplay resetDisplay = new ResetDisplay(display, sugarDisplay, distributore);
+            resetDisplay.setDots();
             resetDisplay.run();
 
         });
@@ -165,42 +167,6 @@ public class VendingMachine extends JFrame{
                                                 3 * screenSize.width / 100, 20 * screenSize.width / 100,
                                                 9 * screenSize.height / 100) ;
         pannelloMonete.add(chiavetta);
-    }
-
-    /**
-     * Funzione che aggiorna il display dello zucchero
-     * in base alla quantità scelta
-     * @param display: l'area di testo dove viene mostrata
-     *                 la quantità di zucchero
-     */
-
-    private void setDots(JTextField display){
-        sugar = distributore.getSelected_sugar();
-        String quantity = null;
-        switch (sugar){
-            //u25cf è pallino pieno
-            //u25cb è pallino vuoto
-            case 0:
-                quantity = "Senza zucchero";
-                break;
-            case 1:
-                quantity = "- \u25cf \u25cb \u25cb \u25cb \u25cb +";
-                break;
-            case 2:
-                quantity = "- \u25cf \u25cf \u25cb \u25cb \u25cb +";
-                break;
-            case 3:
-                quantity = "- \u25cf \u25cf \u25cf \u25cb \u25cb +";
-                break;
-            case 4:
-                quantity = "- \u25cf \u25cf \u25cf \u25cf \u25cb +";
-                break;
-            case 5:
-                quantity = "- \u25cf \u25cf \u25cf \u25cf \u25cf +";
-                break;
-        }
-
-        display.setText(quantity);
     }
 
     /**
@@ -252,34 +218,4 @@ public class VendingMachine extends JFrame{
         button.setBounds(x, y, screenW, screenH);
         return button;
     }
-/*
-    class ResetTask extends Thread {
-        JTextArea display;
-        JTextField sugarDisplay;
-        Distributore distributoreR;
-
-        public ResetTask(JTextArea display, JTextField sugarDisplay, Distributore distributore) {
-            this.display = display;
-            this.sugarDisplay = sugarDisplay;
-            this.distributoreR = distributore;
-        }
-
-        public void run(){
-            Timer timer = new Timer();
-            TimerTask timerTask = new TimerTask() {
-                @Override
-                public void run() {
-                    if (distributoreR.getCredit() == 0) {
-                        display.setText(DEFAULTMESSAGE);
-                        distributoreR.setSugarToDefault();
-                        sugar = distributoreR.getSelected_sugar();
-                        System.out.println(distributoreR.getCredit());
-                        setDots(sugarDisplay);
-                    }
-                }
-            };
-            timer.schedule(timerTask, 5000);
-        }
-    }
-*/
 }

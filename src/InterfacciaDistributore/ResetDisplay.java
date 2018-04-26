@@ -9,9 +9,9 @@ import java.util.TimerTask;
 public class ResetDisplay extends Thread{
 
     private final String DEFAULTMESSAGE = "     SCEGLIERE UNA BEVANDA";
-    JTextArea display;
-    JTextField sugarDisplay;
-    Distributore distributoreR;
+    private JTextArea display;
+    private JTextField sugarDisplay;
+    private Distributore distributoreR;
 
     public ResetDisplay(JTextArea display, JTextField sugarDisplay, Distributore distributore) {
         this.display = display;
@@ -28,7 +28,7 @@ public class ResetDisplay extends Thread{
                     display.setText(DEFAULTMESSAGE);
                     distributoreR.setSugarToDefault();
                     System.out.println(distributoreR.getCredit());
-                    setDots(sugarDisplay);
+                    setDots();
                 }
             }
         };
@@ -36,7 +36,11 @@ public class ResetDisplay extends Thread{
     }
 
 
-    private void setDots(JTextField display){
+    /**
+     * Funzione che aggiorna il display dello zucchero
+     */
+
+    public void setDots(){
         int sugar = distributoreR.getSelected_sugar();
         String quantity = null;
         switch (sugar){
@@ -62,6 +66,6 @@ public class ResetDisplay extends Thread{
                 break;
         }
 
-        display.setText(quantity);
+        sugarDisplay.setText(quantity);
     }
 }
