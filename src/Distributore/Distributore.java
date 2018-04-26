@@ -148,7 +148,7 @@ public class Distributore implements MaxValue {
      * @param qtyLeft      è la quantità rimanente nella macchinetta.
      */
     private void createDrink(int type, ArrayList<String[]> listFromFile, int index, String qtyLeft) {
-        HotDrink hotDrink = null;
+        HotDrink hotDrink;
 
         switch (type) {
             case 0:
