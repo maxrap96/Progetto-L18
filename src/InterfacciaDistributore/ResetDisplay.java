@@ -19,6 +19,10 @@ public class ResetDisplay extends Thread{
         this.distributoreR = distributore;
     }
 
+    /**
+     * funzione che nel caso il credito sia 0 riporta la macchinetta ad uno stato di default
+     */
+
     public void run(){
         java.util.Timer timer = new Timer();
         TimerTask timerTask = new TimerTask() {
@@ -37,13 +41,12 @@ public class ResetDisplay extends Thread{
 
 
     /**
-     * Funzione che aggiorna il display dello zucchero
+     * Funzione che aggiorna il display dello zucchero in base alla quantità selezionata
      */
 
     public void setDots(){
-        int sugar = distributoreR.getSelected_sugar();
-        String quantity = null;
-        switch (sugar){
+        String quantity;
+        switch (distributoreR.getSelected_sugar()){
             //u25cf è pallino pieno
             //u25cb è pallino vuoto
             case 0:
@@ -63,6 +66,9 @@ public class ResetDisplay extends Thread{
                 break;
             case 5:
                 quantity = "- \u25cf \u25cf \u25cf \u25cf \u25cf +";
+                break;
+            default:
+                quantity = "- \u25cf \u25cf \u25cf \u25cb \u25cb +";
                 break;
         }
 
