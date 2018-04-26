@@ -393,13 +393,17 @@ public class Distributore implements MaxValue {
         try {
             for (int i = 0; i < valDati.length; i++) {
                 current = dati.get(i)[0] + "\t" + dati.get(i)[1];
-                newLine = dati.get(i)[0] + "\t" + valDati[i];
+
+                if(dati.get(i)[0].equals("Cups") || dati.get(i)[0].equals("Spoons")){
+                    newLine = dati.get(i)[0] + "\t" + valDati[i];
+                }
+                else{newLine = dati.get(i)[0] + "\t" + Double.parseDouble(valDati[i]);}
                 ingredientsData.overwriteFile(newLine, current);
             }
 
             current = ID + "\t" + list.get(ID).getLeftQuantity();
             list.get(ID).subtractDose();
-            newLine = ID + "\t" + list.get(ID).getLeftQuantity();
+            newLine = ID + "\t" + (float)list.get(ID).getLeftQuantity();
             ingredientsData.overwriteFile(newLine, current);
 
         } catch (IOException e) {
