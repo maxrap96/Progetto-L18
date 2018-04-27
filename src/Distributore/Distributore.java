@@ -260,6 +260,7 @@ public class Distributore implements MaxValue {
                 fileNotWritable.printStackTrace();
             }
             if (coins.getCredit() != 0) {
+                coins.giveChange();
                 return "Bevanda erogata.\nErogazione resto" ; //gli  output è meglio che siano in italiano
             } else {
                 System.out.println("Bevanda erogata.");
