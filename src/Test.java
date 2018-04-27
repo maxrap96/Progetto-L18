@@ -7,7 +7,7 @@ public class Test {
         Distributore macchinetta = new Distributore();
         macchinetta.textualInput();
         System.out.println("\ncheck");
-        Client client = new Client();
-        client.start();
+        /*Client client = new Client();
+        client.start();*/
     }
 }
