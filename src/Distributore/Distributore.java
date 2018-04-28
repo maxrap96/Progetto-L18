@@ -43,7 +43,7 @@ public class Distributore implements MaxValue {
         this.spoon = parseInt(statistics.get(2)[1]);
         this.cup = parseInt(statistics.get(3)[1]);
         this.vodka = Double.parseDouble(statistics.get(4)[1]);
-        int lastrow = 4; //è l'ultima riga letta dal file
+        int lastrow = 4; // Ultima riga letta dal file
         dati = statistics;
         checkIfMachineIsEmpty(); // Controllo se c'è bisogno di ricaricare la macchinetta.
         return lastrow;
@@ -131,7 +131,7 @@ public class Distributore implements MaxValue {
                 list.put(listFromFile.get(i)[0], hotDrink);
                 break;
             default:
-                new InvalidType().printStackTrace();
+                new InvalidType();
         }
 
     }
@@ -162,7 +162,7 @@ public class Distributore implements MaxValue {
                 list.put(listFromFile.get(index)[0], hotDrink);
                 break;
             default:
-                new InvalidType().printStackTrace();
+                new InvalidType();
         }
     }
 
@@ -191,13 +191,13 @@ public class Distributore implements MaxValue {
             System.out.println("Inserire l'ID della bevanda e la quantità di zucchero richiesta (da 0 a 5) separate da uno " +
                     "spazio.\nNel caso non venga inserito nulla sarà di default a 3");
             input = keyboard();
-        }while (input.isEmpty()); //finchè non ricevo un input non proseguo
+        }while (input.isEmpty()); // Finchè non ricevo un input non proseguo
         String[] splitted = input.split("\\s+");
 
         if (splitted.length == 1){
             setSugarToDefault();
         }
-        else { //significa che ho espresso una preferenza
+        else { // Ho espresso una preferenza
             selected_sugar = parseInt(splitted[1]);
         }
         // Mi chiedo se la bevanda è disponibile
@@ -217,8 +217,6 @@ public class Distributore implements MaxValue {
     /**
      * Funzione per recepire input da tastiera e restituirli sotto forma di stringa.
      */
-
-    // TODO DM: implementare try catch
     private String keyboard() {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
@@ -246,16 +244,13 @@ public class Distributore implements MaxValue {
     public String selectBeverage(String ID) {
 
         if (coins.getCredit() >= list.get(ID).getPrice() && list.get(ID).isAvailable()) {
-            // Se il credito è uguale o maggiore singifica che posso
-            // potenzialmente acquistare la bevanda
+            // Se il credito è uguale o maggiore singifica che posso potenzialmente acquistare la bevanda
 
             subtractIngredients(ID, selected_sugar);
             coins.updateBalance(list.get(ID).getPrice());
             setSugarToDefault();
 
-
             // Scrittura statistiche su file:
-
             try {
                 stats.writeFile(statsToText(ID), true);
                 updateDati(ID);
@@ -264,7 +259,7 @@ public class Distributore implements MaxValue {
             }
             if (coins.getCredit() != 0) {
                 coins.giveChange();
-                return "Bevanda erogata.\nErogazione resto" ; //gli  output è meglio che siano in italiano
+                return "Bevanda erogata.\nErogazione resto" ;
             } else {
                 System.out.println("Bevanda erogata.");
                 return "Bevanda erogata.";
