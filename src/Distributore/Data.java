@@ -55,7 +55,6 @@ public class Data {
                     dataSplit.add(rowDataSplit);
                 }
             }
-
             return dataSplit;
         } catch (IOException e) {
             e.printStackTrace();
@@ -88,7 +87,6 @@ public class Data {
      * @param transaction parametro che mi dice se la transazione avviene o fallisce.
      * @throws FileNotWritable è l'eccezione lanciata nel caso non sia possibile scrivere sul file indicato da pathfile.
      */
-    // MJ: Funzione di stampa sul file nel caso di transazioni corrette ed errate. Variante della funzione precedente.
     protected void writeFile(String scrittura, boolean transaction) throws FileNotWritable {
         try {
             FileWriter writer = new FileWriter(pathFile, true);

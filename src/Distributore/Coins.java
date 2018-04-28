@@ -11,7 +11,7 @@ public class Coins {
     private int[] money;
     private double profit = 0.0;
     private int credit = 0;
-    private final double[] COINS_VALUE= new double[]{5, 10, 20, 50 , 100, 200};
+    private final double[] COINS_VALUE = {5, 10, 20, 50 , 100, 200};
 
     private Data moneteTxt = new Data("src/File_Testo/monete.txt");
 
@@ -21,13 +21,13 @@ public class Coins {
     }
 
     /**
-     * funzione ceh restituisce un vettore contenente il valore dei centesimi inseribili nella macchinetta
-     * @return
+     * Funzione che restituisce un vettore contenente il valore dei soldi inseribili nella macchinetta.
+     *
+     * @return vettore di valori
      */
     public double[] getCOINS_VALUE() {
-        double[] cValue =new double[COINS_VALUE.length];
-        for (int i=0 ; i<COINS_VALUE.length; i++){
-
+        double[] cValue = new double[COINS_VALUE.length];
+        for (int i = 0 ; i < COINS_VALUE.length; i++){
             cValue[i] = COINS_VALUE[i] / 100;
         }
         return cValue;
@@ -40,7 +40,7 @@ public class Coins {
     private void initCoins() {
         try {
             ArrayList<String[]> coinsText = moneteTxt.readFile();
-            int last = coinsText.size() - 1;    // last e' l'ultima riga del file che mi serve.
+            int last = coinsText.size() - 1;    // Last e' l'ultima riga del file che mi serve.
 
             for (int i = 0; i < money.length; i++) {
                 money[i] = parseInt(coinsText.get(last)[i]);
@@ -61,6 +61,7 @@ public class Coins {
 
     /**
      * Funzione che crea una stringa contenente il numero di monete all'interno della macchinetta.
+     *
      * @return s: stringa contenente il numero di ogni moneta nella macchinetta.
      */
     private String moneyOnFile() {
@@ -75,17 +76,18 @@ public class Coins {
 
     /**
      * Funzione che aggiora il bilancio ed il credito rimanente.
+     *
      * @param vendita è il costo della bevanda richiesta.
      */
     public void updateBalance(double vendita) {
         profit += vendita;
         credit = credit - (int)((vendita)*100);
-        //credit = (credit)*1000 - (vendita)*1000;    //moltiplico per 1000 per evitare errori strani di approsimazione
     }
 
     /**
      * Funzione per identificare il tipo e la quantità di monete inserite.
-     * @param index è la stringa da analizzare per identificare, in base alla posizione.
+     *
+     * @param index è la stringa da analizzare.
      */
     public void addCredit(String number, int index) {
         credit += parseInt(number) * COINS_VALUE[index];
@@ -101,8 +103,7 @@ public class Coins {
     }
 
     /**
-     * restituisce il credito in forma double
-     * @return
+     * Restituisce il credito in formato double.
      */
     public double getCredit() {
         double c = ((double)credit) /100 ;
@@ -110,8 +111,7 @@ public class Coins {
     }
 
     /**
-     * Restituisce il totale dei nella macchinetta.
-     * @return la quantità di soldi presenti nella macchinetta.
+     * Restituisce il totale del bilancio nella macchinetta.
      */
     private double getBalance() {
         double balance = 0;
@@ -122,7 +122,7 @@ public class Coins {
     }
 
     /**
-     * Funzione per erogare il resto, massimizzando il numero di monete di taglio maggiore.
+     * Funzione che eroga il resto, massimizzando il numero di monete di taglio maggiore.
      */
     public String giveChange() {
 
@@ -134,7 +134,6 @@ public class Coins {
             String coinsList = "5c: " + change[0] + "\n10c: " + change[1] + "\n20c: " + change[2] + "\n50c: "
                     + change[3] + "\n1E: " + change[4] + "\n2E: " + change[5];
             String changeSupplied = "Resto erogato: " + ((double)credit/100);
-
             resetCredit(change);
 
             try {
@@ -153,7 +152,8 @@ public class Coins {
     }
 
     /**
-     * funzione per aggiornare il credito dopo l'erogazione della bevanda
+     * Funzione per aggiornare il credito dopo l'erogazione della bevanda.
+     *
      * @param change è il vettore contente il quantitativo di monete restituito
      */
     private void resetCredit(int[] change) {
@@ -165,7 +165,6 @@ public class Coins {
 
     /**
      * Funzione che controlla che il resto possa essere erogato.
-     * @return boolean
      */
     private boolean checkChange() {
         if (credit <= getBalance()){
@@ -178,6 +177,7 @@ public class Coins {
 
     /**
      * Funzione che restituisce il resto con il numero minimo di monete.
+     *
      * @param change vettore di interi per il numero di monete da erogare come resto.
      * @return change vettore contenente il numero di monete ottimizzate per ogni taglio.
      */
@@ -210,10 +210,10 @@ public class Coins {
      */
     public void addCoin(double inserted) {
         credit += inserted * 100;
-        //cerco di capire la moneta inserita
+        // Identifico la moneta inserita
         for (int i = 0; i < COINS_VALUE.length; i++){
             if (inserted == COINS_VALUE[i]){
-                //significa che ho trovato il valore corrispondente
+                // Ho trovato il valore corrispondente
                 money[i]++;
                 break;
             }
