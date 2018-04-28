@@ -20,6 +20,10 @@ public class Coins {
         initCoins();
     }
 
+    /**
+     * funzione ceh restituisce un vettore contenente il valore dei centesimi inseribili nella macchinetta
+     * @return
+     */
     public double[] getCOINS_VALUE() {
         double[] cValue =new double[COINS_VALUE.length];
         for (int i=0 ; i<COINS_VALUE.length; i++){
@@ -97,7 +101,7 @@ public class Coins {
     }
 
     /**
-     *
+     * restituisce il credito in forma double
      * @return
      */
     public double getCredit() {

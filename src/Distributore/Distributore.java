@@ -131,7 +131,7 @@ public class Distributore implements MaxValue {
                 list.put(listFromFile.get(i)[0], hotDrink);
                 break;
             default:
-                new InvalidType();
+                new InvalidType().printStackTrace();
         }
 
     }
@@ -162,7 +162,7 @@ public class Distributore implements MaxValue {
                 list.put(listFromFile.get(index)[0], hotDrink);
                 break;
             default:
-                new InvalidType();
+                new InvalidType().printStackTrace();
         }
     }
 
