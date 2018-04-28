@@ -185,19 +185,32 @@ public class Distributore implements MaxValue {
      * Funzione per recepire i comandi testuali ed analizzarli.
      */
     public void textualInput() {
-        showList();
-        System.out.println("Inserire l'ID della bevanda e la quantità di zucchero richiesta (da 0 a 5)\n" +
-                "separate da uno spazio.");
         String input;
-        input = keyboard();
-
+        do {
+            showList();
+            System.out.println("Inserire l'ID della bevanda e la quantità di zucchero richiesta (da 0 a 5) separate da uno " +
+                    "spazio.\nNel caso non venga inserito nulla sarà di default a 3");
+            input = keyboard();
+        }while (input.isEmpty()); //finchè non ricevo un input non proseguo
         String[] splitted = input.split("\\s+");
-        selected_sugar = parseInt(splitted[1]);
 
+        if (splitted.length == 1){
+            setSugarToDefault();
+        }
+        else { //significa che ho espresso una preferenza
+            selected_sugar = parseInt(splitted[1]);
+        }
         // Mi chiedo se la bevanda è disponibile
-        if (list.get(splitted[0]).isAvailable()) {
-            askForMoneyInput();
-            selectBeverage(splitted[0]); // Funzione da usare nell'interfaccia per l'erogazione della bevanda
+        try {
+            if (list.get(splitted[0]).isAvailable()) {
+                askForMoneyInput();
+                selectBeverage(splitted[0]); // Funzione da usare nell'interfaccia per l'erogazione della bevanda
+            } else {
+                System.out.println("Bevanda non disponibile");
+            }
+        }
+        catch (Exception e){
+            new BeverageNotAvailable().printStackTrace();
         }
     }
 

@@ -216,3 +216,4 @@ Caffè Corretto	449	971	976.5	998.66	Transazione fallita.	26-04-2018 15:39:03
 Caffè Corretto	449	971	976.5	998.66	Transazione fallita.	26-04-2018 15:39:46
 Caffè Corretto	448	970	975.75	998.66	Transazione avvenuta il:	26-04-2018 15:40:34
 Caffè Corretto	447	969	975.0	998.66	Transazione avvenuta il:	26-04-2018 15:40:51
+Caffè Miscela Top	447	969	975.0	998.66	Transazione avvenuta il:	28-04-2018 14:24:35
