@@ -12,7 +12,6 @@ public class VendingMachine extends JFrame{
     private int index = 1;
     private int sugar = 3;
     private final String DEFAULTMESSAGE = "     SCEGLIERE UNA BEVANDA";
-
     private ResetDisplay resetDisplay;
 
     /**
@@ -25,6 +24,8 @@ public class VendingMachine extends JFrame{
         Dimension screenSize = kit.getScreenSize();
         setSize(screenSize.width,screenSize.height);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
+        //setResizable(false);
+        pack();
         setTitle("Hot Drinks Vending Machine");
 
         // Indici coordinate pulsanti bevande
@@ -110,7 +111,6 @@ public class VendingMachine extends JFrame{
             resetDisplay.run();
         });
 
-
         JButton plus = makeRoundButton("+",20 * screenSize.width / 100,20 * screenSize.height / 100,
                                        screenSize.height / 8,screenSize.height / 8);
         pannelloMonete.add(plus);
@@ -195,8 +195,6 @@ public class VendingMachine extends JFrame{
             pannelloBevande.add(button);
             xButton++;
         }
-
-
     }
 
     /**
@@ -214,7 +212,7 @@ public class VendingMachine extends JFrame{
         panel.setLayout(layoutManager);
         return panel;
     }
-
+    
     /**
      * Funzione per creare bottoni a rettangolo con angoli smussati
      * @param string: etichetta del pulsante
