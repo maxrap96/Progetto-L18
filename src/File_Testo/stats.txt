@@ -219,3 +219,22 @@ Caffè Corretto	447	969	975.0	998.66	Transazione avvenuta il:	26-04-2018 15:40:5
 Caffè Miscela Top	447	969	975.0	998.66	Transazione avvenuta il:	28-04-2018 14:24:35
 Caffè Espresso	446	968	974.25	998.66	Transazione avvenuta il:	29-04-2018 08:41:39
 Caffè Espresso	445	967	973.5	998.66	Transazione avvenuta il:	29-04-2018 09:59:50
+Caffè Espresso	444	966	972.75	998.66	Transazione avvenuta il:	29-04-2018 10:08:03
+Caffè Espresso	443	965	972.0	998.66	Transazione avvenuta il:	29-04-2018 10:13:23
+Caffè Espresso	442	964	971.25	998.66	Transazione avvenuta il:	29-04-2018 10:16:38
+Caffè Espresso	441	963	970.5	998.66	Transazione avvenuta il:	29-04-2018 10:18:27
+Cioccolata	441	963	970.5	998.66	Transazione fallita.	29-04-2018 10:21:38
+Cioccolata	441	963	970.5	998.66	Transazione fallita.	29-04-2018 10:21:39
+Cioccolata	441	963	970.5	998.66	Transazione fallita.	29-04-2018 10:21:45
+Caffè Lungo	440	962	969.75	998.66	Transazione avvenuta il:	29-04-2018 10:26:01
+Caffè Lungo	439	961	969.0	998.66	Transazione avvenuta il:	29-04-2018 10:26:09
+Latte Caldo	438	960	968.25	998.66	Transazione avvenuta il:	29-04-2018 10:26:29
+Cioccolata	439	961	969.0	998.66	Transazione avvenuta il:	29-04-2018 10:28:11
+Caffè Lungo	438	960	968.25	998.66	Transazione avvenuta il:	29-04-2018 10:28:23
+Cioccolata	437	959	967.5	998.66	Transazione avvenuta il:	29-04-2018 10:28:54
+Caffè Espresso	438	960	968.25	998.66	Transazione avvenuta il:	29-04-2018 10:33:05
+Caffè Miscela Top	437	959	967.0	998.66	Transazione avvenuta il:	29-04-2018 10:33:32
+Caffè Miscela Top	436	958	966.25	998.66	Transazione avvenuta il:	29-04-2018 10:33:41
+Caffè Miscela Top	435	957	965.5	998.66	Transazione avvenuta il:	29-04-2018 10:33:45
+Ginseng	437	959	967.5	998.3199999999999	Transazione avvenuta il:	29-04-2018 10:46:43
+Cappuccino	436	958	966.75	998.2399999999999	Transazione avvenuta il:	29-04-2018 10:46:54

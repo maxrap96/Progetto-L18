@@ -259,14 +259,14 @@ public class Distributore implements MaxValue {
             }
             if (coins.getCredit() != 0) {
                 coins.giveChange();
-                return "Bevanda erogata.\nErogazione resto" ;
+                return "BEVANDA EROGATA\nRITIRARE IL RESTO" ;
             } else {
                 System.out.println("Bevanda erogata.");
-                return "Bevanda erogata.";
+                return "BEVANDA EROGATA";
             }
         } else {
             if (!list.get(ID).isAvailable()) {
-                return "Bevanda non disponibile";
+                return "BEVANDA NON DISPONIBILE";
             }
             try {
                 stats.writeFile(statsToText(ID), false);

@@ -8,7 +8,7 @@ import java.util.TimerTask;
 
 public class ResetDisplay extends Thread{
 
-    private final String DEFAULTMESSAGE = "     SCEGLIERE UNA BEVANDA";
+    private final String DEFAULTMESSAGE = "SCEGLIERE UNA BEVANDA";
     private JTextArea display;
     private JTextField sugarDisplay;
     private Distributore distributoreR;
@@ -33,19 +33,20 @@ public class ResetDisplay extends Thread{
                     display.setText(DEFAULTMESSAGE);
                 }
                 else {
-                    display.setText(DEFAULTMESSAGE + "\n\n\nCredito: " + String.format("%.2f",distributoreR.getCredit()));
+                    display.setText(DEFAULTMESSAGE + "\n\n\nCREDITO: " + String.format("%.2f",
+                                    distributoreR.getCredit()));
                 }
                 distributoreR.setSugarToDefault();
-                System.out.println(distributoreR.getCredit());
+                //System.out.println(distributoreR.getCredit());
                 setDots();
             }
         };
 
         if (distributoreR.getCredit() == 0) {
-            timer.schedule(timerTask, 9000);
+            timer.schedule(timerTask, 5000);
         }
         else {
-            timer.schedule(timerTask, 4000);
+            timer.schedule(timerTask, 10000);
         }
     }
 

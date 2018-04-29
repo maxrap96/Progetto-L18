@@ -212,7 +212,7 @@ public class VendingMachine extends JFrame{
         panel.setLayout(layoutManager);
         return panel;
     }
-    
+
     /**
      * Funzione per creare bottoni a rettangolo con angoli smussati
      * @param string: etichetta del pulsante
