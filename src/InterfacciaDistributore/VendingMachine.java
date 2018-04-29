@@ -190,12 +190,14 @@ public class VendingMachine extends JFrame{
                         Y_SCREEN_INDEX[yButton],screenSize.width / 6,
                         screenSize.height / 8);
                 ResetDisplay resetDisplay = new ResetDisplay(display, sugarDisplay, distributore);
-                button.addActionListener(new BeverageListener(distributore,display, index, resetDisplay));
+                button.addActionListener(new BeverageListener(distributore, display, index, resetDisplay));
             }
             else {
                 // Pulsante vuoto
                 button = makeRoundRectButton("", X_SCREEN_INDEX[xButton], Y_SCREEN_INDEX[yButton],
                         screenSize.width / 6, screenSize.height / 8);
+                //ResetDisplay resetDisplay = new ResetDisplay(display, sugarDisplay, distributore);
+                //button.addActionListener(new BeverageListener(distributore, display, index, resetDisplay));
             }
             pannelloBevande.add(button);
             xButton++;

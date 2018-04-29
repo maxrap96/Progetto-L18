@@ -274,7 +274,7 @@ public class Distributore implements MaxValue {
                 fileNotWritable.printStackTrace();
             }
             new UnsufficientCredit();
-            return "Credito insufficiente";
+            return "CREDITO INSUFFICIENTE";
         }
     }
 
