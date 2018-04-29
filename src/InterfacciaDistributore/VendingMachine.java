@@ -1,8 +1,13 @@
 package InterfacciaDistributore;
 
 import Distributore.Distributore;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class VendingMachine extends JFrame{
 
@@ -11,7 +16,7 @@ public class VendingMachine extends JFrame{
     private Distributore distributore = new Distributore();
     private int index = 1;
     private int sugar = 3;
-    private final String DEFAULTMESSAGE = "     SCEGLIERE UNA BEVANDA";
+    private final String DEFAULTMESSAGE = "SCEGLIERE UNA BEVANDA";
     private ResetDisplay resetDisplay;
 
     /**
