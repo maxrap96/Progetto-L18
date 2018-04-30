@@ -21,17 +21,20 @@ public class TabsListener implements ActionListener {
         statsPanel.validate();
     }
 
+    /**
+     * Funzione che crea le schede delle statistiche
+     */
     private void createTabs() {
-        //statsPanel.add(makeTextPanel("Test"));
-
-        JPanel panel = makeTextPanel("Stats 1");
-        jTabListener.addTab("Tab 1", panel);
-        JComponent panel2 = makeTextPanel("Stats 2");
-        jTabListener.addTab("Tab 2", panel2);
-        JComponent panel3 = makeTextPanel("Stats 3");
+        JPanel panel = makeTextPanel("Statistiche relative alle monete:");
+        jTabListener.addTab("Monete", panel);
+        JComponent panel2 = makeTextPanel("Statistiche relative agli ingredienti:");
+        jTabListener.addTab("Ingredienti", panel2);
+        JComponent panel3 = makeTextPanel("Statistiche varie:");
         panel3.setPreferredSize(new Dimension(410, 50));
-        jTabListener.addTab("Tab 3", panel3);
+        jTabListener.addTab("Miscellanea", panel3);
     }
+
+    // MJ: può essere tolta in futuro e sostituita con grafici delle statistiche.
 
     private JPanel makeTextPanel(String text) {
         JPanel panel = new JPanel(false);

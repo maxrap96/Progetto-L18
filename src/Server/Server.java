@@ -28,7 +28,7 @@ public class Server extends JFrame implements FileServer{
         addWindowListener(windowCloserListener);
 
         // Inizializzo Righe e Colonne
-        this.panelRows = initiRows();
+        this.panelRows = initRows();
         this.panelCols = initCols();
 
         // Inizializzo il vettore dei textField
@@ -45,8 +45,6 @@ public class Server extends JFrame implements FileServer{
 
         // Creo il pannello dei bottoni
         ButtonPanel buttonPanel = new ButtonPanel(buttonMenu, buttonStats);
-
-        //TODO MJ: aggiungere listener a buttonStats per creare le schede
 
         // Aggiungo i listener
         addListenerTextField(jTextFieldsVect, panelCols);
@@ -90,7 +88,7 @@ public class Server extends JFrame implements FileServer{
     /**
      * Inizializzo le righe del textPanel.
      */
-    private int initiRows(){
+    private int initRows(){
         try{
             BufferedReader bufferedReader = new BufferedReader( new FileReader(fileMenuServer.getPath()));
             String tmp;
