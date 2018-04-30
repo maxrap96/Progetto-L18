@@ -51,11 +51,8 @@ public class Server extends JFrame implements FileServer{
         buttonMenu.addActionListener(new ListenerLoad(jTextFieldsVect, textPanel));
         buttonStats.addActionListener(new TabsListener(textPanel));
 
-        Toolbar toolbar = new Toolbar();
-
         container.add(buttonPanel);
         container.add(textPanel);
-        container.add(toolbar);
     }
 
     /**
@@ -71,6 +68,7 @@ public class Server extends JFrame implements FileServer{
                                                                            // dimensioni
         setExtendedState(JFrame.MAXIMIZED_BOTH); // Quando avvio si apre fullscreen
         setTitle(title);
+        this.setJMenuBar(new Toolbar()); // Aggiungo la JMenuBar
     }
 
     /**
