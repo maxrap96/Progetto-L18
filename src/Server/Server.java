@@ -46,21 +46,12 @@ public class Server extends JFrame implements FileServer{
         // Creo il pannello dei bottoni
         ButtonPanel buttonPanel = new ButtonPanel(buttonMenu, buttonStats);
 
-        // Creo le schede
-        JTabbedPane jTabs = new JTabbedPane();
-        JComponent panel = makeTextPanel("Stats 1");
-        jTabs.addTab("Tab 1", panel);
-        JComponent panel2 = makeTextPanel("Stats 2");
-        jTabs.addTab("Tab 2", panel2);
-        JComponent panel3 = makeTextPanel("Stats 3");
-        panel3.setPreferredSize(new Dimension(410, 50));
-        jTabs.addTab("Tab 3", panel3);
-
         //TODO MJ: aggiungere listener a buttonStats per creare le schede
 
         // Aggiungo i listener
         addListenerTextField(jTextFieldsVect, panelCols);
         buttonMenu.addActionListener(new ListenerLoad(jTextFieldsVect, textPanel));
+        buttonStats.addActionListener(new TabsListener(textPanel));
 
         container.add(buttonPanel);
         container.add(textPanel);
