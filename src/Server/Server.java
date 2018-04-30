@@ -51,8 +51,11 @@ public class Server extends JFrame implements FileServer{
         buttonMenu.addActionListener(new ListenerLoad(jTextFieldsVect, textPanel));
         buttonStats.addActionListener(new TabsListener(textPanel));
 
+        Toolbar toolbar = new Toolbar();
+
         container.add(buttonPanel);
         container.add(textPanel);
+        container.add(toolbar);
     }
 
     /**
