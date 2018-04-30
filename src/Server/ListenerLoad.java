@@ -18,6 +18,7 @@ public class ListenerLoad implements ActionListener, FileServer {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        panelListener.removeAll();
         setTextField();
         addTextField();
         panelListener.validate();

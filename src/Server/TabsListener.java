@@ -16,9 +16,11 @@ public class TabsListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        statsPanel.removeAll();
         createTabs();
         statsPanel.add(jTabListener);
         statsPanel.validate();
+        statsPanel.repaint();
     }
 
     /**
