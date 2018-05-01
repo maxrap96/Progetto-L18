@@ -27,6 +27,8 @@ public class TabsListener implements ActionListener {
      * Funzione che crea le schede delle statistiche
      */
     private void createTabs() {
+        jTabListener.removeAll();
+
         JPanel panel = makeTextPanel("Statistiche relative alle monete:");
         jTabListener.addTab("Monete", panel);
         JComponent panel2 = makeTextPanel("Statistiche relative agli ingredienti:");
