@@ -133,7 +133,7 @@ public class VendingMachine extends JFrame{
     }
 
     /**
-     * funzione che crea i bottoni delle monete
+     * Funzione che crea i bottoni delle monete
      * @param X_MON_INDEX è l'indice x del tabellone
      * @param Y_MON_INDEX è l'indice y del tabellone
      * @param screenSize è la dimensione dello schermo
