@@ -2,12 +2,11 @@ package InterfacciaDistributore;
 
 import Distributore.Distributore;
 
-import javax.imageio.ImageIO;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+import java.util.Timer;
+
 
 public class VendingMachine extends JFrame{
 
@@ -18,6 +17,7 @@ public class VendingMachine extends JFrame{
     private int sugar = 3;
     private final String DEFAULTMESSAGE = "SCEGLIERE UNA BEVANDA";
     private ResetDisplay resetDisplay;
+    private Timer timer = new Timer();
 
     /**
      * Creazione interfaccia grafica distributore
@@ -111,9 +111,8 @@ public class VendingMachine extends JFrame{
 
         minus.addActionListener(subtract -> {
             distributore.lessSugar();
-            ResetDisplay resetDisplay = new ResetDisplay(display, sugarDisplay, distributore);
             resetDisplay.setDots();
-            resetDisplay.run();
+            resetTimer();
         });
 
         JButton plus = makeRoundButton("+",20 * screenSize.width / 100,20 * screenSize.height / 100,
@@ -122,14 +121,24 @@ public class VendingMachine extends JFrame{
         plus.addActionListener(add -> {
             distributore.moreSugar();
             resetDisplay.setDots();
-            resetDisplay.run();
-
+            resetTimer();
         });
 
         JButton chiavetta = makeRoundRectButton("Chiavetta", 9 * screenSize.width / 200,
                                                 3 * screenSize.width / 100, 20 * screenSize.width / 100,
                                                 9 * screenSize.height / 100) ;
         pannelloMonete.add(chiavetta);
+    }
+
+    /**
+     * funzione per resettare il timer e farlo ripartire
+     */
+
+    private void resetTimer() {
+        timer.purge();
+        timer.cancel();
+        timer = new Timer();
+        timer.schedule(resetDisplay, 5000);
     }
 
     /**
@@ -190,14 +199,12 @@ public class VendingMachine extends JFrame{
                         Y_SCREEN_INDEX[yButton],screenSize.width / 6,
                         screenSize.height / 8);
                 ResetDisplay resetDisplay = new ResetDisplay(display, sugarDisplay, distributore);
-                button.addActionListener(new BeverageListener(distributore, display, index, resetDisplay));
+                button.addActionListener(new BeverageListener(distributore, display, index, resetDisplay, timer));
             }
             else {
                 // Pulsante vuoto
                 button = makeRoundRectButton("", X_SCREEN_INDEX[xButton], Y_SCREEN_INDEX[yButton],
                         screenSize.width / 6, screenSize.height / 8);
-                //ResetDisplay resetDisplay = new ResetDisplay(display, sugarDisplay, distributore);
-                //button.addActionListener(new BeverageListener(distributore, display, index, resetDisplay));
             }
             pannelloBevande.add(button);
             xButton++;
