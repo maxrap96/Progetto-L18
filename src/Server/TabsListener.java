@@ -7,10 +7,11 @@ package Server;
 //import javafx.scene.control.Label;
 //import javafx.scene.paint.Color;
 
-/*import javax.swing.*;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 
 public class TabsListener implements ActionListener {
     JPanel statsPanel;
@@ -33,20 +34,20 @@ public class TabsListener implements ActionListener {
 
     /**
      * Funzione che crea le schede delle statistiche
-     *//*
+     */
     private void createTabs() {
         jTabs.removeAll();
 
         JPanel panel = makeTextPanel("Statistiche relative alle monete:");
-        jTabs.addTab("Monete", panel);
-
-        //createFirstTab();
-
+        jTabs.addTab("Coins", panel);
+        jTabs.setMnemonicAt(0, KeyEvent.VK_C);
         JComponent panel2 = makeTextPanel("Statistiche relative agli ingredienti:");
-        jTabs.addTab("Ingredienti", panel2);
+        jTabs.addTab("Ingredients", panel2);
+        jTabs.setMnemonicAt(1, KeyEvent.VK_I);
         JComponent panel3 = makeTextPanel("Statistiche varie:");
         panel3.setPreferredSize(new Dimension(410, 50));
-        jTabs.addTab("Miscellanea", panel3);
+        jTabs.addTab("Miscellaneous", panel3);
+        jTabs.setMnemonicAt(2, KeyEvent.VK_M);
     }
 
     // MJ: può essere tolta in futuro e sostituita con grafici delle statistiche.
@@ -59,40 +60,4 @@ public class TabsListener implements ActionListener {
         panel.add(filler);
         return panel;
     }
-
-
-    // MJ: work in progress su tabs con javaFX...
-
-    private void createFirstTab() {
-        JFXPanel panel = makeTextPanelNew("Statistiche relative alle monete:");
-        jTabs.addTab("Monete", panel);
-    }
-
-    private JFXPanel makeTextPanelNew(String text) {
-        JFXPanel panel = new JFXPanel();
-        panel.setPreferredSize(new Dimension(500, 800));
-        panel.setLayout(new GridLayout(1, 1));
-        Label label = new Label();
-
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                initFX(panel);
-            }
-        });
-
-        JPanel jp = new JPanel();
-        jp.setLayout(new BorderLayout());
-        jp.add(panel, BorderLayout.CENTER);
-
-        return panel;
-    }
-
-    private static void initFX(JFXPanel fxPanel) {
-        // This method is invoked on JavaFX thread
-        Group root = new Group();
-        Scene scene = new Scene(root, Color.PLUM);
-
-        fxPanel.setScene(scene);
-    }
-}*/
+}
