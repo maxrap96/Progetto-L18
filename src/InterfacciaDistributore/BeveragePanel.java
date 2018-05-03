@@ -24,7 +24,7 @@ public class BeveragePanel extends JPanel {
 
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.BOTH;
-        c.insets = new Insets(50,40,50,40);
+        c.insets = new Insets(50,50,50,40);
         c.weightx = 1;
         c.weighty = 1;
         c.gridx = 0;
