@@ -24,10 +24,11 @@ public class VendingMachine extends JFrame{
         // Inizializzazione JFrame
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension screenSize = kit.getScreenSize();
-        setSize(screenSize.width,screenSize.height);
+        pack();
+        setSize(screenSize.width/2,screenSize.height/2);
+        setLocation(screenSize.width/4, screenSize.height/4);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         //setResizable(false);
-        pack();
         setTitle("Hot Drinks Vending Machine");
 
         // Indici coordinate pulsanti bevande
