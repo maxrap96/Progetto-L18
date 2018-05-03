@@ -68,7 +68,6 @@ public class Server extends JFrame implements FileServer{
                                                                            // dimensioni
         setExtendedState(JFrame.MAXIMIZED_BOTH); // Quando avvio si apre fullscreen
         setTitle(title);
-        this.setJMenuBar(new Toolbar()); // Aggiungo la JMenuBar
     }
 
     /**

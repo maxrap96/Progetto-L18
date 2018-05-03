@@ -1,27 +1,20 @@
-package Server;
+package GUI_FX_Server;
 
-
-import javafx.application.Application;
-import javafx.scene.Scene;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-
-import java.awt.*;
 
 public class MenuBar1 extends MenuBar {
 
     public MenuBar1() {
 
         //primaryStage.setTitle("JavaFX App");
-        ImageView ImmStats = new ImageView("file:src/Server/stats.jpg");
-        ImageView ImmMenu = new ImageView("file:src/Server/menu.png");
-        ImageView ImmHome = new ImageView("file:src/Server/home.png");
-        ImageView ImmSx = new ImageView("file:src/Server/FrecciaSx.png");
-        ImageView ImmDx = new ImageView("file:src/Server/FrecciaDx.png");
+        ImageView ImmStats = new ImageView("./ServerImages/stats.jpg");
+        ImageView ImmMenu = new ImageView("./ServerImages/menu.png");
+        ImageView ImmHome = new ImageView("./ServerImages/home.png");
+        ImageView ImmSx = new ImageView("./ServerImages/FrecciaSx.png");
+        ImageView ImmDx = new ImageView("./ServerImages/FrecciaDx.png");
 
         ImmHome.setFitHeight(20);
         ImmHome.setFitWidth(20);

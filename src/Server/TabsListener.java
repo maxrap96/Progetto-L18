@@ -1,11 +1,6 @@
 package Server;
 
-//import javafx.application.Platform;
-//import javafx.embed.swing.JFXPanel;
-//import javafx.scene.Group;
-//import javafx.scene.Scene;
-//import javafx.scene.control.Label;
-//import javafx.scene.paint.Color;
+import GUI_FX_Server.BarChart;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,4 +1,4 @@
-package Server;
+package GUI_FX_Server;
 
 import javafx.application.Application;
 import javafx.scene.Scene;

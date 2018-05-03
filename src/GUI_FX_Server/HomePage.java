@@ -1,20 +1,13 @@
-package Server;
+package GUI_FX_Server;
 
 import javafx.application.Application;
-import javafx.geometry.HPos;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.geometry.Rectangle2D;
-import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 //TODO MJ SCUSA PER IL DISORDINE
 public class HomePage extends Application {
@@ -30,7 +23,7 @@ public class HomePage extends Application {
         label.setFont(Font.font("Rockwell", 50));
         label.setWrapText(true);
 
-        ImageView img = new ImageView("file:src/Server/download.jpg");
+        ImageView img = new ImageView("./ServerImages/download.jpg");
         img.setFitHeight(250);
         img.setFitWidth(250);
 
