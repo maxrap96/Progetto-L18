@@ -3,53 +3,67 @@ package InterfacciaDistributore;
 import Distributore.Distributore;
 
 import javax.swing.*;
-import java.util.Timer;
 import java.util.TimerTask;
+import java.util.Timer;
 
-public class ResetDisplay extends Thread{
+public class ResetDisplay {
 
     private final String DEFAULTMESSAGE = "SCEGLIERE UNA BEVANDA";
     private JTextArea display;
     private JTextField sugarDisplay;
-    private Distributore distributoreR;
+    private Distributore distributore;
+    private Timer timer = new Timer();
+    private TimerTask timerTask;
 
     public ResetDisplay(JTextArea display, JTextField sugarDisplay, Distributore distributore) {
         this.display = display;
         this.sugarDisplay = sugarDisplay;
-        this.distributoreR = distributore;
+        this.distributore = distributore;
     }
 
     /**
      * funzione che nel caso il credito sia 0 riporta la macchinetta ad uno stato di default
      */
 
-    public void run(){
-        java.util.Timer timer = new Timer();
+    public void runTimer() {
+        resetTimer();
+        int time;
+        if (distributore.getCredit() == 0){
+            time = 5000;
+        }
+        else {
+            time = 10000;
+        }
 
-        TimerTask timerTask = new TimerTask() {
+        timerTask = new TimerTask() {
             @Override
             public void run() {
-                if (distributoreR.getCredit() == 0){
+                if (distributore.getCredit() == 0){
                     display.setText(DEFAULTMESSAGE);
+                    distributore.setSugarToDefault();
                 }
                 else {
                     display.setText(DEFAULTMESSAGE + "\n\n\nCREDITO: " + String.format("%.2f",
-                                    distributoreR.getCredit()));
+                            distributore.getCredit()));
                 }
-                distributoreR.setSugarToDefault();
-                //System.out.println(distributoreR.getCredit());
                 setDots();
+
             }
         };
+        timer.schedule(timerTask,time);
 
-        if (distributoreR.getCredit() == 0) {
-            timer.schedule(timerTask, 5000);
-        }
-        else {
-            timer.schedule(timerTask, 10000);
-        }
     }
 
+
+    /**
+     * funzione per resettare il timer e reinizializzarlo
+     */
+
+    private void resetTimer() {
+        timer.purge();
+        timer.cancel();
+        timer = new Timer();
+    }
 
     /**
      * Funzione che aggiorna il display dello zucchero in base alla quantità selezionata
@@ -57,7 +71,7 @@ public class ResetDisplay extends Thread{
 
     public void setDots(){
         String quantity;
-        switch (distributoreR.getSelected_sugar()){
+        switch (distributore.getSelected_sugar()){
             //u25cf è pallino pieno
             //u25cb è pallino vuoto
             case 0:
