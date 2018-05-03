@@ -9,7 +9,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-public class BeverageGrid extends Application {
+public class BeverageGrid extends GridPane {
     private GridPane gridPane = new GridPane();
     private Distributore distributore;
     private final int BUTTON_PADDING = 10;
@@ -18,12 +18,11 @@ public class BeverageGrid extends Application {
     private final double[] MAXSIZE = {200, 300};
     private final double[] MINSIZE = {50, 60};
 
-    /*
+
     public BeverageGrid(Distributore distributore) {
         this.distributore = distributore;
         createGrid();
     }
-*/
 
     private void createGrid(){
         //per una migliroe lettura è più comodo usare al massimo 12 pulsanti
@@ -52,20 +51,5 @@ public class BeverageGrid extends Application {
                 }
             }
         }
-    }
-
-    public static void main(String[] args) {
-        launch(args);
-    }
-
-    @Override
-    public void start(Stage primaryStage) {
-        distributore = new Distributore();
-        createGrid();
-        ScrollPane scrollPane = new ScrollPane(gridPane);
-        Scene scene = new Scene(scrollPane);
-        primaryStage.setScene(scene);
-        primaryStage.show();
-
     }
 }
