@@ -24,8 +24,9 @@ public class BeverageListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        String s = e.getActionCommand();
         String id = distributore.getID(index);
+        String messagePriceCredit = String.format("%.2f", distributore.getPrice(id)) + "\n\nCREDITO: " +
+                String.format("%.2f", distributore.getCredit());
 
         if (distributore.getCredit() >= distributore.getPrice(id)) {
             textArea.setText(distributore.selectBeverage(id));
@@ -33,15 +34,12 @@ public class BeverageListener implements ActionListener {
         }
         else {
             if (distributore.getCredit() > 0 && distributore.getCredit() < distributore.getPrice(id)){
-                textArea.setText(distributore.selectBeverage(id) + "\n" + "COSTO: " +
-                        String.format("%.2f", distributore.getPrice(id)) + "\n\nCREDITO: " +
-                        String.format("%.2f", distributore.getCredit()));
+                textArea.setText(distributore.selectBeverage(id) + "\n" + "COSTO: " + messagePriceCredit);
+
                 resetDisplay.runTimer();
             }
             else {
-                textArea.setText(distributore.getLabel(index).toUpperCase() + "\n" + "COSTO: " +
-                        String.format("%.2f", distributore.getPrice(id)) + "\n\nCREDITO: " +
-                        String.format("%.2f", distributore.getCredit()));
+                textArea.setText(distributore.getLabel(index).toUpperCase() + "\n" + "COSTO: " + messagePriceCredit);
                 resetDisplay.runTimer();
             }
         }
