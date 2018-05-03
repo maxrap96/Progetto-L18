@@ -15,7 +15,7 @@ public class BeverageGrid extends GridPane {
     private final int BUTTON_PADDING = 10;
     private final int BUTTONS_PER_LINE = 4;
     private final int NUM_BUTTON_LINES = 3;
-    private final double[] MAXSIZE = {200, 300};
+    private final double[] MAXSIZE = {2000, 3000};
     private final double[] MINSIZE = {50, 60};
 
 
