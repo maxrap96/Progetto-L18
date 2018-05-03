@@ -7,11 +7,15 @@ import java.awt.*;
 
 public class BeveragePanel extends JPanel {
     private final int NUMERO_PULSANTI_BEVANDE = 12;
-    private Distributore distributorePanel;
+    private Distributore distributore;
     private int index = 1;
+    private JTextField sugarDisplay;
+    private JTextArea display;
 
-    public BeveragePanel(Distributore distributore) {
-        this.distributorePanel = distributore;
+    public BeveragePanel(Distributore distributore, JTextArea display, JTextField sugarDisplay) {
+        this.distributore = distributore;
+        this.display = display;
+        this.sugarDisplay = sugarDisplay;
         this.setLayout(new GridBagLayout());
         this.setBackground(Color.BLACK);
         makeBeverageButton();
@@ -37,16 +41,16 @@ public class BeveragePanel extends JPanel {
             }
 
             JButton button;
-            if (i < distributorePanel.getListSize()) {
+            if (i < distributore.getListSize()) {
                 index = i + 1;
-                button = new RoundRectButton(distributorePanel.getLabel(index));
+                button = new RoundRectButton(distributore.getLabel(index));
                 button.setMinimumSize(new Dimension(screenSize.width / 6, screenSize.height / 8));
                 button.setMaximumSize(new Dimension(screenSize.width / 6, screenSize.height / 8));
                 button.setPreferredSize(new Dimension(screenSize.width / 6, screenSize.height / 8));
                 button.setFont(new Font("", Font.BOLD, 15));
 
-                //ResetDisplay resetDisplay = new ResetDisplay(display, sugarDisplay, distributorePanel);
-                //button.addActionListener(new BeverageListener(distributorePanel, display, index, resetDisplay));
+                ResetDisplay resetDisplay = new ResetDisplay(display, sugarDisplay, distributore);
+                button.addActionListener(new BeverageListener(distributore, display, index, resetDisplay));
             }
             else {
                 // Pulsante vuoto
@@ -54,9 +58,7 @@ public class BeveragePanel extends JPanel {
                 button.setMinimumSize(new Dimension(screenSize.width / 6, screenSize.height / 8));
                 button.setMaximumSize(new Dimension(screenSize.width / 6, screenSize.height / 8));
                 button.setPreferredSize(new Dimension(screenSize.width / 6, screenSize.height / 8));
-                //ResetDisplay resetDisplay = new ResetDisplay(display, sugarDisplay, distributore);
-                //button.addActionListener(new BeverageListener(distributore, display, index, resetDisplay));
-            }
+                }
 
             this.add(button, c);
             c.gridx++;

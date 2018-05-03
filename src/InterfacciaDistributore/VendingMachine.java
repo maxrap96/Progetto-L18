@@ -54,11 +54,6 @@ public class VendingMachine extends JFrame{
                                               Color.LIGHT_GRAY, new BorderLayout());
         container.add(pannelloSelezione, BorderLayout.EAST);
 
-        // Creazione del pannello dove vengono disposte le bevande
-//        JPanel pannelloBevande = makePanel(5 * screenSize.width / 7, 5 * screenSize.height / 7,
-//                                            Color.BLACK, null);
-        JPanel pannelloBevande = new BeveragePanel(distributore);
-        container.add(pannelloBevande, BorderLayout.WEST);
 
         // Creazione del pannello delle monete e aggiunta al pannelloSelezione
         JPanel pannelloMonete = makePanel(5 * screenSize.width / 7,69 * screenSize.height / 100,
@@ -86,6 +81,12 @@ public class VendingMachine extends JFrame{
 
         resetDisplay = new ResetDisplay(display, sugarDisplay, distributore);
         resetDisplay.setDots();
+
+        // Creazione del pannello dove vengono disposte le bevande
+//        JPanel pannelloBevande = makePanel(5 * screenSize.width / 7, 5 * screenSize.height / 7,
+//                                            Color.BLACK, null);
+        JPanel pannelloBevande = new BeveragePanel(distributore, display, sugarDisplay);
+        container.add(pannelloBevande, BorderLayout.WEST);
 
         // Creazione e aggiunta dei dodici pulsanti delle bevande
         //createDrinkButtons(X_SCREEN_INDEX, Y_SCREEN_INDEX, screenSize, display, sugarDisplay, pannelloBevande);
