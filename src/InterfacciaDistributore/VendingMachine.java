@@ -83,8 +83,6 @@ public class VendingMachine extends JFrame{
         resetDisplay.setDots();
 
         // Creazione del pannello dove vengono disposte le bevande
-//        JPanel pannelloBevande = makePanel(5 * screenSize.width / 7, 5 * screenSize.height / 7,
-//                                            Color.BLACK, null);
         JPanel pannelloBevande = new BeveragePanel(distributore, display, sugarDisplay);
         container.add(pannelloBevande, BorderLayout.WEST);
 
@@ -162,46 +160,7 @@ public class VendingMachine extends JFrame{
         }
 
     }
-
-    /**
-     * Serve a creare i pulsanti delle bevande.
-     *
-     * @param X_SCREEN_INDEX è l'indice x del tabellone
-     * @param Y_SCREEN_INDEX è l'indice y del tabellone
-     * @param screenSize è la dimensione dello schermo
-     * @param display è il display del distributore
-     * @param sugarDisplay è la riga del display
-     * @param pannelloBevande è il pannello delle bevande
-     */
-    private void createDrinkButtons(int[] X_SCREEN_INDEX, int[] Y_SCREEN_INDEX, Dimension screenSize, JTextArea display,
-                                    JTextField sugarDisplay, JPanel pannelloBevande) {
-        int xButton = 0, yButton = 0; // coordinate dei pulsanti
-
-        for (int i = 0; i < NUMERO_PULSANTI_BEVANDE; i++ ){
-            if (xButton == 3){
-                xButton = 0;
-                yButton++;
-            }
-            JButton button;
-            if (i < distributore.getListSize()) {
-                index = i + 1;
-                String id = String.valueOf(index);
-                button = makeRoundRectButton(distributore.getLabel(index), X_SCREEN_INDEX[xButton],
-                        Y_SCREEN_INDEX[yButton],screenSize.width / 6,
-                        screenSize.height / 8);
-                ResetDisplay resetDisplay = new ResetDisplay(display, sugarDisplay, distributore);
-                button.addActionListener(new BeverageListener(distributore, display, index, resetDisplay));
-            }
-            else {
-                // Pulsante vuoto
-                button = makeRoundRectButton("", X_SCREEN_INDEX[xButton], Y_SCREEN_INDEX[yButton],
-                        screenSize.width / 6, screenSize.height / 8);
-            }
-            pannelloBevande.add(button);
-            xButton++;
-        }
-    }
-
+    
     /**
      * Funzione per creare pannelli standard
      * @param width: lunghezza  del pannello
