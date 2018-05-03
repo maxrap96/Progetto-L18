@@ -8,16 +8,28 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 //TODO MJ SCUSA PER IL DISORDINE
 public class HomePage extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+
+        // Definizione dello stage principale e della barra del menu
         primaryStage.setTitle("Home");
-        //primaryStage.setFullScreen(true); PER METTERE ALL' AVVIO IL FULLSCREEN
         MenuBar mb = new MenuBar1();
 
+        // Creazione GridPane
+        GridPane gPane = new GridPane();
+        gPane.setPrefSize(800, 550); //SIZE BASE DEL PANE ALL'AVVIO
+        gPane.setMinSize(800, 550);  //SIZE MINIMO DEL PANE
+
+        ColumnConstraints Col = new ColumnConstraints();    // QUESTA PARTE SERVE PER FAR CRESCERE TUTTA LA COLONNA
+        Col.setHgrow(Priority.ALWAYS);                      // QUANDO SI AUMENTA LA FINESTRA
+        gPane.getColumnConstraints().addAll(Col);
+
+        // Creazione scritta correlata da un logo
         Label label = new Label("Welcome to project Nobildonno Home Page");
         label.setTextFill(Color.FIREBRICK);
         label.setFont(Font.font("Rockwell", 50));
@@ -28,32 +40,40 @@ public class HomePage extends Application {
         img.setFitWidth(250);
 
         label.setGraphic(img);
-        label.setAlignment(Pos.BOTTOM_CENTER);
+        //label.setAlignment(Pos.BOTTOM_CENTER);    Dovrebbe posizionare il testo ma non funziona hahaha
 
+        // Creazione VBox, commento da rivedere (@luce)
         VBox vBox = new VBox(mb);
         vBox.setFillWidth(true);
 
-        GridPane p = new GridPane();
-        p.setPrefSize(800, 550); //SIZE BASE DELL PANE ALL'AVVIO
-        p.setMinSize(800, 550);  //SIZE MINIMO DELL PANE
+        // Creazione bottoni
+        ButtonBar buttonBar = new ButtonBar();
 
-        ColumnConstraints Col = new ColumnConstraints();    // QUESTA PARTE SERVE PER FAR CRESCERE TUTTA LA COLONNA
-        Col.setHgrow(Priority.ALWAYS);                      // QUADO SI AUMENTA LA FINESTRA
-        p.getColumnConstraints().addAll(Col);
+        Button menuButton = new Button("Menu");
+        ButtonBar.setButtonData(menuButton, ButtonBar.ButtonData.OTHER);
+        menuButton.setPrefSize(85, 50);
+        //TODO MJ: aggiungere actionevent e eventhandler ai bottoni (button.setOnAction)
 
-        p.setVgap(10);
-        p.add(vBox, 0,0);
-        p.add(label, 0,1);
-        Button buttonMenu = new Button("Menu");
+        Button statsButton = new Button("Statistiche");
+        ButtonBar.setButtonData(statsButton, ButtonBar.ButtonData.OTHER);
+        statsButton.setPrefSize(85, 50);
+
+        buttonBar.getButtons().addAll(menuButton, statsButton);
+
+        // Aggiunta elementi nel Pane
+        gPane.setVgap(10);
+        gPane.add(vBox, 0,0);
+        gPane.add(label, 0,1);
+        gPane.add(buttonBar, 0, 2);
 
         //Group root = new Group();
         //root.getChildren().addAll(p);
         //root.setAutoSizeChildren(true);
 
-        //Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds(); FUNZIONE PER PREDERE LA GRANDEZZA DELLO
+        //Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds(); FUNZIONE PER PRENDERE LA GRANDEZZA DELLO
                                                                          // SCHERMO MA CHE NON FUNZIONA PERFETTAMENTE
 
-        Scene scene = new Scene(p, 800, 550);
+        Scene scene = new Scene(gPane, 800, 550);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
