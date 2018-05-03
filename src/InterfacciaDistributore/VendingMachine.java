@@ -13,7 +13,6 @@ public class VendingMachine extends JFrame{
     private final int NUMERO_MONETE = 6;
     private Distributore distributore = new Distributore();
     private int index = 1;
-    private int sugar = 3;
     private final String DEFAULTMESSAGE = "SCEGLIERE UNA BEVANDA";
     private ResetDisplay resetDisplay;
 
