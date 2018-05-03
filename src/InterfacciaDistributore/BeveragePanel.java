@@ -28,7 +28,8 @@ public class BeveragePanel extends JPanel {
 
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.BOTH;
-        c.insets = new Insets(50,50,50,40);
+        c.insets = new Insets(screenSize.height / 20,screenSize.height / 13,
+                screenSize.height / 20,screenSize.height / 30);
         c.weightx = 1;
         c.weighty = 1;
         c.gridx = 0;
@@ -47,7 +48,7 @@ public class BeveragePanel extends JPanel {
                 button.setMinimumSize(new Dimension(screenSize.width / 6, screenSize.height / 8));
                 button.setMaximumSize(new Dimension(screenSize.width / 6, screenSize.height / 8));
                 button.setPreferredSize(new Dimension(screenSize.width / 6, screenSize.height / 8));
-                button.setFont(new Font("", Font.BOLD, 15));
+                button.setFont(new Font("", Font.ITALIC, 22));
 
                 ResetDisplay resetDisplay = new ResetDisplay(display, sugarDisplay, distributore);
                 button.addActionListener(new BeverageListener(distributore, display, index, resetDisplay));
