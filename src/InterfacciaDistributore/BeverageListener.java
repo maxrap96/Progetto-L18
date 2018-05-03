@@ -24,22 +24,25 @@ public class BeverageListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String s = e.getActionCommand();
+        String id = distributore.getID(index);
 
-        if (distributore.getCredit() >= distributore.getPrice("0" + index)) {
-            textArea.setText(distributore.selectBeverage("0" + index));
-            resetDisplay.runTimer();
-        }
-        else if (distributore.getCredit() > 0 && distributore.getCredit() < distributore.getPrice("0" + index)){
-            textArea.setText(distributore.selectBeverage("0" + index) + "\n" + "COSTO: " +
-                             String.format("%.2f", distributore.getPrice("0" + index)) + "\n\nCREDITO: " +
-                             String.format("%.2f", distributore.getCredit()));
+        if (distributore.getCredit() >= distributore.getPrice(id)) {
+            textArea.setText(distributore.selectBeverage(id));
             resetDisplay.runTimer();
         }
         else {
-            textArea.setText(distributore.getLabel(index).toUpperCase() + "\n" + "COSTO: " +
-                             String.format("%.2f", distributore.getPrice("0" + index)) + "\n\nCREDITO: " +
-                             String.format("%.2f", distributore.getCredit()));
-            resetDisplay.runTimer();
+            if (distributore.getCredit() > 0 && distributore.getCredit() < distributore.getPrice(id)){
+                textArea.setText(distributore.selectBeverage(id) + "\n" + "COSTO: " +
+                        String.format("%.2f", distributore.getPrice(id)) + "\n\nCREDITO: " +
+                        String.format("%.2f", distributore.getCredit()));
+                resetDisplay.runTimer();
+            }
+            else {
+                textArea.setText(distributore.getLabel(index).toUpperCase() + "\n" + "COSTO: " +
+                        String.format("%.2f", distributore.getPrice(id)) + "\n\nCREDITO: " +
+                        String.format("%.2f", distributore.getCredit()));
+                resetDisplay.runTimer();
+            }
         }
     }
 }

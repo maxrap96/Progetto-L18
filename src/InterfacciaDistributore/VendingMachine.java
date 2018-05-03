@@ -160,7 +160,7 @@ public class VendingMachine extends JFrame{
         }
 
     }
-    
+
     /**
      * Funzione per creare pannelli standard
      * @param width: lunghezza  del pannello
