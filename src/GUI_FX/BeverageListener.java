@@ -1,4 +1,4 @@
-package InterfacciaDistrubutoreFX;
+package GUI_FX;
 
 import Distributore.Distributore;
 import InterfacciaDistributore.ResetDisplay;

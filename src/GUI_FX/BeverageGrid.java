@@ -1,13 +1,9 @@
-package InterfacciaDistrubutoreFX;
+package GUI_FX;
 
 import Distributore.Distributore;
-import javafx.application.Application;
 import javafx.geometry.Insets;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Stage;
 
 public class BeverageGrid extends GridPane {
     private GridPane gridPane = new GridPane();
