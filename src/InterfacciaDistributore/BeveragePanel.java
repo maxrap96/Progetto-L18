@@ -45,8 +45,8 @@ public class BeveragePanel extends JPanel {
                 button.setPreferredSize(new Dimension(screenSize.width / 6, screenSize.height / 8));
                 button.setFont(new Font("", Font.BOLD, 15));
 
-               // ResetDisplay resetDisplay = new ResetDisplay(display, sugarDisplay, distributorePanel);
-               // button.addActionListener(new BeverageListener(distributorePanel, display, index, resetDisplay));
+                //ResetDisplay resetDisplay = new ResetDisplay(display, sugarDisplay, distributorePanel);
+                //button.addActionListener(new BeverageListener(distributorePanel, display, index, resetDisplay));
             }
             else {
                 // Pulsante vuoto
