@@ -1,4 +1,4 @@
-package InterfacciaDistributore;
+package InterfacciaDistrubutoreFX;
 
 import Distributore.Distributore;
 import javafx.application.Application;
@@ -16,19 +16,21 @@ public class Display extends Application {
     private Text beverageCost = new Text();
     private Text credit = new Text();
     private Text sugar = new Text();
+    private GridPane gridPane;
+    private Scene scene;
 
 
     public Display() {
         this.distributore = new Distributore();
+        createDisplay();
     }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
-
-    @Override
-    public void start(Stage primaryStage) {
-        GridPane gridPane = new GridPane();
+    /**
+     * funzione per impostare le righe del gridpane
+     */
+    private void createDisplay() {
+        
+        gridPane = new GridPane();
         gridPane.setHgap(10);
         gridPane.setVisible(true);
 
@@ -42,7 +44,31 @@ public class Display extends Application {
         gridPane.add(credit,0,2);
         gridPane.add(sugar,0,3);
 
-        Scene scene = new Scene(gridPane);
+    }
+
+    public void setBeverage(Text beverage) {
+        this.beverage = beverage;
+    }
+
+    public void setBeverageCost(Text beverageCost) {
+        this.beverageCost = beverageCost;
+    }
+
+    public void setCredit(Text credit) {
+        this.credit = credit;
+    }
+
+    public void setSugar(Text sugar) {
+        this.sugar = sugar;
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage primaryStage) {
+        scene = new Scene(gridPane);
         primaryStage.setScene(scene);
         primaryStage.show();
 
