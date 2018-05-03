@@ -165,7 +165,8 @@ public class VendingMachine extends JFrame{
     }
 
     /**
-     * serve a creare i pulsanti delle bevande
+     * Serve a creare i pulsanti delle bevande.
+     *
      * @param X_SCREEN_INDEX è l'indice x del tabellone
      * @param Y_SCREEN_INDEX è l'indice y del tabellone
      * @param screenSize è la dimensione dello schermo

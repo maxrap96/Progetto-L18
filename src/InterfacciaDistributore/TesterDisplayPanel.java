@@ -1,5 +1,7 @@
 package InterfacciaDistributore;
 
+import Distributore.Distributore;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -8,6 +10,7 @@ import java.awt.*;
  */
 
 public class TesterDisplayPanel extends JFrame {
+    private Distributore d = new Distributore();
 
     public TesterDisplayPanel() {
         // Inizializzazione JFrame
@@ -25,7 +28,7 @@ public class TesterDisplayPanel extends JFrame {
 
         this.setLayout(new GridLayout(1, 2));
 
-        JPanel rightPanel = new JPanel();
+        JPanel rightPanel = new BeveragePanel(d);
         rightPanel.setBackground(Color.RED);
         this.add(rightPanel);
 

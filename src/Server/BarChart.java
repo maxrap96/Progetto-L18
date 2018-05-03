@@ -1,4 +1,4 @@
-package Server;
+/*package Server;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -39,4 +39,4 @@ public class BarChart extends Application {
         stage.setScene(scene);
         stage.show();
     }
-}
+}*/

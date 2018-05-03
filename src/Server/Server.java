@@ -49,7 +49,7 @@ public class Server extends JFrame implements FileServer{
         // Aggiungo i listener
         addListenerTextField(jTextFieldsVect, panelCols);
         buttonMenu.addActionListener(new ListenerLoad(jTextFieldsVect, textPanel));
-        buttonStats.addActionListener(new TabsListener(textPanel));
+        //buttonStats.addActionListener(new TabsListener(textPanel));
 
         container.add(buttonPanel);
         container.add(textPanel);

@@ -1,13 +1,13 @@
 package Server;
 
-import javafx.application.Platform;
-import javafx.embed.swing.JFXPanel;
-import javafx.scene.Group;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.paint.Color;
+//import javafx.application.Platform;
+//import javafx.embed.swing.JFXPanel;
+//import javafx.scene.Group;
+//import javafx.scene.Scene;
+//import javafx.scene.control.Label;
+//import javafx.scene.paint.Color;
 
-import javax.swing.*;
+/*import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -33,7 +33,7 @@ public class TabsListener implements ActionListener {
 
     /**
      * Funzione che crea le schede delle statistiche
-     */
+     *//*
     private void createTabs() {
         jTabs.removeAll();
 
@@ -63,7 +63,7 @@ public class TabsListener implements ActionListener {
 
     // MJ: work in progress su tabs con javaFX...
 
-    /*private void createFirstTab() {
+    private void createFirstTab() {
         JFXPanel panel = makeTextPanelNew("Statistiche relative alle monete:");
         jTabs.addTab("Monete", panel);
     }
@@ -94,5 +94,5 @@ public class TabsListener implements ActionListener {
         Scene scene = new Scene(root, Color.PLUM);
 
         fxPanel.setScene(scene);
-    }*/
-}
+    }
+}*/
