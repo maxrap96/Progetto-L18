@@ -5,7 +5,6 @@ import Distributore.Distributore;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Timer;
 
 
 public class VendingMachine extends JFrame{
@@ -17,7 +16,6 @@ public class VendingMachine extends JFrame{
     private int sugar = 3;
     private final String DEFAULTMESSAGE = "SCEGLIERE UNA BEVANDA";
     private ResetDisplay resetDisplay;
-    private Timer timer = new Timer();
 
     /**
      * Creazione interfaccia grafica distributore
@@ -102,7 +100,8 @@ public class VendingMachine extends JFrame{
         giveChange.addActionListener(change -> {
             distributore.giveChange();
             display.setText("\n\n\nCREDITO: " +  String.format("%.2f", distributore.getCredit()));
-            resetDisplay.run();
+            distributore.setSugarToDefault();
+            resetDisplay.setDots();
         });
 
         JButton minus = makeRoundButton("-",11 * screenSize.width / 100,20 * screenSize.height / 100,
@@ -112,7 +111,7 @@ public class VendingMachine extends JFrame{
         minus.addActionListener(subtract -> {
             distributore.lessSugar();
             resetDisplay.setDots();
-            resetTimer();
+            resetDisplay.runTimer();
         });
 
         JButton plus = makeRoundButton("+",20 * screenSize.width / 100,20 * screenSize.height / 100,
@@ -121,7 +120,7 @@ public class VendingMachine extends JFrame{
         plus.addActionListener(add -> {
             distributore.moreSugar();
             resetDisplay.setDots();
-            resetTimer();
+            resetDisplay.runTimer();
         });
 
         JButton chiavetta = makeRoundRectButton("Chiavetta", 9 * screenSize.width / 200,
@@ -130,16 +129,6 @@ public class VendingMachine extends JFrame{
         pannelloMonete.add(chiavetta);
     }
 
-    /**
-     * funzione per resettare il timer e farlo ripartire
-     */
-
-    private void resetTimer() {
-        timer.purge();
-        timer.cancel();
-        timer = new Timer();
-        timer.schedule(resetDisplay, 5000);
-    }
 
     /**
      * funzione che crea i bottoni delle monete
@@ -199,7 +188,7 @@ public class VendingMachine extends JFrame{
                         Y_SCREEN_INDEX[yButton],screenSize.width / 6,
                         screenSize.height / 8);
                 ResetDisplay resetDisplay = new ResetDisplay(display, sugarDisplay, distributore);
-                button.addActionListener(new BeverageListener(distributore, display, index, resetDisplay, timer));
+                button.addActionListener(new BeverageListener(distributore, display, index, resetDisplay));
             }
             else {
                 // Pulsante vuoto
