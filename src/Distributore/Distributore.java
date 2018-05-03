@@ -24,6 +24,7 @@ public class Distributore implements MaxValue {
     public Distributore() {
         this.list = new HashMap<>();
         this.coins = new Coins();
+        setSugarToDefault();
 
         try {
             int lastRow = setValues(ingredientsData.readFile());
