@@ -15,12 +15,11 @@ public class ResetDisplay {
 
     public ResetDisplay(Display display, Distributore distributore) {
         this.display = display;
-
         this.distributore = distributore;
     }
 
     /**
-     * funzione che nel caso il credito sia 0 riporta la macchinetta ad uno stato di default
+     * Funzione che nel caso il credito sia 0 riporta la macchinetta ad uno stato di default.
      */
 
     public void runTimer() {
@@ -37,7 +36,8 @@ public class ResetDisplay {
             @Override
             public void run() {
                 if (distributore.getCredit() == 0){
-                    display.setBeverage(DEFAULTMESSAGE);
+                    display.setBeverage(DEFAULTMESSAGE); // DM: Se lo uso sia nell'if che nell'else, non posso metterlo
+                                                        // fuori?
                     distributore.setSugarToDefault();
                 }
                 else {
@@ -46,16 +46,14 @@ public class ResetDisplay {
                 }
 
                 setDots();
-
             }
         };
         timer.schedule(timerTask,time);
-
     }
 
 
     /**
-     * funzione per resettare il timer e reinizializzarlo
+     * Funzione per resettare il timer e reinizializzarlo.
      */
 
     private void resetTimer() {
@@ -65,7 +63,7 @@ public class ResetDisplay {
     }
 
     /**
-     * Funzione che aggiorna il display dello zucchero in base alla quantità selezionata
+     * Funzione che aggiorna il display dello zucchero in base alla quantità selezionata.
      */
 
     public void setDots(){
