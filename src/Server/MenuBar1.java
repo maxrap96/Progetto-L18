@@ -10,15 +10,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class MenuBar1 extends Application {
+import java.awt.*;
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+public class MenuBar1 extends MenuBar {
 
-    @Override
-    public void start(Stage primaryStage) {
-        primaryStage.setTitle("JavaFX App");
+    public MenuBar1() {
+
+        //primaryStage.setTitle("JavaFX App");
         ImageView ImmStats = new ImageView("file:src/Server/stats.jpg");
         ImageView ImmMenu = new ImageView("file:src/Server/menu.png");
         ImageView ImmHome = new ImageView("file:src/Server/home.png");
@@ -46,13 +44,12 @@ public class MenuBar1 extends Application {
         home.setGraphic(ImmHome);
         sx.setGraphic(ImmSx);
         dx.setGraphic(ImmDx);
-        MenuBar menuBar = new MenuBar();
 
-        menuBar.getMenus().add(sx);
-        menuBar.getMenus().add(dx);
-        menuBar.getMenus().add(home);
-        menuBar.getMenus().add(menu);
-        menuBar.getMenus().add(stats);
+        getMenus().add(sx);
+        getMenus().add(dx);
+        getMenus().add(home);
+        getMenus().add(menu);
+        getMenus().add(stats);
 
 
 
@@ -63,11 +60,11 @@ public class MenuBar1 extends Application {
         stats.getItems().add(statistiche);
         stats.getItems().add(monete);
 
-        VBox vBox = new VBox(menuBar);
+        //VBox vBox = new VBox(menuBar);
 
-        Scene scene = new Scene(vBox, 960, 600);
+        //Scene scene = new Scene(vBox, 960, 600);
 
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        //primaryStage.setScene(scene);
+        //primaryStage.show();
     }
 }
