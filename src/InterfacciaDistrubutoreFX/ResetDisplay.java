@@ -2,22 +2,20 @@ package InterfacciaDistrubutoreFX;
 
 import Distributore.Distributore;
 
-import javax.swing.*;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class ResetDisplay {
 
     private final String DEFAULTMESSAGE = "SCEGLIERE UNA BEVANDA";
-    private JTextArea display;
-    private JTextField sugarDisplay;
+    private Display display;
     private Distributore distributore;
     private Timer timer = new Timer();
     private TimerTask timerTask;
 
-    public ResetDisplay(JTextArea display, JTextField sugarDisplay, Distributore distributore) {
+    public ResetDisplay(Display display, Distributore distributore) {
         this.display = display;
-        this.sugarDisplay = sugarDisplay;
+
         this.distributore = distributore;
     }
 
@@ -39,13 +37,14 @@ public class ResetDisplay {
             @Override
             public void run() {
                 if (distributore.getCredit() == 0){
-                    display.setText(DEFAULTMESSAGE);
+                    display.setBeverage(DEFAULTMESSAGE);
                     distributore.setSugarToDefault();
                 }
                 else {
-                    display.setText(DEFAULTMESSAGE + "\n\n\nCREDITO: " + String.format("%.2f",
-                            distributore.getCredit()));
+                    display.setBeverage(DEFAULTMESSAGE);
+                    display.setCreditRow("Credito: " + String.format("%.2f", distributore.getCredit()));
                 }
+
                 setDots();
 
             }
@@ -97,6 +96,6 @@ public class ResetDisplay {
                 break;
         }
 
-        sugarDisplay.setText(quantity);
+        display.setSugar(quantity);
     }
 }
