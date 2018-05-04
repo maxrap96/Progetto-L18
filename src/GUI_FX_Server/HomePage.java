@@ -3,6 +3,7 @@ package GUI_FX_Server;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.chart.CategoryAxis;
@@ -49,7 +50,7 @@ public class HomePage extends Application {
         img.setFitWidth(250);
 
         label.setGraphic(img);
-        //label.setAlignment(Pos.BOTTOM_CENTER);    Dovrebbe posizionare il testo ma non funziona hahaha
+        //label.setAlignment(Pos.BOTTOM_CENTER);    //Dovrebbe posizionare il testo ma non funziona hahaha
 
         // Creazione VBox, commento da rivedere (@LUCE)
         VBox vBox = new VBox(menuBar);
@@ -105,14 +106,16 @@ public class HomePage extends Application {
         buttonBar.getButtons().addAll(menuButton, statsButton);
 
         // Aggiunta elementi nel Pane
-        gPane.setVgap(10);
+        gPane.setVgap(100);
         gPane.add(vBox, 0,0);
         gPane.add(label, 0,1);
         gPane.add(buttonBar, 0, 2);
         gPane.add(linkBox, 0, 3);
+        gPane.setHalignment(label, HPos.CENTER);
 
         Scene scene = new Scene(gPane, 800, 550);
         primaryStage.setScene(scene);
+        primaryStage.setMaximized(true); // Lo ingrandisco subito fullscreen
         primaryStage.show();
     }
 
