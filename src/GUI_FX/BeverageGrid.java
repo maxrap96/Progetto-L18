@@ -5,28 +5,29 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+
+import java.awt.*;
 
 public class BeverageGrid extends GridPane {
 
     private Distributore distributore;
-    private final int BUTTON_PADDING = 10;
-    private final int BUTTONS_PER_LINE = 4;
-    private final int NUM_BUTTON_LINES = 3;
-    private final double[] MAXSIZE = {2000, 3000};
-    private final double[] MINSIZE = {50, 60};
-
+    private final int BUTTON_PADDING = 50;
+    private final int BUTTONS_PER_LINE = 3;
+    private final int NUM_BUTTON_LINES = 4;
 
     public BeverageGrid(Distributore distributore) {
         this.distributore = distributore;
-        this.setAlignment(Pos.CENTER);
+        this.setAlignment(Pos.BASELINE_LEFT);
         createGrid();
     }
 
     private void createGrid(){
-        // per una migliore lettura, usare al massimo 12 pulsanti
-        this.setHgap(20);
-        this.setVgap(30);
-        this.setVisible(true);
+        // Per una migliore lettura, usare al massimo 12 pulsanti
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         this.setPadding(new Insets(BUTTON_PADDING));
         this.setHgap(BUTTON_PADDING);
         this.setVgap(BUTTON_PADDING);
@@ -35,15 +36,23 @@ public class BeverageGrid extends GridPane {
         for (int r = 0; r < NUM_BUTTON_LINES; r++) {
             for (int c = 0; c < BUTTONS_PER_LINE; c++) {
                 if( number + 1 < distributore.getListSize()){
-                    number = NUM_BUTTON_LINES * r + c;
-                    int idNumber = number + 1;  //le bevande iniziano dall'id 1
+                    number = BUTTONS_PER_LINE * r + c;
+                    int idNumber = number + 1;  // Le bevande iniziano dall'id 1
                     Button button = new Button(distributore.getLabel(idNumber));
-                    button.setMinSize(MINSIZE[0], MINSIZE[1]);
-                    button.setMaxSize(MAXSIZE[0], MAXSIZE[1]);
+                    button.setStyle("-fx-background-radius: 1em;");
+                    button.setFont(Font.font("Times", FontPosture.ITALIC, 20));
+                    button.setMinSize(screenSize.width / 6, screenSize.height / 7);
+                    button.setPrefSize(screenSize.width / 6, screenSize.height / 7);
+                    button.setMaxSize(screenSize.width / 6, screenSize.height / 7);
                     this.add(button, c, r);
                 }
                 else {
                     Button button = new Button("");
+                    button.setStyle("-fx-background-radius: 1em;");
+                    button.setFont(Font.font("Times", FontPosture.ITALIC, 20));
+                    button.setMinSize(screenSize.width / 6, screenSize.height / 7);
+                    button.setPrefSize(screenSize.width / 6, screenSize.height / 7);
+                    button.setMaxSize(screenSize.width / 6, screenSize.height / 7);
                     this.add(button, c, r);
                 }
             }

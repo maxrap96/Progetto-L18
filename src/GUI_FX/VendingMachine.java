@@ -9,7 +9,8 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-;import java.io.FileInputStream;
+;import java.awt.*;
+import java.io.FileInputStream;
 
 
 public class VendingMachine extends Application {
@@ -18,6 +19,10 @@ public class VendingMachine extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        double width = screenSize.getWidth() / 2;
+        double height = screenSize.getHeight() / 2;
+
         primaryStage.setTitle("Hot Drinks Vending Machine");
 
         // Creo il pannello radice a cui attaccare tutti gli altri, ad ora è uno StackPane, ma se ne possono usare
@@ -45,8 +50,9 @@ public class VendingMachine extends Application {
         GridPane beveragePane = new BeverageGrid(distributore);
         root.getChildren().add(beveragePane);
 
-        Scene scene = new Scene(root, 400, 200, Color.LIGHTGRAY);
+        Scene scene = new Scene(root, width, height, Color.LIGHTGRAY);
         primaryStage.setScene(scene);
+        primaryStage.setMaximized(true);
         primaryStage.show();
     }
 
