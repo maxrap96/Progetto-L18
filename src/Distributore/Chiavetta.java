@@ -1,7 +1,6 @@
 package Distributore;
-import Errori.FileNotReadable;
-import Errori.FileNotWritable;
 
+import PersonalExceptions.FileNotReadable;
 import java.io.IOException;
 import java.util.ArrayList;
 import static java.lang.Double.parseDouble;

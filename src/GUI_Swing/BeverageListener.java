@@ -1,4 +1,4 @@
-package InterfacciaDistributore;
+package GUI_Swing;
 
 import Distributore.Distributore;
 

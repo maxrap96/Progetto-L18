@@ -1,7 +1,7 @@
 package Distributore;
 
-import Errori.FileNotReadable;
-import Errori.FileNotWritable;
+import PersonalExceptions.FileNotReadable;
+import PersonalExceptions.FileNotWritable;
 
 import java.io.*;
 import java.text.SimpleDateFormat;

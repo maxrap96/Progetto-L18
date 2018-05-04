@@ -1,4 +1,4 @@
-package Errori;
+package PersonalExceptions;
 
 public class InvalidType extends Exception {
     public InvalidType(){

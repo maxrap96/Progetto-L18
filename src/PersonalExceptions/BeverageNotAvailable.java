@@ -1,4 +1,4 @@
-package Errori;
+package PersonalExceptions;
 
 public class BeverageNotAvailable extends Exception{
     public BeverageNotAvailable(){

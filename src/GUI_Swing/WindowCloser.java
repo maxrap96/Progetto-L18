@@ -1,4 +1,4 @@
-package InterfacciaDistributore;
+package GUI_Swing;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;

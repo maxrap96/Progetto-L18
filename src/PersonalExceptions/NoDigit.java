@@ -1,4 +1,4 @@
-package Errori;
+package PersonalExceptions;
 
 public class NoDigit extends Exception {
     public NoDigit(){

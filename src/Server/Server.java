@@ -1,6 +1,6 @@
 package Server;
 
-import InterfacciaDistributore.WindowCloser;
+import GUI_Swing.WindowCloser;
 
 import javax.swing.*;
 import java.awt.*;

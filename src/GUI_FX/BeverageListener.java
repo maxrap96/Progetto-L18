@@ -1,7 +1,6 @@
 package GUI_FX;
 
 import Distributore.Distributore;
-import InterfacciaDistributore.ResetDisplay;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

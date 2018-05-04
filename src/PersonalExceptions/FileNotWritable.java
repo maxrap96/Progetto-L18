@@ -1,4 +1,4 @@
-package Errori;
+package PersonalExceptions;
 
 public class FileNotWritable extends Exception {
     public FileNotWritable() {

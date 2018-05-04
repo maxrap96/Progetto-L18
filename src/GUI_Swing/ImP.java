@@ -1,4 +1,4 @@
-package InterfacciaDistributore;
+package GUI_Swing;
 
 import javax.swing.*;
 import java.awt.*;

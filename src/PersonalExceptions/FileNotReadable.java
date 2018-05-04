@@ -1,4 +1,4 @@
-package Errori;
+package PersonalExceptions;
 
 public class FileNotReadable extends Exception {
     public FileNotReadable(){

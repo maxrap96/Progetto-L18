@@ -1,4 +1,4 @@
-package InterfacciaDistributore;
+package GUI_Swing;
 
 import java.awt.*;
 import java.awt.geom.*;

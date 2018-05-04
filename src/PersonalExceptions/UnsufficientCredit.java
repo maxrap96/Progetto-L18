@@ -1,4 +1,4 @@
-package Errori;
+package PersonalExceptions;
 
 public class UnsufficientCredit extends Exception{
     public UnsufficientCredit(){
