@@ -1,6 +1,6 @@
 package Server;
 
-import GUI_FX_Server.BarChart;
+import GUI_FX_Server.HistogramChart;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,7 +11,7 @@ import java.awt.event.KeyEvent;
 public class TabsListener implements ActionListener {
     JPanel statsPanel;
     JTabbedPane jTabs;
-    BarChart coinsChart;
+    HistogramChart coinsChart;
 
     public TabsListener(JPanel infoPanel) {
         this.statsPanel = infoPanel;

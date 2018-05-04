@@ -2,17 +2,24 @@ package GUI_FX_Server;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.chart.CategoryAxis;
-import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.XYChart;
+import javafx.scene.chart.*;
 import javafx.stage.Stage;
 
-public class BarChart extends Application {
+public class HistogramChart extends BarChart {
+
     final static String[] Coins = {"0.05", "0.10", "0.20", "0.50", "1", "2"};
+    final double a = 30.0;  // Valore a cazzo
 
-    double a = 30.0;    // Valore a cazzo
+    public HistogramChart(Axis xAxis, Axis yAxis) {
+        super(xAxis, yAxis);
+    }
 
-    @Override
+
+    public void recallChart() {
+
+    }
+
+
     public void start(Stage stage) {
         stage.setTitle("Monete rimanenti:");
         final NumberAxis xAxis = new NumberAxis();

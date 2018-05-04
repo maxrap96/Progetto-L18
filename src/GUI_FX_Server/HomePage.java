@@ -5,6 +5,8 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -16,12 +18,17 @@ import javafx.stage.Stage;
 
 public class HomePage extends Application {
 
+    //final Stage stage = new Stage(StageStyle.UTILITY);
+    //MenuBar menuBar = new MenuBar1();
+
     @Override
     public void start(Stage primaryStage) {
 
+        HistogramChart coinsChart = new HistogramChart(new CategoryAxis(), new NumberAxis());
+
         // Definizione dello stage principale e della barra del menu
         primaryStage.setTitle("Home");
-        MenuBar mb = new MenuBar1();
+        MenuBar menuBar = new MenuBar1();
 
         // Creazione GridPane
         GridPane gPane = new GridPane();
@@ -45,7 +52,7 @@ public class HomePage extends Application {
         //label.setAlignment(Pos.BOTTOM_CENTER);    Dovrebbe posizionare il testo ma non funziona hahaha
 
         // Creazione VBox, commento da rivedere (@LUCE)
-        VBox vBox = new VBox(mb);
+        VBox vBox = new VBox(menuBar);
         vBox.setFillWidth(true);
 
         // Creazione link al sito del progetto
@@ -63,8 +70,8 @@ public class HomePage extends Application {
         hyperlink.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                webEngine.load(url);
-                //TODO MJ: capire come aprire pagina del sito su nuova finestra (del browser magari)
+                //webEngine.load(url);     // MJ: Pagina web mostrata nella finestra del server
+                getHostServices().showDocument(url);    // MJ: Pagina web aperta nel browser
             }
         });
 
@@ -85,6 +92,7 @@ public class HomePage extends Application {
             @Override
             public void handle(ActionEvent event) {
                 menuButton.setText("Pressed");
+                coinsChart.start(primaryStage);
             }
         });
 

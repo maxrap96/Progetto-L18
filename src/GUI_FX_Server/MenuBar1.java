@@ -3,44 +3,40 @@ package GUI_FX_Server;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
-import java.io.FileInputStream;
-import java.io.IOException;
 
 public class MenuBar1 extends MenuBar {
 
     public MenuBar1() {
 
         //primaryStage.setTitle("JavaFX App");
-        ImageView immStats = new ImageView(loadImage("src/ServerImages/stats.jpg"));
-        ImageView immMenu = new ImageView(loadImage("src/ServerImages/menu.png"));
-        ImageView immHome = new ImageView(loadImage("src/ServerImages/home.png"));
-        ImageView immSx = new ImageView(loadImage("src/ServerImages/FrecciaSx.png"));
-        ImageView immDx = new ImageView(loadImage("src/ServerImages/FrecciaDx.png"));
+        //ImageView ImmStats = new ImageView("/ServerImages/stats.jpg");
+        //ImageView ImmMenu = new ImageView("src/ServerImages/menu.png");
+        /*ImageView ImmHome = new ImageView("GUI_FX_Server/home.png");
+        ImageView ImmSx = new ImageView("GUI_FX_Server/FrecciaSx.png");
+        ImageView ImmDx = new ImageView("GUI_FX_Server/FrecciaDx.png");
 
-        immHome.setFitHeight(20);
-        immHome.setFitWidth(20);
-        immStats.setFitHeight(20);
-        immStats.setFitWidth(20);
-        immMenu.setFitWidth(20);
-        immMenu.setFitHeight(20);
-        immDx.setFitWidth(20);
-        immDx.setFitHeight(20);
-        immSx.setFitWidth(20);
-        immSx.setFitHeight(20);
+        ImmHome.setFitHeight(20);
+        ImmHome.setFitWidth(20);
+        //ImmStats.setFitHeight(20);
+        //ImmStats.setFitWidth(20);
+        //ImmMenu.setFitWidth(20);
+        //ImmMenu.setFitHeight(20);
+        ImmDx.setFitWidth(20);
+        ImmDx.setFitHeight(20);
+        ImmSx.setFitWidth(20);
+        ImmSx.setFitHeight(20);*/
 
         Menu sx = new Menu();
         Menu dx = new Menu();
         Menu home = new Menu();
         Menu menu = new Menu("Menu");
         Menu stats = new Menu("Stats");
-        stats.setGraphic(immStats);
-        menu.setGraphic(immMenu);
-        home.setGraphic(immHome);
-        sx.setGraphic(immSx);
-        dx.setGraphic(immDx);
+        //stats.setGraphic(ImmStats);
+        //menu.setGraphic(ImmMenu);
+        /*home.setGraphic(ImmHome);
+        sx.setGraphic(ImmSx);
+        dx.setGraphic(ImmDx);*/
 
         getMenus().add(sx);
         getMenus().add(dx);
@@ -63,18 +59,5 @@ public class MenuBar1 extends MenuBar {
 
         //primaryStage.setScene(scene);
         //primaryStage.show();
-    }
-
-    private Image loadImage(String url){
-        Image imgTmp = null;
-        try {
-            FileInputStream inputStream = new FileInputStream(url);
-            imgTmp = new Image(inputStream);
-            inputStream.close();
-            return imgTmp;
-        } catch (IOException e){
-            e.getMessage();
-        }
-        return imgTmp;
     }
 }
