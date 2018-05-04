@@ -4,6 +4,7 @@ import Distributore.Distributore;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.layout.Border;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
@@ -11,6 +12,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 
 import java.awt.*;
+
+import static java.awt.Color.black;
 
 public class BeverageGrid extends GridPane {
 
@@ -39,7 +42,14 @@ public class BeverageGrid extends GridPane {
                     number = BUTTONS_PER_LINE * r + c;
                     int idNumber = number + 1;  // Le bevande iniziano dall'id 1
                     Button button = new Button(distributore.getLabel(idNumber));
-                    button.setStyle("-fx-background-radius: 1em;");
+                    button.setStyle(
+                            "-fx-background-radius: 1em;" +
+                            //"-fx-border-radius: 1em;" +
+                            //"-fx-border-color: black;" +
+                            //"-fx-border-width: 2 2 2 2;"
+                            "-fx-focus-color: transparent;" +
+                            "-fx-faint-focus-color: transparent;"
+                    );
                     button.setFont(Font.font("Times", FontPosture.ITALIC, 20));
                     button.setMinSize(screenSize.width / 6, screenSize.height / 7);
                     button.setPrefSize(screenSize.width / 6, screenSize.height / 7);

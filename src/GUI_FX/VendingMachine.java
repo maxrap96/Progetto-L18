@@ -50,6 +50,9 @@ public class VendingMachine extends Application {
         GridPane beveragePane = new BeverageGrid(distributore);
         root.getChildren().add(beveragePane);
 
+        GridPane moneyPane = new BeverageGrid(distributore);
+        root.getChildren().add(moneyPane);
+
         Scene scene = new Scene(root, width, height, Color.LIGHTGRAY);
         primaryStage.setScene(scene);
         primaryStage.setMaximized(true);
