@@ -22,11 +22,10 @@ public class HomePage extends Application {
 
         // Creazione GridPane
         GridPane gPane = new GridPane();
-        gPane.setPrefSize(800, 550); //SIZE BASE DEL PANE ALL'AVVIO
-        gPane.setMinSize(800, 550);  //SIZE MINIMO DEL PANE
-
-        ColumnConstraints Col = new ColumnConstraints();    // QUESTA PARTE SERVE PER FAR CRESCERE TUTTA LA COLONNA
-        Col.setHgrow(Priority.ALWAYS);                      // QUANDO SI AUMENTA LA FINESTRA
+        gPane.setPrefSize(800, 550); // Size base del pane all'avvio
+        gPane.setMinSize(800, 550);  //Size minimo del pane
+        ColumnConstraints Col = new ColumnConstraints();    // Server per far crescere tutta la colonna quando si
+        Col.setHgrow(Priority.ALWAYS);                      // aumenta la finestra
         gPane.getColumnConstraints().addAll(Col);
 
         // Creazione scritta correlata da un logo
@@ -70,7 +69,7 @@ public class HomePage extends Application {
         //root.getChildren().addAll(p);
         //root.setAutoSizeChildren(true);
 
-        //Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds(); FUNZIONE PER PRENDERE LA GRANDEZZA DELLO
+        //Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds(); // FUNZIONE PER PRENDERE LA GRANDEZZA DELLO
                                                                          // SCHERMO MA CHE NON FUNZIONA PERFETTAMENTE
 
         Scene scene = new Scene(gPane, 800, 550);
