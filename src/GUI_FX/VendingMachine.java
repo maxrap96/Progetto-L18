@@ -31,6 +31,7 @@ public class VendingMachine extends Application {
 
         FileInputStream input = new FileInputStream("src/GUI_FX/I.JPG");
         Image image = new Image(input);
+        input.close();
 
         // Creo le dimensioni per lo sfondo
         BackgroundSize backgroundSize =
