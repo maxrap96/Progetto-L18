@@ -2,11 +2,12 @@ package GUI_FX;
 
 import Distributore.Distributore;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 
 public class BeverageGrid extends GridPane {
-    private GridPane gridPane = new GridPane();
+
     private Distributore distributore;
     private final int BUTTON_PADDING = 10;
     private final int BUTTONS_PER_LINE = 4;
@@ -17,17 +18,18 @@ public class BeverageGrid extends GridPane {
 
     public BeverageGrid(Distributore distributore) {
         this.distributore = distributore;
+        this.setAlignment(Pos.CENTER);
         createGrid();
     }
 
     private void createGrid(){
-        //per una migliroe lettura è più comodo usare al massimo 12 pulsanti
-        gridPane.setHgap(20);
-        gridPane.setVgap(30);
-        gridPane.setVisible(true);
-        gridPane.setPadding(new Insets(BUTTON_PADDING));
-        gridPane.setHgap(BUTTON_PADDING);
-        gridPane.setVgap(BUTTON_PADDING);
+        // per una migliore lettura, usare al massimo 12 pulsanti
+        this.setHgap(20);
+        this.setVgap(30);
+        this.setVisible(true);
+        this.setPadding(new Insets(BUTTON_PADDING));
+        this.setHgap(BUTTON_PADDING);
+        this.setVgap(BUTTON_PADDING);
 
         int number = 0;
         for (int r = 0; r < NUM_BUTTON_LINES; r++) {
@@ -35,15 +37,14 @@ public class BeverageGrid extends GridPane {
                 if( number + 1 < distributore.getListSize()){
                     number = NUM_BUTTON_LINES * r + c;
                     int idNumber = number + 1;  //le bevande iniziano dall'id 1
-                    String id = distributore.getID(idNumber);
                     Button button = new Button(distributore.getLabel(idNumber));
                     button.setMinSize(MINSIZE[0], MINSIZE[1]);
                     button.setMaxSize(MAXSIZE[0], MAXSIZE[1]);
-                    gridPane.add(button, c, r);
+                    this.add(button, c, r);
                 }
                 else {
                     Button button = new Button("");
-                    gridPane.add(button, c, r);
+                    this.add(button, c, r);
                 }
             }
         }
