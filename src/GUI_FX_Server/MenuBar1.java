@@ -10,7 +10,7 @@ public class MenuBar1 extends MenuBar {
     public MenuBar1() {
 
         //primaryStage.setTitle("JavaFX App");
-        ImageView ImmStats = new ImageView("./ServerImages/stats.jpg");
+        /*ImageView ImmStats = new ImageView("/ServerImages/stats.jpg");
         ImageView ImmMenu = new ImageView("./ServerImages/menu.png");
         ImageView ImmHome = new ImageView("./ServerImages/home.png");
         ImageView ImmSx = new ImageView("./ServerImages/FrecciaSx.png");
@@ -25,18 +25,18 @@ public class MenuBar1 extends MenuBar {
         ImmDx.setFitWidth(20);
         ImmDx.setFitHeight(20);
         ImmSx.setFitWidth(20);
-        ImmSx.setFitHeight(20);
+        ImmSx.setFitHeight(20);*/
 
         Menu sx = new Menu();
         Menu dx = new Menu();
         Menu home = new Menu();
         Menu menu = new Menu("Menu");
         Menu stats = new Menu("Stats");
-        stats.setGraphic(ImmStats);
+        /*stats.setGraphic(ImmStats);
         menu.setGraphic(ImmMenu);
         home.setGraphic(ImmHome);
         sx.setGraphic(ImmSx);
-        dx.setGraphic(ImmDx);
+        dx.setGraphic(ImmDx);*/
 
         getMenus().add(sx);
         getMenus().add(dx);
