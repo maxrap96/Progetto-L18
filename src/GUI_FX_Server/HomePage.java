@@ -9,6 +9,9 @@ import javafx.scene.Scene;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -16,6 +19,8 @@ import javafx.scene.text.Font;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
+
+import java.awt.*;
 
 public class HomePage extends Application {
 
@@ -35,7 +40,7 @@ public class HomePage extends Application {
         GridPane gPane = new GridPane();
         gPane.setPrefSize(800, 550); // Size base del pane all'avvio
         gPane.setMinSize(800, 550);  //Size minimo del pane
-        ColumnConstraints Col = new ColumnConstraints();    // Server per far crescere tutta la colonna quando si
+        ColumnConstraints Col = new ColumnConstraints();    // Serve per far crescere tutta la colonna quando si
         Col.setHgrow(Priority.ALWAYS);                      // aumenta la finestra
         gPane.getColumnConstraints().addAll(Col);
 
@@ -50,7 +55,7 @@ public class HomePage extends Application {
         img.setFitWidth(250);
 
         label.setGraphic(img);
-        //label.setAlignment(Pos.BOTTOM_CENTER);    //Dovrebbe posizionare il testo ma non funziona hahaha
+        //label.setAlignment(Pos.BOTTOM_CENTER);    //Dovrebbe posizionare il testo ma non funziona
 
         // Creazione VBox, commento da rivedere (@LUCE)
         VBox vBox = new VBox(menuBar);
