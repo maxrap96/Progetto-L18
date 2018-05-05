@@ -4,19 +4,13 @@ import Distributore.Distributore;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.GridPane;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 
 import java.awt.*;
 
-import static java.awt.Color.black;
-
 public class BeverageGrid extends GridPane {
-
     private Distributore distributore;
     private final int BUTTON_PADDING = 50;
     private final int BUTTONS_PER_LINE = 3;
