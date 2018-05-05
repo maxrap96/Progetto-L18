@@ -12,9 +12,7 @@ import javafx.stage.Stage;
 ;import java.awt.*;
 import java.io.FileInputStream;
 
-
 public class VendingMachine extends Application {
-
     Distributore distributore = new Distributore();
 
     @Override
@@ -25,8 +23,7 @@ public class VendingMachine extends Application {
 
         primaryStage.setTitle("Hot Drinks Vending Machine");
 
-        // Creo il pannello radice a cui attaccare tutti gli altri, ad ora è uno StackPane, ma se ne possono usare
-        // di più comodi all'accorrenza.
+        // Creo il pannello radice a cui attaccare tutti gli altri
         BorderPane root = new BorderPane();
 
         FileInputStream input = new FileInputStream("src/GUI_FX/I.JPG");
@@ -36,21 +33,18 @@ public class VendingMachine extends Application {
         // Creo le dimensioni per lo sfondo
         BackgroundSize backgroundSize =
                 new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false,
-                        false, false, true);
+                                   false, false, true);
 
         // Creo l'immagine di sfondo
         BackgroundImage changeNameWhenFinalImage =
                 new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
-                        BackgroundPosition.CENTER, backgroundSize);
+                                    BackgroundPosition.CENTER, backgroundSize);
 
         // Metto lo sfondo
         root.setBackground(new Background(changeNameWhenFinalImage));
 
-
-
         GridPane beveragePane = new BeverageGrid(distributore);
         root.setLeft(beveragePane);
-
 
         BorderPane purchasePane = new BorderPane();
         purchasePane.setStyle(
@@ -60,7 +54,6 @@ public class VendingMachine extends Application {
 
         GridPane moneyPane = new MoneyGrid(distributore);
         purchasePane.setBottom(moneyPane);
-
 
         Scene scene = new Scene(root, width, height, Color.LIGHTGRAY);
         primaryStage.setScene(scene);
