@@ -27,7 +27,7 @@ public class VendingMachine extends Application {
 
         // Creo il pannello radice a cui attaccare tutti gli altri, ad ora è uno StackPane, ma se ne possono usare
         // di più comodi all'accorrenza.
-        StackPane root = new StackPane();
+        BorderPane root = new BorderPane();
 
         FileInputStream input = new FileInputStream("src/GUI_FX/I.JPG");
         Image image = new Image(input);
@@ -49,10 +49,18 @@ public class VendingMachine extends Application {
 
 
         GridPane beveragePane = new BeverageGrid(distributore);
-        root.getChildren().add(beveragePane);
+        root.setLeft(beveragePane);
 
-        GridPane moneyPane = new BeverageGrid(distributore);
-        root.getChildren().add(moneyPane);
+
+        BorderPane purchasePane = new BorderPane();
+        purchasePane.setStyle(
+                "-fx-background-color: gray;"
+        );
+        root.setRight(purchasePane);
+
+        GridPane moneyPane = new MoneyGrid(distributore);
+        purchasePane.setBottom(moneyPane);
+
 
         Scene scene = new Scene(root, width, height, Color.LIGHTGRAY);
         primaryStage.setScene(scene);

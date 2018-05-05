@@ -51,9 +51,9 @@ public class BeverageGrid extends GridPane {
                             "-fx-faint-focus-color: transparent;"
                     );
                     button.setFont(Font.font("Times", FontPosture.ITALIC, 20));
-                    button.setMinSize(screenSize.width / 6, screenSize.height / 7);
-                    button.setPrefSize(screenSize.width / 6, screenSize.height / 7);
-                    button.setMaxSize(screenSize.width / 6, screenSize.height / 7);
+                    button.setMinSize(18 * screenSize.width / 100, screenSize.height / 7);
+                    button.setPrefSize(18 * screenSize.width / 100, screenSize.height / 7);
+                    button.setMaxSize(18 * screenSize.width / 100, screenSize.height / 7);
                     this.add(button, c, r);
                 }
                 else {
