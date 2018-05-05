@@ -4,7 +4,6 @@ import Distributore.Distributore;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
@@ -30,7 +29,7 @@ public class MoneyGrid extends GridPane {
         this.setHgap(BUTTON_PADDING);
         this.setVgap(BUTTON_PADDING);
 
-        int number = 0;
+        int number;
         for (int r = 0; r < NUM_BUTTON_LINES; r++) {
             for (int c = 0; c < BUTTONS_PER_LINE; c++) {
                 number = BUTTONS_PER_LINE * r + c;

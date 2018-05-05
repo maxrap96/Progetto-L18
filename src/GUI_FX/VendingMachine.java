@@ -4,12 +4,11 @@ import Distributore.Distributore;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-;import java.awt.*;
+import java.awt.*;
 import java.io.FileInputStream;
 
 public class VendingMachine extends Application {
