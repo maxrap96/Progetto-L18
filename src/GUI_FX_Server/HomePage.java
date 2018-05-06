@@ -34,7 +34,7 @@ public class HomePage extends Application {
 
         // Definizione dello stage principale e della barra del menu
         primaryStage.setTitle("Home");
-        MenuBar menuBar = new MenuBar1();
+        MenuBar menuBar = new MenuBar1(primaryStage);
 
         // Creazione GridPane
         GridPane gPane = new GridPane();
@@ -122,6 +122,7 @@ public class HomePage extends Application {
         primaryStage.setScene(scene);
         primaryStage.setMaximized(true); // Lo ingrandisco subito fullscreen
         primaryStage.show();
+
     }
 
     public static void main(String[] args) {

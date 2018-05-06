@@ -28,7 +28,7 @@ public class HistogramChart extends BarChart {
 
 
     public void start(Stage stage) {
-        MenuBar1 mb = new MenuBar1();
+        MenuBar1 mb = new MenuBar1(stage);
         VBox vBox = new VBox(mb);
         vBox.setFillWidth(true);
         stage.setTitle("Monete rimanenti:");

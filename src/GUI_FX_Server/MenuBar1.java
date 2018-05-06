@@ -1,17 +1,31 @@
 package GUI_FX_Server;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
+
 
 import java.io.FileInputStream;
 import java.io.IOException;
 
 public class MenuBar1 extends MenuBar {
+    Menu sx = new Menu();
+    Menu dx = new Menu();
+    Menu home = new Menu();
+    Menu menu = new Menu("Menu");
+    Menu stats = new Menu("Stats");
+    MenuItem dati = new MenuItem("Dati");
+    MenuItem statistiche = new MenuItem("General Stats");
+    MenuItem monete = new MenuItem("Money");
 
-    public MenuBar1() {
+    public MenuBar1(Stage stage) {
         ImageView immStats = new ImageView(loadImage("src/ServerImages/stats.jpg"));
         ImageView immMenu = new ImageView(loadImage("src/ServerImages/menu.png"));
         ImageView immHome = new ImageView(loadImage("src/ServerImages/home.png"));
@@ -29,11 +43,6 @@ public class MenuBar1 extends MenuBar {
         immSx.setFitWidth(20);
         immSx.setFitHeight(20);
 
-        Menu sx = new Menu();
-        Menu dx = new Menu();
-        Menu home = new Menu();
-        Menu menu = new Menu("Menu");
-        Menu stats = new Menu("Stats");
         stats.setGraphic(immStats);
         menu.setGraphic(immMenu);
         home.setGraphic(immHome);
@@ -48,19 +57,23 @@ public class MenuBar1 extends MenuBar {
 
 
 
-        MenuItem dati = new MenuItem("Dati");
-        MenuItem statistiche = new MenuItem("General Stats");
-        MenuItem monete = new MenuItem("Money");
+
         stats.getItems().add(dati);
         stats.getItems().add(statistiche);
         stats.getItems().add(monete);
 
-        //VBox vBox = new VBox(menuBar);
+        Action(stage);
 
-        //Scene scene = new Scene(vBox, 960, 600);
+    }
 
-        //primaryStage.setScene(scene);
-        //primaryStage.show();
+    public void Action(Stage primaryStage){
+        monete.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                HistogramChart coinsChart = new HistogramChart(new CategoryAxis(), new NumberAxis());
+                coinsChart.start(primaryStage);
+            }
+        });
     }
 
     private Image loadImage(String url){
@@ -75,4 +88,5 @@ public class MenuBar1 extends MenuBar {
         }
         return imgTmp;
     }
+
 }
