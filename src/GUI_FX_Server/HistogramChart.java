@@ -28,8 +28,10 @@ public class HistogramChart extends BarChart {
 
 
     public void start(Stage stage) {
-        MenuBar1 mb = new MenuBar1(stage);
-        VBox vBox = new VBox(mb);
+        Toolbar1 toolbar1 = new Toolbar1(stage);
+        MenuBar1 menuBar1 = new MenuBar1(stage);
+        VBox vBox = new VBox();
+        vBox.getChildren().addAll(toolbar1,menuBar1);
         vBox.setFillWidth(true);
         stage.setTitle("Monete rimanenti:");
         final NumberAxis xAxis = new NumberAxis();

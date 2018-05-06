@@ -34,7 +34,8 @@ public class HomePage extends Application {
 
         // Definizione dello stage principale e della barra del menu
         primaryStage.setTitle("Home");
-        MenuBar menuBar = new MenuBar1(primaryStage);
+        Toolbar1 toolbar1 = new Toolbar1(primaryStage);
+        MenuBar1 menuBar1= new MenuBar1(primaryStage);
 
         // Creazione GridPane
         GridPane gPane = new GridPane();
@@ -58,7 +59,8 @@ public class HomePage extends Application {
         //label.setAlignment(Pos.BOTTOM_CENTER);    //Dovrebbe posizionare il testo ma non funziona
 
         // Creazione VBox, commento da rivedere (@LUCE)
-        VBox vBox = new VBox(menuBar);
+        VBox vBox = new VBox();
+        vBox.getChildren().addAll(toolbar1,menuBar1);
         vBox.setFillWidth(true);
 
         // Creazione link al sito del progetto
