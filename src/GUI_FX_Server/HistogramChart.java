@@ -1,7 +1,5 @@
 package GUI_FX_Server;
 
-import javafx.application.Application;
-import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.chart.*;
 import javafx.scene.layout.ColumnConstraints;
@@ -9,8 +7,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
-import java.awt.*;
 
 public class HistogramChart extends BarChart {
 
@@ -20,12 +16,6 @@ public class HistogramChart extends BarChart {
     public HistogramChart(Axis xAxis, Axis yAxis) {
         super(xAxis, yAxis);
     }
-
-
-    public void recallChart() {
-
-    }
-
 
     public void start(Stage stage) {
         Toolbar1 toolbar1 = new Toolbar1(stage);

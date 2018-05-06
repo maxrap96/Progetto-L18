@@ -24,9 +24,6 @@ import java.awt.*;
 
 public class HomePage extends Application {
 
-    //final Stage stage = new Stage(StageStyle.UTILITY);
-    //MenuBar menuBar = new MenuBar1();
-
     @Override
     public void start(Stage primaryStage) {
 
@@ -73,13 +70,11 @@ public class HomePage extends Application {
 
         final String url = "https://github.com/IngSW-unipv/Progetto-L18";
         final WebView browser = new WebView();
-        final WebEngine webEngine = browser.getEngine();
 
         hyperlink.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                //webEngine.load(url);     // MJ: Pagina web mostrata nella finestra del server
-                getHostServices().showDocument(url);    // MJ: Pagina web aperta nel browser
+                getHostServices().showDocument(url);    // Pagina web aperta nel browser
             }
         });
 
@@ -95,25 +90,22 @@ public class HomePage extends Application {
         ButtonBar.setButtonData(menuButton, ButtonBar.ButtonData.OTHER);
         menuButton.setPrefSize(85, 50);
 
-        // Gestione pressione del bottone "menu"
-        menuButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                menuButton.setText("Pressed");
-                coinsChart.start(primaryStage);
-            }
-        });
-
-        //TODO MJ: modificare eventhandler ai bottoni (button.setOnAction)
-
         Button statsButton = new Button("Statistiche");
         ButtonBar.setButtonData(statsButton, ButtonBar.ButtonData.OTHER);
         statsButton.setPrefSize(85, 50);
 
         buttonBar.getButtons().addAll(menuButton, statsButton);
 
+        // Gestione pressione del bottone "Statistiche"
+        statsButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                coinsChart.start(primaryStage);
+            }
+        });
+
         // Aggiunta elementi nel Pane
-        gPane.setVgap(100);
+        gPane.setVgap(50);
         gPane.add(vBox, 0,0);
         gPane.add(label, 0,1);
         gPane.add(buttonBar, 0, 2);
@@ -122,7 +114,8 @@ public class HomePage extends Application {
 
         Scene scene = new Scene(gPane, 800, 550);
         primaryStage.setScene(scene);
-        primaryStage.setMaximized(true); // Lo ingrandisco subito fullscreen
+        primaryStage.setResizable(false);
+        //primaryStage.setMaximized(true); // Lo ingrandisco subito fullscreen
         primaryStage.show();
 
     }
