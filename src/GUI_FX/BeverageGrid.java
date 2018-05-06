@@ -38,8 +38,6 @@ public class BeverageGrid extends GridPane {
                     // Le bevande iniziano dall'id 1
                     button.setText(distributoreBG.getLabel(number + 1));
                 }
-                this.setHgrow(button, Priority.ALWAYS); // Permette ai bottoni di rimpicciolirsi
-                this.setVgrow(button, Priority.ALWAYS);
                 this.add(button, col, row);
             }
         }
@@ -52,7 +50,6 @@ public class BeverageGrid extends GridPane {
                         "-fx-faint-focus-color: transparent;"
         );
         buttonToSet.setFont(Font.font("Times", FontPosture.ITALIC, 20));
-        buttonToSet.setMinSize(1, 1);
         buttonToSet.setPrefSize(width, height);
     }
 }

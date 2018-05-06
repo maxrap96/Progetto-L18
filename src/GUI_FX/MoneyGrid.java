@@ -41,9 +41,7 @@ public class MoneyGrid extends GridPane {
                         "-fx-faint-focus-color: transparent;"
                 );
                 button.setFont(Font.font("Times", FontPosture.ITALIC, 20));
-                button.setMinSize(screenSize.height / 8, screenSize.height / 8);
                 button.setPrefSize(screenSize.height / 8, screenSize.height / 8);
-                button.setMaxSize(screenSize.height / 8, screenSize.height / 8);
                 this.add(button, c, r);
             }
         }
