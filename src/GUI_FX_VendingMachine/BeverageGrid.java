@@ -1,10 +1,9 @@
-package GUI_FX;
+package GUI_FX_VendingMachine;
 
 import Distributore.Distributore;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Priority;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 

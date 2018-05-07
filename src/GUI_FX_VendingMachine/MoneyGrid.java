@@ -1,4 +1,4 @@
-package GUI_FX;
+package GUI_FX_VendingMachine;
 
 import Distributore.Distributore;
 import javafx.geometry.Insets;

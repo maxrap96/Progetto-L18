@@ -1,4 +1,4 @@
-package GUI_FX;
+package GUI_FX_VendingMachine;
 
 import javafx.application.Application;
 import javafx.geometry.Pos;

@@ -1,4 +1,4 @@
-package GUI_FX;
+package GUI_FX_VendingMachine;
 
 import Distributore.Distributore;
 import javafx.application.Application;
@@ -25,7 +25,7 @@ public class VendingMachine extends Application {
         // Creo il pannello radice a cui attaccare tutti gli altri
         BorderPane root = new BorderPane();
 
-        FileInputStream input = new FileInputStream("src/GUI_FX/I.JPG");
+        FileInputStream input = new FileInputStream("src/GUI_FX_VendingMachine/I.JPG");
         Image image = new Image(input);
         input.close();
 
