@@ -64,7 +64,7 @@ public class Coins {
      *
      * @return s: stringa contenente il numero di ogni moneta nella macchinetta.
      */
-    private String moneyOnFile() {
+    public String moneyOnFile() {
         String s = "";
 
         for (int i = 0; i < money.length; i++) {

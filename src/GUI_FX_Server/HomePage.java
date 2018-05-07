@@ -105,8 +105,6 @@ public class HomePage extends Application {
         statsButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                //HistogramChart coinsChart = new HistogramChart(new CategoryAxis(), new NumberAxis());
-                //StatsPage statsPage = new StatsPage();
                 new StatsPage(primaryStage);
             }
         });

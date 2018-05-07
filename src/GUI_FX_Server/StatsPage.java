@@ -7,6 +7,8 @@ import javafx.geometry.Pos;
 import javafx.geometry.Side;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
@@ -40,7 +42,30 @@ public class StatsPage extends GridPane {
         TabPane tabPane = new TabPane();
         BorderPane borderPane = new BorderPane();
 
-        String[] tabNames = {"Monete", "Ingredienti", "Utilizzo"};
+        Tab tab1 = new Tab();
+        Tab tab2 = new Tab();
+        Tab tab3 = new Tab();
+        tab1.setText("Monete");
+        tab2.setText("Ing");
+        tab3.setText("Utilizzo");
+        tab1.setClosable(false);
+        tab2.setClosable(false);
+        tab3.setClosable(false);
+
+        BorderPane b1 = new BorderPane();
+
+        //HistogramChart coinsChart = new HistogramChart(new CategoryAxis(), new NumberAxis());
+        //coinsChart.start(stage);
+        //TODO MJ: aggiungere elementi grafici ai tab
+
+        tab1.setContent(b1);
+        tab2.setContent(new BorderPane());
+        tab3.setContent(new BorderPane());
+
+        tabPane.getTabs().addAll(tab1, tab2, tab3);
+
+        // MJ: da tenere per il momento
+        /*String[] tabNames = {"Monete", "Ingredienti", "Utilizzo"};
 
         for (int i = 0; i < tabNames.length; i++) {
             Tab tab = new Tab();
@@ -51,7 +76,7 @@ public class StatsPage extends GridPane {
             hbox.setAlignment(Pos.CENTER);
             tab.setContent(hbox);
             tabPane.getTabs().add(tab);
-        }
+        }*/
 
         // bind to take available space
         borderPane.prefHeightProperty().bind(scene.heightProperty());
