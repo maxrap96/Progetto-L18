@@ -61,7 +61,7 @@ public class Toolbar1 extends ToolBar {
             @Override
             public void handle(ActionEvent event) {
                 HistogramChart coinsChart = new HistogramChart(new CategoryAxis(), new NumberAxis());
-                coinsChart.start(primaryStage);
+                //coinsChart.start(primaryStage);
             }
         });
 

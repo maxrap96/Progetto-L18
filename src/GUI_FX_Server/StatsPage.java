@@ -15,10 +15,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -52,13 +49,13 @@ public class StatsPage extends GridPane {
         tab2.setClosable(false);
         tab3.setClosable(false);
 
-        BorderPane b1 = new BorderPane();
+        GridPane b1 = new GridPane();
 
-        //HistogramChart coinsChart = new HistogramChart(new CategoryAxis(), new NumberAxis());
-        //coinsChart.start(stage);
+        HistogramChart coinsChart = new HistogramChart(new CategoryAxis(), new NumberAxis());
         //TODO MJ: aggiungere elementi grafici ai tab
 
-        tab1.setContent(b1);
+        //tab1.setContent(b1);
+        tab1.setContent(coinsChart.setbar());
         tab2.setContent(new BorderPane());
         tab3.setContent(new BorderPane());
 
@@ -85,9 +82,7 @@ public class StatsPage extends GridPane {
 
         mainPanel.addRow(0, vBox);
         mainPanel.addRow(1, borderPane);
-
         root.getChildren().addAll(mainPanel);
-
         stage.setScene(scene);
         stage.show();
     }

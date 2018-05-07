@@ -49,7 +49,7 @@ public class MenuBar1 extends MenuBar{
             @Override
             public void handle(ActionEvent event) {
                 HistogramChart coinsChart = new HistogramChart(new CategoryAxis(), new NumberAxis());
-                coinsChart.start(primaryStage);
+                //coinsChart.start(primaryStage);
             }
         });
     }
