@@ -2,7 +2,10 @@ package GUI_FX_VendingMachine;
 
 import Distributore.Distributore;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -13,6 +16,7 @@ import java.io.FileInputStream;
 
 public class VendingMachine extends Application {
      private Distributore distributore = new Distributore();
+     private ResetDisplay resetDisplay;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -43,16 +47,44 @@ public class VendingMachine extends Application {
         root.setBackground(new Background(changeNameWhenFinalImage));
 
         // creazione dei vari pannelli
-        Display display = new Display();
-        root.setRight(display);
-
-        GridPane beveragePane = new BeverageGrid(distributore, display);
-        root.setLeft(beveragePane);
-
         BorderPane purchasePane = new BorderPane();
         purchasePane.setStyle(
                 "-fx-background-color: gray;"
         );
+
+        Display display = new Display();
+        purchasePane.setCenter(display);
+        resetDisplay = new ResetDisplay(display, distributore);
+
+
+        //creo la grid per i tasti c - +
+        GridPane user = new GridPane();
+        user.setHgap(10);
+        user.setHgap(10);
+        Button change = new Button();
+        change.setText("C");
+        change.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                distributore.giveChange();
+
+            }
+        });
+        user.add(change, 0, 0);
+
+        Button minus = new Button();
+        minus.setText("-");
+        user.add(minus, 1, 0);
+
+        Button plus = new Button();
+        plus.setText("+");
+        user.add(plus,2,0);
+
+        purchasePane.setCenter(user);
+
+        GridPane beveragePane = new BeverageGrid(distributore, display, resetDisplay);
+        root.setLeft(beveragePane);
+
         root.setRight(purchasePane);
 
         GridPane moneyPane = new MoneyGrid(distributore, display);

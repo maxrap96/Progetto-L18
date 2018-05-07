@@ -17,10 +17,10 @@ public class BeverageGrid extends GridPane {
     private final int BUTTONS_PER_LINE = 3;
     private final int NUM_LINES = 4;
 
-    public BeverageGrid(Distributore distributore, Display display) {
+    public BeverageGrid(Distributore distributore, Display display, ResetDisplay resetDisplay) {
         this.distributore = distributore;
         this.display = display;
-        resetDisplay = new ResetDisplay(display, distributore);
+        this.resetDisplay = resetDisplay;
         createGrid();
     }
 
