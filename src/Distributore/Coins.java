@@ -9,7 +9,6 @@ import static java.lang.Integer.parseInt;
 
 public class Coins {
     private int[] money;
-    private double profit = 0.0;
     private int credit = 0;
     private final double[] COINS_VALUE = {5, 10, 20, 50 , 100, 200};
 
@@ -34,8 +33,9 @@ public class Coins {
     }
 
     /**
-     * Inizializza i tagli delle monete tramite lettura da file. Nel caso di errori si usa un'inizializzazione
-     * di default.
+     * Inizializza i tagli delle monete tramite lettura da file.
+     *
+     * Nota: Nel caso di errori si usa un'inizializzazione di default.
      */
     private void initCoins() {
         try {
@@ -80,7 +80,6 @@ public class Coins {
      * @param vendita è il costo della bevanda richiesta.
      */
     public void updateBalance(double vendita) {
-        profit += vendita;
         credit = credit - (int)((vendita)*100);
     }
 

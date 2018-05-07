@@ -19,7 +19,6 @@ public class Data {
      * Funzione che legge da un file esterno i dati su cui bisogna lavorare.
      *
      * @return openedFile: è il file aperto e letto.
-     * @throws FileNotReadable
      */
     protected ArrayList<String[]> readFile() throws FileNotReadable {
         try {
@@ -107,10 +106,6 @@ public class Data {
         }
     }
 
-    /**
-     *
-     * @param scrittura
-     */
     protected void writeData(String scrittura) {
         try {
             FileWriter writer = new FileWriter(pathFile, true);
@@ -124,10 +119,10 @@ public class Data {
     /**
      * Funzione per ottenere data e ora locali.
      *
-     * @return strDate è la stringa con i dati necessari.
+     * @return strDate è la stringa con i dati desiderati.
      */
     private static String getCurrentTimeStamp() {
-        SimpleDateFormat sdfDate = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss"); //stringa per data ora tempo
+        SimpleDateFormat sdfDate = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss"); // stringa per data ora tempo
         Date now = new Date();
         String strDate = sdfDate.format(now);
         return strDate;

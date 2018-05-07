@@ -32,8 +32,9 @@ public abstract class HotDrink {
     /**
      * Costruttore alternativo che serve a ripristinare la quantità rimanente, se presente, all'ultimo uso della
      * macchina.
+     *
      * @param rowSplitted è la stringa contenente i dati della bevanda.
-     * @param valueleft è la stringa contenente il double della quantità rimanente.
+     * @param valueleft è la stringa contenente il dato della quantità rimanente.
      */
     public HotDrink(String[] rowSplitted, String valueleft) {
         this.id = rowSplitted[0];
@@ -55,13 +56,6 @@ public abstract class HotDrink {
     }
 
     /**
-     * @return l'attributo price.
-     */
-    public double getPrice() {
-        return price;
-    }
-
-    /**
      * Funzione che mi dice se la bevanda é disponibile.
      */
     public boolean isAvailable() {
@@ -74,17 +68,6 @@ public abstract class HotDrink {
     }
 
     /**
-     * @return l'attributo milk.
-     */
-    public double getMilk() {
-        return milk;
-    }
-
-    public  double getVodka(){
-        return vodka;
-    }
-
-    /**
      * @return Una stringa che mi descrive la bevanda.
      */
     @Override
@@ -92,23 +75,26 @@ public abstract class HotDrink {
         return "ID: " + id + "\tName: " + name + "\nPrice: " + String.format("%.2f", price) + "\n";
     }
 
-    /**
-     * @return l'attributo name.
-     */
+    public double getPrice() {
+        return price;
+    }
+
+    public double getMilk() {
+        return milk;
+    }
+
+    public double getVodka(){
+        return vodka;
+    }
+
     public String getName() {
         return name;
     }
 
-    /**
-     * @return l'attributo id.
-     */
     public String getId() {
         return id;
     }
 
-    /**
-     * @return l'attributo leftQuantity.
-     */
     public double getLeftQuantity() {
         return leftQuantity;
     }

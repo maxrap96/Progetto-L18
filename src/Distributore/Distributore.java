@@ -79,7 +79,7 @@ public class Distributore implements MaxValue {
      * Nota: "data" viene utilizzata a partire dalla riga 5 (indice 4).
      *
      * @param listFromFile arraylist di stringhe fornito all'apertura del file.
-     * @param data         è l'arraylist contenente le quantità rimanenti delle bevande.
+     * @param data è l'arraylist contenente le quantità rimanenti delle bevande.
      * @param dataRow
      */
     private void createList(ArrayList<String[]> listFromFile, ArrayList<String[]> data, int dataRow) {

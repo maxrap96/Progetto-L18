@@ -23,7 +23,7 @@ public class Client extends Thread{
     }
 
     /**
-     * Avvia la comunicazione al server
+     * Avvia la comunicazione al server,
      */
     private static void startClient() throws ConnectException {
         try {
@@ -44,8 +44,7 @@ public class Client extends Thread{
     }
 
     /**
-     * Creo le basi per la connessione Distributore.Client
-     * @throws IOException
+     * Creo le basi per la connessione Distributore.
      */
     protected static boolean connectionPreRequisite (String hostName, int connectionPort) throws IOException{
         try{
@@ -66,8 +65,9 @@ public class Client extends Thread{
     }
 
     /**
-     * Svuoto il file
-     * @param file file svuotato
+     * Funzione per cancellare il contenuto di un file.
+     *
+     * @param file file da svuotare.
      * @throws IOException
      */
     protected static void emptyFile(File file) throws IOException{
@@ -82,9 +82,10 @@ public class Client extends Thread{
     }
 
     /**
-     * Scrivo il file ricevuto
-     * @param stringToWrite
-     * @param file dove salvo ciò che arriva
+     * Scrivo il file ricevuto.
+     *
+     * @param stringToWrite stringa da scrivere.
+     * @param file dove salvo ciò che arriva.
      * @throws IOException
      */
     protected static void writeFileReceived(String stringToWrite, File file)throws IOException{
@@ -98,9 +99,10 @@ public class Client extends Thread{
     }
 
     /**
-     * Invio di un file al Distributore.Client
-     * @param file file da inviare
-     * @param whereToWrite mezzo attraverso cui invio il file
+     * Invio di un file al Distributore.
+     *
+     * @param file file da inviare.
+     * @param whereToWrite mezzo attraverso cui invio il file.
      * @throws IOException
      */
     protected static void sendFile(PrintWriter whereToWrite, File file)throws IOException{
