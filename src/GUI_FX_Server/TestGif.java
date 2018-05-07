@@ -7,7 +7,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-public class Main extends Application {
+public class TestGif extends Application {
 
 
 
