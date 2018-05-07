@@ -10,13 +10,17 @@ import javafx.scene.text.FontPosture;
 import java.awt.*;
 
 public class BeverageGrid extends GridPane {
-    private Distributore distributoreBG;
+    private Distributore distributore;
+    private Display display;
+    private ResetDisplay resetDisplay;
     private final int BUTTON_PADDING = 50;
     private final int BUTTONS_PER_LINE = 3;
     private final int NUM_LINES = 4;
 
-    public BeverageGrid(Distributore distributore) {
-        this.distributoreBG = distributore;
+    public BeverageGrid(Distributore distributore, Display display) {
+        this.distributore = distributore;
+        this.display = display;
+        resetDisplay = new ResetDisplay(display, distributore);
         createGrid();
     }
 
@@ -32,10 +36,12 @@ public class BeverageGrid extends GridPane {
             for (int col = 0; col < BUTTONS_PER_LINE; col++) {
                 Button button = new Button("");
                 setButton(button, 18 * screenSize.width / 100, screenSize.height / 7);
-                if( number + 1 < distributoreBG.getListSize()){
+                if( number + 1 < distributore.getListSize()){
                     number = (BUTTONS_PER_LINE * row) + col;
                     // Le bevande iniziano dall'id 1
-                    button.setText(distributoreBG.getLabel(number + 1));
+                    button.setText(distributore.getLabel(number + 1));
+                    BeverageEventHandler beverageEventHandler = new BeverageEventHandler (distributore,display,number+1,resetDisplay);
+                    button.setOnAction(beverageEventHandler);
                 }
                 this.add(button, col, row);
             }

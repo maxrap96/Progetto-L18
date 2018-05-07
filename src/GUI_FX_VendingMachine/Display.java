@@ -1,23 +1,18 @@
 package GUI_FX_VendingMachine;
 
-import javafx.application.Application;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
+
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
-import javafx.stage.Stage;
 
-public class Display extends Application {
+public class Display extends GridPane {
     private final String DEFAULTMESSAGE = "SCEGLIERE UNA BEVANDA";
-    private Pane pane = new Pane();
     private Text beverage = new Text();
     private Text beverageCost = new Text();
     private Text creditRow = new Text();
     private Text sugar = new Text();
-    private GridPane gridPane;
-    private Scene scene;
+    private GridPane gridPane = new GridPane();
+
 
 
     public Display() {
@@ -28,7 +23,6 @@ public class Display extends Application {
      * funzione per impostare le righe del gridpane
      */
     private void createDisplay() {
-        gridPane = new GridPane();
         gridPane.setHgap(10);
         gridPane.setVisible(true);
 
@@ -53,31 +47,16 @@ public class Display extends Application {
     }
 
     public void setBeverageCost(String cost) {
-        beverageCost.setText(cost);
+        beverageCost.setText("Costo: " + cost);
     }
 
     public void setCreditRow(String credit) {
-        creditRow.setText(credit);
+        creditRow.setText("Credito: " + credit);
     }
 
     public void setSugar(String quantity) {
         sugar.setText(quantity);
     }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
 
-    public GridPane getDisplay(){
-        return gridPane;
-    }
-
-    @Override
-    public void start(Stage primaryStage) {
-        createDisplay();
-        gridPane.setAlignment(Pos.CENTER);
-        scene = new Scene(gridPane);
-        primaryStage.setScene(scene);
-        primaryStage.show();
-    }
 }

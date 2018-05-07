@@ -13,12 +13,14 @@ import java.awt.*;
 
 public class MoneyGrid extends GridPane {
     private Distributore distributore;
+    private Display display;
     private final int BUTTON_PADDING = 35;
     private final int BUTTONS_PER_LINE = 3;
     private final int NUM_BUTTON_LINES = 2;
 
-    public MoneyGrid(Distributore distributore) {
+    public MoneyGrid(Distributore distributore, Display display) {
         this.distributore = distributore;
+        this.display = display;
         this.setAlignment(Pos.CENTER_RIGHT);
         createGrid();
     }
@@ -42,6 +44,8 @@ public class MoneyGrid extends GridPane {
                 );
                 button.setFont(Font.font("Times", FontPosture.ITALIC, 20));
                 button.setPrefSize(screenSize.height / 8, screenSize.height / 8);
+                button.setOnAction(new MoneyEventHandler(distributore.getCoinsValue()[number], display, distributore));
+
                 this.add(button, c, r);
             }
         }

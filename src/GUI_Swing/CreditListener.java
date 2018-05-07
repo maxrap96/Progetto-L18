@@ -19,7 +19,6 @@ public class CreditListener implements ActionListener{
     }
 
     public void actionPerformed(ActionEvent e) {
-        String s = e.getActionCommand();
         distributore.addCredit(value);
         textAreaL.setText("\n\n\nCREDITO: " +  String.format("%.2f", distributore.getCredit()));
     }
