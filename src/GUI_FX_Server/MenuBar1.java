@@ -2,12 +2,7 @@ package GUI_FX_Server;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.chart.CategoryAxis;
-import javafx.scene.chart.NumberAxis;
-import javafx.scene.control.Button;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -17,8 +12,8 @@ import java.io.IOException;
 
 public class MenuBar1 extends MenuBar{
     Menu stats = new Menu("Stats");
-    MenuItem dati = new MenuItem("Dati");
-    MenuItem statistiche = new MenuItem("General Stats");
+    MenuItem ing = new MenuItem("Ing");
+    MenuItem utilizzo = new MenuItem("Utilizzo");
     MenuItem monete = new MenuItem("Money");
     Menu menu = new Menu("Menu");
 
@@ -36,9 +31,9 @@ public class MenuBar1 extends MenuBar{
         stats.setGraphic(immStats);
         getMenus().addAll(menu, stats);
 
-        stats.getItems().add(dati);
-        stats.getItems().add(statistiche);
         stats.getItems().add(monete);
+        stats.getItems().add(ing);
+        stats.getItems().add(utilizzo);
 
         Action(stage);
 
@@ -48,11 +43,23 @@ public class MenuBar1 extends MenuBar{
         monete.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                HistogramChart coinsChart = new HistogramChart(new CategoryAxis(), new NumberAxis());
-                //coinsChart.start(primaryStage);
+               new StatsPage(primaryStage).OpenTab(0);
+            }
+        });
+        ing.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                new StatsPage(primaryStage).OpenTab(1);
+            }
+        });
+        utilizzo.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                new StatsPage(primaryStage).OpenTab(2);
             }
         });
     }
+
 
     private Image loadImage(String url){
         Image imgTmp = null;

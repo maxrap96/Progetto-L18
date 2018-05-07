@@ -9,17 +9,16 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
-import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
+import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class StatsPage extends GridPane {
+    TabPane tabPane = new TabPane();
+    Tab tab1 = new Tab();
+    Tab tab2 = new Tab();
+    Tab tab3 = new Tab();
 
     public StatsPage(Stage stage) {
         Group root = new Group();
@@ -36,12 +35,10 @@ public class StatsPage extends GridPane {
 
         Scene scene = new Scene(root, 800, 550, Color.KHAKI);
 
-        TabPane tabPane = new TabPane();
+
+
         BorderPane borderPane = new BorderPane();
 
-        Tab tab1 = new Tab();
-        Tab tab2 = new Tab();
-        Tab tab3 = new Tab();
         tab1.setText("Monete");
         tab2.setText("Ing");
         tab3.setText("Utilizzo");
@@ -58,6 +55,7 @@ public class StatsPage extends GridPane {
 
         tabPane.getTabs().addAll(tab1, tab2, tab3);
 
+
         // MJ: da tenere per il momento
         /*String[] tabNames = {"Monete", "Ingredienti", "Utilizzo"};
 
@@ -73,6 +71,7 @@ public class StatsPage extends GridPane {
         }*/
 
         // bind to take available space
+
         borderPane.prefHeightProperty().bind(scene.heightProperty());
         borderPane.prefWidthProperty().bind(scene.widthProperty());
         borderPane.setCenter(tabPane);
@@ -84,5 +83,10 @@ public class StatsPage extends GridPane {
         root.getChildren().addAll(mainPanel);
         stage.setScene(scene);
         stage.show();
+    }
+    public void OpenTab(int i){
+        SingleSelectionModel<Tab> selectionModel = tabPane.getSelectionModel();
+        selectionModel.select(i); //select by index starting with 0
+        selectionModel.clearSelection();
     }
 }

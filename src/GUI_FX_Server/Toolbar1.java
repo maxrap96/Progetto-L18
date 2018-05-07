@@ -18,11 +18,6 @@ public class Toolbar1 extends ToolBar {
     Button dx = new Button();
     Button home = new Button();
 
-    Menu stats = new Menu("Stats");
-    MenuItem dati = new MenuItem("Dati");
-    MenuItem statistiche = new MenuItem("General Stats");
-    MenuItem monete = new MenuItem("Money");
-
     public Toolbar1(Stage stage) {
         ImageView immStats = new ImageView(loadImage("src/ServerImages/stats.jpg"));
         ImageView immHome = new ImageView(loadImage("src/ServerImages/home.png"));
@@ -38,33 +33,16 @@ public class Toolbar1 extends ToolBar {
         immSx.setFitWidth(20);
         immSx.setFitHeight(20);
 
-        stats.setGraphic(immStats);
         home.setGraphic(immHome);
         sx.setGraphic(immSx);
         dx.setGraphic(immDx);
 
         getItems().addAll(sx,dx,home);
 
-
-
-
-        stats.getItems().add(dati);
-        stats.getItems().add(statistiche);
-        stats.getItems().add(monete);
-
         Action(stage);
-
     }
 
     public void Action(Stage primaryStage){
-        monete.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                HistogramChart coinsChart = new HistogramChart(new CategoryAxis(), new NumberAxis());
-                //coinsChart.start(primaryStage);
-            }
-        });
-
         home.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -86,5 +64,4 @@ public class Toolbar1 extends ToolBar {
         }
         return imgTmp;
     }
-
 }
