@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
@@ -27,10 +28,13 @@ public class HomePage extends Application {
     @Override
     public void start(Stage primaryStage) {
 
-        HistogramChart coinsChart = new HistogramChart(new CategoryAxis(), new NumberAxis());
-
         // Definizione dello stage principale e della barra del menu
         primaryStage.setTitle("Home");
+        /*Group root = new Group();                                //
+        *                                                          // Sfondo
+        *Scene scene = new Scene(root, 800, 550, Color.DARKBLUE);  //
+        */
+
         Toolbar1 toolbar1 = new Toolbar1(primaryStage);
         MenuBar1 menuBar1= new MenuBar1(primaryStage);
 
@@ -87,11 +91,12 @@ public class HomePage extends Application {
         ButtonBar buttonBar = new ButtonBar();
 
         Button menuButton = new Button("Menu");
-        ButtonBar.setButtonData(menuButton, ButtonBar.ButtonData.OTHER);
+        ButtonBar.setButtonData(menuButton, ButtonBar.ButtonData.LEFT);
         menuButton.setPrefSize(85, 50);
 
         Button statsButton = new Button("Statistiche");
-        ButtonBar.setButtonData(statsButton, ButtonBar.ButtonData.OTHER);
+        ButtonBar.setButtonData(statsButton, ButtonBar.ButtonData.LEFT);
+        buttonBar.setLayoutX(100);
         statsButton.setPrefSize(85, 50);
 
         buttonBar.getButtons().addAll(menuButton, statsButton);
@@ -100,7 +105,9 @@ public class HomePage extends Application {
         statsButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                coinsChart.start(primaryStage);
+                //HistogramChart coinsChart = new HistogramChart(new CategoryAxis(), new NumberAxis());
+                //StatsPage statsPage = new StatsPage();
+                new StatsPage(primaryStage);
             }
         });
 
@@ -113,11 +120,11 @@ public class HomePage extends Application {
         gPane.setHalignment(label, HPos.CENTER);
 
         Scene scene = new Scene(gPane, 800, 550);
+        //root.getChildren().add(gPane);    // Sfondo col
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
         //primaryStage.setMaximized(true); // Lo ingrandisco subito fullscreen
         primaryStage.show();
-
     }
 
     public static void main(String[] args) {
