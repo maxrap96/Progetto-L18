@@ -12,7 +12,7 @@ import java.awt.*;
 import java.io.FileInputStream;
 
 public class VendingMachine extends Application {
-    Distributore distributore = new Distributore();
+     private Distributore distributore = new Distributore();
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -42,7 +42,11 @@ public class VendingMachine extends Application {
         // Metto lo sfondo
         root.setBackground(new Background(changeNameWhenFinalImage));
 
-        GridPane beveragePane = new BeverageGrid(distributore);
+        // creazione dei vari pannelli
+        Display display = new Display();
+        root.setRight(display);
+
+        GridPane beveragePane = new BeverageGrid(distributore, display);
         root.setLeft(beveragePane);
 
         BorderPane purchasePane = new BorderPane();
@@ -51,7 +55,7 @@ public class VendingMachine extends Application {
         );
         root.setRight(purchasePane);
 
-        GridPane moneyPane = new MoneyGrid(distributore);
+        GridPane moneyPane = new MoneyGrid(distributore, display);
         purchasePane.setBottom(moneyPane);
 
         Scene scene = new Scene(root, width, height, Color.LIGHTGRAY);
