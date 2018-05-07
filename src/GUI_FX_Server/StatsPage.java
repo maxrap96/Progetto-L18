@@ -49,12 +49,9 @@ public class StatsPage extends GridPane {
         tab2.setClosable(false);
         tab3.setClosable(false);
 
-        GridPane b1 = new GridPane();
-
-        HistogramChart coinsChart = new HistogramChart(new CategoryAxis(), new NumberAxis());
         //TODO MJ: aggiungere elementi grafici ai tab
+        HistogramChart coinsChart = new HistogramChart(new CategoryAxis(), new NumberAxis());
 
-        //tab1.setContent(b1);
         tab1.setContent(coinsChart.setbar());
         tab2.setContent(new BorderPane());
         tab3.setContent(new BorderPane());
@@ -82,6 +79,8 @@ public class StatsPage extends GridPane {
 
         mainPanel.addRow(0, vBox);
         mainPanel.addRow(1, borderPane);
+        mainPanel.prefHeightProperty().bind(scene.heightProperty());
+        mainPanel.prefWidthProperty().bind(scene.widthProperty());
         root.getChildren().addAll(mainPanel);
         stage.setScene(scene);
         stage.show();

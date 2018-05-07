@@ -75,7 +75,7 @@ public class HistogramChart extends BarChart {
         bc.setTitle("Coins");
         xAxis.setLabel("Numero monete rimaste");
         yAxis.setLabel("Tagli di monete [€]");
-
+        bc.setLegendVisible(false);
 
         XYChart.Series series1 = new XYChart.Series();
 
