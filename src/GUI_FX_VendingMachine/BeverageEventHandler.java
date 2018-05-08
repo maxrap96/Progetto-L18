@@ -28,7 +28,6 @@ public class BeverageEventHandler implements EventHandler{
     @Override
     public void handle(Event event) {
 
-        display.setBeverage(distributore.selectBeverage(ID));
 
         if (distributore.getCredit() >= distributore.getPrice(ID)) {
             display.setBeverageCost("");
@@ -36,7 +35,7 @@ public class BeverageEventHandler implements EventHandler{
         else {
             display.setBeverageCost("Costo: " + BEVERAGEPRICE);
         }
-
+        display.setBeverage(distributore.selectBeverage(ID));
         display.setCreditRow(String.format("%.2f", distributore.getCredit()));
         resetDisplay.runTimer();
     }
