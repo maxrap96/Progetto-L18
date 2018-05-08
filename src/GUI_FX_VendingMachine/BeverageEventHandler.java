@@ -28,17 +28,17 @@ public class BeverageEventHandler implements EventHandler{
     @Override
     public void handle(Event event) {
 
+        display.setBeverage(distributore.selectBeverage(ID));
+
         if (distributore.getCredit() >= distributore.getPrice(ID)) {
-            display.setBeverage(distributore.selectBeverage(ID));
-            display.setCreditRow(String.format("%.2f", distributore.getCredit()));
-            resetDisplay.setDots();
+            display.setBeverageCost("");
         }
         else {
-            display.setBeverage(distributore.selectBeverage(ID));
-            display.setBeverageCost(BEVERAGEPRICE);
-            display.setCreditRow(String.format("%.2f", distributore.getCredit()));
-            resetDisplay.runTimer();
+            display.setBeverageCost("Costo: " + BEVERAGEPRICE);
         }
+
+        display.setCreditRow(String.format("%.2f", distributore.getCredit()));
+        resetDisplay.runTimer();
     }
 
 }
