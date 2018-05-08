@@ -70,8 +70,19 @@ public class VendingMachine extends Application {
         key.setPrefSize(18 * screenSize.width / 100, screenSize.height / 9);
         key.setStyle(
                 "-fx-background-radius: 1em;" +
-                "-fx-focus-color: green;"
+                "-fx-focus-color: transparent;" +
+                "-fx-faint-focus-color: transparent;"
         );
+        key.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                key.setStyle(
+                        "-fx-background-radius: 1em;" +
+                        "-fx-focus-color: blue;"
+                );
+            }
+        });
+
         purchasePane.setCenter(key);
 
         GridPane beveragePane = new BeverageGrid(distributore, display, resetDisplay);

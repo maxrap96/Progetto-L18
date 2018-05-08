@@ -52,7 +52,7 @@ public class BeverageGrid extends GridPane {
     private void setButton(Button buttonToSet, int width, int height){
         buttonToSet.setStyle(
                         "-fx-background-radius: 1em;" +
-                        "-fx-focus-color: green;"
+                        "-fx-focus-color: blue;"
         );
         buttonToSet.setFont(Font.font("Times", FontPosture.ITALIC, 20));
         buttonToSet.setPrefSize(width, height);

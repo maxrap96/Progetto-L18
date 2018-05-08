@@ -6,7 +6,6 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
@@ -42,7 +41,7 @@ public class MoneyGrid extends GridPane {
         change.setFont(Font.font("Times", FontPosture.ITALIC, 20));
         change.setPrefSize(screenSize.height / 8, screenSize.height / 8);
         change.setStyle(
-                "-fx-focus-color: green;"
+                "-fx-focus-color: blue;"
         );
         change.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -59,7 +58,7 @@ public class MoneyGrid extends GridPane {
         minus.setFont(Font.font("Times", FontPosture.ITALIC, 20));
         minus.setPrefSize(screenSize.height / 8, screenSize.height / 8);
         minus.setStyle(
-                "-fx-focus-color: green;"
+                "-fx-focus-color: blue;"
         );
         minus.setOnAction(new EventHandler<ActionEvent>() {
               @Override
@@ -68,7 +67,7 @@ public class MoneyGrid extends GridPane {
                   resetDisplay.setDots();
                   resetDisplay.runTimer();
               }
-          });
+        });
         this.add(minus, 1, 0);
 
         Button plus = new Button();
@@ -77,7 +76,7 @@ public class MoneyGrid extends GridPane {
         plus.setFont(Font.font("Times", FontPosture.ITALIC, 20));
         plus.setPrefSize(screenSize.height / 8, screenSize.height / 8);
         plus.setStyle(
-                "-fx-focus-color: green;"
+                "-fx-focus-color: blue;"
         );
         plus.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -89,7 +88,6 @@ public class MoneyGrid extends GridPane {
         });
         this.add(plus,2,0);
 
-
         int number;
         for (int r = 1; r < NUM_BUTTON_LINES; r++) {
             for (int c = 0; c < BUTTONS_PER_LINE; c++) {
@@ -98,8 +96,7 @@ public class MoneyGrid extends GridPane {
                 Button button = new Button(cValue);
                 button.setShape(new Circle(screenSize.height/8));
                 button.setStyle(
-                        "-fx-focus-color: green;" +
-                        "-fx-faint-focus-color: transparent;"
+                        "-fx-focus-color: blue;"
                 );
                 button.setFont(Font.font("Times", FontPosture.ITALIC, 20));
                 button.setPrefSize(screenSize.height / 8, screenSize.height / 8);
