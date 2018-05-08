@@ -258,8 +258,9 @@ public class Distributore implements MaxValue {
             } catch (FileNotWritable fileNotWritable) {
                 fileNotWritable.printStackTrace();
             }
+            coins.giveChange();
             if (coins.getCredit() != 0) {
-                coins.giveChange();
+                System.out.println("Bevanda erogata. Ritirare il resto");
                 return "Bevanda erogata. Ritirare il resto" ;
             } else {
                 System.out.println("Bevanda erogata.");

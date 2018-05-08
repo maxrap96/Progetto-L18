@@ -49,7 +49,7 @@ public class Data {
 
         try{
             while ((row = bReader.readLine()) != null) {
-                if(! row.contains("*")) {
+                if(! row.contains("*") && !row.isEmpty()) {
                     String[] rowDataSplit = row.split("\t");
                     dataSplit.add(rowDataSplit);
                 }
@@ -70,7 +70,7 @@ public class Data {
     protected void writeFile(String scrittura) throws FileNotWritable {
         try {
             FileWriter writer = new FileWriter(pathFile, true);
-            writer.write(scrittura + "\t" + getCurrentTimeStamp() + "\n");
+            writer.write("\n" +scrittura + "\t" + getCurrentTimeStamp());
             writer.close();
         } catch (FileNotFoundException e) {
             throw new FileNotWritable();
