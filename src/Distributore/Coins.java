@@ -123,29 +123,28 @@ public class Coins {
     /**
      * Funzione che eroga il resto, massimizzando il numero di monete di taglio maggiore.
      */
-    public String giveChange() {
+    public  void giveChange() {
 
         if (checkChange()) {
             int[] change = new int[COINS_VALUE.length]; // change[0], change[1], ecc. è il numero di monete
                                                         // del tipo indicato
             optimizeChange(change);
+            if(getCredit() != 0) {
+                String coinsList = "5c: " + change[0] + "\n10c: " + change[1] + "\n20c: " + change[2] + "\n50c: "
+                        + change[3] + "\n1E: " + change[4] + "\n2E: " + change[5];
+                String changeSupplied = "Resto erogato: " + ((double) credit / 100);
+                resetCredit(change);
 
-            String coinsList = "5c: " + change[0] + "\n10c: " + change[1] + "\n20c: " + change[2] + "\n50c: "
-                    + change[3] + "\n1E: " + change[4] + "\n2E: " + change[5];
-            String changeSupplied = "Resto erogato: " + ((double)credit/100);
-            resetCredit(change);
-
+                System.out.println(changeSupplied);
+                System.out.println(coinsList);
+            }
             try {
                 moneteTxt.writeFile(moneyOnFile());
             } catch (FileNotWritable fileNotWritable) {
                 fileNotWritable.printStackTrace();
             }
-
-            System.out.println(changeSupplied);
-            System.out.println(coinsList);
-            return (changeSupplied + coinsList);
         }  else {
-            return ("Resto NON disponibile");
+            System.out.println("Resto NON disponibile");
         }
 
     }
