@@ -25,8 +25,15 @@ public class Display extends GridPane {
      */
     private void createDisplay() {
         gridPane.setHgap(10);
-        gridPane.setVisible(true);
-        gridPane.setAlignment(Pos.TOP_CENTER);
+        //gridPane.setVisible(true);
+        //gridPane.setAlignment(Pos.TOP_CENTER);
+
+
+        gridPane.add(beverage,0,0);
+        gridPane.add(beverageCost,0,1);
+        gridPane.add(creditRow,0,2);
+        gridPane.add(sugar,0,3);
+        gridPane.setStyle("-fx-background-color: blue");
 
         beverage.setText(DEFAULTMESSAGE);
         beverage.setTextAlignment(TextAlignment.CENTER);
@@ -36,12 +43,6 @@ public class Display extends GridPane {
         creditRow.setTextAlignment(TextAlignment.CENTER);
         sugar.setText("riga dello zucchero");
         sugar.setTextAlignment(TextAlignment.CENTER);
-
-        gridPane.add(beverage,0,0);
-        gridPane.add(beverageCost,0,1);
-        gridPane.add(creditRow,0,2);
-        gridPane.add(sugar,0,3);
-        gridPane.setStyle("-fx-background-color: blue");
 
     }
 
@@ -60,6 +61,4 @@ public class Display extends GridPane {
     public void setSugar(String quantity) {
         sugar.setText(quantity);
     }
-
-
 }

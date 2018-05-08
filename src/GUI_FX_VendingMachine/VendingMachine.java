@@ -2,6 +2,7 @@ package GUI_FX_VendingMachine;
 
 import Distributore.Distributore;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -10,6 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.awt.*;
 import java.io.FileInputStream;
@@ -51,6 +53,7 @@ public class VendingMachine extends Application {
         purchasePane.setStyle(
                 "-fx-background-color: gray;"
         );
+        root.setRight(purchasePane);
 
         Display display = new Display();
         purchasePane.setCenter(display);
@@ -58,7 +61,7 @@ public class VendingMachine extends Application {
 
 
         //creo la grid per i tasti c - +
-        GridPane user = new GridPane();
+        /*GridPane user = new GridPane();
         user.setHgap(10);
         user.setHgap(10);
         Button change = new Button();
@@ -80,12 +83,10 @@ public class VendingMachine extends Application {
         plus.setText("+");
         user.add(plus,2,0);
 
-        purchasePane.setCenter(user);
+        purchasePane.setCenter(user);*/
 
         GridPane beveragePane = new BeverageGrid(distributore, display, resetDisplay);
         root.setLeft(beveragePane);
-
-        root.setRight(purchasePane);
 
         GridPane moneyPane = new MoneyGrid(distributore, display);
         purchasePane.setBottom(moneyPane);
@@ -94,6 +95,14 @@ public class VendingMachine extends Application {
         primaryStage.setScene(scene);
         primaryStage.setMaximized(true);
         primaryStage.show();
+
+        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent t) {
+                Platform.exit();
+                System.exit(0);
+            }
+        });
     }
 
     public static void main(String[] args) {
