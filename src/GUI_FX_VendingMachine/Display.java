@@ -1,11 +1,11 @@
 package GUI_FX_VendingMachine;
 
-
 import javafx.geometry.Insets;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+
 
 public class Display extends GridPane {
     private final String DEFAULTMESSAGE = "Scegliere una bevanda";
@@ -14,16 +14,20 @@ public class Display extends GridPane {
     private Text creditRow = new Text();
     private Text sugar = new Text();
 
-    public Display() {
-        createDisplay();
+    public Display( double screenWidth, double screenHeight) {
+        createDisplay(screenWidth, screenHeight);
     }
 
     /**
-     * funzione per impostare le righe del gridpane
+     * Funzione per impostare le righe del gridpane
+     * @param screenWidth
+     * @param screenHeight
      */
-    private void createDisplay() {
-
+    private void createDisplay(double screenWidth, double screenHeight) {
+        this.setPrefSize(screenWidth / 100, screenHeight /4);
         this.setPadding(new Insets(20,20,20,20));
+        this.setHgap(20);
+        this.setVgap(20);
         this.setStyle(
                 "-fx-background-color: blue;" +
                 "-fx-background-radius: 30;"
@@ -33,18 +37,21 @@ public class Display extends GridPane {
         this.add(creditRow,0,2);
         this.add(sugar,0,3);
 
-        beverage.setText(DEFAULTMESSAGE);
-        beverage.setFont(Font.font("Times", 20));
-        beverage.setFill(Color.WHITE);
-        beverageCost.setText("");
-        beverageCost.setFont(Font.font("Times", 20));
-        beverageCost.setFill(Color.WHITE);
-        creditRow.setText("Credito: ");
-        creditRow.setFont(Font.font("Times", 20));
-        creditRow.setFill(Color.WHITE);
-        sugar.setText("riga dello zucchero");
-        sugar.setFont(Font.font("Times", 20));
-        sugar.setFill(Color.WHITE);
+        setDisplay(beverage, DEFAULTMESSAGE);
+        setDisplay(beverageCost, "");
+        setDisplay(creditRow, "Credito: ");
+        setDisplay(sugar, "riga dello zucchero");
+    }
+
+    /**
+     * Funzione che configura i vari Text del display
+     * @param text: uno dei text del display
+     * @param message: messaggio da stampare a video
+     */
+    private void setDisplay(Text text, String message) {
+        text.setText(message);
+        text.setFont(Font.font("Calibri", 25));
+        text.setFill(Color.WHITE);
     }
 
     public void setBeverage(String info) {
