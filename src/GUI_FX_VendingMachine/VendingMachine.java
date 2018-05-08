@@ -10,6 +10,8 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -62,6 +64,15 @@ public class VendingMachine extends Application {
         purchasePane.setTop(display);
         resetDisplay = new ResetDisplay(display, distributore);
         resetDisplay.setDots();
+
+        Button key = new Button("Chiavetta");
+        key.setFont(Font.font("Times", FontPosture.ITALIC, 20));
+        key.setPrefSize(18 * screenSize.width / 100, screenSize.height / 9);
+        key.setStyle(
+                "-fx-background-radius: 1em;" +
+                "-fx-focus-color: green;"
+        );
+        purchasePane.setCenter(key);
 
         GridPane beveragePane = new BeverageGrid(distributore, display, resetDisplay);
         beveragePane.setBackground(new Background(changeNameWhenFinalImage));

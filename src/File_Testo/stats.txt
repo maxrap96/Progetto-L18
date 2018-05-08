@@ -402,4 +402,5 @@ Caffè Miscela Top	420	942	952.0	997.7399999999998	Transazione fallita.	08-05-20
 Tè al Limone	419	941	951.25	997.7399999999998	Transazione avvenuta il:	08-05-2018 11:21:32
 Tè al Limone	418	940	950.5	997.7399999999998	Transazione avvenuta il:	08-05-2018 11:21:42
 Cappuccino	418	940	950.5	997.6599999999997	Transazione avvenuta il:	08-05-2018 11:24:05
-*
+*Cappuccino	419	941	951.75	997.5799999999997	Transazione avvenuta il:	08-05-2018 11:56:13
+Cappuccino	418	940	951.0	997.4999999999997	Transazione avvenuta il:	08-05-2018 11:56:21
