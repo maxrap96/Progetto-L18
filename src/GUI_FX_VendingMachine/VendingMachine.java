@@ -58,7 +58,7 @@ public class VendingMachine extends Application {
         Display display = new Display();
         purchasePane.setCenter(display);
         resetDisplay = new ResetDisplay(display, distributore);
-
+        resetDisplay.setDots();
 
         GridPane beveragePane = new BeverageGrid(distributore, display, resetDisplay);
         root.setLeft(beveragePane);
