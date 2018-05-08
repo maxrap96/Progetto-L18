@@ -1,18 +1,26 @@
 package Server;
 
+import PersonalExceptions.FileNotReadable;
 import javafx.collections.ObservableList;
-import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 import javafx.collections.FXCollections;
 
+import java.util.ArrayList;
+
 public class DrinkPieChart extends PieChart {
+    Distributore.Data data = new Distributore.Data("src/File_Testo_Server/serverStats.txt");
 
     public BorderPane setChart() {
         BorderPane b = new BorderPane();
+        ArrayList<String[]> a;
+        String[] a1;
+
+        try {
+            a = data.readFile();
+        } catch (FileNotReadable fileNotReadable) {
+            fileNotReadable.printStackTrace();
+        }
 
         //TODO MJ: collegare dati delle bevande al grafico tramite lettura file stats
 

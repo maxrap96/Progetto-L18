@@ -11,7 +11,7 @@ import java.util.Date;
 public class Data {
     private String pathFile;
 
-    protected Data(String pathFile) {
+    public Data(String pathFile) {
         this.pathFile = pathFile;
     }
 
@@ -20,7 +20,7 @@ public class Data {
      *
      * @return openedFile: è il file aperto e letto.
      */
-    protected ArrayList<String[]> readFile() throws FileNotReadable {
+    public ArrayList<String[]> readFile() throws FileNotReadable {
         try {
             BufferedReader bReader = new BufferedReader(new FileReader(pathFile));
             ArrayList<String[]> openedFile = split(bReader);
