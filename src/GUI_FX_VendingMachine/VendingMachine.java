@@ -93,6 +93,7 @@ public class VendingMachine extends Application {
         Scene scene = new Scene(root, width, height, Color.LIGHTGRAY);
         primaryStage.setScene(scene);
         primaryStage.setMaximized(true);
+        primaryStage.setResizable(false);
         primaryStage.show();
 
         // Termina l'applicazione cliccando la x rossa
