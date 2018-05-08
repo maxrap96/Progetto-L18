@@ -47,7 +47,7 @@ public class Display extends GridPane {
      */
     private void setDisplay(Text text, String message) {
         text.setText(message);
-        text.setFont(Font.font("Arial", 20));
+        text.setFont(Font.font("Calibri", 20));
         text.setFill(Color.WHITE);
     }
 

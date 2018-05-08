@@ -37,12 +37,7 @@ public class MoneyGrid extends GridPane {
 
         Button change = new Button();
         change.setText("C");
-        change.setShape(new Circle (screenSize.height/8));
-        change.setFont(Font.font("Times", FontPosture.ITALIC, 20));
-        change.setPrefSize(screenSize.height / 8, screenSize.height / 8);
-        change.setStyle(
-                "-fx-focus-color: blue;"
-        );
+        setPurchaseButton(change);
         change.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -54,12 +49,7 @@ public class MoneyGrid extends GridPane {
 
         Button minus = new Button();
         minus.setText("-");
-        minus.setShape(new Circle (screenSize.height/8));
-        minus.setFont(Font.font("Times", FontPosture.ITALIC, 20));
-        minus.setPrefSize(screenSize.height / 8, screenSize.height / 8);
-        minus.setStyle(
-                "-fx-focus-color: blue;"
-        );
+        setPurchaseButton(minus);
         minus.setOnAction(new EventHandler<ActionEvent>() {
               @Override
               public void handle(ActionEvent event) {
@@ -72,12 +62,7 @@ public class MoneyGrid extends GridPane {
 
         Button plus = new Button();
         plus.setText("+");
-        plus.setShape(new Circle (screenSize.height/8));
-        plus.setFont(Font.font("Times", FontPosture.ITALIC, 20));
-        plus.setPrefSize(screenSize.height / 8, screenSize.height / 8);
-        plus.setStyle(
-                "-fx-focus-color: blue;"
-        );
+        setPurchaseButton(plus);
         plus.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -94,16 +79,25 @@ public class MoneyGrid extends GridPane {
                 number = BUTTONS_PER_LINE * (r - 1) + c;
                 String cValue = String.format("%.2f", distributore.getCoinsValue()[number]);
                 Button button = new Button(cValue);
-                button.setShape(new Circle(screenSize.height/8));
-                button.setStyle(
-                        "-fx-focus-color: blue;"
-                );
-                button.setFont(Font.font("Times New Roman", FontPosture.ITALIC, 20));
-                button.setPrefSize(screenSize.height / 8, screenSize.height / 8);
+                setPurchaseButton(button);
                 button.setOnAction(new MoneyEventHandler(distributore.getCoinsValue()[number], display, distributore));
 
                 this.add(button, c, r);
             }
         }
+    }
+
+    /**
+     * Funzione che configura i pulsanti delle monete, zucchero e resto
+     * @param button: il pulsante da configurare
+     */
+    private void setPurchaseButton(Button button)  {
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        button.setShape(new Circle (screenSize.height/8));
+        button.setFont(Font.font("Times", FontPosture.ITALIC, 20));
+        button.setPrefSize(screenSize.height / 8, screenSize.height / 8);
+        button.setStyle(
+                "-fx-focus-color: blue;"
+        );
     }
 }

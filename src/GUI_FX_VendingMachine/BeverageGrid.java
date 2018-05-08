@@ -55,7 +55,7 @@ public class BeverageGrid extends GridPane {
                         "-fx-base: gainsboro;" +
                         "-fx-focus-color: blue;"
         );
-        buttonToSet.setFont(Font.font("Cambria", 20));
+        buttonToSet.setFont(Font.font("Century", 20));
         buttonToSet.setPrefSize(width, height);
     }
 }
