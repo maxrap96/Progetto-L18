@@ -6,7 +6,8 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
 public class BeverageGrid extends GridPane {
     private Distributore distributore;

@@ -11,13 +11,14 @@ import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
 public class MoneyGrid extends GridPane {
     private Distributore distributore;
     private Display display;
     private ResetDisplay resetDisplay;
-    private final int BUTTON_PADDING = 35;
+    private final int BUTTON_PADDING = 32;
     private final int BUTTONS_PER_LINE = 3;
     private final int NUM_BUTTON_LINES = 3;
 

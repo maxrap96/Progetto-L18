@@ -5,6 +5,8 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -14,7 +16,8 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.io.FileInputStream;
 
 public class VendingMachine extends Application {
@@ -50,6 +53,7 @@ public class VendingMachine extends Application {
 
         // Creazione pannello del display, delle monete e degli altri pulsanti
         BorderPane purchasePane = new BorderPane();
+        purchasePane.setPadding(new Insets(11, 11, 11, 11));
         purchasePane.setStyle(
                 "-fx-background-color: gray;"
         );
@@ -64,7 +68,7 @@ public class VendingMachine extends Application {
         // Creazione chiavetta
         Button key = new Button("Chiavetta");
         key.setFont(Font.font("Century", 20));
-        key.setPrefSize(18 * screenSize.width / 100, screenSize.height / 9);
+        key.setPrefSize(16 * screenSize.width / 100, screenSize.height / 9);
         key.setStyle(
                 "-fx-background-radius: 1em;" +
                 "-fx-focus-color: transparent;" +

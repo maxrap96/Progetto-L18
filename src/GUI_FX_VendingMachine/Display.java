@@ -6,7 +6,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
 
 public class Display extends GridPane {
@@ -25,7 +26,9 @@ public class Display extends GridPane {
      */
     private void createDisplay() {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setPrefSize(screenSize.width / 100, screenSize.height /4);
+        this.setMinSize(30 * screenSize.width / 100, 25 * screenSize.height / 100);
+        this.setPrefSize(30 * screenSize.width / 100, 25 * screenSize.height / 100);
+        this.setMaxSize(30 * screenSize.width / 100, 25 * screenSize.height / 100);
         this.setPadding(new Insets(20,20,20,20));
         this.setHgap(20);
         this.setVgap(20);
