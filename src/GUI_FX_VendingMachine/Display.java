@@ -6,8 +6,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
-import java.awt.*;
-
 
 public class Display extends GridPane {
     private final String DEFAULTMESSAGE = "Scegliere una bevanda";
@@ -16,16 +14,17 @@ public class Display extends GridPane {
     private Text creditRow = new Text();
     private Text sugar = new Text();
 
-    public Display() {
-        createDisplay();
+    public Display( double screenWidth, double screenHeight) {
+        createDisplay(screenWidth, screenHeight);
     }
 
     /**
      * Funzione per impostare le righe del gridpane
+     * @param screenWidth
+     * @param screenHeight
      */
-    private void createDisplay() {
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setPrefSize(screenSize.width / 100, screenSize.height /4);
+    private void createDisplay(double screenWidth, double screenHeight) {
+        this.setPrefSize(screenWidth / 100, screenHeight /4);
         this.setPadding(new Insets(20,20,20,20));
         this.setHgap(20);
         this.setVgap(20);
