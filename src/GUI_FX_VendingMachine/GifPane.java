@@ -1,4 +1,4 @@
-package GUI_FX_Server;
+package GUI_FX_VendingMachine;
 
 import javafx.animation.FadeTransition;
 import javafx.animation.SequentialTransition;

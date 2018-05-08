@@ -1,4 +1,4 @@
-package GUI_FX_Server;
+package GUI_FX_VendingMachine;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -35,7 +35,7 @@ public class TestGif extends Application {
                 gifPane.start();
             });
 
-            root.getStylesheets().add("GUI_FX_Server/Style.css");
+            root.getStylesheets().add("GUI_FX_VendingMachine/Style.css");
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.show();
