@@ -109,6 +109,13 @@ public class HomePage extends Application {
             }
         });
 
+        menuButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                new MenuTable(primaryStage);
+            }
+        });
+
         // Aggiunta elementi nel Pane
         gPane.setVgap(50);
         gPane.add(vBox, 0,0);
