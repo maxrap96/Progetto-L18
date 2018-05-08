@@ -84,6 +84,7 @@ public class StatsPage extends GridPane {
         stage.setScene(scene);
         stage.show();
     }
+
     public void OpenTab(int i){
         SingleSelectionModel<Tab> selectionModel = tabPane.getSelectionModel();
         selectionModel.select(i); //select by index starting with 0

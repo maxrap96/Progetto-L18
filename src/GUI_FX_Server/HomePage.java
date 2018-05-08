@@ -30,10 +30,10 @@ public class HomePage extends Application {
 
         // Definizione dello stage principale e della barra del menu
         primaryStage.setTitle("Home");
-        /*Group root = new Group();                                //
-        *                                                          // Sfondo
-        *Scene scene = new Scene(root, 800, 550, Color.DARKBLUE);  //
-        */
+        Group root = new Group();                                //
+                                                                  // Sfondo
+        Scene scene = new Scene(root, 800, 550, Color.DARKBLUE);  //
+
 
         Toolbar1 toolbar1 = new Toolbar1(primaryStage);
         MenuBar1 menuBar1= new MenuBar1(primaryStage);
@@ -42,6 +42,7 @@ public class HomePage extends Application {
         GridPane gPane = new GridPane();
         gPane.setPrefSize(800, 550); // Size base del pane all'avvio
         gPane.setMinSize(800, 550);  //Size minimo del pane
+
         ColumnConstraints Col = new ColumnConstraints();    // Serve per far crescere tutta la colonna quando si
         Col.setHgrow(Priority.ALWAYS);                      // aumenta la finestra
         gPane.getColumnConstraints().addAll(Col);
@@ -118,16 +119,20 @@ public class HomePage extends Application {
 
         // Aggiunta elementi nel Pane
         gPane.setVgap(50);
+
         gPane.add(vBox, 0,0);
         gPane.add(label, 0,1);
+        gPane.setHalignment(label, HPos.CENTER);
         gPane.add(buttonBar, 0, 2);
         gPane.add(linkBox, 0, 3);
-        gPane.setHalignment(label, HPos.CENTER);
 
-        Scene scene = new Scene(gPane, 800, 550);
-        //root.getChildren().add(gPane);    // Sfondo col
+        gPane.prefHeightProperty().bind(scene.heightProperty());
+        gPane.prefWidthProperty().bind(scene.widthProperty());
+
+        //Scene scene = new Scene(gPane, 800, 550);
+        root.getChildren().add(gPane);    // Sfondo col
         primaryStage.setScene(scene);
-        primaryStage.setResizable(false);
+        //primaryStage.setResizable(false);
         //primaryStage.setMaximized(true); // Lo ingrandisco subito fullscreen
         primaryStage.show();
     }
