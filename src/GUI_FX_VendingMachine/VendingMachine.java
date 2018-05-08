@@ -60,35 +60,10 @@ public class VendingMachine extends Application {
         resetDisplay = new ResetDisplay(display, distributore);
 
 
-        //creo la grid per i tasti c - +
-        /*GridPane user = new GridPane();
-        user.setHgap(10);
-        user.setHgap(10);
-        Button change = new Button();
-        change.setText("C");
-        change.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                distributore.giveChange();
-
-            }
-        });
-        user.add(change, 0, 0);
-
-        Button minus = new Button();
-        minus.setText("-");
-        user.add(minus, 1, 0);
-
-        Button plus = new Button();
-        plus.setText("+");
-        user.add(plus,2,0);
-
-        purchasePane.setCenter(user);*/
-
         GridPane beveragePane = new BeverageGrid(distributore, display, resetDisplay);
         root.setLeft(beveragePane);
 
-        GridPane moneyPane = new MoneyGrid(distributore, display);
+        GridPane moneyPane = new MoneyGrid(distributore, display, resetDisplay);
         purchasePane.setBottom(moneyPane);
 
         Scene scene = new Scene(root, width, height, Color.LIGHTGRAY);
