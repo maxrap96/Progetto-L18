@@ -6,6 +6,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
+import javafx.scene.text.TextBoundsType;
 
 public class Display extends GridPane {
     private final String DEFAULTMESSAGE = "Scegliere una bevanda";
@@ -19,10 +21,9 @@ public class Display extends GridPane {
     }
 
     /**
-     * funzione per impostare le righe del gridpane
+     * Funzione per impostare le righe del gridpane
      */
     private void createDisplay() {
-
         this.setPadding(new Insets(20,20,20,20));
         this.setStyle(
                 "-fx-background-color: blue;" +
@@ -33,18 +34,21 @@ public class Display extends GridPane {
         this.add(creditRow,0,2);
         this.add(sugar,0,3);
 
-        beverage.setText(DEFAULTMESSAGE);
-        beverage.setFont(Font.font("Times", 20));
-        beverage.setFill(Color.WHITE);
-        beverageCost.setText("");
-        beverageCost.setFont(Font.font("Times", 20));
-        beverageCost.setFill(Color.WHITE);
-        creditRow.setText("Credito: ");
-        creditRow.setFont(Font.font("Times", 20));
-        creditRow.setFill(Color.WHITE);
-        sugar.setText("riga dello zucchero");
-        sugar.setFont(Font.font("Times", 20));
-        sugar.setFill(Color.WHITE);
+        setDisplay(beverage, DEFAULTMESSAGE);
+        setDisplay(beverageCost, "");
+        setDisplay(creditRow, "Credito: ");
+        setDisplay(sugar, "riga dello zucchero");
+    }
+
+    /**
+     * Funzione che configura i vari Text del display
+     * @param text: uno dei text del display
+     * @param message: messaggio da stampare a video
+     */
+    private void setDisplay(Text text, String message) {
+        text.setText(message);
+        text.setFont(Font.font("Arial", 20));
+        text.setFill(Color.WHITE);
     }
 
     public void setBeverage(String info) {

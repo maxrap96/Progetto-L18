@@ -98,7 +98,7 @@ public class MoneyGrid extends GridPane {
                 button.setStyle(
                         "-fx-focus-color: blue;"
                 );
-                button.setFont(Font.font("Times", FontPosture.ITALIC, 20));
+                button.setFont(Font.font("Times New Roman", FontPosture.ITALIC, 20));
                 button.setPrefSize(screenSize.height / 8, screenSize.height / 8);
                 button.setOnAction(new MoneyEventHandler(distributore.getCoinsValue()[number], display, distributore));
 

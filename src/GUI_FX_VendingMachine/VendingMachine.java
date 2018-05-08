@@ -66,7 +66,7 @@ public class VendingMachine extends Application {
         resetDisplay.setDots();
 
         Button key = new Button("Chiavetta");
-        key.setFont(Font.font("Times", FontPosture.ITALIC, 20));
+        key.setFont(Font.font("Times New Roman", FontPosture.ITALIC, 20));
         key.setPrefSize(18 * screenSize.width / 100, screenSize.height / 9);
         key.setStyle(
                 "-fx-background-radius: 1em;" +
