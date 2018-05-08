@@ -67,7 +67,7 @@ public class VendingMachine extends Application {
 
         // Creazione chiavetta
         Button key = new Button("Chiavetta");
-        key.setFont(Font.font("Century", 20));
+        key.setFont(Font.font("California FB", 20));
         key.setPrefSize(16 * screenSize.width / 100, screenSize.height / 9);
         key.setStyle(
                 "-fx-background-radius: 1em;" +

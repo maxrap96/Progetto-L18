@@ -95,7 +95,7 @@ public class MoneyGrid extends GridPane {
     private void setPurchaseButton(Button button)  {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         button.setShape(new Circle (screenSize.height/8));
-        button.setFont(Font.font("Century", FontPosture.ITALIC, 20));
+        button.setFont(Font.font("California FB", 20));
         button.setPrefSize(screenSize.height / 8, screenSize.height / 8);
         button.setStyle(
                 "-fx-focus-color: blue;"

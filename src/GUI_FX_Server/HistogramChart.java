@@ -1,11 +1,8 @@
 package GUI_FX_Server;
 
 import Distributore.Coins;
-import javafx.scene.Scene;
 import javafx.scene.chart.*;
 import javafx.scene.layout.*;
-import javafx.stage.Stage;
-
 import java.util.StringTokenizer;
 
 public class HistogramChart extends BarChart {
@@ -17,7 +14,45 @@ public class HistogramChart extends BarChart {
         super(xAxis, yAxis);
     }
 
-   /* public void start(Stage stage) {
+    public BorderPane setbar(){
+        BorderPane b = new BorderPane();
+
+        final NumberAxis xAxis = new NumberAxis();
+        final CategoryAxis yAxis = new CategoryAxis();
+        final BarChart<Number, String> bc = new BarChart<>(xAxis, yAxis);
+        bc.setTitle("Coins");
+        xAxis.setLabel("Numero monete rimaste");
+        xAxis.setAutoRanging(false);
+        xAxis.setLowerBound(0);
+        xAxis.setUpperBound(45);
+        xAxis.setTickUnit(1);
+        xAxis.setMinorTickVisible(false);
+
+        yAxis.setLabel("Tagli di monete [€]");
+        bc.setLegendVisible(false);
+
+        XYChart.Series series1 = new XYChart.Series();
+
+        // Trovo numero di monete
+        String numCoins = coins.moneyOnFile();
+        int money[] = new int[Monete.length];
+        StringTokenizer tokenizer = new StringTokenizer(numCoins, "\t");
+
+        for(int i = 0; i < Monete.length; i++) {
+            if (tokenizer.hasMoreTokens()) {
+                money[i] = Integer.parseInt(tokenizer.nextToken());
+            }
+        }
+        for (int i = 0; i < Monete.length; i++) {
+            series1.getData().add(new XYChart.Data(money[i], Monete[i]));
+        }
+        bc.getData().addAll(series1);
+        b.setCenter(bc);
+        return b;
+    }
+
+    // Vecchio grafico
+    /* public void start(Stage stage) {
         Toolbar1 toolbar1 = new Toolbar1(stage);
         MenuBar1 menuBar1 = new MenuBar1(stage);
         VBox vBox = new VBox();
@@ -65,35 +100,4 @@ public class HistogramChart extends BarChart {
         stage.setScene(scene);
         stage.show();
     }*/
-
-    public BorderPane setbar(){
-        BorderPane b = new BorderPane();
-
-        final NumberAxis xAxis = new NumberAxis();
-        final CategoryAxis yAxis = new CategoryAxis();
-        final BarChart<Number, String> bc = new BarChart<>(xAxis, yAxis);
-        bc.setTitle("Coins");
-        xAxis.setLabel("Numero monete rimaste");
-        yAxis.setLabel("Tagli di monete [€]");
-        bc.setLegendVisible(false);
-
-        XYChart.Series series1 = new XYChart.Series();
-
-        // Trovo numero di monete
-        String numCoins = coins.moneyOnFile();
-        int money[] = new int[Monete.length];
-        StringTokenizer tokenizer = new StringTokenizer(numCoins, "\t");
-
-        for(int i = 0; i < Monete.length; i++) {
-            if (tokenizer.hasMoreTokens()) {
-                money[i] = Integer.parseInt(tokenizer.nextToken());
-            }
-        }
-        for (int i = 0; i < Monete.length; i++) {
-            series1.getData().add(new XYChart.Data(money[i], Monete[i]));
-        }
-        bc.getData().addAll(series1);
-        b.setCenter(bc);
-        return b;
-    }
 }

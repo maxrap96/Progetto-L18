@@ -1,10 +1,6 @@
 package GUI_FX_Server;
 
-import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.Pos;
-import javafx.geometry.Side;
+import Server.DrinkPieChart;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.chart.CategoryAxis;
@@ -25,6 +21,7 @@ public class StatsPage extends GridPane {
 
         GridPane mainPanel = new GridPane();
 
+        // Impostazione barra degli strumenti e barra menu
         Toolbar1 toolbar1 = new Toolbar1(stage);
         MenuBar1 menuBar1 = new MenuBar1(stage);
         VBox vBox = new VBox();
@@ -35,12 +32,10 @@ public class StatsPage extends GridPane {
 
         Scene scene = new Scene(root, 800, 550, Color.KHAKI);
 
-
-
         BorderPane borderPane = new BorderPane();
 
         tab1.setText("Monete");
-        tab2.setText("Ing");
+        tab2.setText("Ingredienti");
         tab3.setText("Utilizzo");
         tab1.setClosable(false);
         tab2.setClosable(false);
@@ -48,9 +43,10 @@ public class StatsPage extends GridPane {
 
         //TODO MJ: aggiungere elementi grafici ai tab
         HistogramChart coinsChart = new HistogramChart(new CategoryAxis(), new NumberAxis());
+        DrinkPieChart pie = new DrinkPieChart();
 
         tab1.setContent(coinsChart.setbar());
-        tab2.setContent(new BorderPane());
+        tab2.setContent(pie.setChart());
         tab3.setContent(new BorderPane());
 
         tabPane.getTabs().addAll(tab1, tab2, tab3);
