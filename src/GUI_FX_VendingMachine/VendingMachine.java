@@ -11,21 +11,21 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+
+import java.awt.*;
 import java.io.FileInputStream;
 
 public class VendingMachine extends Application {
      private Distributore distributore = new Distributore();
      private ResetDisplay resetDisplay;
-     private double screenWidth = Screen.getPrimary().getBounds().getWidth();
-     private double screenHeight = Screen.getPrimary().getBounds().getHeight();
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        double width = screenWidth / 2;
-        double height = screenHeight / 2;
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        double width = screenSize.getWidth() / 2;
+        double height = screenSize.getHeight() / 2;
 
         primaryStage.setTitle("Hot Drinks Vending Machine");
 
@@ -56,7 +56,7 @@ public class VendingMachine extends Application {
         root.setRight(purchasePane);
 
         // Display del distributore
-        Display display = new Display(screenWidth, screenHeight);
+        Display display = new Display();
         purchasePane.setTop(display);
         resetDisplay = new ResetDisplay(display, distributore);
         resetDisplay.setDots();
@@ -64,7 +64,7 @@ public class VendingMachine extends Application {
         // Creazione chiavetta
         Button key = new Button("Chiavetta");
         key.setFont(Font.font("Century", 20));
-        key.setPrefSize(18 * screenHeight / 100, screenHeight / 9);
+        key.setPrefSize(18 * screenSize.width / 100, screenSize.height / 9);
         key.setStyle(
                 "-fx-background-radius: 1em;" +
                 "-fx-focus-color: transparent;" +
@@ -82,7 +82,7 @@ public class VendingMachine extends Application {
         purchasePane.setCenter(key);
 
         // Pannello delle bevande
-        GridPane beveragePane = new BeverageGrid(distributore, display, resetDisplay, screenWidth, screenHeight);
+        GridPane beveragePane = new BeverageGrid(distributore, display, resetDisplay);
         beveragePane.setBackground(new Background(changeNameWhenFinalImage));
         root.setLeft(beveragePane);
 

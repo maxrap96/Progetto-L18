@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 
+import java.awt.*;
 
 public class BeverageGrid extends GridPane {
     private Distributore distributore;
@@ -15,16 +16,17 @@ public class BeverageGrid extends GridPane {
     private final int BUTTONS_PER_LINE = 3;
     private final int NUM_LINES = 4;
 
-    public BeverageGrid(Distributore distributore, Display display, ResetDisplay resetDisplay, double screenWidth, double screenHeight) {
+    public BeverageGrid(Distributore distributore, Display display, ResetDisplay resetDisplay) {
         this.distributore = distributore;
         this.display = display;
         this.resetDisplay = resetDisplay;
-        createGrid(screenWidth, screenHeight);
+        createGrid();
     }
 
-    private void createGrid(double screenWidth, double screenHeight){
+    private void createGrid(){
         // Per una migliore lettura, usare al massimo 12 pulsanti
-       this.setPadding(new Insets(BUTTON_PADDING));
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setPadding(new Insets(BUTTON_PADDING));
         this.setHgap(BUTTON_PADDING);
         this.setVgap(BUTTON_PADDING);
 
@@ -32,7 +34,7 @@ public class BeverageGrid extends GridPane {
         for (int row = 0; row < NUM_LINES; row++) {
             for (int col = 0; col < BUTTONS_PER_LINE; col++) {
                 Button button = new Button("");
-                setButton(button, (int)(18 * screenWidth / 100), (int) (screenHeight / 7) );
+                setButton(button, 18 * screenSize.width / 100, screenSize.height / 7);
                 if( number + 1 < distributore.getListSize()){
                     number = (BUTTONS_PER_LINE * row) + col;
                     // Le bevande iniziano dall'id 1
