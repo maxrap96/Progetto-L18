@@ -16,6 +16,7 @@ public class MenuBar1 extends MenuBar{
     MenuItem utilizzo = new MenuItem("Utilizzo");
     MenuItem monete = new MenuItem("Money");
     Menu menu = new Menu("Menu");
+    MenuItem menu1 = new MenuItem("Menu");
 
     public MenuBar1(Stage stage) {
         ImageView immStats = new ImageView(loadImage("src/ServerImages/stats.jpg"));
@@ -34,6 +35,8 @@ public class MenuBar1 extends MenuBar{
         stats.getItems().add(monete);
         stats.getItems().add(ing);
         stats.getItems().add(utilizzo);
+
+        menu.getItems().add(menu1);
 
         Action(stage);
 
@@ -56,6 +59,12 @@ public class MenuBar1 extends MenuBar{
             @Override
             public void handle(ActionEvent event) {
                 new StatsPage(primaryStage).OpenTab(2);
+            }
+        });
+        menu1.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                new MenuTable(primaryStage);
             }
         });
     }

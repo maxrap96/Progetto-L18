@@ -59,9 +59,9 @@ public class MenuTable extends TableView {
         acqua.setCellValueFactory(new PropertyValueFactory<menu, String>("acqua"));
         TableColumn vodka = new TableColumn("vodka");
         vodka.setCellValueFactory(new PropertyValueFactory<menu, String>("vodka"));
-
         tableView.setItems(data);
         tableView.setEditable(false);
+        tableView.setStyle("-fx-font: 16px Serif");
 
         tableView.getColumns().addAll(id, tipo, nome, costo, Q_max, temp, dose, latte, acqua, vodka);
 
