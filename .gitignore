@@ -20,6 +20,7 @@
 
 # Global ignore
 .idea/workspace.xml
+./src/File_Testo
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
@@ -39,5 +40,5 @@ src/Distributore/Distributore.java
 src/Distributore/Distributore.java
 src/File_Testo/monete.txt
 *.xml___jb_old___
-out/production/Progetto-L18/File_Testo/stats.txt
+out/production/Progetto-L18/File_Testo/*
 .idea/misc.xml
