@@ -40,7 +40,8 @@ public class BeverageGrid extends GridPane {
                     number = (BUTTONS_PER_LINE * row) + col;
                     // Le bevande iniziano dall'id 1
                     button.setText(distributore.getLabel(number + 1));
-                    BeverageEventHandler beverageEventHandler = new BeverageEventHandler (distributore,display,number+1,resetDisplay);
+                    BeverageEventHandler beverageEventHandler = new BeverageEventHandler (distributore, display,
+                            number + 1, resetDisplay);
                     button.setOnAction(beverageEventHandler);
                 }
                 this.add(button, col, row);
@@ -51,8 +52,7 @@ public class BeverageGrid extends GridPane {
     private void setButton(Button buttonToSet, int width, int height){
         buttonToSet.setStyle(
                         "-fx-background-radius: 1em;" +
-                        "-fx-focus-color: transparent;" +
-                        "-fx-faint-focus-color: transparent;"
+                        "-fx-focus-color: green;"
         );
         buttonToSet.setFont(Font.font("Times", FontPosture.ITALIC, 20));
         buttonToSet.setPrefSize(width, height);

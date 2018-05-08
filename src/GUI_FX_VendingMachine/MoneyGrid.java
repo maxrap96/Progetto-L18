@@ -42,8 +42,7 @@ public class MoneyGrid extends GridPane {
         change.setFont(Font.font("Times", FontPosture.ITALIC, 20));
         change.setPrefSize(screenSize.height / 8, screenSize.height / 8);
         change.setStyle(
-                "-fx-focus-color: transparent;" +
-                "-fx-faint-focus-color: transparent;"
+                "-fx-focus-color: green;"
         );
         change.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -60,8 +59,7 @@ public class MoneyGrid extends GridPane {
         minus.setFont(Font.font("Times", FontPosture.ITALIC, 20));
         minus.setPrefSize(screenSize.height / 8, screenSize.height / 8);
         minus.setStyle(
-                "-fx-focus-color: transparent;" +
-                "-fx-faint-focus-color: transparent;"
+                "-fx-focus-color: green;"
         );
         minus.setOnAction(new EventHandler<ActionEvent>() {
               @Override
@@ -79,8 +77,7 @@ public class MoneyGrid extends GridPane {
         plus.setFont(Font.font("Times", FontPosture.ITALIC, 20));
         plus.setPrefSize(screenSize.height / 8, screenSize.height / 8);
         plus.setStyle(
-                "-fx-focus-color: transparent;" +
-                "-fx-faint-focus-color: transparent;"
+                "-fx-focus-color: green;"
         );
         plus.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -101,7 +98,7 @@ public class MoneyGrid extends GridPane {
                 Button button = new Button(cValue);
                 button.setShape(new Circle(screenSize.height/8));
                 button.setStyle(
-                        "-fx-focus-color: transparent;" +
+                        "-fx-focus-color: green;" +
                         "-fx-faint-focus-color: transparent;"
                 );
                 button.setFont(Font.font("Times", FontPosture.ITALIC, 20));

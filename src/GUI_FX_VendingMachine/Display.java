@@ -26,7 +26,7 @@ public class Display extends GridPane {
      */
     private void createDisplay() {
 
-        this.setPadding(new Insets(30,30,30,30));
+        this.setPadding(new Insets(20,20,20,20));
         this.setStyle(
                 "-fx-background-color: blue;" +
                 "-fx-background-radius: 30;"
