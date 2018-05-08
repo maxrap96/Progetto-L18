@@ -35,16 +35,13 @@ public class ResetDisplay {
         timerTask = new TimerTask() {
             @Override
             public void run() {
+                display.setBeverage(DEFAULTMESSAGE);
                 if (distributore.getCredit() == 0){
-                    display.setBeverage(DEFAULTMESSAGE); // DM: Se lo uso sia nell'if che nell'else, non posso metterlo
-                                                        // fuori?
                     distributore.setSugarToDefault();
                 }
                 else {
-                    display.setBeverage(DEFAULTMESSAGE);
-                    display.setCreditRow("Credito: " + String.format("%.2f", distributore.getCredit()));
+                    display.setCreditRow(String.format("%.2f", distributore.getCredit()));
                 }
-
                 setDots();
             }
         };

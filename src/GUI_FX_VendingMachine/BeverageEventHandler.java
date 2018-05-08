@@ -30,11 +30,13 @@ public class BeverageEventHandler implements EventHandler{
 
         if (distributore.getCredit() >= distributore.getPrice(ID)) {
             display.setBeverage(distributore.selectBeverage(ID));
-            resetDisplay.runTimer();
+            display.setCreditRow(String.format("%.2f", distributore.getCredit()));
+            resetDisplay.setDots();
         }
         else {
             display.setBeverage(distributore.selectBeverage(ID));
             display.setBeverageCost(BEVERAGEPRICE);
+            display.setCreditRow(String.format("%.2f", distributore.getCredit()));
             resetDisplay.runTimer();
         }
     }

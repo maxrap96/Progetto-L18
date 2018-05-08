@@ -45,10 +45,12 @@ public class MoneyGrid extends GridPane {
                 "-fx-focus-color: transparent;" +
                 "-fx-faint-focus-color: transparent;"
         );
-        change.setOnAction( event -> {
+        change.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
                 distributore.giveChange();
-                resetDisplay.runTimer();
-
+                display.setCreditRow(String.format("%.2f", distributore.getCredit()));
+            }
         });
         this.add(change, 0, 0);
 
@@ -61,10 +63,14 @@ public class MoneyGrid extends GridPane {
                 "-fx-focus-color: transparent;" +
                 "-fx-faint-focus-color: transparent;"
         );
-        minus.setOnAction(event -> {
-            distributore.lessSugar();
-            resetDisplay.runTimer();
-        });
+        minus.setOnAction(new EventHandler<ActionEvent>() {
+              @Override
+              public void handle(ActionEvent event) {
+                  distributore.lessSugar();
+                  resetDisplay.setDots();
+                  resetDisplay.runTimer();
+              }
+          });
         this.add(minus, 1, 0);
 
         Button plus = new Button();
@@ -76,9 +82,13 @@ public class MoneyGrid extends GridPane {
                 "-fx-focus-color: transparent;" +
                 "-fx-faint-focus-color: transparent;"
         );
-        plus.setOnAction(event -> {
-            distributore.moreSugar();
-            resetDisplay.runTimer();
+        plus.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                distributore.moreSugar();
+                resetDisplay.setDots();
+                resetDisplay.runTimer();
+            }
         });
         this.add(plus,2,0);
 
