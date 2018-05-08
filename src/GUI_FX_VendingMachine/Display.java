@@ -40,17 +40,11 @@ public class Display extends GridPane {
         beverage.setFont(Font.font("Times", 20));
         beverage.setFill(Color.WHITE);
         beverageCost.setText("");
-<<<<<<< HEAD
-       // beverageCost.setTextAlignment(TextAlignment.CENTER);
-        creditRow.setText("");
-        //creditRow.setTextAlignment(TextAlignment.CENTER);
-=======
         beverageCost.setFont(Font.font("Times", 20));
         beverageCost.setFill(Color.WHITE);
         creditRow.setText("Credito: ");
         creditRow.setFont(Font.font("Times", 20));
         creditRow.setFill(Color.WHITE);
->>>>>>> d8844985c4d2ae722db0d5bce9785932729ac321
         sugar.setText("riga dello zucchero");
         sugar.setFont(Font.font("Times", 20));
         sugar.setFill(Color.WHITE);

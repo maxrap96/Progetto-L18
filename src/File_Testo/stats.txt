@@ -345,7 +345,6 @@ Caffè Corretto	423	945	955.75	997.7399999999998	Transazione avvenuta il:	08-05-
 Cappuccino	423	945	955.75	997.7399999999998	Transazione fallita.	08-05-2018 10:18:52
 Caffè Miscela Top	422	944	954.5	997.7399999999998	Transazione avvenuta il:	08-05-2018 10:18:58
 Caffè Corretto	421	943	953.25	997.7399999999998	Transazione avvenuta il:	08-05-2018 10:21:44
-<<<<<<< HEAD
 Caffè Lungo	421	943	953.25	997.7399999999998	Transazione fallita.	08-05-2018 10:31:25
 Caffè Lungo	421	943	953.25	997.7399999999998	Transazione fallita.	08-05-2018 10:36:43
 Caffè Lungo	421	943	953.25	997.7399999999998	Transazione fallita.	08-05-2018 10:56:35
@@ -398,10 +397,9 @@ Cioccolata	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:29
 Caffè Espresso	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:29:03
 Cappuccino	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:29:04
 Ginseng	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:31:49
-=======
 Caffè Corretto	420	942	952.0	997.7399999999998	Transazione avvenuta il:	08-05-2018 11:19:41
 Caffè Miscela Top	420	942	952.0	997.7399999999998	Transazione fallita.	08-05-2018 11:21:28
 Tè al Limone	419	941	951.25	997.7399999999998	Transazione avvenuta il:	08-05-2018 11:21:32
 Tè al Limone	418	940	950.5	997.7399999999998	Transazione avvenuta il:	08-05-2018 11:21:42
 Cappuccino	418	940	950.5	997.6599999999997	Transazione avvenuta il:	08-05-2018 11:24:05
->>>>>>> 3cf496d5c3a2e76f6658f155613cf0e85ec56cb3
+*
