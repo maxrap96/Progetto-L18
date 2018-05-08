@@ -7,7 +7,7 @@ import java.util.TimerTask;
 
 public class ResetDisplay {
 
-    private final String DEFAULTMESSAGE = "SCEGLIERE UNA BEVANDA";
+    private final String DEFAULTMESSAGE = "Scegliere una bevanda";
     private Display display;
     private Distributore distributore;
     private Timer timer = new Timer();

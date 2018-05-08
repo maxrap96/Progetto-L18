@@ -260,14 +260,14 @@ public class Distributore implements MaxValue {
             }
             if (coins.getCredit() != 0) {
                 coins.giveChange();
-                return "BEVANDA EROGATA\nRITIRARE IL RESTO" ;
+                return "Bevanda erogata. Ritirare il resto" ;
             } else {
                 System.out.println("Bevanda erogata.");
-                return "BEVANDA EROGATA";
+                return "Bevanda erogata";
             }
         } else {
             if (!list.get(ID).isAvailable()) {
-                return "BEVANDA NON DISPONIBILE";
+                return "Bevanda non disponibile";
             }
             try {
                 stats.writeFile(statsToText(ID), false);
@@ -275,7 +275,7 @@ public class Distributore implements MaxValue {
                 fileNotWritable.printStackTrace();
             }
             new UnsufficientCredit();
-            return "CREDITO INSUFFICIENTE";
+            return "Credito non sufficiente";
         }
     }
 

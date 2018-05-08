@@ -2,16 +2,13 @@ package GUI_FX_VendingMachine;
 
 
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.scene.text.FontPosture;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
 
 public class Display extends GridPane {
-    private final String DEFAULTMESSAGE = "SCEGLIERE UNA BEVANDA";
+    private final String DEFAULTMESSAGE = "Scegliere una bevanda";
     private Text beverage = new Text();
     private Text beverageCost = new Text();
     private Text creditRow = new Text();
