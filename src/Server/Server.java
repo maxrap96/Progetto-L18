@@ -74,15 +74,27 @@ public class Server extends JFrame implements FileServer{
      * Inizializzo le colonne del textPanel.
      */
     private int initCols(){
-        String tmp = "ID\tTIPO\tNOME\tCOSTO\tQ_MAX\tTEMP\tDOSE\tlatte\tacqua\tvodka";
-        int cols = 0;
-        // Calcolo di quanti elemente è composta
-        StringTokenizer stringTokenizer = new StringTokenizer(tmp, "\t");
-        while (stringTokenizer.hasMoreTokens()){
-            stringTokenizer.nextToken();
-            cols++;
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(fileMenuServer.getPath()));
+            String  tmp = null;
+            int cols = 0;
+            // Calcolo di quanti elemente è composta
+            while((tmp = bufferedReader.readLine()) != null){
+                if(!tmp.contains("*")) {
+                    StringTokenizer stringTokenizer = new StringTokenizer(tmp, "\t");
+                    while (stringTokenizer.hasMoreTokens()) {
+                        stringTokenizer.nextToken();
+                        cols++;
+                    }
+                    break;
+                }
+            }
+            bufferedReader.close();
+            return cols;
+        }catch (IOException e){
+            e.printStackTrace();
         }
-        return cols;
+        return 0;
     }
 
     /**
