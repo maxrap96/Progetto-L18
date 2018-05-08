@@ -59,7 +59,7 @@ public class VendingMachine extends Application {
 
 
         Display display = new Display();
-        purchasePane.setCenter(display);
+        purchasePane.setTop(display);
         resetDisplay = new ResetDisplay(display, distributore);
         resetDisplay.setDots();
 
