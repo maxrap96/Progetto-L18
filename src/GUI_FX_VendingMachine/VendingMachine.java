@@ -46,7 +46,9 @@ public class VendingMachine extends Application {
                                     BackgroundPosition.CENTER, backgroundSize);
 
         // Metto lo sfondo
-        root.setBackground(new Background(changeNameWhenFinalImage));
+        root.setStyle(
+                "-fx-background-color: black;"
+        );
 
         // creazione dei vari pannelli
         BorderPane purchasePane = new BorderPane();
@@ -55,12 +57,14 @@ public class VendingMachine extends Application {
         );
         root.setRight(purchasePane);
 
+
         Display display = new Display();
         purchasePane.setCenter(display);
         resetDisplay = new ResetDisplay(display, distributore);
         resetDisplay.setDots();
 
         GridPane beveragePane = new BeverageGrid(distributore, display, resetDisplay);
+        beveragePane.setBackground(new Background(changeNameWhenFinalImage));
         root.setLeft(beveragePane);
 
         GridPane moneyPane = new MoneyGrid(distributore, display, resetDisplay);
