@@ -345,3 +345,8 @@ Caffè Corretto	423	945	955.75	997.7399999999998	Transazione avvenuta il:	08-05-
 Cappuccino	423	945	955.75	997.7399999999998	Transazione fallita.	08-05-2018 10:18:52
 Caffè Miscela Top	422	944	954.5	997.7399999999998	Transazione avvenuta il:	08-05-2018 10:18:58
 Caffè Corretto	421	943	953.25	997.7399999999998	Transazione avvenuta il:	08-05-2018 10:21:44
+Caffè Corretto	420	942	952.0	997.7399999999998	Transazione avvenuta il:	08-05-2018 11:19:41
+Caffè Miscela Top	420	942	952.0	997.7399999999998	Transazione fallita.	08-05-2018 11:21:28
+Tè al Limone	419	941	951.25	997.7399999999998	Transazione avvenuta il:	08-05-2018 11:21:32
+Tè al Limone	418	940	950.5	997.7399999999998	Transazione avvenuta il:	08-05-2018 11:21:42
+Cappuccino	418	940	950.5	997.6599999999997	Transazione avvenuta il:	08-05-2018 11:24:05

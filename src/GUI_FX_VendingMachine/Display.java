@@ -36,7 +36,7 @@ public class Display extends GridPane {
        // beverage.setTextAlignment(TextAlignment.CENTER);
         beverageCost.setText("");
        // beverageCost.setTextAlignment(TextAlignment.CENTER);
-        creditRow.setText("Credito: ");
+        creditRow.setText("");
         //creditRow.setTextAlignment(TextAlignment.CENTER);
         sugar.setText("riga dello zucchero");
         //sugar.setTextAlignment(TextAlignment.CENTER);
@@ -48,7 +48,7 @@ public class Display extends GridPane {
     }
 
     public void setBeverageCost(String cost) {
-        beverageCost.setText("Costo: " + cost);
+        beverageCost.setText(cost);
     }
 
     public void setCreditRow(String credit) {

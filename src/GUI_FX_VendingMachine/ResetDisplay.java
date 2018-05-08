@@ -36,12 +36,14 @@ public class ResetDisplay {
             @Override
             public void run() {
                 display.setBeverage(DEFAULTMESSAGE);
+                display.setBeverageCost("");
                 if (distributore.getCredit() == 0){
                     distributore.setSugarToDefault();
                 }
                 else {
                     display.setCreditRow(String.format("%.2f", distributore.getCredit()));
                 }
+
                 setDots();
             }
         };
