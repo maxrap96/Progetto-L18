@@ -33,7 +33,10 @@ public class Display extends GridPane {
         this.setVgap(20);
         this.setStyle(
                 "-fx-background-color: blue;" +
-                "-fx-background-radius: 30;"
+                "-fx-background-radius: 30;" +
+                "-fx-border-radius: 30;" +
+                "-fx-border-color: white;" +
+                "-fx-border-width: 2;"
         );
         this.add(beverage,0,0);
         this.add(beverageCost,0,1);

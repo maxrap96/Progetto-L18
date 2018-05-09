@@ -58,9 +58,9 @@ public class BeverageGrid extends GridPane {
      */
     private void setButton(Button buttonToSet, int width, int height){
         buttonToSet.setStyle(
-                        "-fx-background-radius: 1em;" +
-                        "-fx-base: white;" +
-                        "-fx-focus-color: blue;"
+                "-fx-background-radius: 1em;" +
+                "-fx-base: white;" +
+                "-fx-focus-color: blue;"
         );
         buttonToSet.setFont(Font.font("California FB", 20));
         buttonToSet.setPrefSize(width, height);
