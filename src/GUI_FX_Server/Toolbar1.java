@@ -2,6 +2,7 @@ package GUI_FX_Server;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.control.*;
@@ -17,6 +18,7 @@ public class Toolbar1 extends ToolBar {
     Button sx = new Button();
     Button dx = new Button();
     Button home = new Button();
+    Button save = new Button("SAVE");
 
     public Toolbar1(Stage stage) {
         ImageView immStats = new ImageView(loadImage("src/ServerImages/stats.jpg"));
@@ -36,8 +38,7 @@ public class Toolbar1 extends ToolBar {
         home.setGraphic(immHome);
         sx.setGraphic(immSx);
         dx.setGraphic(immDx);
-
-        getItems().addAll(sx,dx,home);
+        getItems().addAll(sx,dx,home,save);
 
         Action(stage);
     }
