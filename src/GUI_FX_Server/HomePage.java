@@ -32,7 +32,7 @@ public class HomePage extends Application {
         primaryStage.setTitle("Home");
         Group root = new Group();                                //
                                                                   // Sfondo
-        Scene scene = new Scene(root, 800, 550, Color.DARKBLUE);  //
+        Scene scene = new Scene(root, 800, 550, Color.GAINSBORO);  //
 
         Toolbar1 toolbar1 = new Toolbar1(primaryStage);
         //MenuBar1 menuBar1= new MenuBar1(primaryStage);
