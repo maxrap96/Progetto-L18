@@ -23,9 +23,9 @@ public class StatsPage extends GridPane {
 
         // Impostazione barra degli strumenti e barra menu
         Toolbar1 toolbar1 = new Toolbar1(stage);
-        MenuBar1 menuBar1 = new MenuBar1(stage);
+       // MenuBar1 menuBar1 = new MenuBar1(stage);
         VBox vBox = new VBox();
-        vBox.getChildren().addAll(toolbar1,menuBar1);
+        vBox.getChildren().addAll(toolbar1/*,menuBar1*/);
         vBox.setFillWidth(true);
 
         stage.setTitle("Statistics");

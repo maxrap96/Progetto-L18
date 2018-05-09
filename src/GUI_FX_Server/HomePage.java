@@ -35,7 +35,7 @@ public class HomePage extends Application {
         Scene scene = new Scene(root, 800, 550, Color.DARKBLUE);  //
 
         Toolbar1 toolbar1 = new Toolbar1(primaryStage);
-        MenuBar1 menuBar1= new MenuBar1(primaryStage);
+        //MenuBar1 menuBar1= new MenuBar1(primaryStage);
 
         // Creazione GridPane
         GridPane gPane = new GridPane();
@@ -61,7 +61,7 @@ public class HomePage extends Application {
 
         // Creazione VBox, commento da rivedere (@LUCE)
         VBox vBox = new VBox();
-        vBox.getChildren().addAll(toolbar1,menuBar1);
+        vBox.getChildren().addAll(toolbar1/*,menuBar1*/);
         vBox.setFillWidth(true);
 
         // Creazione link al sito del progetto

@@ -70,9 +70,9 @@ public class MenuTable extends TableView {
         GridPane mainPanel = new GridPane();
 
         Toolbar1 toolbar1 = new Toolbar1(stage);
-        MenuBar1 menuBar1 = new MenuBar1(stage);
+        //MenuBar1 menuBar1 = new MenuBar1(stage);
         VBox vBox = new VBox();
-        vBox.getChildren().addAll(toolbar1, menuBar1, tableView);
+        vBox.getChildren().addAll(toolbar1/*, menuBar1*/, tableView);
         vBox.setFillWidth(true);
 
         stage.setTitle("MenuTable");
