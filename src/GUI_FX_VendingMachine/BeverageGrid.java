@@ -10,6 +10,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 
 public class BeverageGrid extends GridPane {
+    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     private Distributore distributore;
     private Display display;
     private ResetDisplay resetDisplay;
@@ -26,11 +27,11 @@ public class BeverageGrid extends GridPane {
 
     private void createGrid(){
         // Per una migliore lettura, usare al massimo 12 pulsanti
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         this.setPadding(new Insets(BUTTON_PADDING));
         this.setHgap(BUTTON_PADDING);
         this.setVgap(BUTTON_PADDING);
 
+        // Creazione pulsanti bevande
         int number = 0;
         for (int row = 0; row < NUM_LINES; row++) {
             for (int col = 0; col < BUTTONS_PER_LINE; col++) {
@@ -49,10 +50,16 @@ public class BeverageGrid extends GridPane {
         }
     }
 
+    /**
+     * Funzione che configura i pulsanti delle bevande
+     * @param buttonToSet: pulsante da configurare
+     * @param width: lunghezza del pulsante
+     * @param height: altezza del pulsante
+     */
     private void setButton(Button buttonToSet, int width, int height){
         buttonToSet.setStyle(
                         "-fx-background-radius: 1em;" +
-                        "-fx-base: gainsboro;" +
+                        "-fx-base: white;" +
                         "-fx-focus-color: blue;"
         );
         buttonToSet.setFont(Font.font("California FB", 20));

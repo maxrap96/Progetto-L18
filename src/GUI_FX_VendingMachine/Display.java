@@ -9,8 +9,8 @@ import javafx.scene.text.Text;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
-
 public class Display extends GridPane {
+    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     private final String DEFAULTMESSAGE = "Scegliere una bevanda";
     private Text beverage = new Text();
     private Text beverageCost = new Text();
@@ -25,7 +25,6 @@ public class Display extends GridPane {
      * Funzione per impostare le righe del gridpane
      */
     private void createDisplay() {
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         this.setMinSize(30 * screenSize.width / 100, 25 * screenSize.height / 100);
         this.setPrefSize(30 * screenSize.width / 100, 25 * screenSize.height / 100);
         this.setMaxSize(30 * screenSize.width / 100, 25 * screenSize.height / 100);

@@ -9,12 +9,12 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
-import javafx.scene.text.FontPosture;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
 public class MoneyGrid extends GridPane {
+    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     private Distributore distributore;
     private Display display;
     private ResetDisplay resetDisplay;
@@ -31,11 +31,11 @@ public class MoneyGrid extends GridPane {
     }
 
     private void createGrid(){
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         this.setPadding(new Insets(BUTTON_PADDING));
         this.setHgap(BUTTON_PADDING);
         this.setVgap(BUTTON_PADDING);
 
+        // Creazione pulsante resto "C"
         Button change = new Button();
         change.setText("C");
         setPurchaseButton(change);
@@ -48,6 +48,7 @@ public class MoneyGrid extends GridPane {
         });
         this.add(change, 0, 0);
 
+        // Creazione pulsante "-"
         Button minus = new Button();
         minus.setText("-");
         setPurchaseButton(minus);
@@ -61,6 +62,7 @@ public class MoneyGrid extends GridPane {
         });
         this.add(minus, 1, 0);
 
+        // Creazione pulsante "+"
         Button plus = new Button();
         plus.setText("+");
         setPurchaseButton(plus);
@@ -74,6 +76,7 @@ public class MoneyGrid extends GridPane {
         });
         this.add(plus,2,0);
 
+        // Creazione pulsanti monete
         int number;
         for (int r = 1; r < NUM_BUTTON_LINES; r++) {
             for (int c = 0; c < BUTTONS_PER_LINE; c++) {
@@ -93,8 +96,7 @@ public class MoneyGrid extends GridPane {
      * @param button: il pulsante da configurare
      */
     private void setPurchaseButton(Button button)  {
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        button.setShape(new Circle (screenSize.height/8));
+        button.setShape(new Circle (screenSize.height / 8));
         button.setFont(Font.font("California FB", 20));
         button.setPrefSize(screenSize.height / 8, screenSize.height / 8);
         button.setStyle(

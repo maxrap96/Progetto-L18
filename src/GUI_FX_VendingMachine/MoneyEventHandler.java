@@ -5,7 +5,6 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 
 public class MoneyEventHandler implements EventHandler {
-
     private final double VALUE;
     private Display display;
     private Distributore distributore;
@@ -20,6 +19,5 @@ public class MoneyEventHandler implements EventHandler {
     public void handle(Event event) {
         distributore.addCredit(VALUE);
         display.setCreditRow(String.format("%.2f", distributore.getCredit()));
-
     }
 }

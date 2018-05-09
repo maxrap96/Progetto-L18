@@ -6,7 +6,6 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -51,7 +50,7 @@ public class VendingMachine extends Application {
                 "-fx-background-color: black;"
         );
 
-        // Creazione pannello del display, delle monete e degli altri pulsanti
+        // Creazione pannello per il display, le monete e altri pulsanti
         BorderPane purchasePane = new BorderPane();
         purchasePane.setPadding(new Insets(11, 11, 11, 11));
         purchasePane.setStyle(

@@ -6,7 +6,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class ResetDisplay {
-
     private final String DEFAULTMESSAGE = "Scegliere una bevanda";
     private Display display;
     private Distributore distributore;
@@ -19,9 +18,8 @@ public class ResetDisplay {
     }
 
     /**
-     * Funzione che nel caso il credito sia 0 riporta la macchinetta ad uno stato di default.
+     * Funzione che nel caso il credito sia 0 riporta il distributore ad uno stato di default.
      */
-
     public void runTimer() {
         resetTimer();
         int time;
@@ -50,11 +48,9 @@ public class ResetDisplay {
         timer.schedule(timerTask,time);
     }
 
-
     /**
      * Funzione per resettare il timer e reinizializzarlo.
      */
-
     private void resetTimer() {
         timer.purge();
         timer.cancel();
@@ -64,7 +60,6 @@ public class ResetDisplay {
     /**
      * Funzione che aggiorna il display dello zucchero in base alla quantità selezionata.
      */
-
     public void setDots(){
         String quantity;
         switch (distributore.getSelected_sugar()){
