@@ -100,7 +100,8 @@ public class MoneyGrid extends GridPane {
         button.setFont(Font.font("California FB", 20));
         button.setPrefSize(screenSize.height / 8, screenSize.height / 8);
         button.setStyle(
-                "-fx-focus-color: blue;"
+                "-fx-base: lightGray;" +
+                "-fx-focus-color: darkRed;"
         );
     }
 }
