@@ -21,6 +21,8 @@ public class Distributore implements MaxValue {
     private Data menu = new Data("src/File_Testo/menu.txt");
     private ArrayList<String[]> dati;
 
+    private Chiavetta chiavetta = new Chiavetta();
+
     public Distributore() {
         this.list = new HashMap<>();
         this.coins = new Coins();
@@ -244,21 +246,43 @@ public class Distributore implements MaxValue {
      */
     public String selectBeverage(String ID) {
 
-        if (coins.getCredit() >= list.get(ID).getPrice() && list.get(ID).isAvailable()) {
-            // Se il credito è uguale o maggiore singifica che posso potenzialmente acquistare la bevanda
+        boolean transaction = false;
 
-            subtractIngredients(ID, selected_sugar);
-            coins.updateBalance(list.get(ID).getPrice());
-            setSugarToDefault();
+        if (chiavetta.isConnected()){
+            transaction = chiavetta.Pay(list.get(ID).getPrice());
 
             // Scrittura statistiche su file:
             try {
-                stats.writeFile(statsToText(ID), true);
+                stats.writeFile(statsToText(ID), transaction);
                 updateDati(ID);
             } catch (FileNotWritable fileNotWritable) {
                 fileNotWritable.printStackTrace();
             }
+
+            if (transaction){
+                return "Bevanda erogata";
+            }
+            else {
+                return "Saldo non sufficiente";
+            }
+        }
+
+        if (coins.getCredit() >= list.get(ID).getPrice() && list.get(ID).isAvailable()) {
+            // Se il credito è uguale o maggiore singifica che posso potenzialmente acquistare la bevanda
+            transaction = true;
+            subtractIngredients(ID, selected_sugar);
+            coins.updateBalance(list.get(ID).getPrice());
+            setSugarToDefault();
             coins.giveChange();
+
+            // Scrittura statistiche su file:
+            try {
+                stats.writeFile(statsToText(ID), transaction);
+                updateDati(ID);
+            } catch (FileNotWritable fileNotWritable) {
+                fileNotWritable.printStackTrace();
+            }
+
             if (coins.getCredit() != 0) {
                 System.out.println("Bevanda erogata. Ritirare il resto");
                 return "Bevanda erogata. Ritirare il resto" ;
@@ -267,13 +291,17 @@ public class Distributore implements MaxValue {
                 return "Bevanda erogata";
             }
         } else {
-            if (!list.get(ID).isAvailable()) {
-                return "Bevanda non disponibile";
-            }
+
+            // Scrittura statistiche su file:
             try {
-                stats.writeFile(statsToText(ID), false);
+                stats.writeFile(statsToText(ID), transaction);
+                updateDati(ID);
             } catch (FileNotWritable fileNotWritable) {
                 fileNotWritable.printStackTrace();
+            }
+
+            if (!list.get(ID).isAvailable()) {
+                return "Bevanda non disponibile";
             }
             new UnsufficientCredit();
             return "Credito non sufficiente";
@@ -331,7 +359,13 @@ public class Distributore implements MaxValue {
      * @param inserted è il valore associato al tasto di riferimento.
      */
     public void addCredit(double inserted) {
-        coins.addCoin(inserted);
+        if (chiavetta.isConnected()){
+            chiavetta.AddSaldo(inserted);
+            coins.charcheKey(inserted);
+        }
+        else {
+            coins.addCoin(inserted);
+        }
     }
 
     public String getLabel(int i) {
@@ -413,7 +447,12 @@ public class Distributore implements MaxValue {
     }
 
     public double getCredit() {
-        return coins.getCredit();
+        if (chiavetta.isConnected()){
+            return chiavetta.getSaldo();
+        }
+        else {
+            return coins.getCredit();
+        }
     }
 
     /**
@@ -433,5 +472,13 @@ public class Distributore implements MaxValue {
 
     public void giveChange() {
         coins.giveChange();
+    }
+
+    public void setconnectionChiavetta(){
+        chiavetta.setConnected();
+        if (coins.getCredit() !=0 ){
+            chiavetta.AddSaldo(coins.getCredit());
+            coins.updateBalance(coins.getCredit());
+        }
     }
 }

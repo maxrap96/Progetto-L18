@@ -217,4 +217,20 @@ public class Coins {
             }
         }
     }
+
+    /**
+     * metodo alternativo all'addcoin utilizzato per caricare il saldo della chiavetta.
+     * @param inserted è il valore della moneta inserita
+     */
+
+    public void charcheKey(double inserted) {
+        // Identifico la moneta inserita
+        for (int i = 0; i < COINS_VALUE.length; i++){
+            if (inserted == COINS_VALUE[i]){
+                // Ho trovato il valore corrispondente
+                money[i]++;
+                break;
+            }
+        }
+    }
 }

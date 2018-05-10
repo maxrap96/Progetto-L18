@@ -79,6 +79,8 @@ public class VendingMachine extends Application {
         key.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                distributore.setconnectionChiavetta();
+                display.setCreditRow(String.valueOf(distributore.getCredit()));
                 key.setStyle(
                         "-fx-background-radius: 1em;" +
                         "-fx-focus-color: blue;"
