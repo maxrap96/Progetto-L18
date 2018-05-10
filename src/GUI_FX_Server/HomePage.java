@@ -117,6 +117,10 @@ public class HomePage extends Application {
         primaryStage.show();
         primaryStage.setMinWidth(primaryStage.getWidth());
         primaryStage.setMinHeight(primaryStage.getHeight());
+
+        // Avvio Server e client di Prova
+        new ServerConnection(80).run();
+        new ClientProva1("localhost", 80).run();
     }
 
     public static void main(String[] args) {
