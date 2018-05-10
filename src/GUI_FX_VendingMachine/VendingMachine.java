@@ -41,11 +41,8 @@ public class VendingMachine extends Application {
         Image image = new Image(input);
         input.close();
 
-        // Pannello delle bevande
-        beveragePane = new BeverageGrid(distributore, display, resetDisplay);
-
         // Creazione delle dimensioni per lo sfondo
-        BackgroundSize backgroundSize = new BackgroundSize(beveragePane.getWidth(), BackgroundSize.AUTO,
+        BackgroundSize backgroundSize = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO,
                 false, false, false, true);
         // Creazione dell'immagine di sfondo
         BackgroundImage changeNameWhenFinalImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT,
@@ -59,7 +56,7 @@ public class VendingMachine extends Application {
         BorderPane purchasePane = new BorderPane();
         purchasePane.setPadding(new Insets(11, 11, 11, 11));
         purchasePane.setStyle(
-                "-fx-background-color: SaddleBrown;"
+                "-fx-background-color: dimGray;"
         );
         root.setRight(purchasePane);
 
@@ -84,13 +81,14 @@ public class VendingMachine extends Application {
             public void handle(ActionEvent event) {
                 key.setStyle(
                         "-fx-background-radius: 1em;" +
-                        "-fx-focus-color: darkRed;"
+                        "-fx-focus-color: blue;"
                 );
             }
         });
         purchasePane.setCenter(key);
 
-
+        // Pannello delle bevande
+        beveragePane = new BeverageGrid(distributore, display, resetDisplay);
         beveragePane.setBackground(new Background(changeNameWhenFinalImage));
         root.setLeft(beveragePane);
 

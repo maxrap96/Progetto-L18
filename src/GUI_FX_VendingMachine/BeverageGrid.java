@@ -1,6 +1,8 @@
 package GUI_FX_VendingMachine;
 
 import Distributore.Distributore;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
@@ -44,6 +46,19 @@ public class BeverageGrid extends GridPane {
                     BeverageEventHandler beverageEventHandler = new BeverageEventHandler (distributore, display,
                             number + 1, resetDisplay);
                     button.setOnAction(beverageEventHandler);
+//                    button.setOnAction(new EventHandler<ActionEvent>() {
+//                        @Override
+//                        public void handle(ActionEvent event) {
+//                            button.setStyle(
+//                                    "-fx-background-radius: 1em;" +
+//                                    "-fx-background-color: linear-gradient(dimGray 0%, gray 20%, lightGray 40%, " +
+//                                            "lightGray 60%, gray 80%, dimGray 100%);" +
+//                                    "-fx-border-color: blue;" +
+//                                    "-fx-border-radius: 1em;" +
+//                                    "-fx-border-width: 2;"
+//                            );
+//                        }
+//                    });
                 }
                 this.add(button, col, row);
             }
@@ -59,8 +74,8 @@ public class BeverageGrid extends GridPane {
     private void setButton(Button buttonToSet, int width, int height){
         buttonToSet.setStyle(
                 "-fx-background-radius: 1em;" +
-                "-fx-base: lightGray;" +
-                "-fx-focus-color: darkRed;"
+                "-fx-background-color: linear-gradient(dimGray 0%, gray 20%, lightGray 40%, lightGray 60%," +
+                        "gray 80%, dimGray 100%);"
         );
         buttonToSet.setFont(Font.font("California FB", 20));
         buttonToSet.setPrefSize(width, height);
