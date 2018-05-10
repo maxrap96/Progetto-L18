@@ -12,6 +12,7 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -29,19 +30,8 @@ public class HomePage extends Application {
 
         // Definizione dello stage principale e della barra del menu
         primaryStage.setTitle("Home");
-        Group root = new Group();
-        Scene scene = new Scene(root, 800, 550, Color.LAVENDER);
 
         Toolbar1 toolbar1 = new Toolbar1(primaryStage);
-
-        // Creazione GridPane
-        GridPane gPane = new GridPane();
-        gPane.setPrefSize(800, 550); // Size base del pane all'avvio
-        gPane.setMinSize(800, 550);  //Size minimo del pane
-
-        ColumnConstraints Col = new ColumnConstraints();    // Serve per far crescere tutta la colonna quando si
-        Col.setHgrow(Priority.ALWAYS);                      // aumenta la finestra
-        gPane.getColumnConstraints().addAll(Col);
 
         // Creazione scritta correlata da un logo
         Label label = new Label("Welcome to project Nobildonno Home Page");
@@ -55,7 +45,7 @@ public class HomePage extends Application {
 
         label.setGraphic(img);
 
-        // Creazione VBox, commento da rivedere (@LUCE)
+        // Creazione toolbar
         VBox vBox = new VBox();
         vBox.getChildren().addAll(toolbar1);
         vBox.setFillWidth(true);
@@ -66,7 +56,6 @@ public class HomePage extends Application {
 
         Hyperlink hyperlink = new Hyperlink();
         hyperlink.setText("Click here for Project L-18 web site!");
-        //hyperlink.setAlignment(Pos.BOTTOM_CENTER);
 
         final String url = "https://github.com/IngSW-unipv/Progetto-L18";
 
@@ -80,7 +69,6 @@ public class HomePage extends Application {
         HBox hbox = new HBox();
         hbox.getChildren().addAll(hyperlink);
         linkBox.getChildren().addAll(hbox);
-        //hbox.setStyle("-fx-background-color: white;");
 
         // Creazione bottoni
         ButtonBar buttonBar = new ButtonBar();
@@ -112,18 +100,26 @@ public class HomePage extends Application {
         });
 
         // Aggiunta elementi nel Pane
-        gPane.setVgap(65);
+        AnchorPane anchor = new AnchorPane(vBox, label, buttonBar, hyperlink);
+        anchor.setStyle("-fx-background-color: lavender");
 
-        gPane.add(vBox, 0,0);
-        gPane.add(label, 0,1);
-        gPane.setHalignment(label, HPos.CENTER);
-        gPane.add(buttonBar, 0, 2);
-        gPane.add(linkBox, 0, 3);
+        anchor.setTopAnchor(vBox, 0.0);
+        anchor.setLeftAnchor(vBox, 0.0);
+        anchor.setRightAnchor(vBox, 0.0);
 
-        gPane.prefHeightProperty().bind(scene.heightProperty());
-        gPane.prefWidthProperty().bind(scene.widthProperty());
+        anchor.setTopAnchor(label, 100.0);
+        anchor.setLeftAnchor(label, 0.0);
+        anchor.setRightAnchor(label, 0.0);
 
-        root.getChildren().add(gPane);
+        anchor.setBottomAnchor(buttonBar, 40.0);
+        anchor.setLeftAnchor(buttonBar, 80.0);
+        anchor.setRightAnchor(buttonBar, 80.0);
+
+        anchor.setLeftAnchor(hyperlink, 0.0);
+        anchor.setBottomAnchor(hyperlink, 0.0);
+
+        // Impostazioni scena e stage principale
+        Scene scene = new Scene(anchor, 800, 550);
         primaryStage.setScene(scene);
         primaryStage.sizeToScene();
         //primaryStage.setResizable(false);
