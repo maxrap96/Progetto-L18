@@ -32,7 +32,7 @@ public class Display extends GridPane {
         this.setHgap(20);
         this.setVgap(20);
         this.setStyle(
-                "-fx-background-color: blue;" +
+                "-fx-background-color: black;" +
                 "-fx-background-radius: 30;" +
                 "-fx-border-radius: 30;" +
                 "-fx-border-color: white;" +

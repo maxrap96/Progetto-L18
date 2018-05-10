@@ -35,7 +35,7 @@ public class VendingMachine extends Application {
         BorderPane root = new BorderPane();
 
         // Immagine per lo sfondo
-        FileInputStream input = new FileInputStream("src/GUI_FX_VendingMachine/I.JPG");
+        FileInputStream input = new FileInputStream("src/GUI_FX_VendingMachine/B.jpg");
         Image image = new Image(input);
         input.close();
 
@@ -54,7 +54,7 @@ public class VendingMachine extends Application {
         BorderPane purchasePane = new BorderPane();
         purchasePane.setPadding(new Insets(11, 11, 11, 11));
         purchasePane.setStyle(
-                "-fx-background-color: gray;"
+                "-fx-background-color: SaddleBrown;"
         );
         root.setRight(purchasePane);
 
@@ -70,6 +70,7 @@ public class VendingMachine extends Application {
         key.setPrefSize(16 * screenSize.width / 100, screenSize.height / 9);
         key.setStyle(
                 "-fx-background-radius: 1em;" +
+                "-fx-base: lightGray;" +
                 "-fx-focus-color: transparent;" +
                 "-fx-faint-focus-color: transparent;"
         );
@@ -78,7 +79,7 @@ public class VendingMachine extends Application {
             public void handle(ActionEvent event) {
                 key.setStyle(
                         "-fx-background-radius: 1em;" +
-                        "-fx-focus-color: blue;"
+                        "-fx-focus-color: darkRed;"
                 );
             }
         });
