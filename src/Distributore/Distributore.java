@@ -25,7 +25,6 @@ public class Distributore implements MaxValue {
         this.list = new HashMap<>();
         this.coins = new Coins();
         setSugarToDefault();
-
         try {
             int lastRow = setValues(ingredientsData.readFile());
             createList(menu.readFile(), ingredientsData.readFile(), lastRow);
@@ -37,6 +36,7 @@ public class Distributore implements MaxValue {
     /**
      * Funzione che carica le quantità residue leggendole da file.
      */
+
     private int setValues(ArrayList<String[]> statistics) {
         setSugarToDefault();
         this.milk = Double.parseDouble(statistics.get(0)[1]);
