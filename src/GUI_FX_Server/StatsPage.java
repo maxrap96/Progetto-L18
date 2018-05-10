@@ -1,6 +1,5 @@
 package GUI_FX_Server;
 
-import Server.DrinkPieChart;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.chart.CategoryAxis;
@@ -15,6 +14,7 @@ public class StatsPage extends GridPane {
     Tab tab1 = new Tab();
     Tab tab2 = new Tab();
     Tab tab3 = new Tab();
+    Tab tab4 = new Tab();
 
     public StatsPage(Stage stage) {
         Group root = new Group();
@@ -35,38 +35,27 @@ public class StatsPage extends GridPane {
         BorderPane borderPane = new BorderPane();
 
         tab1.setText("Monete");
-        tab2.setText("Ingredienti");
+        tab2.setText("Acquisto bevande");
         tab3.setText("Utilizzo");
+        tab4.setText("Items");  // Tradurre in italico
         tab1.setClosable(false);
         tab2.setClosable(false);
         tab3.setClosable(false);
+        tab4.setClosable(true);
 
         //TODO MJ: aggiungere elementi grafici ai tab
         HistogramChart coinsChart = new HistogramChart(new CategoryAxis(), new NumberAxis());
         DrinkPieChart pie = new DrinkPieChart();
+        ItemsHistogram itemsChart = new ItemsHistogram(new CategoryAxis(), new NumberAxis());
 
-        tab1.setContent(coinsChart.setbar());
+        tab1.setContent(coinsChart.setBars());
         tab2.setContent(pie.setChart());
         tab3.setContent(new BorderPane());
+        tab4.setContent(itemsChart.setBars());
 
-        tabPane.getTabs().addAll(tab1, tab2, tab3);
+        tabPane.getTabs().addAll(tab1, tab2, tab3, tab4);
 
-
-        // MJ: da tenere per il momento
-        /*String[] tabNames = {"Monete", "Ingredienti", "Utilizzo"};
-
-        for (int i = 0; i < tabNames.length; i++) {
-            Tab tab = new Tab();
-            tab.setText(tabNames[i]);
-            tab.setClosable(false);
-            HBox hbox = new HBox();
-            hbox.getChildren().add(new Label("Tab" + i));
-            hbox.setAlignment(Pos.CENTER);
-            tab.setContent(hbox);
-            tabPane.getTabs().add(tab);
-        }*/
-
-        // bind to take available space
+        // Utilizzo di tutto lo spazio disponibile da parte del pannello
 
         borderPane.prefHeightProperty().bind(scene.heightProperty());
         borderPane.prefWidthProperty().bind(scene.widthProperty());
@@ -81,9 +70,13 @@ public class StatsPage extends GridPane {
         stage.show();
     }
 
+    /**
+     * Funzione per aprire uno specifico tab all'apertura della pagina
+     * @param i indice per selezionare un tab; valore iniziale '0'
+     */
     public void OpenTab(int i){
         SingleSelectionModel<Tab> selectionModel = tabPane.getSelectionModel();
-        selectionModel.select(i); //select by index starting with 0
+        selectionModel.select(i);
         selectionModel.clearSelection();
     }
 }
