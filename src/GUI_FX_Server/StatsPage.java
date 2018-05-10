@@ -41,7 +41,7 @@ public class StatsPage extends GridPane {
         tab1.setClosable(false);
         tab2.setClosable(false);
         tab3.setClosable(false);
-        tab4.setClosable(true);
+        tab4.setClosable(false);
 
         //TODO MJ: aggiungere elementi grafici ai tab
         HistogramChart coinsChart = new HistogramChart(new CategoryAxis(), new NumberAxis());

@@ -2,16 +2,12 @@ package GUI_FX_Server;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Pos;
-import javafx.scene.chart.CategoryAxis;
-import javafx.scene.chart.NumberAxis;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 
-import javax.swing.*;
 import java.io.FileInputStream;
 import java.io.IOException;
 
@@ -19,15 +15,16 @@ public class Toolbar1 extends ToolBar {
    // Button sx = new Button();
    // Button dx = new Button();
     Button home = new Button();
-    Button save = new Button("SAVE");
-    MenuItem ing = new MenuItem("Ing");
+    //Button save = new Button("SAVE");
+    MenuItem acqB = new MenuItem("Acquisto Bevande");
     MenuItem utilizzo = new MenuItem("Utilizzo");
-    MenuItem monete = new MenuItem("Money");
+    MenuItem monete = new MenuItem("Monete");
+    MenuItem itams = new MenuItem("Items");
     Button menu = new Button("Menu");
 
 
     public Toolbar1(Stage stage) {
-        MenuButton stats = new MenuButton("Stas",null,monete,ing,utilizzo);
+        MenuButton stats = new MenuButton("Stas",null,monete, acqB,utilizzo,itams);
 
         ImageView immHome = new ImageView(loadImage("src/ServerImages/home.png"));
      //   ImageView immSx = new ImageView(loadImage("src/ServerImages/FrecciaSx.png"));
@@ -57,7 +54,7 @@ public class Toolbar1 extends ToolBar {
 
        // sx.setGraphic(immSx);
        // dx.setGraphic(immDx);
-        getItems().addAll(home,stats,menu,save);
+        getItems().addAll(home,stats,menu);
 
         Action(stage);
     }
@@ -76,7 +73,7 @@ public class Toolbar1 extends ToolBar {
                 new StatsPage(primaryStage).OpenTab(0);
             }
         });
-        ing.setOnAction(new EventHandler<ActionEvent>() {
+        acqB.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 new StatsPage(primaryStage).OpenTab(1);
@@ -86,6 +83,12 @@ public class Toolbar1 extends ToolBar {
             @Override
             public void handle(ActionEvent event) {
                 new StatsPage(primaryStage).OpenTab(2);
+            }
+        });
+        itams.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                new StatsPage(primaryStage).OpenTab(3);
             }
         });
         menu.setOnAction(new EventHandler<ActionEvent>() {

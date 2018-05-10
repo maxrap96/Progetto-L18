@@ -4,12 +4,16 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.css.Style;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -70,16 +74,25 @@ public class MenuTable extends TableView {
         GridPane mainPanel = new GridPane();
 
         Toolbar1 toolbar1 = new Toolbar1(stage);
+        Button save = new Button("Save");
+        toolbar1.getItems().add(save);
+
         //MenuBar1 menuBar1 = new MenuBar1(stage);
         VBox vBox = new VBox();
         vBox.getChildren().addAll(toolbar1/*, menuBar1*/, tableView);
         vBox.setFillWidth(true);
+        VBox.setVgrow(toolbar1, Priority.ALWAYS);
+        VBox.setVgrow(tableView, Priority.ALWAYS);
 
         stage.setTitle("MenuTable");
 
         Scene scene = new Scene(root, 800, 550, Color.WHITESMOKE);
 
-        mainPanel.addRow(0, vBox);
+        mainPanel.addRow(0,vBox);
+
+        vBox.prefHeightProperty().bind(scene.heightProperty());
+        vBox.prefWidthProperty().bind(scene.widthProperty());
+
         mainPanel.prefHeightProperty().bind(scene.heightProperty());
         mainPanel.prefWidthProperty().bind(scene.widthProperty());
         root.getChildren().addAll(mainPanel);
