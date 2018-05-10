@@ -86,7 +86,15 @@ public class MenuTable extends TableView {
 
         stage.setTitle("MenuTable");
 
-        Scene scene = new Scene(root, 800, 550, Color.WHITESMOKE);
+        Scene scene;
+
+        if (stage.isMaximized()) {
+            scene = new Scene(root, Color.WHITESMOKE);
+        } else {
+            scene = new Scene(root, 800, 550, Color.WHITESMOKE);
+        }
+
+//        Scene scene = new Scene(root, 800, 550, Color.WHITESMOKE);
 
         mainPanel.addRow(0,vBox);
 

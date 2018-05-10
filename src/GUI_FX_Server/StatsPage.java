@@ -29,7 +29,13 @@ public class StatsPage extends GridPane {
 
         stage.setTitle("Statistics");
 
-        Scene scene = new Scene(root, 800, 550, Color.KHAKI);
+        Scene scene;
+
+        if (stage.isMaximized()) {
+            scene = new Scene(root, Color.KHAKI);
+        } else {
+            scene = new Scene(root, 800, 550, Color.KHAKI);
+        }
 
         BorderPane borderPane = new BorderPane();
 
