@@ -46,11 +46,12 @@ public class StatsPage extends GridPane {
         //TODO MJ: aggiungere elementi grafici ai tab
         HistogramChart coinsChart = new HistogramChart(new CategoryAxis(), new NumberAxis());
         DrinkPieChart pie = new DrinkPieChart();
+        UsageChart usage = new UsageChart(new NumberAxis(), new NumberAxis());
         ItemsHistogram itemsChart = new ItemsHistogram(new CategoryAxis(), new NumberAxis());
 
         tab1.setContent(coinsChart.setBars());
         tab2.setContent(pie.setChart());
-        tab3.setContent(new BorderPane());
+        tab3.setContent(usage.setGraph());
         tab4.setContent(itemsChart.setBars());
 
         tabPane.getTabs().addAll(tab1, tab2, tab3, tab4);
