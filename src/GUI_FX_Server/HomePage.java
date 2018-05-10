@@ -30,12 +30,10 @@ public class HomePage extends Application {
 
         // Definizione dello stage principale e della barra del menu
         primaryStage.setTitle("Home");
-        Group root = new Group();                                //
-                                                                  // Sfondo
-        Scene scene = new Scene(root, 800, 550, Color.GAINSBORO);  //
+        Group root = new Group();
+        Scene scene = new Scene(root, 800, 550, Color.LAVENDER);
 
         Toolbar1 toolbar1 = new Toolbar1(primaryStage);
-        //MenuBar1 menuBar1= new MenuBar1(primaryStage);
 
         // Creazione GridPane
         GridPane gPane = new GridPane();
@@ -57,11 +55,10 @@ public class HomePage extends Application {
         img.setFitWidth(250);
 
         label.setGraphic(img);
-        //label.setAlignment(Pos.BOTTOM_CENTER);    //Dovrebbe posizionare il testo ma non funziona
 
         // Creazione VBox, commento da rivedere (@LUCE)
         VBox vBox = new VBox();
-        vBox.getChildren().addAll(toolbar1/*,menuBar1*/);
+        vBox.getChildren().addAll(toolbar1);
         vBox.setFillWidth(true);
 
         // Creazione link al sito del progetto
@@ -70,10 +67,9 @@ public class HomePage extends Application {
 
         Hyperlink hyperlink = new Hyperlink();
         hyperlink.setText("Click here for Project L-18 web site!");
-        hyperlink.setAlignment(Pos.BOTTOM_CENTER);
+        //hyperlink.setAlignment(Pos.BOTTOM_CENTER);
 
         final String url = "https://github.com/IngSW-unipv/Progetto-L18";
-        final WebView browser = new WebView();
 
         hyperlink.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -84,8 +80,8 @@ public class HomePage extends Application {
 
         HBox hbox = new HBox();
         hbox.getChildren().addAll(hyperlink);
-        linkBox.getChildren().addAll(hbox, browser);
-        VBox.setVgrow(browser, Priority.ALWAYS);
+        linkBox.getChildren().addAll(hbox);
+        //hbox.setStyle("-fx-background-color: white;");
 
         // Creazione bottoni
         ButtonBar buttonBar = new ButtonBar();
@@ -117,7 +113,7 @@ public class HomePage extends Application {
         });
 
         // Aggiunta elementi nel Pane
-        gPane.setVgap(50);
+        gPane.setVgap(60);
 
         gPane.add(vBox, 0,0);
         gPane.add(label, 0,1);
@@ -128,12 +124,13 @@ public class HomePage extends Application {
         gPane.prefHeightProperty().bind(scene.heightProperty());
         gPane.prefWidthProperty().bind(scene.widthProperty());
 
-        //Scene scene = new Scene(gPane, 800, 550);
-        root.getChildren().add(gPane);    // Sfondo col
+        root.getChildren().add(gPane);
         primaryStage.setScene(scene);
+        primaryStage.sizeToScene();
         //primaryStage.setResizable(false);
-        //primaryStage.setMaximized(true); // Lo ingrandisco subito fullscreen
         primaryStage.show();
+        primaryStage.setMinWidth(primaryStage.getWidth());
+        primaryStage.setMinHeight(primaryStage.getHeight());
     }
 
     public static void main(String[] args) {
