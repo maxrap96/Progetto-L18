@@ -24,7 +24,7 @@ public class Toolbar1 extends ToolBar {
 
 
     public Toolbar1(Stage stage) {
-        MenuButton stats = new MenuButton("Stas",null,monete, acqB,utilizzo,itams);
+        MenuButton stats = new MenuButton("Stats",null,monete, acqB,utilizzo,itams);
 
         ImageView immHome = new ImageView(loadImage("src/ServerImages/home.png"));
      //   ImageView immSx = new ImageView(loadImage("src/ServerImages/FrecciaSx.png"));

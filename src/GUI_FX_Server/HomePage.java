@@ -3,25 +3,15 @@ package GUI_FX_Server;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.HPos;
-import javafx.geometry.Pos;
-import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.chart.CategoryAxis;
-import javafx.scene.chart.NumberAxis;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebView;
 import javafx.stage.Stage;
-
-import java.awt.*;
 
 public class HomePage extends Application {
 
@@ -120,6 +110,7 @@ public class HomePage extends Application {
 
         // Impostazioni scena e stage principale
         Scene scene = new Scene(anchor, 800, 550);
+
         primaryStage.setScene(scene);
         primaryStage.sizeToScene();
         //primaryStage.setResizable(false);
