@@ -1,4 +1,4 @@
-package Distributore;
+package GUI_FX_VendingMachine;
 
 import java.io.*;
 import java.net.ConnectException;
@@ -13,6 +13,8 @@ public class Client extends Thread{
             new File("src/File_Testo/menu.txt");
     static File fileStatsClient =
             new File("src/File_Testo/stats.txt");
+    private boolean fileReceived = false;
+
 
     public void run(){
         try {
@@ -111,11 +113,15 @@ public class Client extends Thread{
             BufferedReader inFromFile =
                     new BufferedReader(new FileReader(file.getPath())); // Oggetto da cui prendo i dati
 
-            while ((stringFromFile = inFromFile.readLine()) != null) { // Invio al Distributore.Client
+            while ((stringFromFile = inFromFile.readLine()) != null) { // Invio al GUI_FX_VendingMachine.Client
                 whereToWrite.println(stringFromFile);
             }
         }catch (IOException e){
             e.printStackTrace();
         }
+    }
+
+    public boolean isFileReceived() {
+        return fileReceived;
     }
 }

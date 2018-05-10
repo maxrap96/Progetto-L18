@@ -1,5 +1,4 @@
 import Distributore.Distributore;
-import Distributore.Client;
 
 public class Test {
 

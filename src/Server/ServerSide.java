@@ -7,7 +7,7 @@ import java.net.Socket;
 public class ServerSide implements FileServer{
 
     static String stringFromClient; // Stringa letta dai dati in entrata
-    static PrintWriter outToClient; // Dati diretti al Distributore.Client
+    static PrintWriter outToClient; // Dati diretti al GUI_FX_VendingMachine.Client
     static BufferedReader inFromClient; // Dati in entrata
 
     public static void main(String[] args){
@@ -36,10 +36,10 @@ public class ServerSide implements FileServer{
                     new ServerSocket(connectionPort); // Creo socket di benvenuto
             Socket clientSocket = serverSocket.accept(); // Accetto la connessione di un client
             outToClient =
-                    new PrintWriter(clientSocket.getOutputStream(), true); // Oggetto per scrivere al Distributore.Client
+                    new PrintWriter(clientSocket.getOutputStream(), true); // Oggetto per scrivere al GUI_FX_VendingMachine.Client
             inFromClient =
                     new BufferedReader(
-                            new InputStreamReader(clientSocket.getInputStream())); // Oggetto per leggere da Distributore.Client
+                            new InputStreamReader(clientSocket.getInputStream())); // Oggetto per leggere da GUI_FX_VendingMachine.Client
         }catch (IOException e){
             e.printStackTrace();
         }
@@ -81,9 +81,9 @@ public class ServerSide implements FileServer{
     }
 
     /**
-     * Invio di un file al Distributore.Client.
+     * Invio di un file al GUI_FX_VendingMachine.Client.
      *
-     * @param file da inviare al Distributore.Client.
+     * @param file da inviare al GUI_FX_VendingMachine.Client.
      * @param whereToWrite PrintWriter impiegato per inviare il file.
      * @throws IOException
      */
@@ -94,7 +94,7 @@ public class ServerSide implements FileServer{
                     new BufferedReader(
                             new FileReader(file.getPath())); // Oggetto da cui prendo i dati
 
-            while ((stringFromFile = inFromFile.readLine()) != null) { // Invio al Distributore.Client
+            while ((stringFromFile = inFromFile.readLine()) != null) { // Invio al GUI_FX_VendingMachine.Client
                 whereToWrite.println(stringFromFile);
             }
             inFromFile.close();
