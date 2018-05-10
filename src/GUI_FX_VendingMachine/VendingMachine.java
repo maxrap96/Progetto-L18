@@ -56,7 +56,7 @@ public class VendingMachine extends Application {
         BorderPane purchasePane = new BorderPane();
         purchasePane.setPadding(new Insets(11, 11, 11, 11));
         purchasePane.setStyle(
-                "-fx-background-color: SaddleBrown;"
+                "-fx-background-color: dimGray;"
         );
         root.setRight(purchasePane);
 
@@ -81,7 +81,7 @@ public class VendingMachine extends Application {
             public void handle(ActionEvent event) {
                 key.setStyle(
                         "-fx-background-radius: 1em;" +
-                        "-fx-focus-color: darkRed;"
+                        "-fx-focus-color: blue;"
                 );
             }
         });

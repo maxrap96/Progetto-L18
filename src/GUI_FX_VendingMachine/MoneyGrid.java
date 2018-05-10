@@ -101,7 +101,7 @@ public class MoneyGrid extends GridPane {
         button.setPrefSize(screenSize.height / 8, screenSize.height / 8);
         button.setStyle(
                 "-fx-base: lightGray;" +
-                "-fx-focus-color: darkRed;"
+                "-fx-focus-color: blue;"
         );
     }
 }
