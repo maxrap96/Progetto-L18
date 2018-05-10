@@ -72,7 +72,6 @@ public class Chiavetta {
         if(Saldo > Costo){
             Saldo -= Costo;
             String newLine = ID+"\t"+String.format("%.2f",Saldo);
-            newLine.replace(",","."); // altrimenti al successivo riavvio non riesco a leggere il file
             try {
                 data.overwriteFile(newLine, currentLine);
             } catch (IOException e){
