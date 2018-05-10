@@ -22,6 +22,8 @@ import java.io.FileInputStream;
 public class VendingMachine extends Application {
      private Distributore distributore = new Distributore();
      private ResetDisplay resetDisplay;
+     private BeverageGrid beveragePane;
+     private Display display;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -59,7 +61,7 @@ public class VendingMachine extends Application {
         root.setRight(purchasePane);
 
         // Display del distributore
-        Display display = new Display();
+        display = new Display();
         purchasePane.setTop(display);
         resetDisplay = new ResetDisplay(display, distributore);
         resetDisplay.setDots();
@@ -86,7 +88,7 @@ public class VendingMachine extends Application {
         purchasePane.setCenter(key);
 
         // Pannello delle bevande
-        GridPane beveragePane = new BeverageGrid(distributore, display, resetDisplay);
+        beveragePane = new BeverageGrid(distributore, display, resetDisplay);
         beveragePane.setBackground(new Background(changeNameWhenFinalImage));
         root.setLeft(beveragePane);
 
