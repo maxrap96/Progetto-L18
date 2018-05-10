@@ -5,7 +5,10 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 import java.awt.Dimension;
@@ -46,19 +49,21 @@ public class BeverageGrid extends GridPane {
                     BeverageEventHandler beverageEventHandler = new BeverageEventHandler (distributore, display,
                             number + 1, resetDisplay);
                     button.setOnAction(beverageEventHandler);
-//                    button.setOnAction(new EventHandler<ActionEvent>() {
-//                        @Override
-//                        public void handle(ActionEvent event) {
-//                            button.setStyle(
-//                                    "-fx-background-radius: 1em;" +
-//                                    "-fx-background-color: linear-gradient(dimGray 0%, gray 20%, lightGray 40%, " +
-//                                            "lightGray 60%, gray 80%, dimGray 100%);" +
-//                                    "-fx-border-color: blue;" +
-//                                    "-fx-border-radius: 1em;" +
-//                                    "-fx-border-width: 2;"
-//                            );
-//                        }
-//                    });
+                    button.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
+                        DropShadow shadow = new DropShadow();
+                        @Override
+                        public void handle(MouseEvent event) {
+                            shadow.setColor(Color.BLUE);
+                            button.setEffect(shadow);
+
+                        }
+                    });
+                    button.addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() {
+                        @Override
+                        public void handle(MouseEvent event) {
+                            button.setEffect(null);
+                        }
+                    });
                 }
                 this.add(button, col, row);
             }
@@ -74,8 +79,10 @@ public class BeverageGrid extends GridPane {
     private void setButton(Button buttonToSet, int width, int height){
         buttonToSet.setStyle(
                 "-fx-background-radius: 1em;" +
-                "-fx-background-color: linear-gradient(dimGray 0%, gray 20%, lightGray 40%, lightGray 60%," +
-                        "gray 80%, dimGray 100%);"
+                "-fx-background-color: radial-gradient(focus-angle 45deg, focus-distance 20%, radius 40%,reflect, " +
+                        "lightGray 60%," +
+                        "gray 80%, dimGray 100%);" +
+                "-fx-focus-color: blue;"
         );
         buttonToSet.setFont(Font.font("California FB", 20));
         buttonToSet.setPrefSize(width, height);
