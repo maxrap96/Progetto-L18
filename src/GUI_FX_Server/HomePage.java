@@ -12,7 +12,6 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -113,7 +112,7 @@ public class HomePage extends Application {
         });
 
         // Aggiunta elementi nel Pane
-        gPane.setVgap(60);
+        gPane.setVgap(65);
 
         gPane.add(vBox, 0,0);
         gPane.add(label, 0,1);

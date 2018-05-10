@@ -77,9 +77,9 @@ public class MenuTable extends TableView {
         Button save = new Button("Save");
         toolbar1.getItems().add(save);
 
-        //MenuBar1 menuBar1 = new MenuBar1(stage);
+
         VBox vBox = new VBox();
-        vBox.getChildren().addAll(toolbar1/*, menuBar1*/, tableView);
+        vBox.getChildren().addAll(toolbar1, tableView);
         vBox.setFillWidth(true);
         VBox.setVgrow(toolbar1, Priority.ALWAYS);
         VBox.setVgrow(tableView, Priority.ALWAYS);
