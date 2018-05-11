@@ -9,11 +9,7 @@ import java.net.Socket;
 
 public class ServerConnection implements Runnable {
 
-    static private PrintWriter outToClient;
-    static private BufferedReader inFromClient;
-    static private ServerSocket serverSocket;
     static private String stringToUpdateSomething;
-    static private Socket clientSocket;
     private int portNumber;
 
     public ServerConnection(int port) {
@@ -23,10 +19,10 @@ public class ServerConnection implements Runnable {
     @Override
     public void run() {
         try {
-            serverSocket = new ServerSocket(portNumber); // Creo socket di benvenuto
+            ServerSocket serverSocket = new ServerSocket(portNumber); // Creo socket di benvenuto
             while(true) {
-                clientSocket = serverSocket.accept(); // Accetto la connessione di un client
-                inFromClient =
+                Socket clientSocket = serverSocket.accept(); // Accetto la connessione di un client
+                BufferedReader inFromClient =
                         new BufferedReader(
                                 new InputStreamReader(clientSocket.getInputStream())); // Oggetto per leggere da Client
             }
@@ -36,9 +32,9 @@ public class ServerConnection implements Runnable {
         }
     }
 
-    private void sendString(String sendThisString) throws IOException{
-        outToClient =
-                new PrintWriter(clientSocket.getOutputStream(), true); // Oggetto per scrivere al Client
+    private void sendString(String sendThisString, Socket client) throws IOException{
+        PrintWriter outToClient =
+                new PrintWriter(client.getOutputStream(), true); // Oggetto per scrivere al Client
         outToClient.println(sendThisString);
     }
 }

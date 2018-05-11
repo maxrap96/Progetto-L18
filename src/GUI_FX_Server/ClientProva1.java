@@ -13,8 +13,8 @@ import java.net.Socket;
 public class ClientProva1 implements Runnable, FileClient {
 
     static private String stringSentToServer;
-    static private String ip;
-    static private int serverPort;
+    private String ip;
+    private int serverPort;
 
     public ClientProva1(String ipServer, int port) {
         ip = ipServer;
@@ -36,7 +36,7 @@ public class ClientProva1 implements Runnable, FileClient {
                     new BufferedReader(
                             new InputStreamReader(clientSocket.getInputStream()));
 
-            sendFile(channelOutToServer, new File("src/File_Testo/menu.txt"));
+            sendFile(channelOutToServer, fileMenu);
             // Remember to close inFromServer
         } catch (IOException e) {
             e.printStackTrace();
