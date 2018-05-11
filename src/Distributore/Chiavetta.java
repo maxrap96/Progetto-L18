@@ -60,7 +60,8 @@ public class Chiavetta {
 
     public void AddSaldo(double importo) {
         Saldo = (Saldo *1000 + importo*1000)/1000;
-        String newLine = ID + "\t" + String.format("%.2f", Saldo);
+        Saldo = Math.floor(Saldo*100)/100;
+        String newLine = ID + "\t" + Saldo;
         newLine.replace(",","."); // altrimenti al successivo riavvio non riesco a leggere il file
         try {
             data.overwriteFile(newLine, currentLine);
@@ -71,7 +72,8 @@ public class Chiavetta {
     public boolean Pay(double Costo){
         if(Saldo > Costo){
             Saldo -= Costo;
-            String newLine = ID+"\t"+String.format("%.2f",Saldo);
+            Saldo = Math.floor(Saldo*100)/100;
+            String newLine = ID+"\t"+Saldo;
             try {
                 data.overwriteFile(newLine, currentLine);
             } catch (IOException e){
