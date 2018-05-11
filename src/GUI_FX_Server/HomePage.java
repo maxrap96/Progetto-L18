@@ -3,6 +3,7 @@ package GUI_FX_Server;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
@@ -10,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
@@ -107,10 +109,15 @@ public class HomePage extends Application {
 
         anchor.setLeftAnchor(hyperlink, 0.0);
         anchor.setBottomAnchor(hyperlink, 0.0);
-
+        Scene scene;
         // Impostazioni scena e stage principale
-        Scene scene = new Scene(anchor, 800, 550);
-
+        if(primaryStage.isMaximized()){
+            //Settaggio nuova scena con dimensioni scena precedente in full screen
+            scene = new Scene(anchor,primaryStage.getScene().getWidth(),primaryStage.getScene().getHeight());
+        }
+        else{
+            scene = new Scene(anchor, 800,550);
+        }
         primaryStage.setScene(scene);
         primaryStage.sizeToScene();
         //primaryStage.setResizable(false);
