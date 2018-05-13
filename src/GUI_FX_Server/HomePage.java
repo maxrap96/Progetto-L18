@@ -8,10 +8,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.paint.Paint;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
@@ -31,11 +34,12 @@ public class HomePage extends Application {
         label.setFont(Font.font("Rockwell", 50));
         label.setWrapText(true);
 
-        ImageView img = new ImageView("GUI_FX_Server/download.jpg");
-        img.setFitHeight(250);
-        img.setFitWidth(250);
+        Image img = new Image("GUI_FX_Server/logo.jpg");
+        Circle circle = new Circle(110);
+        ImagePattern pattern = new ImagePattern(img);
+        circle.setFill(pattern);
 
-        label.setGraphic(img);
+        label.setGraphic(circle);
 
         // Creazione toolbar
         VBox vBox = new VBox();
