@@ -12,9 +12,12 @@ import java.net.Socket;
 
 public class ClientProva1 implements Runnable, FileClient {
 
-    static private String stringSentToServer;
+    private String stringSentToServer;
     private String ip;
     private int serverPort;
+    private PrintWriter channelOutToServer;
+    private BufferedReader inFromServer;
+
 
     public ClientProva1(String ipServer, int port) {
         ip = ipServer;
@@ -28,20 +31,35 @@ public class ClientProva1 implements Runnable, FileClient {
             Socket clientSocket = new Socket(ip, serverPort);
 
             // Creazione dell'ggetto per scrivere
-            PrintWriter channelOutToServer =
+            channelOutToServer =
                     new PrintWriter(clientSocket.getOutputStream(), true);
 
             // Creazione dell'oggetto per ricevere
-            BufferedReader inFromServer =
+            inFromServer =
                     new BufferedReader(
                             new InputStreamReader(clientSocket.getInputStream()));
 
-            sendFile(channelOutToServer, fileMenu);
-            // Remember to close inFromServer
+            System.out.println("Ready to Send");
+            String tmp;
+
+            // Ciclo infinito per tenere sempre attivo il Client
+            while (true) {
+                while ((tmp = inFromServer.readLine()) != null) {
+                    System.out.println("While 1"); // Check per vedere dove sono, il Client esegue questo ciclo più
+                                                    // rapidamente di quanto il server riceva i dati. Se si esegue,
+                                                    // si vedranno comparire i 2 while nell'sout client quasi subito
+                    if(tmp.equals("READY")){
+                        channelOutToServer.println("WAITING_ORDERS");
+                    }else {
+                        commandReceived(tmp);
+                    }
+                }
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
+            System.out.println("Error caught: " + e);
         }
-
     }
 
     /**
@@ -57,10 +75,38 @@ public class ClientProva1 implements Runnable, FileClient {
         BufferedReader inFromFile =
                 new BufferedReader(new FileReader(file.getPath()));
 
-        // Invio al Client
+        // Invio al Server
         while ((stringFromFile = inFromFile.readLine()) != null) {
             whereToWrite.println(stringFromFile);
         }
+
+        whereToWrite.println("END_SENDING");
         inFromFile.close();
+    }
+
+    /**
+     * Funzione che legge il comando ricevuto dal Server ed esegue l'azione corrispondente.
+     *
+     * @param commandFromServer
+     * @throws IOException
+     */
+    private void commandReceived(String commandFromServer) throws IOException{
+        if (commandFromServer != null) {
+            switch (commandFromServer) {
+                case "SEND_MENU":
+                    sendFile(channelOutToServer, fileMenu);
+                    break;
+
+                case "SEND_DATA":
+                    sendFile(channelOutToServer, fileDati); // Manca la parte Server
+                    break;
+
+                default:
+                    // Prova per capire gli errori, ma non ancora implementato
+                    System.out.println("Not a valid command");
+                    channelOutToServer.println("ERROR");
+                    break;
+            }
+        }
     }
 }
