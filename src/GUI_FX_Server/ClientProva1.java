@@ -45,8 +45,11 @@ public class ClientProva1 implements Runnable, FileClient, StringCommandList {
             String tmp;
             channelOutToServer.println(READY);
             while ((tmp = inFromServer.readLine()) != null) {
+                if (tmp.equals(READY)){
+                    channelOutToServer.println(tmp);
+                }
                 System.out.println("While 1");
-                if (state){
+                if (state && isAValidCommand(tmp)){
                     System.out.println(tmp);
                     state = !STATE_WAITING;
                     commandReceived(tmp);
@@ -80,7 +83,7 @@ public class ClientProva1 implements Runnable, FileClient, StringCommandList {
             whereToWrite.println(stringFromFile);
         }
 
-        whereToWrite.println("END_SENDING");
+        whereToWrite.println(END_SENDING);
         inFromFile.close();
     }
 
@@ -92,21 +95,38 @@ public class ClientProva1 implements Runnable, FileClient, StringCommandList {
      */
     private void commandReceived(String commandFromServer) throws IOException{
         if (commandFromServer != null) {
+            System.out.println(commandFromServer + " CR");
             switch (commandFromServer) {
-                case "SEND_MENU":
+                case SEND_DATA:
+                    sendFile(channelOutToServer, fileDati);
+                    break;
+
+                case SEND_MENU:
                     sendFile(channelOutToServer, fileMenu);
                     break;
 
-                case "SEND_DATA":
-                    sendFile(channelOutToServer, fileDati); // Manca la parte Server
+                case SEND_COINS:
+                    sendFile(channelOutToServer, fileMonete);
+                    break;
+
+                case SEND_STATS:
+                    sendFile(channelOutToServer, fileStats);
                     break;
 
                 default:
-                    // Prova per capire gli errori, ma non ancora implementato
                     System.out.println("Not a valid command");
-                    channelOutToServer.println("ERROR");
+                    //channelOutToServer.println(ERROR);
                     break;
             }
+        }
+    }
+
+    private boolean isAValidCommand(String command){
+        if (command.equals(SEND_COINS) || command.equals(SEND_DATA) || command.equals(SEND_MENU) ||
+                command.equals(SEND_STATS)) {
+            return true;
+        } else {
+            return false;
         }
     }
 }

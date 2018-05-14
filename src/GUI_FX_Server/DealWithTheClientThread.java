@@ -10,13 +10,20 @@ import java.util.ArrayList;
 public class DealWithTheClientThread implements Runnable, FileServer, StringCommandList {
 
     private ArrayList<String> stats;
+    private ArrayList<String> menu;
+    private ArrayList<String> coins;
+    private ArrayList<String> data;
     private Socket clientSocket;
     private BufferedReader inFromClient; // Oggetto per leggere da Client
+    private String IdVendingMachine;
     private boolean state;
 
     public DealWithTheClientThread(Socket clientSocket, ArrayList<String> stats) {
         this.clientSocket = clientSocket;
         this.stats = stats;
+        this.menu = new ArrayList<>();
+        this.coins = new ArrayList<>();
+        this.data = new ArrayList<>();
         this.state = STATE_WAITING;
     }
 
@@ -33,7 +40,7 @@ public class DealWithTheClientThread implements Runnable, FileServer, StringComm
                     state = !STATE_WAITING;
                     needToFindABetterName();
                     state = STATE_WAITING;
-                    sendString(READY,clientSocket);
+                    sendString(READY, clientSocket);
                 }
             }
         }catch (IOException e){
@@ -62,7 +69,7 @@ public class DealWithTheClientThread implements Runnable, FileServer, StringComm
      */
     private void needToFindABetterName() throws IOException{
         System.out.println("Better name"); // Check se il codice arriva fino a qui
-        System.out.println("Inserire valore da tastiera. Per ora funziona solo lo 0");
+        System.out.println("Inserire valore da tastiera.\n0 SEND_DATA\n1 SEND_MENU\n2 SEND_COINS\n3 SEND_STATS");
         chooseCommand(Integer.parseInt(
                 new BufferedReader(
                         new InputStreamReader(System.in)).readLine()));
@@ -78,20 +85,26 @@ public class DealWithTheClientThread implements Runnable, FileServer, StringComm
     private void chooseCommand(int index) throws IOException{
         switch (index){
             case 0:
-                sendString("SEND_DATA", clientSocket);
-                readyToReceive(stats);
+                sendString(SEND_DATA, clientSocket);
+                readyToReceive(data);
                 break;
             case 1:
-                sendString("SEND_MENU", clientSocket);
-                readyToReceive(stats);
+                sendString(SEND_MENU, clientSocket);
+                readyToReceive(menu);
                 break;
             case 2:
-                sendString("END_SENDING", clientSocket);
-                //clientSocket.close();
+                sendString(SEND_COINS, clientSocket);
+                readyToReceive(coins);
                 break;
+
+            case 3:
+                sendString(SEND_STATS, clientSocket);
+                readyToReceive(stats);
+                break;
+
             default:
                 System.out.println("Wrong command");
-                sendString("END_SENDING" ,clientSocket);
+                //sendString("END_SENDING" ,clientSocket);
                 //clientSocket.close();
                 break;
         }
@@ -106,7 +119,7 @@ public class DealWithTheClientThread implements Runnable, FileServer, StringComm
     private void readyToReceive(ArrayList whereToSaveFileFromClient) throws IOException{
         String tmp;
         while ((tmp = inFromClient.readLine()) != null){
-            if (!tmp.equals("END_SENDING")) {
+            if (!tmp.equals(END_SENDING)) {
                 whereToSaveFileFromClient.add(tmp);
                 System.out.println(tmp);
             } else {
