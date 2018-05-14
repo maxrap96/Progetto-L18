@@ -7,15 +7,17 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.ArrayList;
 
-public class DealWithTheClientThread implements Runnable, FileServer {
+public class DealWithTheClientThread implements Runnable, FileServer, StringCommandList {
 
     private ArrayList<String> stats;
     private Socket clientSocket;
     private BufferedReader inFromClient; // Oggetto per leggere da Client
+    private boolean state;
 
     public DealWithTheClientThread(Socket clientSocket, ArrayList<String> stats) {
         this.clientSocket = clientSocket;
         this.stats = stats;
+        this.state = STATE_WAITING;
     }
 
     @Override
@@ -25,11 +27,14 @@ public class DealWithTheClientThread implements Runnable, FileServer {
                     new BufferedReader(
                             new InputStreamReader(clientSocket.getInputStream()));
 
-            String inline;
-            sendString("READY", clientSocket);
-            while ((inline = inFromClient.readLine()) != null) {
-                needToFindABetterName(inline);
-                //sendString("END_SENDING", clientSocket);
+            while (inFromClient.readLine() != null) {
+                System.out.println("While");
+                if (state) {
+                    state = !STATE_WAITING;
+                    needToFindABetterName();
+                    state = STATE_WAITING;
+                    sendString(READY,clientSocket);
+                }
             }
         }catch (IOException e){
             e.printStackTrace();
@@ -53,17 +58,15 @@ public class DealWithTheClientThread implements Runnable, FileServer {
     /**
      * Funzione che dovrebbe capire se il Client è pronto a ricevere.
      *
-     * @param stringFromClient stringa dal client.
      * @throws IOException
      */
-    private void needToFindABetterName(String stringFromClient) throws IOException{
+    private void needToFindABetterName() throws IOException{
         System.out.println("Better name"); // Check se il codice arriva fino a qui
-        if(stringFromClient.equals("WAITING_ORDERS")){
-            System.out.println("Inserire valore da tastiera. Per ora funziona solo lo 0");
-            chooseCommand(Integer.parseInt(
-                    new BufferedReader(
-                            new InputStreamReader(System.in)).readLine()));
-        }
+        System.out.println("Inserire valore da tastiera. Per ora funziona solo lo 0");
+        chooseCommand(Integer.parseInt(
+                new BufferedReader(
+                        new InputStreamReader(System.in)).readLine()));
+
     }
 
     /**
@@ -79,7 +82,9 @@ public class DealWithTheClientThread implements Runnable, FileServer {
                 readyToReceive(stats);
                 break;
             case 1:
-                // Do something else
+                sendString("SEND_MENU", clientSocket);
+                readyToReceive(stats);
+                break;
             case 2:
                 sendString("END_SENDING", clientSocket);
                 //clientSocket.close();

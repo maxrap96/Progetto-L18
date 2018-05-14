@@ -10,18 +10,20 @@ import java.io.File;
 import java.io.FileReader;
 import java.net.Socket;
 
-public class ClientProva1 implements Runnable, FileClient {
+public class ClientProva1 implements Runnable, FileClient, StringCommandList {
 
     private String stringSentToServer;
     private String ip;
     private int serverPort;
     private PrintWriter channelOutToServer;
     private BufferedReader inFromServer;
+    private boolean state;
 
 
     public ClientProva1(String ipServer, int port) {
         ip = ipServer;
         serverPort = port;
+        state = STATE_WAITING;
     }
 
     @Override
@@ -41,20 +43,18 @@ public class ClientProva1 implements Runnable, FileClient {
 
             System.out.println("Ready to Send");
             String tmp;
-
-            // Ciclo infinito per tenere sempre attivo il Client
-            while (true) {
-                while ((tmp = inFromServer.readLine()) != null) {
-                    System.out.println("While 1"); // Check per vedere dove sono, il Client esegue questo ciclo più
-                                                    // rapidamente di quanto il server riceva i dati. Se si esegue,
-                                                    // si vedranno comparire i 2 while nell'sout client quasi subito
-                    if(tmp.equals("READY")){
-                        channelOutToServer.println("WAITING_ORDERS");
-                    }else {
-                        commandReceived(tmp);
-                    }
+            channelOutToServer.println(READY);
+            while ((tmp = inFromServer.readLine()) != null) {
+                System.out.println("While 1");
+                if (state){
+                    System.out.println(tmp);
+                    state = !STATE_WAITING;
+                    commandReceived(tmp);
+                    state = STATE_WAITING;
                 }
             }
+
+            inFromServer.close();
 
         } catch (IOException e) {
             e.printStackTrace();
