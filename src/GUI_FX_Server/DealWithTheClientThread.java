@@ -14,7 +14,7 @@ public class DealWithTheClientThread implements Runnable, FileServer, StringComm
     private ArrayList<String> coins;
     private ArrayList<String> data;
     private Socket clientSocket;
-    private BufferedReader inFromClient; // Oggetto per leggere da Client
+    private BufferedReader inFromClient;
     private String IdVendingMachine;
     private boolean state;
 
@@ -30,12 +30,12 @@ public class DealWithTheClientThread implements Runnable, FileServer, StringComm
     @Override
     public void run() {
         try {
+            // Inizializzazione dell'oggetto per leggere da Client
             inFromClient =
                     new BufferedReader(
                             new InputStreamReader(clientSocket.getInputStream()));
 
             while (inFromClient.readLine() != null) {
-                System.out.println("While");
                 if (state) {
                     state = !STATE_WAITING;
                     needToFindABetterName();
@@ -57,8 +57,8 @@ public class DealWithTheClientThread implements Runnable, FileServer, StringComm
      * @throws IOException
      */
     private void sendString(String sendThisString, Socket client) throws IOException {
-        PrintWriter outToClient =
-                new PrintWriter(client.getOutputStream(), true); // Oggetto per scrivere al Client
+        // Creazione dell'oggetto per scrivere al Client
+        PrintWriter outToClient = new PrintWriter(client.getOutputStream(), true);
         outToClient.println(sendThisString);
     }
 
@@ -68,7 +68,8 @@ public class DealWithTheClientThread implements Runnable, FileServer, StringComm
      * @throws IOException
      */
     private void needToFindABetterName() throws IOException{
-        System.out.println("Better name"); // Check se il codice arriva fino a qui
+        // Questo "sout" serve solo per fare i test da riga di comando, quando si userà l'interfaccia togliere
+        // questa funzione e usare solo la chooseCommand.
         System.out.println("Inserire valore da tastiera.\n0 SEND_DATA\n1 SEND_MENU\n2 SEND_COINS\n3 SEND_STATS");
         chooseCommand(Integer.parseInt(
                 new BufferedReader(
@@ -77,7 +78,7 @@ public class DealWithTheClientThread implements Runnable, FileServer, StringComm
     }
 
     /**
-     * Funzione che permette di scegliere il comando da inviare al Client.
+     * Funzione che permette di scegliere il comando, sotto forma di stringa, da inviare al Client.
      *
      * @param index indice per scegliere il comando idoneo.
      * @throws IOException
@@ -88,10 +89,12 @@ public class DealWithTheClientThread implements Runnable, FileServer, StringComm
                 sendString(SEND_DATA, clientSocket);
                 readyToReceive(data);
                 break;
+
             case 1:
                 sendString(SEND_MENU, clientSocket);
                 readyToReceive(menu);
                 break;
+
             case 2:
                 sendString(SEND_COINS, clientSocket);
                 readyToReceive(coins);
@@ -104,8 +107,6 @@ public class DealWithTheClientThread implements Runnable, FileServer, StringComm
 
             default:
                 System.out.println("Wrong command");
-                //sendString("END_SENDING" ,clientSocket);
-                //clientSocket.close();
                 break;
         }
     }

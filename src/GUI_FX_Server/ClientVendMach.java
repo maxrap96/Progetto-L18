@@ -10,9 +10,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.net.Socket;
 
-public class ClientProva1 implements Runnable, FileClient, StringCommandList {
+public class ClientVendMach implements Runnable, FileClient, StringCommandList {
 
-    private String stringSentToServer;
     private String ip;
     private int serverPort;
     private PrintWriter channelOutToServer;
@@ -20,7 +19,7 @@ public class ClientProva1 implements Runnable, FileClient, StringCommandList {
     private boolean state;
 
 
-    public ClientProva1(String ipServer, int port) {
+    public ClientVendMach(String ipServer, int port) {
         ip = ipServer;
         serverPort = port;
         state = STATE_WAITING;
@@ -41,16 +40,14 @@ public class ClientProva1 implements Runnable, FileClient, StringCommandList {
                     new BufferedReader(
                             new InputStreamReader(clientSocket.getInputStream()));
 
-            System.out.println("Ready to Send");
             String tmp;
             channelOutToServer.println(READY);
             while ((tmp = inFromServer.readLine()) != null) {
+                // Controllo se il Server sia pronto
                 if (tmp.equals(READY)){
                     channelOutToServer.println(tmp);
                 }
-                System.out.println("While 1");
                 if (state && isAValidCommand(tmp)){
-                    System.out.println(tmp);
                     state = !STATE_WAITING;
                     commandReceived(tmp);
                     state = STATE_WAITING;
@@ -95,7 +92,6 @@ public class ClientProva1 implements Runnable, FileClient, StringCommandList {
      */
     private void commandReceived(String commandFromServer) throws IOException{
         if (commandFromServer != null) {
-            System.out.println(commandFromServer + " CR");
             switch (commandFromServer) {
                 case SEND_DATA:
                     sendFile(channelOutToServer, fileDati);
@@ -115,12 +111,16 @@ public class ClientProva1 implements Runnable, FileClient, StringCommandList {
 
                 default:
                     System.out.println("Not a valid command");
-                    //channelOutToServer.println(ERROR);
                     break;
             }
         }
     }
 
+    /**
+     * Funzione che confronta la stringa passata e decide se è un comando valido.
+     *
+     * @param command comando da analizzare.
+     */
     private boolean isAValidCommand(String command){
         if (command.equals(SEND_COINS) || command.equals(SEND_DATA) || command.equals(SEND_MENU) ||
                 command.equals(SEND_STATS)) {
