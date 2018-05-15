@@ -36,6 +36,7 @@ public class MenuTable extends TableView {
         this.setTextField();
         TableView<menu> tableView = new TableView<>();
 
+
         ObservableList<menu> data =
                 FXCollections.observableArrayList();
 
@@ -43,6 +44,7 @@ public class MenuTable extends TableView {
             data.addAll(menuV[i]);
         }
 
+        //Aggiungo ad ogni colonna i valori contenuti nella classe menu
         TableColumn id = new TableColumn("ID");
         id.setCellValueFactory(new PropertyValueFactory<menu, String>("id"));
         TableColumn tipo = new TableColumn("Tipo");
@@ -63,16 +65,18 @@ public class MenuTable extends TableView {
         acqua.setCellValueFactory(new PropertyValueFactory<menu, String>("acqua"));
         TableColumn vodka = new TableColumn("vodka");
         vodka.setCellValueFactory(new PropertyValueFactory<menu, String>("vodka"));
+
         tableView.setItems(data);
         tableView.setEditable(false);
         tableView.setStyle("-fx-font: 16px Serif");
 
+
         tableView.getColumns().addAll(id, tipo, nome, costo, Q_max, temp, dose, latte, acqua, vodka);
 
         Group root = new Group();
-
         GridPane mainPanel = new GridPane();
 
+        //Creazione toolbar e aggiunta tasto Save ad essa
         Toolbar1 toolbar1 = new Toolbar1(stage);
         Button save = new Button("Save");
         toolbar1.getItems().add(save);
@@ -93,8 +97,6 @@ public class MenuTable extends TableView {
         } else {
             scene = new Scene(root, 800, 550, Color.WHITESMOKE);
         }
-
-//        Scene scene = new Scene(root, 800, 550, Color.WHITESMOKE);
 
         mainPanel.addRow(0,vBox);
 
@@ -131,6 +133,9 @@ public class MenuTable extends TableView {
         }
     }
 
+    /**
+    * Funzione che calcola le righe presenti nell menu
+     */
     private int initRows(){
         try{
             BufferedReader bufferedReader = new BufferedReader( new FileReader(fileMenuServer.getPath()));
@@ -149,6 +154,9 @@ public class MenuTable extends TableView {
         return 0;
     }
 
+    /**
+     * Classe menu utilizzata per l'aggiunta dei dati nella tabella
+     */
     public static class menu {
 
         private  SimpleStringProperty id;

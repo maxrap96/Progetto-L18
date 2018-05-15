@@ -12,10 +12,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 public class Toolbar1 extends ToolBar {
-   // Button sx = new Button();
-   // Button dx = new Button();
     Button home = new Button();
-    //Button save = new Button("SAVE");
     MenuItem acqB = new MenuItem("Acquisto Bevande");
     MenuItem utilizzo = new MenuItem("Utilizzo");
     MenuItem monete = new MenuItem("Monete");
@@ -26,9 +23,8 @@ public class Toolbar1 extends ToolBar {
     public Toolbar1(Stage stage) {
         MenuButton stats = new MenuButton("Stats",null,monete, acqB,utilizzo,itams);
 
+        //Associazione di immagini ai bottoni
         ImageView immHome = new ImageView(loadImage("src/ServerImages/home.png"));
-     //   ImageView immSx = new ImageView(loadImage("src/ServerImages/FrecciaSx.png"));
-     //   ImageView immDx = new ImageView(loadImage("src/ServerImages/FrecciaDx.png"));
         ImageView immStats = new ImageView(loadImage("src/ServerImages/stats.jpg"));
         ImageView immMenu = new ImageView(loadImage("src/ServerImages/menu.png"));
 
@@ -37,36 +33,30 @@ public class Toolbar1 extends ToolBar {
         immStats.setFitWidth(20);
         immMenu.setFitWidth(20);
         immMenu.setFitHeight(20);
+        immHome.setFitHeight(20);
+        immHome.setFitWidth(20);
 
         menu.setGraphic(immMenu);
         stats.setGraphic(immStats);
-
-        immHome.setFitHeight(20);
-        immHome.setFitWidth(20);
-        immStats.setFitHeight(20);
-        immStats.setFitWidth(20);
-//        immDx.setFitWidth(20);
-//        immDx.setFitHeight(20);
-//        immSx.setFitWidth(20);
-//        immSx.setFitHeight(20);
-
         home.setGraphic(immHome);
 
-       // sx.setGraphic(immSx);
-       // dx.setGraphic(immDx);
         getItems().addAll(home,stats,menu);
 
         Action(stage);
     }
-
+    /**Funzione che inizializza le azione che i bottoni eseguiranno
+    **/
     public void Action(Stage primaryStage){
         home.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                //Apertura di una nuova schermata di home
                 HomePage hp = new HomePage();
                 hp.start(primaryStage);
             }
         });
+
+        //Apertura delle tab delle statisctiche ognuna caratterizzata dall indice i
         monete.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -91,6 +81,8 @@ public class Toolbar1 extends ToolBar {
                 new StatsPage(primaryStage).OpenTab(3);
             }
         });
+
+        //Apertura della tabella del menu
         menu.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
