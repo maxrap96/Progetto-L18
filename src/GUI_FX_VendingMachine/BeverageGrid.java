@@ -10,7 +10,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
@@ -49,13 +48,14 @@ public class BeverageGrid extends GridPane {
                     BeverageEventHandler beverageEventHandler = new BeverageEventHandler (distributore, display,
                             number + 1, resetDisplay);
                     button.setOnAction(beverageEventHandler);
-                    button.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
+                    button.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
                         DropShadow shadow = new DropShadow();
                         @Override
                         public void handle(MouseEvent event) {
-                            shadow.setColor(Color.BLUE);
+                            shadow.setColor(Color.WHITE);
+                            shadow.setWidth(70);
+                            shadow.setHeight(70);
                             button.setEffect(shadow);
-
                         }
                     });
                     button.addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() {
@@ -79,7 +79,6 @@ public class BeverageGrid extends GridPane {
     private void setButton(Button buttonToSet, int width, int height){
         buttonToSet.setStyle(
                 "-fx-background-radius: 1em;" +
-                        "fx-base: cornsilk;" +
                 "-fx-background-color: radial-gradient(focus-angle 100deg, focus-distance 35%, radius 45%, reflect, " +
                         "cornsilk 30%, peru 90%);" +
                 "-fx-focus-color: blue;"
