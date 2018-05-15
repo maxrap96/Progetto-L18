@@ -4,15 +4,11 @@ import java.io.*;
 import java.net.ConnectException;
 import java.net.Socket;
 
-public class Client extends Thread{
+public class Client extends Thread implements FileClient{
 
     static String stringFromServer; // Stringa in ingresso dal Server
     static PrintWriter outToServer; // Dati diretti al Server
     static BufferedReader inFromServer; // Dati in entrata
-    static File fileMenuClient =
-            new File("src/File_Testo/menu.txt");
-    static File fileStatsClient =
-            new File("src/File_Testo/stats.txt");
     private boolean fileReceived = false;
 
 
@@ -31,13 +27,13 @@ public class Client extends Thread{
         try {
             if(connectionPreRequisite("localhost",2222)) {   // Da modificare se voglio
                 // cambiare le impostazioni di connessione
-                emptyFile(fileMenuClient);
-                sendFile(outToServer, fileStatsClient);
+                emptyFile(fileMenu);
+                sendFile(outToServer, fileStats);
 
                 outToServer.println("SEND");
 
                 while ((stringFromServer = inFromServer.readLine()) != null) { // Ricevo dal Server
-                    writeFileReceived(stringFromServer, fileMenuClient);
+                    writeFileReceived(stringFromServer, fileMenu);
                 }
             }
         } catch (IOException e) {
@@ -98,6 +94,7 @@ public class Client extends Thread{
         }catch (IOException e){
             e.printStackTrace();
         }
+
     }
 
     /**
@@ -123,5 +120,9 @@ public class Client extends Thread{
 
     public boolean isFileReceived() {
         return fileReceived;
+    }
+
+    public void FileReloaded(){
+        fileReceived = false; //significa che io in questo momento ho letto il file.
     }
 }
