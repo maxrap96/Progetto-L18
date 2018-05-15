@@ -1,4 +1,4 @@
-package GUI_FX_Server;
+import GUI_FX_Server.ServerConnection;
 
 public class TestServer {
 

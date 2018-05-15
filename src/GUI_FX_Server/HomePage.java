@@ -145,6 +145,7 @@ public class HomePage extends Application {
     }
 
     public static void main(String[] args) {
+        new ServerConnection(80).start();
         Application.launch(args);
     }
 }

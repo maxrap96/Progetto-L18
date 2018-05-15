@@ -10,7 +10,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.net.Socket;
 
-public class ClientVendMach implements Runnable, FileClient, StringCommandList {
+public class ClientVendMach extends Thread implements FileClient, StringCommandList {
 
     private String ip;
     private int serverPort;

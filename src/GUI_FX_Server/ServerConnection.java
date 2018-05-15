@@ -5,7 +5,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 
-public class ServerConnection implements Runnable {
+public class ServerConnection extends Thread {
 
     private ArrayList<String> stats;
     private int portNumber;
