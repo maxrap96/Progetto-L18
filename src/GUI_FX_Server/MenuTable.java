@@ -30,6 +30,7 @@ public class MenuTable extends TableView {
 
     File fileMenu = fileMenuServer;
     menu[] menuV;
+    VBox vBox = new VBox();
 
     public MenuTable(Stage stage) {
 
@@ -78,37 +79,32 @@ public class MenuTable extends TableView {
         GridPane mainPanel = new GridPane();
 
         //Creazione toolbar e aggiunta tasto Save ad essa
-        Toolbar1 toolbar1 = new Toolbar1(stage);
         Button save = new Button("Save");
-        toolbar1.getItems().add(save);
 
-
-        VBox vBox = new VBox();
-        vBox.getChildren().addAll(toolbar1, tableView);
-        vBox.setFillWidth(true);
-        VBox.setVgrow(toolbar1, Priority.ALWAYS);
+        vBox.getChildren().addAll(tableView);
+        vBox.setFillWidth(true);;
         VBox.setVgrow(tableView, Priority.ALWAYS);
 
-        stage.setTitle("MenuTable");
 
-        Scene scene;
-
-        if (stage.isMaximized()) {
-            scene = new Scene(root, Color.WHITESMOKE);
-        } else {
-            scene = new Scene(root, 800, 550, Color.WHITESMOKE);
-        }
-
-        mainPanel.addRow(0,vBox);
-
-        vBox.prefHeightProperty().bind(scene.heightProperty());
-        vBox.prefWidthProperty().bind(scene.widthProperty());
-
-        mainPanel.prefHeightProperty().bind(scene.heightProperty());
-        mainPanel.prefWidthProperty().bind(scene.widthProperty());
-        root.getChildren().addAll(mainPanel);
-        stage.setScene(scene);
-        stage.show();
+//        Scene scene;
+//
+//        if (stage.isMaximized()) {
+//            scene = new Scene(root, Color.WHITESMOKE);
+//        } else {
+//            scene = new Scene(root, 800, 550, Color.WHITESMOKE);
+//        }
+//
+//        mainPanel.addRow(0,vBox);
+//
+        vBox.prefHeightProperty().bind(stage.heightProperty());
+        vBox.prefWidthProperty().bind(stage.widthProperty());
+//
+//        mainPanel.prefHeightProperty().bind(scene.heightProperty());
+//        mainPanel.prefWidthProperty().bind(scene.widthProperty());
+//        root.getChildren().addAll(mainPanel);
+//        stage.setScene(scene);
+//        stage.show();
+//
 
     }
 
@@ -267,5 +263,10 @@ public class MenuTable extends TableView {
 
 
     }
+
+    public VBox getvBox() {
+        return vBox;
+    }
 }
+
 

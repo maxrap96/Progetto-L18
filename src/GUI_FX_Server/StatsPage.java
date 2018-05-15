@@ -15,19 +15,10 @@ public class StatsPage extends GridPane {
     Tab tab2 = new Tab();
     Tab tab3 = new Tab();
     Tab tab4 = new Tab();
+    GridPane mainPanel = new GridPane();
 
     public StatsPage(Stage stage) {
         Group root = new Group();
-
-        GridPane mainPanel = new GridPane();
-
-        // Impostazione barra degli strumenti e barra menu
-        Toolbar1 toolbar1 = new Toolbar1(stage);
-        VBox vBox = new VBox();
-        vBox.getChildren().addAll(toolbar1);
-        vBox.setFillWidth(true);
-
-        stage.setTitle("Statistics");
 
         Scene scene;
 
@@ -63,17 +54,17 @@ public class StatsPage extends GridPane {
 
         // Utilizzo di tutto lo spazio disponibile da parte del pannello
 
-        borderPane.prefHeightProperty().bind(scene.heightProperty());
-        borderPane.prefWidthProperty().bind(scene.widthProperty());
+        borderPane.prefHeightProperty().bind(stage.heightProperty());
+        borderPane.prefWidthProperty().bind(stage.widthProperty());
         borderPane.setCenter(tabPane);
 
-        mainPanel.addRow(0, vBox);
-        mainPanel.addRow(1, borderPane);
-        mainPanel.prefHeightProperty().bind(scene.heightProperty());
-        mainPanel.prefWidthProperty().bind(scene.widthProperty());
-        root.getChildren().addAll(mainPanel);
-        stage.setScene(scene);
-        stage.show();
+        mainPanel.addRow(0, borderPane);
+       mainPanel.prefHeightProperty().bind(stage.heightProperty());
+        mainPanel.prefWidthProperty().bind(stage.widthProperty());
+//        root.getChildren().addAll(mainPanel);
+//        stage.setScene(scene);
+//        stage.show();
+
     }
 
     /**
@@ -85,4 +76,9 @@ public class StatsPage extends GridPane {
         selectionModel.select(i);
         selectionModel.clearSelection();
     }
+
+    public GridPane getMainPanel() {
+        return mainPanel;
+    }
+
 }

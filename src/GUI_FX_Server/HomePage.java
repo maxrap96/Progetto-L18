@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
@@ -18,6 +19,9 @@ import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+import javax.swing.plaf.multi.MultiRootPaneUI;
+import java.awt.*;
+
 public class HomePage extends Application {
 
     @Override
@@ -26,7 +30,10 @@ public class HomePage extends Application {
         // Definizione dello stage principale e della barra del menu
         primaryStage.setTitle("Home");
 
-        Toolbar1 toolbar1 = new Toolbar1(primaryStage);
+        Toolbar1 toolbar1 = new Toolbar1();
+
+        MenuTable menuTable = new MenuTable(primaryStage);
+        StatsPage statsPage = new StatsPage(primaryStage);
 
         // Creazione scritta correlata da un logo
         Label label = new Label("Welcome to project Nobildonno Home Page");
@@ -80,21 +87,6 @@ public class HomePage extends Application {
 
         buttonBar.getButtons().addAll(menuButton, statsButton);
 
-        // Gestione pressione del bottone "Statistiche"
-        statsButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                new StatsPage(primaryStage);
-            }
-        });
-
-        menuButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                new MenuTable(primaryStage);
-            }
-        });
-
         // Aggiunta elementi nel Pane
         AnchorPane anchor = new AnchorPane(vBox, label, buttonBar, hyperlink);
         anchor.setStyle("-fx-background-color: lavender");
@@ -113,15 +105,37 @@ public class HomePage extends Application {
 
         anchor.setLeftAnchor(hyperlink, 0.0);
         anchor.setBottomAnchor(hyperlink, 0.0);
-        Scene scene;
-        // Impostazioni scena e stage principale
-        if(primaryStage.isMaximized()){
-            //Settaggio nuova scena con dimensioni scena precedente in full screen
-            scene = new Scene(anchor,primaryStage.getScene().getWidth(),primaryStage.getScene().getHeight());
-        }
-        else{
-            scene = new Scene(anchor, 800,550);
-        }
+        StackPane stackPane = new StackPane();
+        stackPane.getChildren().addAll(anchor,menuTable.getvBox(),statsPage.getMainPanel());
+        menuTable.getvBox().setVisible(false);
+        anchor.setVisible(true);
+        statsPage.getMainPanel().setVisible(false);
+        toolbar1.Action(anchor,menuTable,statsPage);
+
+        // Gestione pressione del bottone "Statistiche"
+        statsButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event){
+                menuTable.getvBox().setVisible(false);
+                anchor.setVisible(false);
+                statsPage.getMainPanel().setVisible(true);
+            }
+        });
+
+        menuButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                menuTable.getvBox().setVisible(true);
+                anchor.setVisible(false);
+                statsPage.getMainPanel().setVisible(false);
+            }
+        });
+
+        VBox vBox1 = new VBox(toolbar1,stackPane);
+        VBox.setVgrow(toolbar1,Priority.ALWAYS);
+        VBox.setVgrow(stackPane,Priority.ALWAYS);
+        Scene scene = new Scene(vBox1, 800, 550);
+
         primaryStage.setScene(scene);
         primaryStage.sizeToScene();
         //primaryStage.setResizable(false);

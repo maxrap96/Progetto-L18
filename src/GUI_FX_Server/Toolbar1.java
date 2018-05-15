@@ -5,6 +5,7 @@ import javafx.event.EventHandler;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 
@@ -20,7 +21,7 @@ public class Toolbar1 extends ToolBar {
     Button menu = new Button("Menu");
 
 
-    public Toolbar1(Stage stage) {
+    public Toolbar1() {
         MenuButton stats = new MenuButton("Stats",null,monete, acqB,utilizzo,itams);
 
         //Associazione di immagini ai bottoni
@@ -42,17 +43,17 @@ public class Toolbar1 extends ToolBar {
 
         getItems().addAll(home,stats,menu);
 
-        Action(stage);
     }
     /**Funzione che inizializza le azione che i bottoni eseguiranno
     **/
-    public void Action(Stage primaryStage){
+    public void Action(AnchorPane anchor,MenuTable menuTable,StatsPage statsPage){
         home.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 //Apertura di una nuova schermata di home
-                HomePage hp = new HomePage();
-                hp.start(primaryStage);
+                menuTable.getvBox().setVisible(false);
+                anchor.setVisible(true);
+                statsPage.getMainPanel().setVisible(false);
             }
         });
 
@@ -60,33 +61,47 @@ public class Toolbar1 extends ToolBar {
         monete.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                new StatsPage(primaryStage).OpenTab(0);
+                menuTable.getvBox().setVisible(false);
+                anchor.setVisible(false);
+                statsPage.getMainPanel().setVisible(true);
+                statsPage.OpenTab(0);
             }
         });
         acqB.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                new StatsPage(primaryStage).OpenTab(1);
+                menuTable.getvBox().setVisible(false);
+                anchor.setVisible(false);
+                statsPage.getMainPanel().setVisible(true);
+                statsPage.OpenTab(1);
             }
         });
         utilizzo.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                new StatsPage(primaryStage).OpenTab(2);
+                menuTable.getvBox().setVisible(false);
+                anchor.setVisible(false);
+                statsPage.getMainPanel().setVisible(true);
+                statsPage.OpenTab(2);
             }
         });
         itams.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                new StatsPage(primaryStage).OpenTab(3);
+                menuTable.getvBox().setVisible(false);
+                anchor.setVisible(false);
+                statsPage.getMainPanel().setVisible(true);
+                statsPage.OpenTab(3);
             }
         });
 
         //Apertura della tabella del menu
         menu.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent event) {
-                new MenuTable(primaryStage);
+            public void handle(ActionEvent event){
+                menuTable.getvBox().setVisible(true);
+                anchor.setVisible(false);
+                statsPage.getMainPanel().setVisible(false);
             }
         });
     }
