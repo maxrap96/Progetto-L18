@@ -108,7 +108,7 @@ public class VendingMachine extends Application {
         primaryStage.show();
 
         // avvio il client e thread annesso per il controllo della ricezione dei files
-        clientVendMach.run();
+        //clientVendMach.run();
         updateChecker = new UpdateChecker(distributore, beverageGrid, display, resetDisplay, clientVendMach);
 
 

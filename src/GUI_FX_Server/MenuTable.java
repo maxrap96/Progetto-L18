@@ -23,7 +23,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-import static Server.FileServer.fileMenuServer;
+import static GUI_FX_Server.FileServer.fileMenuServer;
+
 
 public class MenuTable extends TableView {
 
