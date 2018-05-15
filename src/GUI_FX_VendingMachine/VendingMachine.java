@@ -22,8 +22,11 @@ import java.io.FileInputStream;
 public class VendingMachine extends Application {
      private Distributore distributore = new Distributore();
      private ResetDisplay resetDisplay;
-     private BeverageGrid beveragePane;
+     private BeverageGrid beverageGrid;
      private Display display;
+
+     private ClientVendMach clientVendMach = new ClientVendMach("localhost", 80);
+     private UpdateChecker updateChecker;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -90,9 +93,9 @@ public class VendingMachine extends Application {
         purchasePane.setCenter(key);
 
         // Pannello delle bevande
-        beveragePane = new BeverageGrid(distributore, display, resetDisplay);
-        beveragePane.setBackground(new Background(changeNameWhenFinalImage));
-        root.setLeft(beveragePane);
+        beverageGrid = new BeverageGrid(distributore, display, resetDisplay);
+        beverageGrid.setBackground(new Background(changeNameWhenFinalImage));
+        root.setLeft(beverageGrid);
 
         // Pannello delle monete
         GridPane moneyPane = new MoneyGrid(distributore, display, resetDisplay);
@@ -103,6 +106,11 @@ public class VendingMachine extends Application {
         primaryStage.setMaximized(true);
         primaryStage.setResizable(false);
         primaryStage.show();
+
+        // avvio il client e thread annesso per il controllo della ricezione dei files
+        clientVendMach.run();
+        updateChecker = new UpdateChecker(distributore, beverageGrid, display, resetDisplay, clientVendMach);
+
 
         // Termina l'applicazione cliccando la x rossa
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {

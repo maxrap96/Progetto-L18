@@ -1,4 +1,4 @@
-package GUI_FX_Server;
+package GUI_FX_VendingMachine;
 
 public class TestClient {
     public static void main(String[] args) {

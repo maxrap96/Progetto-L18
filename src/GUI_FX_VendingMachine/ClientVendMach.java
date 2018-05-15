@@ -1,6 +1,6 @@
-package GUI_FX_Server;
+package GUI_FX_VendingMachine;
 
-import GUI_FX_VendingMachine.FileClient;
+import GUI_FX_Server.StringCommandList;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,6 +17,7 @@ public class ClientVendMach implements Runnable, FileClient, StringCommandList {
     private PrintWriter channelOutToServer;
     private BufferedReader inFromServer;
     private boolean state;
+    private boolean fileReceived = false;
 
 
     public ClientVendMach(String ipServer, int port) {
@@ -68,7 +69,7 @@ public class ClientVendMach implements Runnable, FileClient, StringCommandList {
      * @param file file da inviare.
      * @param whereToWrite mezzo attraverso cui invio il file.
      */
-    private static void sendFile(PrintWriter whereToWrite, File file)throws IOException{
+    private void sendFile(PrintWriter whereToWrite, File file)throws IOException{
         String stringFromFile;
 
         // Buffer per la lettura da File
@@ -82,6 +83,7 @@ public class ClientVendMach implements Runnable, FileClient, StringCommandList {
 
         whereToWrite.println(END_SENDING);
         inFromFile.close();
+        fileReceived = true;
     }
 
     /**
@@ -129,4 +131,13 @@ public class ClientVendMach implements Runnable, FileClient, StringCommandList {
             return false;
         }
     }
+
+    public boolean isFileReceived(){
+        return fileReceived;
+    }
+
+    public void fileOpened(){
+        fileReceived = false;
+    }
+
 }
