@@ -18,6 +18,7 @@ import javafx.stage.WindowEvent;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.FileInputStream;
+import java.io.IOException;
 
 public class VendingMachine extends Application {
      private Distributore distributore = new Distributore();
@@ -29,87 +30,92 @@ public class VendingMachine extends Application {
      private UpdateChecker updateChecker;
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        double width = screenSize.getWidth() / 2;
-        double height = screenSize.getHeight() / 2;
+    public void start(Stage primaryStage)  {
+        try {
+            Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+            double width = screenSize.getWidth() / 2;
+            double height = screenSize.getHeight() / 2;
 
-        primaryStage.setTitle("Hot Drinks Vending Machine");
+            primaryStage.setTitle("Hot Drinks Vending Machine");
 
-        // Creazione del pannello radice a cui attaccare tutti gli altri
-        BorderPane root = new BorderPane();
+            // Creazione del pannello radice a cui attaccare tutti gli altri
+            BorderPane root = new BorderPane();
 
-        // Immagine per lo sfondo
-        FileInputStream input = new FileInputStream("src/GUI_FX_VendingMachine/B.jpg");
-        Image image = new Image(input);
-        input.close();
+            // Immagine per lo sfondo
+            FileInputStream input = new FileInputStream("src/GUI_FX_VendingMachine/B.jpg");
+            Image image = new Image(input);
+            input.close();
 
-        // Creazione delle dimensioni per lo sfondo
-        BackgroundSize backgroundSize = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO,
-                false, false, false, true);
-        // Creazione dell'immagine di sfondo
-        BackgroundImage changeNameWhenFinalImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT,
-                BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
-        // Impostazione dello sfondo
-        root.setStyle(
-                "-fx-background-color: black;"
-        );
+            // Creazione delle dimensioni per lo sfondo
+            BackgroundSize backgroundSize = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO,
+                    false, false, false, true);
+            // Creazione dell'immagine di sfondo
+            BackgroundImage changeNameWhenFinalImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT,
+                    BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
+            // Impostazione dello sfondo
+            root.setStyle(
+                    "-fx-background-color: black;"
+            );
 
-        // Creazione pannello per il display, le monete e altri pulsanti
-        BorderPane purchasePane = new BorderPane();
-        purchasePane.setPadding(new Insets(11, 11, 11, 11));
-        purchasePane.setStyle(
-                "-fx-background-color: dimGray;"
-        );
-        root.setRight(purchasePane);
+            // Creazione pannello per il display, le monete e altri pulsanti
+            BorderPane purchasePane = new BorderPane();
+            purchasePane.setPadding(new Insets(11, 11, 11, 11));
+            purchasePane.setStyle(
+                    "-fx-background-color: dimGray;"
+            );
+            root.setRight(purchasePane);
 
-        // Display del distributore
-        display = new Display();
-        purchasePane.setTop(display);
-        resetDisplay = new ResetDisplay(display, distributore);
-        resetDisplay.setDots();
+            // Display del distributore
+            display = new Display();
+            purchasePane.setTop(display);
+            resetDisplay = new ResetDisplay(display, distributore);
+            resetDisplay.setDots();
 
-        // Creazione chiavetta
-        Button key = new Button("Chiavetta");
-        key.setFont(Font.font("California FB", 20));
-        key.setPrefSize(16 * screenSize.width / 100, screenSize.height / 9);
-        key.setStyle(
-                "-fx-background-radius: 1em;" +
-                "-fx-base: lightGray;" +
-                "-fx-focus-color: transparent;" +
-                "-fx-faint-focus-color: transparent;"
-        );
-        key.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                distributore.setconnectionChiavetta();
-                display.setCreditRow(String.valueOf(distributore.getCredit()));
-                key.setStyle(
-                        "-fx-background-radius: 1em;" +
-                        "-fx-focus-color: blue;"
-                );
-            }
-        });
-        purchasePane.setCenter(key);
+            // Creazione chiavetta
+            Button key = new Button("Chiavetta");
+            key.setFont(Font.font("California FB", 20));
+            key.setPrefSize(16 * screenSize.width / 100, screenSize.height / 9);
+            key.setStyle(
+                    "-fx-background-radius: 1em;" +
+                            "-fx-base: lightGray;" +
+                            "-fx-focus-color: transparent;" +
+                            "-fx-faint-focus-color: transparent;"
+            );
+            key.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    distributore.setconnectionChiavetta();
+                    display.setCreditRow(String.valueOf(distributore.getCredit()));
+                    key.setStyle(
+                            "-fx-background-radius: 1em;" +
+                                    "-fx-focus-color: blue;"
+                    );
+                }
+            });
+            purchasePane.setCenter(key);
 
-        // Pannello delle bevande
-        beverageGrid = new BeverageGrid(distributore, display, resetDisplay);
-        beverageGrid.setBackground(new Background(changeNameWhenFinalImage));
-        root.setLeft(beverageGrid);
+            // Pannello delle bevande
+            beverageGrid = new BeverageGrid(distributore, display, resetDisplay);
+            beverageGrid.setBackground(new Background(changeNameWhenFinalImage));
+            root.setLeft(beverageGrid);
 
-        // Pannello delle monete
-        GridPane moneyPane = new MoneyGrid(distributore, display, resetDisplay);
-        purchasePane.setBottom(moneyPane);
+            // Pannello delle monete
+            GridPane moneyPane = new MoneyGrid(distributore, display, resetDisplay);
+            purchasePane.setBottom(moneyPane);
 
-        Scene scene = new Scene(root, width, height, Color.LIGHTGRAY);
-        primaryStage.setScene(scene);
-        primaryStage.setMaximized(true);
-        primaryStage.setResizable(false);
-        primaryStage.show();
+            Scene scene = new Scene(root, width, height, Color.LIGHTGRAY);
+            primaryStage.setScene(scene);
+            primaryStage.setMaximized(true);
+            primaryStage.setResizable(false);
+            primaryStage.show();
 
-        // avvio il client e thread annesso per il controllo della ricezione dei files
-        //clientVendMach.run();
-        updateChecker = new UpdateChecker(distributore, beverageGrid, display, resetDisplay, clientVendMach);
+            // avvio il client e thread annesso per il controllo della ricezione dei files
+            //clientVendMach.run();
+            updateChecker = new UpdateChecker(distributore, beverageGrid, display, resetDisplay, clientVendMach);
+        } catch (IOException e){
+            e.printStackTrace();
+            System.out.println("Error caused by " + e);
+        }
 
 
         // Termina l'applicazione cliccando la x rossa
