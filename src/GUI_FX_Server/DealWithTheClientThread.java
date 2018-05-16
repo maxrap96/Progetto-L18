@@ -18,12 +18,13 @@ public class DealWithTheClientThread implements Runnable, FileServer, StringComm
     private String IdVendingMachine;
     private boolean state;
 
-    public DealWithTheClientThread(Socket clientSocket, ArrayList<String> stats) {
+    public DealWithTheClientThread(Socket clientSocket, ArrayList<String> stats, ArrayList<String> menu,
+                                   ArrayList<String> coins, ArrayList<String> data) {
         this.clientSocket = clientSocket;
         this.stats = stats;
-        this.menu = new ArrayList<>();
-        this.coins = new ArrayList<>();
-        this.data = new ArrayList<>();
+        this.menu = menu;
+        this.coins = coins;
+        this.data = data;
         this.state = STATE_WAITING;
     }
 

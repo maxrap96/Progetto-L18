@@ -21,8 +21,14 @@ import javafx.stage.Stage;
 
 import javax.swing.plaf.multi.MultiRootPaneUI;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class HomePage extends Application {
+
+    private static ArrayList<String> stats = new ArrayList<>();
+    private static ArrayList<String> menu =  new ArrayList<>();
+    private static ArrayList<String> coins =  new ArrayList<>();
+    private static ArrayList<String> data =  new ArrayList<>();
 
     @Override
     public void start(Stage primaryStage) {
@@ -145,7 +151,7 @@ public class HomePage extends Application {
     }
 
     public static void main(String[] args) {
-        new ServerConnection(80).start();
+        new ServerConnection(80, stats, menu, coins, data).start();
         Application.launch(args);
     }
 }
