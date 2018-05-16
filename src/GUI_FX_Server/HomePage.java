@@ -128,12 +128,16 @@ public class HomePage extends Application {
             }
         });
 
-        menuButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                menuTable.getvBox().setVisible(true);
-                anchor.setVisible(false);
-                statsPage.getMainPanel().setVisible(false);
+        menuButton.setOnAction( event -> {
+
+            menuTable.getvBox().setVisible(true);
+            anchor.setVisible(false);
+            statsPage.getMainPanel().setVisible(false);
+            // Serve solo per vedere che venga caricato il valore corretto
+            if (!menu.isEmpty()){
+                for (String string : menu){
+                    System.out.println(string);
+                }
             }
         });
 
