@@ -3,80 +3,65 @@ package GUI_FX_Server;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.css.Style;
-import javafx.geometry.Pos;
-import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBar;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-
-import static GUI_FX_Server.FileServer.fileMenuServer;
+import java.util.ArrayList;
 
 
 public class MenuTable extends TableView {
 
-    File fileMenu = fileMenuServer;
-    menu[] menuV;
+    Tabella[] tabella;
     VBox vBox = new VBox();
+    private ArrayList<String> menuDati;
 
-    public MenuTable(Stage stage) {
+    public MenuTable(Stage stage, ArrayList<String> menuDati) {
+        this.menuDati = menuDati;
+        tabella = new Tabella[menuDati.size()];
+        TableView<Tabella> tableView = new TableView<>();
 
-        menuV = new menu[initRows()];
-        this.setTextField();
-        TableView<menu> tableView = new TableView<>();
+        for(int i = 0; i < menuDati.size();i++ ){
+            if(!menuDati.get(i).startsWith("*")) {
+                tabella[i] = new Tabella(menuDati.get(i));
+            }
+        }
 
-
-        ObservableList<menu> data =
-                FXCollections.observableArrayList();
-
-        for(int i = 0; i < menuV.length; i++) {
-            data.addAll(menuV[i]);
+        ObservableList<Tabella> data = FXCollections.observableArrayList();
+        for(int i = 0; i < tabella.length; i++) {
+            data.addAll(tabella[i]);
         }
 
         //Aggiungo ad ogni colonna i valori contenuti nella classe menu
         TableColumn id = new TableColumn("ID");
-        id.setCellValueFactory(new PropertyValueFactory<menu, String>("id"));
+        id.setCellValueFactory(new PropertyValueFactory<Tabella, String>("id"));
         TableColumn tipo = new TableColumn("Tipo");
-        tipo.setCellValueFactory(new PropertyValueFactory<menu, String>("tipo"));
+        tipo.setCellValueFactory(new PropertyValueFactory<Tabella, String>("tipo"));
         TableColumn nome = new TableColumn("Nome");
-        nome.setCellValueFactory(new PropertyValueFactory<menu, String>("nome"));
+        nome.setCellValueFactory(new PropertyValueFactory<Tabella, String>("nome"));
         TableColumn costo = new TableColumn("Costo");
-        costo.setCellValueFactory(new PropertyValueFactory<menu, String>("costo"));
+        costo.setCellValueFactory(new PropertyValueFactory<Tabella, String>("costo"));
         TableColumn Q_max = new TableColumn("Q_max");
-        Q_max.setCellValueFactory(new PropertyValueFactory<menu, String>("q_max"));
+        Q_max.setCellValueFactory(new PropertyValueFactory<Tabella, String>("q_max"));
         TableColumn temp = new TableColumn("Temp");
-        temp.setCellValueFactory(new PropertyValueFactory<menu, String>("temp"));
+        temp.setCellValueFactory(new PropertyValueFactory<Tabella, String>("temp"));
         TableColumn dose = new TableColumn("Dose");
-        dose.setCellValueFactory(new PropertyValueFactory<menu, String>("dose"));
+        dose.setCellValueFactory(new PropertyValueFactory<Tabella, String>("dose"));
         TableColumn latte = new TableColumn("Latte");
-        latte.setCellValueFactory(new PropertyValueFactory<menu, String>("latte"));
+        latte.setCellValueFactory(new PropertyValueFactory<Tabella, String>("latte"));
         TableColumn acqua = new TableColumn("Acqua");
-        acqua.setCellValueFactory(new PropertyValueFactory<menu, String>("acqua"));
+        acqua.setCellValueFactory(new PropertyValueFactory<Tabella, String>("acqua"));
         TableColumn vodka = new TableColumn("vodka");
-        vodka.setCellValueFactory(new PropertyValueFactory<menu, String>("vodka"));
+        vodka.setCellValueFactory(new PropertyValueFactory<Tabella, String>("vodka"));
 
         tableView.setItems(data);
         tableView.setEditable(false);
         tableView.setStyle("-fx-font: 16px Serif");
 
-
         tableView.getColumns().addAll(id, tipo, nome, costo, Q_max, temp, dose, latte, acqua, vodka);
-
-        Group root = new Group();
-        GridPane mainPanel = new GridPane();
 
         //Creazione toolbar e aggiunta tasto Save ad essa
         Button save = new Button("Save");
@@ -85,76 +70,14 @@ public class MenuTable extends TableView {
         vBox.setFillWidth(true);;
         VBox.setVgrow(tableView, Priority.ALWAYS);
 
-
-//        Scene scene;
-//
-//        if (stage.isMaximized()) {
-//            scene = new Scene(root, Color.WHITESMOKE);
-//        } else {
-//            scene = new Scene(root, 800, 550, Color.WHITESMOKE);
-//        }
-//
-//        mainPanel.addRow(0,vBox);
-//
         vBox.prefHeightProperty().bind(stage.heightProperty());
         vBox.prefWidthProperty().bind(stage.widthProperty());
-//
-//        mainPanel.prefHeightProperty().bind(scene.heightProperty());
-//        mainPanel.prefWidthProperty().bind(scene.widthProperty());
-//        root.getChildren().addAll(mainPanel);
-//        stage.setScene(scene);
-//        stage.show();
-//
-
-    }
-
-
-
-    /**
-     * Funzione che scrive il testo nei textField.
-     */
-    private void setTextField(){
-        try {
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(fileMenu.getPath()));
-            String tmp;
-            int index = 0;
-            while((tmp = bufferedReader.readLine()) != null){
-                if (!tmp.contains("*")){
-                    menuV[index] = new menu(tmp.split("\t"));
-                    index++;
-                }
-            }
-            bufferedReader.close();
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-    }
-
-    /**
-    * Funzione che calcola le righe presenti nell menu
-     */
-    private int initRows(){
-        try{
-            BufferedReader bufferedReader = new BufferedReader( new FileReader(fileMenuServer.getPath()));
-            String tmp;
-            int rows = 0; // Parto da 2, una riga per ID... e una vuota nel caso di aggiunte future.
-            while ((tmp = bufferedReader.readLine()) != null){
-                if (!tmp.contains("*")){
-                    rows++;
-                }
-            }
-            bufferedReader.close();
-            return rows;
-        } catch (IOException e){
-            e.printStackTrace();
-        }
-        return 0;
     }
 
     /**
      * Classe menu utilizzata per l'aggiunta dei dati nella tabella
      */
-    public static class menu {
+    public static class Tabella {
 
         private  SimpleStringProperty id;
         private  SimpleStringProperty tipo;
@@ -167,17 +90,18 @@ public class MenuTable extends TableView {
         private  SimpleStringProperty  acqua;
         private  SimpleStringProperty vodka;
 
-        private menu(String[] ID) {
-            this.id = new SimpleStringProperty(ID[0]);
-            this.tipo = new SimpleStringProperty(ID[1]);
-            this.nome = new SimpleStringProperty(ID[2]);
-            this.costo = new SimpleStringProperty(ID[3]);
-            this.q_max = new SimpleStringProperty(ID[4]);
-            this.temp = new SimpleStringProperty(ID[5]);
-            this.dose = new SimpleStringProperty(ID[6]);
-            this.latte = new SimpleStringProperty(ID[7]);
-            this.acqua = new SimpleStringProperty(ID[8]);
-            this.vodka = new SimpleStringProperty(ID[9]);
+        private Tabella(String menuDati) {
+            String[] dati = menuDati.split("\t");
+            this.id = new SimpleStringProperty(dati[0]);
+            this.tipo = new SimpleStringProperty(dati[1]);
+            this.nome = new SimpleStringProperty(dati[2]);
+            this.costo = new SimpleStringProperty(dati[3]);
+            this.q_max = new SimpleStringProperty(dati[4]);
+            this.temp = new SimpleStringProperty(dati[5]);
+            this.dose = new SimpleStringProperty(dati[6]);
+            this.latte = new SimpleStringProperty(dati[7]);
+            this.acqua = new SimpleStringProperty(dati[8]);
+            this.vodka = new SimpleStringProperty(dati[9]);
         }
 
 

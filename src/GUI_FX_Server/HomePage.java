@@ -35,10 +35,11 @@ public class HomePage extends Application {
 
         // Definizione dello stage principale e della barra del menu
         primaryStage.setTitle("Home");
-
+        menu.add("*");
+        menu.add("01\tCAPSULA\tCioccolata\t0.50\t30\t90\t1\t0\t0.200\t0");
+        menu.add("02\tCAPSULA\tLatte Caldo\t0.55\t25\t80\t0.30\t0\t0.200\t0");
         Toolbar1 toolbar1 = new Toolbar1();
-
-        MenuTable menuTable = new MenuTable(primaryStage);
+        MenuTable menuTable = new MenuTable(primaryStage, menu);
         StatsPage statsPage = new StatsPage(primaryStage);
 
         // Creazione scritta correlata da un logo
