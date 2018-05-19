@@ -6,24 +6,25 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.io.File;
-import java.io.FileReader;
 import java.net.Socket;
+import java.util.HashMap;
 
-public class ClientVendMach extends Thread implements FileClient, StringCommandList {
+public class ClientVendMach extends Thread implements StringCommandList {
 
     private String ip;
     private int serverPort;
     private PrintWriter channelOutToServer;
     private BufferedReader inFromServer;
-    private boolean state;
     private boolean fileReceived = false;
+    private HashMap<String, Command> commandHashMap;
+    private Receiver receiver;
 
 
     public ClientVendMach(String ipServer, int port) {
-        ip = ipServer;
-        serverPort = port;
-        state = STATE_WAITING;
+        this.ip = ipServer;
+        this.serverPort = port;
+        this.commandHashMap = new HashMap<>();
+        this.receiver = new Receiver();
     }
 
     @Override
@@ -41,6 +42,9 @@ public class ClientVendMach extends Thread implements FileClient, StringCommandL
                     new BufferedReader(
                             new InputStreamReader(clientSocket.getInputStream()));
 
+            // Aggiungo i comandi da eseguire
+            this.addCommands();
+
             String tmp;
             channelOutToServer.println(READY);
             while ((tmp = inFromServer.readLine()) != null) {
@@ -48,10 +52,8 @@ public class ClientVendMach extends Thread implements FileClient, StringCommandL
                 if (tmp.equals(READY)){
                     channelOutToServer.println(tmp);
                 }
-                if (state && isAValidCommand(tmp)){
-                    state = !STATE_WAITING;
+                if (isAValidCommand(tmp)){
                     commandReceived(tmp);
-                    state = STATE_WAITING;
                 }
             }
 
@@ -64,58 +66,13 @@ public class ClientVendMach extends Thread implements FileClient, StringCommandL
     }
 
     /**
-     * Funzione che invia un file.
-     *
-     * @param file file da inviare.
-     * @param whereToWrite mezzo attraverso cui invio il file.
-     */
-    private void sendFile(PrintWriter whereToWrite, File file)throws IOException{
-        String stringFromFile;
-
-        // Buffer per la lettura da File
-        BufferedReader inFromFile =
-                new BufferedReader(new FileReader(file.getPath()));
-
-        // Invio al Server
-        while ((stringFromFile = inFromFile.readLine()) != null) {
-            whereToWrite.println(stringFromFile);
-        }
-
-        whereToWrite.println(END_SENDING);
-        inFromFile.close();
-        fileReceived = true;
-    }
-
-    /**
      * Funzione che legge il comando ricevuto dal Server ed esegue l'azione corrispondente.
      *
      * @param commandFromServer
-     * @throws IOException
      */
-    private void commandReceived(String commandFromServer) throws IOException{
-        if (commandFromServer != null) {
-            switch (commandFromServer) {
-                case SEND_DATA:
-                    sendFile(channelOutToServer, fileDati);
-                    break;
-
-                case SEND_MENU:
-                    sendFile(channelOutToServer, fileMenu);
-                    break;
-
-                case SEND_COINS:
-                    sendFile(channelOutToServer, fileMonete);
-                    break;
-
-                case SEND_STATS:
-                    sendFile(channelOutToServer, fileStats);
-                    break;
-
-                default:
-                    System.out.println("Not a valid command");
-                    break;
-            }
-        }
+    private void commandReceived(String commandFromServer){
+        this.commandHashMap.get(commandFromServer).execute();
+        this.channelOutToServer.println(END_SENDING);
     }
 
     /**
@@ -130,6 +87,16 @@ public class ClientVendMach extends Thread implements FileClient, StringCommandL
         } else {
             return false;
         }
+    }
+
+    /**
+     * Funzione che aggiunge i comandi da eseguire.
+     */
+    private void addCommands(){
+        this.commandHashMap.put(SEND_MENU, new SendMenuCommand(receiver, channelOutToServer));
+        this.commandHashMap.put(SEND_DATA, new SendCoinsCommand(receiver, channelOutToServer));
+        this.commandHashMap.put(SEND_COINS, new SendCoinsCommand(receiver, channelOutToServer));
+        this.commandHashMap.put(SEND_STATS, new SendStatsCommand(receiver, channelOutToServer));
     }
 
     public boolean isFileReceived(){
