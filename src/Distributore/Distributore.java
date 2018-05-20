@@ -191,8 +191,8 @@ public class Distributore implements MaxValue {
         String input;
         do {
             showList();
-            System.out.println("Inserire l'ID della bevanda e la quantità di zucchero richiesta (da 0 a 5) separate da uno " +
-                    "spazio.\nNel caso non venga inserito nulla sarà di default a 3");
+            System.out.println("Inserire l'ID della bevanda e la quantità di zucchero richiesta (da 0 a 5) separate " +
+                    "da uno spazio.\nNel caso non venga inserito nulla sarà di default a 3");
             input = keyboard();
         }while (input.isEmpty()); // Finchè non ricevo un input non proseguo
         String[] splitted = input.split("\\s+");

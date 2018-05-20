@@ -112,6 +112,19 @@ public class DealWithTheClientThread implements Runnable, FileServer, StringComm
         }
     }
 
+    protected void chosenCommand(String command, ArrayList<String> arrayUsedToSaveInfo){
+        if(isAValidCommand(command)){
+            try {
+                sendString(command, clientSocket);
+                readyToReceive(arrayUsedToSaveInfo);
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("Error chosenCommand " + e);
+            }
+        }
+
+    }
+
     /**
      * Funzione che salva i dati in ingresso.
      *
@@ -127,6 +140,22 @@ public class DealWithTheClientThread implements Runnable, FileServer, StringComm
             } else {
                 break;
             }
+        }
+    }
+
+
+
+    /**
+     * Funzione che confronta la stringa passata e decide se è un comando valido.
+     *
+     * @param command comando da analizzare.
+     */
+    private boolean isAValidCommand(String command){
+        if (command.equals(SEND_COINS) || command.equals(SEND_DATA) || command.equals(SEND_MENU) ||
+                command.equals(SEND_STATS)) {
+            return true;
+        } else {
+            return false;
         }
     }
 }
