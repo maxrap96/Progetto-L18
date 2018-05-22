@@ -39,16 +39,16 @@ public class Distributore implements MaxValue, TextFiles {
      * Funzione che carica le quantità residue leggendole da file.
      */
 
-    private int setValues(ArrayList<String[]> statistics) {
+    private int setValues(ArrayList<String[]> data) {
         setSugarToDefault();
-        double milk = Double.parseDouble(statistics.get(0)[1]);
-        double sugar = Double.parseDouble(statistics.get(1)[1]);
-        int spoon = parseInt(statistics.get(2)[1]);
-        int cup = parseInt(statistics.get(3)[1]);
-        double vodka = Double.parseDouble(statistics.get(4)[1]);
+        double milk = Double.parseDouble(data.get(0)[1]);
+        double sugar = Double.parseDouble(data.get(1)[1]);
+        int spoon = parseInt(data.get(2)[1]);
+        int cup = parseInt(data.get(3)[1]);
+        double vodka = Double.parseDouble(data.get(4)[1]);
         int lastrow = 4; // Ultima riga letta dal file
         erogatore = new Erogatore(milk, sugar, spoon, cup, vodka);
-        dati = statistics;
+        dati = data;
         erogatore.checkIfMachineIsEmpty(); // Controllo se c'è bisogno di ricaricare la macchinetta.
         return lastrow;
     }
@@ -61,7 +61,7 @@ public class Distributore implements MaxValue, TextFiles {
      *
      * @param listFromFile arraylist di stringhe fornito all'apertura del file.
      * @param data è l'arraylist contenente le quantità rimanenti delle bevande.
-     * @param dataRow
+     * @param dataRow è la riga dalla quale iniziano i dati delle bevande
      */
     private void createList(ArrayList<String[]> listFromFile, ArrayList<String[]> data, int dataRow) {
         String storedID = "";
@@ -80,8 +80,6 @@ public class Distributore implements MaxValue, TextFiles {
                 String quantityLeft = data.get(dataRow)[1];
                 createDrink(hotDrinkType.ordinal(), listFromFile, i_menu, quantityLeft);
             } else {
-                //ingredientsData.writeData(dataToWrite(listFromFile, i_menu));     // Togliendo la funzione ho il
-                                                // numero corretto di righe di output ma non aggiorno i dati.
                 createDrink(hotDrinkType.ordinal(), listFromFile, i_menu);
             }
         }
@@ -314,10 +312,6 @@ public class Distributore implements MaxValue, TextFiles {
 
     public String getID(int id) {
         return list.get("0" + id).getId();
-    }
-
-    public ArrayList<String[]> getDati() {
-        return dati;
     }
 
     /**

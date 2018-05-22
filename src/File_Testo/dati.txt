@@ -8,11 +8,6 @@ Sugar	946.75
 Spoons	935
 * Bicchierini
 Cups	412
-Sugar	949.5
-* Cucchiaini
-Spoons	935
-* Bicchierini
-Cups	412
 * Vodka
 Vodka	87.0
 *id quantityleft
