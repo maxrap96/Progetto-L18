@@ -146,21 +146,6 @@ public class Distributore implements MaxValue, TextFiles {
         }
     }
 
-    // MJ: Dario dacci un'occhiata please e vediamo se abbiamo risolto.
-
-    /**
-     * Funzione per scrivere su file i dati di nuove bevande aggiunte sul menù.
-     *
-     * @param menu:  File menù, da cui ottengo ID e quantità iniziale delle bevande.
-     * @param index: indice della riga in cui aggiungo la bevanda.
-     * @return
-     */
-    private String dataToWrite(ArrayList<String[]> menu, int index) {
-        String s = "";
-
-        return s += (menu.get(index)[0] + "\t" + menu.get(index)[4] + "\n");  // scrivo ID + quantità massima;
-    }
-
     /**
      * Funzione per recepire i comandi testuali ed analizzarli.
      */
@@ -275,7 +260,6 @@ public class Distributore implements MaxValue, TextFiles {
             return "Credito non sufficiente";
         }
     }
-
 
     /**
      * Funzione che mostra la lista delle bevande contenute nel distributore.
