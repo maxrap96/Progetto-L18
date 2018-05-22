@@ -9,10 +9,10 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Data {
-    private String pathFile;
+    private  final String PATHFILE;
 
     public Data(String pathFile) {
-        this.pathFile = pathFile;
+        this.PATHFILE = pathFile;
     }
 
     /**
@@ -22,7 +22,7 @@ public class Data {
      */
     public ArrayList<String[]> readFile() throws FileNotReadable {
         try {
-            BufferedReader bReader = new BufferedReader(new FileReader(pathFile));
+            BufferedReader bReader = new BufferedReader(new FileReader(PATHFILE));
             ArrayList<String[]> openedFile = split(bReader);
             bReader.close();
 
@@ -69,7 +69,7 @@ public class Data {
      */
     protected void writeFile(String scrittura) throws FileNotWritable {
         try {
-            FileWriter writer = new FileWriter(pathFile, true);
+            FileWriter writer = new FileWriter(PATHFILE, true);
             writer.write("\n" +scrittura + "\t" + getCurrentTimeStamp());
             writer.close();
         } catch (FileNotFoundException e) {
@@ -88,14 +88,14 @@ public class Data {
      */
     protected void writeFile(String scrittura, boolean transaction) throws FileNotWritable {
         try {
-            FileWriter writer = new FileWriter(pathFile, true);
+            FileWriter writer = new FileWriter(PATHFILE, true);
 
             if(transaction) {
-                writer.write(scrittura + "Transazione avvenuta il:\t" + getCurrentTimeStamp() + "\n");
+                writer.write(scrittura + " Transazione avvenuta il:\t" + getCurrentTimeStamp() + "\n");
             }
 
             if(! transaction) {
-                writer.write(scrittura + "Transazione fallita.\t" + getCurrentTimeStamp() + "\n");
+                writer.write(scrittura + " Transazione fallita.\t" + getCurrentTimeStamp() + "\n");
             }
 
             writer.close();
@@ -108,7 +108,7 @@ public class Data {
 
     protected void writeData(String scrittura) {
         try {
-            FileWriter writer = new FileWriter(pathFile, true);
+            FileWriter writer = new FileWriter(PATHFILE, true);
             writer.write(scrittura);
             writer.close();
         } catch (IOException e) {
@@ -135,7 +135,7 @@ public class Data {
      * @param newLine è la nuova riga che sovrascriverà la riga selezionata.
      */
     protected void overwriteFile(String newLine, String currentLine) throws IOException{
-        BufferedReader file = new BufferedReader(new FileReader(pathFile));
+        BufferedReader file = new BufferedReader(new FileReader(PATHFILE));
         String line;
         String input = "";
 
@@ -144,7 +144,7 @@ public class Data {
 
         input = input.replace(currentLine, newLine);
 
-        FileOutputStream os = new FileOutputStream(pathFile);
+        FileOutputStream os = new FileOutputStream(PATHFILE);
         os.write(input.getBytes());
 
         file.close();

@@ -10,16 +10,16 @@ import java.util.Scanner;
 
 import static java.lang.Integer.parseInt;
 
-public class Distributore implements MaxValue {
+public class Distributore implements MaxValue, TextFiles {
 
     private HashMap<String, HotDrink> list;
-    private int cup, spoon, selected_sugar;
-    private double sugar, milk, vodka;
+    private int selected_sugar;
     private Coins coins;
-    private Data stats = new Data("src/File_Testo/stats.txt");
-    private Data ingredientsData = new Data("src/File_Testo/dati.txt");
-    private Data menu = new Data("src/File_Testo/menu.txt");
+    private Data stats = new Data(TextFiles.STATSPATH);
+    private Data ingredientsData = new Data(DATAPATH);
+    private Data menu = new Data(MENUPATH);
     private ArrayList<String[]> dati;
+    private Erogatore erogatore;
 
     private Chiavetta chiavetta = new Chiavetta();
 
@@ -41,39 +41,18 @@ public class Distributore implements MaxValue {
 
     private int setValues(ArrayList<String[]> statistics) {
         setSugarToDefault();
-        this.milk = Double.parseDouble(statistics.get(0)[1]);
-        this.sugar = Double.parseDouble(statistics.get(1)[1]);
-        this.spoon = parseInt(statistics.get(2)[1]);
-        this.cup = parseInt(statistics.get(3)[1]);
-        this.vodka = Double.parseDouble(statistics.get(4)[1]);
+        double milk = Double.parseDouble(statistics.get(0)[1]);
+        double sugar = Double.parseDouble(statistics.get(1)[1]);
+        int spoon = parseInt(statistics.get(2)[1]);
+        int cup = parseInt(statistics.get(3)[1]);
+        double vodka = Double.parseDouble(statistics.get(4)[1]);
         int lastrow = 4; // Ultima riga letta dal file
+        erogatore = new Erogatore(milk, sugar, spoon, cup, vodka);
         dati = statistics;
-        checkIfMachineIsEmpty(); // Controllo se c'è bisogno di ricaricare la macchinetta.
+        erogatore.checkIfMachineIsEmpty(); // Controllo se c'è bisogno di ricaricare la macchinetta.
         return lastrow;
     }
 
-    /**
-     * Funzione che controlla se la macchinetta deve essere ricaricata.
-     */
-    //TODO MJ: ci sarebbe anche da estendere il controllo ai vari ingredienti.
-    private void checkIfMachineIsEmpty() {
-        if (cup < 20 || spoon < 10 || sugar < 0.5 || milk < 0.2) {
-            System.out.println("Refilling machine...\n");
-            resetToMaxVendingMachine();
-        }
-    }
-
-    /**
-     * Ricarica alcuni elementi della macchinetta.
-     */
-    private void resetToMaxVendingMachine() {
-        this.sugar = SUGARMAX;
-        this.milk = MILKMAX;
-        this.cup = CUPMAX;
-        this.spoon = SPOONMAX;
-
-        //TODO MJ: Inserire anche refill degli ingredienti.
-    }
 
     /**
      * Funzione che crea il menu nella macchinetta.
@@ -245,15 +224,19 @@ public class Distributore implements MaxValue {
      * @param ID: è l'id della bevanda selezionata.
      */
     public String selectBeverage(String ID) {
+        if (!list.get(ID).isAvailable()) {
+            return "Bevanda non disponibile";
+        }
+
 
         boolean transaction = false;
 
         if (chiavetta.isConnected()){
-            transaction = chiavetta.Pay(list.get(ID).getPrice());
 
+            transaction = chiavetta.Pay(list.get(ID).getPrice());
             // Scrittura statistiche su file:
             try {
-                stats.writeFile(statsToText(ID), transaction);
+                stats.writeFile(list.get(ID).getName(),transaction);
                 updateDati(ID);
             } catch (FileNotWritable fileNotWritable) {
                 fileNotWritable.printStackTrace();
@@ -270,14 +253,14 @@ public class Distributore implements MaxValue {
         if (coins.getCredit() >= list.get(ID).getPrice() && list.get(ID).isAvailable()) {
             // Se il credito è uguale o maggiore singifica che posso potenzialmente acquistare la bevanda
             transaction = true;
-            subtractIngredients(ID, selected_sugar);
+            erogatore.subtractIngredients(list.get(ID), selected_sugar);
             coins.updateBalance(list.get(ID).getPrice());
             setSugarToDefault();
             coins.giveChange();
 
             // Scrittura statistiche su file:
             try {
-                stats.writeFile(statsToText(ID), transaction);
+                stats.writeFile(list.get(ID).getName(), transaction);
                 updateDati(ID);
             } catch (FileNotWritable fileNotWritable) {
                 fileNotWritable.printStackTrace();
@@ -291,47 +274,10 @@ public class Distributore implements MaxValue {
                 return "Bevanda erogata";
             }
         } else {
-
-            // Scrittura statistiche su file:
-            try {
-                stats.writeFile(statsToText(ID), transaction);
-                updateDati(ID);
-            } catch (FileNotWritable fileNotWritable) {
-                fileNotWritable.printStackTrace();
-            }
-
-            if (!list.get(ID).isAvailable()) {
-                return "Bevanda non disponibile";
-            }
-            new UnsufficientCredit();
             return "Credito non sufficiente";
         }
     }
 
-    /**
-     * Funzione per sottrarre quantità necessarie per preparare la bevanda.
-     *
-     * @param ID:   della bevanda da cui prendere le dosi.
-     * @param sugar
-     */
-    private void subtractIngredients(String ID, int sugar) {
-        milk -= list.get(ID).getMilk();
-        subtractSugar(sugar);
-        cup--;
-        vodka -= list.get(ID).getVodka();
-    }
-
-    /**
-     * Funzione che sottrae lo zucchero usato.
-     *
-     * @param qty valore tra 0 e 5.
-     */
-    private void subtractSugar(int qty) {
-        if (qty != 0) {
-            sugar -= (double) qty * SUGARDOSE;
-            spoon--;
-        }
-    }
 
     /**
      * Funzione che mostra la lista delle bevande contenute nel distributore.
@@ -342,16 +288,6 @@ public class Distributore implements MaxValue {
         }
     }
 
-    /**
-     * Funzione che genera la stringa di statistiche.
-     *
-     * @param ID è la bevanda selezionata dal cliente.
-     * @return s: restituisce una stringa con dei dati.
-     */
-    private String statsToText(String ID) {
-        // TODO MJ: Da parametrizzare se possibile.
-        return (list.get(ID).getName() + "\t" + cup + "\t" + spoon + "\t" + sugar + "\t" + milk + "\t");
-    }
 
     /**
      * Funzione da usare nell'interfaccia per aggiungere i soldi.
@@ -421,7 +357,7 @@ public class Distributore implements MaxValue {
      * Funzione per aggiornare il file dati.txt, contenente le quantità di oggetti e di ingredienti.
      */
     private void updateDati(String ID) {
-        String valDati[] = {"" + milk, "" + sugar, "" + spoon, "" + cup, "" + vodka};
+        String valDati[] = erogatore.getData();
         String newLine = "";
         String current = "";
 

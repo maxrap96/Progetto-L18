@@ -3,16 +3,16 @@
 * Latte (Litri)
 Milk	997.4999999999997
 * Zucchero (hg)
-Sugar	948.25
+Sugar	946.75
 * Cucchiaini
-Spoons	937
+Spoons	935
 * Bicchierini
-Cups	415
+Cups	412
 Sugar	949.5
 * Cucchiaini
-Spoons	937
+Spoons	935
 * Bicchierini
-Cups	415
+Cups	412
 * Vodka
 Vodka	87.0
 *id quantityleft
