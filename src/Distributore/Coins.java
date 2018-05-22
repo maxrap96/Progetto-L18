@@ -1,7 +1,5 @@
 package Distributore;
 
-import PersonalExceptions.FileNotReadable;
-import PersonalExceptions.FileNotWritable;
 
 import java.util.ArrayList;
 
@@ -38,25 +36,21 @@ public class Coins {
      * Nota: Nel caso di errori si usa un'inizializzazione di default.
      */
     private void initCoins() {
-        try {
-            ArrayList<String[]> coinsText = moneteTxt.readFile();
-            int last = coinsText.size() - 1;    // Last e' l'ultima riga del file che mi serve.
+        ArrayList<String[]> coinsText = moneteTxt.readFile();
+        int last = coinsText.size() - 1;    // Last e' l'ultima riga del file che mi serve.
 
-            for (int i = 0; i < money.length; i++) {
-                money[i] = parseInt(coinsText.get(last)[i]);
-            }
-        } catch (FileNotReadable fileNotReadable) {
-            fileNotReadable.printStackTrace();
-
-            this.money[0] = 20;
-            this.money[1] = 30;
-            this.money[2] = 20;
-            this.money[3] = 10;
-            this.money[4] = 5;
-            this.money[5] = 5;
+        for (int i = 0; i < money.length; i++) {
+            money[i] = parseInt(coinsText.get(last)[i]);
         }
 
-        // TODO: Catch nel caso il file venga scritto male
+        this.money[0] = 20;
+        this.money[1] = 30;
+        this.money[2] = 20;
+        this.money[3] = 10;
+        this.money[4] = 5;
+        this.money[5] = 5;
+
+        // TODO: Elaborare il caso il file venga scritto male
     }
 
     /**
@@ -93,11 +87,7 @@ public class Coins {
         money[index] += parseInt(number);
 
         if (index == money.length - 1){
-            try {
-                moneteTxt.writeFile(moneyOnFile());
-            } catch (FileNotWritable fileNotWritable) {
-                fileNotWritable.printStackTrace();
-            }
+            moneteTxt.writeFile(moneyOnFile());
         }
     }
 
@@ -138,11 +128,7 @@ public class Coins {
                 System.out.println(changeSupplied);
                 System.out.println(coinsList);
             }
-            try {
                 moneteTxt.writeFile(moneyOnFile());
-            } catch (FileNotWritable fileNotWritable) {
-                fileNotWritable.printStackTrace();
-            }
         }  else {
             System.out.println("Resto NON disponibile");
         }

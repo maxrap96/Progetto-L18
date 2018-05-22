@@ -27,12 +27,8 @@ public class Distributore implements MaxValue, TextFiles {
         this.list = new HashMap<>();
         this.coins = new Coins();
         setSugarToDefault();
-        try {
-            int lastRow = setValues(ingredientsData.readFile());
-            createList(menu.readFile(), ingredientsData.readFile(), lastRow);
-        } catch (FileNotReadable fileNotReadable) {
-           fileNotReadable.printStackTrace();
-        }
+        int lastRow = setValues(ingredientsData.readFile());
+        createList(menu.readFile(), ingredientsData.readFile(), lastRow);
     }
 
     /**
@@ -111,7 +107,7 @@ public class Distributore implements MaxValue, TextFiles {
                 list.put(listFromFile.get(i)[0], hotDrink);
                 break;
             default:
-                new InvalidType();
+                // TODO: something need to be done
         }
 
     }
@@ -142,7 +138,6 @@ public class Distributore implements MaxValue, TextFiles {
                 list.put(listFromFile.get(index)[0], hotDrink);
                 break;
             default:
-                new InvalidType();
         }
     }
 
@@ -166,16 +161,11 @@ public class Distributore implements MaxValue, TextFiles {
             selected_sugar = parseInt(splitted[1]);
         }
         // Mi chiedo se la bevanda è disponibile
-        try {
-            if (list.get(splitted[0]).isAvailable()) {
-                askForMoneyInput();
-                selectBeverage(splitted[0]); // Funzione da usare nell'interfaccia per l'erogazione della bevanda
-            } else {
-                System.out.println("Bevanda non disponibile");
-            }
-        }
-        catch (Exception e){
-            new BeverageNotAvailable().printStackTrace();
+        if (list.get(splitted[0]).isAvailable()) {
+            askForMoneyInput();
+            selectBeverage(splitted[0]); // Funzione da usare nell'interfaccia per l'erogazione della bevanda
+        } else {
+            System.out.println("Bevanda non disponibile");
         }
     }
 
@@ -218,12 +208,8 @@ public class Distributore implements MaxValue, TextFiles {
 
             transaction = chiavetta.Pay(list.get(ID).getPrice());
             // Scrittura statistiche su file:
-            try {
-                stats.writeFile(list.get(ID).getName(),transaction);
-                updateDati(ID);
-            } catch (FileNotWritable fileNotWritable) {
-                fileNotWritable.printStackTrace();
-            }
+            stats.writeFile(list.get(ID).getName(),transaction);
+            updateDati(ID);
 
             if (transaction){
                 return "Bevanda erogata";
@@ -242,12 +228,8 @@ public class Distributore implements MaxValue, TextFiles {
             coins.giveChange();
 
             // Scrittura statistiche su file:
-            try {
-                stats.writeFile(list.get(ID).getName(), transaction);
-                updateDati(ID);
-            } catch (FileNotWritable fileNotWritable) {
-                fileNotWritable.printStackTrace();
-            }
+            stats.writeFile(list.get(ID).getName(), transaction);
+            updateDati(ID);
 
             if (coins.getCredit() != 0) {
                 System.out.println("Bevanda erogata. Ritirare il resto");

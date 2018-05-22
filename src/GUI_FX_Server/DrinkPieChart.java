@@ -1,6 +1,5 @@
 package GUI_FX_Server;
 
-import PersonalExceptions.FileNotReadable;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.PieChart;
 import javafx.scene.layout.BorderPane;
@@ -19,11 +18,7 @@ public class DrinkPieChart extends PieChart {
         ArrayList<String[]> a;
         String[] a1;
 
-        try {
-            a = data.readFile();
-        } catch (FileNotReadable fileNotReadable) {
-            fileNotReadable.printStackTrace();
-        }
+        a = data.readFile();
 
         //TODO MJ: collegare dati delle bevande al grafico tramite lettura file stats
 

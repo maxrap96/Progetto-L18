@@ -1,6 +1,5 @@
 package Distributore;
 
-import PersonalExceptions.FileNotReadable;
 import java.io.IOException;
 import java.util.ArrayList;
 import static java.lang.Double.parseDouble;
@@ -16,33 +15,24 @@ public class Chiavetta {
     private boolean connected = false;
 
     public Chiavetta() {
-        try {
             ArrayList<String[]> chiavText = data.readFile();
             ID = chiavText.get(0)[0];
             Saldo = parseDouble(chiavText.get(0)[1]);
             Linea = 0;
             currentLine = chiavText.get(0)[0]+"\t"+chiavText.get(0)[1];
-        } catch (FileNotReadable fileNotReadable) {
-            fileNotReadable.printStackTrace();
-        }
         // initChiavetta();
     }
 
     private void initChiavetta(){
-        try{
-            ArrayList<String[]> chiavText = data.readFile();
+        ArrayList<String[]> chiavText = data.readFile();
 
-            for(int i = 0; i < chiavText.size(); i++){
-                String id = chiavText.get(i)[0];
-                 if(ID.equals(id)){
-                     Saldo = parseDouble(chiavText.get(i)[1]);
-                     Linea = i;
-                     currentLine = chiavText.get(i)[0]+"\t"+chiavText.get(i)[1];
-                 }
+        for(int i = 0; i < chiavText.size(); i++){
+            String id = chiavText.get(i)[0];
+            if(ID.equals(id)){
+                Saldo = parseDouble(chiavText.get(i)[1]);
+                Linea = i;
+                currentLine = chiavText.get(i)[0]+"\t"+chiavText.get(i)[1];
             }
-
-        }catch (FileNotReadable fileNotReadable){
-            fileNotReadable.printStackTrace();
         }
     }
 
@@ -66,6 +56,7 @@ public class Chiavetta {
         try {
             data.overwriteFile(newLine, currentLine);
         } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

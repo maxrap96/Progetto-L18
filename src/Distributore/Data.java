@@ -1,8 +1,5 @@
 package Distributore;
 
-import PersonalExceptions.FileNotReadable;
-import PersonalExceptions.FileNotWritable;
-
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -20,7 +17,7 @@ public class Data {
      *
      * @return openedFile: è il file aperto e letto.
      */
-    public ArrayList<String[]> readFile() throws FileNotReadable {
+    public ArrayList<String[]> readFile(){
         try {
             BufferedReader bReader = new BufferedReader(new FileReader(PATHFILE));
             ArrayList<String[]> openedFile = split(bReader);
@@ -29,8 +26,6 @@ public class Data {
             return openedFile;
         } catch (IOException e) {
             e.printStackTrace();
-        } catch (FileNotReadable fileNotReadable) {
-            throw new FileNotReadable();
         }
 
         return null;
@@ -40,10 +35,8 @@ public class Data {
      * Funzione che riceve i dati copiati dal file e li divide dopo ogni carattere di "Tab".
      *
      * @param bReader è il reader associato al file.
-     * @return dataSplit è il file aperto e separato in base alle tabulazioni.
-     * @throws FileNotReadable è l'eccezione lanciata nel caso il file non sia presente o leggibile.
      */
-    private ArrayList<String[]> split(BufferedReader bReader) throws FileNotReadable {
+    private ArrayList<String[]> split(BufferedReader bReader){
         ArrayList<String[]> dataSplit = new ArrayList<>();
         String row;
 
@@ -65,15 +58,12 @@ public class Data {
      * Funzione per la scrittura su file dei dati di interesse.
      *
      * @param scrittura è la stringa da accodare al file contenente le informazioni necessarie.
-     * @throws FileNotWritable è l'eccezione lanciata nel caso non sia possibile scrivere sul file indicato da pathfile.
      */
-    protected void writeFile(String scrittura) throws FileNotWritable {
+    protected void writeFile(String scrittura){
         try {
             FileWriter writer = new FileWriter(PATHFILE, true);
             writer.write("\n" +scrittura + "\t" + getCurrentTimeStamp());
             writer.close();
-        } catch (FileNotFoundException e) {
-            throw new FileNotWritable();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -84,9 +74,8 @@ public class Data {
      *
      * @param scrittura è la stringa da accodare al file contenente le informazioni necessarie.
      * @param transaction parametro che mi dice se la transazione avviene o fallisce.
-     * @throws FileNotWritable è l'eccezione lanciata nel caso non sia possibile scrivere sul file indicato da pathfile.
      */
-    protected void writeFile(String scrittura, boolean transaction) throws FileNotWritable {
+    protected void writeFile(String scrittura, boolean transaction){
         try {
             FileWriter writer = new FileWriter(PATHFILE, true);
 
@@ -99,8 +88,6 @@ public class Data {
             }
 
             writer.close();
-        } catch (FileNotFoundException e) {
-            throw new FileNotWritable();
         } catch (IOException e) {
             e.printStackTrace();
         }
