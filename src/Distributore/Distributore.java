@@ -14,18 +14,20 @@ public class Distributore implements MaxValue, TextFiles {
     private HashMap<String, HotDrink> list;
     private int selected_sugar;
     private Coins coins;
-    private Data stats = new Data(TextFiles.STATSPATH);
-    private Data ingredientsData = new Data(DATAPATH);
-    private Data menu = new Data(MENUPATH);
+    private Data stats;
+    private Data ingredientsData;
+    private Data menu;
     private ArrayList<String[]> dati;
     private Erogatore erogatore;
-
-    private Chiavetta chiavetta = new Chiavetta();
+    private Chiavetta chiavetta;
 
     public Distributore() {
         this.list = new HashMap<>();
+        this.stats = new Data(STATSPATH);
+        this.ingredientsData = new Data(DATAPATH);
+        this.menu = new Data(MENUPATH);
         this.coins = new Coins();
-        setSugarToDefault();
+        this.chiavetta = new Chiavetta();
         int lastRow = setValues(ingredientsData.readFile());
         createList(menu.readFile(), ingredientsData.readFile(), lastRow);
     }
@@ -33,7 +35,6 @@ public class Distributore implements MaxValue, TextFiles {
     /**
      * Funzione che carica le quantità residue leggendole da file.
      */
-
     private int setValues(ArrayList<String[]> data) {
         setSugarToDefault();
         double milk = Double.parseDouble(data.get(0)[1]);
@@ -85,9 +86,9 @@ public class Distributore implements MaxValue, TextFiles {
      * Funzione per identificare il tipo della bevanda e aggiungerla al distributore nel caso non siano presenti dati
      * riguardanti la sua quantià residua.
      *
-     * @param type         tipo della bevanda.
+     * @param type tipo della bevanda.
      * @param listFromFile è il file aperto contenente il menù.
-     * @param i            è la riga a cui si è arrivati a leggere.
+     * @param i è la riga a cui si è arrivati a leggere.
      */
     private void createDrink(int type, ArrayList<String[]> listFromFile, int i) {
         HotDrink hotDrink;
@@ -115,10 +116,10 @@ public class Distributore implements MaxValue, TextFiles {
      * Funzione per identificare il tipo della bevanda e aggiungerla al distributore nel caso siano presenti dati
      * riguardanti la sua quantià residua.
      *
-     * @param type         tipo della bevanda.
+     * @param type tipo della bevanda.
      * @param listFromFile è il file aperto contenente il menù.
-     * @param index        è la riga a cui si è arrivati a leggere.
-     * @param qtyLeft      è la quantità rimanente nella macchinetta.
+     * @param index è la riga a cui si è arrivati a leggere.
+     * @param qtyLeft è la quantità rimanente nella macchinetta.
      */
     private void createDrink(int type, ArrayList<String[]> listFromFile, int index, String qtyLeft) {
         HotDrink hotDrink;
@@ -199,9 +200,7 @@ public class Distributore implements MaxValue, TextFiles {
         if (!list.get(ID).isAvailable()) {
             return "Bevanda non disponibile";
         }
-
-
-        boolean transaction = false;
+        boolean transaction;
 
         if (chiavetta.isConnected()){
 

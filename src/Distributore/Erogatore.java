@@ -17,7 +17,6 @@ public class Erogatore implements MaxValue{
         this.vodka = vodka;
     }
 
-
     /**
      * Funzione per sottrarre quantità necessarie per preparare la bevanda.
      *
@@ -25,13 +24,12 @@ public class Erogatore implements MaxValue{
      * @param sugar è lo zucchero selezionato
      */
 
-    public void subtractIngredients(HotDrink beverage, int sugar) {
+    protected void subtractIngredients(HotDrink beverage, int sugar) {
         milk -= beverage.getMilk();
         subtractSugar(sugar);
         cup--;
         vodka -= beverage.getVodka();
     }
-
 
     /**
      * Funzione che sottrae lo zucchero usato.
@@ -48,14 +46,12 @@ public class Erogatore implements MaxValue{
     /**
      * Funzione che controlla se la macchinetta deve essere ricaricata.
      */
-
-    public void checkIfMachineIsEmpty() {
-            if (cup < 20 || spoon < 10 || sugar < 0.5 || milk < 0.2) {
-                System.out.println("Refilling machine...\n");
-                refill();
-            }
+    protected void checkIfMachineIsEmpty() {
+        if (cup < 20 || spoon < 10 || sugar < 0.5 || milk < 0.2) {
+            System.out.println("Refilling machine...\n");
+            refill();
+        }
     }
-
 
     /**
      * Ricarica alcuni elementi della macchinetta.
@@ -70,9 +66,8 @@ public class Erogatore implements MaxValue{
     /**
      * Funzione che genera la stringa dei dati.
      *
-     * @return s: restituisce una stringa con dei dati.
+     * @return s: restituisce una stringa.
      */
-
     public String[] getData() {
             return new String[]{"" + milk, "" + sugar, "" + spoon, "" + cup, "" + vodka};
     }
