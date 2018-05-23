@@ -1,6 +1,7 @@
 package GUI_FX_VendingMachine;
 
 import Distributore.Distributore;
+import Distributore.ClientVendMach;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -25,8 +26,6 @@ public class VendingMachine extends Application {
      private ResetDisplay resetDisplay;
      private BeverageGrid beverageGrid;
      private Display display;
-
-     private ClientVendMach clientVendMach = new ClientVendMach("localhost", 80);
      private UpdateChecker updateChecker;
 
     @Override
@@ -111,7 +110,7 @@ public class VendingMachine extends Application {
 
             // avvio il client e thread annesso per il controllo della ricezione dei files
             //clientVendMach.run();
-            updateChecker = new UpdateChecker(distributore, beverageGrid, display, resetDisplay, clientVendMach);
+            //updateChecker = new UpdateChecker(distributore, beverageGrid, display, resetDisplay, clientVendMach);
         } catch (IOException e){
             e.printStackTrace();
             System.out.println("Error caused by " + e);
@@ -129,6 +128,7 @@ public class VendingMachine extends Application {
     }
 
     public static void main(String[] args) {
+        new ClientVendMach("localhost", 80).run();
         Application.launch(args);
     }
 }

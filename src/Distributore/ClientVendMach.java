@@ -1,6 +1,6 @@
-package GUI_FX_VendingMachine;
+package Distributore;
 
-import GUI_FX_Server.StringCommandList;
+import ServerSide.StringCommandList;
 
 import java.io.BufferedReader;
 import java.io.IOException;

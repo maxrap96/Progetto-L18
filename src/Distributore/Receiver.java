@@ -1,4 +1,4 @@
-package GUI_FX_VendingMachine;
+package Distributore;
 
 import java.io.*;
 

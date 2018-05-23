@@ -1,4 +1,4 @@
-import GUI_FX_VendingMachine.ClientVendMach;
+import Distributore.ClientVendMach;
 
 public class TestClient {
     public static void main(String[] args) {

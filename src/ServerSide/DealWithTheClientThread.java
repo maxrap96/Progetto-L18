@@ -1,4 +1,4 @@
-package GUI_FX_Server;
+package ServerSide;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,7 +7,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.ArrayList;
 
-public class DealWithTheClientThread implements Runnable, FileServer, StringCommandList {
+public class DealWithTheClientThread implements Runnable, StringCommandList {
 
     private ArrayList<String> stats;
     private ArrayList<String> menu;

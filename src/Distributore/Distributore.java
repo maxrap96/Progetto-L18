@@ -1,7 +1,6 @@
 package Distributore;
 
 import Bevande.*;
-import PersonalExceptions.*;
 
 import java.io.IOException;
 import java.util.ArrayList;

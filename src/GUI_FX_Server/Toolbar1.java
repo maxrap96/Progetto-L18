@@ -6,7 +6,6 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 
 
 import java.io.FileInputStream;
@@ -17,12 +16,12 @@ public class Toolbar1 extends ToolBar {
     MenuItem acqB = new MenuItem("Acquisto Bevande");
     MenuItem utilizzo = new MenuItem("Utilizzo");
     MenuItem monete = new MenuItem("Monete");
-    MenuItem itams = new MenuItem("Items");
+    MenuItem items = new MenuItem("Items");
     Button menu = new Button("Menu");
 
 
     public Toolbar1() {
-        MenuButton stats = new MenuButton("Stats",null,monete, acqB,utilizzo,itams);
+        MenuButton stats = new MenuButton("Stats",null, monete, acqB, utilizzo, items);
 
         //Associazione di immagini ai bottoni
         ImageView immHome = new ImageView(loadImage("src/ServerImages/home.png"));
@@ -44,7 +43,9 @@ public class Toolbar1 extends ToolBar {
         getItems().addAll(home,stats,menu);
 
     }
-    /**Funzione che inizializza le azione che i bottoni eseguiranno
+
+    /**
+     * Funzione che inizializza le azione che i bottoni eseguiranno
     **/
     public void Action(AnchorPane anchor,MenuTable menuTable,StatsPage statsPage){
         home.setOnAction(new EventHandler<ActionEvent>() {
@@ -85,7 +86,7 @@ public class Toolbar1 extends ToolBar {
                 statsPage.OpenTab(2);
             }
         });
-        itams.setOnAction(new EventHandler<ActionEvent>() {
+        items.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 menuTable.getvBox().setVisible(false);
@@ -114,7 +115,7 @@ public class Toolbar1 extends ToolBar {
             input.close();
             return imgTmp;
         } catch (IOException e){
-            e.getMessage();
+            e.printStackTrace();
         }
         return imgTmp;
     }

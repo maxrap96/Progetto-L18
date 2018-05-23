@@ -1,4 +1,4 @@
-package GUI_FX_Server;
+package ServerSide;
 
 public interface StringCommandList {
 

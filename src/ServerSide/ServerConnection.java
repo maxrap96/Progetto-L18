@@ -1,4 +1,4 @@
-package GUI_FX_Server;
+package ServerSide;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -40,7 +40,6 @@ public class ServerConnection extends Thread {
             }
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("Error caught: " + e);
         }
     }
 

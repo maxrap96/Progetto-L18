@@ -1,4 +1,4 @@
-import GUI_FX_Server.ServerConnection;
+import ServerSide.ServerConnection;
 
 import java.util.ArrayList;
 

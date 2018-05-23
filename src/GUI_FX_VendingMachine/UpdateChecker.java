@@ -1,6 +1,7 @@
 package GUI_FX_VendingMachine;
 
 import Distributore.Distributore;
+import Distributore.ClientVendMach;
 
 public class UpdateChecker extends Thread {
     private Distributore distributore;
@@ -10,7 +11,8 @@ public class UpdateChecker extends Thread {
 
     private ClientVendMach clientVendMach;
 
-    public UpdateChecker(Distributore distributore, BeverageGrid beverageGrid, Display display, ResetDisplay resetDisplay, ClientVendMach clientVendMach) {
+    public UpdateChecker(Distributore distributore, BeverageGrid beverageGrid, Display display,
+                         ResetDisplay resetDisplay, ClientVendMach clientVendMach) {
         this.distributore = distributore;
         this.beverageGrid = beverageGrid;
         this.display = display;

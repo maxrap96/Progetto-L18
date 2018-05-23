@@ -159,7 +159,7 @@ public class MenuTable extends TableView {
 
         vBox.getChildren().addAll(tableView);
         vBox.setFillWidth(true);
-        VBox.setVgrow(tableView, Priority.ALWAYS);
+        VBox.setVgrow(tableView, Priority.ALWAYS); // DM: VBox con la V maiuscola?
         vBox.prefHeightProperty().bind(stage.heightProperty());
         vBox.prefWidthProperty().bind(stage.widthProperty());
     }
