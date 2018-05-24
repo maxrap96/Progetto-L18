@@ -9,6 +9,8 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+
 public class StatsPage extends GridPane {
     TabPane tabPane = new TabPane();
     Tab tab1 = new Tab();
@@ -16,9 +18,11 @@ public class StatsPage extends GridPane {
     Tab tab3 = new Tab();
     Tab tab4 = new Tab();
     GridPane mainPanel = new GridPane();
+    ArrayList<String> stats;
 
-    public StatsPage(Stage stage) {
+    public StatsPage(Stage stage, ArrayList<String> stats) {
         Group root = new Group();
+        this.stats = stats;
 
         Scene scene;
 
@@ -41,7 +45,7 @@ public class StatsPage extends GridPane {
 
         //TODO MJ: aggiungere elementi grafici ai tab
         HistogramChart coinsChart = new HistogramChart(new CategoryAxis(), new NumberAxis());
-        DrinkPieChart pie = new DrinkPieChart();
+        DrinkPieChart pie = new DrinkPieChart(stats);
         UsageChart usage = new UsageChart(new NumberAxis(), new NumberAxis());
         ItemsHistogram itemsChart = new ItemsHistogram(new CategoryAxis(), new NumberAxis());
 

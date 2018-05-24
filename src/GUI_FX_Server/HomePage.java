@@ -35,7 +35,7 @@ public class HomePage extends Application {
         menu.add("02\tCAPSULA\tLatte Caldo\t0.55\t25\t80\t0.30\t0\t0.200\t0");
         Toolbar1 toolbar1 = new Toolbar1();
         MenuTable menuTable = new MenuTable(primaryStage, menu);
-        StatsPage statsPage = new StatsPage(primaryStage);
+        StatsPage statsPage = new StatsPage(primaryStage, stats);
 
         // Creazione scritta correlata da un logo
         Label label = new Label("Welcome to project Nobildonno Home Page");
