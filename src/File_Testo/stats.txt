@@ -1,534 +1,137 @@
 ﻿* File di statistiche, vuoto e riempito dal programma successivamente. Prima riga con dati di default di prova.
-Tè al limone	500	1000	1000.0	1000.0	Transazione avvenuta il:	14-04-2018 00:08:23
-Caffè Espresso	499	999	999.9	1000.0	Transazione avvenuta il:		16-04-2018 00:32:07
-Cappuccino	498	998	999.8	999.92	Transazione avvenuta il:		16-04-2018 00:32:41
-Tè ai mirtilli	497	997	999.775	999.92	Transazione avvenuta il:		16-04-2018 00:33:26
-Caffè Espresso	496	996	999.65	999.92	Transazione avvenuta il:		16-04-2018 00:37:26
-Cioccolata	483	990	99.7	15.0	Transazione avvenuta il:	17-04-2018 18:33:35
-Cioccolata	483	990	99.7	15.0	Transazione fallita.	17-04-2018 19:01:27
-Caffè Espresso	483	990	99.7	15.0	Transazione fallita.	17-04-2018 19:09:56
-Caffè Espresso	483	990	99.7	15.0	Transazione fallita.	17-04-2018 19:10:25
-Cioccolata	482	990	99.7	15.0	Transazione avvenuta il:	18-04-2018 15:11:22
-Cioccolata	481	990	99.7	15.0	Transazione avvenuta il:	18-04-2018 15:14:06
-Cioccolata	480	990	99.7	15.0	Transazione avvenuta il:	18-04-2018 15:18:14
-Cioccolata	479	990	99.7	15.0	Transazione avvenuta il:	18-04-2018 15:20:17
-Cioccolata	478	990	99.7	15.0	Transazione avvenuta il:	18-04-2018 15:22:45
-Cioccolata	478	990	99.7	15.0	Transazione avvenuta il:	18-04-2018 15:23:38
-Cioccolata	477	990	99.7	15.0	Transazione avvenuta il:	18-04-2018 15:24:11
-Cioccolata	476	990	99.7	15.0	Transazione avvenuta il:	18-04-2018 15:28:13
-Caffè Espresso	475	990	99.7	15.0	Transazione avvenuta il:	18-04-2018 15:31:28
-Cioccolata	474	990	99.7	15.0	Transazione avvenuta il:	18-04-2018 15:38:09
-Caffè Espresso	473	990	99.7	15.0	Transazione avvenuta il:	18-04-2018 15:38:42
-Caffè corretto	472	990	99.7	15.0	Transazione avvenuta il:	18-04-2018 16:10:47
-Cappuccino	471	989	98.95	14.92	Transazione avvenuta il:	18-04-2018 16:11:57
-Caffè corretto	470	989	98.95	14.92	Transazione avvenuta il:	18-04-2018 17:27:54
-Caffè corretto	469	989	98.95	14.92	Transazione avvenuta il:	18-04-2018 17:29:53
-Caffè Arabica	469	989	98.95	14.92	Transazione fallita.	18-04-2018 17:32:34
-Caffè Arabica	469	989	98.95	14.92	Transazione fallita.	18-04-2018 17:33:14
-Tè al Limone	468	988	97.7	14.92	Transazione avvenuta il:	18-04-2018 17:37:18
-Tè al Limone	467	987	96.7	14.92	Transazione avvenuta il:	18-04-2018 17:38:38
-Tè al Limone	466	986	95.7	14.92	Transazione avvenuta il:	18-04-2018 17:39:11
-Caffè corretto	465	986	95.7	14.92	Transazione avvenuta il:	18-04-2018 22:15:26
-Cioccolata	498	998	998.0	1000.0	Transazione avvenuta il:	19-04-2018 11:25:43
-Cioccolata	497	997	996.75	1000.0	Transazione avvenuta il:	19-04-2018 11:28:40
-Caffè top	496	996	995.75	1000.0	Transazione avvenuta il:	19-04-2018 11:30:29
-Cioccolata	496	996	995.75	1000.0	Transazione fallita.	19-04-2018 11:32:29
-Cioccolata	495	995	994.75	1000.0	Transazione avvenuta il:	19-04-2018 11:42:28
-Caffè corretto	494	995	994.75	1000.0	Transazione avvenuta il:	19-04-2018 15:48:03
-Cioccolata	493	994	993.75	1000.0	Transazione avvenuta il:	19-04-2018 17:16:38
-Caffè top	493	994	994.25	1000.0	Transazione avvenuta il:	19-04-2018 17:36:31
-Caffè Espresso	492	993	993.5	1000.0	Transazione avvenuta il:	19-04-2018 18:39:57
-Cioccolata	491	993	993.5	1000.0	Transazione avvenuta il:	20-04-2018 11:48:46
-Cioccolata	490	993	993.5	1000.0	Transazione avvenuta il:	20-04-2018 11:49:18
-Cioccolata	489	993	993.5	1000.0	Transazione avvenuta il:	20-04-2018 11:50:38
-Cioccolata	488	992	993.0	1000.0	Transazione avvenuta il:	20-04-2018 18:27:07
-Cioccolata	487	992	993.0	1000.0	Transazione avvenuta il:	20-04-2018 18:27:49
-Cioccolata	486	992	993.0	1000.0	Transazione avvenuta il:	20-04-2018 18:28:32
-Cioccolata	486	992	993.0	1000.0	Transazione fallita.	21-04-2018 00:09:15
-Vodka	485	992	993.0	1000.0	Transazione avvenuta il:	21-04-2018 00:09:40
-Caffè Espresso	486	990	991.75	1000.0	Transazione fallita.	21-04-2018 10:31:08
-Caffè Espresso	485	990	991.75	1000.0	Transazione avvenuta il:	22-04-2018 22:56:58
-Caffè Espresso	484	989	991.0	1000.0	Transazione avvenuta il:	22-04-2018 22:57:36
-Caffè Espresso	484	989	991.0	1000.0	Transazione avvenuta il:	22-04-2018 22:59:22
-Caffè Espresso	483	988	990.25	1000.0	Transazione avvenuta il:	22-04-2018 22:59:31
-Caffè Espresso	482	987	989.5	1000.0	Transazione avvenuta il:	22-04-2018 22:59:34
-Caffè Espresso	481	986	988.75	1000.0	Transazione avvenuta il:	22-04-2018 22:59:35
-Caffè Espresso	481	986	988.75	1000.0	Transazione fallita.	22-04-2018 22:59:37
-Caffè Espresso	481	986	988.75	1000.0	Transazione fallita.	22-04-2018 22:59:37
-Caffè Espresso	481	986	988.75	1000.0	Transazione fallita.	22-04-2018 22:59:38
-Caffè Espresso	481	986	988.75	1000.0	Transazione fallita.	22-04-2018 22:59:44
-Caffè Espresso	480	985	988.0	1000.0	Transazione avvenuta il:	22-04-2018 22:59:55
-Caffè Espresso	483	988	990.25	1000.0	Transazione avvenuta il:	22-04-2018 23:02:35
-Caffè Espresso	482	987	989.5	1000.0	Transazione avvenuta il:	22-04-2018 23:02:46
-Caffè Espresso	481	986	988.75	1000.0	Transazione avvenuta il:	22-04-2018 23:02:49
-Caffè Espresso	480	985	988.0	1000.0	Transazione avvenuta il:	22-04-2018 23:02:50
-Caffè Espresso	480	985	988.0	1000.0	Transazione fallita.	22-04-2018 23:02:50
-Caffè Espresso	480	985	988.0	1000.0	Transazione fallita.	22-04-2018 23:02:54
-Caffè Espresso	482	987	989.5	1000.0	Transazione avvenuta il:	22-04-2018 23:08:53
-Caffè Espresso	481	986	988.75	1000.0	Transazione avvenuta il:	22-04-2018 23:09:53
-Caffè Espresso	481	986	988.75	1000.0	Transazione avvenuta il:	22-04-2018 23:11:34
-Caffè Espresso	480	985	988.0	1000.0	Transazione avvenuta il:	22-04-2018 23:12:01
-Caffè Espresso	480	985	988.0	1000.0	Transazione avvenuta il:	22-04-2018 23:12:54
-Caffè Espresso	479	985	988.0	1000.0	Transazione avvenuta il:	22-04-2018 23:21:35
-Tè al Limone	478	985	988.0	1000.0	Transazione avvenuta il:	22-04-2018 23:45:16
-Ginseng	477	985	988.0	1000.0	Transazione avvenuta il:	23-04-2018 18:40:33
-Ginseng	476	985	988.0	1000.0	Transazione avvenuta il:	23-04-2018 18:43:34
-Ginseng	475	985	988.0	1000.0	Transazione avvenuta il:	23-04-2018 18:47:00
-Ginseng	474	985	988.0	1000.0	Transazione avvenuta il:	23-04-2018 18:47:43
-Ginseng	473	985	988.0	1000.0	Transazione avvenuta il:	23-04-2018 18:49:22
-Ginseng	472	985	988.0	1000.0	Transazione avvenuta il:	23-04-2018 18:52:05
-Cappuccino	472	985	988.0	1000.0	Transazione fallita.	24-04-2018 09:37:35
-Cappuccino	472	985	988.0	1000.0	Transazione fallita.	24-04-2018 09:37:35
-Caffè Espresso	472	985	988.0	1000.0	Transazione fallita.	24-04-2018 09:37:36
-Caffè Espresso	472	985	988.0	1000.0	Transazione fallita.	24-04-2018 09:37:36
-Latte Caldo	472	985	988.0	1000.0	Transazione fallita.	24-04-2018 09:37:37
-Latte Caldo	472	985	988.0	1000.0	Transazione fallita.	24-04-2018 09:37:37
-Caffè Lungo	472	985	988.0	1000.0	Transazione fallita.	24-04-2018 09:37:38
-Caffè Lungo	472	985	988.0	1000.0	Transazione fallita.	24-04-2018 09:37:38
-Cioccolata	472	985	988.0	1000.0	Transazione fallita.	24-04-2018 09:37:39
-Cioccolata	472	985	988.0	1000.0	Transazione fallita.	24-04-2018 09:37:39
-Tè al Limone	472	985	988.0	1000.0	Transazione fallita.	24-04-2018 09:37:40
-Tè al Limone	472	985	988.0	1000.0	Transazione fallita.	24-04-2018 09:37:40
-Latte Caldo	472	985	988.0	1000.0	Transazione fallita.	24-04-2018 09:38:36
-Latte Caldo	472	985	988.0	1000.0	Transazione fallita.	24-04-2018 09:38:36
-Caffè Espresso	472	985	988.0	1000.0	Transazione fallita.	24-04-2018 09:38:38
-Caffè Espresso	472	985	988.0	1000.0	Transazione fallita.	24-04-2018 09:38:38
-Tè al Limone	471	985	988.0	1000.0	Transazione avvenuta il:	24-04-2018 11:55:17
-Tè al Limone	470	984	987.25	1000.0	Transazione avvenuta il:	24-04-2018 11:57:07
-Caffè Miscela Top	471	984	987.25	1000.0	Transazione fallita.	24-04-2018 14:25:59
-Tè al Limone	471	984	987.25	1000.0	Transazione fallita.	24-04-2018 14:26:06
-Caffè Espresso	471	984	987.25	1000.0	Transazione fallita.	24-04-2018 14:26:07
-Cappuccino	471	984	987.25	1000.0	Transazione fallita.	24-04-2018 14:26:08
-Caffè Miscela Top	471	984	987.25	1000.0	Transazione fallita.	24-04-2018 14:26:09
-Caffè Lungo	471	984	987.25	1000.0	Transazione fallita.	24-04-2018 14:42:30
-Cappuccino	471	984	987.25	1000.0	Transazione fallita.	24-04-2018 14:42:32
-Caffè Espresso	471	984	987.25	1000.0	Transazione fallita.	24-04-2018 14:42:34
-Latte Caldo	471	984	987.25	1000.0	Transazione fallita.	24-04-2018 14:42:35
-Ginseng	471	984	987.25	1000.0	Transazione fallita.	24-04-2018 14:52:51
-Caffè Lungo	471	984	987.25	1000.0	Transazione fallita.	24-04-2018 15:07:04
-Cioccolata	471	984	987.25	1000.0	Transazione fallita.	24-04-2018 15:36:32
-Cioccolata	470	983	986.75	1000.0	Transazione avvenuta il:	24-04-2018 15:36:50
-Cioccolata	469	983	986.75	1000.0	Transazione avvenuta il:	24-04-2018 15:56:21
-Cioccolata	469	983	986.75	1000.0	Transazione fallita.	24-04-2018 15:57:17
-Ginseng	468	983	986.75	999.66	Transazione avvenuta il:	24-04-2018 15:57:40
-Ginseng	468	983	986.75	999.66	Transazione fallita.	24-04-2018 16:13:37
-Cappuccino	468	983	986.75	999.66	Transazione fallita.	24-04-2018 16:13:39
-Caffè Lungo	468	983	986.75	999.66	Transazione fallita.	24-04-2018 16:13:40
-Caffè Miscela Top	468	983	986.75	999.66	Transazione fallita.	24-04-2018 16:13:48
-Cappuccino	468	983	986.75	999.66	Transazione fallita.	24-04-2018 16:13:49
-Caffè Espresso	468	983	986.75	999.66	Transazione fallita.	24-04-2018 16:13:50
-Caffè Lungo	468	983	986.75	999.66	Transazione fallita.	24-04-2018 16:13:51
-Cappuccino	468	983	986.75	999.66	Transazione fallita.	24-04-2018 16:20:54
-Caffè Lungo	468	983	986.75	999.66	Transazione fallita.	24-04-2018 16:23:04
-Latte Caldo	468	983	986.75	999.66	Transazione fallita.	24-04-2018 16:23:05
-Cappuccino	467	983	986.75	999.66	Transazione fallita.	25-04-2018 07:52:22
-Caffè Espresso	467	983	986.75	999.66	Transazione fallita.	25-04-2018 07:52:24
-Cappuccino	467	983	986.75	999.66	Transazione fallita.	25-04-2018 07:52:25
-Ginseng	467	983	986.75	999.66	Transazione fallita.	25-04-2018 07:52:26
-Caffè Lungo	467	983	986.75	999.66	Transazione fallita.	25-04-2018 07:52:27
-Caffè Miscela Top	467	983	986.75	999.66	Transazione fallita.	25-04-2018 07:52:29
-Caffè Corretto	467	983	986.75	999.66	Transazione fallita.	25-04-2018 07:52:30
-Caffè Arabica	467	983	986.75	999.66	Transazione fallita.	25-04-2018 07:52:31
-Tè al Limone	467	983	986.75	999.66	Transazione fallita.	25-04-2018 07:52:31
-Cioccolata	467	983	986.75	999.66	Transazione fallita.	25-04-2018 07:52:32
-Caffè Espresso	466	982	986.0	999.66	Transazione avvenuta il:	25-04-2018 07:52:46
-Caffè Espresso	466	982	986.0	999.66	Transazione fallita.	25-04-2018 07:58:02
-Caffè Lungo	466	982	986.0	999.66	Transazione fallita.	25-04-2018 07:58:39
-Latte Caldo	466	982	986.0	999.66	Transazione fallita.	25-04-2018 07:58:41
-Cioccolata	466	982	986.0	999.66	Transazione fallita.	25-04-2018 07:58:41
-Caffè Lungo	466	982	986.0	999.66	Transazione fallita.	25-04-2018 08:02:50
-Latte Caldo	466	982	986.0	999.66	Transazione fallita.	25-04-2018 08:02:51
-Caffè Lungo	466	982	986.0	999.66	Transazione fallita.	25-04-2018 08:24:19
-Caffè Lungo	465	981	985.0	999.66	Transazione avvenuta il:	25-04-2018 08:24:41
-Tè al Limone	465	981	985.0	999.66	Transazione fallita.	25-04-2018 08:38:55
-Caffè Lungo	465	981	985.0	999.66	Transazione fallita.	25-04-2018 08:51:54
-Cappuccino	465	981	985.0	999.66	Transazione fallita.	25-04-2018 08:52:11
-Cioccolata	465	981	985.0	999.66	Transazione fallita.	25-04-2018 08:52:16
-Latte Caldo	465	981	985.0	999.66	Transazione fallita.	25-04-2018 09:08:15
-Caffè Lungo	465	981	985.0	999.66	Transazione fallita.	25-04-2018 09:12:18
-Latte Caldo	465	981	985.0	999.66	Transazione fallita.	25-04-2018 09:13:35
-Latte Caldo	465	981	985.0	999.66	Transazione fallita.	25-04-2018 09:14:48
-Caffè Lungo	465	981	985.0	999.66	Transazione fallita.	25-04-2018 09:25:24
-Caffè Lungo	464	981	985.0	999.66	Transazione avvenuta il:	25-04-2018 09:27:23
-Cappuccino	464	981	985.0	999.66	Transazione fallita.	25-04-2018 12:53:36
-Tè al Limone	464	981	985.0	999.66	Transazione fallita.	25-04-2018 12:54:14
-Caffè Lungo	464	981	985.0	999.66	Transazione fallita.	25-04-2018 12:57:51
-Caffè Lungo	463	980	984.25	999.66	Transazione avvenuta il:	25-04-2018 12:58:01
-Caffè Lungo	463	980	984.25	999.66	Transazione fallita.	25-04-2018 13:01:16
-Caffè Espresso	462	980	984.25	999.66	Transazione avvenuta il:	25-04-2018 14:34:15
-Caffè Lungo	462	980	984.25	999.66	Transazione fallita.	25-04-2018 16:44:54
-Caffè Lungo	462	980	984.25	999.66	Transazione fallita.	25-04-2018 16:45:03
-Caffè Lungo	462	980	984.25	999.66	Transazione fallita.	25-04-2018 16:45:05
-Caffè Lungo	462	980	984.25	999.66	Transazione fallita.	25-04-2018 16:45:07
-Caffè Lungo	462	980	984.25	999.66	Transazione fallita.	25-04-2018 16:45:11
-Caffè Lungo	462	980	984.25	999.66	Transazione fallita.	25-04-2018 16:45:13
-Caffè Lungo	462	980	984.25	999.66	Transazione fallita.	25-04-2018 16:45:14
-Caffè Lungo	462	980	984.25	999.66	Transazione fallita.	25-04-2018 16:45:16
-Cappuccino	462	980	984.25	999.66	Transazione fallita.	25-04-2018 16:45:18
-Caffè Lungo	462	980	984.25	999.66	Transazione fallita.	25-04-2018 16:45:18
-Cappuccino	462	980	984.25	999.66	Transazione fallita.	25-04-2018 16:45:24
-Cappuccino	462	980	984.25	999.66	Transazione fallita.	25-04-2018 16:45:25
-Cappuccino	462	980	984.25	999.66	Transazione fallita.	25-04-2018 16:45:28
-Cappuccino	461	979	983.25	999.5799999999999	Transazione avvenuta il:	25-04-2018 16:46:04
-Cappuccino	460	978	982.5	999.4999999999999	Transazione avvenuta il:	25-04-2018 16:47:28
-Ginseng	460	978	982.5	999.4999999999999	Transazione fallita.	25-04-2018 16:50:36
-Cappuccino	459	977	981.75	999.4199999999998	Transazione avvenuta il:	25-04-2018 16:51:16
-Caffè Miscela Top	459	977	981.75	999.4199999999998	Transazione fallita.	25-04-2018 16:55:25
-Caffè Espresso	Transazione fallita.	25-04-2018 16:59:24
+Tè ai mirtilli	Transazione avvenuta il:	16-04-2018 00:33:26
+Caffè Espresso	Transazione avvenuta il:	16-04-2018 00:37:26
+Cioccolata	Transazione avvenuta il:	17-04-2018 18:33:35
+Cioccolata	Transazione avvenuta il:	18-04-2018 15:11:22
+Cioccolata	Transazione avvenuta il:	18-04-2018 15:14:06
+Cioccolata	Transazione avvenuta il:	18-04-2018 15:18:14
+Cioccolata	Transazione avvenuta il:	18-04-2018 15:20:17
+Cioccolata	Transazione avvenuta il:	18-04-2018 15:22:45
+Cioccolata	Transazione avvenuta il:	18-04-2018 15:23:38
+Cioccolata	Transazione avvenuta il:	18-04-2018 15:24:11
+Cioccolata	Transazione avvenuta il:	18-04-2018 15:28:13
+Caffè Espresso	Transazione avvenuta il:	18-04-2018 15:31:28
+Cioccolata	Transazione avvenuta il:	18-04-2018 15:38:09
+Caffè Espresso	Transazione avvenuta il:	18-04-2018 15:38:42
+Caffè corretto	Transazione avvenuta il:	18-04-2018 16:10:47
+Cappuccino	Transazione avvenuta il:	18-04-2018 16:11:57
+Caffè corretto	Transazione avvenuta il:	18-04-2018 17:27:54
+Caffè corretto	Transazione avvenuta il:	18-04-2018 17:29:53
+Tè al Limone	Transazione avvenuta il:	18-04-2018 17:37:18
+Tè al Limone	Transazione avvenuta il:	18-04-2018 17:38:38
+Tè al Limone	Transazione avvenuta il:	18-04-2018 17:39:11
+Caffè corretto	Transazione avvenuta il:	18-04-2018 22:15:26
+Cioccolata	Transazione avvenuta il:	19-04-2018 11:25:43
+Cioccolata	Transazione avvenuta il:	19-04-2018 11:28:40
+Caffè top	Transazione avvenuta il:	19-04-2018 11:30:29
+Cioccolata	Transazione avvenuta il:	19-04-2018 11:42:28
+Caffè corretto	Transazione avvenuta il:	19-04-2018 15:48:03
+Cioccolata	Transazione avvenuta il:	19-04-2018 17:16:38
+Caffè top	Transazione avvenuta il:	19-04-2018 17:36:31
+Caffè Espresso	Transazione avvenuta il:	19-04-2018 18:39:57
+Cioccolata	Transazione avvenuta il:	20-04-2018 11:48:46
+Cioccolata	Transazione avvenuta il:	20-04-2018 11:49:18
+Cioccolata	Transazione avvenuta il:	20-04-2018 11:50:38
+Cioccolata	Transazione avvenuta il:	20-04-2018 18:27:07
+Cioccolata	Transazione avvenuta il:	20-04-2018 18:27:49
+Cioccolata	Transazione avvenuta il:	20-04-2018 18:28:32
+Vodka	Transazione avvenuta il:	21-04-2018 00:09:40
+Caffè Espresso	Transazione avvenuta il:	22-04-2018 22:56:58
+Caffè Espresso	Transazione avvenuta il:	22-04-2018 22:57:36
+Caffè Espresso	Transazione avvenuta il:	22-04-2018 22:59:22
+Caffè Espresso	Transazione avvenuta il:	22-04-2018 22:59:31
+Caffè Espresso	Transazione avvenuta il:	22-04-2018 22:59:34
+Caffè Espresso	Transazione avvenuta il:	22-04-2018 22:59:35
+Caffè Espresso	Transazione avvenuta il:	22-04-2018 22:59:55
+Caffè Espresso	Transazione avvenuta il:	22-04-2018 23:02:35
+Caffè Espresso	Transazione avvenuta il:	22-04-2018 23:02:46
+Caffè Espresso	Transazione avvenuta il:	22-04-2018 23:02:49
+Caffè Espresso	Transazione avvenuta il:	22-04-2018 23:02:50
+Caffè Espresso	Transazione avvenuta il:	22-04-2018 23:08:53
+Caffè Espresso	Transazione avvenuta il:	22-04-2018 23:09:53
+Caffè Espresso	Transazione avvenuta il:	22-04-2018 23:11:34
+Caffè Espresso	Transazione avvenuta il:	22-04-2018 23:12:01
+Caffè Espresso	Transazione avvenuta il:	22-04-2018 23:12:54
+Caffè Espresso	Transazione avvenuta il:	22-04-2018 23:21:35
+Tè al Limone	Transazione avvenuta il:	22-04-2018 23:45:16
+Ginseng	Transazione avvenuta il:	23-04-2018 18:40:33
+Ginseng	Transazione avvenuta il:	23-04-2018 18:43:34
+Ginseng	Transazione avvenuta il:	23-04-2018 18:47:00
+Ginseng	Transazione avvenuta il:	23-04-2018 18:47:43
+Ginseng	Transazione avvenuta il:	23-04-2018 18:49:22
+Ginseng	Transazione avvenuta il:	23-04-2018 18:52:05
+Tè al Limone	Transazione avvenuta il:	24-04-2018 11:55:17
+Tè al Limone	Transazione avvenuta il:	24-04-2018 11:57:07
+Cioccolata	Transazione avvenuta il:	24-04-2018 15:36:50
+Cioccolata	Transazione avvenuta il:	24-04-2018 15:56:21
+Ginseng	Transazione avvenuta il:	24-04-2018 15:57:40
+Caffè Espresso	Transazione avvenuta il:	25-04-2018 07:52:46
+Caffè Lungo	Transazione avvenuta il:	25-04-2018 08:24:41
+Caffè Lungo	Transazione avvenuta il:	25-04-2018 09:27:23
+Caffè Lungo	Transazione avvenuta il:	25-04-2018 12:58:01
+Caffè Espresso	Transazione avvenuta il:	25-04-2018 14:34:15
+Cappuccino	Transazione avvenuta il:	25-04-2018 16:46:04
+Cappuccino	Transazione avvenuta il:	25-04-2018 16:47:28
+Cappuccino	Transazione avvenuta il:	25-04-2018 16:51:16
 Caffè Corretto	Transazione avvenuta il:	25-04-2018 20:13:58
 Tè al Limone	Transazione avvenuta il:	25-04-2018 20:16:52
 Caffè Corretto	Transazione avvenuta il:	25-04-2018 20:17:23
 Caffè Corretto	Transazione avvenuta il:	25-04-2018 20:17:58
-Tè al Limone	452	974	978.75	999.0	Transazione fallita.	26-04-2018 15:11:27
-Cappuccino	452	974	978.75	999.0	Transazione fallita.	26-04-2018 15:11:46
-Cappuccino	452	974	978.75	999.0	Transazione fallita.	26-04-2018 15:11:50
-Caffè Lungo	452	974	978.75	999.0	Transazione fallita.	26-04-2018 15:11:51
-Caffè Espresso	452	974	978.75	999.0	Transazione fallita.	26-04-2018 15:13:25
-Cappuccino	452	974	978.75	999.0	Transazione fallita.	26-04-2018 15:16:35
-Cioccolata	452	974	978.75	999.0	Transazione fallita.	26-04-2018 15:18:09
-Cappuccino	452	974	978.75	999.0	Transazione fallita.	26-04-2018 15:19:14
-Cappuccino	452	974	978.75	999.0	Transazione fallita.	26-04-2018 15:19:15
-Cappuccino	452	974	978.75	999.0	Transazione fallita.	26-04-2018 15:19:56
-Caffè Lungo	452	974	978.75	999.0	Transazione fallita.	26-04-2018 15:20:03
-Caffè Lungo	452	974	978.75	999.0	Transazione fallita.	26-04-2018 15:20:42
-Caffè Miscela Top	451	973	978.0	999.0	Transazione avvenuta il:	26-04-2018 15:20:48
-Caffè Miscela Top	451	973	978.0	999.0	Transazione fallita.	26-04-2018 15:20:51
-Caffè Lungo	451	973	978.0	999.0	Transazione fallita.	26-04-2018 15:23:03
-Cappuccino	451	973	978.0	999.0	Transazione fallita.	26-04-2018 15:23:08
-Caffè Miscela Top	450	972	977.25	999.0	Transazione avvenuta il:	26-04-2018 15:23:10
-Caffè Lungo	450	972	977.25	999.0	Transazione fallita.	26-04-2018 15:26:19
-Cappuccino	450	972	977.25	999.0	Transazione fallita.	26-04-2018 15:26:24
-Caffè Espresso	450	972	977.25	999.0	Transazione fallita.	26-04-2018 15:27:12
-Ginseng	449	971	976.5	998.66	Transazione avvenuta il:	26-04-2018 15:28:54
-Tè al Limone	449	971	976.5	998.66	Transazione fallita.	26-04-2018 15:29:07
-Tè al Limone	449	971	976.5	998.66	Transazione fallita.	26-04-2018 15:30:41
-Cappuccino	449	971	976.5	998.66	Transazione fallita.	26-04-2018 15:35:52
-Caffè Arabica	449	971	976.5	998.66	Transazione fallita.	26-04-2018 15:36:24
-Caffè Corretto	449	971	976.5	998.66	Transazione fallita.	26-04-2018 15:39:03
-Caffè Corretto	449	971	976.5	998.66	Transazione fallita.	26-04-2018 15:39:46
-Caffè Corretto	448	970	975.75	998.66	Transazione avvenuta il:	26-04-2018 15:40:34
-Caffè Corretto	447	969	975.0	998.66	Transazione avvenuta il:	26-04-2018 15:40:51
-Caffè Miscela Top	447	969	975.0	998.66	Transazione avvenuta il:	28-04-2018 14:24:35
-Caffè Espresso	446	968	974.25	998.66	Transazione avvenuta il:	29-04-2018 08:41:39
-Caffè Espresso	445	967	973.5	998.66	Transazione avvenuta il:	29-04-2018 09:59:50
-Caffè Espresso	444	966	972.75	998.66	Transazione avvenuta il:	29-04-2018 10:08:03
-Caffè Espresso	443	965	972.0	998.66	Transazione avvenuta il:	29-04-2018 10:13:23
-Caffè Espresso	442	964	971.25	998.66	Transazione avvenuta il:	29-04-2018 10:16:38
-Caffè Espresso	441	963	970.5	998.66	Transazione avvenuta il:	29-04-2018 10:18:27
-Cioccolata	441	963	970.5	998.66	Transazione fallita.	29-04-2018 10:21:38
-Cioccolata	441	963	970.5	998.66	Transazione fallita.	29-04-2018 10:21:39
-Cioccolata	441	963	970.5	998.66	Transazione fallita.	29-04-2018 10:21:45
-Caffè Lungo	440	962	969.75	998.66	Transazione avvenuta il:	29-04-2018 10:26:01
-Caffè Lungo	439	961	969.0	998.66	Transazione avvenuta il:	29-04-2018 10:26:09
-Latte Caldo	438	960	968.25	998.66	Transazione avvenuta il:	29-04-2018 10:26:29
-Cioccolata	439	961	969.0	998.66	Transazione avvenuta il:	29-04-2018 10:28:11
-Caffè Lungo	438	960	968.25	998.66	Transazione avvenuta il:	29-04-2018 10:28:23
-Cioccolata	437	959	967.5	998.66	Transazione avvenuta il:	29-04-2018 10:28:54
-Caffè Espresso	438	960	968.25	998.66	Transazione avvenuta il:	29-04-2018 10:33:05
-Caffè Miscela Top	437	959	967.0	998.66	Transazione avvenuta il:	29-04-2018 10:33:32
-Caffè Miscela Top	436	958	966.25	998.66	Transazione avvenuta il:	29-04-2018 10:33:41
-Caffè Miscela Top	435	957	965.5	998.66	Transazione avvenuta il:	29-04-2018 10:33:45
-Ginseng	437	959	967.5	998.3199999999999	Transazione avvenuta il:	29-04-2018 10:46:43
-Cappuccino	436	958	966.75	998.2399999999999	Transazione avvenuta il:	29-04-2018 10:46:54
-Caffè Espresso	437	959	967.5	998.3199999999999	Transazione fallita.	29-04-2018 11:22:29
-Caffè Corretto	437	959	967.5	998.3199999999999	Transazione fallita.	29-04-2018 11:23:03
-Caffè Corretto	436	958	966.75	998.3199999999999	Transazione avvenuta il:	29-04-2018 11:23:06
-Caffè Espresso	436	958	966.75	998.3199999999999	Transazione fallita.	29-04-2018 11:24:20
-Caffè Espresso	435	957	966.0	998.3199999999999	Transazione avvenuta il:	29-04-2018 11:24:25
-Caffè Miscela Top	435	957	966.0	998.3199999999999	Transazione fallita.	29-04-2018 11:25:25
-Caffè Miscela Top	435	957	966.0	998.3199999999999	Transazione fallita.	29-04-2018 11:25:28
-Caffè Miscela Top	435	957	966.0	998.3199999999999	Transazione fallita.	29-04-2018 11:25:28
-Ginseng	435	957	966.0	998.3199999999999	Transazione fallita.	29-04-2018 11:26:06
-Ginseng	435	957	966.0	998.3199999999999	Transazione fallita.	29-04-2018 11:26:27
-Cappuccino	435	957	966.0	998.3199999999999	Transazione fallita.	29-04-2018 11:28:57
-Cappuccino	434	956	965.25	998.2399999999999	Transazione avvenuta il:	29-04-2018 11:29:02
-Ginseng	434	956	965.25	998.2399999999999	Transazione fallita.	29-04-2018 11:30:05
-Caffè Espresso	433	955	964.5	998.2399999999999	Transazione avvenuta il:	29-04-2018 11:30:56
-Cappuccino	432	954	963.75	998.1599999999999	Transazione avvenuta il:	29-04-2018 11:31:03
-Caffè Miscela Top	432	954	963.75	998.1599999999999	Transazione fallita.	29-04-2018 11:31:10
-Cappuccino	432	954	963.75	998.1599999999999	Transazione fallita.	29-04-2018 11:31:11
-Ginseng	432	954	963.75	998.1599999999999	Transazione fallita.	29-04-2018 11:31:13
-Cappuccino	432	954	963.75	998.1599999999999	Transazione fallita.	29-04-2018 11:31:19
-Cappuccino	433	955	964.5	998.1599999999999	Transazione fallita.	29-04-2018 11:32:41
-Cappuccino	433	955	964.5	998.1599999999999	Transazione fallita.	29-04-2018 11:33:30
-Caffè Espresso	433	955	964.5	998.1599999999999	Transazione fallita.	29-04-2018 11:34:58
-Latte Caldo	433	955	964.5	998.1599999999999	Transazione fallita.	29-04-2018 11:35:02
-Cappuccino	433	955	964.5	998.1599999999999	Transazione fallita.	29-04-2018 11:35:57
-Cappuccino	433	955	964.5	998.1599999999999	Transazione fallita.	29-04-2018 11:35:59
-Caffè Corretto	433	955	964.5	998.1599999999999	Transazione fallita.	29-04-2018 11:37:19
-Caffè Arabica	433	955	964.5	998.1599999999999	Transazione fallita.	29-04-2018 11:37:28
-Tè al Limone	433	955	964.5	998.1599999999999	Transazione fallita.	29-04-2018 11:37:33
-Ginseng	432	954	963.75	997.8199999999998	Transazione avvenuta il:	29-04-2018 11:38:21
-Caffè Miscela Top	432	954	963.75	997.8199999999998	Transazione fallita.	29-04-2018 11:38:35
-Tè al Limone	431	953	963.25	997.8199999999998	Transazione avvenuta il:	02-05-2018 10:04:32
-Ginseng	431	953	963.25	997.8199999999998	Transazione fallita.	02-05-2018 10:12:16
-Ginseng	431	953	963.25	997.8199999999998	Transazione fallita.	03-05-2018 10:00:42
-Cappuccino	431	953	963.25	997.8199999999998	Transazione fallita.	03-05-2018 10:05:39
-Cappuccino	431	953	963.25	997.8199999999998	Transazione fallita.	03-05-2018 10:05:53
-Cappuccino	431	953	963.25	997.8199999999998	Transazione fallita.	03-05-2018 10:06:08
-Cioccolata	431	953	963.25	997.8199999999998	Transazione fallita.	03-05-2018 10:30:18
-Caffè Lungo	431	953	963.25	997.8199999999998	Transazione fallita.	03-05-2018 11:36:25
-Caffè Lungo	430	952	962.25	997.8199999999998	Transazione avvenuta il:	03-05-2018 11:36:27
-Caffè Miscela Top	429	951	961.5	997.8199999999998	Transazione avvenuta il:	03-05-2018 11:49:19
-Caffè Corretto	428	950	960.75	997.8199999999998	Transazione avvenuta il:	03-05-2018 11:49:22
-Cappuccino	428	950	960.75	997.7399999999998	Transazione avvenuta il:	03-05-2018 11:51:22
-Ginseng	428	950	960.75	997.7399999999998	Transazione fallita.	07-05-2018 12:36:46
-Cappuccino	428	950	960.75	997.7399999999998	Transazione fallita.	07-05-2018 12:36:46
-Ginseng	428	950	960.75	997.7399999999998	Transazione fallita.	07-05-2018 12:36:50
-Caffè Lungo	428	950	960.75	997.7399999999998	Transazione fallita.	07-05-2018 12:39:57
-Caffè Espresso	428	950	960.75	997.7399999999998	Transazione fallita.	07-05-2018 12:40:02
-Caffè Espresso	428	950	960.75	997.7399999999998	Transazione fallita.	07-05-2018 12:40:02
-Caffè Espresso	427	949	960.0	997.7399999999998	Transazione avvenuta il:	07-05-2018 12:40:09
-Caffè Espresso	427	949	960.0	997.7399999999998	Transazione fallita.	07-05-2018 12:40:10
-Caffè Espresso	427	949	960.0	997.7399999999998	Transazione fallita.	07-05-2018 12:40:10
-Ginseng	427	949	960.0	997.7399999999998	Transazione fallita.	07-05-2018 12:40:29
-Cappuccino	427	949	960.0	997.7399999999998	Transazione fallita.	07-05-2018 12:40:34
-Cioccolata	426	948	959.25	997.7399999999998	Transazione avvenuta il:	07-05-2018 12:40:39
-Caffè Miscela Top	427	949	960.0	997.7399999999998	Transazione fallita.	07-05-2018 12:42:44
-Caffè Miscela Top	427	949	960.0	997.7399999999998	Transazione fallita.	07-05-2018 12:42:44
-Caffè Corretto	426	948	959.25	997.7399999999998	Transazione avvenuta il:	07-05-2018 12:42:47
-Cappuccino	426	948	959.25	997.7399999999998	Transazione fallita.	07-05-2018 12:44:48
-Cappuccino	426	948	959.25	997.7399999999998	Transazione fallita.	07-05-2018 12:44:49
-Cappuccino	426	948	959.25	997.7399999999998	Transazione fallita.	07-05-2018 12:44:49
-Cappuccino	426	948	959.25	997.7399999999998	Transazione fallita.	07-05-2018 12:44:49
-Cappuccino	426	948	959.25	997.7399999999998	Transazione fallita.	07-05-2018 12:53:56
-Cappuccino	426	948	959.25	997.7399999999998	Transazione fallita.	07-05-2018 12:53:56
-Caffè Espresso	426	948	959.25	997.7399999999998	Transazione fallita.	07-05-2018 12:53:56
-Caffè Espresso	426	948	959.25	997.7399999999998	Transazione fallita.	07-05-2018 12:53:57
-Caffè Lungo	426	948	959.25	997.7399999999998	Transazione fallita.	08-05-2018 09:34:29
-Latte Caldo	426	948	959.25	997.7399999999998	Transazione fallita.	08-05-2018 09:34:30
-Caffè Espresso	426	948	959.25	997.7399999999998	Transazione fallita.	08-05-2018 09:34:31
-Cappuccino	426	948	959.25	997.7399999999998	Transazione fallita.	08-05-2018 09:34:32
-Caffè Lungo	426	948	959.25	997.7399999999998	Transazione fallita.	08-05-2018 09:54:16
-Cappuccino	426	948	959.25	997.7399999999998	Transazione fallita.	08-05-2018 09:54:18
-Ginseng	426	948	959.25	997.7399999999998	Transazione fallita.	08-05-2018 09:54:20
-Cappuccino	426	948	959.25	997.7399999999998	Transazione fallita.	08-05-2018 09:54:21
-Caffè Espresso	426	948	959.25	997.7399999999998	Transazione fallita.	08-05-2018 09:54:22
-Latte Caldo	426	948	959.25	997.7399999999998	Transazione fallita.	08-05-2018 09:54:24
-Tè al Limone	426	948	959.25	997.7399999999998	Transazione fallita.	08-05-2018 09:54:26
-Caffè Arabica	426	948	959.25	997.7399999999998	Transazione fallita.	08-05-2018 09:54:28
-Caffè Miscela Top	426	948	959.25	997.7399999999998	Transazione fallita.	08-05-2018 09:54:29
-Caffè Lungo	426	948	959.25	997.7399999999998	Transazione fallita.	08-05-2018 09:54:39
-Cappuccino	426	948	959.25	997.7399999999998	Transazione fallita.	08-05-2018 09:54:40
-Cappuccino	426	948	959.25	997.7399999999998	Transazione fallita.	08-05-2018 09:54:59
-Ginseng	426	948	959.25	997.7399999999998	Transazione fallita.	08-05-2018 09:55:00
-Cappuccino	426	948	959.25	997.7399999999998	Transazione fallita.	08-05-2018 09:55:01
-Caffè Miscela Top	426	948	959.25	997.7399999999998	Transazione fallita.	08-05-2018 09:55:02
-Cioccolata	426	948	959.25	997.7399999999998	Transazione fallita.	08-05-2018 09:55:06
-Tè al Limone	426	948	959.25	997.7399999999998	Transazione fallita.	08-05-2018 09:55:07
-Caffè Arabica	426	948	959.25	997.7399999999998	Transazione fallita.	08-05-2018 09:55:08
-Caffè Corretto	426	948	959.25	997.7399999999998	Transazione fallita.	08-05-2018 09:55:09
-Latte Caldo	426	948	959.25	997.7399999999998	Transazione fallita.	08-05-2018 09:55:10
-Caffè Espresso	426	948	959.25	997.7399999999998	Transazione fallita.	08-05-2018 09:55:11
-Caffè Lungo	426	948	959.25	997.7399999999998	Transazione fallita.	08-05-2018 09:55:51
-Latte Caldo	426	948	959.25	997.7399999999998	Transazione fallita.	08-05-2018 09:55:52
-Caffè Espresso	426	948	959.25	997.7399999999998	Transazione fallita.	08-05-2018 09:55:53
-Cappuccino	426	948	959.25	997.7399999999998	Transazione fallita.	08-05-2018 09:55:57
-Caffè Espresso	426	948	959.25	997.7399999999998	Transazione fallita.	08-05-2018 09:55:58
-Caffè Lungo	426	948	959.25	997.7399999999998	Transazione fallita.	08-05-2018 09:56:38
-Cappuccino	426	948	959.25	997.7399999999998	Transazione fallita.	08-05-2018 09:56:38
-Ginseng	426	948	959.25	997.7399999999998	Transazione fallita.	08-05-2018 09:56:39
-Cappuccino	426	948	959.25	997.7399999999998	Transazione fallita.	08-05-2018 09:56:40
-Caffè Lungo	426	948	959.25	997.7399999999998	Transazione fallita.	08-05-2018 10:11:10
-Caffè Corretto	425	947	958.0	997.7399999999998	Transazione avvenuta il:	08-05-2018 10:11:25
-Caffè Corretto	425	947	958.0	997.7399999999998	Transazione fallita.	08-05-2018 10:11:32
-Caffè Corretto	424	946	956.75	997.7399999999998	Transazione avvenuta il:	08-05-2018 10:13:44
-Caffè Corretto	423	945	955.75	997.7399999999998	Transazione avvenuta il:	08-05-2018 10:16:28
-Cappuccino	423	945	955.75	997.7399999999998	Transazione fallita.	08-05-2018 10:18:52
-Caffè Miscela Top	422	944	954.5	997.7399999999998	Transazione avvenuta il:	08-05-2018 10:18:58
-Caffè Corretto	421	943	953.25	997.7399999999998	Transazione avvenuta il:	08-05-2018 10:21:44
-Caffè Lungo	421	943	953.25	997.7399999999998	Transazione fallita.	08-05-2018 10:31:25
-Caffè Lungo	421	943	953.25	997.7399999999998	Transazione fallita.	08-05-2018 10:36:43
-Caffè Lungo	421	943	953.25	997.7399999999998	Transazione fallita.	08-05-2018 10:56:35
-Caffè Lungo	421	943	953.25	997.7399999999998	Transazione fallita.	08-05-2018 11:01:03
-Cioccolata	421	943	953.25	997.7399999999998	Transazione fallita.	08-05-2018 11:16:45
-Latte Caldo	421	943	953.25	997.7399999999998	Transazione fallita.	08-05-2018 11:17:06
-Latte Caldo	420	942	952.5	997.7399999999998	Transazione avvenuta il:	08-05-2018 11:17:16
-Caffè Lungo	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:20:39
-Latte Caldo	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:20:41
-Caffè Espresso	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:20:42
-Cappuccino	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:20:43
-Ginseng	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:20:44
-Cappuccino	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:20:45
-Ginseng	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:20:47
-Cappuccino	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:20:51
-Caffè Arabica	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:20:52
-Cappuccino	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:20:56
-Cappuccino	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:20:57
-Latte Caldo	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:20:58
-Caffè Corretto	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:21:01
-Caffè Corretto	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:21:04
-Ginseng	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:22:19
-Caffè Lungo	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:26:20
-Latte Caldo	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:26:22
-Cioccolata	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:26:23
-Tè al Limone	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:26:23
-Caffè Espresso	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:26:24
-Cappuccino	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:26:25
-Ginseng	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:26:26
-Cappuccino	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:26:26
-Caffè Lungo	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:27:11
-Latte Caldo	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:27:12
-Cioccolata	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:27:12
-Tè al Limone	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:27:13
-Caffè Espresso	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:27:14
-Caffè Lungo	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:27:37
-Latte Caldo	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:27:38
-Cioccolata	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:27:39
-Tè al Limone	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:27:39
-Caffè Espresso	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:27:40
-Cappuccino	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:27:40
-Ginseng	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:27:42
-Cappuccino	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:27:42
-Caffè Lungo	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:28:57
-Latte Caldo	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:28:59
-Caffè Espresso	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:29:00
-Cappuccino	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:29:01
-Tè al Limone	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:29:01
-Cioccolata	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:29:02
-Caffè Espresso	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:29:03
-Cappuccino	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:29:04
-Ginseng	420	942	952.5	997.7399999999998	Transazione fallita.	08-05-2018 11:31:49
-Caffè Corretto	420	942	952.0	997.7399999999998	Transazione avvenuta il:	08-05-2018 11:19:41
-Caffè Miscela Top	420	942	952.0	997.7399999999998	Transazione fallita.	08-05-2018 11:21:28
-Tè al Limone	419	941	951.25	997.7399999999998	Transazione avvenuta il:	08-05-2018 11:21:32
-Tè al Limone	418	940	950.5	997.7399999999998	Transazione avvenuta il:	08-05-2018 11:21:42
-Cappuccino	418	940	950.5	997.6599999999997	Transazione avvenuta il:	08-05-2018 11:24:05
-*Cappuccino	419	941	951.75	997.5799999999997	Transazione avvenuta il:	08-05-2018 11:56:13
-Cappuccino	418	940	951.0	997.4999999999997	Transazione avvenuta il:	08-05-2018 11:56:21
-Tè al Limone	418	940	951.0	997.5799999999997	Transazione avvenuta il:	08-05-2018 12:00:09
-Tè al Limone	417	939	950.25	997.5799999999997	Transazione avvenuta il:	08-05-2018 12:00:12
-Cioccolata	417	939	950.25	997.5799999999997	Transazione fallita.	08-05-2018 12:00:17
-Cioccolata	416	938	949.5	997.5799999999997	Transazione avvenuta il:	08-05-2018 12:00:21
-Latte Caldo	416	938	949.5	997.5799999999997	Transazione fallita.	08-05-2018 12:00:30
-Caffè Lungo	416	938	949.5	997.5799999999997	Transazione fallita.	08-05-2018 12:00:31
-Cappuccino	416	938	949.5	997.5799999999997	Transazione fallita.	08-05-2018 12:00:31
-Caffè Espresso	416	938	949.5	997.5799999999997	Transazione fallita.	08-05-2018 12:00:32
-Tè al Limone	416	938	949.5	997.5799999999997	Transazione fallita.	08-05-2018 12:00:32
-Caffè Arabica	416	938	949.5	997.5799999999997	Transazione fallita.	08-05-2018 12:00:33
-Cappuccino	416	938	949.5	997.5799999999997	Transazione fallita.	08-05-2018 12:00:33
-Ginseng	416	938	949.5	997.5799999999997	Transazione fallita.	08-05-2018 12:00:33
-Caffè Miscela Top	416	938	949.5	997.5799999999997	Transazione fallita.	08-05-2018 12:00:34
-Caffè Corretto	416	938	949.5	997.5799999999997	Transazione fallita.	08-05-2018 12:00:34
-Caffè Corretto	417	939	949.75	997.5799999999997	Transazione avvenuta il:	08-05-2018 14:25:26
-Cappuccino	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:25:34
-Caffè Espresso	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:25:41
-Caffè Arabica	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:25:57
-Cappuccino	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:25:58
-Caffè Espresso	416	939	949.75	997.5799999999997	Transazione avvenuta il:	08-05-2018 14:26:00
-Cappuccino	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:32:31
-Ginseng	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:32:32
-Latte Caldo	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:33:38
-Caffè Espresso	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:33:40
-Cappuccino	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:33:42
-Caffè Miscela Top	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:33:43
-Caffè Arabica	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:33:44
-Tè al Limone	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:33:48
-Caffè Espresso	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:33:49
-Cappuccino	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:33:50
-Latte Caldo	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:33:51
-Caffè Lungo	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:34:11
-Latte Caldo	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:34:12
-Caffè Espresso	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:34:13
-Cappuccino	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:34:14
-Caffè Lungo	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:34:22
-Cappuccino	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:36:18
-Ginseng	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:36:58
-Cappuccino	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:36:59
-Latte Caldo	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:43:05
-Caffè Espresso	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:43:07
-Latte Caldo	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:43:26
-Latte Caldo	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:43:27
-Caffè Espresso	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:43:29
-Cappuccino	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:43:30
-Caffè Miscela Top	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:43:31
-Caffè Lungo	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:44:06
-Caffè Lungo	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:44:07
-Cappuccino	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:44:08
-Caffè Espresso	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:44:09
-Cappuccino	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:44:09
-Caffè Miscela Top	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:44:11
-Caffè Arabica	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:44:11
-Tè al Limone	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:44:12
-Cioccolata	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:44:13
-Latte Caldo	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:44:15
-Caffè Lungo	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:44:16
-Cappuccino	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:44:17
-Caffè Lungo	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:44:44
-Cappuccino	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:44:45
-Caffè Espresso	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:44:46
-Cappuccino	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:44:47
-Caffè Corretto	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:44:49
-Caffè Arabica	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:44:50
-Caffè Lungo	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:45:22
-Latte Caldo	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:45:23
-Caffè Espresso	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:45:24
-Cioccolata	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:45:26
-Tè al Limone	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:45:27
-Caffè Lungo	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:45:47
-Latte Caldo	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:45:48
-Cioccolata	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:45:49
-Tè al Limone	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:45:50
-Latte Caldo	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:46:07
-Caffè Espresso	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:46:09
-Cioccolata	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:46:11
-Tè al Limone	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:46:12
-Caffè Arabica	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:46:13
-Caffè Espresso	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:46:14
-Latte Caldo	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:46:15
-Caffè Lungo	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:46:15
-Cappuccino	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:46:17
-Ginseng	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:46:18
-Cappuccino	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:46:20
-Caffè Miscela Top	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:47:07
-Latte Caldo	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:47:35
-Caffè Espresso	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:47:37
-Cappuccino	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:47:38
-Caffè Arabica	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:47:39
-Tè al Limone	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:47:40
-Cioccolata	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:47:41
-Caffè Lungo	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:47:42
-Ginseng	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:47:47
-Ginseng	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 14:55:59
-Cioccolata	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 15:00:42
-Latte Caldo	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 15:00:44
-Caffè Espresso	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 15:00:45
-Caffè Lungo	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 15:00:46
-Caffè Lungo	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 15:05:04
-Cappuccino	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 15:05:05
-Latte Caldo	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 15:18:08
-Caffè Espresso	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 15:18:09
-Cappuccino	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 15:18:13
-Ginseng	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 15:18:15
-Caffè Lungo	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 15:18:22
-Cappuccino	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 15:18:25
-Caffè Espresso	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 15:18:26
-Cappuccino	417	939	949.75	997.5799999999997	Transazione fallita.	08-05-2018 15:18:28
-Cappuccino	416	938	949.0	997.4999999999997	Transazione avvenuta il:	08-05-2018 15:20:47
-Latte Caldo	416	938	949.0	997.4999999999997	Transazione fallita.	08-05-2018 15:20:48
-Caffè Espresso	416	938	949.0	997.4999999999997	Transazione fallita.	08-05-2018 15:20:49
-Cappuccino	416	938	949.0	997.4999999999997	Transazione fallita.	08-05-2018 15:20:50
-Caffè Lungo	416	938	949.0	997.4999999999997	Transazione fallita.	08-05-2018 15:20:52
-Cioccolata	416	938	949.0	997.4999999999997	Transazione fallita.	08-05-2018 15:20:53
-Tè al Limone	416	938	949.0	997.4999999999997	Transazione fallita.	08-05-2018 15:20:54
-Ginseng	416	938	949.0	997.4999999999997	Transazione fallita.	08-05-2018 15:27:28
-Caffè Lungo	415	937	948.25	997.4999999999997	Transazione avvenuta il:	08-05-2018 15:27:37
-Caffè Lungo	415	937	948.25	997.4999999999997	Transazione fallita.	08-05-2018 16:42:48
-Cappuccino	415	937	948.25	997.4999999999997	Transazione fallita.	08-05-2018 16:42:53
-Caffè Espresso	415	937	948.25	997.4999999999997	Transazione fallita.	08-05-2018 16:42:54
-Caffè Espresso	415	937	948.25	997.4999999999997	Transazione fallita.	08-05-2018 17:00:15
-Latte Caldo	415	937	948.25	997.4999999999997	Transazione fallita.	08-05-2018 17:27:16
-Cappuccino	415	937	948.25	997.4999999999997	Transazione fallita.	08-05-2018 17:27:46
-Caffè Lungo	415	937	948.25	997.4999999999997	Transazione fallita.	08-05-2018 17:27:47
-Latte Caldo	415	937	948.25	997.4999999999997	Transazione fallita.	08-05-2018 17:27:48
-Caffè Espresso	415	937	948.25	997.4999999999997	Transazione fallita.	08-05-2018 17:27:49
-Caffè Lungo	415	937	948.25	997.4999999999997	Transazione fallita.	10-05-2018 12:26:58
-Cappuccino	415	937	948.25	997.4999999999997	Transazione fallita.	10-05-2018 12:27:00
-Caffè Espresso	415	937	948.25	997.4999999999997	Transazione fallita.	10-05-2018 12:27:00
-Latte Caldo	415	937	948.25	997.4999999999997	Transazione fallita.	10-05-2018 12:27:01
-Cappuccino	415	937	948.25	997.4999999999997	Transazione fallita.	10-05-2018 22:17:17
-Tè al Limone	415	937	948.25	997.4999999999997	Transazione avvenuta il:	10-05-2018 22:47:03
-Tè al Limone	415	937	948.25	997.4999999999997	Transazione avvenuta il:	15-05-2018 14:29:05
-Cioccolata Transazione avvenuta il:	22-05-2018 18:50:07
-Cioccolata Transazione avvenuta il:	22-05-2018 18:51:20
-Cioccolata Transazione avvenuta il:	22-05-2018 18:53:15
+Caffè Miscela Top	Transazione avvenuta il:	26-04-2018 15:20:48
+Caffè Miscela Top	Transazione avvenuta il:	26-04-2018 15:23:10
+Ginseng	Transazione avvenuta il:	26-04-2018 15:28:54
+Caffè Corretto	Transazione avvenuta il:	26-04-2018 15:40:34
+Caffè Corretto	Transazione avvenuta il:	26-04-2018 15:40:51
+Caffè Miscela Top	Transazione avvenuta il:	28-04-2018 14:24:35
+Caffè Espresso	Transazione avvenuta il:	29-04-2018 08:41:39
+Caffè Espresso	Transazione avvenuta il:	29-04-2018 09:59:50
+Caffè Espresso	Transazione avvenuta il:	29-04-2018 10:08:03
+Caffè Espresso	Transazione avvenuta il:	29-04-2018 10:13:23
+Caffè Espresso	Transazione avvenuta il:	29-04-2018 10:16:38
+Caffè Espresso	Transazione avvenuta il:	29-04-2018 10:18:27
+Caffè Lungo	Transazione avvenuta il:	29-04-2018 10:26:01
+Caffè Lungo	Transazione avvenuta il:	29-04-2018 10:26:09
+Latte Caldo	Transazione avvenuta il:	29-04-2018 10:26:29
+Cioccolata	Transazione avvenuta il:	29-04-2018 10:28:11
+Caffè Lungo	Transazione avvenuta il:	29-04-2018 10:28:23
+Cioccolata	Transazione avvenuta il:	29-04-2018 10:28:54
+Caffè Espresso	Transazione avvenuta il:	29-04-2018 10:33:05
+Caffè Miscela Top	Transazione avvenuta il:	29-04-2018 10:33:32
+Caffè Miscela Top	Transazione avvenuta il:	29-04-2018 10:33:41
+Caffè Miscela Top	Transazione avvenuta il:	29-04-2018 10:33:45
+Ginseng	Transazione avvenuta il:	29-04-2018 10:46:43
+Cappuccino	Transazione avvenuta il:	29-04-2018 10:46:54
+Caffè Corretto	Transazione avvenuta il:	29-04-2018 11:23:06
+Caffè Espresso	Transazione avvenuta il:	29-04-2018 11:24:25
+Cappuccino	Transazione avvenuta il:	29-04-2018 11:29:02
+Caffè Espresso	Transazione avvenuta il:	29-04-2018 11:30:56
+Cappuccino	Transazione avvenuta il:	29-04-2018 11:31:03
+Ginseng	Transazione avvenuta il:	29-04-2018 11:38:21
+Tè al Limone	Transazione avvenuta il:	02-05-2018 10:04:32
+Caffè Lungo	Transazione avvenuta il:	03-05-2018 11:36:27
+Caffè Miscela Top	Transazione avvenuta il:	03-05-2018 11:49:19
+Caffè Corretto	Transazione avvenuta il:	03-05-2018 11:49:22
+Cappuccino	Transazione avvenuta il:	03-05-2018 11:51:22
+Caffè Espresso	Transazione avvenuta il:	07-05-2018 12:40:09
+Cioccolata	Transazione avvenuta il:	07-05-2018 12:40:39
+Caffè Corretto	Transazione avvenuta il:	07-05-2018 12:42:47
+Caffè Corretto	Transazione avvenuta il:	08-05-2018 10:11:25
+Caffè Corretto	Transazione avvenuta il:	08-05-2018 10:13:44
+Caffè Corretto	Transazione avvenuta il:	08-05-2018 10:16:28
+Caffè Miscela Top	Transazione avvenuta il:	08-05-2018 10:18:58
+Caffè Corretto	Transazione avvenuta il:	08-05-2018 10:21:44
+Latte Caldo	Transazione avvenuta il:	08-05-2018 11:17:16
+Caffè Corretto	Transazione avvenuta il:	08-05-2018 11:19:41
+Tè al Limone	Transazione avvenuta il:	08-05-2018 11:21:32
+Tè al Limone	Transazione avvenuta il:	08-05-2018 11:21:42
+Cappuccino	Transazione avvenuta il:	08-05-2018 11:24:05
+Cappuccino	Transazione avvenuta il:	08-05-2018 11:56:21
+Tè al Limone	Transazione avvenuta il:	08-05-2018 12:00:09
+Tè al Limone	Transazione avvenuta il:	08-05-2018 12:00:12
+Cioccolata	Transazione avvenuta il:	08-05-2018 12:00:21
+Caffè Corretto	Transazione avvenuta il:	08-05-2018 14:25:26
+Caffè Espresso	Transazione avvenuta il:	08-05-2018 14:26:00
+Cappuccino	Transazione avvenuta il:	08-05-2018 15:20:47
+Caffè Lungo	Transazione avvenuta il:	08-05-2018 15:27:37
+Tè al Limone	Transazione avvenuta il:	10-05-2018 22:47:03
+Tè al Limone	Transazione avvenuta il:	15-05-2018 14:29:05
