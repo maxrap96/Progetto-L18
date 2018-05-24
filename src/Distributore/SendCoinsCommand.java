@@ -8,14 +8,14 @@ public class SendCoinsCommand extends SendCommand implements Command {
 
     private File fileMonete = new File("src/File_Testo/monete.txt");
 
-    public SendCoinsCommand(Receiver receiver, PrintWriter printWriter) {
-        super(receiver, printWriter);
+    public SendCoinsCommand(ReceiverSend receiverSend, PrintWriter printWriter) {
+        super(receiverSend, printWriter);
     }
 
     @Override
     public void execute() {
         try {
-            receiver.sendFile(printWriter, fileMonete);
+            receiverSend.sendFile(printWriter, fileMonete);
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Error in execute " + e);

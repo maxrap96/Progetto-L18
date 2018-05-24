@@ -71,7 +71,8 @@ public class DealWithTheClientThread implements Runnable, StringCommandList {
     private void needToFindABetterName() throws IOException{
         // Questo "sout" serve solo per fare i test da riga di comando, quando si userà l'interfaccia togliere
         // questa funzione e usare solo la chooseCommand.
-        System.out.println("Inserire valore da tastiera.\n0 SEND_DATA\n1 SEND_MENU\n2 SEND_COINS\n3 SEND_STATS");
+        System.out.println("Inserire valore da tastiera.\n0 SEND_DATA\n1 SEND_MENU\n2 SEND_COINS\n3 SEND_STATS\n" +
+                "4 OVERWRITE_MENU");
         chooseCommand(Integer.parseInt(
                 new BufferedReader(
                         new InputStreamReader(System.in)).readLine()));
@@ -106,6 +107,14 @@ public class DealWithTheClientThread implements Runnable, StringCommandList {
                 readyToReceive(stats);
                 break;
 
+            case 4:
+                sendString(OVERWRITE_MENU, clientSocket);
+                for (String tmp : menu){
+                    sendString(tmp, clientSocket);
+                }
+                sendString(END_SENDING, clientSocket);
+                break;
+
             default:
                 System.out.println("Wrong command");
                 break;
@@ -132,6 +141,7 @@ public class DealWithTheClientThread implements Runnable, StringCommandList {
      * @throws IOException
      */
     private void readyToReceive(ArrayList whereToSaveFileFromClient) throws IOException{
+        whereToSaveFileFromClient.clear();
         String tmp;
         while ((tmp = inFromClient.readLine()) != null){
             if (!tmp.equals(END_SENDING)) {
@@ -152,7 +162,7 @@ public class DealWithTheClientThread implements Runnable, StringCommandList {
      */
     private boolean isAValidCommand(String command){
         if (command.equals(SEND_COINS) || command.equals(SEND_DATA) || command.equals(SEND_MENU) ||
-                command.equals(SEND_STATS)) {
+                command.equals(SEND_STATS) || command.equals(OVERWRITE_MENU)) {
             return true;
         } else {
             return false;

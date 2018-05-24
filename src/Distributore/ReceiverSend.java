@@ -2,7 +2,7 @@ package Distributore;
 
 import java.io.*;
 
-public class Receiver {
+public class ReceiverSend {
 
     /**
      * Funzione che invia un file.

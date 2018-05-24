@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ClientVendMach extends Thread implements StringCommandList {
@@ -17,14 +18,16 @@ public class ClientVendMach extends Thread implements StringCommandList {
     private BufferedReader inFromServer;
     private boolean fileReceived = false;
     private HashMap<String, Command> commandHashMap;
-    private Receiver receiver;
+    private ReceiverSend receiverSend;
+    private ReceiverOverwrite receiverOverwrite;
 
 
     public ClientVendMach(String ipServer, int port) {
         this.ip = ipServer;
         this.serverPort = port;
         this.commandHashMap = new HashMap<>();
-        this.receiver = new Receiver();
+        this.receiverSend = new ReceiverSend();
+        this.receiverOverwrite = new ReceiverOverwrite();
     }
 
     @Override
@@ -81,8 +84,7 @@ public class ClientVendMach extends Thread implements StringCommandList {
      * @param command comando da analizzare.
      */
     private boolean isAValidCommand(String command){
-        if (command.equals(SEND_COINS) || command.equals(SEND_DATA) || command.equals(SEND_MENU) ||
-                command.equals(SEND_STATS)) {
+        if (commandHashMap.containsKey(command)) {
             return true;
         } else {
             return false;
@@ -93,10 +95,11 @@ public class ClientVendMach extends Thread implements StringCommandList {
      * Funzione che aggiunge i comandi da eseguire.
      */
     private void addCommands(){
-        this.commandHashMap.put(SEND_MENU, new SendMenuCommand(receiver, channelOutToServer));
-        this.commandHashMap.put(SEND_DATA, new SendCoinsCommand(receiver, channelOutToServer));
-        this.commandHashMap.put(SEND_COINS, new SendCoinsCommand(receiver, channelOutToServer));
-        this.commandHashMap.put(SEND_STATS, new SendStatsCommand(receiver, channelOutToServer));
+        this.commandHashMap.put(SEND_MENU, new SendMenuCommand(receiverSend, channelOutToServer));
+        this.commandHashMap.put(SEND_DATA, new SendCoinsCommand(receiverSend, channelOutToServer));
+        this.commandHashMap.put(SEND_COINS, new SendCoinsCommand(receiverSend, channelOutToServer));
+        this.commandHashMap.put(SEND_STATS, new SendStatsCommand(receiverSend, channelOutToServer));
+        this.commandHashMap.put(OVERWRITE_MENU, new OverwriteCommand(receiverOverwrite, inFromServer));
     }
 
     public boolean isFileReceived(){

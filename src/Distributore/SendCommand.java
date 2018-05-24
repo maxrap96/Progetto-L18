@@ -4,11 +4,11 @@ import java.io.PrintWriter;
 
 public abstract class SendCommand implements Command{
 
-    protected Receiver receiver;
+    protected ReceiverSend receiverSend;
     protected PrintWriter printWriter;
 
-    public SendCommand(Receiver receiver, PrintWriter printWriter) {
-        this.receiver = receiver;
+    public SendCommand(ReceiverSend receiverSend, PrintWriter printWriter) {
+        this.receiverSend = receiverSend;
         this.printWriter = printWriter;
     }
 }

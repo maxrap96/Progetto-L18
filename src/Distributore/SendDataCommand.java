@@ -8,14 +8,14 @@ public class SendDataCommand extends SendCommand implements Command {
 
     private File fileDati = new File("src/File_Testo/dati.txt");
 
-    public SendDataCommand(Receiver receiver, PrintWriter printWriter) {
-        super(receiver, printWriter);
+    public SendDataCommand(ReceiverSend receiverSend, PrintWriter printWriter) {
+        super(receiverSend, printWriter);
     }
 
     @Override
     public void execute() {
         try {
-            receiver.sendFile(printWriter, fileDati);
+            receiverSend.sendFile(printWriter, fileDati);
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Error in execute " + e);
