@@ -5,6 +5,8 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -28,6 +30,12 @@ public class HomePage extends Application {
     @Override
     public void start(Stage primaryStage) {
 
+        HistogramChart coinsChart = new HistogramChart(new CategoryAxis(), new NumberAxis());
+        new coinsObserver(coinsChart, coins);
+
+
+
+
         // Definizione dello stage principale e della barra del menu
         primaryStage.setTitle("Home");
         menu.add("*");
@@ -35,7 +43,7 @@ public class HomePage extends Application {
         menu.add("02\tCAPSULA\tLatte Caldo\t0.55\t25\t80\t0.30\t0\t0.200\t0");
         Toolbar1 toolbar1 = new Toolbar1();
         MenuTable menuTable = new MenuTable(primaryStage, menu);
-        StatsPage statsPage = new StatsPage(primaryStage, stats);
+        StatsPage statsPage = new StatsPage(primaryStage, coins, coinsChart);
 
         // Creazione scritta correlata da un logo
         Label label = new Label("Welcome to project Nobildonno Home Page");
@@ -64,11 +72,8 @@ public class HomePage extends Application {
 
         final String url = "https://github.com/IngSW-unipv/Progetto-L18";
 
-        hyperlink.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-                getHostServices().showDocument(url);    // Pagina web aperta nel browser
-            }
+        hyperlink.setOnAction(e -> {
+            getHostServices().showDocument(url);    // Pagina web aperta nel browser
         });
 
         HBox hbox = new HBox();
@@ -115,13 +120,10 @@ public class HomePage extends Application {
         toolbar1.Action(anchor,menuTable,statsPage);
 
         // Gestione pressione del bottone "Statistiche"
-        statsButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event){
-                menuTable.getvBox().setVisible(false);
-                anchor.setVisible(false);
-                statsPage.getMainPanel().setVisible(true);
-            }
+        statsButton.setOnAction(event -> {
+            menuTable.getvBox().setVisible(false);
+            anchor.setVisible(false);
+            statsPage.getMainPanel().setVisible(true);
         });
 
         menuButton.setOnAction( event -> {

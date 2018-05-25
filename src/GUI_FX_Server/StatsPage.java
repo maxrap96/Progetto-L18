@@ -20,7 +20,7 @@ public class StatsPage extends GridPane {
     GridPane mainPanel = new GridPane();
     ArrayList<String> stats;
 
-    public StatsPage(Stage stage, ArrayList<String> stats) {
+    public StatsPage(Stage stage, ArrayList<String> coins, HistogramChart coinsChart) {
         Group root = new Group();
         this.stats = stats;
 
@@ -43,14 +43,19 @@ public class StatsPage extends GridPane {
         tab3.setClosable(false);
         tab4.setClosable(false);
 
-        //TODO MJ: aggiungere elementi grafici ai tab
-        HistogramChart coinsChart = new HistogramChart(new CategoryAxis(), new NumberAxis());
-        DrinkPieChart pie = new DrinkPieChart(stats);
+        //HistogramChart coinsChart = new HistogramChart(new CategoryAxis(), new NumberAxis());
+        //DrinkPieChart pie = new DrinkPieChart(stats);
         UsageChart usage = new UsageChart(new NumberAxis(), new NumberAxis());
         ItemsHistogram itemsChart = new ItemsHistogram(new CategoryAxis(), new NumberAxis());
 
-        tab1.setContent(coinsChart.setBars());
-        tab2.setContent(pie.setChart());
+        coinsObserver C = new coinsObserver(coinsChart, coins);
+//        System.out.println("First state: 20");
+//        coinsChart.setState(20);
+        C.update();
+
+
+        tab1.setContent(coinsChart.setBars(coins));
+        //tab2.setContent(pie.setChart());
         tab3.setContent(usage.setGraph());
         tab4.setContent(itemsChart.setBars());
 
@@ -63,7 +68,7 @@ public class StatsPage extends GridPane {
         borderPane.setCenter(tabPane);
 
         mainPanel.addRow(0, borderPane);
-       mainPanel.prefHeightProperty().bind(stage.heightProperty());
+        mainPanel.prefHeightProperty().bind(stage.heightProperty());
         mainPanel.prefWidthProperty().bind(stage.widthProperty());
 //        root.getChildren().addAll(mainPanel);
 //        stage.setScene(scene);
