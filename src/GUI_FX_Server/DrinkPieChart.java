@@ -9,38 +9,23 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class DrinkPieChart extends PieChart {
-
     private ArrayList<String> statsRows;
 
     public DrinkPieChart(ArrayList<String> statsRow) {
         this.statsRows = statsRow;
     }
 
-    Distributore.Data data = new Distributore.Data("src/File_Testo_Server/serverStats.txt");
-    //String[] tmp = {"Cioccolata", "Latte calvo", "Caffe lungo", "Te al limone", "Espresso",
-    //        "Cappuccino", "Arabica", "Ginseng", "Corretto", "Top"};
-
-
     public BorderPane setChart() {
         BorderPane b = new BorderPane();
 
-        ArrayList<String[]> a;
-        String[] a1;
-
-        a = data.readFile();
-
-        //TODO MJ: collegare dati delle bevande al grafico tramite lettura file stats
-
         ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
-
 
         ArrayList<String> beverageNames = new ArrayList<>();
         ArrayList<Integer> beverageQty = new ArrayList<>();
         statsAnalisys(statsRows, beverageNames, beverageQty);
 
-        // Raccolta dati (casuali al momento)
+        // Raccolta dati
         for (int i = 0; i < statsRows.size(); i++) {
-            //pieChartData.add(new Data(tmp[i], (i+2)));
             pieChartData.add(new Data(beverageNames.get(i), beverageQty.get(i)));
         }
 
@@ -73,8 +58,6 @@ public class DrinkPieChart extends PieChart {
             String[] splitted =  row.split("\t");
             checkBeverage(splitted[0], beverageNames, beverageQty);
         }
-
-
     }
 
     /**

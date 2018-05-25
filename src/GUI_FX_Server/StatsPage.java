@@ -20,7 +20,7 @@ public class StatsPage extends GridPane {
     GridPane mainPanel = new GridPane();
     ArrayList<String> stats;
 
-    public StatsPage(Stage stage, ArrayList<String> coins, HistogramChart coinsChart) {
+    public StatsPage(Stage stage, ArrayList<String> coins, HistogramChart coinsChart, ArrayList<String> stats) {
         Group root = new Group();
         this.stats = stats;
 
@@ -37,14 +37,14 @@ public class StatsPage extends GridPane {
         tab1.setText("Monete");
         tab2.setText("Acquisto bevande");
         tab3.setText("Utilizzo");
-        tab4.setText("Items");  // Tradurre in italico
+        tab4.setText("Altro");
         tab1.setClosable(false);
         tab2.setClosable(false);
         tab3.setClosable(false);
         tab4.setClosable(false);
 
         //HistogramChart coinsChart = new HistogramChart(new CategoryAxis(), new NumberAxis());
-        //DrinkPieChart pie = new DrinkPieChart(stats);
+        DrinkPieChart pie = new DrinkPieChart(stats);
         UsageChart usage = new UsageChart(new NumberAxis(), new NumberAxis());
         ItemsHistogram itemsChart = new ItemsHistogram(new CategoryAxis(), new NumberAxis());
 
@@ -55,7 +55,7 @@ public class StatsPage extends GridPane {
 
 
         tab1.setContent(coinsChart.setBars(coins));
-        //tab2.setContent(pie.setChart());
+        tab2.setContent(pie.setChart());
         tab3.setContent(usage.setGraph());
         tab4.setContent(itemsChart.setBars());
 
