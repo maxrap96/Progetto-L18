@@ -35,7 +35,6 @@ Cioccolata	Transazione avvenuta il:	20-04-2018 11:50:38
 Cioccolata	Transazione avvenuta il:	20-04-2018 18:27:07
 Cioccolata	Transazione avvenuta il:	20-04-2018 18:27:49
 Cioccolata	Transazione avvenuta il:	20-04-2018 18:28:32
-Vodka	Transazione avvenuta il:	21-04-2018 00:09:40
 Caffè Espresso	Transazione avvenuta il:	22-04-2018 22:56:58
 Caffè Espresso	Transazione avvenuta il:	22-04-2018 22:57:36
 Caffè Espresso	Transazione avvenuta il:	22-04-2018 22:59:22
