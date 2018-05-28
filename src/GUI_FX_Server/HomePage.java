@@ -67,11 +67,8 @@ public class HomePage extends Application {
 
         final String url = "https://github.com/IngSW-unipv/Progetto-L18";
 
-        hyperlink.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-                getHostServices().showDocument(url);    // Pagina web aperta nel browser
-            }
+        hyperlink.setOnAction(e -> {
+            getHostServices().showDocument(url);    // Pagina web aperta nel browser
         });
 
         HBox hbox = new HBox();
@@ -118,13 +115,10 @@ public class HomePage extends Application {
         toolbar1.Action(anchor,menuTable,statsPage);
 
         // Gestione pressione del bottone "Statistiche"
-        statsButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event){
-                menuTable.getvBox().setVisible(false);
-                anchor.setVisible(false);
-                statsPage.getMainPanel().setVisible(true);
-            }
+        statsButton.setOnAction(event -> {
+            menuTable.getvBox().setVisible(false);
+            anchor.setVisible(false);
+            statsPage.getMainPanel().setVisible(true);
         });
 
         menuButton.setOnAction( event -> {

@@ -42,63 +42,40 @@ public class StatsPage extends GridPane {
         tab1.setText("Monete");
         tab2.setText("Acquisto bevande");
         tab3.setText("Utilizzo");
-        tab4.setText("Items");  // Tradurre in italico
+        tab4.setText("Varie");
         tab1.setClosable(false);
         tab2.setClosable(false);
         tab3.setClosable(false);
         tab4.setClosable(false);
 
-        //TODO MJ: aggiungere elementi grafici ai tab
-        HistogramChart coinsChart = new HistogramChart(new CategoryAxis(), new NumberAxis());
+        HistogramChart coinsChart = new HistogramChart(new CategoryAxis(), new NumberAxis(), obsvCoins);
         DrinkPieChart pie = new DrinkPieChart(obsvStats);
         UsageChart usage = new UsageChart(new NumberAxis(), new NumberAxis());
         ItemsHistogram itemsChart = new ItemsHistogram(new CategoryAxis(), new NumberAxis());
-
 
         tab1.setContent(coinsChart.setBars());
         tab2.setContent(pie.setChart());
         tab3.setContent(usage.setGraph());
         tab4.setContent(itemsChart.setBars());
 
-        obsvStats.addListener(new ListChangeListener() {
-            @Override
-            public void onChanged(ListChangeListener.Change change) {
-                Platform.runLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        // Update UI here.
-                        System.out.println("Detected a change! ");
-                        tab2.setContent(pie.setChart());
-                        tab3.setContent(usage.setGraph());
-                    }
-                });}
-        });
-        obsvCoins.addListener(new ListChangeListener() {
-            @Override
-            public void onChanged(ListChangeListener.Change change) {
-                Platform.runLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        // Update UI here.
-                        System.out.println("Detected a change! ");
-                        tab1.setContent(coinsChart.setBars());
-                    }
-                });
-            }
-        });
-        obsvData.addListener(new ListChangeListener() {
-            @Override
-            public void onChanged(ListChangeListener.Change change) {
-                Platform.runLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        // Update UI here.
-                        System.out.println("Detected a change! ");
-                        tab4.setContent(itemsChart.setBars());
-                    }
-                });
-            }
-        });
+        obsvStats.addListener((ListChangeListener) change -> Platform.runLater(() -> {
+            // Update UI here.
+            System.out.println("Detected a change! ");
+            tab2.setContent(pie.setChart());
+            tab3.setContent(usage.setGraph());
+        }));
+
+        obsvCoins.addListener((ListChangeListener) change -> Platform.runLater(() -> {
+            // Update UI here.
+            System.out.println("Detected a change! ");
+            tab1.setContent(coinsChart.setBars());
+        }));
+
+        obsvData.addListener((ListChangeListener) change -> Platform.runLater(() -> {
+            // Update UI here.
+            System.out.println("Detected a change! ");
+            tab4.setContent(itemsChart.setBars());
+        }));
 
         tabPane.getTabs().addAll(tab1, tab2, tab3, tab4);
 
@@ -109,12 +86,8 @@ public class StatsPage extends GridPane {
         borderPane.setCenter(tabPane);
 
         mainPanel.addRow(0, borderPane);
-       mainPanel.prefHeightProperty().bind(stage.heightProperty());
+        mainPanel.prefHeightProperty().bind(stage.heightProperty());
         mainPanel.prefWidthProperty().bind(stage.widthProperty());
-//        root.getChildren().addAll(mainPanel);
-//        stage.setScene(scene);
-//        stage.show();
-
     }
 
     /**

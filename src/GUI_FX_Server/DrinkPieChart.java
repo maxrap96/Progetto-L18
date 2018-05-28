@@ -56,7 +56,6 @@ public class DrinkPieChart extends PieChart {
      * @param statsRows è l'arraylist contenente il file di statistiche
      * @param beverageNames è l'arraylist contenente i nomi delle bevande
      * @param beverageQty è la quantità delle bevande selezionate
-     * @return da una hashmap nel quale associa le stringhe alle quantità
      */
 
     private void statsAnalisys(ObservableList<String> statsRows, ArrayList<String> beverageNames, ArrayList<Integer> beverageQty) {
@@ -69,8 +68,6 @@ public class DrinkPieChart extends PieChart {
             String[] splitted =  row.split("\t");
             checkBeverage(splitted[0], beverageNames, beverageQty);
         }
-
-
     }
 
     /**
