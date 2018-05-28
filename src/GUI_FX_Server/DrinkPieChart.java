@@ -10,7 +10,6 @@ import java.util.HashMap;
 
 public class DrinkPieChart extends PieChart {
 
-    private ArrayList<String> statsRows;
     private ObservableList<String> obsvstats;
 
     public DrinkPieChart(ObservableList<String> obsvstats) {
@@ -35,8 +34,7 @@ public class DrinkPieChart extends PieChart {
         statsAnalisys(obsvstats, beverageNames, beverageQty);
 
         // Raccolta dati (casuali al momento)
-        for (int i = 0; i < statsRows.size(); i++) {
-            //pieChartData.add(new Data(tmp[i], (i+2)));
+        for (int i = 0; i < obsvstats.size(); i++) {
             pieChartData.add(new Data(beverageNames.get(i), beverageQty.get(i)));
         }
 
@@ -63,10 +61,6 @@ public class DrinkPieChart extends PieChart {
      */
 
     private void statsAnalisys(ObservableList<String> statsRows, ArrayList<String> beverageNames, ArrayList<Integer> beverageQty) {
-
-        if (statsRows == null){
-            return;
-        }
 
         for (int i = 0; i < statsRows.size(); i++){
             String row = statsRows.get(i);

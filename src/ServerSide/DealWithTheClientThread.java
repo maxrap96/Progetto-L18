@@ -12,7 +12,7 @@ import java.util.Collection;
 
 public class DealWithTheClientThread implements Runnable, StringCommandList {
 
-    private ArrayList<String> stats;
+    private ArrayList<String> stats = new ArrayList<>();
     private ObservableList<String> obsvstats;
     private ArrayList<String> menu;
     private ArrayList<String> coins;
@@ -109,7 +109,7 @@ public class DealWithTheClientThread implements Runnable, StringCommandList {
             case 3:
                 sendString(SEND_STATS, clientSocket);
                 readyToReceive(stats);
-                obsvstats = (ObservableList<String>) stats.clone();
+                obsvstats.addAll(stats);
                 break;
 
             case 4:
