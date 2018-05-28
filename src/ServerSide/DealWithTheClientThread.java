@@ -115,12 +115,7 @@ public class DealWithTheClientThread implements Runnable, StringCommandList {
             case 3:
                 sendString(SEND_STATS, clientSocket);
                 readyToReceive(stats);
-<<<<<<< HEAD
-                obsvstats.addAll(stats);
-=======
-                stats.remove(0); //contiene una stringa  o *
                 obsvStats.addAll(stats);
->>>>>>> parent of 828f6a4... Revert "inizio aggiunta observablelist"
                 break;
 
             case 4:

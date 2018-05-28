@@ -4,32 +4,29 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
-import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import java.util.ArrayList;
 
 
 public class MenuTable extends TableView {
 
     Tabella[] tabella;
     VBox vBox = new VBox();
-    private ArrayList<String> menuDati;
+    private ObservableList<String> obsvMenu;
 
-    public MenuTable(Stage stage, ObservableList<String> menuDati) {
-        this.menuDati = menuDati;
-        tabella = new Tabella[menuDati.size()];
+    public MenuTable(Stage stage, ObservableList<String> obsvMenu) {
+        this.obsvMenu = obsvMenu;
+        tabella = new Tabella[obsvMenu.size()];
         TableView<Tabella> tableView = new TableView<>();
 
-        for(int i = 0; i < menuDati.size();i++ ){
-            if(!menuDati.get(i).startsWith("*")) {
-                tabella[i] = new Tabella(menuDati.get(i));
+        for(int i = 0; i < obsvMenu.size(); i++ ){
+            if(!obsvMenu.get(i).startsWith("*")) {
+                tabella[i] = new Tabella(obsvMenu.get(i));
             }
         }
 
