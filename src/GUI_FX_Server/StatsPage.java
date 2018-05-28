@@ -1,5 +1,6 @@
 package GUI_FX_Server;
 
+import javafx.application.Platform;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.scene.Group;
@@ -62,23 +63,40 @@ public class StatsPage extends GridPane {
         obsvStats.addListener(new ListChangeListener() {
             @Override
             public void onChanged(ListChangeListener.Change change) {
-                System.out.println("Detected a change! ");
-                tab2.setContent(pie.setChart());
-                tab3.setContent(usage.setGraph());
-            }
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        // Update UI here.
+                        System.out.println("Detected a change! ");
+                        tab2.setContent(pie.setChart());
+                        tab3.setContent(usage.setGraph());
+                    }
+                });}
         });
         obsvCoins.addListener(new ListChangeListener() {
             @Override
             public void onChanged(ListChangeListener.Change change) {
-                System.out.println("Detected a change! ");
-                tab1.setContent(coinsChart.setBars());
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        // Update UI here.
+                        System.out.println("Detected a change! ");
+                        tab1.setContent(coinsChart.setBars());
+                    }
+                });
             }
         });
         obsvData.addListener(new ListChangeListener() {
             @Override
             public void onChanged(ListChangeListener.Change change) {
-                System.out.println("Detected a change! ");
-                tab4.setContent(itemsChart.setBars());
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        // Update UI here.
+                        System.out.println("Detected a change! ");
+                        tab4.setContent(itemsChart.setBars());
+                    }
+                });
             }
         });
 
