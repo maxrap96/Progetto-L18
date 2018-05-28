@@ -104,9 +104,7 @@ public class StatsPage extends GridPane {
      * @param i indice per selezionare un tab; valore iniziale '0'
      */
     public void OpenTab(int i){
-        SingleSelectionModel<Tab> selectionModel = tabPane.getSelectionModel();
-        selectionModel.select(i);
-        selectionModel.clearSelection();
+        tabPane.getSelectionModel().select(i);
     }
 
     public GridPane getMainPanel() {
