@@ -33,8 +33,7 @@ public class DrinkPieChart extends PieChart {
         ArrayList<Integer> beverageQty = new ArrayList<>();
         statsAnalisys(obsvstats, beverageNames, beverageQty);
 
-        // Raccolta dati (casuali al momento)
-        for (int i = 0; i < obsvstats.size(); i++) {
+        for (int i = 0; i < beverageNames.size(); i++) {
             pieChartData.add(new Data(beverageNames.get(i), beverageQty.get(i)));
         }
 
@@ -63,6 +62,9 @@ public class DrinkPieChart extends PieChart {
     private void statsAnalisys(ObservableList<String> statsRows, ArrayList<String> beverageNames, ArrayList<Integer> beverageQty) {
 
         for (int i = 0; i < statsRows.size(); i++){
+            if (statsRows.get(i).contains("*")){
+                continue;
+            }
             String row = statsRows.get(i);
             String[] splitted =  row.split("\t");
             checkBeverage(splitted[0], beverageNames, beverageQty);

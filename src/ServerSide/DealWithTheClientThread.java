@@ -109,6 +109,7 @@ public class DealWithTheClientThread implements Runnable, StringCommandList {
             case 3:
                 sendString(SEND_STATS, clientSocket);
                 readyToReceive(stats);
+                stats.remove(0); //contiene una stringa  o *
                 obsvstats.addAll(stats);
                 break;
 
