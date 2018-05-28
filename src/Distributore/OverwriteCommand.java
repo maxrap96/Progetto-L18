@@ -4,15 +4,18 @@ import ServerSide.StringCommandList;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class OverwriteCommand implements Command, StringCommandList {
 
     private ReceiverOverwrite receiverOverwrite;
     private BufferedReader bufferedReader;
+    private ArrayList<String> menuFromServer;
 
-    public OverwriteCommand(ReceiverOverwrite receiverOverwrite, BufferedReader bufferedReader) {
-        this.receiverOverwrite = receiverOverwrite;
+    public OverwriteCommand(BufferedReader bufferedReader) {
+        this.receiverOverwrite = new ReceiverOverwrite();
         this.bufferedReader = bufferedReader;
+        this.menuFromServer = new ArrayList<>();
     }
 
     @Override
@@ -21,11 +24,12 @@ public class OverwriteCommand implements Command, StringCommandList {
             String tmp;
             while((tmp = bufferedReader.readLine()) != null) {
                 if(!tmp.equals(END_SENDING)) {
-                    receiverOverwrite.overwriteFile(tmp);
+                    menuFromServer.add(tmp);
                 } else {
                     break;
                 }
             }
+            receiverOverwrite.overwriteFileReceiver(menuFromServer);
         } catch (IOException e){
             e.printStackTrace();
         }

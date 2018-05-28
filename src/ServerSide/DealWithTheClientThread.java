@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class DealWithTheClientThread implements Runnable, StringCommandList {
 
-    private ArrayList<String> stats = new ArrayList<>();
+    private ArrayList<String> stats;
     private ObservableList<String> obsvStats;
     private ArrayList<String> menu;
     private ObservableList<String> obsvMenu;
@@ -19,20 +19,18 @@ public class DealWithTheClientThread implements Runnable, StringCommandList {
     private ObservableList<String> obsvCoins;
     private ArrayList<String> data;
     private ObservableList<String> obsvData;
-
     private Socket clientSocket;
     private BufferedReader inFromClient;
     private String IdVendingMachine;
-    private boolean state;
 
     public DealWithTheClientThread(Socket clientSocket, ObservableList<String> obsvStats, ObservableList<String> obsvMenu,
                                    ObservableList<String> obsvCoins, ObservableList<String> obsvData) {
+        this.initArrayList();
         this.clientSocket = clientSocket;
         this.obsvStats = obsvStats;
         this.obsvMenu = obsvMenu;
         this.obsvCoins = obsvCoins;
         this.obsvData= obsvData;
-        this.state = STATE_WAITING;
     }
 
     @Override
@@ -44,17 +42,20 @@ public class DealWithTheClientThread implements Runnable, StringCommandList {
                             new InputStreamReader(clientSocket.getInputStream()));
 
             while (inFromClient.readLine() != null) {
-                if (state) {
-                    state = !STATE_WAITING;
-                    needToFindABetterName();
-                    state = STATE_WAITING;
-                    sendString(READY, clientSocket);
-                }
+                commandFromKeyboard();
+                sendString(READY, clientSocket);
             }
         }catch (IOException e){
             e.printStackTrace();
             System.out.println("Error caught: " + e);
         }
+    }
+
+    private void initArrayList(){
+        this.stats = new ArrayList<>();
+        this.menu = new ArrayList<>();
+        this.coins = new ArrayList<>();
+        this.data = new ArrayList<>();
     }
 
     /**
@@ -75,7 +76,7 @@ public class DealWithTheClientThread implements Runnable, StringCommandList {
      *
      * @throws IOException
      */
-    private void needToFindABetterName() throws IOException{
+    private void commandFromKeyboard() throws IOException{
         // Questo "sout" serve solo per fare i test da riga di comando, quando si userà l'interfaccia togliere
         // questa funzione e usare solo la chooseCommand.
         System.out.println("Inserire valore da tastiera.\n0 SEND_DATA\n1 SEND_MENU\n2 SEND_COINS\n3 SEND_STATS\n" +

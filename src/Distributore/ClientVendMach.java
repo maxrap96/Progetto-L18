@@ -19,7 +19,6 @@ public class ClientVendMach extends Thread implements StringCommandList {
     private boolean fileReceived = false;
     private HashMap<String, Command> commandHashMap;
     private ReceiverSend receiverSend;
-    private ReceiverOverwrite receiverOverwrite;
 
 
     public ClientVendMach(String ipServer, int port) {
@@ -27,7 +26,6 @@ public class ClientVendMach extends Thread implements StringCommandList {
         this.serverPort = port;
         this.commandHashMap = new HashMap<>();
         this.receiverSend = new ReceiverSend();
-        this.receiverOverwrite = new ReceiverOverwrite();
     }
 
     @Override
@@ -99,7 +97,7 @@ public class ClientVendMach extends Thread implements StringCommandList {
         this.commandHashMap.put(SEND_DATA, new SendCoinsCommand(receiverSend, channelOutToServer));
         this.commandHashMap.put(SEND_COINS, new SendCoinsCommand(receiverSend, channelOutToServer));
         this.commandHashMap.put(SEND_STATS, new SendStatsCommand(receiverSend, channelOutToServer));
-        this.commandHashMap.put(OVERWRITE_MENU, new OverwriteCommand(receiverOverwrite, inFromServer));
+        this.commandHashMap.put(OVERWRITE_MENU, new OverwriteCommand(inFromServer));
     }
 
     public boolean isFileReceived(){
