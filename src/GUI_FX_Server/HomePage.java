@@ -22,22 +22,22 @@ import java.util.ArrayList;
 
 public class HomePage extends Application {
 
-    private static ArrayList<String> stats = new ArrayList<>();
-    private static ObservableList<String> observStats = FXCollections.observableArrayList();;
-    private static ArrayList<String> menu =  new ArrayList<>();
-    private static ArrayList<String> coins =  new ArrayList<>();
-    private static ArrayList<String> data =  new ArrayList<>();
+    //private static ArrayList<String> stats = new ArrayList<>();
+    private static ObservableList<String> observStats = FXCollections.observableArrayList();
+    //private static ArrayList<String> menu =  new ArrayList<>();
+    private static ObservableList<String> observMenu = FXCollections.observableArrayList();
+    //private static ArrayList<String> coins =  new ArrayList<>();
+    private static ObservableList<String> observCoins = FXCollections.observableArrayList();
+    //private static ArrayList<String> data =  new ArrayList<>();
+    private static ObservableList<String> observData = FXCollections.observableArrayList();
 
     @Override
     public void start(Stage primaryStage) {
 
         // Definizione dello stage principale e della barra del menu
         primaryStage.setTitle("Home");
-        menu.add("*");
-        menu.add("01\tCAPSULA\tCioccolata\t0.50\t30\t90\t1\t0\t0.200\t0");
-        menu.add("02\tCAPSULA\tLatte Caldo\t0.55\t25\t80\t0.30\t0\t0.200\t0");
         Toolbar1 toolbar1 = new Toolbar1();
-        MenuTable menuTable = new MenuTable(primaryStage, menu);
+        MenuTable menuTable = new MenuTable(primaryStage, observMenu);
         StatsPage statsPage = new StatsPage(primaryStage, observStats);
 
         // Creazione scritta correlata da un logo
@@ -132,12 +132,12 @@ public class HomePage extends Application {
             menuTable.getvBox().setVisible(true);
             anchor.setVisible(false);
             statsPage.getMainPanel().setVisible(false);
-            // Serve solo per vedere che venga caricato il valore corretto
+            /*// Serve solo per vedere che venga caricato il valore corretto
             if (!menu.isEmpty()){
                 for (String string : menu){
                     System.out.println(string);
                 }
-            }
+            }*/
         });
 
         VBox vBox1 = new VBox(toolbar1,stackPane);
@@ -154,7 +154,7 @@ public class HomePage extends Application {
     }
 
     public static void main(String[] args) {
-        new ServerConnection(80, observStats, menu, coins, data).start();
+        new ServerConnection(80, observStats, observMenu, observCoins, observData).start();
         Application.launch(args);
     }
 }

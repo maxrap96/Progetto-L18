@@ -8,27 +8,30 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.Collection;
 
 public class DealWithTheClientThread implements Runnable, StringCommandList {
 
     private ArrayList<String> stats = new ArrayList<>();
-    private ObservableList<String> obsvstats;
+    private ObservableList<String> obsvStats;
     private ArrayList<String> menu;
+    private ObservableList<String> obsvMenu;
     private ArrayList<String> coins;
+    private ObservableList<String> obsvCoins;
     private ArrayList<String> data;
+    private ObservableList<String> obsvData;
+
     private Socket clientSocket;
     private BufferedReader inFromClient;
     private String IdVendingMachine;
     private boolean state;
 
-    public DealWithTheClientThread(Socket clientSocket, ObservableList<String> obsvstats, ArrayList<String> menu,
-                                   ArrayList<String> coins, ArrayList<String> data) {
+    public DealWithTheClientThread(Socket clientSocket, ObservableList<String> obsvStats, ObservableList<String> obsvMenu,
+                                   ObservableList<String> obsvCoins, ObservableList<String> obsvData) {
         this.clientSocket = clientSocket;
-        this.obsvstats = obsvstats;
-        this.menu = menu;
-        this.coins = coins;
-        this.data = data;
+        this.obsvStats = obsvStats;
+        this.obsvMenu = obsvMenu;
+        this.obsvCoins = obsvCoins;
+        this.obsvData= obsvData;
         this.state = STATE_WAITING;
     }
 
@@ -94,22 +97,30 @@ public class DealWithTheClientThread implements Runnable, StringCommandList {
             case 0:
                 sendString(SEND_DATA, clientSocket);
                 readyToReceive(data);
+                obsvData.addAll(data);
                 break;
 
             case 1:
                 sendString(SEND_MENU, clientSocket);
                 readyToReceive(menu);
+                obsvMenu.addAll(menu);
                 break;
 
             case 2:
                 sendString(SEND_COINS, clientSocket);
                 readyToReceive(coins);
+                obsvCoins.addAll(coins);
                 break;
 
             case 3:
                 sendString(SEND_STATS, clientSocket);
                 readyToReceive(stats);
+<<<<<<< HEAD
                 obsvstats.addAll(stats);
+=======
+                stats.remove(0); //contiene una stringa  o *
+                obsvStats.addAll(stats);
+>>>>>>> parent of 828f6a4... Revert "inizio aggiunta observablelist"
                 break;
 
             case 4:
