@@ -11,6 +11,8 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+
 public class StatsPage extends GridPane {
     TabPane tabPane = new TabPane();
     Tab tab1 = new Tab();
@@ -18,15 +20,12 @@ public class StatsPage extends GridPane {
     Tab tab3 = new Tab();
     Tab tab4 = new Tab();
     GridPane mainPanel = new GridPane();
-    ObservableList<String> obsvStats;
-    ObservableList<String> obsvData;
-    ObservableList<String> obsvCoins;
+    ArrayList<String> stats;
+    ObservableList<String> obsvstats;
 
-    public StatsPage(Stage stage, ObservableList<String> obsvStats, ObservableList<String> obsvData, ObservableList<String> obsvCoins) {
+    public StatsPage(Stage stage, ObservableList<String> obsvstats) {
         Group root = new Group();
-        this.obsvStats = obsvStats;
-        this.obsvCoins = obsvCoins;
-        this.obsvData = obsvData;
+        this.obsvstats = obsvstats;
 
         Scene scene;
 
@@ -49,7 +48,7 @@ public class StatsPage extends GridPane {
 
         //TODO MJ: aggiungere elementi grafici ai tab
         HistogramChart coinsChart = new HistogramChart(new CategoryAxis(), new NumberAxis());
-        DrinkPieChart pie = new DrinkPieChart(obsvStats);
+        DrinkPieChart pie = new DrinkPieChart(obsvstats);
         UsageChart usage = new UsageChart(new NumberAxis(), new NumberAxis());
         ItemsHistogram itemsChart = new ItemsHistogram(new CategoryAxis(), new NumberAxis());
 
@@ -59,26 +58,11 @@ public class StatsPage extends GridPane {
         tab3.setContent(usage.setGraph());
         tab4.setContent(itemsChart.setBars());
 
-        obsvStats.addListener(new ListChangeListener() {
+        obsvstats.addListener(new ListChangeListener() {
             @Override
             public void onChanged(ListChangeListener.Change change) {
                 System.out.println("Detected a change! ");
                 tab2.setContent(pie.setChart());
-                tab3.setContent(usage.setGraph());
-            }
-        });
-        obsvCoins.addListener(new ListChangeListener() {
-            @Override
-            public void onChanged(ListChangeListener.Change change) {
-                System.out.println("Detected a change! ");
-                tab1.setContent(coinsChart.setBars());
-            }
-        });
-        obsvData.addListener(new ListChangeListener() {
-            @Override
-            public void onChanged(ListChangeListener.Change change) {
-                System.out.println("Detected a change! ");
-                tab4.setContent(itemsChart.setBars());
             }
         });
 

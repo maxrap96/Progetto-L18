@@ -22,7 +22,7 @@ public class MenuTable extends TableView {
     VBox vBox = new VBox();
     private ArrayList<String> menuDati;
 
-    public MenuTable(Stage stage, ObservableList<String> menuDati) {
+    public MenuTable(Stage stage, ArrayList<String> menuDati) {
         this.menuDati = menuDati;
         tabella = new Tabella[menuDati.size()];
         TableView<Tabella> tableView = new TableView<>();
