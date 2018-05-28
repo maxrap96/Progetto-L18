@@ -1,15 +1,19 @@
 package ServerSide;
 
+import javafx.collections.ObservableList;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class DealWithTheClientThread implements Runnable, StringCommandList {
 
     private ArrayList<String> stats;
+    private ObservableList<String> obsvstats;
     private ArrayList<String> menu;
     private ArrayList<String> coins;
     private ArrayList<String> data;
@@ -18,10 +22,10 @@ public class DealWithTheClientThread implements Runnable, StringCommandList {
     private String IdVendingMachine;
     private boolean state;
 
-    public DealWithTheClientThread(Socket clientSocket, ArrayList<String> stats, ArrayList<String> menu,
+    public DealWithTheClientThread(Socket clientSocket, ObservableList<String> obsvstats, ArrayList<String> menu,
                                    ArrayList<String> coins, ArrayList<String> data) {
         this.clientSocket = clientSocket;
-        this.stats = stats;
+        this.obsvstats = obsvstats;
         this.menu = menu;
         this.coins = coins;
         this.data = data;
@@ -105,6 +109,7 @@ public class DealWithTheClientThread implements Runnable, StringCommandList {
             case 3:
                 sendString(SEND_STATS, clientSocket);
                 readyToReceive(stats);
+                obsvstats = (ObservableList<String>) stats.clone();
                 break;
 
             case 4:

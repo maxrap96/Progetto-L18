@@ -1,5 +1,7 @@
 package GUI_FX_Server;
 
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.chart.CategoryAxis;
@@ -19,10 +21,11 @@ public class StatsPage extends GridPane {
     Tab tab4 = new Tab();
     GridPane mainPanel = new GridPane();
     ArrayList<String> stats;
+    ObservableList<String> obsvstats;
 
-    public StatsPage(Stage stage, ArrayList<String> stats) {
+    public StatsPage(Stage stage, ObservableList<String> obsvstats) {
         Group root = new Group();
-        this.stats = stats;
+        this.obsvstats = obsvstats;
 
         Scene scene;
 
@@ -45,14 +48,23 @@ public class StatsPage extends GridPane {
 
         //TODO MJ: aggiungere elementi grafici ai tab
         HistogramChart coinsChart = new HistogramChart(new CategoryAxis(), new NumberAxis());
-        DrinkPieChart pie = new DrinkPieChart(stats);
+        DrinkPieChart pie = new DrinkPieChart(obsvstats);
         UsageChart usage = new UsageChart(new NumberAxis(), new NumberAxis());
         ItemsHistogram itemsChart = new ItemsHistogram(new CategoryAxis(), new NumberAxis());
+
 
         tab1.setContent(coinsChart.setBars());
         tab2.setContent(pie.setChart());
         tab3.setContent(usage.setGraph());
         tab4.setContent(itemsChart.setBars());
+
+        obsvstats.addListener(new ListChangeListener() {
+            @Override
+            public void onChanged(ListChangeListener.Change change) {
+                System.out.println("Detected a change! ");
+                tab2.setContent(pie.setChart());
+            }
+        });
 
         tabPane.getTabs().addAll(tab1, tab2, tab3, tab4);
 

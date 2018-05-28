@@ -2,6 +2,8 @@ package GUI_FX_Server;
 
 import ServerSide.ServerConnection;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -21,6 +23,7 @@ import java.util.ArrayList;
 public class HomePage extends Application {
 
     private static ArrayList<String> stats = new ArrayList<>();
+    private static ObservableList<String> observStats;
     private static ArrayList<String> menu =  new ArrayList<>();
     private static ArrayList<String> coins =  new ArrayList<>();
     private static ArrayList<String> data =  new ArrayList<>();
@@ -35,7 +38,7 @@ public class HomePage extends Application {
         menu.add("02\tCAPSULA\tLatte Caldo\t0.55\t25\t80\t0.30\t0\t0.200\t0");
         Toolbar1 toolbar1 = new Toolbar1();
         MenuTable menuTable = new MenuTable(primaryStage, menu);
-        StatsPage statsPage = new StatsPage(primaryStage, stats);
+        StatsPage statsPage = new StatsPage(primaryStage, observStats);
 
         // Creazione scritta correlata da un logo
         Label label = new Label("Welcome to project Nobildonno Home Page");
@@ -151,7 +154,7 @@ public class HomePage extends Application {
     }
 
     public static void main(String[] args) {
-        new ServerConnection(80, stats, menu, coins, data).start();
+        new ServerConnection(80, observStats, menu, coins, data).start();
         Application.launch(args);
     }
 }

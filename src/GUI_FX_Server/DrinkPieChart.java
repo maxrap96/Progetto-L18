@@ -11,32 +11,28 @@ import java.util.HashMap;
 public class DrinkPieChart extends PieChart {
 
     private ArrayList<String> statsRows;
+    private ObservableList<String> obsvstats;
 
-    public DrinkPieChart(ArrayList<String> statsRow) {
-        this.statsRows = statsRow;
+    public DrinkPieChart(ObservableList<String> obsvstats) {
+        this.obsvstats = obsvstats;
     }
 
-    Distributore.Data data = new Distributore.Data("src/File_Testo_Server/serverStats.txt");
-    //String[] tmp = {"Cioccolata", "Latte calvo", "Caffe lungo", "Te al limone", "Espresso",
-    //        "Cappuccino", "Arabica", "Ginseng", "Corretto", "Top"};
-
+    /**
+     * funzione per inizializzare il borderpane
+     * @return restituisce il borderpane
+     */
 
     public BorderPane setChart() {
+
         BorderPane b = new BorderPane();
-
-        ArrayList<String[]> a;
-        String[] a1;
-
-        a = data.readFile();
-
-        //TODO MJ: collegare dati delle bevande al grafico tramite lettura file stats
-
+        if (obsvstats == null){
+            return b;
+        }
         ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
-
 
         ArrayList<String> beverageNames = new ArrayList<>();
         ArrayList<Integer> beverageQty = new ArrayList<>();
-        statsAnalisys(statsRows, beverageNames, beverageQty);
+        statsAnalisys(obsvstats, beverageNames, beverageQty);
 
         // Raccolta dati (casuali al momento)
         for (int i = 0; i < statsRows.size(); i++) {
@@ -66,7 +62,11 @@ public class DrinkPieChart extends PieChart {
      * @return da una hashmap nel quale associa le stringhe alle quantità
      */
 
-    private void statsAnalisys(ArrayList<String> statsRows, ArrayList<String> beverageNames, ArrayList<Integer> beverageQty) {
+    private void statsAnalisys(ObservableList<String> statsRows, ArrayList<String> beverageNames, ArrayList<Integer> beverageQty) {
+
+        if (statsRows == null){
+            return;
+        }
 
         for (int i = 0; i < statsRows.size(); i++){
             String row = statsRows.get(i);
