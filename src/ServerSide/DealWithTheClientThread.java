@@ -2,29 +2,33 @@ package ServerSide;
 
 import javafx.collections.ObservableList;
 
+import javax.sound.midi.Receiver;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class DealWithTheClientThread implements Runnable, StringCommandList {
 
     private ArrayList<String> stats;
-    private ObservableList<String> obsvStats;
     private ArrayList<String> menu;
-    private ObservableList<String> obsvMenu;
     private ArrayList<String> coins;
-    private ObservableList<String> obsvCoins;
     private ArrayList<String> data;
+    private ObservableList<String> obsvStats;
+    private ObservableList<String> obsvMenu;
+    private ObservableList<String> obsvCoins;
     private ObservableList<String> obsvData;
     private Socket clientSocket;
     private BufferedReader inFromClient;
+    private HashMap<String, CommandServer> commandServerHashMap;
     private String IdVendingMachine;
 
-    public DealWithTheClientThread(Socket clientSocket, ObservableList<String> obsvStats, ObservableList<String> obsvMenu,
-                                   ObservableList<String> obsvCoins, ObservableList<String> obsvData) {
+    public DealWithTheClientThread(Socket clientSocket, ObservableList<String> obsvStats,
+                                   ObservableList<String> obsvMenu, ObservableList<String> obsvCoins,
+                                   ObservableList<String> obsvData) {
         this.initArrayList();
         this.clientSocket = clientSocket;
         this.obsvStats = obsvStats;
@@ -40,6 +44,9 @@ public class DealWithTheClientThread implements Runnable, StringCommandList {
             inFromClient =
                     new BufferedReader(
                             new InputStreamReader(clientSocket.getInputStream()));
+
+            // Inizializzazione della mappa dei comandi, dopo aver inizializzato tutto ciò che mi serve
+            this.initServerHashMap();
 
             while (inFromClient.readLine() != null) {
                 commandFromKeyboard();
@@ -91,40 +98,31 @@ public class DealWithTheClientThread implements Runnable, StringCommandList {
      * Funzione che permette di scegliere il comando, sotto forma di stringa, da inviare al Client.
      *
      * @param index indice per scegliere il comando idoneo.
-     * @throws IOException
      */
-    private void chooseCommand(int index) throws IOException{
+    private void chooseCommand(int index){
         switch (index){
             case 0:
-                sendString(SEND_DATA, clientSocket);
-                readyToReceive(data);
+                commandServerHashMap.get(SEND_DATA).execute();
                 obsvData.addAll(data);
                 break;
 
             case 1:
-                sendString(SEND_MENU, clientSocket);
-                readyToReceive(menu);
+                commandServerHashMap.get(SEND_MENU).execute();
                 obsvMenu.addAll(menu);
                 break;
 
             case 2:
-                sendString(SEND_COINS, clientSocket);
-                readyToReceive(coins);
+                commandServerHashMap.get(SEND_COINS).execute();
                 obsvCoins.addAll(coins);
                 break;
 
             case 3:
-                sendString(SEND_STATS, clientSocket);
-                readyToReceive(stats);
+                commandServerHashMap.get(SEND_STATS).execute();
                 obsvStats.addAll(stats);
                 break;
 
             case 4:
-                sendString(OVERWRITE_MENU, clientSocket);
-                for (String tmp : menu){
-                    sendString(tmp, clientSocket);
-                }
-                sendString(END_SENDING, clientSocket);
+                commandServerHashMap.get(OVERWRITE_MENU).execute();
                 break;
 
             default:
@@ -133,51 +131,36 @@ public class DealWithTheClientThread implements Runnable, StringCommandList {
         }
     }
 
-    protected void chosenCommand(String command, ArrayList<String> arrayUsedToSaveInfo){
-        if(isAValidCommand(command)){
-            try {
-                sendString(command, clientSocket);
-                readyToReceive(arrayUsedToSaveInfo);
-            } catch (IOException e) {
-                e.printStackTrace();
-                System.out.println("Error chosenCommand " + e);
-            }
-        }
-
-    }
-
     /**
-     * Funzione che salva i dati in ingresso.
+     * Funzione per attivare un comando.
      *
-     * @param whereToSaveFileFromClient ArrayList in cui salvo i dati.
-     * @throws IOException
-     */
-    private void readyToReceive(ArrayList whereToSaveFileFromClient) throws IOException{
-        whereToSaveFileFromClient.clear();
-        String tmp;
-        while ((tmp = inFromClient.readLine()) != null){
-            if (!tmp.equals(END_SENDING)) {
-                whereToSaveFileFromClient.add(tmp);
-                System.out.println(tmp);
-            } else {
-                break;
-            }
-        }
-    }
-
-
-
-    /**
-     * Funzione che confronta la stringa passata e decide se è un comando valido.
+     * Nota: Possibile uso negli strati della UI.
      *
-     * @param command comando da analizzare.
+     * @param command
      */
-    private boolean isAValidCommand(String command){
-        if (command.equals(SEND_COINS) || command.equals(SEND_DATA) || command.equals(SEND_MENU) ||
-                command.equals(SEND_STATS) || command.equals(OVERWRITE_MENU)) {
-            return true;
+    protected void chosenCommand(String command){
+        if (commandServerHashMap.containsKey(command)) {
+            commandServerHashMap.get(command).execute();
         } else {
-            return false;
+            System.out.println("Comando non valido");
         }
+    }
+
+    /**
+     * Funzione che inizializza la mappa dei comandi disponibili.
+     */
+    private void initServerHashMap(){
+        this.commandServerHashMap = new HashMap<>();
+        ReceiverServer receiverServer = new ReceiverServer();
+        this.commandServerHashMap.put(SEND_COINS, new SendCoinsCommandServer(receiverServer, clientSocket, coins,
+                inFromClient));
+        this.commandServerHashMap.put(SEND_DATA, new SendDataCommandServer(receiverServer, clientSocket, data,
+                inFromClient));
+        this.commandServerHashMap.put(SEND_MENU, new SendMenuCommandServer(receiverServer, clientSocket, menu,
+                inFromClient));
+        this.commandServerHashMap.put(SEND_STATS, new SendStatsCommandServer(receiverServer, clientSocket, stats,
+                inFromClient));
+        this.commandServerHashMap.put(OVERWRITE_MENU, new OverwriteCommandServer(receiverServer, clientSocket, menu,
+                inFromClient));
     }
 }
