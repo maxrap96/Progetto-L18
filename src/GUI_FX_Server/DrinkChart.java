@@ -18,22 +18,29 @@ public class DrinkChart extends BarChart {
     public BorderPane initChart() {
         BorderPane mainTabPane = new BorderPane();
 
+        if(data == null)
+            return mainTabPane;
+
         final CategoryAxis xAxis = new CategoryAxis();
         final NumberAxis yAxis = new NumberAxis();
 
         final BarChart<String,Number> itemsChart = new BarChart<>(xAxis, yAxis);
-        itemsChart.setTitle("Oggetti vari:");
+        itemsChart.setTitle("Quantità rimanenti bevande");
         itemsChart.setLegendVisible(false);
 
-        xAxis.setLabel("Items");
+        xAxis.setLabel("Bevanda");
         yAxis.setLabel("Quantità");
 
         XYChart.Series series1 = new XYChart.Series();
 
-        series1.getData().add(new XYChart.Data("Latte caldo", 61));
-        series1.getData().add(new XYChart.Data("Cappuccino", 358));
-        series1.getData().add(new XYChart.Data("Espresso", 99));
-        series1.getData().add(new XYChart.Data("The ai mirtilli", 207));
+        for(int i = 0; i < data.size(); i++) {
+            if (data.get(i).startsWith("0")) {
+                String[] split = data.get(i).split("\t");
+
+                //TODO sostituire ID con nome bevanda
+                series1.getData().add(new XYChart.Data(split[0], Double.parseDouble(split[1])));
+            }
+        }
 
         itemsChart.getData().add(series1);
 
