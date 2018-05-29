@@ -18,6 +18,7 @@ public class StatsPage extends GridPane {
     Tab tab2 = new Tab();
     Tab tab3 = new Tab();
     Tab tab4 = new Tab();
+    Tab tab5 = new Tab();
     GridPane mainPanel = new GridPane();
     ObservableList<String> obsvStats;
     ObservableList<String> obsvData;
@@ -42,11 +43,13 @@ public class StatsPage extends GridPane {
         tab1.setText("Monete");
         tab2.setText("Acquisto bevande");
         tab3.setText("Utilizzo");
-        tab4.setText("Varie");
+        tab4.setText("Bevande");
+        tab5.setText("Varie");
         tab1.setClosable(false);
         tab2.setClosable(false);
         tab3.setClosable(false);
         tab4.setClosable(false);
+        tab5.setClosable(false);
 
         HistogramChart coinsChart = new HistogramChart(new CategoryAxis(), new NumberAxis(), obsvCoins);
         DrinkPieChart pie = new DrinkPieChart(obsvStats);
@@ -56,7 +59,7 @@ public class StatsPage extends GridPane {
         tab1.setContent(coinsChart.setBars());
         tab2.setContent(pie.setChart());
         tab3.setContent(usage.setGraph());
-        tab4.setContent(itemsChart.setBars());
+        tab5.setContent(itemsChart.setBars());
 
         obsvStats.addListener((ListChangeListener) change -> Platform.runLater(() -> {
             // Update UI here.
@@ -74,10 +77,10 @@ public class StatsPage extends GridPane {
         obsvData.addListener((ListChangeListener) change -> Platform.runLater(() -> {
             // Update UI here.
             System.out.println("Detected a change! ");
-            tab4.setContent(itemsChart.setBars());
+            tab5.setContent(itemsChart.setBars());
         }));
 
-        tabPane.getTabs().addAll(tab1, tab2, tab3, tab4);
+        tabPane.getTabs().addAll(tab1, tab2, tab3, tab4, tab5);
 
         // Utilizzo di tutto lo spazio disponibile da parte del pannello
 

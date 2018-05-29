@@ -26,32 +26,12 @@ public class HistogramChart extends BarChart {
         final CategoryAxis yAxis = new CategoryAxis();
         final BarChart<Number, String> bc = new BarChart<>(xAxis, yAxis);
 
-//        setChart(bc, xAxis, yAxis);
-
-        bc.setTitle("Coins");
-
-        xAxis.setLabel("Numero monete rimaste");
-        xAxis.setAutoRanging(false);
-        xAxis.setLowerBound(0);
-        xAxis.setUpperBound(45);
-        xAxis.setTickUnit(1);
-        xAxis.setMinorTickVisible(false);
-
-        yAxis.setLabel("Tagli di monete [€]");
-        bc.setLegendVisible(false);
+        setChart(bc, xAxis, yAxis);
 
         XYChart.Series series1 = new XYChart.Series();
 
         // Ottenimento numero di monete
         int money[] = new int[Monete.length];
-
-//        StringTokenizer tokenizer = new StringTokenizer(numCoins, "\t");
-//
-//        for(int i = 0; i < Monete.length; i++) {
-//            if (tokenizer.hasMoreTokens()) {
-//                money[i] = Integer.parseInt(tokenizer.nextToken());
-//            }
-//        }
 
         analyzeData(money, coins);
 
@@ -81,25 +61,25 @@ public class HistogramChart extends BarChart {
         }
     }
 
-//    /**
-//     * Funzione che permette di modificare alcuni parametri del grafico
-//     * @param bc grafico
-//     * @param xAxis asse x
-//     * @param yAxis asse y
-//     */
-//    public void setChart(BarChart<Number, String> bc, NumberAxis xAxis, CategoryAxis yAxis) {
-//        bc.setTitle("Coins");
-//
-//        xAxis.setLabel("Numero monete rimaste");
-//        xAxis.setAutoRanging(false);
-//        xAxis.setLowerBound(0);
-//        xAxis.setUpperBound(45);
-//        xAxis.setTickUnit(1);
-//        xAxis.setMinorTickVisible(false);
-//
-//        yAxis.setLabel("Tagli di monete [€]");
-//        bc.setLegendVisible(false);
-//    }
+    /**
+     * Funzione che permette di modificare alcuni parametri del grafico
+     * @param bc grafico
+     * @param xAxis asse x
+     * @param yAxis asse y
+     */
+    public void setChart(BarChart<Number, String> bc, NumberAxis xAxis, CategoryAxis yAxis) {
+        bc.setTitle("Coins");
+
+        xAxis.setLabel("Numero monete rimaste");
+        xAxis.setAutoRanging(false);
+        xAxis.setLowerBound(0);
+        xAxis.setUpperBound(45);
+        xAxis.setTickUnit(1);
+        xAxis.setMinorTickVisible(false);
+
+        yAxis.setLabel("Tagli di monete [€]");
+        bc.setLegendVisible(false);
+    }
 
     public void colorChartBars(BarChart bc, int i, int money[]) {
         String st = ".data" + i + ".chart-bar";

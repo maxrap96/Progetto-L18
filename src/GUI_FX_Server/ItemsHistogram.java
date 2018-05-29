@@ -15,7 +15,6 @@ public class ItemsHistogram extends BarChart {
         final String spoons = "Cucchiaini";
         final String sugar = "Zucchero";
         final String milk = "Latte";
-        final String wodka = "Wodka";
 
         final CategoryAxis xAxis = new CategoryAxis();
         final NumberAxis yAxis = new NumberAxis();
@@ -27,26 +26,14 @@ public class ItemsHistogram extends BarChart {
         xAxis.setLabel("Items");
         yAxis.setLabel("Quantità");
 
-        //TODO MJ: Collegare dati mostrati ai dati del distributore
-
         XYChart.Series series1 = new XYChart.Series();
 
         series1.getData().add(new XYChart.Data(cups, 61));
         series1.getData().add(new XYChart.Data(milk, 358));
         series1.getData().add(new XYChart.Data(spoons, 99));
         series1.getData().add(new XYChart.Data(sugar, 207));
-        series1.getData().add(new XYChart.Data(wodka, 706));
 
-        // Simulazione secondo dispenser??
-        XYChart.Series series2 = new XYChart.Series();
-
-        series2.getData().add(new XYChart.Data(cups, 87));
-        series2.getData().add(new XYChart.Data(milk, 216));
-        series2.getData().add(new XYChart.Data(spoons, 82));
-        series2.getData().add(new XYChart.Data(sugar, 158));
-        series2.getData().add(new XYChart.Data(wodka, 706));
-
-        itemsChart.getData().addAll(series1, series2);
+        itemsChart.getData().add(series1);
 
         b.setCenter(itemsChart);
 
