@@ -50,6 +50,7 @@ public class UsageChart extends LineChart {
         for (int i = 0; i < series.size(); i++) {
             lineChart.getData().add(series.get(i));
         }
+
         b.setCenter(lineChart);
 
         return b;
@@ -84,11 +85,34 @@ public class UsageChart extends LineChart {
         return counter;
 */    }
 
+    /**
+     * funziona che crea la serie in base ai dati presenti nella mappa
+     * @param counter è la mappa che contiene i conteggi per i relativi giorni
+     * @param series sono le serie di dati per ogni mese
+     */
     private void createseries(Map<String, Long> counter, ArrayList<Series> series) {
 
-/*        for (int i = 0; i < counter.size(); i++) {
-            series.getData().add(new XYChart.Data( i ,counter.get("0"+String.valueOf(i))); // indice e valore
+        for (int mese =1; mese <=12; mese++){
+            boolean foundAny = false;
+            Series series1 = new Series();
+            for (int day = 1; day <= 31; day++){
+                String currentDate;
+                if (day < 0) {
+                    currentDate = ("0" + day + "-0" + mese + "-2018");
+                }
+                else {
+                    currentDate = (day + "-0" + mese + "-2018");
+                }
+
+                if (counter.containsKey(currentDate)){
+                    series1.getData().add(new XYChart.Data( day ,counter.get(currentDate)));
+                    series1.setName(String.valueOf(mese));
+                    foundAny = true;
+                }
+            }
+            if (foundAny){ //se non ne ho trovata nessuna non ha senso aggiungerle
+                series.add(series1);
+            }
         }
-*/
     }
 }
