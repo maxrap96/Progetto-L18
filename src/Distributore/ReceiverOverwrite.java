@@ -1,14 +1,15 @@
 package Distributore;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class ReceiverOverwrite implements TextFiles {
 
-    private Data menuData = new Data("src/File_Testo/menuPtova.txt");
-    private String pathfile = "src/File_Testo/menuPtova.txt";
+    private Data menuData = new Data("src/File_Testo/menuProva.txt");
+    private String pathfile = "src/File_Testo/menuProva.txt";
     private File menu = new File(pathfile);
 
     protected void overwriteFileReceiver(ArrayList<String> arrayFromCommand){
@@ -21,16 +22,15 @@ public class ReceiverOverwrite implements TextFiles {
         }
     }
 
-    private void saveFileFromCommand(ArrayList<String> arrayList) throws IOException{
-        PrintWriter printWriter = new PrintWriter(menu);
-        for (int i = 0; i < arrayList.size(); i++){
-            printWriter.print(arrayList.get(i));
-            if(i != arrayList.size() - 1){
-                printWriter.append("\n");
-            }
+    private void saveFileFromCommand(ArrayList<String> arrayFromCommand) {
+        try {
+            menuData.saveFileFromCommand(arrayFromCommand);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        printWriter.close();
     }
+
+
     private void emptyFile() throws IOException{
         PrintWriter printWriter = new PrintWriter(menu);
         printWriter.print("");

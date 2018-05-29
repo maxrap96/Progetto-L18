@@ -138,4 +138,20 @@ public class Data {
         os.close();
     }
 
+    public void saveFileFromCommand(ArrayList<String> arrayList) throws IOException{
+        try {
+            FileWriter writer = new FileWriter(PATHFILE, false);
+            writer.write(arrayList.get(0));
+            writer.close();
+            writer = new FileWriter(PATHFILE, false);
+            //la prima riga è senza append per sovrascirvere tutto
+            for (int i=1; i< arrayList.size(); i++){
+                writer.write(arrayList.get(i) + "\n" );
+            }
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
