@@ -6,7 +6,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.collections.FXCollections;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class DrinkPieChart extends PieChart {
 
@@ -31,7 +30,7 @@ public class DrinkPieChart extends PieChart {
 
         ArrayList<String> beverageNames = new ArrayList<>();
         ArrayList<Integer> beverageQty = new ArrayList<>();
-        statsAnalisys(obsvstats, beverageNames, beverageQty);
+        statsAnalysis(obsvstats, beverageNames, beverageQty);
 
         for (int i = 0; i < beverageNames.size(); i++) {
             pieChartData.add(new Data(beverageNames.get(i), beverageQty.get(i)));
@@ -58,7 +57,7 @@ public class DrinkPieChart extends PieChart {
      * @param beverageQty è la quantità delle bevande selezionate
      */
 
-    private void statsAnalisys(ObservableList<String> statsRows, ArrayList<String> beverageNames, ArrayList<Integer> beverageQty) {
+    private void statsAnalysis(ObservableList<String> statsRows, ArrayList<String> beverageNames, ArrayList<Integer> beverageQty) {
 
         for (int i = 0; i < statsRows.size(); i++){
             if (!statsRows.get(i).contains("*")){
@@ -70,7 +69,7 @@ public class DrinkPieChart extends PieChart {
     }
 
     /**
-     * è la funzione che si occupa di verificare che la bevanda
+     * è la funzione che si occupa di verificare che la bevanda sia presente
      * @param beverage è la bevanda presa in osservazione
      * @param beverageNames è l'arraylist contenente i nomi delle bevande
      * @param beverageQty è la quantità di bevanda chiesta
@@ -88,7 +87,7 @@ public class DrinkPieChart extends PieChart {
             }
         }
         else {
-            //se arrivo qui significa che non lo ho trovata
+            //se arrivo qui significa che non l'ho trovata
             beverageNames.add(beverage);
             beverageQty.add(1);
         }
