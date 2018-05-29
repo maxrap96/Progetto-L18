@@ -1,5 +1,4 @@
-﻿* File di statistiche, vuoto e riempito dal programma successivamente. Prima riga con dati di default di prova.
-Tè ai mirtilli	Transazione avvenuta il:	16-04-2018 00:33:26
+﻿Tè ai mirtilli	Transazione avvenuta il:	16-04-2018 00:33:26
 Tè ai mirtilli	Transazione avvenuta il:	16-04-2018 00:33:36
 Tè ai mirtilli	Transazione avvenuta il:	16-04-2018 00:34:26
 Caffè Espresso	Transazione avvenuta il:	16-04-2018 00:37:26
