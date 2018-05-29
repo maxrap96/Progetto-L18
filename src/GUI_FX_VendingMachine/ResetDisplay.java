@@ -6,7 +6,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class ResetDisplay {
-    private final String DEFAULTMESSAGE = "Scegliere una bevanda";
+    private final String DEFAULT_MESSAGE = "Scegliere una bevanda";
     private Display display;
     private Distributore distributore;
     private Timer timer = new Timer();
@@ -23,7 +23,7 @@ public class ResetDisplay {
     public void runTimer() {
         resetTimer();
         int time;
-        if (distributore.getCredit() == 0){
+        if (distributore.getCredit() == 0) {
             time = 5000;
         }
         else {
@@ -33,9 +33,9 @@ public class ResetDisplay {
         timerTask = new TimerTask() {
             @Override
             public void run() {
-                display.setBeverage(DEFAULTMESSAGE);
+                display.setBeverage(DEFAULT_MESSAGE);
                 display.setBeverageCost("");
-                if (distributore.getCredit() == 0){
+                if (distributore.getCredit() == 0) {
                     distributore.setSugarToDefault();
                 }
                 else {
@@ -60,11 +60,11 @@ public class ResetDisplay {
     /**
      * Funzione che aggiorna il display dello zucchero in base alla quantità selezionata.
      */
-    public void setDots(){
+    public void setDots() {
         String quantity;
-        switch (distributore.getSelected_sugar()){
-            //u25cf è pallino pieno
-            //u25cb è pallino vuoto
+        switch (distributore.getSelected_sugar()) {
+            //u25cf pallino pieno
+            //u25cb pallino vuoto
             case 0:
                 quantity = "Senza zucchero";
                 break;
