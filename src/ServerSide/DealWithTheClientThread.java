@@ -102,21 +102,25 @@ public class DealWithTheClientThread implements Runnable, StringCommandList {
     private void chooseCommand(int index){
         switch (index){
             case 0:
+                obsvData.clear();
                 commandServerHashMap.get(SEND_DATA).execute();
                 obsvData.addAll(data);
                 break;
 
             case 1:
+                obsvMenu.clear();
                 commandServerHashMap.get(SEND_MENU).execute();
                 obsvMenu.addAll(menu);
                 break;
 
             case 2:
+                obsvCoins.clear();
                 commandServerHashMap.get(SEND_COINS).execute();
                 obsvCoins.addAll(coins);
                 break;
 
             case 3:
+                obsvStats.clear();
                 commandServerHashMap.get(SEND_STATS).execute();
                 obsvStats.addAll(stats);
                 break;
