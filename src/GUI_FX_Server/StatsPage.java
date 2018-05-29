@@ -23,12 +23,15 @@ public class StatsPage extends GridPane {
     ObservableList<String> obsvStats;
     ObservableList<String> obsvData;
     ObservableList<String> obsvCoins;
+    ObservableList<String> obsvMenu;
 
-    public StatsPage(Stage stage, ObservableList<String> obsvStats, ObservableList<String> obsvData, ObservableList<String> obsvCoins) {
+    public StatsPage(Stage stage, ObservableList<String> obsvStats, ObservableList<String> obsvData,
+                     ObservableList<String> obsvCoins, ObservableList<String> obsvMenu) {
         Group root = new Group();
         this.obsvStats = obsvStats;
         this.obsvCoins = obsvCoins;
         this.obsvData = obsvData;
+        this.obsvMenu = obsvMenu;
 
         Scene scene;
 
@@ -54,7 +57,7 @@ public class StatsPage extends GridPane {
         HistogramChart coinsChart = new HistogramChart(new CategoryAxis(), new NumberAxis(), obsvCoins);
         DrinkPieChart pie = new DrinkPieChart(obsvStats);
         UsageChart usage = new UsageChart(new NumberAxis(), new NumberAxis());
-        ItemsHistogram itemsChart = new ItemsHistogram(new CategoryAxis(), new NumberAxis());
+        ItemsHistogram itemsChart = new ItemsHistogram(new CategoryAxis(), new NumberAxis(), obsvData);
 
         tab1.setContent(coinsChart.setBars());
         tab2.setContent(pie.setChart());

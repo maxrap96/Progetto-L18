@@ -1,20 +1,29 @@
 package GUI_FX_Server;
 
+import javafx.collections.ObservableList;
 import javafx.scene.chart.*;
 import javafx.scene.layout.BorderPane;
 
+import java.util.ArrayList;
+
+import static java.lang.Double.parseDouble;
+import static java.lang.Integer.parseInt;
+
 public class ItemsHistogram extends BarChart {
-    public ItemsHistogram(Axis xAxis, Axis yAxis) {
+
+    private ObservableList<String> obsvData;
+
+    public ItemsHistogram(Axis xAxis, Axis yAxis, ObservableList<String> obsvData) {
         super(xAxis, yAxis);
+        this.obsvData = obsvData;
     }
 
     public BorderPane setBars() {
         BorderPane b = new BorderPane();
+        if (obsvData.isEmpty()) {
+            return b;
+        }
 
-        final String cups = "Bicchierini";
-        final String spoons = "Cucchiaini";
-        final String sugar = "Zucchero";
-        final String milk = "Latte";
 
         final CategoryAxis xAxis = new CategoryAxis();
         final NumberAxis yAxis = new NumberAxis();
@@ -26,14 +35,25 @@ public class ItemsHistogram extends BarChart {
         xAxis.setLabel("Items");
         yAxis.setLabel("Quantità");
 
-        XYChart.Series series1 = new XYChart.Series();
+        ArrayList<String> items = new ArrayList<>();
+        ArrayList<Double> quantity = new ArrayList<>();
+        //analizzo la quntità rimanente
+        for ( int i = 0; i < obsvData.size(); i++){
+            //cerco solo i dati degli items
+            if ((!obsvData.get(i).startsWith("*")) && !(obsvData.get(i).startsWith("0")) ){
+                String[] splitted = obsvData.get(i).split("\t");
+                items.add(splitted[0]);
+                quantity.add(parseDouble(splitted[1]));
+            }
+        }
 
-        series1.getData().add(new XYChart.Data(cups, 61));
-        series1.getData().add(new XYChart.Data(milk, 358));
-        series1.getData().add(new XYChart.Data(spoons, 99));
-        series1.getData().add(new XYChart.Data(sugar, 207));
+        XYChart.Series series = new XYChart.Series();
 
-        itemsChart.getData().add(series1);
+        for (int i = 0; i < items.size(); i++ ){
+            series.getData().add(new XYChart.Data(items.get(i), quantity.get(i)));
+        }
+
+        itemsChart.getData().add(series);
 
         b.setCenter(itemsChart);
 

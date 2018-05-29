@@ -94,7 +94,7 @@ public class ClientVendMach extends Thread implements StringCommandList {
      */
     private void addCommands(){
         this.commandHashMap.put(SEND_MENU, new SendMenuCommand(receiverSend, channelOutToServer));
-        this.commandHashMap.put(SEND_DATA, new SendCoinsCommand(receiverSend, channelOutToServer));
+        this.commandHashMap.put(SEND_DATA, new SendDataCommand(receiverSend, channelOutToServer));
         this.commandHashMap.put(SEND_COINS, new SendCoinsCommand(receiverSend, channelOutToServer));
         this.commandHashMap.put(SEND_STATS, new SendStatsCommand(receiverSend, channelOutToServer));
         this.commandHashMap.put(OVERWRITE_MENU, new OverwriteCommand(inFromServer));

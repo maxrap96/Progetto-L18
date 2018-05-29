@@ -61,12 +61,11 @@ public class DrinkPieChart extends PieChart {
     private void statsAnalisys(ObservableList<String> statsRows, ArrayList<String> beverageNames, ArrayList<Integer> beverageQty) {
 
         for (int i = 0; i < statsRows.size(); i++){
-            if (statsRows.get(i).contains("*")){
-                continue;
+            if (!statsRows.get(i).contains("*")){
+                String row = statsRows.get(i);
+                String[] splitted =  row.split("\t");
+                checkBeverage(splitted[0], beverageNames, beverageQty);
             }
-            String row = statsRows.get(i);
-            String[] splitted =  row.split("\t");
-            checkBeverage(splitted[0], beverageNames, beverageQty);
         }
     }
 
@@ -77,18 +76,18 @@ public class DrinkPieChart extends PieChart {
      * @param beverageQty è la quantità di bevanda chiesta
      */
     private void checkBeverage(String beverage, ArrayList<String> beverageNames, ArrayList<Integer> beverageQty) {
-        boolean found = false;
-        for (int i = 0; i < beverageNames.size(); i++) {
-            if (beverage.equals(beverageNames.get(i))) {
-                int quantity = beverageQty.get(i);
-                quantity++;
-                beverageQty.set(i, quantity);
-                found = true;
-                break;
+
+        if (beverageNames.contains(beverage)) {
+            for (int i = 0; i < beverageNames.size(); i++) {
+                if (beverage.equals(beverageNames.get(i))) {
+                    int quantity = beverageQty.get(i);
+                    quantity++;
+                    beverageQty.set(i, quantity);
+                    break; // se ho trovato l'indice della bevanda corrisondente esco
+                }
             }
         }
-
-        if (!found) {
+        else {
             //se arrivo qui significa che non lo ho trovata
             beverageNames.add(beverage);
             beverageQty.add(1);
