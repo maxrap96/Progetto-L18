@@ -6,10 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
-import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TablePosition;
-import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
@@ -47,6 +44,7 @@ public class MenuTable extends TableView {
                 ((Tabella) event.getTableView().getItems().get(
                         event.getTablePosition().getRow())
                 ).setId(event.getNewValue());
+                changeMenu();
             }
         });
 
@@ -58,6 +56,7 @@ public class MenuTable extends TableView {
                 ((Tabella) event.getTableView().getItems().get(
                         event.getTablePosition().getRow())
                 ).setTipo(event.getNewValue());
+                changeMenu();
             }
         });
 
@@ -69,6 +68,7 @@ public class MenuTable extends TableView {
                 ((Tabella) event.getTableView().getItems().get(
                         event.getTablePosition().getRow())
                 ).setNome(event.getNewValue());
+                changeMenu();
             }
         });
 
@@ -79,6 +79,7 @@ public class MenuTable extends TableView {
                 ((Tabella) event.getTableView().getItems().get(
                         event.getTablePosition().getRow())
                 ).setCosto(event.getNewValue());
+                changeMenu();
             }
         });
 
@@ -89,6 +90,7 @@ public class MenuTable extends TableView {
                 ((Tabella) event.getTableView().getItems().get(
                         event.getTablePosition().getRow())
                 ).setQ_max(event.getNewValue());
+                changeMenu();
             }
         });
 
@@ -99,6 +101,7 @@ public class MenuTable extends TableView {
                 ((Tabella) event.getTableView().getItems().get(
                         event.getTablePosition().getRow())
                 ).setTemp(event.getNewValue());
+                changeMenu();
             }
         });
 
@@ -109,6 +112,7 @@ public class MenuTable extends TableView {
                 ((Tabella) event.getTableView().getItems().get(
                         event.getTablePosition().getRow())
                 ).setDose(event.getNewValue());
+                changeMenu();
             }
         });
 
@@ -119,6 +123,7 @@ public class MenuTable extends TableView {
                 ((Tabella) event.getTableView().getItems().get(
                         event.getTablePosition().getRow())
                 ).setLatte(event.getNewValue());
+                changeMenu();
             }
         });
 
@@ -129,6 +134,7 @@ public class MenuTable extends TableView {
                 ((Tabella) event.getTableView().getItems().get(
                         event.getTablePosition().getRow())
                 ).setAcqua(event.getNewValue());
+                changeMenu();
             }
         });
 
@@ -139,7 +145,7 @@ public class MenuTable extends TableView {
                 ((Tabella) event.getTableView().getItems().get(
                         event.getTablePosition().getRow())
                 ).setVodka(event.getNewValue());
-                gg();
+                changeMenu();
             }
         });
 
@@ -296,7 +302,7 @@ public class MenuTable extends TableView {
         tableColumn.setCellFactory(TextFieldTableCell.forTableColumn());
     }
 
-    private void gg(){
+    private void changeMenu(){
         menu.clear();
         for(int row = 0; row < 11; row++) {
             String tmp = "";
