@@ -21,8 +21,7 @@ public class StatsPage extends GridPane {
     Tab tab3 = new Tab();
     Tab tab4 = new Tab();
     Tab tab5 = new Tab();
-
-
+    
     ObservableList<String> obsvStats;
     ObservableList<String> obsvData;
     ObservableList<String> obsvCoins;
