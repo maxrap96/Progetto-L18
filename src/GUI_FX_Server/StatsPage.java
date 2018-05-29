@@ -56,8 +56,8 @@ public class StatsPage extends GridPane {
 
         HistogramChart coinsChart = new HistogramChart(new CategoryAxis(), new NumberAxis(), obsvCoins);
         DrinkPieChart pie = new DrinkPieChart(obsvStats);
-        UsageChart usage = new UsageChart(new NumberAxis(), new NumberAxis());
-        DrinkChart drinks = new DrinkChart(new CategoryAxis(), new NumberAxis());
+        UsageChart usage = new UsageChart(new NumberAxis(), new NumberAxis(), obsvStats);
+        DrinkChart drinks = new DrinkChart(new CategoryAxis(), new NumberAxis(), obsvData, obsvMenu);
         ItemsHistogram itemsChart = new ItemsHistogram(new CategoryAxis(), new NumberAxis(), obsvData);
 
         tab1.setContent(coinsChart.setBars());
@@ -82,6 +82,7 @@ public class StatsPage extends GridPane {
         obsvData.addListener((ListChangeListener) change -> Platform.runLater(() -> {
             // Update UI here.
             System.out.println("Detected a change! ");
+            tab4.setContent(drinks.initChart());
             tab5.setContent(itemsChart.setBars());
         }));
 

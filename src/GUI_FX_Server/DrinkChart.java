@@ -1,12 +1,18 @@
 package GUI_FX_Server;
 
+import javafx.collections.ObservableList;
 import javafx.scene.chart.*;
 import javafx.scene.layout.BorderPane;
 
 public class DrinkChart extends BarChart {
 
-    public DrinkChart(Axis xAxis, Axis yAxis) {
+    private ObservableList<String> data;
+    private ObservableList<String> menu;
+
+    public DrinkChart(Axis xAxis, Axis yAxis, ObservableList<String> data, ObservableList<String> menu) {
         super(xAxis, yAxis);
+        this.data = data;
+        this.menu = menu;
     }
 
     public BorderPane initChart() {

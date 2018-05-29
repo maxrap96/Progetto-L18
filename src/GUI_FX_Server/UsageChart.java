@@ -1,5 +1,6 @@
 package GUI_FX_Server;
 
+import javafx.collections.ObservableList;
 import javafx.scene.chart.Axis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
@@ -8,8 +9,11 @@ import javafx.scene.layout.BorderPane;
 
 public class UsageChart extends LineChart {
 
-    public UsageChart(Axis axis, Axis axis2) {
+    private ObservableList<String> stats;
+
+    public UsageChart(Axis axis, Axis axis2, ObservableList<String> obsvStats) {
         super(axis, axis2);
+        this.stats = obsvStats;
     }
 
     public BorderPane setGraph() {
