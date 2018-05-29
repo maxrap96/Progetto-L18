@@ -33,7 +33,7 @@ public class DealWithTheClientThread implements Runnable, StringCommandList {
         this.obsvStats = obsvStats;
         this.obsvMenu = obsvMenu;
         this.obsvCoins = obsvCoins;
-        this.obsvData= obsvData;
+        this.obsvData = obsvData;
     }
 
     @Override

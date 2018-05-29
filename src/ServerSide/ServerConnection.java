@@ -8,13 +8,9 @@ import java.net.Socket;
 
 public class ServerConnection extends Thread {
 
-    //private ArrayList<String> stats;
     private ObservableList<String> obsvstats;
-    //private ArrayList<String> menu;
     private ObservableList<String> obsvmenu;
-    //private ArrayList<String> coins;
     private ObservableList<String> obsvcoins;
-    //private ArrayList<String> data;
     private ObservableList<String> obsvdata;
     private int portNumber;
     private Socket clientSocket;

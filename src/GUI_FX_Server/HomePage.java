@@ -22,13 +22,9 @@ import java.util.ArrayList;
 
 public class HomePage extends Application {
 
-    //private static ArrayList<String> stats = new ArrayList<>();
     private static ObservableList<String> observStats = FXCollections.observableArrayList();
-    //private static ArrayList<String> menu =  new ArrayList<>();
     private static ObservableList<String> observMenu = FXCollections.observableArrayList();
-    //private static ArrayList<String> coins =  new ArrayList<>();
     private static ObservableList<String> observCoins = FXCollections.observableArrayList();
-    //private static ArrayList<String> data =  new ArrayList<>();
     private static ObservableList<String> observData = FXCollections.observableArrayList();
 
     @Override
