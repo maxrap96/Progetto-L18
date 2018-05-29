@@ -11,7 +11,7 @@ import java.awt.Toolkit;
 
 public class Display extends GridPane {
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    private final String DEFAULTMESSAGE = "Scegliere una bevanda";
+    private final String DEFAULT_MESSAGE = "Scegliere una bevanda";
     private Text beverage = new Text();
     private Text beverageCost = new Text();
     private Text creditRow = new Text();
@@ -22,13 +22,13 @@ public class Display extends GridPane {
     }
 
     /**
-     * Funzione per impostare le righe del gridpane
+     * Funzione per impostare le righe del gridpane.
      */
     private void createDisplay() {
         this.setMinSize(30 * screenSize.width / 100, 25 * screenSize.height / 100);
         this.setPrefSize(30 * screenSize.width / 100, 25 * screenSize.height / 100);
         this.setMaxSize(30 * screenSize.width / 100, 25 * screenSize.height / 100);
-        this.setPadding(new Insets(20,20,20,20));
+        this.setPadding(new Insets(20, 20, 20, 20));
         this.setHgap(20);
         this.setVgap(20);
         this.setStyle(
@@ -38,21 +38,21 @@ public class Display extends GridPane {
                 "-fx-border-color: white;" +
                 "-fx-border-width: 2;"
         );
-        this.add(beverage,0,0);
-        this.add(beverageCost,0,1);
-        this.add(creditRow,0,2);
-        this.add(sugar,0,3);
+        this.add(beverage, 0, 0);
+        this.add(beverageCost, 0, 1);
+        this.add(creditRow, 0, 2);
+        this.add(sugar, 0, 3);
 
-        setDisplay(beverage, DEFAULTMESSAGE);
+        setDisplay(beverage, DEFAULT_MESSAGE);
         setDisplay(beverageCost, "");
         setDisplay(creditRow, "Credito: ");
         setDisplay(sugar, "riga dello zucchero");
     }
 
     /**
-     * Funzione che configura i vari Text del display
-     * @param text: uno dei text del display
-     * @param message: messaggio da stampare a video
+     * Funzione che configura i vari Text del display.
+     * @param text: uno dei text del display.
+     * @param message: messaggio da stampare a video.
      */
     private void setDisplay(Text text, String message) {
         text.setText(message);

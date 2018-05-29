@@ -4,8 +4,8 @@ import Distributore.Distributore;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 
-public class BeverageEventHandler implements EventHandler{
-    private final String BEVERAGEPRICE;
+public class BeverageEventHandler implements EventHandler {
+    private final String BEVERAGE_PRICE;
     private final String ID;
     private Distributore distributore;
     private Display display;
@@ -16,7 +16,7 @@ public class BeverageEventHandler implements EventHandler{
         this.display = display;
         this.resetDisplay = resetDisplay;
         this.ID = distributore.getID(index);
-        this.BEVERAGEPRICE = String.format("%.2f", distributore.getPrice(ID));
+        this.BEVERAGE_PRICE = String.format("%.2f", distributore.getPrice(ID));
     }
 
     @Override
@@ -25,7 +25,7 @@ public class BeverageEventHandler implements EventHandler{
             display.setBeverageCost("");
         }
         else {
-            display.setBeverageCost("Costo: " + BEVERAGEPRICE);
+            display.setBeverageCost("Costo: " + BEVERAGE_PRICE);
         }
 
         display.setBeverage(distributore.selectBeverage(ID));

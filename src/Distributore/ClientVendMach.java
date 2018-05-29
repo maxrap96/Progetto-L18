@@ -7,11 +7,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ClientVendMach extends Thread implements StringCommandList {
-
     private String ip;
     private int serverPort;
     private PrintWriter channelOutToServer;
@@ -19,7 +17,6 @@ public class ClientVendMach extends Thread implements StringCommandList {
     private boolean fileReceived = false;
     private HashMap<String, Command> commandHashMap;
     private ReceiverSend receiverSend;
-
 
     public ClientVendMach(String ipServer, int port) {
         this.ip = ipServer;
@@ -35,25 +32,22 @@ public class ClientVendMach extends Thread implements StringCommandList {
             Socket clientSocket = new Socket(ip, serverPort);
 
             // Creazione dell'ggetto per scrivere
-            channelOutToServer =
-                    new PrintWriter(clientSocket.getOutputStream(), true);
+            channelOutToServer = new PrintWriter(clientSocket.getOutputStream(), true);
 
             // Creazione dell'oggetto per ricevere
-            inFromServer =
-                    new BufferedReader(
-                            new InputStreamReader(clientSocket.getInputStream()));
+            inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
-            // Aggiungo i comandi da eseguire
+            // Aggiunta dei comandi da eseguire
             this.addCommands();
 
             String tmp;
             channelOutToServer.println(READY);
             while ((tmp = inFromServer.readLine()) != null) {
                 // Controllo se il Server sia pronto
-                if (tmp.equals(READY)){
+                if (tmp.equals(READY)) {
                     channelOutToServer.println(tmp);
                 }
-                if (isAValidCommand(tmp)){
+                if (isAValidCommand(tmp)) {
                     commandReceived(tmp);
                 }
             }
@@ -68,20 +62,18 @@ public class ClientVendMach extends Thread implements StringCommandList {
 
     /**
      * Funzione che legge il comando ricevuto dal Server ed esegue l'azione corrispondente.
-     *
-     * @param commandFromServer
+     * @param commandFromServer stringa di comando letta da server.
      */
-    private void commandReceived(String commandFromServer){
+    private void commandReceived(String commandFromServer) {
         this.commandHashMap.get(commandFromServer).execute();
         this.channelOutToServer.println(END_SENDING);
     }
 
     /**
      * Funzione che confronta la stringa passata e decide se è un comando valido.
-     *
      * @param command comando da analizzare.
      */
-    private boolean isAValidCommand(String command){
+    private boolean isAValidCommand(String command) {
         if (commandHashMap.containsKey(command)) {
             return true;
         } else {
@@ -92,9 +84,9 @@ public class ClientVendMach extends Thread implements StringCommandList {
     /**
      * Funzione che aggiunge i comandi da eseguire.
      */
-    private void addCommands(){
+    private void addCommands() {
         this.commandHashMap.put(SEND_MENU, new SendMenuCommand(receiverSend, channelOutToServer));
-        this.commandHashMap.put(SEND_DATA, new SendCoinsCommand(receiverSend, channelOutToServer));
+        this.commandHashMap.put(SEND_DATA, new SendDataCommand(receiverSend, channelOutToServer));
         this.commandHashMap.put(SEND_COINS, new SendCoinsCommand(receiverSend, channelOutToServer));
         this.commandHashMap.put(SEND_STATS, new SendStatsCommand(receiverSend, channelOutToServer));
         this.commandHashMap.put(OVERWRITE_MENU, new OverwriteCommand(inFromServer));
@@ -104,8 +96,7 @@ public class ClientVendMach extends Thread implements StringCommandList {
         return fileReceived;
     }
 
-    public void fileOpened(){
+    public void fileOpened() {
         fileReceived = false;
     }
-
 }

@@ -13,22 +13,27 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class StatsPage extends GridPane {
+    GridPane mainPanel = new GridPane();
+
     TabPane tabPane = new TabPane();
     Tab tab1 = new Tab();
     Tab tab2 = new Tab();
     Tab tab3 = new Tab();
     Tab tab4 = new Tab();
     Tab tab5 = new Tab();
-    GridPane mainPanel = new GridPane();
+    
     ObservableList<String> obsvStats;
     ObservableList<String> obsvData;
     ObservableList<String> obsvCoins;
+    ObservableList<String> obsvMenu;
 
-    public StatsPage(Stage stage, ObservableList<String> obsvStats, ObservableList<String> obsvData, ObservableList<String> obsvCoins) {
+    public StatsPage(Stage stage, ObservableList<String> obsvStats, ObservableList<String> obsvData,
+                     ObservableList<String> obsvCoins, ObservableList<String> obsvMenu) {
         Group root = new Group();
         this.obsvStats = obsvStats;
         this.obsvCoins = obsvCoins;
         this.obsvData = obsvData;
+        this.obsvMenu = obsvMenu;
 
         Scene scene;
 
@@ -45,20 +50,19 @@ public class StatsPage extends GridPane {
         tab3.setText("Utilizzo");
         tab4.setText("Bevande");
         tab5.setText("Varie");
-        tab1.setClosable(false);
-        tab2.setClosable(false);
-        tab3.setClosable(false);
-        tab4.setClosable(false);
-        tab5.setClosable(false);
+
+        tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
 
         HistogramChart coinsChart = new HistogramChart(new CategoryAxis(), new NumberAxis(), obsvCoins);
         DrinkPieChart pie = new DrinkPieChart(obsvStats);
-        UsageChart usage = new UsageChart(new NumberAxis(), new NumberAxis());
-        ItemsHistogram itemsChart = new ItemsHistogram(new CategoryAxis(), new NumberAxis());
+        UsageChart usage = new UsageChart(new NumberAxis(), new NumberAxis(), obsvStats);
+        DrinkChart drinks = new DrinkChart(new CategoryAxis(), new NumberAxis(), obsvData, obsvMenu);
+        ItemsHistogram itemsChart = new ItemsHistogram(new CategoryAxis(), new NumberAxis(), obsvData);
 
         tab1.setContent(coinsChart.setBars());
         tab2.setContent(pie.setChart());
         tab3.setContent(usage.setGraph());
+        tab4.setContent(drinks.initChart());
         tab5.setContent(itemsChart.setBars());
 
         obsvStats.addListener((ListChangeListener) change -> Platform.runLater(() -> {
@@ -77,6 +81,7 @@ public class StatsPage extends GridPane {
         obsvData.addListener((ListChangeListener) change -> Platform.runLater(() -> {
             // Update UI here.
             System.out.println("Detected a change! ");
+            tab4.setContent(drinks.initChart());
             tab5.setContent(itemsChart.setBars());
         }));
 

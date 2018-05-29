@@ -30,7 +30,7 @@ public class MoneyGrid extends GridPane {
         this.setAlignment(Pos.CENTER_RIGHT);
     }
 
-    private void createGrid(){
+    private void createGrid() {
         this.setPadding(new Insets(BUTTON_PADDING));
         this.setHgap(BUTTON_PADDING);
         this.setVgap(BUTTON_PADDING);
@@ -74,7 +74,7 @@ public class MoneyGrid extends GridPane {
                 resetDisplay.runTimer();
             }
         });
-        this.add(plus,2,0);
+        this.add(plus, 2, 0);
 
         // Creazione pulsanti monete
         int number;
@@ -85,17 +85,16 @@ public class MoneyGrid extends GridPane {
                 Button button = new Button(cValue);
                 setPurchaseButton(button);
                 button.setOnAction(new MoneyEventHandler(distributore.getCoinsValue()[number], display, distributore));
-
                 this.add(button, c, r);
             }
         }
     }
 
     /**
-     * Funzione che configura i pulsanti delle monete, zucchero e resto
-     * @param button: il pulsante da configurare
+     * Funzione che configura i pulsanti delle monete, zucchero e resto.
+     * @param button: il pulsante da configurare.
      */
-    private void setPurchaseButton(Button button)  {
+    private void setPurchaseButton(Button button) {
         button.setShape(new Circle (screenSize.height / 8));
         button.setFont(Font.font("California FB", 20));
         button.setPrefSize(screenSize.height / 8, screenSize.height / 8);

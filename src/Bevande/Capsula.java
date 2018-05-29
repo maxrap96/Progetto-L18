@@ -8,7 +8,6 @@ public class Capsula extends HotDrink {
         this.dispensedQuantity = 1;
     }
 
-
     public Capsula(String[] rowSplitted, String quantityLeft) {
         super(rowSplitted, quantityLeft);
         this.type = Tipo.CAPSULA;

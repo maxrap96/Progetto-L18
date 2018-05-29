@@ -29,7 +29,7 @@ public class BeverageGrid extends GridPane {
         createGrid();
     }
 
-    private void createGrid(){
+    private void createGrid() {
         // Per una migliore lettura, usare al massimo 12 pulsanti
         this.setPadding(new Insets(BUTTON_PADDING));
         this.setHgap(BUTTON_PADDING);
@@ -41,7 +41,7 @@ public class BeverageGrid extends GridPane {
             for (int col = 0; col < BUTTONS_PER_LINE; col++) {
                 Button button = new Button("");
                 setButton(button, 18 * screenSize.width / 100, screenSize.height / 7);
-                if( number + 1 < distributore.getListSize()){
+                if (number + 1 < distributore.getListSize()) {
                     number = (BUTTONS_PER_LINE * row) + col;
                     // Le bevande iniziano dall'id 1
                     button.setText(distributore.getLabel(number + 1));
@@ -71,12 +71,12 @@ public class BeverageGrid extends GridPane {
     }
 
     /**
-     * Funzione che configura i pulsanti delle bevande
-     * @param buttonToSet: pulsante da configurare
-     * @param width: lunghezza del pulsante
-     * @param height: altezza del pulsante
+     * Funzione che configura i pulsanti delle bevande.
+     * @param buttonToSet: pulsante da configurare.
+     * @param width: lunghezza del pulsante.
+     * @param height: altezza del pulsante.
      */
-    private void setButton(Button buttonToSet, int width, int height){
+    private void setButton(Button buttonToSet, int width, int height) {
         buttonToSet.setStyle(
                 "-fx-background-radius: 1em;" +
                 "-fx-background-color: radial-gradient(focus-angle 100deg, focus-distance 35%, radius 45%, reflect, " +

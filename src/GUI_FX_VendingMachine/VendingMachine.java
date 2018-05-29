@@ -29,7 +29,7 @@ public class VendingMachine extends Application {
      private UpdateChecker updateChecker;
 
     @Override
-    public void start(Stage primaryStage)  {
+    public void start(Stage primaryStage) {
         try {
             Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
             double width = screenSize.getWidth() / 2;
@@ -41,16 +41,18 @@ public class VendingMachine extends Application {
             BorderPane root = new BorderPane();
 
             // Immagine per lo sfondo
-            FileInputStream input = new FileInputStream("src/GUI_FX_VendingMachine/B.jpg");
+            FileInputStream input = new FileInputStream("src/GUI_FX_VendingMachine/background.jpg");
             Image image = new Image(input);
             input.close();
 
             // Creazione delle dimensioni per lo sfondo
             BackgroundSize backgroundSize = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO,
                     false, false, false, true);
+
             // Creazione dell'immagine di sfondo
             BackgroundImage changeNameWhenFinalImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT,
                     BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
+
             // Impostazione dello sfondo
             root.setStyle(
                     "-fx-background-color: black;"
@@ -76,9 +78,9 @@ public class VendingMachine extends Application {
             key.setPrefSize(16 * screenSize.width / 100, screenSize.height / 9);
             key.setStyle(
                     "-fx-background-radius: 1em;" +
-                            "-fx-base: lightGray;" +
-                            "-fx-focus-color: transparent;" +
-                            "-fx-faint-focus-color: transparent;"
+                    "-fx-base: lightGray;" +
+                    "-fx-focus-color: transparent;" +
+                    "-fx-faint-focus-color: transparent;"
             );
             key.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
@@ -87,7 +89,7 @@ public class VendingMachine extends Application {
                     display.setCreditRow(String.valueOf(distributore.getCredit()));
                     key.setStyle(
                             "-fx-background-radius: 1em;" +
-                                    "-fx-focus-color: blue;"
+                            "-fx-focus-color: blue;"
                     );
                 }
             });
@@ -108,14 +110,10 @@ public class VendingMachine extends Application {
             primaryStage.setResizable(false);
             primaryStage.show();
 
-            // avvio il client e thread annesso per il controllo della ricezione dei files
-            //clientVendMach.run();
-            //updateChecker = new UpdateChecker(distributore, beverageGrid, display, resetDisplay, clientVendMach);
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Error caused by " + e);
         }
-
 
         // Termina l'applicazione cliccando la x rossa
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {

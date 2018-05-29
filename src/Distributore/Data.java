@@ -14,10 +14,9 @@ public class Data {
 
     /**
      * Funzione che legge da un file esterno i dati su cui bisogna lavorare.
-     *
      * @return openedFile: è il file aperto e letto.
      */
-    public ArrayList<String[]> readFile(){
+    public ArrayList<String[]> readFile() {
         try {
             BufferedReader bReader = new BufferedReader(new FileReader(PATHFILE));
             ArrayList<String[]> openedFile = split(bReader);
@@ -27,22 +26,20 @@ public class Data {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return null;
     }
 
     /**
      * Funzione che riceve i dati copiati dal file e li divide dopo ogni carattere di "Tab".
-     *
      * @param bReader è il reader associato al file.
      */
-    private ArrayList<String[]> split(BufferedReader bReader){
+    private ArrayList<String[]> split(BufferedReader bReader) {
         ArrayList<String[]> dataSplit = new ArrayList<>();
         String row;
 
         try{
             while ((row = bReader.readLine()) != null) {
-                if(! row.contains("*") && !row.isEmpty()) {
+                if (!row.contains("*") && !row.isEmpty()) {
                     String[] rowDataSplit = row.split("\t");
                     dataSplit.add(rowDataSplit);
                 }
@@ -56,10 +53,9 @@ public class Data {
 
     /**
      * Funzione per la scrittura su file dei dati di interesse.
-     *
      * @param scrittura è la stringa da accodare al file contenente le informazioni necessarie.
      */
-    protected void writeFile(String scrittura){
+    protected void writeFile(String scrittura) {
         try {
             FileWriter writer = new FileWriter(PATHFILE, true);
             writer.write("\n" +scrittura + "\t" + getCurrentTimeStamp());
@@ -71,19 +67,18 @@ public class Data {
 
     /**
      * Funzione per la scrittura su file dei dati di interesse.
-     *
      * @param scrittura è la stringa da accodare al file contenente le informazioni necessarie.
      * @param transaction parametro che mi dice se la transazione avviene o fallisce.
      */
-    protected void writeFile(String scrittura, boolean transaction){
+    protected void writeFile(String scrittura, boolean transaction) {
         try {
             FileWriter writer = new FileWriter(PATHFILE, true);
 
-            if(transaction) {
+            if (transaction) {
                 writer.write(scrittura + " Transazione avvenuta il:\t" + getCurrentTimeStamp() + "\n");
             }
 
-            if(! transaction) {
+            if (! transaction) {
                 writer.write(scrittura + " Transazione fallita.\t" + getCurrentTimeStamp() + "\n");
             }
 
@@ -105,11 +100,10 @@ public class Data {
 
     /**
      * Funzione per ottenere data e ora locali.
-     *
      * @return strDate è la stringa con i dati desiderati.
      */
     private static String getCurrentTimeStamp() {
-        SimpleDateFormat sdfDate = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss"); // stringa per data ora tempo
+        SimpleDateFormat sdfDate = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss"); // stringa per data, ora, tempo
         Date now = new Date();
         String strDate = sdfDate.format(now);
         return strDate;
@@ -117,11 +111,10 @@ public class Data {
 
     /**
      * Funzione per la sovrascrittura di una specifica riga di testo.
-     *
      * @param currentLine è la riga da aggiornare.
      * @param newLine è la nuova riga che sovrascriverà la riga selezionata.
      */
-    protected void overwriteFile(String newLine, String currentLine) throws IOException{
+    protected void overwriteFile(String newLine, String currentLine) throws IOException {
         BufferedReader file = new BufferedReader(new FileReader(PATHFILE));
         String line;
         String input = "";
@@ -138,14 +131,14 @@ public class Data {
         os.close();
     }
 
-    public void saveFileFromCommand(ArrayList<String> arrayList) throws IOException{
+    public void saveFileFromCommand(ArrayList<String> arrayList) throws IOException {
         try {
             FileWriter writer = new FileWriter(PATHFILE, false);
             writer.write(arrayList.get(0));
             writer.close();
             writer = new FileWriter(PATHFILE, false);
-            //la prima riga è senza append per sovrascirvere tutto
-            for (int i=1; i< arrayList.size(); i++){
+            //La prima riga è senza append per sovrascirvere tutto
+            for (int i = 1; i < arrayList.size(); i++) {
                 writer.write(arrayList.get(i) + "\n" );
             }
             writer.close();
@@ -153,5 +146,4 @@ public class Data {
             e.printStackTrace();
         }
     }
-
 }

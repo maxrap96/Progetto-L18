@@ -38,7 +38,7 @@ public class HomePage extends Application {
         primaryStage.setTitle("Home");
         Toolbar1 toolbar1 = new Toolbar1();
         MenuTable menuTable = new MenuTable(primaryStage, observMenu);
-        StatsPage statsPage = new StatsPage(primaryStage, observStats, observData, observCoins);
+        StatsPage statsPage = new StatsPage(primaryStage, observStats, observData, observCoins, observMenu);
 
         // Creazione scritta correlata da un logo
         Label label = new Label("Welcome to project Nobildonno Home Page");
