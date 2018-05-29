@@ -12,11 +12,11 @@ public abstract class HotDrink {
 
     /**
      * TIPO:    ID   TIPO  NOME  COSTO   QUANTITA_MASSIMA    TEMPERATURA    DOSE
-     * indice:  0    1     2     3       4                   5               6
+     * indice:  0    1     2     3       4                   5              6
      * @param rowSplitted riga proveniente dal file di testo.
      */
     public HotDrink(String[] rowSplitted) {
-        // Inizializzo tutto tranne type e dispensedQuantity che verranno inizializzati
+        // Inizializzazione di tutto tranne type e dispensedQuantity che verranno inizializzati
         // nelle singole classi in base alle differenze.
         this.id = rowSplitted[0];
         this.name = rowSplitted[2];
@@ -32,7 +32,6 @@ public abstract class HotDrink {
     /**
      * Costruttore alternativo che serve a ripristinare la quantità rimanente, se presente, all'ultimo uso della
      * macchina.
-     *
      * @param rowSplitted è la stringa contenente i dati della bevanda.
      * @param valueleft è la stringa contenente il dato della quantità rimanente.
      */
@@ -56,7 +55,7 @@ public abstract class HotDrink {
     }
 
     /**
-     * Funzione che mi dice se la bevanda é disponibile.
+     * Funzione che verifica se la bevanda é disponibile.
      */
     public boolean isAvailable() {
         if (leftQuantity > dispensedQuantity){

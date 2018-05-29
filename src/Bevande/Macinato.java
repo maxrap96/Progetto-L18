@@ -8,7 +8,6 @@ public class Macinato extends HotDrink {
         super(rowSplitted);
         this.type = Tipo.MACINATO;
         this.dispensedQuantity = parseDouble(rowSplitted[6]);
-
     }
 
     public Macinato(String[] rowSplitted, String quantityLeft) {

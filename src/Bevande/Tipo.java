@@ -8,5 +8,4 @@ public enum Tipo {
     MACINATO,
     CAPSULA,
     SOLUBILE
-
 }
