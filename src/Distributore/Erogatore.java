@@ -2,8 +2,7 @@ package Distributore;
 
 import Bevande.HotDrink;
 
-public class Erogatore implements MaxValue{
-
+public class Erogatore implements MaxValue {
     private double milk;
     private double sugar;
     private double vodka;
@@ -19,11 +18,9 @@ public class Erogatore implements MaxValue{
 
     /**
      * Funzione per sottrarre quantità necessarie per preparare la bevanda.
-     *
      * @param beverage:   della bevanda da cui prendere le dosi.
      * @param sugar è lo zucchero selezionato
      */
-
     protected void subtractIngredients(HotDrink beverage, int sugar) {
         milk -= beverage.getMilk();
         subtractSugar(sugar);
@@ -33,7 +30,6 @@ public class Erogatore implements MaxValue{
 
     /**
      * Funzione che sottrae lo zucchero usato.
-     *
      * @param qty valore tra 0 e 5.
      */
     private void subtractSugar(int qty) {
@@ -65,11 +61,9 @@ public class Erogatore implements MaxValue{
 
     /**
      * Funzione che genera la stringa dei dati.
-     *
      * @return s: restituisce una stringa.
      */
     public String[] getData() {
             return new String[]{"" + milk, "" + sugar, "" + spoon, "" + cup, "" + vodka};
     }
-
 }

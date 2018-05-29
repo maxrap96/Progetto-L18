@@ -8,7 +8,6 @@ public class UpdateChecker extends Thread {
     private BeverageGrid beverageGrid;
     private Display display;
     private ResetDisplay resetDisplay;
-
     private ClientVendMach clientVendMach;
 
     public UpdateChecker(Distributore distributore, BeverageGrid beverageGrid, Display display,
@@ -18,12 +17,11 @@ public class UpdateChecker extends Thread {
         this.display = display;
         this.resetDisplay = resetDisplay;
         this.clientVendMach = clientVendMach;
-
-        //imposto il thread per avviarsi solo quando un file è stato ricevuto
+        // Impostazione del thread per avviarsi solo quando un file è stato ricevuto
         this.setDaemon(clientVendMach.isFileReceived());
     }
 
-    public void  run(){
+    public void  run() {
         System.out.println("Updating");
         distributore = new Distributore();
         beverageGrid = new BeverageGrid(distributore, display, resetDisplay);
