@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class SendDataCommand extends SendCommand implements Command {
-
     private File fileDati = new File("src/File_Testo/dati.txt");
 
     public SendDataCommand(ReceiverSend receiverSend, PrintWriter printWriter) {
@@ -20,6 +19,5 @@ public class SendDataCommand extends SendCommand implements Command {
             e.printStackTrace();
             System.out.println("Error in execute " + e);
         }
-
     }
 }

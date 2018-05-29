@@ -2,8 +2,7 @@ package Distributore;
 
 import java.io.PrintWriter;
 
-public abstract class SendCommand implements Command{
-
+public abstract class SendCommand implements Command {
     protected ReceiverSend receiverSend;
     protected PrintWriter printWriter;
 
