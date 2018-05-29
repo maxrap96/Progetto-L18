@@ -173,12 +173,13 @@ public class Coins {
         credit += inserted * 100;
         // Identifico la moneta inserita
         for (int i = 0; i < COINS_VALUE.length; i++) {
-            if (inserted == COINS_VALUE[i]) {
+            if ((inserted *100) == COINS_VALUE[i]) {
                 // Ho trovato il valore corrispondente
                 money[i]++;
                 break;
             }
         }
+        moneteTxt.writeFile(moneyOnFile());
     }
 
     /**
