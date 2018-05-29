@@ -1,7 +1,9 @@
 package GUI_FX_Server;
 
+import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.scene.control.TableColumn;
@@ -18,22 +20,17 @@ public class MenuTable extends TableView {
     Tabella[] tabella;
     VBox vBox = new VBox();
     private ObservableList<String> obsvMenu;
+    TableView<Tabella> tableView = new TableView<>();
+    ObservableList<Tabella> data = FXCollections.observableArrayList();
 
     public MenuTable(Stage stage, ObservableList<String> obsvMenu) {
         this.obsvMenu = obsvMenu;
-        tabella = new Tabella[obsvMenu.size()];
-        TableView<Tabella> tableView = new TableView<>();
 
-        for(int i = 0; i < obsvMenu.size(); i++ ){
-            if(!obsvMenu.get(i).startsWith("*")) {
-                tabella[i] = new Tabella(obsvMenu.get(i));
-            }
-        }
-
-        ObservableList<Tabella> data = FXCollections.observableArrayList();
-        for(int i = 1; i < tabella.length; i++) {
-            data.addAll(tabella[i]);
-        }
+        obsvMenu.addListener((ListChangeListener) change -> Platform.runLater(() -> {
+            // Update UI here.
+            System.out.println("Detected a change! ");
+            setTabella(obsvMenu);
+        }));
 
         //Creo colonne aggiungo ad ogni colonna i valori contenuti nella classe tabella e rendo i valori modificabili
         TableColumn id = new TableColumn("ID");
@@ -271,6 +268,19 @@ public class MenuTable extends TableView {
             this.vodka.set(vodka);
         }
     }
+
+    public void setTabella(ObservableList<String> obsvMenu){
+        tabella = new Tabella[obsvMenu.size()];
+        for(int i = 0; i < obsvMenu.size(); i++ ){
+            if(!obsvMenu.get(i).startsWith("*")) {
+                tabella[i] = new Tabella(obsvMenu.get(i));
+            }
+        }
+        for(int i = 2; i < tabella.length; i++) {
+            data.addAll(tabella[i]);
+        }
+    }
+
 
     public VBox getvBox() {
         return vBox;
