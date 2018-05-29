@@ -5,23 +5,27 @@ import javafx.collections.ObservableList;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.HashMap;
 
 public class ServerConnection extends Thread {
 
-    private ObservableList<String> obsvstats;
-    private ObservableList<String> obsvmenu;
-    private ObservableList<String> obsvcoins;
-    private ObservableList<String> obsvdata;
+    private ObservableList<String> obsvStats;
+    private ObservableList<String> obsvMenu;
+    private ObservableList<String> obsvCoins;
+    private ObservableList<String> obsvData;
+    private DealWithTheClientThread threadTmp;
+    private HashMap<Integer, DealWithTheClientThread> threadHashMap;
     private int portNumber;
     private Socket clientSocket;
 
-    public ServerConnection(int port, ObservableList<String> obsvstats, ObservableList<String> obsvmenu,
-                            ObservableList<String> obsvcoins, ObservableList<String> obsvdata) {
+    public ServerConnection(int port, ObservableList<String> obsvStats, ObservableList<String> obsvMenu,
+                            ObservableList<String> obsvCoins, ObservableList<String> obsvData) {
         this.portNumber = port;
-        this.obsvstats = obsvstats;
-        this.obsvcoins = obsvcoins;
-        this.obsvmenu= obsvmenu;
-        this.obsvdata = obsvdata;
+        this.obsvStats = obsvStats;
+        this.obsvCoins = obsvCoins;
+        this.obsvMenu = obsvMenu;
+        this.obsvData = obsvData;
+        this.threadHashMap = new HashMap<>();
     }
 
     @Override
@@ -30,6 +34,8 @@ public class ServerConnection extends Thread {
             // Creazione socket di benvenuto
             ServerSocket serverSocket = new ServerSocket(portNumber);
 
+            int i = 0;
+
             // Ciclo che consente la connessione a più Client
             while (true) {
 
@@ -37,7 +43,10 @@ public class ServerConnection extends Thread {
                 clientSocket = serverSocket.accept();
 
                 // Creo il thread per ogni Client che si connette
-                new DealWithTheClientThread(clientSocket, obsvstats, obsvmenu, obsvcoins, obsvdata).run();
+                this.threadTmp = new DealWithTheClientThread(clientSocket, obsvStats, obsvMenu, obsvCoins, obsvData);
+                this.threadTmp.start();
+                threadHashMap.put(i, threadTmp);
+                i++;
             }
         } catch (IOException e) {
             e.printStackTrace();

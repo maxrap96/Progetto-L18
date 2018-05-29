@@ -31,6 +31,9 @@ public class VendingMachine extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
+            // Avvio della connessione Client
+            new ClientVendMach("localhost", 80).start();
+
             Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
             double width = screenSize.getWidth() / 2;
             double height = screenSize.getHeight() / 2;
@@ -126,7 +129,6 @@ public class VendingMachine extends Application {
     }
 
     public static void main(String[] args) {
-        new ClientVendMach("localhost", 80).start();
         Application.launch(args);
     }
 }

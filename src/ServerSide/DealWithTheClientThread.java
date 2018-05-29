@@ -10,7 +10,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class DealWithTheClientThread implements Runnable, StringCommandList {
+public class DealWithTheClientThread extends Thread implements StringCommandList {
 
     private ArrayList<String> stats;
     private ArrayList<String> menu;

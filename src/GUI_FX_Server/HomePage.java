@@ -30,6 +30,9 @@ public class HomePage extends Application {
     @Override
     public void start(Stage primaryStage) {
 
+        // Avvio della connessione Server
+        new ServerConnection(80, observStats, observMenu, observCoins, observData).start();
+
         // Definizione dello stage principale e della barra del menu
         primaryStage.setTitle("Home");
         Toolbar1 toolbar1 = new Toolbar1();
@@ -144,7 +147,6 @@ public class HomePage extends Application {
     }
 
     public static void main(String[] args) {
-        new ServerConnection(80, observStats, observMenu, observCoins, observData).start();
         Application.launch(args);
     }
 }
