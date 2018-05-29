@@ -33,21 +33,13 @@ public class Coins {
      * Nota: Nel caso di errori si usa un'inizializzazione di default.
      */
     private void initCoins() {
+
         ArrayList<String[]> coinsText = moneteTxt.readFile();
         int last = coinsText.size() - 1;    // Last e' l'ultima riga del file che mi serve.
 
         for (int i = 0; i < money.length; i++) {
             money[i] = parseInt(coinsText.get(last)[i]);
         }
-
-        this.money[0] = 20;
-        this.money[1] = 30;
-        this.money[2] = 20;
-        this.money[3] = 10;
-        this.money[4] = 5;
-        this.money[5] = 5;
-
-        // TODO: Elaborare il caso il file venga scritto male
     }
 
     /**
@@ -202,5 +194,14 @@ public class Coins {
                 break;
             }
         }
+    }
+
+    public void resetStoredMoney(){
+        this.money[0] = 20;
+        this.money[1] = 30;
+        this.money[2] = 20;
+        this.money[3] = 10;
+        this.money[4] = 5;
+        this.money[5] = 5;
     }
 }
