@@ -126,7 +126,7 @@ public class VendingMachine extends Application {
     }
 
     public static void main(String[] args) {
-        new ClientVendMach("localhost", 80).run();
+        new ClientVendMach("localhost", 80).start();
         Application.launch(args);
     }
 }
