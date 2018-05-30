@@ -18,9 +18,8 @@ public class HistogramChart extends BarChart {
     public BorderPane setBars(){
         BorderPane b = new BorderPane();
 
-        if (coins == null) {
+        if (coins == null)
             return b;
-        }
 
         final NumberAxis xAxis = new NumberAxis();
         final CategoryAxis yAxis = new CategoryAxis();
@@ -41,6 +40,7 @@ public class HistogramChart extends BarChart {
         }
         bc.getData().add(series1);
 
+        // Colorazione barre in base alla quantità di monete
         for (int i = 0; i < Monete.length; i++) {
             colorChartBars(bc, i, money);
         }
@@ -49,9 +49,13 @@ public class HistogramChart extends BarChart {
         return b;
     }
 
+    /**
+     * Funzione per ottenere il numero di monete
+     * @param money quantità di monete rimanenti di un singolo taglio
+     * @param coins Stringa con informazioni su tutti i tagli di monete
+     */
     private void analyzeData(int[] money, ObservableList<String> coins) {
         if(!coins.isEmpty()) {
-
             String s = coins.get(coins.size() - 1);
             String[] split = s.split("\t");
 
@@ -62,7 +66,7 @@ public class HistogramChart extends BarChart {
     }
 
     /**
-     * Funzione che permette di modificare alcuni parametri del grafico
+     * Funzione che permette di modificare alcuni parametri di base del grafico
      * @param bc grafico
      * @param xAxis asse x
      * @param yAxis asse y
@@ -81,6 +85,12 @@ public class HistogramChart extends BarChart {
         bc.setLegendVisible(false);
     }
 
+    /**
+     * Funzione per colorare in modo diverso le barre del grafico in base alla quantità presente
+     * @param bc istogramma
+     * @param i contatore che indica la barra presa in considerazione
+     * @param money quantità di monete
+     */
     public void colorChartBars(BarChart bc, int i, int money[]) {
         String st = ".data" + i + ".chart-bar";
 

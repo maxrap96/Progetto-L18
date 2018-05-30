@@ -15,6 +15,9 @@ public class UsageChart extends LineChart {
 
     private ObservableList<String> stats;
 
+    private final String MONTHS[] = {"Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno",
+                                "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"};
+
     public UsageChart(Axis axis, Axis axis2, ObservableList<String> obsvStats) {
         super(axis, axis2);
         this.stats = obsvStats;
@@ -113,7 +116,7 @@ public class UsageChart extends LineChart {
 
                 if (counter.containsKey(currentDate)){
                     series1.getData().add(new XYChart.Data( day ,counter.get(currentDate)));
-                    series1.setName(String.valueOf(mese));
+                    series1.setName(MONTHS[mese - 1]);
                     foundAny = true;
                 }
             }

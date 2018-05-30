@@ -19,10 +19,14 @@ public class Toolbar1 extends ToolBar {
     MenuItem bevande = new MenuItem("Bevande");
     MenuItem items = new MenuItem("Varie");
     Button menu = new Button("Menu");
+    MenuItem vend1 = new MenuItem("Distributore 1");
+    MenuItem vend2 = new MenuItem("Distributore 2");
+    MenuItem vend3 = new MenuItem("Distributore 3");
 
 
     public Toolbar1() {
         MenuButton stats = new MenuButton("Stats",null, monete, acqB, utilizzo, bevande, items);
+        MenuButton vendMachines = new MenuButton("Distributore",null, vend1, vend2, vend3);
 
         //Associazione di immagini ai bottoni
         ImageView immHome = new ImageView(loadImage("src/ServerImages/home.png"));
@@ -40,8 +44,9 @@ public class Toolbar1 extends ToolBar {
         stats.setGraphic(immStats);
         home.setGraphic(immHome);
 
-        getItems().addAll(home, stats, menu);
+        vendMachines.setPrefHeight(28);
 
+        getItems().addAll(home, vendMachines, stats, menu);
     }
 
     /**
