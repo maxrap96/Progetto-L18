@@ -135,5 +135,5 @@ Cappuccino	Transazione avvenuta il:	08-05-2018 15:20:47
 Caffè Lungo	Transazione avvenuta il:	08-05-2018 15:27:37
 Tè al Limone	Transazione avvenuta il:	10-05-2018 22:47:03
 Tè al Limone	Transazione avvenuta il:	15-05-2018 14:29:05
-Tè al Limone Transazione avvenuta il:	29-05-2018 18:47:54
-Caffè Miscela Top Transazione avvenuta il:	29-05-2018 18:53:33
+Tè al Limone	Transazione avvenuta il:	30-05-2018 10:32:36
+Caffè Espresso	Transazione avvenuta il:	30-05-2018 11:09:11

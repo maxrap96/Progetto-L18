@@ -75,11 +75,7 @@ public class Data {
             FileWriter writer = new FileWriter(PATHFILE, true);
 
             if (transaction) {
-                writer.write(scrittura + " Transazione avvenuta il:\t" + getCurrentTimeStamp() + "\n");
-            }
-
-            if (! transaction) {
-                writer.write(scrittura + " Transazione fallita.\t" + getCurrentTimeStamp() + "\n");
+                writer.write(scrittura + "\tTransazione avvenuta il:\t" + getCurrentTimeStamp() + "\n");
             }
 
             writer.close();

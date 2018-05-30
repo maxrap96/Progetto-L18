@@ -95,13 +95,20 @@ public class UsageChart extends LineChart {
         for (int mese =1; mese <=12; mese++){
             boolean foundAny = false;
             Series series1 = new Series();
+            String month;
+            if (mese < 10){
+                month = "-0" + mese;
+            }
+            else {
+                month = String.valueOf(mese);
+            }
             for (int day = 1; day <= 31; day++){
                 String currentDate;
-                if (day < 0) {
-                    currentDate = ("0" + day + "-0" + mese + "-2018");
+                if (day < 10) {
+                    currentDate = ("0" + day + month+ "-2018");
                 }
                 else {
-                    currentDate = (day + "-0" + mese + "-2018");
+                    currentDate = (day + month + "-2018");
                 }
 
                 if (counter.containsKey(currentDate)){
