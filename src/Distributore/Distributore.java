@@ -134,56 +134,6 @@ public class Distributore implements MaxValue, TextFiles {
     }
 
     /**
-     * Funzione per recepire i comandi testuali ed analizzarli.
-     */
-    public void textualInput() {
-        String input;
-        do {
-            showList();
-            System.out.println("Inserire l'ID della bevanda e la quantità di zucchero richiesta (da 0 a 5) separate " +
-                    "da uno spazio.\nNel caso non venga inserito nulla sarà di default a 3");
-            input = keyboard();
-        } while (input.isEmpty()); // Finchè non ricevo un input non proseguo
-        String[] splitted = input.split("\\s+");
-
-        if (splitted.length == 1) {
-            setSugarToDefault();
-        }
-        else { // Espressa una preferenza
-            selected_sugar = parseInt(splitted[1]);
-        }
-        // Controlla se la bevanda è disponibile
-        if (list.get(splitted[0]).isAvailable()) {
-            askForMoneyInput();
-            selectBeverage(splitted[0]); // Funzione da usare nell'interfaccia per l'erogazione della bevanda
-        } else {
-            System.out.println("Bevanda non disponibile");
-        }
-    }
-
-    /**
-     * Funzione per recepire input da tastiera e restituirli sotto forma di stringa.
-     */
-    private String keyboard() {
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextLine();
-    }
-
-    /**
-     * Funzione che chiede quante monete inserire da tastiera.
-     */
-    private void askForMoneyInput() {
-        double[] coinsValue = coins.getCOINS_VALUE();
-        for (int i = 0; i < coinsValue.length; i++) {
-            System.out.println("Inserire le monete da " + String.format("%.2f", coinsValue[i]) + " cent");
-            String input = keyboard();
-            if (parseInt(input) > 0) {
-                coins.addCredit(input, i);
-            }
-        }
-    }
-
-    /**
      * Funzione per selezionare una bevanda. Essa controlla anche che il credito sia sufficiente.
      * @param ID: è l'id della bevanda selezionata.
      */
@@ -235,7 +185,7 @@ public class Distributore implements MaxValue, TextFiles {
     /**
      * Funzione che mostra la lista delle bevande contenute nel distributore.
      */
-    private void showList() {
+    public void showList() {
         for (int i = 1; i < list.size() + 1; i++) {
             System.out.println(list.get("0" + i));
         }
