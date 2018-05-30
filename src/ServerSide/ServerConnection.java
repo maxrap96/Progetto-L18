@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 
 public class ServerConnection extends Thread {
 
@@ -12,6 +13,7 @@ public class ServerConnection extends Thread {
     private ObservableList<String> obsvMenu;
     private ObservableList<String> obsvCoins;
     private ObservableList<String> obsvData;
+    private ArrayList<DealWithTheClientThread> arrayList;
     private int portNumber;
     private Socket clientSocket;
 
@@ -22,10 +24,12 @@ public class ServerConnection extends Thread {
         this.obsvCoins = obsvCoins;
         this.obsvMenu = obsvMenu;
         this.obsvData = obsvData;
+        this.arrayList = new ArrayList<>();
     }
 
     @Override
     public void run() {
+        DealWithTheClientThread threadTmp;
         try {
             // Creazione socket di benvenuto
             ServerSocket serverSocket = new ServerSocket(portNumber);
@@ -37,10 +41,16 @@ public class ServerConnection extends Thread {
                 clientSocket = serverSocket.accept();
 
                 // Creo il thread per ogni Client che si connette
-                new DealWithTheClientThread(clientSocket, obsvStats, obsvMenu, obsvCoins, obsvData).start();
+                threadTmp = new DealWithTheClientThread(clientSocket, obsvStats, obsvMenu, obsvCoins, obsvData);
+                arrayList.add(threadTmp);
+                threadTmp.start();
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void chooseCommandExecutedByThread(String command, int index){
+        arrayList.get(index).chosenCommand(command);
     }
 }

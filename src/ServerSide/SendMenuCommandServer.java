@@ -1,5 +1,7 @@
 package ServerSide;
 
+import javafx.collections.ObservableList;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.net.Socket;
@@ -11,7 +13,7 @@ public class SendMenuCommandServer extends SendCommandServer implements CommandS
 
 
     public SendMenuCommandServer(ReceiverServer receiverServer, Socket clientSocket,
-                                 ArrayList<String> arrayToSaveInfo, BufferedReader clientReader) {
+                                 ObservableList<String> arrayToSaveInfo, BufferedReader clientReader) {
         super(receiverServer, clientSocket, arrayToSaveInfo, clientReader);
     }
 
@@ -19,7 +21,8 @@ public class SendMenuCommandServer extends SendCommandServer implements CommandS
     public void execute() {
         try {
             receiverServer.sendString(SEND_MENU, clientSocket);
-            receiverServer.saveStringsFromClient(arrayToSaveInfo, clientReader);
+            receiverServer.saveStringsFromClient(arrayListCommand, clientReader);
+            this.saveArrayInObservable();
         } catch (IOException e) {
             e.printStackTrace();
         }

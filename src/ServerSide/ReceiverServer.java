@@ -10,8 +10,6 @@ import static ServerSide.StringCommandList.END_SENDING;
 
 public class ReceiverServer {
 
-//    obsvCoins.addAll(coins);
-
     /**
      * Funzione che invia una stringa.
      *

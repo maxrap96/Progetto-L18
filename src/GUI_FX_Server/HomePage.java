@@ -1,5 +1,6 @@
 package GUI_FX_Server;
 
+import ServerSide.DealWithTheClientThread;
 import ServerSide.ServerConnection;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -18,6 +19,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+import java.net.ServerSocket;
 import java.util.ArrayList;
 
 public class HomePage extends Application {
@@ -31,7 +33,8 @@ public class HomePage extends Application {
     public void start(Stage primaryStage) {
 
         // Avvio della connessione Server
-        new ServerConnection(80, observStats, observMenu, observCoins, observData).start();
+        ServerConnection server = new ServerConnection(80, observStats, observMenu, observCoins, observData);
+        server.start();
 
         // Definizione dello stage principale e della barra del menu
         primaryStage.setTitle("Home");
@@ -118,6 +121,7 @@ public class HomePage extends Application {
             menuTable.getvBox().setVisible(false);
             anchor.setVisible(false);
             statsPage.getMainPanel().setVisible(true);
+            server.chooseCommandExecutedByThread("SEND_STATS", 0);
         });
 
         menuButton.setOnAction( event -> {

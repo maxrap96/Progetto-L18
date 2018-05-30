@@ -144,6 +144,7 @@ public class DealWithTheClientThread extends Thread implements StringCommandList
     protected void chosenCommand(String command){
         if (commandServerHashMap.containsKey(command)) {
             commandServerHashMap.get(command).execute();
+
         } else {
             System.out.println("Comando non valido");
         }
@@ -155,15 +156,15 @@ public class DealWithTheClientThread extends Thread implements StringCommandList
     private void initServerHashMap(){
         this.commandServerHashMap = new HashMap<>();
         ReceiverServer receiverServer = new ReceiverServer();
-        this.commandServerHashMap.put(SEND_COINS, new SendCoinsCommandServer(receiverServer, clientSocket, coins,
+        this.commandServerHashMap.put(SEND_COINS, new SendCoinsCommandServer(receiverServer, clientSocket, obsvCoins,
                 inFromClient));
-        this.commandServerHashMap.put(SEND_DATA, new SendDataCommandServer(receiverServer, clientSocket, data,
+        this.commandServerHashMap.put(SEND_DATA, new SendDataCommandServer(receiverServer, clientSocket, obsvData,
                 inFromClient));
-        this.commandServerHashMap.put(SEND_MENU, new SendMenuCommandServer(receiverServer, clientSocket, menu,
+        this.commandServerHashMap.put(SEND_MENU, new SendMenuCommandServer(receiverServer, clientSocket, obsvMenu,
                 inFromClient));
-        this.commandServerHashMap.put(SEND_STATS, new SendStatsCommandServer(receiverServer, clientSocket, stats,
+        this.commandServerHashMap.put(SEND_STATS, new SendStatsCommandServer(receiverServer, clientSocket, obsvStats,
                 inFromClient));
-        this.commandServerHashMap.put(OVERWRITE_MENU, new OverwriteCommandServer(receiverServer, clientSocket, menu,
+        this.commandServerHashMap.put(OVERWRITE_MENU, new OverwriteCommandServer(receiverServer, clientSocket, obsvMenu,
                 inFromClient));
     }
 }
