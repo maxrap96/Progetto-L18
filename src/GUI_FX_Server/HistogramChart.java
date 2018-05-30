@@ -1,9 +1,14 @@
 package GUI_FX_Server;
 
 import javafx.collections.ObservableList;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.chart.*;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 
 public class HistogramChart extends BarChart {
 
@@ -45,7 +50,21 @@ public class HistogramChart extends BarChart {
             colorChartBars(bc, i, money);
         }
 
+        HBox buttonBox = new HBox();
+        Button refreshBtn = new Button();
+
+        Image img = new Image("ServerImages/RefreshBtn.jpg");
+        Circle circle = new Circle(23);
+        ImagePattern pattern = new ImagePattern(img);
+        circle.setFill(pattern);
+
+        refreshBtn.setGraphic(circle);
+
+        buttonBox.setAlignment(Pos.CENTER);
+        buttonBox.getChildren().add(refreshBtn);
+
         b.setCenter(bc);
+        b.setBottom(buttonBox);
         return b;
     }
 
