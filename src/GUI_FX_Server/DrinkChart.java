@@ -1,6 +1,7 @@
 package GUI_FX_Server;
 
 import javafx.collections.ObservableList;
+import javafx.scene.Node;
 import javafx.scene.chart.*;
 import javafx.scene.layout.BorderPane;
 
@@ -24,15 +25,16 @@ public class DrinkChart extends BarChart {
         final CategoryAxis xAxis = new CategoryAxis();
         final NumberAxis yAxis = new NumberAxis();
 
-        final BarChart<String,Number> itemsChart = new BarChart<>(xAxis, yAxis);
-        itemsChart.setTitle("Quantità rimanenti bevande");
-        itemsChart.setLegendVisible(false);
+        final BarChart<String,Number> drinksChart = new BarChart<>(xAxis, yAxis);
+        drinksChart.setTitle("Quantità rimanenti bevande");
+        drinksChart.setLegendVisible(false);
 
         xAxis.setLabel("Bevanda");
         yAxis.setLabel("Quantità");
 
         XYChart.Series series1 = new XYChart.Series();
 
+        // Ottenimento dati
         for(int i = 0; i < data.size(); i++) {
             if (data.get(i).startsWith("0")) {
                 String[] split = data.get(i).split("\t");
@@ -42,9 +44,9 @@ public class DrinkChart extends BarChart {
             }
         }
 
-        itemsChart.getData().add(series1);
+        drinksChart.getData().add(series1);
 
-        mainTabPane.setCenter(itemsChart);
+        mainTabPane.setCenter(drinksChart);
 
         return mainTabPane;
     }
