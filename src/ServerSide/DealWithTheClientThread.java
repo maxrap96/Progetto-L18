@@ -7,15 +7,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class DealWithTheClientThread extends Thread implements StringCommandList {
 
-    private ArrayList<String> stats;
-    private ArrayList<String> menu;
-    private ArrayList<String> coins;
-    private ArrayList<String> data;
     private ObservableList<String> obsvStats;
     private ObservableList<String> obsvMenu;
     private ObservableList<String> obsvCoins;
@@ -28,7 +23,6 @@ public class DealWithTheClientThread extends Thread implements StringCommandList
     public DealWithTheClientThread(Socket clientSocket, ObservableList<String> obsvStats,
                                    ObservableList<String> obsvMenu, ObservableList<String> obsvCoins,
                                    ObservableList<String> obsvData) {
-        this.initArrayList();
         this.clientSocket = clientSocket;
         this.obsvStats = obsvStats;
         this.obsvMenu = obsvMenu;
@@ -55,13 +49,6 @@ public class DealWithTheClientThread extends Thread implements StringCommandList
             e.printStackTrace();
             System.out.println("Error caught: " + e);
         }
-    }
-
-    private void initArrayList(){
-        this.stats = new ArrayList<>();
-        this.menu = new ArrayList<>();
-        this.coins = new ArrayList<>();
-        this.data = new ArrayList<>();
     }
 
     /**
@@ -101,27 +88,19 @@ public class DealWithTheClientThread extends Thread implements StringCommandList
     private void chooseCommand(int index){
         switch (index){
             case 0:
-                obsvData.clear();
                 commandServerHashMap.get(SEND_DATA).execute();
-                obsvData.addAll(data);
                 break;
 
             case 1:
-                obsvMenu.clear();
                 commandServerHashMap.get(SEND_MENU).execute();
-                obsvMenu.addAll(menu);
                 break;
 
             case 2:
-                obsvCoins.clear();
                 commandServerHashMap.get(SEND_COINS).execute();
-                obsvCoins.addAll(coins);
                 break;
 
             case 3:
-                obsvStats.clear();
                 commandServerHashMap.get(SEND_STATS).execute();
-                obsvStats.addAll(stats);
                 break;
 
             case 4:
@@ -137,14 +116,13 @@ public class DealWithTheClientThread extends Thread implements StringCommandList
     /**
      * Funzione per attivare un comando.
      *
-     * Nota: Possibile uso negli strati della UI.
+     * Nota: Viene utilizzata dal Server.
      *
-     * @param command
+     * @param command comando da eseguire.
      */
     protected void chosenCommand(String command){
         if (commandServerHashMap.containsKey(command)) {
             commandServerHashMap.get(command).execute();
-
         } else {
             System.out.println("Comando non valido");
         }

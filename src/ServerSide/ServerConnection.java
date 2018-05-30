@@ -50,6 +50,11 @@ public class ServerConnection extends Thread {
         }
     }
 
+    /**
+     * Funzione per scegliere il comando da eseguire e su quale Client.
+     * @param command comando da eseguire.
+     * @param index Client su cui eseguire il comando.
+     */
     public void chooseCommandExecutedByThread(String command, int index){
         arrayList.get(index).chosenCommand(command);
     }
