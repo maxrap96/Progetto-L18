@@ -12,7 +12,6 @@ public class ReceiverServer {
 
     /**
      * Funzione che invia una stringa.
-     *
      * @param sendThisString stringa da inviare.
      * @param client socket a cui inviare.
      * @throws IOException
@@ -25,15 +24,14 @@ public class ReceiverServer {
 
     /**
      * Funzione che salva i dati in ingresso.
-     *
      * @param whereToSaveFileFromClient ArrayList in cui salvo i dati.
      * @throws IOException
      */
     protected void saveStringsFromClient(ArrayList whereToSaveFileFromClient, BufferedReader inFromClient)
-            throws IOException{
+            throws IOException {
         whereToSaveFileFromClient.clear();
         String tmp;
-        while ((tmp = inFromClient.readLine()) != null){
+        while ((tmp = inFromClient.readLine()) != null) {
             if (!tmp.equals(END_SENDING)) {
                 whereToSaveFileFromClient.add(tmp);
                 System.out.println(tmp);

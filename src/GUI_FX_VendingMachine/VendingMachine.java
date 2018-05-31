@@ -123,13 +123,9 @@ public class VendingMachine extends Application {
             e.printStackTrace();
             System.out.println("Error caused by " + e);
         }
-        File menuFile = new File(MENUPATH);
-        ObservableList<File> obsvMenuFile = FXCollections.observableArrayList(menuFile);
-        obsvMenuFile.addListener((ListChangeListener) change -> Platform.runLater(() -> {
-            System.out.println("Updating");
-            distributore = new Distributore();
-            beverageGrid = new BeverageGrid(distributore, display, resetDisplay);
-        }));
+
+        updateChecker = new UpdateChecker(distributore, beverageGrid, display, resetDisplay);
+        updateChecker.run();
 
 
 
