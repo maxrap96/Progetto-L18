@@ -1,3 +1,5 @@
+package Distributore;
+
 import Distributore.Distributore;
 
 import java.util.Scanner;

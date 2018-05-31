@@ -1,5 +1,6 @@
-package Distributore;
+package ClientSide;
 
+import Distributore.Command;
 import ServerSide.StringCommandList;
 
 import java.io.BufferedReader;

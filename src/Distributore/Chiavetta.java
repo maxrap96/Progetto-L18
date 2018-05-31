@@ -6,8 +6,8 @@ import static java.lang.Double.parseDouble;
 
 public class Chiavetta {
     private String ID;
-    private double Saldo = 0;
-    private int Linea;
+    private double saldo = 0;
+    private int linea;
     private Data data = new Data("src/File_Testo/dati_chiavetta.txt");
     private String currentLine;
     private boolean connected = false;
@@ -15,8 +15,8 @@ public class Chiavetta {
     public Chiavetta() {
         ArrayList<String[]> chiavText = data.readFile();
         ID = chiavText.get(0)[0];
-        Saldo = parseDouble(chiavText.get(0)[1]);
-        Linea = 0;
+        saldo = parseDouble(chiavText.get(0)[1]);
+        linea = 0;
         currentLine = chiavText.get(0)[0] + "\t" + chiavText.get(0)[1];
         // initChiavetta();
     }
@@ -27,8 +27,8 @@ public class Chiavetta {
         for(int i = 0; i < chiavText.size(); i++) {
             String id = chiavText.get(i)[0];
             if(ID.equals(id)) {
-                Saldo = parseDouble(chiavText.get(i)[1]);
-                Linea = i;
+                saldo = parseDouble(chiavText.get(i)[1]);
+                linea = i;
                 currentLine = chiavText.get(i)[0] + "\t" + chiavText.get(i)[1];
             }
         }
@@ -43,13 +43,13 @@ public class Chiavetta {
     }
 
     public double getSaldo() {
-        return Saldo;
+        return saldo;
     }
 
-    public void AddSaldo(double importo) {
-        Saldo = (Saldo * 1000 + importo * 1000) / 1000;
-        Saldo = Math.floor(Saldo * 100) / 100;
-        String newLine = ID + "\t" + Saldo;
+    public void addSaldo(double importo) {
+        saldo = (saldo * 1000 + importo * 1000) / 1000;
+        saldo = Math.floor(saldo * 100) / 100;
+        String newLine = ID + "\t" + saldo;
         newLine.replace(",","."); // altrimenti al successivo riavvio non si riesce a leggere il file
         try {
             data.overwriteFile(newLine, currentLine);
@@ -58,11 +58,11 @@ public class Chiavetta {
         }
     }
 
-    public boolean Pay(double Costo) {
-        if(Saldo > Costo) {
-            Saldo -= Costo;
-            Saldo = Math.floor(Saldo * 100) / 100;
-            String newLine = ID + "\t" + Saldo;
+    public boolean pay(double costo) {
+        if(saldo > costo) {
+            saldo -= costo;
+            saldo = Math.floor(saldo * 100) / 100;
+            String newLine = ID + "\t" + saldo;
             try {
                 data.overwriteFile(newLine, currentLine);
             } catch (IOException e) {
@@ -75,6 +75,6 @@ public class Chiavetta {
 
     @Override
     public String toString() {
-        return "ID: " + ID + "\nSaldo: " + Saldo;
+        return "ID: " + ID + "\nsaldo: " + saldo;
     }
 }

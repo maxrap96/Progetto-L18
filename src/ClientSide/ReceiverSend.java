@@ -1,4 +1,4 @@
-package Distributore;
+package ClientSide;
 
 import java.io.*;
 

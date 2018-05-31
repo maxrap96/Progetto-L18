@@ -5,7 +5,6 @@ import Bevande.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Scanner;
 
 import static java.lang.Integer.parseInt;
 
@@ -145,7 +144,7 @@ public class Distributore implements MaxValue, TextFiles {
 
         if (chiavetta.isConnected()) {
 
-            transaction = chiavetta.Pay(list.get(ID).getPrice());
+            transaction = chiavetta.pay(list.get(ID).getPrice());
             // Scrittura statistiche su file:
             stats.writeFile(list.get(ID).getName(),transaction);
             updateDati(ID);
@@ -197,7 +196,7 @@ public class Distributore implements MaxValue, TextFiles {
      */
     public void addCredit(double inserted) {
         if (chiavetta.isConnected()) {
-            chiavetta.AddSaldo(inserted);
+            chiavetta.addSaldo(inserted);
             coins.charcheKey(inserted);
         }
         else {
@@ -310,7 +309,7 @@ public class Distributore implements MaxValue, TextFiles {
     public void setconnectionChiavetta() {
         chiavetta.setConnected();
         if (coins.getCredit() !=0 ) {
-            chiavetta.AddSaldo(coins.getCredit());
+            chiavetta.addSaldo(coins.getCredit());
             coins.updateBalance(coins.getCredit());
         }
     }

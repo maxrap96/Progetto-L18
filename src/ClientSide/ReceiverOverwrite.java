@@ -1,4 +1,7 @@
-package Distributore;
+package ClientSide;
+
+import Distributore.Data;
+import Distributore.TextFiles;
 
 import java.io.File;
 import java.io.IOException;
