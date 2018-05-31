@@ -43,16 +43,17 @@ public class DrinkChart extends BarChart {
 
         analyzeData(drinkName, drinkQty, data, menu);
 
-        for (int j = 0; j < drinkName.size(); j++) {
-            series1.getData().add(new XYChart.Data(drinkName.get(j), drinkQty.get(j)));
+        if(!data.isEmpty() && !menu.isEmpty()) {
+            for (int j = 0; j < drinkName.size(); j++) {
+                series1.getData().add(new XYChart.Data(drinkName.get(j), drinkQty.get(j)));
+            }
         }
-
         drinksChart.getData().add(series1);
-
-        for (int i = 0; i < drinkName.size(); i++) {
-            colorChartBars(drinksChart, i, drinkQty.get(i));
+        if(!data.isEmpty() && !menu.isEmpty()) {
+            for (int i = 0; i < drinkName.size(); i++) {
+                colorChartBars(drinksChart, i, drinkQty.get(i));
+            }
         }
-
         HBox buttonBox = new HBox();
 
         Button refill = new Button("Refill drinks");

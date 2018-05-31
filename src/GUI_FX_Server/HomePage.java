@@ -115,15 +115,21 @@ public class HomePage extends Application implements StringCommandList {
             menuTable.getvBox().setVisible(false);
             anchor.setVisible(false);
             statsPage.getMainPanel().setVisible(true);
+            observMenu.clear();
+            observCoins.clear();
+            observData.clear();
+            observStats.clear();
             server.chooseCommandExecutedByThread(SEND_STATS, 0);
             server.chooseCommandExecutedByThread(SEND_COINS, 0);
             server.chooseCommandExecutedByThread(SEND_DATA,0);
+            server.chooseCommandExecutedByThread(SEND_MENU,0);
         });
 
         menuButton.setOnAction( event -> {
             menuTable.getvBox().setVisible(true);
             anchor.setVisible(false);
             statsPage.getMainPanel().setVisible(false);
+            observMenu.clear();
             server.chooseCommandExecutedByThread(SEND_MENU, 0);
 
         });

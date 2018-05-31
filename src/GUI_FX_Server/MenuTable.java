@@ -170,7 +170,7 @@ public class MenuTable extends TableView {
         private SimpleStringProperty acqua;
         private SimpleStringProperty vodka;
 
-        private Tabella(String menuDati, int i) {
+        private Tabella(String menuDati) {
             String[] dati = menuDati.split("\t");
             this.id = new SimpleStringProperty(dati[0]);
             this.tipo = new SimpleStringProperty(dati[1]);
@@ -270,13 +270,15 @@ public class MenuTable extends TableView {
         data.clear();
         for (int i = 0; i < obsvMenu.size(); i++ ) {
             menu.add(obsvMenu.get(i));
-            if (!obsvMenu.get(i).startsWith("*")) {
-                tabella[i] = new Tabella(obsvMenu.get(i), i);
+            if (!obsvMenu.get(i).contains("*")) {
+                tabella[i] = new Tabella(obsvMenu.get(i));
+                }
+
             }
+        for (int j = 2; j < tabella.length; j++) {
+            data.addAll(tabella[j]);
         }
-        for (int i = 2; i < tabella.length; i++) {
-            data.addAll(tabella[i]);
-        }
+
     }
 
     public VBox getvBox() {
