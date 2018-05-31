@@ -50,7 +50,11 @@ public class HistogramChart extends BarChart {
         }
 
         HBox buttonBox = new HBox();
+        Button refill = new Button("Refill\ncoins");
         Button refreshBtn = new Button();
+        refill.setMaxWidth(80);
+        refill.prefHeightProperty().bind(buttonBox.heightProperty());
+        refill.prefWidthProperty().bind(buttonBox.widthProperty());
 
         Image img = new Image("ServerImages/RefreshBtn.jpg");
         Circle circle = new Circle(23);
@@ -60,7 +64,8 @@ public class HistogramChart extends BarChart {
         refreshBtn.setGraphic(circle);
 
         buttonBox.setAlignment(Pos.CENTER);
-        buttonBox.getChildren().add(refreshBtn);
+        buttonBox.setSpacing(25);
+        buttonBox.getChildren().addAll(refill, refreshBtn);
 
         b.setCenter(bc);
         b.setBottom(buttonBox);

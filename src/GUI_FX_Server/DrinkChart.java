@@ -1,9 +1,13 @@
 package GUI_FX_Server;
 
 import javafx.collections.ObservableList;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.chart.*;
+import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+
 import java.util.ArrayList;
 
 public class DrinkChart extends BarChart {
@@ -49,7 +53,15 @@ public class DrinkChart extends BarChart {
             colorChartBars(drinksChart, i, drinkQty.get(i));
         }
 
+        HBox buttonBox = new HBox();
+
+        Button refill = new Button("Refill drinks");
+
+        buttonBox.setAlignment(Pos.CENTER);
+        buttonBox.getChildren().add(refill);
+
         mainTabPane.setCenter(drinksChart);
+        mainTabPane.setBottom(buttonBox);
 
         return mainTabPane;
     }
