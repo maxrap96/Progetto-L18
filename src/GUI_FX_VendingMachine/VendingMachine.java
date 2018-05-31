@@ -4,6 +4,9 @@ import Distributore.Distributore;
 import ClientSide.ClientVendMach;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -18,8 +21,11 @@ import javafx.stage.WindowEvent;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+
+import static Distributore.TextFiles.MENUPATH;
 
 public class VendingMachine extends Application {
      private Distributore distributore = new Distributore();
@@ -117,6 +123,15 @@ public class VendingMachine extends Application {
             e.printStackTrace();
             System.out.println("Error caused by " + e);
         }
+        File menuFile = new File(MENUPATH);
+        ObservableList<File> obsvMenuFile = FXCollections.observableArrayList(menuFile);
+        obsvMenuFile.addListener((ListChangeListener) change -> Platform.runLater(() -> {
+            System.out.println("Updating");
+            distributore = new Distributore();
+            beverageGrid = new BeverageGrid(distributore, display, resetDisplay);
+        }));
+
+
 
         // Termina l'applicazione cliccando la x rossa
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
