@@ -20,6 +20,7 @@ public class OverwriteCommand implements Command, StringCommandList {
 
     @Override
     public void execute() {
+        menuFromServer.clear();
         try {
             String tmp;
             while ((tmp = bufferedReader.readLine()) != null) {

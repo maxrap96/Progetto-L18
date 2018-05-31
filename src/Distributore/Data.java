@@ -130,12 +130,15 @@ public class Data {
     public void saveFileFromCommand(ArrayList<String> arrayList) throws IOException {
         try {
             FileWriter writer = new FileWriter(PATHFILE, false);
-            writer.write(arrayList.get(0));
+            writer.write(arrayList.get(0) + "\n");
             writer.close();
-            writer = new FileWriter(PATHFILE, false);
+            writer = new FileWriter(PATHFILE, true);
             //La prima riga è senza append per sovrascirvere tutto
             for (int i = 1; i < arrayList.size(); i++) {
-                writer.write(arrayList.get(i) + "\n" );
+                writer.write(arrayList.get(i));
+                if (i < arrayList.size() - 1) {
+                    writer.write("\n");
+                }
             }
             writer.close();
         } catch (IOException e) {
