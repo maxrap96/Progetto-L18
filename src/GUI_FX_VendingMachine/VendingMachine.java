@@ -1,7 +1,7 @@
 package GUI_FX_VendingMachine;
 
 import Distributore.Distributore;
-import Distributore.ClientVendMach;
+import ClientSide.ClientVendMach;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;

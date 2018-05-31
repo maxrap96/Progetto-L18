@@ -1,4 +1,4 @@
-import Distributore.ClientVendMach;
+import ClientSide.ClientVendMach;
 
 public class TestClient {
     public static void main(String[] args) {

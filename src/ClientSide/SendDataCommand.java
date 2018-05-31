@@ -1,20 +1,22 @@
-package Distributore;
+package ClientSide;
+
+import Distributore.Command;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class SendMenuCommand extends SendCommand implements Command {
-    private File fileMenu = new File("src/File_Testo/menu.txt");
+public class SendDataCommand extends SendCommand implements Command {
+    private File fileDati = new File("src/File_Testo/dati.txt");
 
-    public SendMenuCommand(ReceiverSend receiverSend, PrintWriter printWriter) {
+    public SendDataCommand(ReceiverSend receiverSend, PrintWriter printWriter) {
         super(receiverSend, printWriter);
     }
 
     @Override
     public void execute() {
         try {
-            receiverSend.sendFile(printWriter, fileMenu);
+            receiverSend.sendFile(printWriter, fileDati);
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Error in execute " + e);

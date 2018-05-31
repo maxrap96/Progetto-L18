@@ -1,7 +1,7 @@
 package GUI_FX_VendingMachine;
 
 import Distributore.Distributore;
-import Distributore.ClientVendMach;
+import ClientSide.ClientVendMach;
 
 public class UpdateChecker extends Thread {
     private Distributore distributore;
