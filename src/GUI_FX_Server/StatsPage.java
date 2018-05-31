@@ -75,6 +75,12 @@ public class StatsPage extends GridPane {
             tab5.setContent(itemsChart.setBars());
         }));
 
+        obsvMenu.addListener((ListChangeListener) change -> Platform.runLater(() -> {
+            // Aggiorna UI
+            System.out.println("Detected a change! ");
+            tab4.setContent(drinks.initChart());
+        }));
+
         tabPane.getTabs().addAll(tab1, tab2, tab3, tab4, tab5);
 
         // Utilizzo di tutto lo spazio disponibile da parte del pannello
