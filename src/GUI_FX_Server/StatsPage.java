@@ -27,7 +27,6 @@ public class StatsPage extends GridPane {
 
     public StatsPage(Stage stage, ObservableList<String> obsvStats, ObservableList<String> obsvData,
                      ObservableList<String> obsvCoins, ObservableList<String> obsvMenu) {
-        Group root = new Group();
         this.obsvStats = obsvStats;
         this.obsvCoins = obsvCoins;
         this.obsvData = obsvData;
