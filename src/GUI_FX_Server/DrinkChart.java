@@ -4,6 +4,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.chart.*;
 import javafx.scene.layout.BorderPane;
+import java.util.ArrayList;
 
 public class DrinkChart extends BarChart {
     private ObservableList<String> data;
@@ -18,7 +19,7 @@ public class DrinkChart extends BarChart {
     public BorderPane initChart() {
         BorderPane mainTabPane = new BorderPane();
 
-        if (data == null)
+        if (data == null || menu == null)
             return mainTabPane;
 
         final CategoryAxis xAxis = new CategoryAxis();
@@ -33,18 +34,57 @@ public class DrinkChart extends BarChart {
 
         XYChart.Series series1 = new XYChart.Series();
 
-        // Ottenimento dati
-        for (int i = 0; i < data.size(); i++) {
-            if (data.get(i).startsWith("0")) {
-                String[] split = data.get(i).split("\t");
+        ArrayList<String> drinkName = new ArrayList<>();
+        ArrayList<Double> drinkQty = new ArrayList<>();
 
-                //TODO sostituire ID con nome bevanda
-                series1.getData().add(new XYChart.Data(split[0], Double.parseDouble(split[1])));
-            }
+        analyzeData(drinkName, drinkQty, data, menu);
+
+        for (int j = 0; j < drinkName.size(); j++) {
+            series1.getData().add(new XYChart.Data(drinkName.get(j), drinkQty.get(j)));
         }
+
         drinksChart.getData().add(series1);
+
+        for (int i = 0; i < drinkName.size(); i++) {
+            colorChartBars(drinksChart, i, drinkQty.get(i));
+        }
+
         mainTabPane.setCenter(drinksChart);
 
         return mainTabPane;
+    }
+
+    private void analyzeData(ArrayList<String> drinkName, ArrayList<Double> drinkQty,
+                             ObservableList<String> data, ObservableList<String> menu) {
+
+        for (int rows = 0; rows < menu.size(); rows++) {
+            if (menu.get(rows).startsWith("0")) {
+                String[] splitMenu = menu.get(rows).split("\t");
+
+                drinkName.add(splitMenu[2]);
+            }
+        }
+
+        for (int i = 0; i < data.size(); i++) {
+            if (data.get(i).startsWith("0")) {
+                String[] splitData = data.get(i).split("\t");
+
+                drinkQty.add(Double.parseDouble(splitData[1]));
+            }
+        }
+    }
+
+    public void colorChartBars(BarChart bc, int i, double qty) {
+        String st = ".data" + i + ".chart-bar";
+
+        Node node = bc.lookup(st);
+
+        if (qty > 35) {
+            node.setStyle("-fx-bar-fill: springgreen");
+        } else if (qty > 20) {
+            node.setStyle("-fx-bar-fill: gold");
+        } else {
+            node.setStyle("-fx-bar-fill: crimson");
+        }
     }
 }

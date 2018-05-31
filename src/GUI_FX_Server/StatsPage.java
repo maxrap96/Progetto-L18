@@ -13,19 +13,17 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class StatsPage extends GridPane {
-    GridPane mainPanel = new GridPane();
-
-    TabPane tabPane = new TabPane();
-    Tab tab1 = new Tab();
-    Tab tab2 = new Tab();
-    Tab tab3 = new Tab();
-    Tab tab4 = new Tab();
-    Tab tab5 = new Tab();
-    
-    ObservableList<String> obsvStats;
-    ObservableList<String> obsvData;
-    ObservableList<String> obsvCoins;
-    ObservableList<String> obsvMenu;
+    private GridPane mainPanel = new GridPane();
+    private TabPane tabPane = new TabPane();
+    private Tab tab1 = new Tab();
+    private Tab tab2 = new Tab();
+    private Tab tab3 = new Tab();
+    private Tab tab4 = new Tab();
+    private Tab tab5 = new Tab();
+    private ObservableList<String> obsvStats;
+    private ObservableList<String> obsvData;
+    private ObservableList<String> obsvCoins;
+    private ObservableList<String> obsvMenu;
 
     public StatsPage(Stage stage, ObservableList<String> obsvStats, ObservableList<String> obsvData,
                      ObservableList<String> obsvCoins, ObservableList<String> obsvMenu) {
@@ -34,14 +32,6 @@ public class StatsPage extends GridPane {
         this.obsvCoins = obsvCoins;
         this.obsvData = obsvData;
         this.obsvMenu = obsvMenu;
-
-        Scene scene;
-
-        if (stage.isMaximized()) {
-            scene = new Scene(root, Color.KHAKI);
-        } else {
-            scene = new Scene(root, 800, 550, Color.KHAKI);
-        }
 
         BorderPane borderPane = new BorderPane();
 
@@ -66,23 +56,29 @@ public class StatsPage extends GridPane {
         tab5.setContent(itemsChart.setBars());
 
         obsvStats.addListener((ListChangeListener) change -> Platform.runLater(() -> {
-            // Update UI here.
+            // Aggiorna UI
             System.out.println("Detected a change! ");
             tab2.setContent(pie.setChart());
             tab3.setContent(usage.setGraph());
         }));
 
         obsvCoins.addListener((ListChangeListener) change -> Platform.runLater(() -> {
-            // Update UI here.
+            // Aggiorna UI
             System.out.println("Detected a change! ");
             tab1.setContent(coinsChart.setBars());
         }));
 
         obsvData.addListener((ListChangeListener) change -> Platform.runLater(() -> {
-            // Update UI here.
+            // Aggiorna UI
             System.out.println("Detected a change! ");
             tab4.setContent(drinks.initChart());
             tab5.setContent(itemsChart.setBars());
+        }));
+
+        obsvMenu.addListener((ListChangeListener) change -> Platform.runLater(() -> {
+            // Aggiorna UI
+            System.out.println("Detected a change! ");
+            tab4.setContent(drinks.initChart());
         }));
 
         tabPane.getTabs().addAll(tab1, tab2, tab3, tab4, tab5);
@@ -99,8 +95,8 @@ public class StatsPage extends GridPane {
     }
 
     /**
-     * Funzione per aprire uno specifico tab all'apertura della pagina
-     * @param i indice per selezionare un tab; valore iniziale '0'
+     * Funzione per aprire uno specifico tab all'apertura della pagina.
+     * @param i indice per selezionare un tab; valore iniziale '0'.
      */
     public void OpenTab(int i){
         tabPane.getSelectionModel().select(i);
@@ -109,5 +105,4 @@ public class StatsPage extends GridPane {
     public GridPane getMainPanel() {
         return mainPanel;
     }
-
 }

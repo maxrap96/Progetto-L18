@@ -119,7 +119,7 @@ public class HistogramChart extends BarChart {
         } else if (money[i] > 15) {
             node.setStyle("-fx-bar-fill: gold");
         } else {
-            node.setStyle("-fx-bar-fill: orangered");
+            node.setStyle("-fx-bar-fill: tomato");
         }
     }
 }

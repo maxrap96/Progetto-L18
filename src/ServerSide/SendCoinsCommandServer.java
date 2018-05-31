@@ -10,7 +10,6 @@ import static ServerSide.StringCommandList.SEND_COINS;
 
 public class SendCoinsCommandServer extends SendCommandServer implements CommandServer {
 
-
     public SendCoinsCommandServer(ReceiverServer receiverServer, Socket clientSocket,
                                   ObservableList<String> arrayToSaveInfo, BufferedReader clientReader) {
         super(receiverServer, clientSocket, arrayToSaveInfo, clientReader);

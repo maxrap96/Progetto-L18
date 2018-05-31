@@ -122,12 +122,6 @@ public class HomePage extends Application implements StringCommandList {
             menuTable.getvBox().setVisible(true);
             anchor.setVisible(false);
             statsPage.getMainPanel().setVisible(false);
-            /* Serve solo per vedere che venga caricato il valore corretto
-            if (!menu.isEmpty()) {
-                for (String string : menu) {
-                    System.out.println(string);
-                }
-            }*/
         });
 
         VBox vBox1 = new VBox(toolbar1,stackPane);
@@ -137,7 +131,6 @@ public class HomePage extends Application implements StringCommandList {
 
         primaryStage.setScene(scene);
         primaryStage.sizeToScene();
-        //primaryStage.setResizable(false);
         primaryStage.show();
         primaryStage.setMinWidth(primaryStage.getWidth());
         primaryStage.setMinHeight(primaryStage.getHeight());
