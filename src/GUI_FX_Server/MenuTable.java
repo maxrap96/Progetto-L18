@@ -267,6 +267,7 @@ public class MenuTable extends TableView {
 
     public void setTabella(ObservableList<String> obsvMenu) {
         tabella = new Tabella[obsvMenu.size()];
+        data.clear();
         for (int i = 0; i < obsvMenu.size(); i++ ) {
             menu.add(obsvMenu.get(i));
             if (!obsvMenu.get(i).startsWith("*")) {
@@ -289,8 +290,8 @@ public class MenuTable extends TableView {
 
     private void changeMenu() {
         menu.clear();
-        menu.add("* le righe con * vengono saltate nella lettura\n" +
-                "* ID  TIPO  \tNOME  \t    COSTO  Q_MAX TEMP DOSE latte acqua\tvodka");
+        menu.add("* le righe con * vengono saltate nella lettura");
+        menu.add("* ID  TIPO  \tNOME  \t    COSTO  Q_MAX TEMP DOSE latte acqua\tvodka");
         for (int row = 0; row < 11; row++) {
             String tmp = "";
             for (int column = 0; column < 10; column++ ) {
