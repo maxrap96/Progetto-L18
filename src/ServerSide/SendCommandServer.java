@@ -26,7 +26,7 @@ public abstract class SendCommandServer implements CommandServer {
      * Funzione per sovrascrivere l'observableList.
      */
     protected void saveArrayInObservable() {
-        observableListCommand.removeAll();
+        observableListCommand.clear();
         observableListCommand.addAll(arrayListCommand);
     }
 }

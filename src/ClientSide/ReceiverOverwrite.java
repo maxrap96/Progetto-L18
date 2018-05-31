@@ -9,13 +9,10 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class ReceiverOverwrite implements TextFiles {
-    private Data menuData = new Data("src/File_Testo/menuProva.txt");
-    private String pathfile = "src/File_Testo/menuProva.txt";
-    private File menu = new File(pathfile);
+    private Data menuData = new Data("src/File_Testo/menu.txt");
 
     protected void overwriteFileReceiver(ArrayList<String> arrayFromCommand) {
         try {
-            emptyFile();
             saveFileFromCommand(arrayFromCommand);
             System.out.println("File Menu Saved");
         } catch (IOException e) {
@@ -23,17 +20,7 @@ public class ReceiverOverwrite implements TextFiles {
         }
     }
 
-    private void saveFileFromCommand(ArrayList<String> arrayFromCommand) {
-        try {
-            menuData.saveFileFromCommand(arrayFromCommand);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void emptyFile() throws IOException {
-        PrintWriter printWriter = new PrintWriter(menu);
-        printWriter.print("");
-        printWriter.close();
+    private void saveFileFromCommand(ArrayList<String> arrayFromCommand) throws IOException {
+        menuData.saveFileFromCommand(arrayFromCommand);
     }
 }
