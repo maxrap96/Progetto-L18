@@ -3,9 +3,7 @@ package ClientSide;
 import Distributore.Data;
 import Distributore.TextFiles;
 
-import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class ReceiverOverwrite implements TextFiles {

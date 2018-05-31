@@ -3,7 +3,6 @@ package Bevande;
 import static java.lang.Double.parseDouble;
 
 public abstract class HotDrink {
-
     protected String id;
     protected Tipo type;
     protected String name;
@@ -32,15 +31,15 @@ public abstract class HotDrink {
     /**
      * Costruttore alternativo che serve a ripristinare la quantità rimanente, se presente, all'ultimo uso della
      * macchina.
-     * @param rowSplitted è la stringa contenente i dati della bevanda.
-     * @param valueleft è la stringa contenente il dato della quantità rimanente.
+     * @param rowSplitted contiene i dati della bevanda.
+     * @param valueLeft contiene il dato della quantità rimanente.
      */
-    public HotDrink(String[] rowSplitted, String valueleft) {
+    public HotDrink(String[] rowSplitted, String valueLeft) {
         this.id = rowSplitted[0];
         this.name = rowSplitted[2];
         this.price = parseDouble(rowSplitted[3]);
         this.maxQuantity = parseDouble(rowSplitted[4]);
-        this.leftQuantity = parseDouble(valueleft);
+        this.leftQuantity = parseDouble(valueLeft);
         this.temperature = parseDouble(rowSplitted[5]);
         this.milk = parseDouble(rowSplitted[7]);
         this.water = parseDouble(rowSplitted[8]);

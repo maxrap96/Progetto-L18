@@ -24,9 +24,9 @@ public class Chiavetta {
     private void initChiavetta() {
         ArrayList<String[]> chiavText = data.readFile();
 
-        for(int i = 0; i < chiavText.size(); i++) {
+        for (int i = 0; i < chiavText.size(); i++) {
             String id = chiavText.get(i)[0];
-            if(ID.equals(id)) {
+            if (ID.equals(id)) {
                 saldo = parseDouble(chiavText.get(i)[1]);
                 linea = i;
                 currentLine = chiavText.get(i)[0] + "\t" + chiavText.get(i)[1];
@@ -50,7 +50,7 @@ public class Chiavetta {
         saldo = (saldo * 1000 + importo * 1000) / 1000;
         saldo = Math.floor(saldo * 100) / 100;
         String newLine = ID + "\t" + saldo;
-        newLine.replace(",","."); // altrimenti al successivo riavvio non si riesce a leggere il file
+        newLine.replace(",","."); // Altrimenti al successivo riavvio non si riesce a leggere il file
         try {
             data.overwriteFile(newLine, currentLine);
         } catch (IOException e) {
@@ -59,7 +59,7 @@ public class Chiavetta {
     }
 
     public boolean pay(double costo) {
-        if(saldo > costo) {
+        if (saldo > costo) {
             saldo -= costo;
             saldo = Math.floor(saldo * 100) / 100;
             String newLine = ID + "\t" + saldo;
@@ -67,7 +67,7 @@ public class Chiavetta {
                 data.overwriteFile(newLine, currentLine);
             } catch (IOException e) {
             }
-            setConnected(); // si presuppone che dopo l'erogazione si estragga la chivetta
+            setConnected(); // Si presuppone che dopo l'erogazione si estragga la chivetta
             return true;
         }
         return false;

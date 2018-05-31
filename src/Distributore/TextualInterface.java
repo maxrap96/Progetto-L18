@@ -1,7 +1,5 @@
 package Distributore;
 
-import Distributore.Distributore;
-
 import java.util.Scanner;
 
 import static java.lang.Integer.parseInt;
@@ -23,7 +21,7 @@ public class TextualInterface {
             System.out.println("Inserire l'ID della bevanda e la quantità di zucchero richiesta (da 0 a 5) separate " +
                     "da uno spazio.\nNel caso non venga inserito nulla sarà di default a 3");
             input = keyboard();
-        } while (input.isEmpty()); // Finchè non ricevo un input non proseguo
+        } while (input.isEmpty()); // Finchè non si riceve un input non si prosegue
         String[] splitted = input.split("\\s+");
 
         if (splitted.length == 1) {
@@ -31,7 +29,7 @@ public class TextualInterface {
         }
         else { // Espressa una preferenza
             int selectedSugar = parseInt(splitted[1]);
-            for (int i = 0; i < selectedSugar; i++){
+            for (int i = 0; i < selectedSugar; i++) {
                 distributore.moreSugar();
             }
         }
@@ -61,5 +59,4 @@ public class TextualInterface {
             }
         }
     }
-
 }

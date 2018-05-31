@@ -18,8 +18,8 @@ public class Erogatore implements MaxValue {
 
     /**
      * Funzione per sottrarre quantità necessarie per preparare la bevanda.
-     * @param beverage:   della bevanda da cui prendere le dosi.
-     * @param sugar è lo zucchero selezionato
+     * @param beverage bevanda da cui prendere le dosi.
+     * @param sugar zucchero selezionato
      */
     protected void subtractIngredients(HotDrink beverage, int sugar) {
         milk -= beverage.getMilk();
@@ -61,7 +61,7 @@ public class Erogatore implements MaxValue {
 
     /**
      * Funzione che genera la stringa dei dati.
-     * @return s: restituisce una stringa.
+     * @return s restituisce una stringa.
      */
     public String[] getData() {
             return new String[]{"" + milk, "" + sugar, "" + spoon, "" + cup, "" + vodka};

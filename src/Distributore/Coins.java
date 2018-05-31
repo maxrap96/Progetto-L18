@@ -21,7 +21,7 @@ public class Coins {
      */
     public double[] getCOINS_VALUE() {
         double[] cValue = new double[COINS_VALUE.length];
-        for (int i = 0; i < COINS_VALUE.length; i++){
+        for (int i = 0; i < COINS_VALUE.length; i++) {
             cValue[i] = COINS_VALUE[i] / 100;
         }
         return cValue;
@@ -33,9 +33,8 @@ public class Coins {
      * Nota: Nel caso di errori si usa un'inizializzazione di default.
      */
     private void initCoins() {
-
         ArrayList<String[]> coinsText = moneteTxt.readFile();
-        int last = coinsText.size() - 1;    // Last e' l'ultima riga del file che mi serve.
+        int last = coinsText.size() - 1;    // Last e' l'ultima riga del file che serve.
 
         for (int i = 0; i < money.length; i++) {
             money[i] = parseInt(coinsText.get(last)[i]);
@@ -44,7 +43,7 @@ public class Coins {
 
     /**
      * Funzione che crea una stringa contenente il numero di monete all'interno della macchinetta.
-     * @return s: stringa contenente il numero di ogni moneta nella macchinetta.
+     * @return s contiene il numero di ogni moneta nella macchinetta.
      */
     public String moneyOnFile() {
         String s = "";
@@ -57,7 +56,7 @@ public class Coins {
 
     /**
      * Funzione che aggiora il bilancio ed il credito rimanente.
-     * @param vendita è il costo della bevanda richiesta.
+     * @param vendita costo della bevanda richiesta.
      */
     public void updateBalance(double vendita) {
         credit = credit - (int)((vendita) * 100);
@@ -65,7 +64,7 @@ public class Coins {
 
     /**
      * Funzione per identificare il tipo e la quantità di monete inserite.
-     * @param index è la stringa da analizzare.
+     * @param index stringa da analizzare.
      */
     public void addCredit(String number, int index) {
         credit += parseInt(number) * COINS_VALUE[index];
@@ -120,10 +119,10 @@ public class Coins {
 
     /**
      * Funzione per aggiornare il credito dopo l'erogazione della bevanda.
-     * @param change è il vettore contente il quantitativo di monete restituito.
+     * @param change contiene il quantitativo di monete restituito.
      */
     private void resetCredit(int[] change) {
-        for (int i=0 ;i < change.length; i++) {
+        for (int i = 0 ; i < change.length; i++) {
             credit = credit - (int)(change[i] * COINS_VALUE[i]);
         }
     }
@@ -143,7 +142,7 @@ public class Coins {
     /**
      * Funzione che restituisce il resto con il numero minimo di monete.
      * @param change vettore di interi per il numero di monete da erogare come resto.
-     * @return change vettore contenente il numero di monete ottimizzate per ogni taglio.
+     * @return change contiene il numero di monete ottimizzate per ogni taglio.
      */
     private int[] optimizeChange(int[] change) {
         int resto = (credit);
@@ -167,14 +166,14 @@ public class Coins {
      *
      * Nota: utilizzata dall'interfaccia.
      *
-     * @param inserted è il valore della moneta inserita.
+     * @param inserted valore della moneta inserita.
      */
     public void addCoin(double inserted) {
         credit += inserted * 100;
         // Identifico la moneta inserita
         for (int i = 0; i < COINS_VALUE.length; i++) {
             if ((inserted *100) == COINS_VALUE[i]) {
-                // Ho trovato il valore corrispondente
+                // Ha trovato il valore corrispondente
                 money[i]++;
                 break;
             }
@@ -183,14 +182,14 @@ public class Coins {
     }
 
     /**
-     * Metodo alternativo all'addcoin utilizzato per caricare il saldo della chiavetta.
-     * @param inserted è il valore della moneta inserita.
+     * Metodo alternativo all'addCoin utilizzato per caricare il saldo della chiavetta.
+     * @param inserted valore della moneta inserita.
      */
     public void charcheKey(double inserted) {
         // Identificazione della moneta inserita
         for (int i = 0; i < COINS_VALUE.length; i++) {
             if (inserted == COINS_VALUE[i]) {
-                // Ho trovato il valore corrispondente
+                // Ha trovato il valore corrispondente
                 money[i]++;
                 break;
             }

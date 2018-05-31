@@ -9,7 +9,7 @@ public class TestServer {
     private static ObservableList<String> obsvData = FXCollections.observableArrayList();
 
     public static void main(String[] args) {
-        // Avvio server e client di prova
+        // Avviamento server e client di prova
         new ServerConnection(80, obsvStats, obsvMenu, obsvCoins, obsvData).run();
     }
 }

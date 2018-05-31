@@ -44,7 +44,7 @@ public class ClientVendMach extends Thread implements StringCommandList {
             String tmp;
             channelOutToServer.println(READY);
             while ((tmp = inFromServer.readLine()) != null) {
-                // Controllo se il Server sia pronto
+                // Controllo che il server sia pronto
                 if (tmp.equals(READY)) {
                     channelOutToServer.println(tmp);
                 }
@@ -62,7 +62,7 @@ public class ClientVendMach extends Thread implements StringCommandList {
     }
 
     /**
-     * Funzione che legge il comando ricevuto dal Server ed esegue l'azione corrispondente.
+     * Funzione che legge il comando ricevuto dal server ed esegue l'azione corrispondente.
      * @param commandFromServer stringa di comando letta da server.
      */
     private void commandReceived(String commandFromServer) {

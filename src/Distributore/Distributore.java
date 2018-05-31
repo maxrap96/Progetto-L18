@@ -53,8 +53,8 @@ public class Distributore implements MaxValue, TextFiles {
      * Nota: "data" viene utilizzata a partire dalla riga 5 (indice 4).
      *
      * @param listFromFile arraylist di stringhe fornito all'apertura del file.
-     * @param data è l'arraylist contenente le quantità rimanenti delle bevande.
-     * @param dataRow è la riga dalla quale iniziano i dati delle bevande
+     * @param data contiene le quantità rimanenti delle bevande.
+     * @param dataRow riga dalla quale iniziano i dati delle bevande.
      */
     private void createList(ArrayList<String[]> listFromFile, ArrayList<String[]> data, int dataRow) {
         String storedID = "";
@@ -83,8 +83,8 @@ public class Distributore implements MaxValue, TextFiles {
      * Funzione per identificare il tipo della bevanda e aggiungerla al distributore nel caso non siano presenti dati
      * riguardanti la sua quantià residua.
      * @param type tipo della bevanda.
-     * @param listFromFile è il file aperto contenente il menù.
-     * @param i è la riga a cui si è arrivati a leggere.
+     * @param listFromFile file aperto contenente il menù.
+     * @param i riga a cui si è arrivati a leggere.
      */
     private void createDrink(int type, ArrayList<String[]> listFromFile, int i) {
         HotDrink hotDrink;
@@ -109,9 +109,9 @@ public class Distributore implements MaxValue, TextFiles {
      * Funzione per identificare il tipo della bevanda e aggiungerla al distributore nel caso siano presenti dati
      * riguardanti la sua quantià residua.
      * @param type tipo della bevanda.
-     * @param listFromFile è il file aperto contenente il menù.
-     * @param index è la riga a cui si è arrivati a leggere.
-     * @param qtyLeft è la quantità rimanente nella macchinetta.
+     * @param listFromFile file aperto contenente il menù.
+     * @param index riga a cui si è arrivati a leggere.
+     * @param qtyLeft quantità rimanente nella macchinetta.
      */
     private void createDrink(int type, ArrayList<String[]> listFromFile, int index, String qtyLeft) {
         HotDrink hotDrink;
@@ -133,8 +133,8 @@ public class Distributore implements MaxValue, TextFiles {
     }
 
     /**
-     * Funzione per selezionare una bevanda. Essa controlla anche che il credito sia sufficiente.
-     * @param ID: è l'id della bevanda selezionata.
+     * Funzione per selezionare una bevanda. Controlla anche che il credito sia sufficiente.
+     * @param ID id della bevanda selezionata.
      */
     public String selectBeverage(String ID) {
         if (!list.get(ID).isAvailable()) {
@@ -143,7 +143,6 @@ public class Distributore implements MaxValue, TextFiles {
         boolean transaction;
 
         if (chiavetta.isConnected()) {
-
             transaction = chiavetta.pay(list.get(ID).getPrice());
             // Scrittura statistiche su file:
             stats.writeFile(list.get(ID).getName(),transaction);
@@ -192,7 +191,7 @@ public class Distributore implements MaxValue, TextFiles {
 
     /**
      * Funzione da usare nell'interfaccia per aggiungere i soldi.
-     * @param inserted è il valore associato al tasto di riferimento.
+     * @param inserted valore associato al tasto di riferimento.
      */
     public void addCredit(double inserted) {
         if (chiavetta.isConnected()) {
@@ -292,7 +291,7 @@ public class Distributore implements MaxValue, TextFiles {
      *
      * Nota: Da utilizzare nell'interfaccia
      *
-     * @return sono i valori delle monete in forma vettore.
+     * @return valori delle monete in forma vettore.
      */
     public double[] getCoinsValue() {
         return coins.getCOINS_VALUE();
