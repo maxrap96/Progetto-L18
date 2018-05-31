@@ -118,14 +118,15 @@ public class VendingMachine extends Application {
             primaryStage.setMaximized(true);
             primaryStage.setResizable(false);
             primaryStage.show();
+            updateChecker = new UpdateChecker(distributore, beverageGrid, display, resetDisplay, root);
+            updateChecker.start();
 
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Error caused by " + e);
         }
 
-        updateChecker = new UpdateChecker(distributore, beverageGrid, display, resetDisplay);
-        updateChecker.run();
+
 
 
 
