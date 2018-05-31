@@ -5,12 +5,11 @@ import javafx.collections.ObservableList;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.net.Socket;
-import java.util.ArrayList;
 
 import static ServerSide.StringCommandList.END_SENDING;
 import static ServerSide.StringCommandList.OVERWRITE_MENU;
 
-public class OverwriteCommandServer extends SendCommandServer implements CommandServer{
+public class OverwriteCommandServer extends SendCommandServer implements CommandServer {
 
     public OverwriteCommandServer(ReceiverServer receiverServer, Socket clientSocket,
                                   ObservableList<String> arrayToSaveInfo, BufferedReader clientReader) {
@@ -21,8 +20,8 @@ public class OverwriteCommandServer extends SendCommandServer implements Command
     public void execute() {
         try {
             receiverServer.sendString(OVERWRITE_MENU, clientSocket);
-            // Uso lo stesso nome per l'array, ma stavolta invio informazioni al Client
-            for (String tmp : observableListCommand){
+            // Utilizzo dello stesso nome per l'array, ma stavolta vengono inviate informazioni al client
+            for (String tmp : observableListCommand) {
                 receiverServer.sendString(tmp, clientSocket);
             }
             receiverServer.sendString(END_SENDING, clientSocket);

@@ -5,7 +5,6 @@ import javafx.collections.ObservableList;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.net.Socket;
-import java.util.ArrayList;
 
 import static ServerSide.StringCommandList.SEND_STATS;
 

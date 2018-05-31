@@ -20,7 +20,6 @@ public class Toolbar1 extends ToolBar {
     private MenuItem vend2 = new MenuItem("Distributore 2");
     private MenuItem vend3 = new MenuItem("Distributore 3");
 
-
     public Toolbar1() {
         MenuButton stats = new MenuButton("Stats",null, monete, acqB, utilizzo, bevande, items);
         MenuButton vendMachines = new MenuButton("Distributore",null, vend1, vend2, vend3);
@@ -47,9 +46,9 @@ public class Toolbar1 extends ToolBar {
     }
 
     /**
-     * Funzione che inizializza le azione che i bottoni eseguiranno
+     * Funzione che inizializza le azione che i bottoni eseguiranno.
     **/
-    public void Action(AnchorPane anchor,MenuTable menuTable,StatsPage statsPage){
+    public void Action(AnchorPane anchor,MenuTable menuTable,StatsPage statsPage) {
         home.setOnAction(event -> {
             //Apertura di una nuova schermata di home
             menuTable.getvBox().setVisible(false);
@@ -57,7 +56,7 @@ public class Toolbar1 extends ToolBar {
             statsPage.getMainPanel().setVisible(false);
         });
 
-        //Apertura delle tab delle statisctiche ognuna caratterizzata dall indice i
+        // Apertura delle tab delle statistiche ognuna caratterizzata dall'indice i
         monete.setOnAction(event -> {
             menuTable.getvBox().setVisible(false);
             anchor.setVisible(false);
@@ -89,7 +88,7 @@ public class Toolbar1 extends ToolBar {
             statsPage.OpenTab(4);
         });
 
-        //Apertura della tabella del menu
+        // Apertura della tabella del menu
         menu.setOnAction(event -> {
             menuTable.getvBox().setVisible(true);
             anchor.setVisible(false);
@@ -97,14 +96,14 @@ public class Toolbar1 extends ToolBar {
         });
     }
 
-    private Image loadImage(String url){
+    private Image loadImage(String url) {
         Image imgTmp = null;
         try {
             FileInputStream input = new FileInputStream(url);
             imgTmp = new Image(input);
             input.close();
             return imgTmp;
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return imgTmp;

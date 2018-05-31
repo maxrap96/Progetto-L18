@@ -7,7 +7,6 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 public abstract class SendCommandServer implements CommandServer {
-
     protected ReceiverServer receiverServer;
     protected Socket clientSocket;
     protected ObservableList<String> observableListCommand;
@@ -26,7 +25,7 @@ public abstract class SendCommandServer implements CommandServer {
     /**
      * Funzione per sovrascrivere l'observableList.
      */
-    protected void saveArrayInObservable(){
+    protected void saveArrayInObservable() {
         observableListCommand.removeAll();
         observableListCommand.addAll(arrayListCommand);
     }

@@ -8,7 +8,6 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 public class ServerConnection extends Thread {
-
     private ObservableList<String> obsvStats;
     private ObservableList<String> obsvMenu;
     private ObservableList<String> obsvCoins;
@@ -34,13 +33,12 @@ public class ServerConnection extends Thread {
             // Creazione socket di benvenuto
             ServerSocket serverSocket = new ServerSocket(portNumber);
 
-            // Ciclo che consente la connessione a più Client
+            // Ciclo che consente la connessione a più client
             while (true) {
-
-                // Accetto la connessione di un client
+                // Accetta la connessione di un client
                 clientSocket = serverSocket.accept();
 
-                // Creo il thread per ogni Client che si connette
+                // Creazione del thread per ogni client che si connette
                 threadTmp = new DealWithTheClientThread(clientSocket, obsvStats, obsvMenu, obsvCoins, obsvData);
                 arrayList.add(threadTmp);
                 threadTmp.start();
@@ -53,9 +51,9 @@ public class ServerConnection extends Thread {
     /**
      * Funzione per scegliere il comando da eseguire e su quale Client.
      * @param command comando da eseguire.
-     * @param index Client su cui eseguire il comando.
+     * @param index client su cui eseguire il comando.
      */
-    public void chooseCommandExecutedByThread(String command, int index){
+    public void chooseCommandExecutedByThread(String command, int index) {
         arrayList.get(index).chosenCommand(command);
     }
 }
