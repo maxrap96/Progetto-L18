@@ -1,27 +1,24 @@
 package GUI_FX_Server;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
-
 import java.io.FileInputStream;
 import java.io.IOException;
 
 public class Toolbar1 extends ToolBar {
-    Button home = new Button();
-    MenuItem acqB = new MenuItem("Acquisto Bevande");
-    MenuItem utilizzo = new MenuItem("Utilizzo");
-    MenuItem monete = new MenuItem("Monete");
-    MenuItem bevande = new MenuItem("Bevande");
-    MenuItem items = new MenuItem("Varie");
-    Button menu = new Button("Menu");
-    MenuItem vend1 = new MenuItem("Distributore 1");
-    MenuItem vend2 = new MenuItem("Distributore 2");
-    MenuItem vend3 = new MenuItem("Distributore 3");
+    private Button home = new Button();
+    private MenuItem acqB = new MenuItem("Acquisto Bevande");
+    private MenuItem utilizzo = new MenuItem("Utilizzo");
+    private MenuItem monete = new MenuItem("Monete");
+    private MenuItem bevande = new MenuItem("Bevande");
+    private MenuItem items = new MenuItem("Varie");
+    private Button menu = new Button("Menu");
+    private MenuItem vend1 = new MenuItem("Distributore 1");
+    private MenuItem vend2 = new MenuItem("Distributore 2");
+    private MenuItem vend3 = new MenuItem("Distributore 3");
 
 
     public Toolbar1() {
