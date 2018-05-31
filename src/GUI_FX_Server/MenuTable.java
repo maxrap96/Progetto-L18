@@ -310,6 +310,6 @@ public class MenuTable extends TableView {
     public void sendMenu(){
         obsvMenu.clear();
         obsvMenu.addAll(menu);
-        serverConnection.chooseCommandExecutedByThread(OVERWRITE_MENU, 0);
+        serverConnection.chooseCommandExecutedByThread(OVERWRITE_MENU);
     }
 }

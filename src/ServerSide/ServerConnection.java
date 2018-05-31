@@ -5,14 +5,16 @@ import javafx.collections.ObservableList;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ServerConnection extends Thread {
     private ObservableList<String> obsvStats;
     private ObservableList<String> obsvMenu;
     private ObservableList<String> obsvCoins;
     private ObservableList<String> obsvData;
-    private ArrayList<DealWithTheClientThread> arrayList;
+    private HashMap<Integer, DealWithTheClientThread> mapOfClient;
+    private int index;
+    private int selectedClient;
     private int portNumber;
     private Socket clientSocket;
 
@@ -23,7 +25,9 @@ public class ServerConnection extends Thread {
         this.obsvCoins = obsvCoins;
         this.obsvMenu = obsvMenu;
         this.obsvData = obsvData;
-        this.arrayList = new ArrayList<>();
+        this.mapOfClient = new HashMap<>();
+        this.index = 0;
+        this.selectedClient = 0;
     }
 
     @Override
@@ -36,12 +40,14 @@ public class ServerConnection extends Thread {
             // Ciclo che consente la connessione a più client
             while (true) {
                 // Accetta la connessione di un client
-                clientSocket = serverSocket.accept();
+                this.clientSocket = serverSocket.accept();
 
                 // Creazione del thread per ogni client che si connette
                 threadTmp = new DealWithTheClientThread(clientSocket, obsvStats, obsvMenu, obsvCoins, obsvData);
-                arrayList.add(threadTmp);
+                this.mapOfClient.put(index, threadTmp);
                 threadTmp.start();
+                this.index++;
+                System.out.println(index);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -51,9 +57,29 @@ public class ServerConnection extends Thread {
     /**
      * Funzione per scegliere il comando da eseguire e su quale Client.
      * @param command comando da eseguire.
-     * @param index client su cui eseguire il comando.
      */
-    public void chooseCommandExecutedByThread(String command, int index) {
-        arrayList.get(index).chosenCommand(command);
+    public void chooseCommandExecutedByThread(String command) {
+        this.mapOfClient.get(selectedClient).chosenCommand(command);
+    }
+
+    /**
+     * Funzione che permette di selezionare il client a cui inviare i comandi.
+     * @param selectedClient valore intero del client.
+     */
+    public void setSelectedClient(int selectedClient) {
+        if (mapOfClient.containsKey(selectedClient)) {
+            this.selectedClient = selectedClient;
+        } else {
+            this.selectedClient = 0;
+        }
+    }
+
+    /**
+     * Funzione che restituisce il numero di client connessi.
+     *
+     * Nota: da usare nella UI per mostrare quanti distributori sono connessi.
+     */
+    public int getIndex() {
+        return index;
     }
 }

@@ -22,13 +22,15 @@ public class HomePage extends Application implements StringCommandList {
     private static ObservableList<String> observMenu = FXCollections.observableArrayList();
     private static ObservableList<String> observCoins = FXCollections.observableArrayList();
     private static ObservableList<String> observData = FXCollections.observableArrayList();
+    private ServerConnection server;
 
     @Override
     public void start(Stage primaryStage) {
 
         // Avvio della connessione Server
-        ServerConnection server = new ServerConnection(80, observStats, observMenu, observCoins, observData);
+        this.server = new ServerConnection(80, observStats, observMenu, observCoins, observData);
         server.start();
+        server.setSelectedClient(0);
 
         // Definizione dello stage principale e della barra del menu
         primaryStage.setTitle("Home");
@@ -115,17 +117,17 @@ public class HomePage extends Application implements StringCommandList {
             menuTable.getvBox().setVisible(false);
             anchor.setVisible(false);
             statsPage.getMainPanel().setVisible(true);
-            server.chooseCommandExecutedByThread(SEND_STATS, 0);
-            server.chooseCommandExecutedByThread(SEND_COINS, 0);
-            server.chooseCommandExecutedByThread(SEND_DATA,0);
-            server.chooseCommandExecutedByThread(SEND_MENU,0);
+            server.chooseCommandExecutedByThread(SEND_STATS);
+            server.chooseCommandExecutedByThread(SEND_COINS);
+            server.chooseCommandExecutedByThread(SEND_DATA);
+            server.chooseCommandExecutedByThread(SEND_MENU);
         });
 
         menuButton.setOnAction( event -> {
             menuTable.getvBox().setVisible(true);
             anchor.setVisible(false);
             statsPage.getMainPanel().setVisible(false);
-            server.chooseCommandExecutedByThread(SEND_MENU, 0);
+            server.chooseCommandExecutedByThread(SEND_MENU);
 
         });
 
