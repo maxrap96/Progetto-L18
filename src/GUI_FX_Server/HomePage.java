@@ -33,7 +33,7 @@ public class HomePage extends Application implements StringCommandList {
         // Definizione dello stage principale e della barra del menu
         primaryStage.setTitle("Home");
         Toolbar1 toolbar1 = new Toolbar1();
-        MenuTable menuTable = new MenuTable(primaryStage, observMenu);
+        MenuTable menuTable = new MenuTable(primaryStage, observMenu, server);
         StatsPage statsPage = new StatsPage(primaryStage, observStats, observData, observCoins, observMenu);
 
         // Creazione scritta correlata da un logo
@@ -122,6 +122,7 @@ public class HomePage extends Application implements StringCommandList {
             menuTable.getvBox().setVisible(true);
             anchor.setVisible(false);
             statsPage.getMainPanel().setVisible(false);
+
         });
 
         VBox vBox1 = new VBox(toolbar1,stackPane);

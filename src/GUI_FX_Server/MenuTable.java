@@ -1,5 +1,6 @@
 package GUI_FX_Server;
 
+import ServerSide.ServerConnection;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -16,6 +17,9 @@ import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
+import static ServerSide.StringCommandList.OVERWRITE_MENU;
+import static ServerSide.StringCommandList.SEND_MENU;
+
 public class MenuTable extends TableView {
     private Tabella[] tabella;
     private VBox vBox = new VBox();
@@ -23,9 +27,11 @@ public class MenuTable extends TableView {
     private TableView<Tabella> tableView = new TableView<>();
     private ObservableList<Tabella> data = FXCollections.observableArrayList();
     private ArrayList<String> menu = new ArrayList<>();
+    private ServerConnection serverConnection;
 
-    public MenuTable(Stage stage, ObservableList<String> obsvMenu) {
+    public MenuTable(Stage stage, ObservableList<String> obsvMenu, ServerConnection serverConnection) {
         this.obsvMenu = obsvMenu;
+        this.serverConnection = serverConnection;
 
         obsvMenu.addListener((ListChangeListener) change -> Platform.runLater(() -> {
             // Aggiorna UI
@@ -261,7 +267,6 @@ public class MenuTable extends TableView {
 
     public void setTabella(ObservableList<String> obsvMenu) {
         tabella = new Tabella[obsvMenu.size()];
-
         for (int i = 0; i < obsvMenu.size(); i++ ) {
             menu.add(obsvMenu.get(i));
             if (!obsvMenu.get(i).startsWith("*")) {
@@ -284,12 +289,24 @@ public class MenuTable extends TableView {
 
     private void changeMenu() {
         menu.clear();
+        menu.add("* le righe con * vengono saltate nella lettura\n" +
+                "* ID  TIPO  \tNOME  \t    COSTO  Q_MAX TEMP DOSE latte acqua\tvodka");
         for (int row = 0; row < 11; row++) {
             String tmp = "";
             for (int column = 0; column < 10; column++ ) {
-               tmp = tmp + "\t" + (String) tableView.getColumns().get(column).getCellObservableValue(row).getValue();
+               tmp = tmp + (String)tableView.getColumns().get(column).getCellObservableValue(row).getValue();
+               if (!(column == 9)){
+                   tmp = tmp + "\t";
+               }
             }
             menu.add(tmp);
         }
+        menu.add("*");
+    }
+
+    public void sendMenu(){
+        obsvMenu.clear();
+        obsvMenu.addAll(menu);
+        serverConnection.chooseCommandExecutedByThread(OVERWRITE_MENU, 0);
     }
 }
