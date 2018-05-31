@@ -6,7 +6,6 @@ import javafx.scene.chart.*;
 import javafx.scene.layout.BorderPane;
 
 public class DrinkChart extends BarChart {
-
     private ObservableList<String> data;
     private ObservableList<String> menu;
 
@@ -19,13 +18,13 @@ public class DrinkChart extends BarChart {
     public BorderPane initChart() {
         BorderPane mainTabPane = new BorderPane();
 
-        if(data == null)
+        if (data == null)
             return mainTabPane;
 
         final CategoryAxis xAxis = new CategoryAxis();
         final NumberAxis yAxis = new NumberAxis();
-
         final BarChart<String,Number> drinksChart = new BarChart<>(xAxis, yAxis);
+
         drinksChart.setTitle("Quantità rimanenti bevande");
         drinksChart.setLegendVisible(false);
 
@@ -35,7 +34,7 @@ public class DrinkChart extends BarChart {
         XYChart.Series series1 = new XYChart.Series();
 
         // Ottenimento dati
-        for(int i = 0; i < data.size(); i++) {
+        for (int i = 0; i < data.size(); i++) {
             if (data.get(i).startsWith("0")) {
                 String[] split = data.get(i).split("\t");
 
@@ -43,9 +42,7 @@ public class DrinkChart extends BarChart {
                 series1.getData().add(new XYChart.Data(split[0], Double.parseDouble(split[1])));
             }
         }
-
         drinksChart.getData().add(series1);
-
         mainTabPane.setCenter(drinksChart);
 
         return mainTabPane;

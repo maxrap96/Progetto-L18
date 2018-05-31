@@ -11,8 +11,7 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 
 public class HistogramChart extends BarChart {
-
-    final static String[] Monete = {"0.05", "0.10", "0.20", "0.50", "1", "2"};
+    private final static String[] MONETE = {"0.05", "0.10", "0.20", "0.50", "1", "2"};
     private ObservableList<String> coins;
 
     public HistogramChart(Axis xAxis, Axis yAxis, ObservableList<String> coins) {
@@ -35,18 +34,18 @@ public class HistogramChart extends BarChart {
         XYChart.Series series1 = new XYChart.Series();
 
         // Ottenimento numero di monete
-        int money[] = new int[Monete.length];
+        int money[] = new int[MONETE.length];
 
         analyzeData(money, coins);
 
         // Aggiunta dei dati alla serie
-        for (int i = 0; i < Monete.length; i++) {
-            series1.getData().add(new XYChart.Data(money[i], Monete[i]));
+        for (int i = 0; i < MONETE.length; i++) {
+            series1.getData().add(new XYChart.Data(money[i], MONETE[i]));
         }
         bc.getData().add(series1);
 
         // Colorazione barre in base alla quantità di monete
-        for (int i = 0; i < Monete.length; i++) {
+        for (int i = 0; i < MONETE.length; i++) {
             colorChartBars(bc, i, money);
         }
 
@@ -69,26 +68,26 @@ public class HistogramChart extends BarChart {
     }
 
     /**
-     * Funzione per ottenere il numero di monete
-     * @param money quantità di monete rimanenti di un singolo taglio
-     * @param coins Stringa con informazioni su tutti i tagli di monete
+     * Funzione per ottenere il numero di monete.
+     * @param money quantità di monete rimanenti di un singolo taglio.
+     * @param coins informazioni su tutti i tagli di monete.
      */
     private void analyzeData(int[] money, ObservableList<String> coins) {
-        if(!coins.isEmpty()) {
+        if (!coins.isEmpty()) {
             String s = coins.get(coins.size() - 1);
             String[] split = s.split("\t");
 
-            for(int i = 0; i < Monete.length; i++) {
+            for (int i = 0; i < MONETE.length; i++) {
                 money[i] = Integer.parseInt(split[i]);
             }
         }
     }
 
     /**
-     * Funzione che permette di modificare alcuni parametri di base del grafico
-     * @param bc grafico
-     * @param xAxis asse x
-     * @param yAxis asse y
+     * Funzione che permette di modificare alcuni parametri di base del grafico.
+     * @param bc grafico.
+     * @param xAxis asse x.
+     * @param yAxis asse y.
      */
     public void setChart(BarChart<Number, String> bc, NumberAxis xAxis, CategoryAxis yAxis) {
         bc.setTitle("Coins");
@@ -105,10 +104,10 @@ public class HistogramChart extends BarChart {
     }
 
     /**
-     * Funzione per colorare in modo diverso le barre del grafico in base alla quantità presente
-     * @param bc istogramma
-     * @param i contatore che indica la barra presa in considerazione
-     * @param money quantità di monete
+     * Funzione per colorare in modo diverso le barre del grafico in base alla quantità presente.
+     * @param bc istogramma.
+     * @param i contatore che indica la barra presa in considerazione.
+     * @param money quantità di monete.
      */
     public void colorChartBars(BarChart bc, int i, int money[]) {
         String st = ".data" + i + ".chart-bar";
