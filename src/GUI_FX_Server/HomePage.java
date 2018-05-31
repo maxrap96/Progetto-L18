@@ -18,7 +18,6 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class HomePage extends Application implements StringCommandList {
-
     private static ObservableList<String> observStats = FXCollections.observableArrayList();
     private static ObservableList<String> observMenu = FXCollections.observableArrayList();
     private static ObservableList<String> observCoins = FXCollections.observableArrayList();
@@ -120,13 +119,12 @@ public class HomePage extends Application implements StringCommandList {
         });
 
         menuButton.setOnAction( event -> {
-
             menuTable.getvBox().setVisible(true);
             anchor.setVisible(false);
             statsPage.getMainPanel().setVisible(false);
-            /*// Serve solo per vedere che venga caricato il valore corretto
-            if (!menu.isEmpty()){
-                for (String string : menu){
+            /* Serve solo per vedere che venga caricato il valore corretto
+            if (!menu.isEmpty()) {
+                for (String string : menu) {
                     System.out.println(string);
                 }
             }*/

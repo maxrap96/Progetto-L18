@@ -1,4 +1,5 @@
 import Distributore.Distributore;
+import Distributore.TextualInterface;
 
 public class TestDistributore {
 
