@@ -25,14 +25,14 @@ public class Toolbar1 extends ToolBar {
     private MenuItem bevande = new MenuItem("Bevande");
     private MenuItem items = new MenuItem("Varie");
     private Button menuTool = new Button("Menu");
-    private MenuItem vend1 = new MenuItem("Distributore 1");
+    private MenuItem vend0 = new MenuItem("Vend1");
     private MenuItem vend2 = new MenuItem("Distributore 2");
 //    private MenuItem vend3 = new MenuItem("Distributore 3");
     private MenuButton stats = new MenuButton("Stats",null, monete, acqB, utilizzo, bevande, items);
-    private MenuButton vendMachines = new MenuButton("Distributore",null/*, vend1, vend2*/);
+    private MenuButton vendMachines = new MenuButton("Distributore",null, vend0);
     private ServerConnection serverConnection;
     MenuItem[] vend;
-    private int click = 1;
+    private int click = 0;
 
     public Toolbar1(ServerConnection serverConnection) {
         this.serverConnection = serverConnection;
@@ -108,6 +108,10 @@ public class Toolbar1 extends ToolBar {
             sendFile();
         });
 
+        vend0.setOnAction(event -> {
+            vendMachines.setText(vend0.getText());
+        });
+
         //Apertura della tabella del menu
         menuTool.setOnAction(event -> {
             menuTable.getvBox().setVisible(true);
@@ -119,7 +123,6 @@ public class Toolbar1 extends ToolBar {
         save.setOnAction(event -> {menuTable.sendMenu();});
 
         vendMachines.setOnMouseClicked(event -> {
-            vendMachines.hide();
             createdVend();
         });
 
@@ -128,23 +131,21 @@ public class Toolbar1 extends ToolBar {
     }
 
     private void createdVend(){
-        vendMachines.getItems().clear();
-        vend = new MenuItem[serverConnection.getIndex()];
-        for(int i = 0; i < serverConnection.getIndex(); i++){
-            String name = "Vend"+(i+1);
-            vend[i] = new MenuItem(name);
-            vendMachines.getItems().addAll(vend[i]);
-
-            final int index = i;
-            vend[i].setOnAction(event -> {
-                vendMachines.setText(vend[index].getText());
-                serverConnection.setSelectedClient(index);
-                System.out.println("check");
-            });
+        if (click == 0){
+            vend = new MenuItem[serverConnection.getIndex()];
+            for(int i = 1; i < serverConnection.getIndex(); i++){
+                String name = "Vend"+(i+1);
+                vend[i] = new MenuItem(name);
+                vendMachines.getItems().addAll(vend[i]);
+                final int index = i;
+                vend[i].setOnAction(event -> {
+                    vendMachines.setText(vend[index].getText());
+                    serverConnection.setSelectedClient(index);
+                    System.out.println("check");
+                });
+            }
+            click++;
         }
-        if(!((click % 2)== 0)){
-        vendMachines.show();}
-        click++;
     }
 
     private Image loadImage(String url){
