@@ -1,6 +1,6 @@
-package Distributore;
+package HotDrinkVendingMachine;
 
-import Bevande.*;
+import HotDrinks.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,15 +17,15 @@ public class Distributore implements MaxValue, TextFiles {
     private Data menu;
     private ArrayList<String[]> dati;
     private Erogatore erogatore;
-    private Chiavetta chiavetta;
+    private Key chiavetta;
 
     public Distributore() {
         this.list = new HashMap<>();
-        this.stats = new Data(STATSPATH);
-        this.ingredientsData = new Data(DATAPATH);
-        this.menu = new Data(MENUPATH);
+        this.stats = new Data(STATS_PATH);
+        this.ingredientsData = new Data(DATA_PATH);
+        this.menu = new Data(MENU_PATH);
         this.coins = new Coins();
-        this.chiavetta = new Chiavetta();
+        this.chiavetta = new Key();
         int lastRow = setValues(ingredientsData.readFile());
         createList(menu.readFile(), ingredientsData.readFile(), lastRow);
     }
@@ -64,7 +64,7 @@ public class Distributore implements MaxValue, TextFiles {
         for (int i_menu = 0; i_menu < listFromFile.size(); i_menu++) {
             dataRow++;
             String currentID = listFromFile.get(i_menu)[numColID];
-            Tipo hotDrinkType = Tipo.valueOf(listFromFile.get(i_menu)[numColType]);
+            Type hotDrinkType = Type.valueOf(listFromFile.get(i_menu)[numColType]);
             // Controlla di non aver superato la lunghezza del file delle quantità rimaste
             if (dataRow < data.size()) {
                 storedID = data.get(dataRow)[numColID];
@@ -91,15 +91,15 @@ public class Distributore implements MaxValue, TextFiles {
 
         switch (type) {
             case 0:
-                hotDrink = new Macinato(listFromFile.get(i));
+                hotDrink = new Grinded(listFromFile.get(i));
                 list.put(listFromFile.get(i)[0], hotDrink);
                 break;
             case 1:
-                hotDrink = new Capsula(listFromFile.get(i));
+                hotDrink = new Capsule(listFromFile.get(i));
                 list.put(listFromFile.get(i)[0], hotDrink);
                 break;
             case 2:
-                hotDrink = new Solubile(listFromFile.get(i));
+                hotDrink = new Soluble(listFromFile.get(i));
                 list.put(listFromFile.get(i)[0], hotDrink);
                 break;
         }
@@ -118,15 +118,15 @@ public class Distributore implements MaxValue, TextFiles {
 
         switch (type) {
             case 0:
-                hotDrink = new Macinato(listFromFile.get(index), qtyLeft);
+                hotDrink = new Grinded(listFromFile.get(index), qtyLeft);
                 list.put(listFromFile.get(index)[0], hotDrink);
                 break;
             case 1:
-                hotDrink = new Capsula(listFromFile.get(index), qtyLeft);
+                hotDrink = new Capsule(listFromFile.get(index), qtyLeft);
                 list.put(listFromFile.get(index)[0], hotDrink);
                 break;
             case 2:
-                hotDrink = new Solubile(listFromFile.get(index), qtyLeft);
+                hotDrink = new Soluble(listFromFile.get(index), qtyLeft);
                 list.put(listFromFile.get(index)[0], hotDrink);
                 break;
         }
@@ -195,7 +195,7 @@ public class Distributore implements MaxValue, TextFiles {
      */
     public void addCredit(double inserted) {
         if (chiavetta.isConnected()) {
-            chiavetta.addSaldo(inserted);
+            chiavetta.addBalance(inserted);
             coins.charcheKey(inserted);
         }
         else {
@@ -279,7 +279,7 @@ public class Distributore implements MaxValue, TextFiles {
 
     public double getCredit() {
         if (chiavetta.isConnected()){
-            return chiavetta.getSaldo();
+            return chiavetta.getKeyBalance();
         }
         else {
             return coins.getCredit();
@@ -308,7 +308,7 @@ public class Distributore implements MaxValue, TextFiles {
     public void setconnectionChiavetta() {
         chiavetta.setConnected();
         if (coins.getCredit() !=0 ) {
-            chiavetta.addSaldo(coins.getCredit());
+            chiavetta.addBalance(coins.getCredit());
             coins.updateBalance(coins.getCredit());
         }
     }

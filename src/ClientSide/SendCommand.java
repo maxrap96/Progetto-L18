@@ -1,6 +1,6 @@
 package ClientSide;
 
-import Distributore.Command;
+import HotDrinkVendingMachine.Command;
 
 import java.io.PrintWriter;
 

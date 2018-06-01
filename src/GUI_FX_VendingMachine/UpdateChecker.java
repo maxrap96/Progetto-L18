@@ -1,16 +1,12 @@
 package GUI_FX_VendingMachine;
 
-import Distributore.Distributore;
-import ClientSide.ClientVendMach;
+import HotDrinkVendingMachine.Distributore;
 import javafx.application.Platform;
-import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
-import javafx.collections.ObservableList;
 import javafx.scene.layout.BorderPane;
 
 import java.io.File;
 
-import static Distributore.TextFiles.MENUPATH;
+import static HotDrinkVendingMachine.TextFiles.MENU_PATH;
 
 public class UpdateChecker extends Thread{
     private Distributore distributore;
@@ -18,7 +14,7 @@ public class UpdateChecker extends Thread{
     private BorderPane root;
     private Display display;
     private ResetDisplay resetDisplay;
-    private File menuFile = new File(MENUPATH);
+    private File menuFile = new File(MENU_PATH);
     private long oldTimestamp = menuFile.lastModified();
 
     public UpdateChecker(Distributore distributore, BeverageGrid beverageGrid, Display display,

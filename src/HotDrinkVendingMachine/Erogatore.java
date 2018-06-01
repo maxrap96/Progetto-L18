@@ -1,6 +1,6 @@
-package Distributore;
+package HotDrinkVendingMachine;
 
-import Bevande.HotDrink;
+import HotDrinks.HotDrink;
 
 public class Erogatore implements MaxValue {
     private double milk;
@@ -19,7 +19,7 @@ public class Erogatore implements MaxValue {
     /**
      * Funzione per sottrarre quantità necessarie per preparare la bevanda.
      * @param beverage bevanda da cui prendere le dosi.
-     * @param sugar zucchero selezionato
+     * @param sugar zucchero selezionato.
      */
     protected void subtractIngredients(HotDrink beverage, int sugar) {
         milk -= beverage.getMilk();
@@ -34,7 +34,7 @@ public class Erogatore implements MaxValue {
      */
     private void subtractSugar(int qty) {
         if (qty != 0) {
-            sugar -= (double) qty * SUGARDOSE;
+            sugar -= (double) qty * SUGAR_DOSE;
             spoon--;
         }
     }
@@ -53,10 +53,10 @@ public class Erogatore implements MaxValue {
      * Ricarica alcuni elementi della macchinetta.
      */
     private void refill() {
-        this.sugar = SUGARMAX;
-        this.milk = MILKMAX;
-        this.cup = CUPMAX;
-        this.spoon = SPOONMAX;
+        this.sugar = SUGAR_MAX;
+        this.milk = MILK_MAX;
+        this.cup = CUP_MAX;
+        this.spoon = SPOON_MAX;
     }
 
     /**

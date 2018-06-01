@@ -1,6 +1,6 @@
 package GUI_FX_VendingMachine;
 
-import Distributore.Distributore;
+import HotDrinkVendingMachine.Distributore;
 
 import java.util.Timer;
 import java.util.TimerTask;

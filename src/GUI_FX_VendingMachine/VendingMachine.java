@@ -1,12 +1,9 @@
 package GUI_FX_VendingMachine;
 
-import Distributore.Distributore;
+import HotDrinkVendingMachine.Distributore;
 import ClientSide.ClientVendMach;
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -21,12 +18,8 @@ import javafx.stage.WindowEvent;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-
-import static Distributore.TextFiles.MENUPATH;
 
 public class VendingMachine extends Application {
      private Distributore distributore = new Distributore();

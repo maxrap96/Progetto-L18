@@ -1,4 +1,4 @@
-package Distributore;
+package HotDrinkVendingMachine;
 
 import java.util.ArrayList;
 
@@ -34,7 +34,7 @@ public class Coins {
      */
     private void initCoins() {
         ArrayList<String[]> coinsText = moneteTxt.readFile();
-        int last = coinsText.size() - 1;    // Last e' l'ultima riga del file che serve.
+        int last = coinsText.size() - 1;    // Last e' l'ultima riga del file che serve
 
         for (int i = 0; i < money.length; i++) {
             money[i] = parseInt(coinsText.get(last)[i]);
@@ -56,10 +56,10 @@ public class Coins {
 
     /**
      * Funzione che aggiora il bilancio ed il credito rimanente.
-     * @param vendita costo della bevanda richiesta.
+     * @param sale costo della bevanda richiesta.
      */
-    public void updateBalance(double vendita) {
-        credit = credit - (int)((vendita) * 100);
+    public void updateBalance(double sale) {
+        credit = credit - (int)((sale) * 100);
     }
 
     /**
@@ -145,15 +145,15 @@ public class Coins {
      * @return change contiene il numero di monete ottimizzate per ogni taglio.
      */
     private int[] optimizeChange(int[] change) {
-        int resto = (credit);
+        int remnant = (credit);
         int[] divisor = {5, 10, 20, 50, 100, 200};
 
         for (int i = COINS_VALUE.length-1; i > -1; i--) {
-            change[i] = (resto) / divisor[i];
-            resto = resto % divisor[i];
+            change[i] = (remnant) / divisor[i];
+            remnant = remnant % divisor[i];
 
             if (change[i] > money[i]) {
-                resto += (change[i] - money[i]) * divisor[i];
+                remnant += (change[i] - money[i]) * divisor[i];
                 change[i] = money[i];
             }
             money[i] -= change[i];
@@ -170,9 +170,9 @@ public class Coins {
      */
     public void addCoin(double inserted) {
         credit += inserted * 100;
-        // Identifico la moneta inserita
+        // Identificazione della moneta inserita
         for (int i = 0; i < COINS_VALUE.length; i++) {
-            if ((inserted *100) == COINS_VALUE[i]) {
+            if ((inserted * 100) == COINS_VALUE[i]) {
                 // Ha trovato il valore corrispondente
                 money[i]++;
                 break;

@@ -1,10 +1,10 @@
-package Bevande;
+package HotDrinks;
 
 import static java.lang.Double.parseDouble;
 
 public abstract class HotDrink {
     protected String id;
-    protected Tipo type;
+    protected Type type;
     protected String name;
     protected double price, maxQuantity, temperature, dispensedQuantity, water, milk, vodka;
     protected double leftQuantity;
@@ -57,7 +57,7 @@ public abstract class HotDrink {
      * Funzione che verifica se la bevanda é disponibile.
      */
     public boolean isAvailable() {
-        if (leftQuantity > dispensedQuantity){
+        if (leftQuantity > dispensedQuantity) {
             return true;
         }
         else {
@@ -66,7 +66,7 @@ public abstract class HotDrink {
     }
 
     /**
-     * @return Una stringa che mi descrive la bevanda.
+     * @return Stringa che descrive la bevanda.
      */
     @Override
     public String toString() {

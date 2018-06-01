@@ -1,4 +1,4 @@
-package Distributore;
+package HotDrinkVendingMachine;
 
 import java.util.Scanner;
 

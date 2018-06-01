@@ -1,5 +1,5 @@
-import Distributore.Distributore;
-import Distributore.TextualInterface;
+import HotDrinkVendingMachine.Distributore;
+import HotDrinkVendingMachine.TextualInterface;
 
 public class TestDistributore {
     public static void main(String[] args) {

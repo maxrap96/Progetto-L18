@@ -1,7 +1,7 @@
 package ClientSide;
 
-import Distributore.Data;
-import Distributore.TextFiles;
+import HotDrinkVendingMachine.Data;
+import HotDrinkVendingMachine.TextFiles;
 
 import java.io.IOException;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package Distributore;
+package HotDrinkVendingMachine;
 
 import java.io.*;
 import java.text.SimpleDateFormat;
@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Data {
-    private  final String PATH_FILE;
+    private final String PATH_FILE;
 
     public Data(String pathFile) {
         this.PATH_FILE = pathFile;
@@ -52,12 +52,12 @@ public class Data {
 
     /**
      * Funzione per la scrittura su file dei dati di interesse.
-     * @param scrittura stringa da accodare al file contenente le informazioni necessarie.
+     * @param writing stringa da accodare al file contenente le informazioni necessarie.
      */
-    protected void writeFile(String scrittura) {
+    protected void writeFile(String writing) {
         try {
             FileWriter writer = new FileWriter(PATH_FILE, true);
-            writer.write("\n" + scrittura + "\t" + getCurrentTimeStamp());
+            writer.write("\n" + writing + "\t" + getCurrentTimeStamp());
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -66,27 +66,26 @@ public class Data {
 
     /**
      * Funzione per la scrittura su file dei dati di interesse.
-     * @param scrittura stringa da accodare al file contenente le informazioni necessarie.
+     * @param writing stringa da accodare al file contenente le informazioni necessarie.
      * @param transaction parametro che dice se la transazione avviene o fallisce.
      */
-    protected void writeFile(String scrittura, boolean transaction) {
+    protected void writeFile(String writing, boolean transaction) {
         try {
             FileWriter writer = new FileWriter(PATH_FILE, true);
 
             if (transaction) {
-                writer.write(scrittura + "\tTransazione avvenuta il:\t" + getCurrentTimeStamp() + "\n");
+                writer.write(writing + "\tTransazione avvenuta il:\t" + getCurrentTimeStamp() + "\n");
             }
-
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    protected void writeData(String scrittura) {
+    protected void writeData(String writing) {
         try {
             FileWriter writer = new FileWriter(PATH_FILE, true);
-            writer.write(scrittura);
+            writer.write(writing);
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -132,7 +131,7 @@ public class Data {
             writer.write(arrayList.get(0) + "\n");
             writer.close();
             writer = new FileWriter(PATH_FILE, true);
-            //La prima riga è senza append per sovrascirvere tutto
+            // La prima riga è senza append per sovrascrivere tutto
             for (int i = 1; i < arrayList.size(); i++) {
                 writer.write(arrayList.get(i));
                 if (i < arrayList.size() - 1) {

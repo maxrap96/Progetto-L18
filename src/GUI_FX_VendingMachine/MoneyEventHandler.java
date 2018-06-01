@@ -1,6 +1,6 @@
 package GUI_FX_VendingMachine;
 
-import Distributore.Distributore;
+import HotDrinkVendingMachine.Distributore;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 

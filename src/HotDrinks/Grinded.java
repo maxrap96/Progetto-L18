@@ -1,18 +1,18 @@
-package Bevande;
+package HotDrinks;
 
 import static java.lang.Double.parseDouble;
 
-public class Solubile extends HotDrink {
+public class Grinded extends HotDrink {
 
-    public Solubile(String[] rowSplitted) {
+    public Grinded(String[] rowSplitted) {
         super(rowSplitted);
-        this.type = Tipo.SOLUBILE;
+        this.type = Type.GRINDED;
         this.dispensedQuantity = parseDouble(rowSplitted[6]);
     }
 
-    public Solubile(String[] rowSplitted, String quantityLeft) {
+    public Grinded(String[] rowSplitted, String quantityLeft) {
         super(rowSplitted, quantityLeft);
-        this.type = Tipo.SOLUBILE;
+        this.type = Type.GRINDED;
         this.dispensedQuantity = parseDouble(rowSplitted[6]);
     }
 }

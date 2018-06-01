@@ -1,6 +1,6 @@
 package ClientSide;
 
-import Distributore.Command;
+import HotDrinkVendingMachine.Command;
 import ServerSide.StringCommandList;
 
 import java.io.BufferedReader;
@@ -32,7 +32,7 @@ public class ClientVendMach extends Thread implements StringCommandList {
             // Creazione del socket attraverso cui inviare i dati
             Socket clientSocket = new Socket(ip, serverPort);
 
-            // Creazione dell'ggetto per scrivere
+            // Creazione dell'oggetto per scrivere
             channelOutToServer = new PrintWriter(clientSocket.getOutputStream(), true);
 
             // Creazione dell'oggetto per ricevere
@@ -52,7 +52,6 @@ public class ClientVendMach extends Thread implements StringCommandList {
                     commandReceived(tmp);
                 }
             }
-
             inFromServer.close();
 
         } catch (IOException e) {
