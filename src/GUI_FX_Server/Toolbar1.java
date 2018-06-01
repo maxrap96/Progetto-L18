@@ -32,6 +32,7 @@ public class Toolbar1 extends ToolBar {
     private MenuButton vendMachines = new MenuButton("Distributore",null/*, vend1, vend2*/);
     private ServerConnection serverConnection;
     MenuItem[] vend;
+    private int click = 1;
 
     public Toolbar1(ServerConnection serverConnection) {
         this.serverConnection = serverConnection;
@@ -118,14 +119,18 @@ public class Toolbar1 extends ToolBar {
         save.setOnAction(event -> {menuTable.sendMenu();});
 
         vendMachines.setOnMouseClicked(event -> {
+            vendMachines.hide();
             createdVend();
         });
+
+
+
     }
 
     private void createdVend(){
         vendMachines.getItems().clear();
+        vend = new MenuItem[serverConnection.getIndex()];
         for(int i = 0; i < serverConnection.getIndex(); i++){
-            vend = new MenuItem[serverConnection.getIndex()];
             String name = "Vend"+(i+1);
             vend[i] = new MenuItem(name);
             vendMachines.getItems().addAll(vend[i]);
@@ -137,7 +142,9 @@ public class Toolbar1 extends ToolBar {
                 System.out.println("check");
             });
         }
-        vendMachines.show();
+        if(!((click % 2)== 0)){
+        vendMachines.show();}
+        click++;
     }
 
     private Image loadImage(String url){
