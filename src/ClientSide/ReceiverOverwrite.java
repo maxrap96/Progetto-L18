@@ -1,12 +1,12 @@
 package ClientSide;
 
 import HotDrinkVendingMachine.Data;
-import HotDrinkVendingMachine.TextFiles;
+import HotDrinkVendingMachine.TextPathFiles;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class ReceiverOverwrite implements TextFiles {
+public class ReceiverOverwrite implements TextPathFiles {
     private Data menuData = new Data("src/File_Testo/menu.txt");
 
     protected void overwriteFileReceiver(ArrayList<String> arrayFromCommand) {

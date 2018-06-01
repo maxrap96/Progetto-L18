@@ -6,7 +6,7 @@ import javafx.scene.layout.BorderPane;
 
 import java.io.File;
 
-import static HotDrinkVendingMachine.TextFiles.MENU_PATH;
+import static HotDrinkVendingMachine.TextPathFiles.MENU_PATH;
 
 public class UpdateChecker extends Thread{
     private Distributore distributore;
