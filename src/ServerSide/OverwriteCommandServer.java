@@ -2,24 +2,30 @@ package ServerSide;
 
 import javafx.collections.ObservableList;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.net.Socket;
 
 import static ServerSide.StringCommandList.END_SENDING;
-import static ServerSide.StringCommandList.OVERWRITE_MENU;
 
-public class OverwriteCommandServer extends SendCommandServer implements CommandServer {
+public class OverwriteCommandServer implements CommandServer {
+
+    private ReceiverServer receiverServer;
+    private Socket clientSocket;
+    private ObservableList<String> observableListCommand;
+    private String commandString;
 
     public OverwriteCommandServer(ReceiverServer receiverServer, Socket clientSocket,
-                                  ObservableList<String> arrayToSaveInfo, BufferedReader clientReader) {
-        super(receiverServer, clientSocket, arrayToSaveInfo, clientReader);
+                                  ObservableList<String> arrayToSaveInfo, String commandString) {
+        this.receiverServer = receiverServer;
+        this.clientSocket = clientSocket;
+        this.observableListCommand = arrayToSaveInfo;
+        this.commandString = commandString;
     }
 
     @Override
     public void execute() {
         try {
-            receiverServer.sendString(OVERWRITE_MENU, clientSocket);
+            receiverServer.sendString(commandString, clientSocket);
             // Utilizzo dello stesso nome per l'array, ma stavolta vengono inviate informazioni al client
             for (String tmp : observableListCommand) {
                 receiverServer.sendString(tmp, clientSocket);
