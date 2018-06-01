@@ -8,7 +8,7 @@ import java.util.HashMap;
 
 import static java.lang.Integer.parseInt;
 
-public class Distributore implements MaxValue, TextFiles {
+public class Distributore implements MaxValue, TextPathFiles {
     private HashMap<String, HotDrink> list;
     private int selected_sugar;
     private Coins coins;

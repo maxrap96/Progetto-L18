@@ -12,8 +12,8 @@ public class OverwriteCommand implements Command, StringCommandList {
     private BufferedReader bufferedReader;
     private ArrayList<String> menuFromServer;
 
-    public OverwriteCommand(BufferedReader bufferedReader) {
-        this.receiverOverwrite = new ReceiverOverwrite();
+    public OverwriteCommand(ReceiverOverwrite receiverOverwrite, BufferedReader bufferedReader) {
+        this.receiverOverwrite = receiverOverwrite;
         this.bufferedReader = bufferedReader;
         this.menuFromServer = new ArrayList<>();
     }

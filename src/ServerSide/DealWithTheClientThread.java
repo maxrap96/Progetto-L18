@@ -117,15 +117,15 @@ public class DealWithTheClientThread extends Thread implements StringCommandList
     private void initServerHashMap() {
         this.commandServerHashMap = new HashMap<>();
         ReceiverServer receiverServer = new ReceiverServer();
-        this.commandServerHashMap.put(SEND_COINS, new SendCoinsCommandServer(receiverServer, clientSocket, obsvCoins,
-                inFromClient));
-        this.commandServerHashMap.put(SEND_DATA, new SendDataCommandServer(receiverServer, clientSocket, obsvData,
-                inFromClient));
-        this.commandServerHashMap.put(SEND_MENU, new SendMenuCommandServer(receiverServer, clientSocket, obsvMenu,
-                inFromClient));
-        this.commandServerHashMap.put(SEND_STATS, new SendStatsCommandServer(receiverServer, clientSocket, obsvStats,
-                inFromClient));
+        this.commandServerHashMap.put(SEND_COINS, new AskClientCommandServer(receiverServer, clientSocket, obsvCoins,
+                inFromClient, SEND_COINS));
+        this.commandServerHashMap.put(SEND_DATA, new AskClientCommandServer(receiverServer, clientSocket, obsvData,
+                inFromClient, SEND_DATA));
+        this.commandServerHashMap.put(SEND_MENU, new AskClientCommandServer(receiverServer, clientSocket, obsvMenu,
+                inFromClient, SEND_MENU));
+        this.commandServerHashMap.put(SEND_STATS, new AskClientCommandServer(receiverServer, clientSocket, obsvStats,
+                inFromClient, SEND_STATS));
         this.commandServerHashMap.put(OVERWRITE_MENU, new OverwriteCommandServer(receiverServer, clientSocket, obsvMenu,
-                inFromClient));
+                OVERWRITE_MENU));
     }
 }
