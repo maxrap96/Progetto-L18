@@ -34,7 +34,7 @@ public class HomePage extends Application implements StringCommandList {
 
         // Definizione dello stage principale e della barra del menu
         primaryStage.setTitle("Home");
-        Toolbar1 toolbar1 = new Toolbar1();
+        Toolbar1 toolbar1 = new Toolbar1(server);
         MenuTable menuTable = new MenuTable(primaryStage, observMenu, server);
         StatsPage statsPage = new StatsPage(primaryStage, observStats, observData, observCoins, observMenu);
 
