@@ -16,7 +16,7 @@ public class Distributore implements MaxValue, TextPathFiles {
     private Data ingredientsData;
     private Data menu;
     private ArrayList<String[]> dati;
-    private Erogatore erogatore;
+    private Dispenser dispenser;
     private Key chiavetta;
 
     public Distributore() {
@@ -41,9 +41,9 @@ public class Distributore implements MaxValue, TextPathFiles {
         int cup = parseInt(data.get(3)[1]);
         double vodka = Double.parseDouble(data.get(4)[1]);
         int lastrow = 4; // Ultima riga letta dal file
-        erogatore = new Erogatore(milk, sugar, spoon, cup, vodka);
+        dispenser = new Dispenser(milk, sugar, spoon, cup, vodka);
         dati = data;
-        erogatore.checkIfMachineIsEmpty(); // Controlla se c'è bisogno di ricaricare la macchinetta.
+        dispenser.checkIfMachineIsEmpty(); // Controlla se c'è bisogno di ricaricare la macchinetta.
         return lastrow;
     }
 
@@ -159,7 +159,7 @@ public class Distributore implements MaxValue, TextPathFiles {
         if (coins.getCredit() >= list.get(ID).getPrice() && list.get(ID).isAvailable()) {
             // Se il credito è uguale o maggiore singifica che si puo' potenzialmente acquistare la bevanda
             transaction = true;
-            erogatore.subtractIngredients(list.get(ID), selected_sugar);
+            dispenser.subtractIngredients(list.get(ID), selected_sugar);
             coins.updateBalance(list.get(ID).getPrice());
             setSugarToDefault();
             coins.giveChange();
@@ -252,7 +252,7 @@ public class Distributore implements MaxValue, TextPathFiles {
      * Funzione per aggiornare il file dati.txt, contenente le quantità di oggetti e di ingredienti.
      */
     private void updateDati(String ID) {
-        String valDati[] = erogatore.getData();
+        String valDati[] = dispenser.getData();
         String newLine = "";
         String current = "";
 

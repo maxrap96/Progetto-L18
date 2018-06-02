@@ -2,13 +2,13 @@ package HotDrinkVendingMachine;
 
 import HotDrinks.HotDrink;
 
-public class Erogatore implements MaxValue {
+public class Dispenser implements MaxValue {
     private double milk;
     private double sugar;
     private double vodka;
     private int spoon, cup;
 
-    public Erogatore(double milk, double sugar, int spoon, int cup, double vodka) {
+    public Dispenser(double milk, double sugar, int spoon, int cup, double vodka) {
         this.milk = milk;
         this.sugar = sugar;
         this.spoon = spoon;
@@ -61,7 +61,7 @@ public class Erogatore implements MaxValue {
 
     /**
      * Funzione che genera la stringa dei dati.
-     * @return s restituisce una stringa.
+     * @return s stringa.
      */
     public String[] getData() {
             return new String[]{"" + milk, "" + sugar, "" + spoon, "" + cup, "" + vodka};
