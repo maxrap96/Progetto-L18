@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import static ServerSide.StringCommandList.END_SENDING;
 
 public class ReceiverServer {
-
     /**
      * Funzione che invia una stringa.
      * @param sendThisString stringa da inviare.
@@ -17,7 +16,7 @@ public class ReceiverServer {
      * @throws IOException
      */
     protected void sendString(String sendThisString, Socket client) throws IOException {
-        // Creazione dell'oggetto per scrivere al Client
+        // Creazione dell'oggetto per scrivere al client
         PrintWriter outToClient = new PrintWriter(client.getOutputStream(), true);
         outToClient.println(sendThisString);
     }

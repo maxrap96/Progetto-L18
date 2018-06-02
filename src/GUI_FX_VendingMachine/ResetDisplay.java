@@ -8,13 +8,13 @@ import java.util.TimerTask;
 public class ResetDisplay {
     private final String DEFAULT_MESSAGE = "Scegliere una bevanda";
     private Display display;
-    private Distributore distributore;
+    private Distributore vendMachine;
     private Timer timer = new Timer();
     private TimerTask timerTask;
 
-    public ResetDisplay(Display display, Distributore distributore) {
+    public ResetDisplay(Display display, Distributore vendMachine) {
         this.display = display;
-        this.distributore = distributore;
+        this.vendMachine = vendMachine;
     }
 
     /**
@@ -23,7 +23,7 @@ public class ResetDisplay {
     public void runTimer() {
         resetTimer();
         int time;
-        if (distributore.getCredit() == 0) {
+        if (vendMachine.getCredit() == 0) {
             time = 5000;
         }
         else {
@@ -35,11 +35,11 @@ public class ResetDisplay {
             public void run() {
                 display.setBeverage(DEFAULT_MESSAGE);
                 display.setBeverageCost("");
-                if (distributore.getCredit() == 0) {
-                    distributore.setSugarToDefault();
+                if (vendMachine.getCredit() == 0) {
+                    vendMachine.setSugarToDefault();
                 }
                 else {
-                    display.setCreditRow(String.format("%.2f", distributore.getCredit()));
+                    display.setCreditRow(String.format("%.2f", vendMachine.getCredit()));
                 }
 
                 setDots();
@@ -62,9 +62,9 @@ public class ResetDisplay {
      */
     public void setDots() {
         String quantity;
-        switch (distributore.getSelected_sugar()) {
-            //u25cf pallino pieno
-            //u25cb pallino vuoto
+        switch (vendMachine.getSelected_sugar()) {
+            // u25cf pallino pieno
+            // u25cb pallino vuoto
             case 0:
                 quantity = "Senza zucchero";
                 break;

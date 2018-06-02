@@ -51,8 +51,8 @@ public class Display extends GridPane {
 
     /**
      * Funzione che configura i vari Text del display.
-     * @param text: uno dei text del display.
-     * @param message: messaggio da stampare a video.
+     * @param text uno dei text del display.
+     * @param message messaggio da stampare a video.
      */
     private void setDisplay(Text text, String message) {
         text.setText(message);

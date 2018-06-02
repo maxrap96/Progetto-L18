@@ -7,17 +7,17 @@ import javafx.event.EventHandler;
 public class MoneyEventHandler implements EventHandler {
     private final double VALUE;
     private Display display;
-    private Distributore distributore;
+    private Distributore vendMachine;
 
-    public MoneyEventHandler(double value, Display display, Distributore distributore) {
+    public MoneyEventHandler(double value, Display display, Distributore vendMachine) {
         VALUE = value;
         this.display = display;
-        this.distributore = distributore;
+        this.vendMachine = vendMachine;
     }
 
     @Override
     public void handle(Event event) {
-        distributore.addCredit(VALUE);
-        display.setCreditRow(String.format("%.2f", distributore.getCredit()));
+        vendMachine.addCredit(VALUE);
+        display.setCreditRow(String.format("%.2f", vendMachine.getCredit()));
     }
 }

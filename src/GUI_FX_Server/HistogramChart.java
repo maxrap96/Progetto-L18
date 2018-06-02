@@ -11,7 +11,7 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 
 public class HistogramChart extends BarChart {
-    private final static String[] MONETE = {"0.05", "0.10", "0.20", "0.50", "1", "2"};
+    private final static String[] COINS = {"0.05", "0.10", "0.20", "0.50", "1", "2"};
     private ObservableList<String> coins;
 
     public HistogramChart(Axis xAxis, Axis yAxis, ObservableList<String> coins) {
@@ -34,18 +34,17 @@ public class HistogramChart extends BarChart {
         XYChart.Series series1 = new XYChart.Series();
 
         // Ottenimento numero di monete
-        int money[] = new int[MONETE.length];
-
+        int money[] = new int[COINS.length];
         analyzeData(money, coins);
 
         // Aggiunta dei dati alla serie
-        for (int i = 0; i < MONETE.length; i++) {
-            series1.getData().add(new XYChart.Data(money[i], MONETE[i]));
+        for (int i = 0; i < COINS.length; i++) {
+            series1.getData().add(new XYChart.Data(money[i], COINS[i]));
         }
         bc.getData().add(series1);
 
         // Colorazione barre in base alla quantità di monete
-        for (int i = 0; i < MONETE.length; i++) {
+        for (int i = 0; i < COINS.length; i++) {
             colorChartBars(bc, i, money);
         }
 
@@ -82,7 +81,7 @@ public class HistogramChart extends BarChart {
             String s = coins.get(coins.size() - 1);
             String[] split = s.split("\t");
 
-            for (int i = 0; i < MONETE.length; i++) {
+            for (int i = 0; i < COINS.length; i++) {
                 money[i] = Integer.parseInt(split[i]);
             }
         }
@@ -116,7 +115,6 @@ public class HistogramChart extends BarChart {
      */
     public void colorChartBars(BarChart bc, int i, int money[]) {
         String st = ".data" + i + ".chart-bar";
-
         Node node = bc.lookup(st);
 
         if (money[i] > 22) {

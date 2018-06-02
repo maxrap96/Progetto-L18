@@ -41,7 +41,7 @@ public class DealWithTheClientThread extends Thread implements StringCommandList
                 commandFromKeyboard();
                 sendString(READY, clientSocket);
             }
-        }catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Error caught: " + e);
         }
@@ -99,7 +99,7 @@ public class DealWithTheClientThread extends Thread implements StringCommandList
     /**
      * Funzione per attivare un comando.
      *
-     * Nota: Viene utilizzata dal Server.
+     * Nota: Viene utilizzata dal server.
      *
      * @param command comando da eseguire.
      */

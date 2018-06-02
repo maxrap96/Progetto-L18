@@ -15,15 +15,15 @@ import java.awt.Toolkit;
 
 public class MoneyGrid extends GridPane {
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    private Distributore distributore;
+    private Distributore vendMachine;
     private Display display;
     private ResetDisplay resetDisplay;
     private final int BUTTON_PADDING = 32;
     private final int BUTTONS_PER_LINE = 3;
     private final int NUM_BUTTON_LINES = 3;
 
-    public MoneyGrid(Distributore distributore, Display display, ResetDisplay resetDisplay) {
-        this.distributore = distributore;
+    public MoneyGrid(Distributore vendMachine, Display display, ResetDisplay resetDisplay) {
+        this.vendMachine = vendMachine;
         this.display = display;
         this.resetDisplay = resetDisplay;
         createGrid();
@@ -42,34 +42,34 @@ public class MoneyGrid extends GridPane {
         change.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                distributore.giveChange();
-                display.setCreditRow(String.format("%.2f", distributore.getCredit()));
+                vendMachine.giveChange();
+                display.setCreditRow(String.format("%.2f", vendMachine.getCredit()));
             }
         });
         this.add(change, 0, 0);
 
-        // Creazione pulsante "-"
+        // Creazione pulsante meno "-"
         Button minus = new Button();
         minus.setText("-");
         setPurchaseButton(minus);
         minus.setOnAction(new EventHandler<ActionEvent>() {
               @Override
               public void handle(ActionEvent event) {
-                  distributore.lessSugar();
+                  vendMachine.lessSugar();
                   resetDisplay.setDots();
                   resetDisplay.runTimer();
               }
         });
         this.add(minus, 1, 0);
 
-        // Creazione pulsante "+"
+        // Creazione pulsante piu' "+"
         Button plus = new Button();
         plus.setText("+");
         setPurchaseButton(plus);
         plus.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                distributore.moreSugar();
+                vendMachine.moreSugar();
                 resetDisplay.setDots();
                 resetDisplay.runTimer();
             }
@@ -81,10 +81,10 @@ public class MoneyGrid extends GridPane {
         for (int r = 1; r < NUM_BUTTON_LINES; r++) {
             for (int c = 0; c < BUTTONS_PER_LINE; c++) {
                 number = BUTTONS_PER_LINE * (r - 1) + c;
-                String cValue = String.format("%.2f", distributore.getCoinsValue()[number]);
+                String cValue = String.format("%.2f", vendMachine.getCoinsValue()[number]);
                 Button button = new Button(cValue);
                 setPurchaseButton(button);
-                button.setOnAction(new MoneyEventHandler(distributore.getCoinsValue()[number], display, distributore));
+                button.setOnAction(new MoneyEventHandler(vendMachine.getCoinsValue()[number], display, vendMachine));
                 this.add(button, c, r);
             }
         }
@@ -92,7 +92,7 @@ public class MoneyGrid extends GridPane {
 
     /**
      * Funzione che configura i pulsanti delle monete, zucchero e resto.
-     * @param button: il pulsante da configurare.
+     * @param button pulsante da configurare.
      */
     private void setPurchaseButton(Button button) {
         button.setShape(new Circle (screenSize.height / 8));

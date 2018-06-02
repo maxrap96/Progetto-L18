@@ -40,7 +40,7 @@ public class MenuTable extends TableView {
         }));
 
         // Creazione colonne
-        // Aggiunta ad ogni colonna i valori contenuti nella classe tabella e resi i valori modificabili
+        // Aggiunta ad ogni colonna dei valori contenuti nella classe tabella e resi i valori modificabili
         TableColumn id = new TableColumn("ID");
         this.initTableColumn(id,"id");
 

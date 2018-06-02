@@ -9,7 +9,7 @@ import java.io.File;
 import static HotDrinkVendingMachine.TextPathFiles.MENU_PATH;
 
 public class UpdateChecker extends Thread{
-    private Distributore distributore;
+    private Distributore vendMachine;
     private BeverageGrid beverageGrid;
     private BorderPane root;
     private Display display;
@@ -17,9 +17,9 @@ public class UpdateChecker extends Thread{
     private File menuFile = new File(MENU_PATH);
     private long oldTimestamp = menuFile.lastModified();
 
-    public UpdateChecker(Distributore distributore, BeverageGrid beverageGrid, Display display,
+    public UpdateChecker(Distributore vendMachine, BeverageGrid beverageGrid, Display display,
                          ResetDisplay resetDisplay, BorderPane root) {
-        this.distributore = distributore;
+        this.vendMachine = vendMachine;
         this.beverageGrid = beverageGrid;
         this.display = display;
         this.resetDisplay = resetDisplay;
@@ -28,26 +28,23 @@ public class UpdateChecker extends Thread{
 
     private boolean isFileChanced() {
         long currentTimestamp = menuFile.lastModified();
-        if (oldTimestamp != currentTimestamp){
+        if (oldTimestamp != currentTimestamp) {
             oldTimestamp = currentTimestamp;
             return true;
         }
         else {
             return false;
         }
-
     }
 
     public void  run() {
-
         while(true) {
             if (isFileChanced()) {
                 System.out.println("Updating");
-                distributore = new Distributore();
-                beverageGrid = new BeverageGrid(distributore, display, resetDisplay);
+                vendMachine = new Distributore();
+                beverageGrid = new BeverageGrid(vendMachine, display, resetDisplay);
                 Platform.runLater(() -> {root.setLeft(beverageGrid);});
             }
         }
     }
-
 }

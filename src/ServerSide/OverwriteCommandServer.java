@@ -8,7 +8,6 @@ import java.net.Socket;
 import static ServerSide.StringCommandList.END_SENDING;
 
 public class OverwriteCommandServer implements CommandServer {
-
     private ReceiverServer receiverServer;
     private Socket clientSocket;
     private ObservableList<String> observableListCommand;

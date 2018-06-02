@@ -3,13 +3,10 @@ package GUI_FX_Server;
 import javafx.application.Platform;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
-import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class StatsPage extends GridPane {
@@ -97,7 +94,7 @@ public class StatsPage extends GridPane {
      * Funzione per aprire uno specifico tab all'apertura della pagina.
      * @param i indice per selezionare un tab; valore iniziale '0'.
      */
-    public void OpenTab(int i){
+    public void openTab(int i){
         tabPane.getSelectionModel().select(i);
     }
 

@@ -16,7 +16,7 @@ public class DrinkPieChart extends PieChart {
 
     /**
      * Funzione per inizializzare il borderpane.
-     * @return restituisce il borderpane.
+     * @return borderpane.
      */
     public BorderPane setChart() {
         BorderPane b = new BorderPane();
@@ -77,12 +77,12 @@ public class DrinkPieChart extends PieChart {
                     int quantity = beverageQty.get(i);
                     quantity++;
                     beverageQty.set(i, quantity);
-                    break; // se si trova l'indice della bevanda corrispondente esce
+                    break; // Se si trova l'indice della bevanda corrispondente esce
                 }
             }
         }
         else {
-            //se si arriva qui significa che non l'ha trovata
+            // Se si arriva qui significa che non l'ha trovata
             beverageNames.add(beverage);
             beverageQty.add(1);
         }

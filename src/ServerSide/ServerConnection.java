@@ -55,7 +55,7 @@ public class ServerConnection extends Thread {
     }
 
     /**
-     * Funzione per scegliere il comando da eseguire e su quale Client.
+     * Funzione per scegliere il comando da eseguire e su quale client.
      * @param command comando da eseguire.
      */
     public void chooseCommandExecutedByThread(String command) {

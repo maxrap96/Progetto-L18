@@ -43,13 +43,13 @@ public class DrinkChart extends BarChart {
 
         analyzeData(drinkName, drinkQty, data, menu);
 
-        if(!data.isEmpty() && !menu.isEmpty()) {
+        if (!data.isEmpty() && !menu.isEmpty()) {
             for (int j = 0; j < drinkName.size(); j++) {
                 series1.getData().add(new XYChart.Data(drinkName.get(j), drinkQty.get(j)));
             }
         }
         drinksChart.getData().add(series1);
-        if(!data.isEmpty() && !menu.isEmpty()) {
+        if (!data.isEmpty() && !menu.isEmpty()) {
             for (int i = 0; i < drinkName.size(); i++) {
                 colorChartBars(drinksChart, i, drinkQty.get(i));
             }
@@ -73,7 +73,6 @@ public class DrinkChart extends BarChart {
         for (int rows = 0; rows < menu.size(); rows++) {
             if (menu.get(rows).startsWith("0")) {
                 String[] splitMenu = menu.get(rows).split("\t");
-
                 drinkName.add(splitMenu[2]);
             }
         }
@@ -81,7 +80,6 @@ public class DrinkChart extends BarChart {
         for (int i = 0; i < data.size(); i++) {
             if (data.get(i).startsWith("0")) {
                 String[] splitData = data.get(i).split("\t");
-
                 drinkQty.add(Double.parseDouble(splitData[1]));
             }
         }
@@ -89,7 +87,6 @@ public class DrinkChart extends BarChart {
 
     public void colorChartBars(BarChart bc, int i, double qty) {
         String st = ".data" + i + ".chart-bar";
-
         Node node = bc.lookup(st);
 
         if (qty > 35) {

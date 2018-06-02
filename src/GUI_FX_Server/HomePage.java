@@ -26,8 +26,7 @@ public class HomePage extends Application implements StringCommandList {
 
     @Override
     public void start(Stage primaryStage) {
-
-        // Avvio della connessione Server
+        // Avvio della connessione server
         this.server = new ServerConnection(80, observStats, observMenu, observCoins, observData);
         server.start();
         server.setSelectedClient(0);
@@ -75,7 +74,6 @@ public class HomePage extends Application implements StringCommandList {
 
         // Creazione bottoni
         ButtonBar buttonBar = new ButtonBar();
-
         Button menuButton = new Button("Menu");
         ButtonBar.setButtonData(menuButton, ButtonBar.ButtonData.LEFT);
         menuButton.setPrefSize(85, 50);
@@ -128,7 +126,6 @@ public class HomePage extends Application implements StringCommandList {
             anchor.setVisible(false);
             statsPage.getMainPanel().setVisible(false);
             server.chooseCommandExecutedByThread(SEND_MENU);
-
         });
 
         VBox vBox1 = new VBox(toolbar1,stackPane);

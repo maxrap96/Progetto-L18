@@ -22,7 +22,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 public class VendingMachine extends Application {
-     private Distributore distributore = new Distributore();
+     private Distributore vendMachine = new Distributore();
      private ResetDisplay resetDisplay;
      private BeverageGrid beverageGrid;
      private Display display;
@@ -31,7 +31,7 @@ public class VendingMachine extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            // Avvio della connessione Client
+            // Avvio della connessione client
             new ClientVendMach("localhost", 80).start();
 
             Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -53,7 +53,7 @@ public class VendingMachine extends Application {
                     false, false, false, true);
 
             // Creazione dell'immagine di sfondo
-            BackgroundImage changeNameWhenFinalImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT,
+            BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT,
                     BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
 
             // Impostazione dello sfondo
@@ -72,7 +72,7 @@ public class VendingMachine extends Application {
             // Display del distributore
             display = new Display();
             purchasePane.setTop(display);
-            resetDisplay = new ResetDisplay(display, distributore);
+            resetDisplay = new ResetDisplay(display, vendMachine);
             resetDisplay.setDots();
 
             // Creazione chiavetta
@@ -88,8 +88,8 @@ public class VendingMachine extends Application {
             key.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
-                    distributore.setconnectionChiavetta();
-                    display.setCreditRow(String.valueOf(distributore.getCredit()));
+                    vendMachine.setconnectionChiavetta();
+                    display.setCreditRow(String.valueOf(vendMachine.getCredit()));
                     key.setStyle(
                             "-fx-background-radius: 1em;" +
                             "-fx-focus-color: blue;"
@@ -99,12 +99,12 @@ public class VendingMachine extends Application {
             purchasePane.setCenter(key);
 
             // Pannello delle bevande
-            beverageGrid = new BeverageGrid(distributore, display, resetDisplay);
-            beverageGrid.setBackground(new Background(changeNameWhenFinalImage));
+            beverageGrid = new BeverageGrid(vendMachine, display, resetDisplay);
+            beverageGrid.setBackground(new Background(backgroundImage));
             root.setLeft(beverageGrid);
 
             // Pannello delle monete
-            GridPane moneyPane = new MoneyGrid(distributore, display, resetDisplay);
+            GridPane moneyPane = new MoneyGrid(vendMachine, display, resetDisplay);
             purchasePane.setBottom(moneyPane);
 
             Scene scene = new Scene(root, width, height, Color.LIGHTGRAY);
@@ -112,17 +112,13 @@ public class VendingMachine extends Application {
             primaryStage.setMaximized(true);
             primaryStage.setResizable(false);
             primaryStage.show();
-            updateChecker = new UpdateChecker(distributore, beverageGrid, display, resetDisplay, root);
+            updateChecker = new UpdateChecker(vendMachine, beverageGrid, display, resetDisplay, root);
             updateChecker.start();
 
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Error caused by " + e);
         }
-
-
-
-
 
         // Termina l'applicazione cliccando la x rossa
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {

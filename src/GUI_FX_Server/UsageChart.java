@@ -51,7 +51,6 @@ public class UsageChart extends LineChart {
         }
 
         b.setCenter(lineChart);
-
         return b;
     }
 
@@ -93,7 +92,7 @@ public class UsageChart extends LineChart {
                     foundAny = true;
                 }
             }
-            if (foundAny){ //se non se ne trovano non vengono aggiunte
+            if (foundAny) {         // Se non se ne trovano non vengono aggiunte
                 series.add(series1);
             }
         }

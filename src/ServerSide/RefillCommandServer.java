@@ -6,7 +6,6 @@ import java.net.Socket;
 import static ServerSide.StringCommandList.END_SENDING;
 
 public class RefillCommandServer implements CommandServer {
-
     private Socket clientSocket;
     private ReceiverServer receiverServer;
     private String stringCommand;
