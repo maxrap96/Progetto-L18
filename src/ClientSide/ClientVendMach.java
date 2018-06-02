@@ -1,6 +1,5 @@
 package ClientSide;
 
-import HotDrinkVendingMachine.Command;
 import HotDrinkVendingMachine.TextPathFiles;
 import ServerSide.StringCommandList;
 
