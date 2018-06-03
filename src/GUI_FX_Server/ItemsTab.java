@@ -1,12 +1,10 @@
 package GUI_FX_Server;
 
 import javafx.collections.ObservableList;
-import javafx.scene.chart.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ProgressIndicator;
-import javafx.scene.effect.Effect;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -21,8 +19,6 @@ public class ItemsTab {
     private final int SPOONMAX = 1000;
     private final double VODKAMAX = 1000;
 
-//    private Button[] refill = new Button[5];
-
     private Label label0 = new Label();
     private Label label1 = new Label();
     private Label label2 = new Label();
@@ -34,16 +30,13 @@ public class ItemsTab {
     }
 
     public BorderPane setProgressBar() {
-        BorderPane b = new BorderPane();
-        b.setStyle("-fx-background-color: green");
+        BorderPane mainPanel = new BorderPane();
 
         if (obsvData.isEmpty())
-            return b;
+            return mainPanel;
 
-        VBox mainBox = new VBox();
-        GridPane Pane = new GridPane();
-        mainBox.setStyle("-fx-background-color: royalblue");
-        Pane.setStyle("-fx-background-color: yellow");
+        VBox vBox = new VBox();
+        GridPane gridPane = new GridPane();
 
         ArrayList<String> items = new ArrayList<>();
         ArrayList<Double> quantity = new ArrayList<>();
@@ -93,51 +86,55 @@ public class ItemsTab {
         ProgressIndicator p4 = new ProgressIndicator();
         p4.setProgress(progressBar4.getProgress());
 
-//        Button[] refill = new Button[numRows];
-//
-//        for (int i = 0; i < numRows; i++) {
-//            refill[i].setText("Ricarica");
-//        }
+        Button refill0 = new Button();
+        refill0.setText("Ricarica");
+        Button refill1 = new Button();
+        refill1.setText("Ricarica");
+        Button refill2 = new Button();
+        refill2.setText("Ricarica");
+        Button refill3 = new Button();
+        refill3.setText("Ricarica");
+        Button refill4 = new Button();
+        refill4.setText("Ricarica");
 
-        Pane.add(label0, 0, 0);
-        Pane.add(label1, 0, 1);
-        Pane.add(label2, 0, 2);
-        Pane.add(label3, 0, 3);
-        Pane.add(label4, 0, 4);
+        gridPane.add(label0, 0, 0);
+        gridPane.add(label1, 0, 1);
+        gridPane.add(label2, 0, 2);
+        gridPane.add(label3, 0, 3);
+        gridPane.add(label4, 0, 4);
 
-        Pane.add(progressBar0, 1, 0);
-        Pane.add(progressBar1, 1, 1);
-        Pane.add(progressBar2, 1, 2);
-        Pane.add(progressBar3, 1, 3);
-        Pane.add(progressBar4, 1, 4);
+        gridPane.add(progressBar0, 1, 0);
+        gridPane.add(progressBar1, 1, 1);
+        gridPane.add(progressBar2, 1, 2);
+        gridPane.add(progressBar3, 1, 3);
+        gridPane.add(progressBar4, 1, 4);
 
-        Pane.add(p0, 2, 0);
-        Pane.add(p1, 2, 1);
-        Pane.add(p2, 2, 2);
-        Pane.add(p3, 2, 3);
-        Pane.add(p4, 2, 4);
+        gridPane.add(p0, 2, 0);
+        gridPane.add(p1, 2, 1);
+        gridPane.add(p2, 2, 2);
+        gridPane.add(p3, 2, 3);
+        gridPane.add(p4, 2, 4);
 
-//        Pane.add(refill[0], 3, 0);
-//        Pane.add(refill[1], 3, 1);
-//        Pane.add(refill[2], 3, 2);
-//        Pane.add(refill[3], 3, 3);
-//        Pane.add(refill[4], 3, 4);
+        gridPane.add(refill0, 3, 0);
+        gridPane.add(refill1, 3, 1);
+        gridPane.add(refill2, 3, 2);
+        gridPane.add(refill3, 3, 3);
+        gridPane.add(refill4, 3, 4);
 
-        Pane.prefHeightProperty().bind(mainBox.heightProperty());
-        Pane.setHgap(25);
-        Pane.setTranslateX(150);
-        Pane.setGridLinesVisible(true);
+        gridPane.prefHeightProperty().bind(vBox.heightProperty());
+        gridPane.setHgap(25);
+        gridPane.setTranslateX(150);
 
         for (int rowIndex = 0; rowIndex < numRows; rowIndex++) {
             RowConstraints rc = new RowConstraints();
             rc.setVgrow(Priority.ALWAYS);
             rc.setFillHeight(true);
-            Pane.getRowConstraints().add(rc);
+            gridPane.getRowConstraints().add(rc);
         }
 
-        mainBox.getChildren().addAll(Pane);
-        b.setCenter(mainBox);
+        vBox.getChildren().add(gridPane);
+        mainPanel.setCenter(vBox);
 
-        return b;
+        return mainPanel;
     }
 }
