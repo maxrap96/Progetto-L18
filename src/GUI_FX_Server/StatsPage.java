@@ -30,6 +30,7 @@ public class StatsPage extends GridPane {
         this.obsvMenu = obsvMenu;
 
         BorderPane borderPane = new BorderPane();
+        borderPane.setStyle("-fx-background-color: khaki");
 
         tab1.setText("Monete");
         tab2.setText("Acquisto bevande");
