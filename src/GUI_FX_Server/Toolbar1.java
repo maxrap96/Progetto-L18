@@ -1,14 +1,9 @@
 package GUI_FX_Server;
 
 import ServerSide.ServerConnection;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventDispatcher;
-import javafx.event.EventHandler;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.FileInputStream;
@@ -76,35 +71,35 @@ public class Toolbar1 extends ToolBar {
             menuTable.getvBox().setVisible(false);
             anchor.setVisible(false);
             statsPage.getMainPanel().setVisible(true);
-            statsPage.OpenTab(0);
+            statsPage.openTab(0);
             sendFile();
         });
         acqB.setOnAction(event -> {
             menuTable.getvBox().setVisible(false);
             anchor.setVisible(false);
             statsPage.getMainPanel().setVisible(true);
-            statsPage.OpenTab(1);
+            statsPage.openTab(1);
             sendFile();
         });
         utilizzo.setOnAction(event -> {
             menuTable.getvBox().setVisible(false);
             anchor.setVisible(false);
             statsPage.getMainPanel().setVisible(true);
-            statsPage.OpenTab(2);
+            statsPage.openTab(2);
             sendFile();
         });
         bevande.setOnAction(event -> {
             menuTable.getvBox().setVisible(false);
             anchor.setVisible(false);
             statsPage.getMainPanel().setVisible(true);
-            statsPage.OpenTab(3);
+            statsPage.openTab(3);
             sendFile();
         });
         items.setOnAction(event -> {
             menuTable.getvBox().setVisible(false);
             anchor.setVisible(false);
             statsPage.getMainPanel().setVisible(true);
-            statsPage.OpenTab(4);
+            statsPage.openTab(4);
             sendFile();
         });
 
@@ -125,8 +120,6 @@ public class Toolbar1 extends ToolBar {
         vendMachines.setOnMouseClicked(event -> {
             createdVend();
         });
-
-
 
     }
 
@@ -167,6 +160,4 @@ public class Toolbar1 extends ToolBar {
         serverConnection.chooseCommandExecutedByThread(SEND_DATA);
         serverConnection.chooseCommandExecutedByThread(SEND_MENU);
     }
-
-
 }

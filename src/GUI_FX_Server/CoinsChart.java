@@ -10,11 +10,11 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 
-public class HistogramChart extends BarChart {
+public class CoinsChart extends BarChart {
     private final static String[] COINS = {"0.05", "0.10", "0.20", "0.50", "1", "2"};
     private ObservableList<String> coins;
 
-    public HistogramChart(Axis xAxis, Axis yAxis, ObservableList<String> coins) {
+    public CoinsChart(Axis xAxis, Axis yAxis, ObservableList<String> coins) {
         super(xAxis, yAxis);
         this.coins = coins;
     }

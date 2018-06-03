@@ -39,17 +39,17 @@ public class StatsPage extends GridPane {
 
         tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
 
-        HistogramChart coinsChart = new HistogramChart(new CategoryAxis(), new NumberAxis(), obsvCoins);
+        CoinsChart coinsChart = new CoinsChart(new CategoryAxis(), new NumberAxis(), obsvCoins);
         DrinkPieChart pie = new DrinkPieChart(obsvStats);
         UsageChart usage = new UsageChart(new NumberAxis(), new NumberAxis(), obsvStats);
         DrinkChart drinks = new DrinkChart(new CategoryAxis(), new NumberAxis(), obsvData, obsvMenu);
-        ItemsHistogram itemsChart = new ItemsHistogram(new CategoryAxis(), new NumberAxis(), obsvData);
+        ItemsTab itemsStats = new ItemsTab(obsvData);
 
         tab1.setContent(coinsChart.setBars());
         tab2.setContent(pie.setChart());
         tab3.setContent(usage.setGraph());
         tab4.setContent(drinks.initChart());
-        tab5.setContent(itemsChart.setBars());
+        tab5.setContent(itemsStats.setProgressBar());
 
         obsvStats.addListener((ListChangeListener) change -> Platform.runLater(() -> {
             // Aggiorna UI
@@ -68,7 +68,7 @@ public class StatsPage extends GridPane {
             // Aggiorna UI
             System.out.println("Detected a change! ");
             tab4.setContent(drinks.initChart());
-            tab5.setContent(itemsChart.setBars());
+            tab5.setContent(itemsStats.setProgressBar());
         }));
 
         obsvMenu.addListener((ListChangeListener) change -> Platform.runLater(() -> {

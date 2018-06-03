@@ -1,6 +1,5 @@
 package ClientSide;
 
-import HotDrinkVendingMachine.Command;
 import ServerSide.StringCommandList;
 
 import java.io.BufferedReader;
