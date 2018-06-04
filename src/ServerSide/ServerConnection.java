@@ -8,23 +8,16 @@ import java.net.Socket;
 import java.util.HashMap;
 
 public class ServerConnection extends Thread {
-    private ObservableList<String> obsvStats;
-    private ObservableList<String> obsvMenu;
-    private ObservableList<String> obsvCoins;
-    private ObservableList<String> obsvData;
+    private ClassOfObservableLists classOfObservableLists;
     private HashMap<Integer, DealWithTheClientThread> mapOfClient;
     private int index;
     private int selectedClient;
     private int portNumber;
     private Socket clientSocket;
 
-    public ServerConnection(int port, ObservableList<String> obsvStats, ObservableList<String> obsvMenu,
-                            ObservableList<String> obsvCoins, ObservableList<String> obsvData) {
+    public ServerConnection(int port, ClassOfObservableLists classOfObservableLists) {
         this.portNumber = port;
-        this.obsvStats = obsvStats;
-        this.obsvCoins = obsvCoins;
-        this.obsvMenu = obsvMenu;
-        this.obsvData = obsvData;
+        this.classOfObservableLists = classOfObservableLists;
         this.mapOfClient = new HashMap<>();
         this.index = 0;
         this.selectedClient = 0;
@@ -43,7 +36,7 @@ public class ServerConnection extends Thread {
                 this.clientSocket = serverSocket.accept();
 
                 // Creazione del thread per ogni client che si connette
-                threadTmp = new DealWithTheClientThread(clientSocket, obsvStats, obsvMenu, obsvCoins, obsvData);
+                threadTmp = new DealWithTheClientThread(clientSocket, classOfObservableLists);
                 this.mapOfClient.put(index, threadTmp);
                 threadTmp.start();
                 this.index++;

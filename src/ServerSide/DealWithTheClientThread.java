@@ -17,14 +17,12 @@ public class DealWithTheClientThread extends Thread implements StringCommandList
     private BufferedReader inFromClient;
     private HashMap<String, CommandServer> commandServerHashMap;
 
-    public DealWithTheClientThread(Socket clientSocket, ObservableList<String> obsvStats,
-                                   ObservableList<String> obsvMenu, ObservableList<String> obsvCoins,
-                                   ObservableList<String> obsvData) {
+    public DealWithTheClientThread(Socket clientSocket, ClassOfObservableLists classOfObservableLists) {
         this.clientSocket = clientSocket;
-        this.obsvStats = obsvStats;
-        this.obsvMenu = obsvMenu;
-        this.obsvCoins = obsvCoins;
-        this.obsvData = obsvData;
+        this.obsvStats = classOfObservableLists.getObservStats();
+        this.obsvMenu = classOfObservableLists.getObservMenu();
+        this.obsvCoins = classOfObservableLists.getObservCoins();
+        this.obsvData = classOfObservableLists.getObservData();
     }
 
     @Override

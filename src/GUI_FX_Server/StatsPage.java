@@ -1,5 +1,6 @@
 package GUI_FX_Server;
 
+import ServerSide.ClassOfObservableLists;
 import ServerSide.ServerConnection;
 import javafx.application.Platform;
 import javafx.collections.ListChangeListener;
@@ -24,12 +25,11 @@ public class StatsPage extends GridPane {
     private ObservableList<String> obsvMenu;
     private ServerConnection serverConnection;
 
-    public StatsPage(Stage stage, ObservableList<String> obsvStats, ObservableList<String> obsvData,
-                     ObservableList<String> obsvCoins, ObservableList<String> obsvMenu, ServerConnection server) {
-        this.obsvStats = obsvStats;
-        this.obsvCoins = obsvCoins;
-        this.obsvData = obsvData;
-        this.obsvMenu = obsvMenu;
+    public StatsPage(Stage stage, ClassOfObservableLists classOfObservableLists, ServerConnection server) {
+        this.obsvStats = classOfObservableLists.getObservStats();
+        this.obsvCoins = classOfObservableLists.getObservCoins();
+        this.obsvData = classOfObservableLists.getObservData();
+        this.obsvMenu = classOfObservableLists.getObservMenu();
         this.serverConnection = server;
 
 

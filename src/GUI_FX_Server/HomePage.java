@@ -22,17 +22,13 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 public class HomePage extends Application implements StringCommandList {
-    private ObservableList<String> observStats = FXCollections.observableArrayList();
-    private ObservableList<String> observMenu = FXCollections.observableArrayList();
-    private ObservableList<String> observCoins = FXCollections.observableArrayList();
-    private ObservableList<String> observData = FXCollections.observableArrayList();
     private ClassOfObservableLists classOfObservableLists = new ClassOfObservableLists();
     private ServerConnection server;
 
     @Override
     public void start(Stage primaryStage) {
         // Avvio della connessione server
-        this.server = new ServerConnection(80, observStats, classOfObservableLists.getObservMenu(), observCoins, observData);
+        this.server = new ServerConnection(80, classOfObservableLists);
         server.start();
         server.setSelectedClient(0);
 
@@ -40,7 +36,7 @@ public class HomePage extends Application implements StringCommandList {
         primaryStage.setTitle("Home");
         Toolbar1 toolbar1 = new Toolbar1(server);
         MenuTable menuTable = new MenuTable(primaryStage, classOfObservableLists.getObservMenu(), server);
-        StatsPage statsPage = new StatsPage(primaryStage, observStats, observData, observCoins, observMenu, server);
+        StatsPage statsPage = new StatsPage(primaryStage, classOfObservableLists, server);
 
         // Creazione scritta correlata da un logo
         Label label = new Label("Welcome to project Nobildonno Home Page");
