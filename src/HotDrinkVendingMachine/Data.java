@@ -109,19 +109,28 @@ public class Data {
      * @param newLine nuova riga che sovrascriverà la riga selezionata.
      */
     public void overwriteFile(String newLine, String currentLine) throws IOException {
-        BufferedReader file = new BufferedReader(new FileReader(PATH_FILE));
+        ArrayList<String> arrayListTmp = new ArrayList<>();
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(PATH_FILE));
         String line;
         String input = "";
 
-        while ((line = file.readLine()) != null)
-            input += line + System.lineSeparator();
+        while ((line = bufferedReader.readLine()) != null) {
+            arrayListTmp.add(line);
+        }
+
+        for(int i = 0; i < arrayListTmp.size(); i++) {
+            input += arrayListTmp.get(i);
+            if (i < arrayListTmp.size() - 1) {
+                input += System.lineSeparator();
+            }
+        }
 
         input = input.replace(currentLine, newLine);
 
         FileOutputStream outputStream = new FileOutputStream(PATH_FILE);
         outputStream.write(input.getBytes());
 
-        file.close();
+        bufferedReader.close();
         outputStream.close();
     }
 

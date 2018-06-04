@@ -8,8 +8,6 @@ import HotDrinkVendingMachine.TextPathFiles;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static java.lang.Double.parseDouble;
-
 public class ReceiverRefill implements MaxValue, TextPathFiles, CoinsNumbers {
     private Data menuFile;
     private Data beverageFile;
@@ -36,36 +34,63 @@ public class ReceiverRefill implements MaxValue, TextPathFiles, CoinsNumbers {
     }
 
     /**
-     *
+     * Funzione che ricarica le bevande.
      */
-    protected void refillBeverage()throws IOException{
+    protected void refillBeverage() throws IOException {
         ArrayList<String[]> oldData = beverageFile.readFile();
-        for (int i = 0; i < oldData.size(); i++ ){
-            if (oldData.get(i)[0].startsWith("0")){ //significa che è una entrata nel menu
-                String currentId = oldData.get(i)[0];
-                for (int j = 0; i < menu.size(); i++){
-                    if (menu.get(j)[0].equals(currentId)){
-                        double currentMaxQuantity = parseDouble(menu.get(j)[4]);
-                        beverageFile.overwriteFile(String.valueOf(oldData.get(i)), (currentId + currentMaxQuantity));
-                    }
-                }
+        for (String[] vettTmp : oldData) {
+            if (vettTmp[0].startsWith("0")) {
+                String currentId = vettTmp[0];
+                int currentMaxQuantity = getMaxQuantityFromMenu(currentId);
+                String oldString = recreateString(vettTmp);
+                String newString = currentId + "\t" + String.valueOf(currentMaxQuantity);
+                beverageFile.overwriteFile(newString, oldString);
             }
         }
     }
 
     /**
-     * Funzione per ricaricare le monete
+     * Funzione che ottiene la quantità massima.
+     * @param id l'id associato alla quantità desiderata.
      */
-    protected void refillCoins(){
+    private int getMaxQuantityFromMenu(String id) {
+        int tmpReturned = 0;
+        for (String[] rowTmp : menu) {
+            if (id.equals(rowTmp[0])) {
+                tmpReturned = Integer.parseInt(rowTmp[4]);
+            }
+        }
+        return tmpReturned;
+    }
+
+    /**
+     * Funzione che crea una stringa unica da un vettore.
+     * @param vett vettore da unificare.
+     */
+    private String recreateString(String[] vett){
+        String tmp = "";
+        for (int i = 0; i < vett.length; i++) {
+            tmp += vett[i];
+            if (i != vett.length - 1) {
+                tmp += "\t";
+            }
+        }
+        return tmp;
+    }
+
+    /**
+     * Funzione per ricaricare le monete.
+     */
+    protected void refillCoins() {
         coinsFile.writeFile(stringCoinsValue() + "Server refill");
     }
 
     /**
-     * Funzione che restituisce la stringa dei valori di ricarica dei Coins.
+     * Funzione che restituisce la stringa dei valori di ricarica dei coins.
      */
-    private String stringCoinsValue(){
+    private String stringCoinsValue() {
         String tmp = "";
-        for (Integer integer : MONEY_COUNT){
+        for (Integer integer : MONEY_COUNT) {
             tmp += integer + "\t";
         }
         return tmp;

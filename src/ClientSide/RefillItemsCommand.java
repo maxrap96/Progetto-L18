@@ -13,7 +13,6 @@ public class RefillItemsCommand implements Command {
     public void execute() {
         try {
             receiverRefill.refillItems();
-            System.out.println("Items");
         } catch (IOException e) {
             e.printStackTrace();
         }
