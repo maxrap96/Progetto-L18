@@ -5,10 +5,10 @@ import java.util.Scanner;
 import static java.lang.Integer.parseInt;
 
 public class TextualInterface {
-    private Distributore distributore;
+    private HotDrinkVendMachine vendMachine;
 
-    public TextualInterface(Distributore distributore) {
-        this.distributore = distributore;
+    public TextualInterface(HotDrinkVendMachine vendMachine) {
+        this.vendMachine = vendMachine;
     }
 
     /**
@@ -17,7 +17,7 @@ public class TextualInterface {
     public void textualInput() {
         String input;
         do {
-            distributore.showList();
+            vendMachine.showList();
             System.out.println("Inserire l'ID della bevanda e la quantità di zucchero richiesta (da 0 a 5) separate " +
                     "da uno spazio.\nNel caso non venga inserito nulla sarà di default a 3");
             input = keyboard();
@@ -25,16 +25,16 @@ public class TextualInterface {
         String[] splitted = input.split("\\s+");
 
         if (splitted.length == 1) {
-            distributore.setSugarToDefault();
+            vendMachine.setSugarToDefault();
         }
         else { // Espressa una preferenza
             int selectedSugar = parseInt(splitted[1]);
             for (int i = 0; i < selectedSugar; i++) {
-                distributore.moreSugar();
+                vendMachine.moreSugar();
             }
         }
         askForMoneyInput();
-        distributore.selectBeverage(splitted[0]); // Funzione da usare nell'interfaccia per l'erogazione della bevanda
+        vendMachine.selectBeverage(splitted[0]); // Funzione da usare nell'interfaccia per l'erogazione della bevanda
     }
 
     /**
@@ -49,13 +49,13 @@ public class TextualInterface {
      * Funzione che chiede quante monete inserire da tastiera.
      */
     private void askForMoneyInput() {
-        double[] coinsValue = distributore.getCoinsValue();
+        double[] coinsValue = vendMachine.getCoinsValue();
         for (int i = 0; i < coinsValue.length; i++) {
             System.out.println("Inserire le monete da " + String.format("%.2f", coinsValue[i]) + " cent");
             String input = keyboard();
             if (parseInt(input) > 0) {
                 double addedd = parseInt(input) * coinsValue[i];
-                distributore.addCredit(addedd);
+                vendMachine.addCredit(addedd);
             }
         }
     }

@@ -8,24 +8,25 @@ import java.util.HashMap;
 
 import static java.lang.Integer.parseInt;
 
-public class Distributore implements MaxValue, TextPathFiles {
+public class HotDrinkVendMachine implements MaxValue, TextPathFiles {
+    private final int MAX_SUGAR_LEVEL = 5;
     private HashMap<String, HotDrink> list;
     private int selected_sugar;
     private Coins coins;
     private Data stats;
     private Data ingredientsData;
     private Data menu;
-    private ArrayList<String[]> dati;
+    private ArrayList<String[]> datas;
     private Dispenser dispenser;
-    private Key chiavetta;
+    private Key key;
 
-    public Distributore() {
+    public HotDrinkVendMachine() {
         this.list = new HashMap<>();
         this.stats = new Data(STATS_PATH);
         this.ingredientsData = new Data(DATA_PATH);
         this.menu = new Data(MENU_PATH);
         this.coins = new Coins();
-        this.chiavetta = new Key();
+        this.key = new Key();
         int lastRow = setValues(ingredientsData.readFile());
         createList(menu.readFile(), ingredientsData.readFile(), lastRow);
     }
@@ -40,11 +41,11 @@ public class Distributore implements MaxValue, TextPathFiles {
         int spoon = parseInt(data.get(2)[1]);
         int cup = parseInt(data.get(3)[1]);
         double vodka = Double.parseDouble(data.get(4)[1]);
-        int lastrow = 4; // Ultima riga letta dal file
+        int lastRow = 4; // Ultima riga letta dal file
         dispenser = new Dispenser(milk, sugar, spoon, cup, vodka);
-        dati = data;
-        dispenser.checkIfMachineIsEmpty(); // Controlla se c'è bisogno di ricaricare la macchinetta.
-        return lastrow;
+        datas = data;
+        dispenser.checkIfMachineIsEmpty(); // Controlla se c'è bisogno di ricaricare la macchinetta
+        return lastRow;
     }
 
     /**
@@ -80,7 +81,7 @@ public class Distributore implements MaxValue, TextPathFiles {
     }
 
     /**
-     * Funzione per identificare il tipo della bevanda e aggiungerla al distributore nel caso non siano presenti dati
+     * Funzione per identificare il tipo della bevanda ed aggiungerla al distributore nel caso non siano presenti dati
      * riguardanti la sua quantià residua.
      * @param type tipo della bevanda.
      * @param listFromFile file aperto contenente il menù.
@@ -142,9 +143,9 @@ public class Distributore implements MaxValue, TextPathFiles {
         }
         boolean transaction;
 
-        if (chiavetta.isConnected()) {
-            transaction = chiavetta.pay(list.get(ID).getPrice());
-            // Scrittura statistiche su file:
+        if (key.isConnected()) {
+            transaction = key.pay(list.get(ID).getPrice());
+            // Scrittura statistiche su file
             stats.writeFile(list.get(ID).getName(),transaction);
             updateDati(ID);
 
@@ -157,7 +158,7 @@ public class Distributore implements MaxValue, TextPathFiles {
         }
 
         if (coins.getCredit() >= list.get(ID).getPrice() && list.get(ID).isAvailable()) {
-            // Se il credito è uguale o maggiore singifica che si puo' potenzialmente acquistare la bevanda
+            // Se il credito è uguale o maggiore significa che si puo' potenzialmente acquistare la bevanda
             transaction = true;
             dispenser.subtractIngredients(list.get(ID), selected_sugar);
             coins.updateBalance(list.get(ID).getPrice());
@@ -194,8 +195,8 @@ public class Distributore implements MaxValue, TextPathFiles {
      * @param inserted valore associato al tasto di riferimento.
      */
     public void addCredit(double inserted) {
-        if (chiavetta.isConnected()) {
-            chiavetta.addBalance(inserted);
+        if (key.isConnected()) {
+            key.addBalance(inserted);
             coins.charcheKey(inserted);
         }
         else {
@@ -228,7 +229,7 @@ public class Distributore implements MaxValue, TextPathFiles {
      * Nota: Da utilizzare nell'interfaccia.
      */
     public void moreSugar() {
-        if (selected_sugar < 5) {
+        if (selected_sugar < MAX_SUGAR_LEVEL) {
             selected_sugar++;
         }
     }
@@ -258,12 +259,12 @@ public class Distributore implements MaxValue, TextPathFiles {
 
         try {
             for (int i = 0; i < valDati.length; i++) {
-                current = dati.get(i)[0] + "\t" + dati.get(i)[1];
+                current = datas.get(i)[0] + "\t" + datas.get(i)[1];
 
-                if (dati.get(i)[0].equals("Cups") || dati.get(i)[0].equals("Spoons")) {
-                    newLine = dati.get(i)[0] + "\t" + valDati[i];
+                if (datas.get(i)[0].equals("Cups") || datas.get(i)[0].equals("Spoons")) {
+                    newLine = datas.get(i)[0] + "\t" + valDati[i];
                 }
-                else {newLine = dati.get(i)[0] + "\t" + Double.parseDouble(valDati[i]);}
+                else {newLine = datas.get(i)[0] + "\t" + Double.parseDouble(valDati[i]);}
                 ingredientsData.overwriteFile(newLine, current);
             }
 
@@ -278,8 +279,8 @@ public class Distributore implements MaxValue, TextPathFiles {
     }
 
     public double getCredit() {
-        if (chiavetta.isConnected()){
-            return chiavetta.getKeyBalance();
+        if (key.isConnected()) {
+            return key.getKeyBalance();
         }
         else {
             return coins.getCredit();
@@ -305,10 +306,10 @@ public class Distributore implements MaxValue, TextPathFiles {
         coins.giveChange();
     }
 
-    public void setconnectionChiavetta() {
-        chiavetta.setConnected();
+    public void setConnectionKey() {
+        key.setConnected();
         if (coins.getCredit() !=0 ) {
-            chiavetta.addBalance(coins.getCredit());
+            key.addBalance(coins.getCredit());
             coins.updateBalance(coins.getCredit());
         }
     }

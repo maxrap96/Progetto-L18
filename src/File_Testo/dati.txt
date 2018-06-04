@@ -1,13 +1,13 @@
 * qta rimasta, latte, acqua, bicchierini, cucchiaini, zucchero.
 *
 * Latte (litri)
-Milk	97.3399999999997
+Milk	97.17999999999971
 * Zucchero (hg)
-Sugar	939.0
+Sugar	936.75
 * Cucchiaini
-Spoons	925
+Spoons	922
 * Bicchierini
-Cups	402
+Cups	399
 * Vodka
 Vodka	86.0
 *id quantityleft
@@ -15,11 +15,11 @@ Vodka	86.0
 02	18.7
 03	54.0
 04	14.0
-05	42.5
-06	57.84
+05	42.0
+06	57.36
 07	55.0
 08	59.52
-09	23.8
+09	23.5
 010	6.7
 011	7.2
 *

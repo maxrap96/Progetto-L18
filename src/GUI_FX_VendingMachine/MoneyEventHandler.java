@@ -1,15 +1,15 @@
 package GUI_FX_VendingMachine;
 
-import HotDrinkVendingMachine.Distributore;
+import HotDrinkVendingMachine.HotDrinkVendMachine;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 
 public class MoneyEventHandler implements EventHandler {
     private final double VALUE;
     private Display display;
-    private Distributore vendMachine;
+    private HotDrinkVendMachine vendMachine;
 
-    public MoneyEventHandler(double value, Display display, Distributore vendMachine) {
+    public MoneyEventHandler(double value, Display display, HotDrinkVendMachine vendMachine) {
         VALUE = value;
         this.display = display;
         this.vendMachine = vendMachine;

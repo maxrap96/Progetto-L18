@@ -1,6 +1,6 @@
 package GUI_FX_VendingMachine;
 
-import HotDrinkVendingMachine.Distributore;
+import HotDrinkVendingMachine.HotDrinkVendMachine;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -8,11 +8,11 @@ import java.util.TimerTask;
 public class ResetDisplay {
     private final String DEFAULT_MESSAGE = "Scegliere una bevanda";
     private Display display;
-    private Distributore vendMachine;
+    private HotDrinkVendMachine vendMachine;
     private Timer timer = new Timer();
     private TimerTask timerTask;
 
-    public ResetDisplay(Display display, Distributore vendMachine) {
+    public ResetDisplay(Display display, HotDrinkVendMachine vendMachine) {
         this.display = display;
         this.vendMachine = vendMachine;
     }

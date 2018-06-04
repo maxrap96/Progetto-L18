@@ -1,6 +1,6 @@
 package GUI_FX_VendingMachine;
 
-import HotDrinkVendingMachine.Distributore;
+import HotDrinkVendingMachine.HotDrinkVendMachine;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -15,14 +15,14 @@ import java.awt.Toolkit;
 
 public class BeverageGrid extends GridPane {
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    private Distributore vendMachine;
+    private HotDrinkVendMachine vendMachine;
     private Display display;
     private ResetDisplay resetDisplay;
     private final int BUTTON_PADDING = 50;
     private final int BUTTONS_PER_LINE = 3;
     private final int NUM_LINES = 4;
 
-    public BeverageGrid(Distributore vendMachine, Display display, ResetDisplay resetDisplay) {
+    public BeverageGrid(HotDrinkVendMachine vendMachine, Display display, ResetDisplay resetDisplay) {
         this.vendMachine = vendMachine;
         this.display = display;
         this.resetDisplay = resetDisplay;
