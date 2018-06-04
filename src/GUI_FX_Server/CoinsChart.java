@@ -50,21 +50,22 @@ public class CoinsChart extends BarChart {
 
         HBox buttonBox = new HBox();
         Button refill = new Button("Refill\ncoins");
-        Button refreshBtn = new Button();
+//        Button refreshBtn = new Button();
         refill.setMaxWidth(80);
+        refill.setMinHeight(50);
         refill.prefHeightProperty().bind(buttonBox.heightProperty());
         refill.prefWidthProperty().bind(buttonBox.widthProperty());
 
-        Image img = new Image("ServerImages/RefreshBtn.jpg");
-        Circle circle = new Circle(23);
-        ImagePattern pattern = new ImagePattern(img);
-        circle.setFill(pattern);
-
-        refreshBtn.setGraphic(circle);
+//        Image img = new Image("ServerImages/RefreshBtn.jpg");
+//        Circle circle = new Circle(23);
+//        ImagePattern pattern = new ImagePattern(img);
+//        circle.setFill(pattern);
+//
+//        refreshBtn.setGraphic(circle);
 
         buttonBox.setAlignment(Pos.CENTER);
         buttonBox.setSpacing(25);
-        buttonBox.getChildren().addAll(refill, refreshBtn);
+        buttonBox.getChildren().add(refill);
 
         b.setCenter(bc);
         b.setBottom(buttonBox);
@@ -119,7 +120,7 @@ public class CoinsChart extends BarChart {
 
         if (money[i] > 22) {
             node.setStyle("-fx-bar-fill: springgreen");
-        } else if (money[i] > 15) {
+        } else if (money[i] > 14) {
             node.setStyle("-fx-bar-fill: gold");
         } else {
             node.setStyle("-fx-bar-fill: tomato");

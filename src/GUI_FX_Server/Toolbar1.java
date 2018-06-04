@@ -5,6 +5,8 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -13,6 +15,7 @@ import static ServerSide.StringCommandList.*;
 
 public class Toolbar1 extends ToolBar {
     private Button home = new Button();
+    Button refreshBtn = new Button();
     private Button save = new Button("Save");
     private MenuItem acqB = new MenuItem("Acquisto Bevande");
     private MenuItem utilizzo = new MenuItem("Utilizzo");
@@ -33,6 +36,7 @@ public class Toolbar1 extends ToolBar {
         ImageView immHome = new ImageView(loadImage("src/ServerImages/home.png"));
         ImageView immStats = new ImageView(loadImage("src/ServerImages/stats.jpg"));
         ImageView immMenu = new ImageView(loadImage("src/ServerImages/menu.png"));
+        ImageView immRefresh = new ImageView(loadImage("src/ServerImages/RefreshBtn.jpg"));
 
         immStats.setFitHeight(20);
         immStats.setFitWidth(20);
@@ -40,15 +44,18 @@ public class Toolbar1 extends ToolBar {
         immMenu.setFitHeight(20);
         immHome.setFitHeight(20);
         immHome.setFitWidth(20);
+        immRefresh.setFitHeight(20);
+        immRefresh.setFitWidth(20);
 
         menuTool.setGraphic(immMenu);
         stats.setGraphic(immStats);
         home.setGraphic(immHome);
+        refreshBtn.setGraphic(immRefresh);
 
         vendMachines.setPrefHeight(28);
         save.setPrefHeight(28);
 
-        getItems().addAll(home, vendMachines, stats, menuTool, save);
+        getItems().addAll(home, vendMachines, stats, menuTool, refreshBtn, save);
     }
 
     /**

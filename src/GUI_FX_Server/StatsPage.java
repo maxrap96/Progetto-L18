@@ -1,5 +1,6 @@
 package GUI_FX_Server;
 
+import ServerSide.ServerConnection;
 import javafx.application.Platform;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -21,13 +22,16 @@ public class StatsPage extends GridPane {
     private ObservableList<String> obsvData;
     private ObservableList<String> obsvCoins;
     private ObservableList<String> obsvMenu;
+    private ServerConnection serverConnection;
 
     public StatsPage(Stage stage, ObservableList<String> obsvStats, ObservableList<String> obsvData,
-                     ObservableList<String> obsvCoins, ObservableList<String> obsvMenu) {
+                     ObservableList<String> obsvCoins, ObservableList<String> obsvMenu, ServerConnection server) {
         this.obsvStats = obsvStats;
         this.obsvCoins = obsvCoins;
         this.obsvData = obsvData;
         this.obsvMenu = obsvMenu;
+        this.serverConnection = server;
+
 
         BorderPane borderPane = new BorderPane();
         borderPane.setStyle("-fx-background-color: khaki");

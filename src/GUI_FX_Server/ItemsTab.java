@@ -19,6 +19,9 @@ public class ItemsTab {
     private final int SPOONMAX = 1000;
     private final double VODKAMAX = 1000;
 
+    ArrayList<String> items = new ArrayList<>();
+    ArrayList<Double> quantity = new ArrayList<>();
+
     private Label label0 = new Label();
     private Label label1 = new Label();
     private Label label2 = new Label();
@@ -37,9 +40,6 @@ public class ItemsTab {
 
         VBox vBox = new VBox();
         GridPane gridPane = new GridPane();
-
-        ArrayList<String> items = new ArrayList<>();
-        ArrayList<Double> quantity = new ArrayList<>();
 
         // Acquisizione nomi e quantità rimanenti delle bevande
         int numRows = 0;
@@ -86,17 +86,6 @@ public class ItemsTab {
         ProgressIndicator p4 = new ProgressIndicator();
         p4.setProgress(progressBar4.getProgress());
 
-        Button refill0 = new Button();
-        refill0.setText("Ricarica");
-        Button refill1 = new Button();
-        refill1.setText("Ricarica");
-        Button refill2 = new Button();
-        refill2.setText("Ricarica");
-        Button refill3 = new Button();
-        refill3.setText("Ricarica");
-        Button refill4 = new Button();
-        refill4.setText("Ricarica");
-
         gridPane.add(label0, 0, 0);
         gridPane.add(label1, 0, 1);
         gridPane.add(label2, 0, 2);
@@ -115,11 +104,23 @@ public class ItemsTab {
         gridPane.add(p3, 2, 3);
         gridPane.add(p4, 2, 4);
 
-        gridPane.add(refill0, 3, 0);
-        gridPane.add(refill1, 3, 1);
-        gridPane.add(refill2, 3, 2);
-        gridPane.add(refill3, 3, 3);
-        gridPane.add(refill4, 3, 4);
+        Button RefillAll = new Button("Ricarica\nmacchinetta");
+
+        RefillAll.setOnAction(event -> {
+            progressBar0.setProgress(MILKMAX);
+            progressBar1.setProgress(SUGARMAX);
+            progressBar2.setProgress(SPOONMAX);
+            progressBar3.setProgress(CUPMAX);
+            progressBar4.setProgress(VODKAMAX);
+
+            p0.setProgress(MILKMAX);
+            p1.setProgress(SUGARMAX);
+            p2.setProgress(SPOONMAX);
+            p3.setProgress(CUPMAX);
+            p4.setProgress(VODKAMAX);
+        });
+
+        gridPane.add(RefillAll, 3, 2);
 
         gridPane.prefHeightProperty().bind(vBox.heightProperty());
         gridPane.setHgap(25);
