@@ -1,9 +1,9 @@
-import HotDrinkVendingMachine.Distributore;
+import HotDrinkVendingMachine.HotDrinkVendMachine;
 import HotDrinkVendingMachine.TextualInterface;
 
 public class TestDistributore {
     public static void main(String[] args) {
-        Distributore macchinetta = new Distributore();
+        HotDrinkVendMachine macchinetta = new HotDrinkVendMachine();
         TextualInterface textualInterface = new TextualInterface(macchinetta);
         textualInterface.textualInput();
     }

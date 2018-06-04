@@ -1,17 +1,17 @@
 package GUI_FX_VendingMachine;
 
-import HotDrinkVendingMachine.Distributore;
+import HotDrinkVendingMachine.HotDrinkVendMachine;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 
 public class BeverageEventHandler implements EventHandler {
     private final String BEVERAGE_PRICE;
     private final String ID;
-    private Distributore vendMachine;
+    private HotDrinkVendMachine vendMachine;
     private Display display;
     private ResetDisplay resetDisplay;
 
-    public BeverageEventHandler(Distributore vendMachine, Display display, int index, ResetDisplay resetDisplay) {
+    public BeverageEventHandler(HotDrinkVendMachine vendMachine, Display display, int index, ResetDisplay resetDisplay) {
         this.vendMachine = vendMachine;
         this.display = display;
         this.resetDisplay = resetDisplay;

@@ -1,6 +1,6 @@
 package GUI_FX_VendingMachine;
 
-import HotDrinkVendingMachine.Distributore;
+import HotDrinkVendingMachine.HotDrinkVendMachine;
 import javafx.application.Platform;
 import javafx.scene.layout.BorderPane;
 
@@ -9,7 +9,7 @@ import java.io.File;
 import static HotDrinkVendingMachine.TextPathFiles.MENU_PATH;
 
 public class UpdateChecker extends Thread{
-    private Distributore vendMachine;
+    private HotDrinkVendMachine vendMachine;
     private BeverageGrid beverageGrid;
     private BorderPane root;
     private Display display;
@@ -17,7 +17,7 @@ public class UpdateChecker extends Thread{
     private File menuFile = new File(MENU_PATH);
     private long oldTimestamp = menuFile.lastModified();
 
-    public UpdateChecker(Distributore vendMachine, BeverageGrid beverageGrid, Display display,
+    public UpdateChecker(HotDrinkVendMachine vendMachine, BeverageGrid beverageGrid, Display display,
                          ResetDisplay resetDisplay, BorderPane root) {
         this.vendMachine = vendMachine;
         this.beverageGrid = beverageGrid;
@@ -41,7 +41,7 @@ public class UpdateChecker extends Thread{
         while(true) {
             if (isFileChanced()) {
                 System.out.println("Updating");
-                vendMachine = new Distributore();
+                vendMachine = new HotDrinkVendMachine();
                 beverageGrid = new BeverageGrid(vendMachine, display, resetDisplay);
                 Platform.runLater(() -> {root.setLeft(beverageGrid);});
             }

@@ -1,6 +1,6 @@
 package GUI_FX_VendingMachine;
 
-import HotDrinkVendingMachine.Distributore;
+import HotDrinkVendingMachine.HotDrinkVendMachine;
 import ClientSide.ClientVendMach;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -22,7 +22,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 public class VendingMachine extends Application {
-     private Distributore vendMachine = new Distributore();
+     private HotDrinkVendMachine vendMachine = new HotDrinkVendMachine();
      private ResetDisplay resetDisplay;
      private BeverageGrid beverageGrid;
      private Display display;
@@ -88,7 +88,7 @@ public class VendingMachine extends Application {
             key.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
-                    vendMachine.setconnectionChiavetta();
+                    vendMachine.setConnectionKey();
                     display.setCreditRow(String.valueOf(vendMachine.getCredit()));
                     key.setStyle(
                             "-fx-background-radius: 1em;" +
