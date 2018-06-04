@@ -11,25 +11,32 @@ import java.util.ArrayList;
 import static java.lang.Double.parseDouble;
 
 public class ReceiverRefill implements MaxValue, TextPathFiles, CoinsNumbers {
-    private ArrayList<String[]> menu = new Data(MENU_PATH).readFile();
-    private Data beverageFile = new Data(DATA_PATH);
-    private Data coinsFile = new Data(COINS_PATH);
+    private Data menuFile;
+    private Data beverageFile;
+    private Data coinsFile;
+    private ArrayList<String[]> menu;
     private final String[] ITEMS = {"Milk", "Sugar", "Spoons", "Cups", "Vodka"};
+    private final double[] MAX_VAL = {MILK_MAX, SUGAR_MAX, SPOON_MAX, CUP_MAX,VODKA_MAX};
 
-    /**
-     * funzione per refillare gli items e scrivere su file le quantità riempite
-     */
-    protected void refillItems() throws IOException {
-        ArrayList<String[]> oldData = beverageFile.readFile();
-        beverageFile.overwriteFile(String.valueOf(oldData.get(0)), (ITEMS[0] + MILK_MAX));
-        beverageFile.overwriteFile(String.valueOf(oldData.get(1)), (ITEMS[1] + SUGAR_MAX));
-        beverageFile.overwriteFile(String.valueOf(oldData.get(2)), (ITEMS[2] + SPOON_MAX));
-        beverageFile.overwriteFile(String.valueOf(oldData.get(3)), (ITEMS[3] + CUP_MAX));
-        beverageFile.overwriteFile(String.valueOf(oldData.get(4)), (ITEMS[4] + VODKA_MAX));
+    public ReceiverRefill() {
+        this.menuFile = new Data(MENU_PATH);
+        this.beverageFile = new Data(DATA_PATH);
+        this.coinsFile = new Data(COINS_PATH);
+        this.menu = menuFile.readFile();
     }
 
     /**
-     * funzione per riempire le bevande basandosi sulla quantià massima presente nel menu
+     *
+     */
+    protected void refillItems() throws IOException {
+        ArrayList<String> oldData = beverageFile.readFileNotSplitted();
+        for (int i = 0; i < ITEMS.length; i++) {
+            beverageFile.overwriteFile((ITEMS[i] + "\t" + MAX_VAL[i]), oldData.get(i));
+        }
+    }
+
+    /**
+     *
      */
 
     protected void refillBeverage()throws IOException{
@@ -48,7 +55,7 @@ public class ReceiverRefill implements MaxValue, TextPathFiles, CoinsNumbers {
     }
 
     /**
-     * funzione per refillare i coins
+     *
      */
     protected void refillCoins(){
         String moneyCount = String.valueOf(MONEY_COUNT[0] + "\t" + MONEY_COUNT[1] + "\t"  + MONEY_COUNT[2] + "\t"

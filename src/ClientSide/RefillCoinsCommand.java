@@ -10,5 +10,6 @@ public class RefillCoinsCommand implements Command {
     @Override
     public void execute() {
         receiverRefill.refillCoins();
+        System.out.println("Coins");
     }
 }

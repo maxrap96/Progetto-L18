@@ -118,14 +118,14 @@ public class Data {
 
         input = input.replace(currentLine, newLine);
 
-        FileOutputStream os = new FileOutputStream(PATH_FILE);
-        os.write(input.getBytes());
+        FileOutputStream outputStream = new FileOutputStream(PATH_FILE);
+        outputStream.write(input.getBytes());
 
         file.close();
-        os.close();
+        outputStream.close();
     }
 
-    public void saveFileFromCommand(ArrayList<String> arrayList) throws IOException {
+    public void saveFileFromCommand(ArrayList<String> arrayList) {
         try {
             FileWriter writer = new FileWriter(PATH_FILE, false);
             writer.write(arrayList.get(0) + "\n");
@@ -142,5 +142,23 @@ public class Data {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public ArrayList<String> readFileNotSplitted () {
+        ArrayList<String> arrayListNotSplitted = new ArrayList<>();
+        try {
+            BufferedReader bReader = new BufferedReader(new FileReader(PATH_FILE));
+            String tmp;
+            while ((tmp = bReader.readLine()) != null) {
+                if (!tmp.contains("*")) {
+                    arrayListNotSplitted.add(tmp);
+                }
+            }
+            bReader.close();
+            return arrayListNotSplitted;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return arrayListNotSplitted;
     }
 }
