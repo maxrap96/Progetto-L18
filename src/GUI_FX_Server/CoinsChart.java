@@ -1,5 +1,6 @@
 package GUI_FX_Server;
 
+import ServerSide.ServerConnection;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -10,9 +11,12 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 
+import static ServerSide.StringCommandList.REFILL_COINS;
+
 public class CoinsChart extends BarChart {
     private final static String[] COINS = {"0.05", "0.10", "0.20", "0.50", "1", "2"};
     private ObservableList<String> coins;
+    private ServerConnection serverConnection;
 
     public CoinsChart(Axis xAxis, Axis yAxis, ObservableList<String> coins) {
         super(xAxis, yAxis);
@@ -55,6 +59,9 @@ public class CoinsChart extends BarChart {
         refill.setMinHeight(50);
         refill.prefHeightProperty().bind(buttonBox.heightProperty());
         refill.prefWidthProperty().bind(buttonBox.widthProperty());
+        refill.setOnAction(event -> {
+            serverConnection.chooseCommandExecutedByThread(REFILL_COINS);
+        });
 
 //        Image img = new Image("ServerImages/RefreshBtn.jpg");
 //        Circle circle = new Circle(23);
@@ -125,5 +132,9 @@ public class CoinsChart extends BarChart {
         } else {
             node.setStyle("-fx-bar-fill: tomato");
         }
+    }
+
+    protected void setServerConnection(ServerConnection serverConnection) {
+        this.serverConnection = serverConnection;
     }
 }

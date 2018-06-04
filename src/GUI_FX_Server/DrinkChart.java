@@ -1,5 +1,6 @@
 package GUI_FX_Server;
 
+import ServerSide.ServerConnection;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -10,9 +11,12 @@ import javafx.scene.layout.HBox;
 
 import java.util.ArrayList;
 
+import static ServerSide.StringCommandList.REFILL_INGREDIENTS;
+
 public class DrinkChart extends BarChart {
     private ObservableList<String> data;
     private ObservableList<String> menu;
+    private ServerConnection serverConnection;
 
     public DrinkChart(Axis xAxis, Axis yAxis, ObservableList<String> data, ObservableList<String> menu) {
         super(xAxis, yAxis);
@@ -57,6 +61,9 @@ public class DrinkChart extends BarChart {
         HBox buttonBox = new HBox();
 
         Button refill = new Button("Refill drinks");
+        refill.setOnAction(event -> {
+            serverConnection.chooseCommandExecutedByThread(REFILL_INGREDIENTS);
+        });
 
         buttonBox.setAlignment(Pos.CENTER);
         buttonBox.getChildren().add(refill);
@@ -96,5 +103,9 @@ public class DrinkChart extends BarChart {
         } else {
             node.setStyle("-fx-bar-fill: crimson");
         }
+    }
+
+    protected void setServerConnection(ServerConnection serverConnection) {
+        this.serverConnection = serverConnection;
     }
 }

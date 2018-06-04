@@ -45,9 +45,13 @@ public class StatsPage extends GridPane {
         tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
 
         CoinsChart coinsChart = new CoinsChart(new CategoryAxis(), new NumberAxis(), obsvCoins);
+        coinsChart.setServerConnection(serverConnection);
+
         DrinkPieChart pie = new DrinkPieChart(obsvStats);
         UsageChart usage = new UsageChart(new NumberAxis(), new NumberAxis(), obsvStats);
         DrinkChart drinks = new DrinkChart(new CategoryAxis(), new NumberAxis(), obsvData, obsvMenu);
+        drinks.setServerConnection(serverConnection);
+
         ItemsTab itemsStats = new ItemsTab(obsvData);
         itemsStats.setServerConnection(serverConnection);
 
