@@ -26,7 +26,7 @@ public class ReceiverRefill implements MaxValue, TextPathFiles, CoinsNumbers {
     }
 
     /**
-     *
+     * Funzione che "ricarica" le quantità massima di dati.txt
      */
     protected void refillItems() throws IOException {
         ArrayList<String> oldData = beverageFile.readFileNotSplitted();
@@ -38,7 +38,6 @@ public class ReceiverRefill implements MaxValue, TextPathFiles, CoinsNumbers {
     /**
      *
      */
-
     protected void refillBeverage()throws IOException{
         ArrayList<String[]> oldData = beverageFile.readFile();
         for (int i = 0; i < oldData.size(); i++ ){
@@ -55,13 +54,20 @@ public class ReceiverRefill implements MaxValue, TextPathFiles, CoinsNumbers {
     }
 
     /**
-     *
+     * Funzione per ricaricare le monete
      */
     protected void refillCoins(){
-        String moneyCount = String.valueOf(MONEY_COUNT[0] + "\t" + MONEY_COUNT[1] + "\t"  + MONEY_COUNT[2] + "\t"
-                + MONEY_COUNT[3] + "\t" + MONEY_COUNT[4] + "\tServer refill");
-        coinsFile.writeData(moneyCount);
+        coinsFile.writeFile(stringCoinsValue() + "Server refill");
     }
 
-
+    /**
+     * Funzione che restituisce la stringa dei valori di ricarica dei Coins.
+     */
+    private String stringCoinsValue(){
+        String tmp = "";
+        for (Integer integer : MONEY_COUNT){
+            tmp += integer + "\t";
+        }
+        return tmp;
+    }
 }

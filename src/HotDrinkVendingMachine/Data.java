@@ -54,7 +54,7 @@ public class Data {
      * Funzione per la scrittura su file dei dati di interesse.
      * @param writing stringa da accodare al file contenente le informazioni necessarie.
      */
-    protected void writeFile(String writing) {
+    public void writeFile(String writing) {
         try {
             FileWriter writer = new FileWriter(PATH_FILE, true);
             writer.write("\n" + writing + "\t" + getCurrentTimeStamp());
@@ -69,7 +69,7 @@ public class Data {
      * @param writing stringa da accodare al file contenente le informazioni necessarie.
      * @param transaction parametro che dice se la transazione avviene o fallisce.
      */
-    protected void writeFile(String writing, boolean transaction) {
+    public void writeFile(String writing, boolean transaction) {
         try {
             FileWriter writer = new FileWriter(PATH_FILE, true);
 
@@ -125,6 +125,10 @@ public class Data {
         outputStream.close();
     }
 
+    /**
+     *
+     * @param arrayList
+     */
     public void saveFileFromCommand(ArrayList<String> arrayList) {
         try {
             FileWriter writer = new FileWriter(PATH_FILE, false);
@@ -144,6 +148,9 @@ public class Data {
         }
     }
 
+    /**
+     * Funzione che restituisce un arrayList del file senza le righe con gli asterischi.
+     */
     public ArrayList<String> readFileNotSplitted () {
         ArrayList<String> arrayListNotSplitted = new ArrayList<>();
         try {
