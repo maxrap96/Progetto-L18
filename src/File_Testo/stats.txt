@@ -1,8 +1,4 @@
-﻿Tè ai mirtilli	Transazione avvenuta il:	16-04-2018 00:33:26
-Tè ai mirtilli	Transazione avvenuta il:	16-04-2018 00:33:36
-Tè ai mirtilli	Transazione avvenuta il:	16-04-2018 00:34:26
-Caffè Espresso	Transazione avvenuta il:	16-04-2018 00:37:26
-Cioccolata	Transazione avvenuta il:	17-04-2018 18:33:35
+﻿Cioccolata	Transazione avvenuta il:	17-04-2018 18:33:35
 Cioccolata	Transazione avvenuta il:	18-04-2018 15:11:22
 Cioccolata	Transazione avvenuta il:	18-04-2018 15:14:06
 Cioccolata	Transazione avvenuta il:	18-04-2018 15:18:14
@@ -14,21 +10,21 @@ Cioccolata	Transazione avvenuta il:	18-04-2018 15:28:13
 Caffè Espresso	Transazione avvenuta il:	18-04-2018 15:31:28
 Cioccolata	Transazione avvenuta il:	18-04-2018 15:38:09
 Caffè Espresso	Transazione avvenuta il:	18-04-2018 15:38:42
-Caffè corretto	Transazione avvenuta il:	18-04-2018 16:10:47
+Caffè Corretto	Transazione avvenuta il:	18-04-2018 16:10:47
 Cappuccino	Transazione avvenuta il:	18-04-2018 16:11:57
-Caffè corretto	Transazione avvenuta il:	18-04-2018 17:27:54
-Caffè corretto	Transazione avvenuta il:	18-04-2018 17:29:53
+Caffè Corretto	Transazione avvenuta il:	18-04-2018 17:27:54
+Caffè Corretto	Transazione avvenuta il:	18-04-2018 17:29:53
 Tè al Limone	Transazione avvenuta il:	18-04-2018 17:37:18
 Tè al Limone	Transazione avvenuta il:	18-04-2018 17:38:38
 Tè al Limone	Transazione avvenuta il:	18-04-2018 17:39:11
-Caffè corretto	Transazione avvenuta il:	18-04-2018 22:15:26
+Caffè Corretto	Transazione avvenuta il:	18-04-2018 22:15:26
 Cioccolata	Transazione avvenuta il:	19-04-2018 11:25:43
 Cioccolata	Transazione avvenuta il:	19-04-2018 11:28:40
-Caffè top	Transazione avvenuta il:	19-04-2018 11:30:29
+Caffè Miscela Top	Transazione avvenuta il:	19-04-2018 11:30:29
 Cioccolata	Transazione avvenuta il:	19-04-2018 11:42:28
-Caffè corretto	Transazione avvenuta il:	19-04-2018 15:48:03
+Caffè Corretto	Transazione avvenuta il:	19-04-2018 15:48:03
 Cioccolata	Transazione avvenuta il:	19-04-2018 17:16:38
-Caffè top	Transazione avvenuta il:	19-04-2018 17:36:31
+Caffè Miscela Top	Transazione avvenuta il:	19-04-2018 17:36:31
 Caffè Espresso	Transazione avvenuta il:	19-04-2018 18:39:57
 Cioccolata	Transazione avvenuta il:	20-04-2018 11:48:46
 Cioccolata	Transazione avvenuta il:	20-04-2018 11:49:18
@@ -140,4 +136,3 @@ Caffè Espresso	Transazione avvenuta il:	30-05-2018 11:09:11
 Cappuccino	Transazione avvenuta il:	30-05-2018 11:10:50
 Tè al Limone	Transazione avvenuta il:	30-05-2018 21:52:48
 Latte Caldo	Transazione avvenuta il:	01-06-2018 10:18:30
-Tè al Limone	Transazione avvenuta il:	02-06-2018 19:34:03
