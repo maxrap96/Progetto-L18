@@ -5,7 +5,6 @@ import javafx.collections.ObservableList;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.HashMap;
 
@@ -37,62 +36,9 @@ public class DealWithTheClientThread extends Thread implements StringCommandList
             // Inizializzazione della mappa dei comandi, dopo aver inizializzato tutto ciò che serve
             this.initServerHashMap();
 
-            while (inFromClient.readLine() != null) {
-                commandFromKeyboard();
-                sendString(READY, clientSocket);
-            }
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Error caught: " + e);
-        }
-    }
-
-    /**
-     * Funzione che invia una stringa.
-     * @param sendThisString stringa da inviare.
-     * @param client socket a cui inviare.
-     * @throws IOException
-     */
-    private void sendString(String sendThisString, Socket client) throws IOException {
-        // Creazione dell'oggetto per scrivere al client
-        PrintWriter outToClient = new PrintWriter(client.getOutputStream(), true);
-        outToClient.println(sendThisString);
-    }
-
-    /**
-     * Funzione che dovrebbe capire se il client è pronto a ricevere.
-     * @throws IOException
-     */
-    private void commandFromKeyboard() throws IOException {
-        System.out.println("Inserire valore da tastiera.\n0 SEND_DATA\n1 SEND_MENU\n2 SEND_COINS\n3 SEND_STATS\n" +
-                "4 OVERWRITE_MENU");
-        chooseCommand(Integer.parseInt(new BufferedReader(new InputStreamReader(System.in)).readLine()));
-    }
-
-    /**
-     * Funzione che permette di scegliere il comando, sotto forma di stringa, da inviare al client.
-     * @param index indice per scegliere il comando idoneo.
-     */
-    private void chooseCommand(int index) {
-        switch (index) {
-            case 0:
-                commandServerHashMap.get(SEND_DATA).execute();
-                break;
-            case 1:
-                commandServerHashMap.get(SEND_MENU).execute();
-                break;
-            case 2:
-                commandServerHashMap.get(SEND_COINS).execute();
-                break;
-            case 3:
-                commandServerHashMap.get(SEND_STATS).execute();
-                break;
-            case 4:
-                commandServerHashMap.get(OVERWRITE_MENU).execute();
-                break;
-            default:
-                System.out.println("Wrong command");
-                break;
         }
     }
 

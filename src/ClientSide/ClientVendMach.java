@@ -40,12 +40,7 @@ public class ClientVendMach extends Thread implements StringCommandList, TextPat
             this.addCommands();
 
             String tmp;
-            channelOutToServer.println(READY);
             while ((tmp = inFromServer.readLine()) != null) {
-                // Controllo che il server sia pronto
-                if (tmp.equals(READY)) {
-                    channelOutToServer.println(tmp);
-                }
                 if (isAValidCommand(tmp)) {
                     commandReceived(tmp);
                 }

@@ -1,5 +1,6 @@
 package GUI_FX_Server;
 
+import ServerSide.ClassOfObservableLists;
 import ServerSide.ServerConnection;
 import ServerSide.StringCommandList;
 import javafx.application.Application;
@@ -21,23 +22,24 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 public class HomePage extends Application implements StringCommandList {
-    private static ObservableList<String> observStats = FXCollections.observableArrayList();
-    private static ObservableList<String> observMenu = FXCollections.observableArrayList();
-    private static ObservableList<String> observCoins = FXCollections.observableArrayList();
-    private static ObservableList<String> observData = FXCollections.observableArrayList();
+    private ObservableList<String> observStats = FXCollections.observableArrayList();
+    private ObservableList<String> observMenu = FXCollections.observableArrayList();
+    private ObservableList<String> observCoins = FXCollections.observableArrayList();
+    private ObservableList<String> observData = FXCollections.observableArrayList();
+    private ClassOfObservableLists classOfObservableLists = new ClassOfObservableLists();
     private ServerConnection server;
 
     @Override
     public void start(Stage primaryStage) {
         // Avvio della connessione server
-        this.server = new ServerConnection(80, observStats, observMenu, observCoins, observData);
+        this.server = new ServerConnection(80, observStats, classOfObservableLists.getObservMenu(), observCoins, observData);
         server.start();
         server.setSelectedClient(0);
 
         // Definizione dello stage principale e della barra del menu
         primaryStage.setTitle("Home");
         Toolbar1 toolbar1 = new Toolbar1(server);
-        MenuTable menuTable = new MenuTable(primaryStage, observMenu, server);
+        MenuTable menuTable = new MenuTable(primaryStage, classOfObservableLists.getObservMenu(), server);
         StatsPage statsPage = new StatsPage(primaryStage, observStats, observData, observCoins, observMenu, server);
 
         // Creazione scritta correlata da un logo
@@ -147,9 +149,5 @@ public class HomePage extends Application implements StringCommandList {
             Platform.exit();
             System.exit(0);
         });
-    }
-
-    public static void main(String[] args) {
-        Application.launch(args);
     }
 }
