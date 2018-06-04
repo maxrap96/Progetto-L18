@@ -1,5 +1,6 @@
 package ClientSide;
 
+import HotDrinkVendingMachine.CoinsNumbers;
 import HotDrinkVendingMachine.Data;
 import HotDrinkVendingMachine.MaxValue;
 import HotDrinkVendingMachine.TextPathFiles;
@@ -9,10 +10,11 @@ import java.util.ArrayList;
 
 import static java.lang.Double.parseDouble;
 
-public class ReceiverRefill implements MaxValue, TextPathFiles {
+public class ReceiverRefill implements MaxValue, TextPathFiles, CoinsNumbers {
     private ArrayList<String[]> menu = new Data(MENU_PATH).readFile();
     private Data beverageFile = new Data(DATA_PATH);
     private final String[] ITEMS = {"Milk", "Sugar", "Spoons", "Cups", "Vodka"};
+    private Data coinsFile = new Data(COINS_PATH);
 
 
     /**
@@ -52,7 +54,17 @@ public class ReceiverRefill implements MaxValue, TextPathFiles {
                 }
 
             }
-
         }
     }
+
+    /**
+     * funzione per refillare i coins
+     */
+    public void RefillCoins(){
+        String moneyCount = String.valueOf(MONEY_COUNT[0] + "\t" + MONEY_COUNT[1] + "\t"  + MONEY_COUNT[2] + "\t"
+                +MONEY_COUNT[3] + "\t" + MONEY_COUNT[4]);
+        coinsFile.writeData(moneyCount);
+    }
+
+
 }

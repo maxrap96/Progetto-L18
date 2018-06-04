@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import static java.lang.Integer.parseInt;
 
-public class Coins {
+public class Coins implements CoinsNumbers{
     private int[] money;
     private int credit = 0;
     private final double[] COINS_VALUE = {5, 10, 20, 50 , 100, 200};
@@ -197,11 +197,11 @@ public class Coins {
     }
 
     public void resetStoredMoney(){
-        this.money[0] = 20;
-        this.money[1] = 30;
-        this.money[2] = 20;
-        this.money[3] = 10;
-        this.money[4] = 5;
-        this.money[5] = 5;
+        this.money[0] = MONEY_COUNT[0];
+        this.money[1] = MONEY_COUNT[1];
+        this.money[2] = MONEY_COUNT[2];
+        this.money[3] = MONEY_COUNT[3];
+        this.money[4] = MONEY_COUNT[4];
+        this.money[5] = MONEY_COUNT[5];
     }
 }

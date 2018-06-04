@@ -69,7 +69,7 @@ public class Data {
      * @param writing stringa da accodare al file contenente le informazioni necessarie.
      * @param transaction parametro che dice se la transazione avviene o fallisce.
      */
-    protected void writeFile(String writing, boolean transaction) {
+    private void writeFile(String writing, boolean transaction) {
         try {
             FileWriter writer = new FileWriter(PATH_FILE, true);
 
@@ -82,7 +82,7 @@ public class Data {
         }
     }
 
-    protected void writeData(String writing) {
+    public void writeData(String writing) {
         try {
             FileWriter writer = new FileWriter(PATH_FILE, true);
             writer.write(writing);
