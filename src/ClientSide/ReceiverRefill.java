@@ -13,35 +13,29 @@ import static java.lang.Double.parseDouble;
 public class ReceiverRefill implements MaxValue, TextPathFiles, CoinsNumbers {
     private ArrayList<String[]> menu = new Data(MENU_PATH).readFile();
     private Data beverageFile = new Data(DATA_PATH);
-    private final String[] ITEMS = {"Milk", "Sugar", "Spoons", "Cups", "Vodka"};
     private Data coinsFile = new Data(COINS_PATH);
-
+    private final String[] ITEMS = {"Milk", "Sugar", "Spoons", "Cups", "Vodka"};
 
     /**
      * funzione per refillare gli items e scrivere su file le quantità riempite
      */
-    protected void RefillItems(){
+    protected void refillItems() throws IOException {
         ArrayList<String[]> oldData = beverageFile.readFile();
-        try {
-                beverageFile.overwriteFile(String.valueOf(oldData.get(0)), (ITEMS[0] + MILK_MAX));
-                beverageFile.overwriteFile(String.valueOf(oldData.get(1)), (ITEMS[1] + SUGAR_MAX));
-                beverageFile.overwriteFile(String.valueOf(oldData.get(2)), (ITEMS[2] + SPOON_MAX));
-                beverageFile.overwriteFile(String.valueOf(oldData.get(3)), (ITEMS[3] + CUP_MAX));
-                beverageFile.overwriteFile(String.valueOf(oldData.get(4)), (ITEMS[4] + VODKA_MAX));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        beverageFile.overwriteFile(String.valueOf(oldData.get(0)), (ITEMS[0] + MILK_MAX));
+        beverageFile.overwriteFile(String.valueOf(oldData.get(1)), (ITEMS[1] + SUGAR_MAX));
+        beverageFile.overwriteFile(String.valueOf(oldData.get(2)), (ITEMS[2] + SPOON_MAX));
+        beverageFile.overwriteFile(String.valueOf(oldData.get(3)), (ITEMS[3] + CUP_MAX));
+        beverageFile.overwriteFile(String.valueOf(oldData.get(4)), (ITEMS[4] + VODKA_MAX));
     }
 
     /**
      * funzione per riempire le bevande basandosi sulla quantià massima presente nel menu
      */
 
-    protected void RefillBeverage(){
+    protected void refillBeverage()throws IOException{
         ArrayList<String[]> oldData = beverageFile.readFile();
-        try {
         for (int i = 0; i < oldData.size(); i++ ){
-            if (oldData.get(i)[0].startsWith("0")){ //significa che è+ una entrata del menu
+            if (oldData.get(i)[0].startsWith("0")){ //significa che è una entrata nel menu
                 String currentId = oldData.get(i)[0];
                 for (int j = 0; i < menu.size(); i++){
                     if (menu.get(j)[0].equals(currentId)){
@@ -49,20 +43,16 @@ public class ReceiverRefill implements MaxValue, TextPathFiles, CoinsNumbers {
                         beverageFile.overwriteFile(String.valueOf(oldData.get(i)), (currentId + currentMaxQuantity));
                     }
                 }
-
             }
-        }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
     /**
      * funzione per refillare i coins
      */
-    protected void RefillCoins(){
+    protected void refillCoins(){
         String moneyCount = String.valueOf(MONEY_COUNT[0] + "\t" + MONEY_COUNT[1] + "\t"  + MONEY_COUNT[2] + "\t"
-                +MONEY_COUNT[3] + "\t" + MONEY_COUNT[4] + "\tServer refill");
+                + MONEY_COUNT[3] + "\t" + MONEY_COUNT[4] + "\tServer refill");
         coinsFile.writeData(moneyCount);
     }
 

@@ -1,5 +1,6 @@
 package GUI_FX_Server;
 
+import ServerSide.ServerConnection;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -11,8 +12,11 @@ import javafx.scene.text.FontWeight;
 
 import java.util.ArrayList;
 
+import static ServerSide.StringCommandList.REFILL_ITEMS;
+
 public class ItemsTab {
     private ObservableList<String> obsvData;
+    private ServerConnection serverConnection;
     private final double SUGARMAX = 1000.0;
     private final double MILKMAX = 1000.0;
     private final int CUPMAX = 500;
@@ -118,6 +122,8 @@ public class ItemsTab {
             p2.setProgress(SPOONMAX);
             p3.setProgress(CUPMAX);
             p4.setProgress(VODKAMAX);
+
+            this.serverConnection.chooseCommandExecutedByThread(REFILL_ITEMS);
         });
 
         gridPane.add(RefillAll, 3, 2);
@@ -137,5 +143,9 @@ public class ItemsTab {
         mainPanel.setCenter(vBox);
 
         return mainPanel;
+    }
+
+    public void setServerConnection(ServerConnection serverConnection) {
+        this.serverConnection = serverConnection;
     }
 }

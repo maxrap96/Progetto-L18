@@ -127,5 +127,11 @@ public class DealWithTheClientThread extends Thread implements StringCommandList
                 inFromClient, SEND_STATS));
         this.commandServerHashMap.put(OVERWRITE_MENU, new OverwriteCommandServer(receiverServer, clientSocket, obsvMenu,
                 OVERWRITE_MENU));
+        this.commandServerHashMap.put(REFILL_COINS, new RefillCommandServer(receiverServer, clientSocket,
+                REFILL_COINS));
+        this.commandServerHashMap.put(REFILL_INGREDIENTS, new RefillCommandServer(receiverServer, clientSocket,
+                REFILL_INGREDIENTS));
+        this.commandServerHashMap.put(REFILL_ITEMS, new RefillCommandServer(receiverServer, clientSocket,
+                REFILL_ITEMS));
     }
 }

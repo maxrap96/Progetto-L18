@@ -49,6 +49,7 @@ public class StatsPage extends GridPane {
         UsageChart usage = new UsageChart(new NumberAxis(), new NumberAxis(), obsvStats);
         DrinkChart drinks = new DrinkChart(new CategoryAxis(), new NumberAxis(), obsvData, obsvMenu);
         ItemsTab itemsStats = new ItemsTab(obsvData);
+        itemsStats.setServerConnection(serverConnection);
 
         tab1.setContent(coinsChart.setBars());
         tab2.setContent(pie.setChart());

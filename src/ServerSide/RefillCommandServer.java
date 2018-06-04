@@ -10,7 +10,7 @@ public class RefillCommandServer implements CommandServer {
     private ReceiverServer receiverServer;
     private String stringCommand;
 
-    public RefillCommandServer(Socket clientSocket, ReceiverServer receiverServer, String stringCommand) {
+    public RefillCommandServer(ReceiverServer receiverServer, Socket clientSocket, String stringCommand) {
         this.clientSocket = clientSocket;
         this.receiverServer = receiverServer;
         this.stringCommand = stringCommand;
