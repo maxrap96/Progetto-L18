@@ -62,7 +62,7 @@ public class ReceiverRefill implements MaxValue, TextPathFiles, CoinsNumbers {
      */
     public void RefillCoins(){
         String moneyCount = String.valueOf(MONEY_COUNT[0] + "\t" + MONEY_COUNT[1] + "\t"  + MONEY_COUNT[2] + "\t"
-                +MONEY_COUNT[3] + "\t" + MONEY_COUNT[4]);
+                +MONEY_COUNT[3] + "\t" + MONEY_COUNT[4] + "\tServer refill");
         coinsFile.writeData(moneyCount);
     }
 
