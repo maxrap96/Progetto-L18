@@ -10,4 +10,5 @@ public interface MaxValue {
     double MILK_MAX = 1000.0;
     int CUP_MAX = 500;
     int SPOON_MAX = 1000;
+    double VODKA_MAX = 10.0;
 }

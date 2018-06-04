@@ -108,7 +108,7 @@ public class Data {
      * @param currentLine riga da aggiornare.
      * @param newLine nuova riga che sovrascriverà la riga selezionata.
      */
-    protected void overwriteFile(String newLine, String currentLine) throws IOException {
+    public void overwriteFile(String newLine, String currentLine) throws IOException {
         BufferedReader file = new BufferedReader(new FileReader(PATH_FILE));
         String line;
         String input = "";
