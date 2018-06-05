@@ -109,6 +109,29 @@ public class Data {
      * @param newLine nuova riga che sovrascriverà la riga selezionata.
      */
     public void overwriteFile(String newLine, String currentLine) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(PATH_FILE));
+        String line;
+        String input = "";
+
+        while ((line = bufferedReader.readLine()) != null) {
+            input += line + System.lineSeparator();
+        }
+
+        input = input.replace(currentLine, newLine);
+
+        FileOutputStream outputStream = new FileOutputStream(PATH_FILE);
+        outputStream.write(input.getBytes());
+
+        bufferedReader.close();
+        outputStream.close();
+    }
+
+    /**
+     * Funzione per la sovrascrittura di una specifica riga di testo.
+     * @param currentLine riga da aggiornare.
+     * @param newLine nuova riga che sovrascriverà la riga selezionata.
+     */
+    public void overwriteFileDario(String newLine, String currentLine) throws IOException {
         ArrayList<String> arrayListTmp = new ArrayList<>();
         BufferedReader bufferedReader = new BufferedReader(new FileReader(PATH_FILE));
         String line;

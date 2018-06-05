@@ -29,7 +29,7 @@ public class ReceiverRefill implements MaxValue, TextPathFiles, CoinsNumbers {
     protected void refillItems() throws IOException {
         ArrayList<String> oldData = beverageFile.readFileNotSplitted();
         for (int i = 0; i < ITEMS.length; i++) {
-            beverageFile.overwriteFile((ITEMS[i] + "\t" + MAX_VAL[i]), oldData.get(i));
+            beverageFile.overwriteFileDario((ITEMS[i] + "\t" + MAX_VAL[i]), oldData.get(i));
         }
     }
 
@@ -44,7 +44,7 @@ public class ReceiverRefill implements MaxValue, TextPathFiles, CoinsNumbers {
                 int currentMaxQuantity = getMaxQuantityFromMenu(currentId);
                 String oldString = recreateString(vettTmp);
                 String newString = currentId + "\t" + String.valueOf(currentMaxQuantity);
-                beverageFile.overwriteFile(newString, oldString);
+                beverageFile.overwriteFileDario(newString, oldString);
             }
         }
     }

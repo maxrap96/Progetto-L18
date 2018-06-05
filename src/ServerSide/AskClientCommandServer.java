@@ -41,7 +41,9 @@ public class AskClientCommandServer implements CommandServer {
      * Funzione per sovrascrivere l'observableList.
      */
     protected void saveArrayInObservable() {
-        observableListCommand.clear();
-        observableListCommand.addAll(arrayListCommand);
+        if (!arrayListCommand.isEmpty()) {
+            observableListCommand.clear();
+            observableListCommand.addAll(arrayListCommand);
+        }
     }
 }
