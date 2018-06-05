@@ -1,0 +1,14 @@
+* le righe con * vengono saltate nella lettura
+* ID  TIPO  	NOME  	    COSTO  Q_MAX TEMP DOSE latte acqua	vodka
+01	CAPSULE	Cioccolata	0.50	30	90	1	0	0.200	0
+02	CAPSULE	Latte Caldo	0.55	25	80	0.30	0	0.200	0
+03	CAPSULE	Caffè Lungo	0.55	55	85	0	0	0.060	0
+04	CAPSULE	Tè al Limone	0.50	30	90	1	0	0.200	0
+05	GRINDED	Caffè Espresso	0.45	50	85	0.25	0	0.050	0
+06	GRINDED	Cappuccino	0.60	60	86	0.24	0.080	0.100	0
+07	SOLUBLE	Caffè Arabica	0.55	55	85	0.27	0	0.060	0
+08	SOLUBLE	Cappuccino	0.60	60	86	0.24	0.080	0.100	0
+09	SOLUBLE	Ginseng	0.55	25	80	0.30	0.34	0.200	0
+010	GRINDED	Caffè Corretto	0.70	10	90	0.30	0	0.200	1
+011	GRINDED	Caffè Miscela Top	0.70	10	90	0.28	0	0.200	0
+*

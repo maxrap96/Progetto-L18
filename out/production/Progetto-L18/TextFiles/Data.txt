@@ -1,0 +1,25 @@
+* qta rimasta, latte, acqua, bicchierini, cucchiaini, zucchero.
+*
+* Latte (litri)
+Milk	500.0
+* Zucchero (hg)
+Sugar	700.0
+* Cucchiaini
+Spoons	500
+* Bicchierini
+Cups	300
+* Vodka
+Vodka	10.0
+*id quantityleft
+01	30
+02	25
+03	55
+04	30
+05	50
+06	60
+07	55
+08	60
+09	25
+010	10
+011	10
+*
