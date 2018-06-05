@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
 
-public class AskClientCommandServer implements CommandServer {
+public class ServerCommandGetter implements CommandServer {
     private ReceiverServer receiverServer;
     private Socket clientSocket;
     private ObservableList<String> observableListCommand;
@@ -15,9 +15,9 @@ public class AskClientCommandServer implements CommandServer {
     private BufferedReader clientReader;
     private String stringCommand;
 
-    public AskClientCommandServer(ReceiverServer receiverServer, Socket clientSocket,
-                                  ObservableList<String> arrayToSaveInfo, BufferedReader clientReader,
-                                  String stringCommand) {
+    public ServerCommandGetter(ReceiverServer receiverServer, Socket clientSocket,
+                               ObservableList<String> arrayToSaveInfo, BufferedReader clientReader,
+                               String stringCommand) {
         this.receiverServer = receiverServer;
         this.clientSocket = clientSocket;
         this.observableListCommand = arrayToSaveInfo;
@@ -41,7 +41,9 @@ public class AskClientCommandServer implements CommandServer {
      * Funzione per sovrascrivere l'observableList.
      */
     protected void saveArrayInObservable() {
-        observableListCommand.clear();
+        if (!arrayListCommand.isEmpty()) {
+            observableListCommand.clear();
+        }
         observableListCommand.addAll(arrayListCommand);
     }
 }
