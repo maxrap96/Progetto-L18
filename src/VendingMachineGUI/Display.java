@@ -1,4 +1,4 @@
-package GUI_FX_VendingMachine;
+package VendingMachineGUI;
 
 import javafx.geometry.Insets;
 import javafx.scene.layout.GridPane;

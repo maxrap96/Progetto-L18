@@ -8,7 +8,7 @@ public class Key {
     private String ID;
     private double balance = 0;
     private int line;
-    private Data data = new Data("src/File_Testo/dati_chiavetta.txt");
+    private Data data = new Data("src/TextFiles/KeyData.txt");
     private String currentLine;
     private boolean connected = false;
 
