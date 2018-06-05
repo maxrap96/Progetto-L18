@@ -3,22 +3,17 @@ package GUI_FX_Server;
 import ServerSide.ServerConnection;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Insets;
-import javafx.scene.control.*;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 
 import java.util.ArrayList;
 
@@ -43,8 +38,6 @@ public class MenuTable extends TableView {
             System.out.println("Detected a change! ");
             setTabella(obsvMenu);
         }));
-
-        tableView.setEditable(true);
 
         // Creazione colonne
         // Aggiunta ad ogni colonna dei valori contenuti nella classe tabella e resi i valori modificabili
@@ -149,75 +142,17 @@ public class MenuTable extends TableView {
             }
         });
 
-
-        final TextField addID = new TextField();
-        addID.setPromptText("Id");
-        addID.setMaxWidth(75);
-        final TextField addTipo = new TextField();
-        addTipo.setMaxWidth(75);
-        addTipo.setPromptText("Tipo");
-        final TextField addNome = new TextField();
-        addNome.setMaxWidth(75);
-        addNome.setPromptText("Nome");
-        final TextField addCosto = new TextField();
-        addCosto.setMaxWidth(75);
-        addCosto.setPromptText("Costo");
-        final TextField addQ_max = new TextField();
-        addQ_max.setMaxWidth(75);
-        addQ_max.setPromptText("Q_max");
-        final TextField addTemp = new TextField();
-        addTemp.setMaxWidth(75);
-        addTemp.setPromptText("Temp");
-        final TextField addDose = new TextField();
-        addDose.setMaxWidth(75);
-        addDose.setPromptText("Dose");
-        final TextField addLatte = new TextField();
-        addLatte.setMaxWidth(75);
-        addLatte.setPromptText("Latte");
-        final TextField addAcqua = new TextField();
-        addAcqua.setMaxWidth(75);
-        addAcqua.setPromptText("Acqua");
-        final TextField addVodka = new TextField();
-        addVodka.setMaxWidth(75);
-        addVodka.setPromptText("Vodka");
-
-        final Button addButton = new Button("Add");
-        addButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-                String adddata = addID.getText()+"\t"+addTipo.getText()+"\t"+addNome.getText()+"\t"+addCosto.getText()
-                        +"\t"+addQ_max.getText()+"\t"+addTemp.getText()+"\t"+addDose.getText() +"\t"+addLatte.getText()
-                        +"\t"+addAcqua.getText()+"\t"+addVodka.getText();
-                data.add(new Tabella(adddata));
-                changeMenu();
-                addID.clear();
-                addTipo.clear();
-                addNome.clear();
-                addCosto.clear();
-                addQ_max.clear();
-                addTemp.clear();
-                addDose.clear();
-                addLatte.clear();
-                addAcqua.clear();
-                addVodka.clear();
-            }
-        });
-        addButton.setPrefWidth(50);
-        final HBox hb = new HBox();
-        hb.getChildren().addAll(addID,addTipo,addNome,addCosto,addQ_max,addTemp,addDose,addLatte,addAcqua,
-                addVodka,addButton);
-        hb.setSpacing(3);
         tableView.setItems(data);
+        tableView.setEditable(false);
         tableView.setStyle("-fx-font: 16px Serif");
         tableView.getColumns().addAll(id, tipo, nome, costo, Q_max, temp, dose, latte, acqua, vodka);
         tableView.setEditable(true);
 
-        vBox.getChildren().addAll(tableView,hb);
+        vBox.getChildren().addAll(tableView);
         vBox.setFillWidth(true);
         VBox.setVgrow(tableView, Priority.ALWAYS);
         vBox.prefHeightProperty().bind(stage.heightProperty());
         vBox.prefWidthProperty().bind(stage.widthProperty());
-
     }
 
     /**
@@ -289,46 +224,6 @@ public class MenuTable extends TableView {
             return vodka;
         }
 
-        public String getId() {
-            return id.get();
-        }
-
-        public String getTipo() {
-            return tipo.get();
-        }
-
-        public String getNome() {
-            return nome.get();
-        }
-
-        public String getCosto() {
-            return costo.get();
-        }
-
-        public String getQ_max() {
-            return q_max.get();
-        }
-
-        public String getTemp() {
-            return temp.get();
-        }
-
-        public String getDose() {
-            return dose.get();
-        }
-
-        public String getLatte() {
-            return latte.get();
-        }
-
-        public String getAcqua() {
-            return acqua.get();
-        }
-
-        public String getVodka() {
-            return vodka.get();
-        }
-
         public void setId(String id) {
             this.id.set(id);
         }
@@ -383,6 +278,7 @@ public class MenuTable extends TableView {
         for (int j = 2; j < tabella.length; j++) {
             data.addAll(tabella[j]);
         }
+
     }
 
     public VBox getvBox() {
@@ -398,16 +294,17 @@ public class MenuTable extends TableView {
         menu.clear();
         menu.add("* le righe con * vengono saltate nella lettura");
         menu.add("* ID  TIPO  \tNOME  \t    COSTO  Q_MAX TEMP DOSE latte acqua\tvodka");
-        for (int row = 0; row < tableView.getItems().size(); row++) {
+        for (int row = 0; row < 11; row++) {
             String tmp = "";
             for (int column = 0; column < 10; column++ ) {
-               tmp = tmp + tableView.getColumns().get(column).getCellObservableValue(row).getValue();
+               tmp = tmp + (String)tableView.getColumns().get(column).getCellObservableValue(row).getValue();
                if (!(column == 9)){
                    tmp = tmp + "\t";
                }
             }
             menu.add(tmp);
         }
+        menu.add("*");
     }
 
     public void sendMenu(){
@@ -416,5 +313,3 @@ public class MenuTable extends TableView {
         serverConnection.chooseCommandExecutedByThread(OVERWRITE_MENU);
     }
 }
-
-
