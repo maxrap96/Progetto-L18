@@ -1,7 +1,11 @@
 package ServerSide;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.lang.reflect.Array;
 import java.net.Socket;
+import java.util.ArrayList;
 
 import static ServerSide.StringCommandList.END_SENDING;
 
@@ -18,9 +22,12 @@ public class RefillCommandServer implements CommandServer {
 
     @Override
     public void execute() {
+        ArrayList<String> arrayListTmp = new ArrayList<>();
         try {
+            BufferedReader inFromClient = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
             receiverServer.sendString(stringCommand, clientSocket);
-            receiverServer.sendString(END_SENDING, clientSocket);
+            receiverServer.saveStringsFromClient(arrayListTmp, inFromClient);
+            //receiverServer.sendString(END_SENDING, clientSocket);
         } catch (IOException e) {
             e.printStackTrace();
         }
