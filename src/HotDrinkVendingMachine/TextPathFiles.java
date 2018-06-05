@@ -1,8 +1,8 @@
 package HotDrinkVendingMachine;
 
 public interface TextPathFiles {
-    String STATS_PATH = "src/File_Testo/stats.txt";
-    String DATA_PATH = "src/File_Testo/dati.txt";
-    String MENU_PATH = "src/File_Testo/menu.txt";
-    String COINS_PATH = "src/File_Testo/monete.txt";
+    String STATS_PATH = "src/TextFiles/Stats.txt";
+    String DATA_PATH = "src/TextFiles/Data.txt";
+    String MENU_PATH = "src/TextFiles/Menu.txt";
+    String COINS_PATH = "src/TextFiles/Coins.txt";
 }

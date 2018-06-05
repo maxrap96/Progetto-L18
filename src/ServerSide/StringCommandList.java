@@ -8,7 +8,6 @@ public interface StringCommandList {
     String REFILL_COINS = "REFILL_COINS";
     String REFILL_INGREDIENTS = "REFILL_INGREDIENTS";
     String REFILL_ITEMS = "REFILL_ITEMS";
-    String READY = "READY";
     String OVERWRITE_MENU = "OVERWRITE_MENU";
     String END_SENDING = "END_SENDING";
 }

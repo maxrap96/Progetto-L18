@@ -1,4 +1,4 @@
-package GUI_FX_VendingMachine;
+package VendingMachineGUI;
 
 import HotDrinkVendingMachine.HotDrinkVendMachine;
 import ClientSide.ClientVendMach;
@@ -44,7 +44,7 @@ public class VendingMachine extends Application {
             BorderPane root = new BorderPane();
 
             // Immagine per lo sfondo
-            FileInputStream input = new FileInputStream("src/GUI_FX_VendingMachine/background.jpg");
+            FileInputStream input = new FileInputStream("src/VendingMachineGUI/background.jpg");
             Image image = new Image(input);
             input.close();
 

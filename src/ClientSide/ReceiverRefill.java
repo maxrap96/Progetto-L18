@@ -24,7 +24,7 @@ public class ReceiverRefill implements MaxValue, TextPathFiles, CoinsNumbers {
     }
 
     /**
-     * Funzione che "ricarica" le quantità massima di dati.txt
+     * Funzione che "ricarica" le quantità massima di Data.txt
      */
     protected void refillItems() throws IOException {
         ArrayList<String> oldData = beverageFile.readFileNotSplitted();
