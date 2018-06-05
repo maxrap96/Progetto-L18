@@ -8,6 +8,7 @@ import javafx.scene.chart.*;
 import javafx.scene.control.Button;
 import javafx.scene.layout.*;
 
+import HotDrinkVendingMachine.CoinsNumbers;
 import static ServerSide.StringCommandList.REFILL_COINS;
 
 public class CoinsChart extends BarChart {
@@ -96,7 +97,7 @@ public class CoinsChart extends BarChart {
         xAxis.setLabel("Numero monete rimaste");
         xAxis.setAutoRanging(false);
         xAxis.setLowerBound(0);
-        xAxis.setUpperBound(45);
+        xAxis.setUpperBound(CoinsNumbers.DEFAULT_MONEY[0] + 5);
         xAxis.setTickUnit(1);
         xAxis.setMinorTickVisible(false);
 

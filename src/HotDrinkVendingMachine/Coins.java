@@ -197,11 +197,11 @@ public class Coins implements CoinsNumbers{
     }
 
     public void resetStoredMoney(){
-        this.money[0] = MONEY_COUNT[0];
-        this.money[1] = MONEY_COUNT[1];
-        this.money[2] = MONEY_COUNT[2];
-        this.money[3] = MONEY_COUNT[3];
-        this.money[4] = MONEY_COUNT[4];
-        this.money[5] = MONEY_COUNT[5];
+        this.money[0] = DEFAULT_MONEY[0];
+        this.money[1] = DEFAULT_MONEY[1];
+        this.money[2] = DEFAULT_MONEY[2];
+        this.money[3] = DEFAULT_MONEY[3];
+        this.money[4] = DEFAULT_MONEY[4];
+        this.money[5] = DEFAULT_MONEY[5];
     }
 }

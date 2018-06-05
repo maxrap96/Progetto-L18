@@ -90,7 +90,7 @@ public class ReceiverRefill implements MaxValue, TextPathFiles, CoinsNumbers {
      */
     private String stringCoinsValue() {
         String tmp = "";
-        for (Integer integer : MONEY_COUNT) {
+        for (Integer integer : DEFAULT_MONEY) {
             tmp += integer + "\t";
         }
         return tmp;
