@@ -63,27 +63,27 @@ public class StatsPage extends GridPane {
 
         obsvStats.addListener((ListChangeListener) change -> Platform.runLater(() -> {
             // Aggiorna UI
-            System.out.println("Detected a change! ");
+            System.out.println("Detected a change! Stats");
             tab2.setContent(pie.setChart());
             tab3.setContent(usage.setGraph());
         }));
 
         obsvCoins.addListener((ListChangeListener) change -> Platform.runLater(() -> {
             // Aggiorna UI
-            System.out.println("Detected a change! ");
+            System.out.println("Detected a change! Coins");
             tab1.setContent(coinsChart.setBars());
         }));
 
         obsvData.addListener((ListChangeListener) change -> Platform.runLater(() -> {
             // Aggiorna UI
-            System.out.println("Detected a change! ");
+            System.out.println("Detected a change! Data");
             tab4.setContent(drinks.initChart());
             tab5.setContent(itemsStats.setProgressBar());
         }));
 
         obsvMenu.addListener((ListChangeListener) change -> Platform.runLater(() -> {
             // Aggiorna UI
-            System.out.println("Detected a change! ");
+            System.out.println("Detected a change! Menu");
             tab4.setContent(drinks.initChart());
         }));
 

@@ -6,9 +6,9 @@ public class Dispenser implements MaxValue {
     private double milk;
     private double sugar;
     private double vodka;
-    private int spoon, cup;
+    private double spoon, cup;
 
-    public Dispenser(double milk, double sugar, int spoon, int cup, double vodka) {
+    public Dispenser(double milk, double sugar, double spoon, double cup, double vodka) {
         this.milk = milk;
         this.sugar = sugar;
         this.spoon = spoon;

@@ -38,8 +38,8 @@ public class HotDrinkVendMachine implements MaxValue, TextPathFiles {
         setSugarToDefault();
         double milk = Double.parseDouble(data.get(0)[1]);
         double sugar = Double.parseDouble(data.get(1)[1]);
-        int spoon = parseInt(data.get(2)[1]);
-        int cup = parseInt(data.get(3)[1]);
+        double spoon = Double.parseDouble(data.get(2)[1]);
+        double cup = Double.parseDouble(data.get(3)[1]);
         double vodka = Double.parseDouble(data.get(4)[1]);
         int lastRow = 4; // Ultima riga letta dal file
         dispenser = new Dispenser(milk, sugar, spoon, cup, vodka);

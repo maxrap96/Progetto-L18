@@ -41,7 +41,9 @@ public class ServerCommandGetter implements CommandServer {
      * Funzione per sovrascrivere l'observableList.
      */
     protected void saveArrayInObservable() {
-        observableListCommand.clear();
-        observableListCommand.addAll(arrayListCommand);
+        if (!(arrayListCommand.isEmpty() || arrayListCommand.equals(observableListCommand))) {
+            observableListCommand.clear();
+            observableListCommand.addAll(arrayListCommand);
+        }
     }
 }

@@ -136,7 +136,7 @@ public class HomePage extends Application implements StringCommandList {
         primaryStage.setMinWidth(primaryStage.getWidth());
         primaryStage.setMinHeight(primaryStage.getHeight());
 
-        // Termina l'applicazione cliccando la x rossa
+        // Termina l'applicazione alla chiusura
         primaryStage.setOnCloseRequest(t -> {
             Platform.exit();
             System.exit(0);

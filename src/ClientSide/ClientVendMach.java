@@ -41,7 +41,7 @@ public class ClientVendMach extends Thread implements StringCommandList, TextPat
 
             String tmp;
             while ((tmp = inFromServer.readLine()) != null) {
-                if (isAValidCommand(tmp)) {
+                if (commandHashMap.containsKey(tmp)) {
                     commandReceived(tmp);
                 }
             }
@@ -60,18 +60,6 @@ public class ClientVendMach extends Thread implements StringCommandList, TextPat
     private void commandReceived(String commandFromServer) {
         this.commandHashMap.get(commandFromServer).execute();
         this.channelOutToServer.println(END_SENDING);
-    }
-
-    /**
-     * Funzione che confronta la stringa passata e decide se è un comando valido.
-     * @param command comando da analizzare.
-     */
-    private boolean isAValidCommand(String command) {
-        if (commandHashMap.containsKey(command)) {
-            return true;
-        } else {
-            return false;
-        }
     }
 
     /**
