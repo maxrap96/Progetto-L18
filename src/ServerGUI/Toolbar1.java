@@ -1,12 +1,10 @@
-package GUI_FX_Server;
+package ServerGUI;
 
 import ServerSide.ServerConnection;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.ImagePattern;
-import javafx.scene.shape.Circle;
 
 import java.io.FileInputStream;
 import java.io.IOException;

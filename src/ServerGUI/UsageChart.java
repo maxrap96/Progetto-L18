@@ -1,4 +1,4 @@
-package GUI_FX_Server;
+package ServerGUI;
 
 import javafx.collections.ObservableList;
 import javafx.scene.chart.Axis;

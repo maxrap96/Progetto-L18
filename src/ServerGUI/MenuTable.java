@@ -1,4 +1,4 @@
-package GUI_FX_Server;
+package ServerGUI;
 
 import ServerSide.ServerConnection;
 import javafx.application.Platform;
@@ -18,7 +18,6 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 
 import static ServerSide.StringCommandList.OVERWRITE_MENU;
-import static ServerSide.StringCommandList.SEND_MENU;
 
 public class MenuTable extends TableView {
     private Tabella[] tabella;

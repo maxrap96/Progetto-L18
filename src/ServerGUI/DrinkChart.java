@@ -1,4 +1,4 @@
-package GUI_FX_Server;
+package ServerGUI;
 
 import ServerSide.ServerConnection;
 import javafx.collections.ObservableList;

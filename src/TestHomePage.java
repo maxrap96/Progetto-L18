@@ -1,4 +1,4 @@
-import GUI_FX_Server.HomePage;
+import ServerGUI.HomePage;
 
 public class TestHomePage {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package GUI_FX_Server;
+package ServerGUI;
 
 import ServerSide.ServerConnection;
 import javafx.collections.ObservableList;
@@ -6,10 +6,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.chart.*;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
 import javafx.scene.layout.*;
-import javafx.scene.paint.ImagePattern;
-import javafx.scene.shape.Circle;
 
 import static ServerSide.StringCommandList.REFILL_COINS;
 

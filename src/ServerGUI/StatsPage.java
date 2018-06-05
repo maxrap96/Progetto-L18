@@ -1,4 +1,4 @@
-package GUI_FX_Server;
+package ServerGUI;
 
 import ServerSide.ClassOfObservableLists;
 import ServerSide.ServerConnection;

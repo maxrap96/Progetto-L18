@@ -2,6 +2,8 @@ package ClientSide;
 
 import java.io.*;
 
+import static ServerSide.StringCommandList.END_SENDING;
+
 public class ReceiverSend {
     /**
      * Funzione che invia un file.

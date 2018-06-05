@@ -1,13 +1,10 @@
-package GUI_FX_Server;
+package ServerGUI;
 
 import ServerSide.ClassOfObservableLists;
 import ServerSide.ServerConnection;
 import ServerSide.StringCommandList;
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
@@ -19,7 +16,6 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 
 public class HomePage extends Application implements StringCommandList {
     private ClassOfObservableLists classOfObservableLists = new ClassOfObservableLists();
