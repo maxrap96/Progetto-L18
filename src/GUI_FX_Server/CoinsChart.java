@@ -6,10 +6,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.chart.*;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
 import javafx.scene.layout.*;
-import javafx.scene.paint.ImagePattern;
-import javafx.scene.shape.Circle;
 
 import static ServerSide.StringCommandList.REFILL_COINS;
 
@@ -53,22 +50,14 @@ public class CoinsChart extends BarChart {
         }
 
         HBox buttonBox = new HBox();
+
         Button refill = new Button("Refill\ncoins");
-//        Button refreshBtn = new Button();
         refill.setMaxWidth(80);
         refill.setMinHeight(50);
         refill.prefHeightProperty().bind(buttonBox.heightProperty());
         refill.prefWidthProperty().bind(buttonBox.widthProperty());
-        refill.setOnAction(event -> {
-            serverConnection.chooseCommandExecutedByThread(REFILL_COINS);
-        });
 
-//        Image img = new Image("ServerImages/RefreshBtn.jpg");
-//        Circle circle = new Circle(23);
-//        ImagePattern pattern = new ImagePattern(img);
-//        circle.setFill(pattern);
-//
-//        refreshBtn.setGraphic(circle);
+        refill.setOnAction(event -> serverConnection.chooseCommandExecutedByThread(REFILL_COINS) );
 
         buttonBox.setAlignment(Pos.CENTER);
         buttonBox.setSpacing(25);

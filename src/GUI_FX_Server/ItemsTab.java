@@ -11,17 +11,13 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
 import java.util.ArrayList;
+import HotDrinkVendingMachine.MaxValue;
 
 import static ServerSide.StringCommandList.REFILL_ITEMS;
 
 public class ItemsTab {
     private ObservableList<String> obsvData;
     private ServerConnection serverConnection;
-    private final double SUGARMAX = 1000.0;
-    private final double MILKMAX = 1000.0;
-    private final int CUPMAX = 500;
-    private final int SPOONMAX = 1000;
-    private final double VODKAMAX = 1000;
 
     ArrayList<String> items = new ArrayList<>();
     ArrayList<Double> quantity = new ArrayList<>();
@@ -68,15 +64,15 @@ public class ItemsTab {
         label4.setText(items.get(4) + ": ");
         label4.setFont(Font.font("", FontWeight.BOLD, 25));
 
-        ProgressBar progressBar0 = new ProgressBar(quantity.get(0) / MILKMAX);
+        ProgressBar progressBar0 = new ProgressBar(quantity.get(0) / MaxValue.MILK_MAX);
         progressBar0.setMinSize(200, 30);
-        ProgressBar progressBar1 = new ProgressBar(quantity.get(1) / SUGARMAX);
+        ProgressBar progressBar1 = new ProgressBar(quantity.get(1) / MaxValue.SUGAR_MAX);
         progressBar1.setMinSize(200, 30);
-        ProgressBar progressBar2 = new ProgressBar(quantity.get(2) / SPOONMAX);
+        ProgressBar progressBar2 = new ProgressBar(quantity.get(2) / MaxValue.SPOON_MAX);
         progressBar2.setMinSize(200, 30);
-        ProgressBar progressBar3 = new ProgressBar(quantity.get(3) / CUPMAX);
+        ProgressBar progressBar3 = new ProgressBar(quantity.get(3) / MaxValue.CUP_MAX);
         progressBar3.setMinSize(200, 30);
-        ProgressBar progressBar4 = new ProgressBar(quantity.get(4) / VODKAMAX);
+        ProgressBar progressBar4 = new ProgressBar(quantity.get(4) / MaxValue.VODKA_MAX);
         progressBar4.setMinSize(200, 30);
 
         ProgressIndicator p0 = new ProgressIndicator();
@@ -111,17 +107,17 @@ public class ItemsTab {
         Button RefillAll = new Button("Ricarica\nmacchinetta");
 
         RefillAll.setOnAction(event -> {
-            progressBar0.setProgress(MILKMAX);
-            progressBar1.setProgress(SUGARMAX);
-            progressBar2.setProgress(SPOONMAX);
-            progressBar3.setProgress(CUPMAX);
-            progressBar4.setProgress(VODKAMAX);
+            progressBar0.setProgress(MaxValue.MILK_MAX);
+            progressBar1.setProgress(MaxValue.SUGAR_MAX);
+            progressBar2.setProgress(MaxValue.SPOON_MAX);
+            progressBar3.setProgress(MaxValue.CUP_MAX);
+            progressBar4.setProgress(MaxValue.VODKA_MAX);
 
-            p0.setProgress(MILKMAX);
-            p1.setProgress(SUGARMAX);
-            p2.setProgress(SPOONMAX);
-            p3.setProgress(CUPMAX);
-            p4.setProgress(VODKAMAX);
+            p0.setProgress(MaxValue.MILK_MAX);
+            p1.setProgress(MaxValue.SUGAR_MAX);
+            p2.setProgress(MaxValue.SPOON_MAX);
+            p3.setProgress(MaxValue.CUP_MAX);
+            p4.setProgress(MaxValue.VODKA_MAX);
 
             this.serverConnection.chooseCommandExecutedByThread(REFILL_ITEMS);
         });
