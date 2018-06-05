@@ -195,7 +195,7 @@ public class MenuTable extends TableView {
             public void handle(ActionEvent event) {
                 int index = tableView.getSelectionModel().getSelectedIndex();
                 data.remove(index);
-               changeId(index);
+                changeId(index);
             }
         });
 
@@ -421,6 +421,8 @@ public class MenuTable extends TableView {
         for(int i = index; i < data.size(); i++){
             String newId = "0"+(i+1);
             tableView.getItems().get(i).setId(newId);
+            changeMenu();
+            //data.get(i).setId(newId);
         }
     }
     public void sendMenu(){
