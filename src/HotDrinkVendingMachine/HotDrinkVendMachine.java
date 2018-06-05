@@ -250,7 +250,7 @@ public class HotDrinkVendMachine implements MaxValue, TextPathFiles {
     }
 
     /**
-     * Funzione per aggiornare il file dati.txt, contenente le quantità di oggetti e di ingredienti.
+     * Funzione per aggiornare il file Data.txt, contenente le quantità di oggetti e di ingredienti.
      */
     private void updateDati(String ID) {
         String valDati[] = dispenser.getData();

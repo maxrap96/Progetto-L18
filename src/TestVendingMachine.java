@@ -1,4 +1,4 @@
-import GUI_FX_VendingMachine.VendingMachine;
+import VendingMachineGUI.VendingMachine;
 
 public class TestVendingMachine {
     public static void main(String[] args){

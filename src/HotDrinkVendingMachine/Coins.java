@@ -8,7 +8,7 @@ public class Coins implements CoinsNumbers{
     private int[] money;
     private int credit = 0;
     private final double[] COINS_VALUE = {5, 10, 20, 50 , 100, 200};
-    private Data moneteTxt = new Data("src/File_Testo/monete.txt");
+    private Data moneteTxt = new Data("src/TextFiles/Coins.txt");
 
     public Coins() {
         this.money = new int[COINS_VALUE.length];
