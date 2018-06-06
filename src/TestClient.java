@@ -1,7 +1,9 @@
+import ClientSide.BooleanRefill;
 import ClientSide.ClientVendMach;
 
 public class TestClient {
     public static void main(String[] args) {
-        new ClientVendMach("localhost", 80).run();
+        BooleanRefill booleanRefill =  new BooleanRefill();
+        new ClientVendMach("localhost", 80, booleanRefill).run();
     }
 }

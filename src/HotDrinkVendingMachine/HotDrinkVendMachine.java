@@ -28,7 +28,7 @@ public class HotDrinkVendMachine implements MaxValue, TextPathFiles {
         this.coins = new Coins();
         this.key = new Key();
         int lastRow = setValues(ingredientsData.readFile());
-        createList(menu.readFile(), ingredientsData.readFile(), lastRow);
+        this.createList(menu.readFile(), ingredientsData.readFile(), lastRow);
     }
 
     /**
@@ -197,7 +197,7 @@ public class HotDrinkVendMachine implements MaxValue, TextPathFiles {
     public void addCredit(double inserted) {
         if (key.isConnected()) {
             key.addBalance(inserted);
-            coins.charcheKey(inserted);
+            coins.chargeKey(inserted);
         }
         else {
             coins.addCoin(inserted);

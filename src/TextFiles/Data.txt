@@ -3,7 +3,7 @@
 * Latte (litri)
 Milk	1000.0
 * Zucchero (hg)
-Sugar	1000.0
+Sugar	0.0
 * Cucchiaini
 Spoons	1000.0
 * Bicchierini

@@ -15,13 +15,14 @@ public class ClientVendMach extends Thread implements StringCommandList, TextPat
     private int serverPort;
     private PrintWriter channelOutToServer;
     private BufferedReader inFromServer;
-    private boolean fileReceived = false;
     private HashMap<String, Command> commandHashMap;
+    private BooleanRefill booleanRefill;
 
-    public ClientVendMach(String ipServer, int port) {
+    public ClientVendMach(String ipServer, int port, BooleanRefill booleanRefill) {
         this.ip = ipServer;
         this.serverPort = port;
         this.commandHashMap = new HashMap<>();
+        this.booleanRefill = booleanRefill;
     }
 
     @Override
@@ -74,16 +75,12 @@ public class ClientVendMach extends Thread implements StringCommandList, TextPat
         this.commandHashMap.put(SEND_COINS, new SendCommand(receiverSend, channelOutToServer, COINS_PATH));
         this.commandHashMap.put(SEND_STATS, new SendCommand(receiverSend, channelOutToServer, STATS_PATH));
         this.commandHashMap.put(OVERWRITE_MENU, new OverwriteCommand(receiverOverwrite, inFromServer));
-        this.commandHashMap.put(REFILL_COINS, new RefillCoinsCommand(receiverRefill));
-        this.commandHashMap.put(REFILL_INGREDIENTS, new RefillIngredientsCommand(receiverRefill));
-        this.commandHashMap.put(REFILL_ITEMS, new RefillItemsCommand(receiverRefill));
+        this.commandHashMap.put(REFILL_COINS, new RefillCoinsCommand(receiverRefill, booleanRefill));
+        this.commandHashMap.put(REFILL_INGREDIENTS, new RefillIngredientsCommand(receiverRefill, booleanRefill));
+        this.commandHashMap.put(REFILL_ITEMS, new RefillItemsCommand(receiverRefill, booleanRefill));
     }
 
-    public boolean isFileReceived(){
-        return fileReceived;
-    }
-
-    public void fileOpened() {
-        fileReceived = false;
+    public BooleanRefill getBooleanRefill() {
+        return booleanRefill;
     }
 }

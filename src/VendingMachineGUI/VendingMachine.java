@@ -1,5 +1,6 @@
 package VendingMachineGUI;
 
+import ClientSide.BooleanRefill;
 import HotDrinkVendingMachine.HotDrinkVendMachine;
 import ClientSide.ClientVendMach;
 import javafx.application.Application;
@@ -22,17 +23,20 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 public class VendingMachine extends Application {
-     private HotDrinkVendMachine vendMachine = new HotDrinkVendMachine();
-     private ResetDisplay resetDisplay;
-     private BeverageGrid beverageGrid;
-     private Display display;
-     private UpdateChecker updateChecker;
+    private HotDrinkVendMachine vendMachine = new HotDrinkVendMachine();
+    private ResetDisplay resetDisplay;
+    private BeverageGrid beverageGrid;
+    private Display display;
+    private UpdateChecker updateChecker;
+    private ClientVendMach clientVendMach;
+    private BooleanRefill booleanRefill = new BooleanRefill();
 
     @Override
     public void start(Stage primaryStage) {
         try {
             // Avvio della connessione client
-            new ClientVendMach("localhost", 80).start();
+            this.clientVendMach = new ClientVendMach("localhost", 80, booleanRefill);
+            this.clientVendMach.start();
 
             Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
             double width = screenSize.getWidth() / 2;
@@ -81,9 +85,9 @@ public class VendingMachine extends Application {
             key.setPrefSize(16 * screenSize.width / 100, screenSize.height / 9);
             key.setStyle(
                     "-fx-background-radius: 1em;" +
-                    "-fx-base: lightGray;" +
-                    "-fx-focus-color: transparent;" +
-                    "-fx-faint-focus-color: transparent;"
+                            "-fx-base: lightGray;" +
+                            "-fx-focus-color: transparent;" +
+                            "-fx-faint-focus-color: transparent;"
             );
             key.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
@@ -92,7 +96,7 @@ public class VendingMachine extends Application {
                     display.setCreditRow(String.valueOf(vendMachine.getCredit()));
                     key.setStyle(
                             "-fx-background-radius: 1em;" +
-                            "-fx-focus-color: blue;"
+                                    "-fx-focus-color: blue;"
                     );
                 }
             });
@@ -112,7 +116,8 @@ public class VendingMachine extends Application {
             primaryStage.setMaximized(true);
             primaryStage.setResizable(false);
             primaryStage.show();
-            updateChecker = new UpdateChecker(vendMachine, beverageGrid, display, resetDisplay, root);
+
+            updateChecker = new UpdateChecker(vendMachine, beverageGrid, display, resetDisplay, root, booleanRefill);
             updateChecker.start();
 
         } catch (IOException e) {
@@ -130,7 +135,5 @@ public class VendingMachine extends Application {
         });
     }
 
-    public static void main(String[] args) {
-        Application.launch(args);
-    }
+
 }

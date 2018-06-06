@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 import static java.lang.Integer.parseInt;
 
-public class Coins implements CoinsNumbers{
+public class Coins implements CoinsNumbers, TextPathFiles{
     private int[] money;
     private int credit = 0;
     private final double[] COINS_VALUE = {5, 10, 20, 50 , 100, 200};
-    private Data moneteTxt = new Data("src/TextFiles/Coins.txt");
+    private Data coinsTxt = new Data(COINS_PATH);
 
     public Coins() {
         this.money = new int[COINS_VALUE.length];
@@ -33,11 +33,11 @@ public class Coins implements CoinsNumbers{
      * Nota: Nel caso di errori si usa un'inizializzazione di default.
      */
     private void initCoins() {
-        ArrayList<String[]> coinsText = moneteTxt.readFile();
-        int last = coinsText.size() - 1;    // Last e' l'ultima riga del file che serve
+        ArrayList<String[]> arrayCoinsText = coinsTxt.readFile();
+        int last = arrayCoinsText.size() - 1;    // Last e' l'ultima riga del file che serve
 
         for (int i = 0; i < money.length; i++) {
-            money[i] = parseInt(coinsText.get(last)[i]);
+            money[i] = parseInt(arrayCoinsText.get(last)[i]);
         }
     }
 
@@ -71,7 +71,7 @@ public class Coins implements CoinsNumbers{
         money[index] += parseInt(number);
 
         if (index == money.length - 1) {
-            moneteTxt.writeFile(moneyOnFile());
+            coinsTxt.writeFile(moneyOnFile());
         }
     }
 
@@ -111,7 +111,7 @@ public class Coins implements CoinsNumbers{
                 System.out.println(changeSupplied);
                 System.out.println(coinsList);
             }
-                moneteTxt.writeFile(moneyOnFile());
+                coinsTxt.writeFile(moneyOnFile());
         }  else {
             System.out.println("Resto NON disponibile");
         }
@@ -178,14 +178,14 @@ public class Coins implements CoinsNumbers{
                 break;
             }
         }
-        moneteTxt.writeFile(moneyOnFile());
+        coinsTxt.writeFile(moneyOnFile());
     }
 
     /**
      * Metodo alternativo all'addCoin utilizzato per caricare il saldo della chiavetta.
      * @param inserted valore della moneta inserita.
      */
-    public void charcheKey(double inserted) {
+    public void chargeKey(double inserted) {
         // Identificazione della moneta inserita
         for (int i = 0; i < COINS_VALUE.length; i++) {
             if (inserted == COINS_VALUE[i]) {
