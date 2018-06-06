@@ -1,4 +1,4 @@
-package GUI_FX_Server;
+package ServerGUI;
 
 import ServerSide.ServerConnection;
 import javafx.application.Platform;
@@ -46,30 +46,30 @@ public class MenuTable extends TableView {
         TableColumn id = new TableColumn("ID");
         this.initTableColumn(id,"id");
 
-        TableColumn tipo = new TableColumn("Tipo");
-        this.initTableColumn(tipo,"tipo");
-        tipo.setOnEditCommit( new EventHandler<TableColumn.CellEditEvent<RowTabel, String>>() {
-            public void handle( TableColumn.CellEditEvent<RowTabel, String> event) {
+        TableColumn type = new TableColumn("Tipo");
+        this.initTableColumn(type,"tipo");
+        type.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<RowTabel, String>>() {
+            public void handle(TableColumn.CellEditEvent<RowTabel, String> event) {
                 ((RowTabel) event.getTableView().getItems().get(event.getTablePosition().getRow())
                 ).setTipo(event.getNewValue());
                 changeMenu();
             }
         });
 
-        TableColumn nome = new TableColumn("Nome");
-        this.initTableColumn(nome,"nome");
-        nome.setOnEditCommit( new EventHandler<TableColumn.CellEditEvent<RowTabel, String>>() {
-            public void handle( TableColumn.CellEditEvent<RowTabel, String> event) {
+        TableColumn name = new TableColumn("Nome");
+        this.initTableColumn(name,"nome");
+        name.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<RowTabel, String>>() {
+            public void handle(TableColumn.CellEditEvent<RowTabel, String> event) {
                 ((RowTabel) event.getTableView().getItems().get(event.getTablePosition().getRow())
                 ).setNome(event.getNewValue());
                 changeMenu();
             }
         });
 
-        TableColumn costo = new TableColumn("Costo");
-        this.initTableColumn(costo,"costo");
-        costo.setOnEditCommit( new EventHandler<TableColumn.CellEditEvent<RowTabel, String>>() {
-            public void handle( TableColumn.CellEditEvent<RowTabel, String> event) {
+        TableColumn price = new TableColumn("Costo");
+        this.initTableColumn(price,"costo");
+        price.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<RowTabel, String>>() {
+            public void handle(TableColumn.CellEditEvent<RowTabel, String> event) {
                 ((RowTabel) event.getTableView().getItems().get(event.getTablePosition().getRow())
                 ).setCosto(event.getNewValue());
                 changeMenu();
@@ -78,8 +78,8 @@ public class MenuTable extends TableView {
 
         TableColumn Q_max = new TableColumn("Q_max");
         this.initTableColumn(Q_max,"q_max");
-        Q_max.setOnEditCommit( new EventHandler<TableColumn.CellEditEvent<RowTabel, String>>() {
-            public void handle( TableColumn.CellEditEvent<RowTabel, String> event) {
+        Q_max.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<RowTabel, String>>() {
+            public void handle(TableColumn.CellEditEvent<RowTabel, String> event) {
                 ((RowTabel) event.getTableView().getItems().get(event.getTablePosition().getRow())
                 ).setQ_max(event.getNewValue());
                 changeMenu();
@@ -88,8 +88,8 @@ public class MenuTable extends TableView {
 
         TableColumn temp = new TableColumn("Temp");
         this.initTableColumn(temp,"temp");
-        temp.setOnEditCommit( new EventHandler<TableColumn.CellEditEvent<RowTabel, String>>() {
-            public void handle( TableColumn.CellEditEvent<RowTabel, String> event) {
+        temp.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<RowTabel, String>>() {
+            public void handle(TableColumn.CellEditEvent<RowTabel, String> event) {
                 ((RowTabel) event.getTableView().getItems().get(event.getTablePosition().getRow())
                 ).setTemp(event.getNewValue());
                 changeMenu();
@@ -106,20 +106,20 @@ public class MenuTable extends TableView {
             }
         });
 
-        TableColumn latte = new TableColumn("Latte");
-        this.initTableColumn(latte,"latte");
-        latte.setOnEditCommit( new EventHandler<TableColumn.CellEditEvent<RowTabel, String>>() {
-            public void handle( TableColumn.CellEditEvent<RowTabel, String> event) {
+        TableColumn milk = new TableColumn("Latte");
+        this.initTableColumn(milk,"latte");
+        milk.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<RowTabel, String>>() {
+            public void handle(TableColumn.CellEditEvent<RowTabel, String> event) {
                 ((RowTabel) event.getTableView().getItems().get(event.getTablePosition().getRow())
                 ).setLatte(event.getNewValue());
                 changeMenu();
             }
         });
 
-        TableColumn acqua = new TableColumn("Acqua");
-        this.initTableColumn(acqua,"acqua");
-        acqua.setOnEditCommit( new EventHandler<TableColumn.CellEditEvent<RowTabel, String>>() {
-            public void handle( TableColumn.CellEditEvent<RowTabel, String> event) {
+        TableColumn water = new TableColumn("Acqua");
+        this.initTableColumn(water,"acqua");
+        water.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<RowTabel, String>>() {
+            public void handle(TableColumn.CellEditEvent<RowTabel, String> event) {
                 ((RowTabel) event.getTableView().getItems().get(event.getTablePosition().getRow())
                 ).setAcqua(event.getNewValue());
                 changeMenu();
@@ -128,8 +128,8 @@ public class MenuTable extends TableView {
 
         TableColumn vodka = new TableColumn("Vodka");
         this.initTableColumn(vodka,"vodka");
-        vodka.setOnEditCommit( new EventHandler<TableColumn.CellEditEvent<RowTabel, String>>() {
-            public void handle( TableColumn.CellEditEvent<RowTabel, String> event) {
+        vodka.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<RowTabel, String>>() {
+            public void handle(TableColumn.CellEditEvent<RowTabel, String> event) {
                 ((RowTabel) event.getTableView().getItems().get(event.getTablePosition().getRow())
                 ).setVodka(event.getNewValue());
                 changeMenu();
@@ -207,7 +207,7 @@ public class MenuTable extends TableView {
         final HBox hBox = new HBox(addButton,remButton);
         tableView.setItems(data);
         tableView.setStyle("-fx-font: 16px Serif");
-        tableView.getColumns().addAll(id, tipo, nome, costo, Q_max, temp, dose, latte, acqua, vodka);
+        tableView.getColumns().addAll(id, type, name, price, Q_max, temp, dose, milk, water, vodka);
         tableView.setEditable(true);
 
         vBox.getChildren().addAll(tableView,hb,hBox);

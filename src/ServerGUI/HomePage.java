@@ -1,4 +1,4 @@
-package GUI_FX_Server;
+package ServerGUI;
 
 import ServerSide.ClassOfObservableLists;
 import ServerSide.ServerConnection;
@@ -30,7 +30,7 @@ public class HomePage extends Application implements StringCommandList {
 
         // Definizione dello stage principale e della barra del menu
         primaryStage.setTitle("Home");
-        Toolbar1 toolbar1 = new Toolbar1(server);
+        ToolbarServer toolbarServer = new ToolbarServer(server);
         MenuTable menuTable = new MenuTable(primaryStage, classOfObservableLists.getObservMenu(), server);
         StatsPage statsPage = new StatsPage(primaryStage, classOfObservableLists, server);
 
@@ -49,7 +49,7 @@ public class HomePage extends Application implements StringCommandList {
 
         // Creazione toolbar
         VBox vBox = new VBox();
-        vBox.getChildren().addAll(toolbar1);
+        vBox.getChildren().addAll(toolbarServer);
         vBox.setFillWidth(true);
 
         // Creazione link al sito del progetto
@@ -100,12 +100,13 @@ public class HomePage extends Application implements StringCommandList {
 
         anchor.setLeftAnchor(hyperlink, 0.0);
         anchor.setBottomAnchor(hyperlink, 0.0);
+
         StackPane stackPane = new StackPane();
         stackPane.getChildren().addAll(anchor,menuTable.getvBox(),statsPage.getMainPanel());
         menuTable.getvBox().setVisible(false);
         anchor.setVisible(true);
         statsPage.getMainPanel().setVisible(false);
-        toolbar1.Action(anchor,menuTable,statsPage);
+        toolbarServer.Action(anchor,menuTable,statsPage);
 
         // Gestione pressione del bottone "Statistiche"
         statsButton.setOnAction(event -> {
@@ -118,6 +119,7 @@ public class HomePage extends Application implements StringCommandList {
             server.chooseCommandExecutedByThread(SEND_MENU);
         });
 
+        // Gestione pressione del bottone "Menu"
         menuButton.setOnAction( event -> {
             menuTable.getvBox().setVisible(true);
             statsPage.getMainPanel().setVisible(false);
@@ -125,8 +127,8 @@ public class HomePage extends Application implements StringCommandList {
             server.chooseCommandExecutedByThread(SEND_MENU);
         });
 
-        VBox vBox1 = new VBox(toolbar1,stackPane);
-        VBox.setVgrow(toolbar1,Priority.ALWAYS);
+        VBox vBox1 = new VBox(toolbarServer,stackPane);
+        VBox.setVgrow(toolbarServer,Priority.ALWAYS);
         VBox.setVgrow(stackPane,Priority.ALWAYS);
         Scene scene = new Scene(vBox1, 800, 550);
 

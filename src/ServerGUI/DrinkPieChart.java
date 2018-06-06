@@ -1,4 +1,4 @@
-package GUI_FX_Server;
+package ServerGUI;
 
 import javafx.collections.ObservableList;
 import javafx.scene.chart.PieChart;
@@ -19,11 +19,12 @@ public class DrinkPieChart extends PieChart {
      * @return borderpane.
      */
     public BorderPane setChart() {
-        BorderPane b = new BorderPane();
+        BorderPane borderPane = new BorderPane();
 
         if (obsvStats == null) {
-            return b;
+            return borderPane;
         }
+
         ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
 
         ArrayList<String> beverageNames = new ArrayList<>();
@@ -42,19 +43,18 @@ public class DrinkPieChart extends PieChart {
         pie.setLabelsVisible(true);
         pie.setStartAngle(180);
 
-        b.setCenter(pie);
-        return b;
+        borderPane.setCenter(pie);
+        return borderPane;
     }
 
     /**
-     * Funzione che si occupa del conteggio delle bevande e capire quanto son state richieste.
+     * Funzione che si occupa del conteggio delle bevande e di capire quanto sono state richieste.
      * @param statsRows contiene il file di statistiche.
      * @param beverageNames continene i nomi delle bevande.
      * @param beverageQty quantità delle bevande selezionate.
      */
     private void statsAnalysis(ObservableList<String> statsRows, ArrayList<String> beverageNames,
                                ArrayList<Integer> beverageQty) {
-
         for (int i = 0; i < statsRows.size(); i++) {
             if (!statsRows.get(i).contains("*")) {
                 String row = statsRows.get(i);

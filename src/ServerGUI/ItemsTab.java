@@ -1,4 +1,4 @@
-package GUI_FX_Server;
+package ServerGUI;
 
 import ServerSide.ServerConnection;
 import javafx.collections.ObservableList;
@@ -18,10 +18,8 @@ import static ServerSide.StringCommandList.REFILL_ITEMS;
 public class ItemsTab {
     private ObservableList<String> obsvData;
     private ServerConnection serverConnection;
-
-    ArrayList<String> items = new ArrayList<>();
-    ArrayList<Double> quantity = new ArrayList<>();
-
+    private ArrayList<String> items = new ArrayList<>();
+    private ArrayList<Double> quantity = new ArrayList<>();
     private Label label0 = new Label();
     private Label label1 = new Label();
     private Label label2 = new Label();
@@ -35,8 +33,9 @@ public class ItemsTab {
     public BorderPane setProgressBar() {
         BorderPane mainPanel = new BorderPane();
 
-        if (obsvData.isEmpty())
+        if (obsvData.isEmpty()) {
             return mainPanel;
+        }
 
         VBox vBox = new VBox();
         GridPane gridPane = new GridPane();

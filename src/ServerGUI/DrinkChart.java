@@ -1,4 +1,4 @@
-package GUI_FX_Server;
+package ServerGUI;
 
 import ServerSide.ServerConnection;
 import javafx.collections.ObservableList;
@@ -24,11 +24,12 @@ public class DrinkChart extends BarChart {
         this.menu = menu;
     }
 
-    public BorderPane initChart() {
+    protected BorderPane initChart() {
         BorderPane mainTabPane = new BorderPane();
 
-        if (data == null || menu == null)
+        if (data == null || menu == null) {
             return mainTabPane;
+        }
 
         final CategoryAxis xAxis = new CategoryAxis();
         final NumberAxis yAxis = new NumberAxis();
@@ -92,9 +93,9 @@ public class DrinkChart extends BarChart {
         }
     }
 
-    public void colorChartBars(BarChart bc, int i, double qty) {
+    public void colorChartBars(BarChart barChart, int i, double qty) {
         String st = ".data" + i + ".chart-bar";
-        Node node = bc.lookup(st);
+        Node node = barChart.lookup(st);
 
         if (qty > 35) {
             node.setStyle("-fx-bar-fill: springgreen");
