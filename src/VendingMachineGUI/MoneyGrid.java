@@ -14,7 +14,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 
 public class MoneyGrid extends GridPane {
-    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     private HotDrinkVendMachine vendMachine;
     private Display display;
     private ResetDisplay resetDisplay;

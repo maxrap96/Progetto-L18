@@ -85,9 +85,9 @@ public class VendingMachine extends Application {
             key.setPrefSize(16 * screenSize.width / 100, screenSize.height / 9);
             key.setStyle(
                     "-fx-background-radius: 1em;" +
-                            "-fx-base: lightGray;" +
-                            "-fx-focus-color: transparent;" +
-                            "-fx-faint-focus-color: transparent;"
+                    "-fx-base: lightGray;" +
+                    "-fx-focus-color: transparent;" +
+                    "-fx-faint-focus-color: transparent;"
             );
             key.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
@@ -96,7 +96,7 @@ public class VendingMachine extends Application {
                     display.setCreditRow(String.valueOf(vendMachine.getCredit()));
                     key.setStyle(
                             "-fx-background-radius: 1em;" +
-                                    "-fx-focus-color: blue;"
+                            "-fx-focus-color: blue;"
                     );
                 }
             });
@@ -134,6 +134,4 @@ public class VendingMachine extends Application {
             }
         });
     }
-
-
 }

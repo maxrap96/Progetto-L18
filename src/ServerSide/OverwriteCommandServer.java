@@ -25,7 +25,7 @@ public class OverwriteCommandServer implements CommandServer {
     public void execute() {
         try {
             receiverServer.sendString(commandString, clientSocket);
-            // Utilizzo dello stesso nome per l'array, ma stavolta vengono inviate informazioni al client
+            // Utilizzo dello stesso nome per l'array, ma vengono inviate informazioni al client
             for (String tmp : observableListCommand) {
                 receiverServer.sendString(tmp, clientSocket);
             }

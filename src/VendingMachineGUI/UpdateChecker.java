@@ -9,7 +9,7 @@ import java.io.File;
 
 import static HotDrinkVendingMachine.TextPathFiles.MENU_PATH;
 
-public class UpdateChecker extends Thread{
+public class UpdateChecker extends Thread {
     private HotDrinkVendMachine vendMachine;
     private BeverageGrid beverageGrid;
     private BorderPane root;

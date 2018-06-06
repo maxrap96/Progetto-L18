@@ -11,7 +11,8 @@ public class BeverageEventHandler implements EventHandler {
     private Display display;
     private ResetDisplay resetDisplay;
 
-    public BeverageEventHandler(HotDrinkVendMachine vendMachine, Display display, int index, ResetDisplay resetDisplay) {
+    public BeverageEventHandler(HotDrinkVendMachine vendMachine, Display display, int index,
+                                ResetDisplay resetDisplay) {
         this.vendMachine = vendMachine;
         this.display = display;
         this.resetDisplay = resetDisplay;

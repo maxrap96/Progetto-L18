@@ -81,7 +81,7 @@ public abstract class HotDrink {
         return milk;
     }
 
-    public double getVodka(){
+    public double getVodka() {
         return vodka;
     }
 

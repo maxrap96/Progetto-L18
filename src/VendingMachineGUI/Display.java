@@ -10,7 +10,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 
 public class Display extends GridPane {
-    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     private final String DEFAULT_MESSAGE = "Scegliere una bevanda";
     private Text beverage = new Text();
     private Text beverageCost = new Text();
@@ -51,7 +51,7 @@ public class Display extends GridPane {
 
     /**
      * Funzione che configura i vari Text del display.
-     * @param text uno dei text del display.
+     * @param text uno dei Text del display.
      * @param message messaggio da stampare a video.
      */
     private void setDisplay(Text text, String message) {
@@ -60,19 +60,19 @@ public class Display extends GridPane {
         text.setFill(Color.WHITE);
     }
 
-    public void setBeverage(String info) {
+    protected void setBeverage(String info) {
         beverage.setText(info);
     }
 
-    public void setBeverageCost(String cost) {
+    protected void setBeverageCost(String cost) {
         beverageCost.setText(cost);
     }
 
-    public void setCreditRow(String credit) {
+    protected void setCreditRow(String credit) {
         creditRow.setText("Credito: " + credit);
     }
 
-    public void setSugar(String quantity) {
+    protected void setSugar(String quantity) {
         sugar.setText(quantity);
     }
 }

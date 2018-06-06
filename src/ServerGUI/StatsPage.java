@@ -104,7 +104,7 @@ public class StatsPage extends GridPane {
      * Funzione per aprire uno specifico tab all'apertura della pagina.
      * @param i indice per selezionare un tab; valore iniziale '0'.
      */
-    public void openTab(int i){
+    public void openTab(int i) {
         tabPane.getSelectionModel().select(i);
     }
 

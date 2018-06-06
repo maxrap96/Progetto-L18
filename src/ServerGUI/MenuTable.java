@@ -140,15 +140,15 @@ public class MenuTable extends TableView {
         final TextField addID = new TextField();
         addID.setPromptText("Id");
         addID.setMaxWidth(75);
-        final TextField addTipo = new TextField();
-        addTipo.setMaxWidth(75);
-        addTipo.setPromptText("Tipo");
-        final TextField addNome = new TextField();
-        addNome.setMaxWidth(75);
-        addNome.setPromptText("Nome");
-        final TextField addCosto = new TextField();
-        addCosto.setMaxWidth(75);
-        addCosto.setPromptText("Costo");
+        final TextField addType = new TextField();
+        addType.setMaxWidth(75);
+        addType.setPromptText("Tipo");
+        final TextField addName = new TextField();
+        addName.setMaxWidth(75);
+        addName.setPromptText("Nome");
+        final TextField addPrice = new TextField();
+        addPrice.setMaxWidth(75);
+        addPrice.setPromptText("Costo");
         final TextField addQ_max = new TextField();
         addQ_max.setMaxWidth(75);
         addQ_max.setPromptText("Q_max");
@@ -158,12 +158,12 @@ public class MenuTable extends TableView {
         final TextField addDose = new TextField();
         addDose.setMaxWidth(75);
         addDose.setPromptText("Dose");
-        final TextField addLatte = new TextField();
-        addLatte.setMaxWidth(75);
-        addLatte.setPromptText("Latte");
-        final TextField addAcqua = new TextField();
-        addAcqua.setMaxWidth(75);
-        addAcqua.setPromptText("Acqua");
+        final TextField addMilk = new TextField();
+        addMilk.setMaxWidth(75);
+        addMilk.setPromptText("Latte");
+        final TextField addWater = new TextField();
+        addWater.setMaxWidth(75);
+        addWater.setPromptText("Acqua");
         final TextField addVodka = new TextField();
         addVodka.setMaxWidth(75);
         addVodka.setPromptText("Vodka");
@@ -172,19 +172,20 @@ public class MenuTable extends TableView {
         addButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                String adddata = addID.getText()+"\t"+addTipo.getText()+"\t"+addNome.getText()+"\t"+addCosto.getText()
-                        +"\t"+addQ_max.getText()+"\t"+addTemp.getText()+"\t"+addDose.getText() +"\t"+addLatte.getText()
-                        +"\t"+addAcqua.getText()+"\t"+addVodka.getText();
-                data.add(new RowTabel(adddata));
+                String stringToAdd = addID.getText() + "\t" + addType.getText() + "\t" + addName.getText() + "\t" +
+                        addPrice.getText() + "\t" + addQ_max.getText() + "\t" + addTemp.getText() + "\t" +
+                        addDose.getText() + "\t" + addMilk.getText() + "\t" + addWater.getText() + "\t" +
+                        addVodka.getText();
+                data.add(new RowTabel(stringToAdd));
                 addID.clear();
-                addTipo.clear();
-                addNome.clear();
-                addCosto.clear();
+                addType.clear();
+                addName.clear();
+                addPrice.clear();
                 addQ_max.clear();
                 addTemp.clear();
                 addDose.clear();
-                addLatte.clear();
-                addAcqua.clear();
+                addMilk.clear();
+                addWater.clear();
                 addVodka.clear();
                 changeMenu();
             }
@@ -201,8 +202,7 @@ public class MenuTable extends TableView {
 
         addButton.setPrefWidth(50);
         final HBox hb = new HBox();
-        hb.getChildren().addAll(addID,addTipo,addNome,addCosto,addQ_max,addTemp,addDose,addLatte,addAcqua,
-                addVodka);
+        hb.getChildren().addAll(addID,addType,addName,addPrice,addQ_max,addTemp,addDose,addMilk,addWater, addVodka);
         hb.setSpacing(3);
         final HBox hBox = new HBox(addButton,remButton);
         tableView.setItems(data);
@@ -215,7 +215,6 @@ public class MenuTable extends TableView {
         VBox.setVgrow(tableView, Priority.ALWAYS);
         vBox.prefHeightProperty().bind(stage.heightProperty());
         vBox.prefWidthProperty().bind(stage.widthProperty());
-
     }
 
     /**
@@ -370,9 +369,10 @@ public class MenuTable extends TableView {
 
     public void setRowtabel(ObservableList<String> obsvMenu) {
         int size = 0;
-        for(int i = 0;i<obsvMenu.size();i++){
-            if(!obsvMenu.get(i).contains("*")){
-            size++;}
+        for (int i = 0; i < obsvMenu.size(); i++) {
+            if (!obsvMenu.get(i).contains("*")) {
+            size++;
+            }
         }
 
         rowtabel = new RowTabel[size];
@@ -384,7 +384,6 @@ public class MenuTable extends TableView {
                 rowtabel[tabindex] = new RowTabel(obsvMenu.get(i));
                 tabindex++;
             }
-
         }
         for (int j = 0; j < size; j++) {
             data.addAll(rowtabel[j]);
@@ -408,28 +407,27 @@ public class MenuTable extends TableView {
             String tmp = "";
             for (int column = 0; column < 10; column++ ) {
                 tmp = tmp + tableView.getColumns().get(column).getCellObservableValue(row).getValue();
-                if (!(column == 9)){
+                if (!(column == 9)) {
                     tmp = tmp + "\t";
                 }
             }
-            if(!tmp.equals("")){
-            menu.add(tmp);}
+            if (!tmp.equals("")) {
+            menu.add(tmp);
+            }
         }
         menu.add("*");
     }
-    private void changeId(int index){
-        for(int i = index; i < data.size(); i++){
-            String newId = "0"+(i+1);
+    private void changeId(int index) {
+        for (int i = index; i < data.size(); i++) {
+            String newId = "0" + (i + 1);
             tableView.getItems().get(i).setId(newId);
             changeMenu();
             //data.get(i).setId(newId);
         }
     }
-    public void sendMenu(){
+    public void sendMenu() {
         obsvMenu.clear();
         obsvMenu.addAll(menu);
         serverConnection.chooseCommandExecutedByThread(OVERWRITE_MENU);
     }
 }
-
-

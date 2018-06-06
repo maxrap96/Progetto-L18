@@ -3,11 +3,8 @@ package ServerSide;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.lang.reflect.Array;
 import java.net.Socket;
 import java.util.ArrayList;
-
-import static ServerSide.StringCommandList.END_SENDING;
 
 public class RefillCommandServer implements CommandServer {
     private Socket clientSocket;

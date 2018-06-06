@@ -3,8 +3,8 @@ import HotDrinkVendingMachine.TextualInterface;
 
 public class TestHotDrinkVendMachine {
     public static void main(String[] args) {
-        HotDrinkVendMachine macchinetta = new HotDrinkVendMachine();
-        TextualInterface textualInterface = new TextualInterface(macchinetta);
+        HotDrinkVendMachine vendMachine = new HotDrinkVendMachine();
+        TextualInterface textualInterface = new TextualInterface(vendMachine);
         textualInterface.textualInput();
     }
 }
