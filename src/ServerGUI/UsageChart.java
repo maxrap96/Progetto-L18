@@ -48,6 +48,12 @@ public class UsageChart extends LineChart {
         return b;
     }
 
+    /**
+     * Funzione per modificare impostazioni di base del grafico.
+     * @param lineChart Grafico.
+     * @param xAxis asse x.
+     * @param yAxis asse y.
+     */
     void chartSettings(LineChart<Number, Number> lineChart, NumberAxis xAxis, NumberAxis yAxis) {
         lineChart.setTitle("Utilizzo macchinetta");
 
