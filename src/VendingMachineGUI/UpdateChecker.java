@@ -51,8 +51,8 @@ public class UpdateChecker extends Thread {
                 booleanRefill.setCoinsRefilled(false);
                 vendMachine = new HotDrinkVendMachine();
             }
-            if (booleanRefill.isBeverageRefilled()) {
-                booleanRefill.setBeverageRefilled(false);
+            if (booleanRefill.isIngredientsRefilled()) {
+                booleanRefill.setIngredientsRefilled(false);
                 vendMachine = new HotDrinkVendMachine();
             }
             if (booleanRefill.isItemRefilled()) {

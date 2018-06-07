@@ -3,7 +3,7 @@ package ClientSide;
 public class BooleanRefill {
     private boolean isCoinsRefilled = false;
     private boolean isItemRefilled = false;
-    private boolean isBeverageRefilled = false;
+    private boolean isIngredientsRefilled = false;
 
     public boolean isCoinsRefilled() {
         return isCoinsRefilled;
@@ -13,8 +13,8 @@ public class BooleanRefill {
         return isItemRefilled;
     }
 
-    public boolean isBeverageRefilled() {
-        return isBeverageRefilled;
+    public boolean isIngredientsRefilled() {
+        return isIngredientsRefilled;
     }
 
     public void setCoinsRefilled(boolean coinsRefilled) {
@@ -25,7 +25,7 @@ public class BooleanRefill {
         isItemRefilled = itemRefilled;
     }
 
-    public void setBeverageRefilled(boolean beverageRefilled) {
-        isBeverageRefilled = beverageRefilled;
+    public void setIngredientsRefilled(boolean ingredientsRefilled) {
+        isIngredientsRefilled = ingredientsRefilled;
     }
 }

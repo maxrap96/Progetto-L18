@@ -15,7 +15,7 @@ public class RefillIngredientsCommand implements Command {
     public void execute() {
         try {
             this.receiverRefill.refillBeverage();
-            this.booleanRefill.setBeverageRefilled(true);
+            this.booleanRefill.setIngredientsRefilled(true);
         } catch (IOException e){
             e.printStackTrace();
         }

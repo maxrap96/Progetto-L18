@@ -17,12 +17,18 @@ public class ClientVendMach extends Thread implements StringCommandList, TextPat
     private BufferedReader inFromServer;
     private HashMap<String, Command> commandHashMap;
     private BooleanRefill booleanRefill;
+    private ReceiverSend receiverSend;
+    private ReceiverOverwrite receiverOverwrite;
+    private ReceiverRefill receiverRefill;
 
     public ClientVendMach(String ipServer, int port, BooleanRefill booleanRefill) {
         this.ip = ipServer;
         this.serverPort = port;
         this.commandHashMap = new HashMap<>();
         this.booleanRefill = booleanRefill;
+        this.receiverSend = new ReceiverSend();
+        this.receiverOverwrite = new ReceiverOverwrite();
+        this.receiverRefill = new ReceiverRefill();
     }
 
     @Override
@@ -38,7 +44,7 @@ public class ClientVendMach extends Thread implements StringCommandList, TextPat
             inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
             // Aggiunta dei comandi da eseguire
-            this.addCommands();
+            this.addCommands(receiverSend, receiverOverwrite, receiverRefill);
 
             String tmp;
             while ((tmp = inFromServer.readLine()) != null) {
@@ -66,10 +72,8 @@ public class ClientVendMach extends Thread implements StringCommandList, TextPat
     /**
      * Funzione che aggiunge i comandi da eseguire.
      */
-    private void addCommands() {
-        ReceiverSend receiverSend = new ReceiverSend();
-        ReceiverOverwrite receiverOverwrite = new ReceiverOverwrite();
-        ReceiverRefill receiverRefill = new ReceiverRefill();
+    private void addCommands(ReceiverSend receiverSend, ReceiverOverwrite receiverOverwrite,
+                             ReceiverRefill receiverRefill) {
         this.commandHashMap.put(SEND_MENU, new SendCommand(receiverSend, channelOutToServer, MENU_PATH));
         this.commandHashMap.put(SEND_DATA, new SendCommand(receiverSend, channelOutToServer, DATA_PATH));
         this.commandHashMap.put(SEND_COINS, new SendCommand(receiverSend, channelOutToServer, COINS_PATH));
@@ -78,9 +82,5 @@ public class ClientVendMach extends Thread implements StringCommandList, TextPat
         this.commandHashMap.put(REFILL_COINS, new RefillCoinsCommand(receiverRefill, booleanRefill));
         this.commandHashMap.put(REFILL_INGREDIENTS, new RefillIngredientsCommand(receiverRefill, booleanRefill));
         this.commandHashMap.put(REFILL_ITEMS, new RefillItemsCommand(receiverRefill, booleanRefill));
-    }
-
-    public BooleanRefill getBooleanRefill() {
-        return booleanRefill;
     }
 }
