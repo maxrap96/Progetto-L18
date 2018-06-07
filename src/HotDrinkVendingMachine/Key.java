@@ -4,10 +4,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import static java.lang.Double.parseDouble;
 
-public class Key {
+public class Key implements TextPathFiles{
     private String id;
     private double balance;
-    private Data data = new Data("src/TextFiles/KeyData.txt");
+    private Data data = new Data(KEY_PATH);
     private String currentLine;
     private boolean connected = false;
 
