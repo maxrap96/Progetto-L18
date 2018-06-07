@@ -149,3 +149,6 @@ Tè al Limone	Transazione avvenuta il:	07-06-2018 10:23:20
 Tè al Limone	Transazione avvenuta il:	07-06-2018 10:23:23
 Tè al Limone	Transazione avvenuta il:	07-06-2018 10:23:26
 Cappuccino	Transazione avvenuta il:	07-06-2018 10:25:55
+Frate Cappuccino	Transazione avvenuta il:	07-06-2018 10:34:26
+Frate Cappuccino	Transazione avvenuta il:	07-06-2018 10:35:04
+Ginseng	Transazione avvenuta il:	07-06-2018 10:37:58
