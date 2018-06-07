@@ -371,13 +371,14 @@ public class MenuTable extends TableView {
         int size = 0;
         for (int i = 0; i < obsvMenu.size(); i++) {
             if (!obsvMenu.get(i).contains("*")) {
-            size++;
+                size++;
             }
         }
 
         rowtabel = new RowTabel[size];
         data.clear();
         int tabindex = 0;
+        menu.clear();
         for (int i = 0; i < obsvMenu.size(); i++ ) {
             menu.add(obsvMenu.get(i));
             if (!obsvMenu.get(i).contains("*")) {
@@ -412,7 +413,7 @@ public class MenuTable extends TableView {
                 }
             }
             if (!tmp.equals("")) {
-            menu.add(tmp);
+                menu.add(tmp);
             }
         }
         menu.add("*");
@@ -428,6 +429,7 @@ public class MenuTable extends TableView {
     public void sendMenu() {
         obsvMenu.clear();
         obsvMenu.addAll(menu);
+        menu.clear();
         serverConnection.chooseCommandExecutedByThread(OVERWRITE_MENU);
     }
 }
