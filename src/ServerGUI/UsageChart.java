@@ -24,34 +24,46 @@ public class UsageChart extends LineChart {
     public BorderPane setGraph() {
         BorderPane b = new BorderPane();
 
-        if (stats.isEmpty()) {
+        if (stats.isEmpty())
             return b;
-        }
+
         final NumberAxis xAxis = new NumberAxis();
         final NumberAxis yAxis = new NumberAxis();
-        xAxis.setLabel("Giorno");
-        yAxis.setLabel("Ordini effettuati");
-        xAxis.setAutoRanging(false);
-        xAxis.setLowerBound(1);
-        xAxis.setUpperBound(31);
-        xAxis.setTickUnit(1);
-        xAxis.setMinorTickVisible(false);
-
         final LineChart<Number,Number> lineChart = new LineChart<>(xAxis, yAxis);
 
-        lineChart.setTitle("Utilizzo macchinetta");
+        chartSettings(lineChart, xAxis, yAxis);
 
+        // Ottenimento dati del grafico
         ArrayList<XYChart.Series> series = new ArrayList<>();
 
         Map<String, Long> counter = dataAnalysis(stats);
-        createSeries(counter,series);
+        createSeries(counter, series);
 
+        // Aggiunta dati alla serie
         for (int i = 0; i < series.size(); i++) {
             lineChart.getData().add(series.get(i));
         }
 
         b.setCenter(lineChart);
         return b;
+    }
+
+    void chartSettings(LineChart<Number, Number> lineChart, NumberAxis xAxis, NumberAxis yAxis) {
+        lineChart.setTitle("Utilizzo macchinetta");
+
+        xAxis.setLabel("Giorno");
+        xAxis.setAutoRanging(false);
+        xAxis.setLowerBound(1);
+        xAxis.setUpperBound(31);
+        xAxis.setTickUnit(1);
+        xAxis.setMinorTickVisible(false);
+
+        yAxis.setLabel("Ordini effettuati");
+        yAxis.setAutoRanging(false);
+        yAxis.setLowerBound(0);
+        yAxis.setUpperBound(34);
+        yAxis.setTickUnit(2);
+        yAxis.setMinorTickVisible(false);
     }
 
     private Map<String, Long> dataAnalysis(ObservableList<String> stats) {

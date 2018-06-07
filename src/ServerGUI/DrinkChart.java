@@ -61,10 +61,8 @@ public class DrinkChart extends BarChart {
         }
         HBox buttonBox = new HBox();
 
-        Button refill = new Button("Refill drinks");
-        refill.setOnAction(event -> {
-            serverConnection.chooseCommandExecutedByThread(REFILL_INGREDIENTS);
-        });
+        Button refill = new Button("Ricarica bevande");
+        refill.setOnAction(event -> serverConnection.chooseCommandExecutedByThread(REFILL_INGREDIENTS));
 
         buttonBox.setAlignment(Pos.CENTER);
         buttonBox.getChildren().add(refill);

@@ -152,3 +152,9 @@ Cappuccino	Transazione avvenuta il:	07-06-2018 10:25:55
 Frate Cappuccino	Transazione avvenuta il:	07-06-2018 10:34:26
 Frate Cappuccino	Transazione avvenuta il:	07-06-2018 10:35:04
 Ginseng	Transazione avvenuta il:	07-06-2018 10:37:58
+Caffè Top	Transazione avvenuta il:	07-06-2018 21:59:10
+Caffè Lungo	Transazione avvenuta il:	07-06-2018 21:59:53
+Frate Cappuccino	Transazione avvenuta il:	07-06-2018 22:05:18
+Ginseng	Transazione avvenuta il:	07-06-2018 22:05:39
+Cioccolata	Transazione avvenuta il:	07-06-2018 22:06:16
+Cappuccino	Transazione avvenuta il:	07-06-2018 22:11:13

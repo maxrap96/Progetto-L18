@@ -1,6 +1,8 @@
 package ServerGUI;
 
 import ServerSide.ServerConnection;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
@@ -110,6 +112,10 @@ public class ToolbarServer extends ToolBar {
         });
 
         save.setOnAction(event -> {menuTable.sendMenu();});
+
+        refreshBtn.setOnAction(event -> {
+            sendFile();
+        });
 
         vendMachine.setOnMouseClicked(event -> createVendMachine());
     }

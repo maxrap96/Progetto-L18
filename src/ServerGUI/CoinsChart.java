@@ -53,7 +53,7 @@ public class CoinsChart extends BarChart {
 
         HBox buttonBox = new HBox();
 
-        Button refill = new Button("Refill\ncoins");
+        Button refill = new Button("Reset\nmonete");
         refill.setMaxWidth(80);
         refill.setMinHeight(50);
         refill.prefHeightProperty().bind(buttonBox.heightProperty());
