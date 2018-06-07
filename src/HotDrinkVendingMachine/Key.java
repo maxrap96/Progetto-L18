@@ -5,18 +5,16 @@ import java.util.ArrayList;
 import static java.lang.Double.parseDouble;
 
 public class Key {
-    private String ID;
-    private double balance = 0;
-    private int line;
+    private String id;
+    private double balance;
     private Data data = new Data("src/TextFiles/KeyData.txt");
     private String currentLine;
     private boolean connected = false;
 
     public Key() {
         ArrayList<String[]> keyText = data.readFile();
-        ID = keyText.get(0)[0];
+        id = keyText.get(0)[0];
         balance = parseDouble(keyText.get(0)[1]);
-        line = 0;
         currentLine = keyText.get(0)[0] + "\t" + keyText.get(0)[1];
         // initKey();
     }
@@ -26,9 +24,8 @@ public class Key {
 
         for (int i = 0; i < keyText.size(); i++) {
             String id = keyText.get(i)[0];
-            if (ID.equals(id)) {
+            if (this.id.equals(id)) {
                 balance = parseDouble(keyText.get(i)[1]);
-                line = i;
                 currentLine = keyText.get(i)[0] + "\t" + keyText.get(i)[1];
             }
         }
@@ -49,7 +46,7 @@ public class Key {
     public void addBalance(double amount) {
         balance = (balance * 1000 + amount * 1000) / 1000;
         balance = Math.floor(balance * 100) / 100;
-        String newLine = ID + "\t" + balance;
+        String newLine = id + "\t" + balance;
         newLine.replace(",","."); // Altrimenti al successivo riavvio non si riesce a leggere il file
         try {
             data.overwriteFile(newLine, currentLine);
@@ -62,7 +59,7 @@ public class Key {
         if (balance > price) {
             balance -= price;
             balance = Math.floor(balance * 100) / 100;
-            String newLine = ID + "\t" + balance;
+            String newLine = id + "\t" + balance;
             try {
                 data.overwriteFile(newLine, currentLine);
             } catch (IOException e) {
@@ -75,6 +72,6 @@ public class Key {
 
     @Override
     public String toString() {
-        return "ID: " + ID + "\nsaldo: " + balance;
+        return "id: " + id + "\nsaldo: " + balance;
     }
 }

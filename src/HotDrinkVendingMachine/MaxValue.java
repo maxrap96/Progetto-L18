@@ -6,6 +6,7 @@ package HotDrinkVendingMachine;
  */
 public interface MaxValue {
     double SUGAR_DOSE = 0.25;
+    int MAX_SUGAR_LEVEL = 5;
     double SUGAR_MAX = 1000.0;
     double MILK_MAX = 1000.0;
     int CUP_MAX = 500;

@@ -54,8 +54,8 @@ public class TextualInterface {
             System.out.println("Inserire le monete da " + String.format("%.2f", coinsValue[i]) + " cent");
             String input = keyboard();
             if (parseInt(input) > 0) {
-                double addedd = parseInt(input) * coinsValue[i];
-                vendMachine.addCredit(addedd);
+                double added = parseInt(input) * coinsValue[i];
+                vendMachine.addCredit(added);
             }
         }
     }

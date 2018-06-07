@@ -9,14 +9,13 @@ import java.util.HashMap;
 import static java.lang.Integer.parseInt;
 
 public class HotDrinkVendMachine implements MaxValue, TextPathFiles {
-    private final int MAX_SUGAR_LEVEL = 5;
     private HashMap<String, HotDrink> list;
     private int selected_sugar;
     private Coins coins;
     private Data stats;
     private Data ingredientsData;
     private Data menu;
-    private ArrayList<String[]> datas;
+    private ArrayList<String[]> data;
     private Dispenser dispenser;
     private Key key;
 
@@ -43,7 +42,7 @@ public class HotDrinkVendMachine implements MaxValue, TextPathFiles {
         double vodka = Double.parseDouble(data.get(4)[1]);
         int lastRow = 4; // Ultima riga letta dal file
         dispenser = new Dispenser(milk, sugar, spoon, cup, vodka);
-        datas = data;
+        this.data = data;
         dispenser.checkIfMachineIsEmpty(); // Controlla se c'è bisogno di ricaricare la macchinetta
         return lastRow;
     }
@@ -147,7 +146,7 @@ public class HotDrinkVendMachine implements MaxValue, TextPathFiles {
             transaction = key.pay(list.get(ID).getPrice());
             // Scrittura statistiche su file
             stats.writeFile(list.get(ID).getName(),transaction);
-            updateDati(ID);
+            updateData(ID);
 
             if (transaction) {
                 return "Bevanda erogata";
@@ -167,7 +166,7 @@ public class HotDrinkVendMachine implements MaxValue, TextPathFiles {
 
             // Scrittura statistiche su file
             stats.writeFile(list.get(ID).getName(), transaction);
-            updateDati(ID);
+            updateData(ID);
 
             if (coins.getCredit() != 0) {
                 coins.giveChange();
@@ -246,26 +245,26 @@ public class HotDrinkVendMachine implements MaxValue, TextPathFiles {
         }
     }
 
-    public int getSelected_sugar() {
+    public int getSelectedSugar() {
         return selected_sugar;
     }
 
     /**
      * Funzione per aggiornare il file Data.txt, contenente le quantità di oggetti e di ingredienti.
      */
-    private void updateDati(String ID) {
+    private void updateData(String ID) {
         String valDati[] = dispenser.getData();
         String newLine = "";
         String current = "";
 
         try {
             for (int i = 0; i < valDati.length; i++) {
-                current = datas.get(i)[0] + "\t" + datas.get(i)[1];
+                current = data.get(i)[0] + "\t" + data.get(i)[1];
 
-                if (datas.get(i)[0].equals("Cups") || datas.get(i)[0].equals("Spoons")) {
-                    newLine = datas.get(i)[0] + "\t" + valDati[i];
+                if (data.get(i)[0].equals("Cups") || data.get(i)[0].equals("Spoons")) {
+                    newLine = data.get(i)[0] + "\t" + valDati[i];
                 }
-                else {newLine = datas.get(i)[0] + "\t" + Double.parseDouble(valDati[i]);}
+                else {newLine = data.get(i)[0] + "\t" + Double.parseDouble(valDati[i]);}
                 ingredientsData.overwriteFile(newLine, current);
             }
 

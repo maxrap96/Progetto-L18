@@ -82,21 +82,11 @@ public class Data {
         }
     }
 
-    public void writeData(String writing) {
-        try {
-            FileWriter writer = new FileWriter(PATH_FILE, true);
-            writer.write(writing);
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     /**
      * Funzione per ottenere data e ora locali.
      * @return strDate dati desiderati.
      */
-    private static String getCurrentTimeStamp() {
+    private String getCurrentTimeStamp() {
         SimpleDateFormat sdfDate = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss"); // Stringa per data, ora, tempo
         Date now = new Date();
         String strDate = sdfDate.format(now);
@@ -128,10 +118,13 @@ public class Data {
 
     /**
      * Funzione per la sovrascrittura di una specifica riga di testo.
+     *
+     * Nota: utilizzata dalle classi refill.
+     *
      * @param currentLine riga da aggiornare.
      * @param newLine nuova riga che sovrascriverà la riga selezionata.
      */
-    public void overwriteFileDario(String newLine, String currentLine) throws IOException {
+    public void overwriteFileRefill(String newLine, String currentLine) throws IOException {
         ArrayList<String> arrayListTmp = new ArrayList<>();
         BufferedReader bufferedReader = new BufferedReader(new FileReader(PATH_FILE));
         String line;
@@ -158,7 +151,7 @@ public class Data {
     }
 
     /**
-     *
+     * Funzione che salva il file inviato da server tramite il comando.
      * @param arrayList
      */
     public void saveFileFromCommand(ArrayList<String> arrayList) {
@@ -183,7 +176,7 @@ public class Data {
     /**
      * Funzione che restituisce un arrayList del file senza le righe con gli asterischi.
      */
-    public ArrayList<String> readFileNotSplitted () {
+    public ArrayList<String> readFileNotSplitted() {
         ArrayList<String> arrayListNotSplitted = new ArrayList<>();
         try {
             BufferedReader bReader = new BufferedReader(new FileReader(PATH_FILE));

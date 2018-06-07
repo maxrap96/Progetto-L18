@@ -62,7 +62,7 @@ public class ResetDisplay {
      */
     public void setDots() {
         String quantity;
-        switch (vendMachine.getSelected_sugar()) {
+        switch (vendMachine.getSelectedSugar()) {
             // u25cf pallino pieno
             // u25cb pallino vuoto
             case 0:

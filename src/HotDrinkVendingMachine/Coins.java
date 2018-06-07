@@ -63,19 +63,6 @@ public class Coins implements CoinsNumbers, TextPathFiles{
     }
 
     /**
-     * Funzione per identificare il tipo e la quantità di monete inserite.
-     * @param index stringa da analizzare.
-     */
-    public void addCredit(String number, int index) {
-        credit += parseInt(number) * COINS_VALUE[index];
-        money[index] += parseInt(number);
-
-        if (index == money.length - 1) {
-            coinsTxt.writeFile(moneyOnFile());
-        }
-    }
-
-    /**
      * Restituisce il credito in formato double.
      */
     public double getCredit() {
