@@ -31,7 +31,6 @@ public class ToolbarServer extends ToolBar {
 
     ToolbarServer(ServerConnection serverConnection) {
         this.serverConnection = serverConnection;
-        //createdVend();
 
         //Associazione di immagini ai bottoni
         ImageView imgHome = setImage("src/ServerImages/home.png");
@@ -51,17 +50,17 @@ public class ToolbarServer extends ToolBar {
     }
 
     /**
-     * Funzione che inizializza le azione che i bottoni eseguiranno
+     * Funzione che inizializza le azioni che eseguiranno i bottoni.
     **/
-    public void Action(AnchorPane anchor,MenuTable menuTable,StatsPage statsPage){
+    void Action(AnchorPane anchor, MenuTable menuTable, StatsPage statsPage){
         home.setOnAction(event -> {
-            //Apertura di una nuova schermata di home
+            //Apertura della schermata di home
             menuTable.getvBox().setVisible(false);
             anchor.setVisible(true);
             statsPage.getMainPanel().setVisible(false);
         });
 
-        //Apertura delle tab delle statisctiche ognuna caratterizzata dall indice i
+        //Apertura delle tab delle statisctiche ognuna caratterizzata dall'indice i
         coins.setOnAction(event -> {
             menuTable.getvBox().setVisible(false);
             anchor.setVisible(false);
@@ -69,6 +68,7 @@ public class ToolbarServer extends ToolBar {
             statsPage.openTab(0);
             sendFile();
         });
+
         bvgPurchase.setOnAction(event -> {
             menuTable.getvBox().setVisible(false);
             anchor.setVisible(false);
@@ -76,6 +76,7 @@ public class ToolbarServer extends ToolBar {
             statsPage.openTab(1);
             sendFile();
         });
+
         usage.setOnAction(event -> {
             menuTable.getvBox().setVisible(false);
             anchor.setVisible(false);
@@ -83,6 +84,7 @@ public class ToolbarServer extends ToolBar {
             statsPage.openTab(2);
             sendFile();
         });
+
         beverage.setOnAction(event -> {
             menuTable.getvBox().setVisible(false);
             anchor.setVisible(false);
@@ -90,6 +92,7 @@ public class ToolbarServer extends ToolBar {
             statsPage.openTab(3);
             sendFile();
         });
+
         items.setOnAction(event -> {
             menuTable.getvBox().setVisible(false);
             anchor.setVisible(false);
@@ -108,29 +111,29 @@ public class ToolbarServer extends ToolBar {
 
         save.setOnAction(event -> {menuTable.sendMenu();});
 
-        vendMachine.setOnMouseClicked(event -> {
-            createdVend();
-        });
-
+        vendMachine.setOnMouseClicked(event -> createVendMachine());
     }
 
-    private void createdVend(){
+    /**
+     * Crea distributore da inserire nella tendinda del menù.
+     */
+    private void createVendMachine() {
+        dispenser = new MenuItem[serverConnection.getIndex()];
+        vendMachine.getItems().clear();
+        for (int i = 0; i < serverConnection.getIndex(); i++) {
+            String name = "Distributore" + (i + 1);
+            dispenser[i] = new MenuItem(name);
+            vendMachine.getItems().addAll(dispenser[i]);
 
-            dispenser = new MenuItem[serverConnection.getIndex()];
-            vendMachine.getItems().clear();
-            for(int i = 0; i < serverConnection.getIndex(); i++){
-                dispenser[i] = null;
-                String name = "Distributore"+(i+1);
-                dispenser[i] = new MenuItem(name);
-                vendMachine.getItems().addAll(dispenser[i]);
+            int index = i;
 
-                final int index = i;
-                dispenser[i].setOnAction(event -> {
-                    vendMachine.setText(dispenser[index].getText());
-                    serverConnection.setSelectedClient(index);
-                    System.out.println("check");
-                });
-            }
+            dispenser[i].setOnAction(event -> {
+            vendMachine.setText(dispenser[index].getText());
+            serverConnection.setSelectedClient(index);
+            System.out.println("check");
+            });
+        }
+
         if (vendMachine.isShowing()){
             vendMachine.hide();
             vendMachine.show();

@@ -20,6 +20,7 @@ import javafx.stage.Stage;
 public class HomePage extends Application implements StringCommandList {
     private ClassOfObservableLists classOfObservableLists = new ClassOfObservableLists();
     private ServerConnection server;
+    private final String URL = "https://github.com/IngSW-unipv/Progetto-L18";
 
     @Override
     public void start(Stage primaryStage) {
@@ -59,10 +60,8 @@ public class HomePage extends Application implements StringCommandList {
         Hyperlink hyperlink = new Hyperlink();
         hyperlink.setText("Click here for Project L-18 web site!");
 
-        final String url = "https://github.com/IngSW-unipv/Progetto-L18";
-
         hyperlink.setOnAction(e -> {
-            getHostServices().showDocument(url);    // Pagina web aperta nel browser
+            getHostServices().showDocument(URL);    // Pagina web aperta nel browser
         });
 
         HBox hbox = new HBox();
@@ -71,6 +70,7 @@ public class HomePage extends Application implements StringCommandList {
 
         // Creazione bottoni
         ButtonBar buttonBar = new ButtonBar();
+
         Button menuButton = new Button("Menu");
         ButtonBar.setButtonData(menuButton, ButtonBar.ButtonData.LEFT);
         menuButton.setPrefSize(85, 50);
@@ -102,11 +102,11 @@ public class HomePage extends Application implements StringCommandList {
         anchor.setBottomAnchor(hyperlink, 0.0);
 
         StackPane stackPane = new StackPane();
-        stackPane.getChildren().addAll(anchor,menuTable.getvBox(),statsPage.getMainPanel());
+        stackPane.getChildren().addAll(anchor, menuTable.getvBox(), statsPage.getMainPanel());
         menuTable.getvBox().setVisible(false);
         anchor.setVisible(true);
         statsPage.getMainPanel().setVisible(false);
-        toolbarServer.Action(anchor,menuTable,statsPage);
+        toolbarServer.Action(anchor, menuTable, statsPage);
 
         // Gestione pressione del bottone "Statistiche"
         statsButton.setOnAction(event -> {
@@ -127,10 +127,10 @@ public class HomePage extends Application implements StringCommandList {
             server.chooseCommandExecutedByThread(SEND_MENU);
         });
 
-        VBox vBox1 = new VBox(toolbarServer,stackPane);
-        VBox.setVgrow(toolbarServer,Priority.ALWAYS);
-        VBox.setVgrow(stackPane,Priority.ALWAYS);
-        Scene scene = new Scene(vBox1, 800, 550);
+        VBox toolbarBox = new VBox(toolbarServer, stackPane);
+        VBox.setVgrow(toolbarServer, Priority.ALWAYS);
+        VBox.setVgrow(stackPane, Priority.ALWAYS);
+        Scene scene = new Scene(toolbarBox, 800, 550);
 
         primaryStage.setScene(scene);
         primaryStage.sizeToScene();
