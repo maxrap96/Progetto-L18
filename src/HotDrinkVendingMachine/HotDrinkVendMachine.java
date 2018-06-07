@@ -157,19 +157,20 @@ public class HotDrinkVendMachine implements MaxValue, TextPathFiles {
             }
         }
 
+        //funzione che si occupa della gestione tramite monete
         if (coins.getCredit() >= list.get(ID).getPrice() && list.get(ID).isAvailable()) {
             // Se il credito è uguale o maggiore significa che si puo' potenzialmente acquistare la bevanda
             transaction = true;
             dispenser.subtractIngredients(list.get(ID), selected_sugar);
             coins.updateBalance(list.get(ID).getPrice());
             setSugarToDefault();
-            coins.giveChange();
 
             // Scrittura statistiche su file
             stats.writeFile(list.get(ID).getName(), transaction);
             updateDati(ID);
 
             if (coins.getCredit() != 0) {
+                coins.giveChange();
                 System.out.println("Bevanda erogata. Ritirare il resto");
                 return "Bevanda erogata. Ritirare il resto";
             } else {

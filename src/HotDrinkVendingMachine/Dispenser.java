@@ -44,19 +44,8 @@ public class Dispenser implements MaxValue {
      */
     protected void checkIfMachineIsEmpty() {
         if (cup < 20 || spoon < 10 || sugar < 0.5 || milk < 0.2) {
-            System.out.println("Refilling machine...\n");
-            refill();
+            System.out.println("WARNING: Low level\n");
         }
-    }
-
-    /**
-     * Ricarica alcuni elementi della macchinetta.
-     */
-    private void refill() {
-        this.sugar = SUGAR_MAX;
-        this.milk = MILK_MAX;
-        this.cup = CUP_MAX;
-        this.spoon = SPOON_MAX;
     }
 
     /**

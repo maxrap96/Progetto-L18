@@ -144,3 +144,7 @@ Caffè Espresso	Transazione avvenuta il:	04-06-2018 16:49:00
 Ginseng	Transazione avvenuta il:	05-06-2018 15:24:26
 Caffè Espresso	Transazione avvenuta il:	05-06-2018 15:28:29
 Caffè Espresso	Transazione avvenuta il:	06-06-2018 16:41:11
+Cappuccino	Transazione avvenuta il:	06-06-2018 16:42:25
+Tè al Limone	Transazione avvenuta il:	07-06-2018 10:23:20
+Tè al Limone	Transazione avvenuta il:	07-06-2018 10:23:23
+Tè al Limone	Transazione avvenuta il:	07-06-2018 10:23:26
