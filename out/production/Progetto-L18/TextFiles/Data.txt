@@ -1,4 +1,4 @@
-* qta rimasta, latte, acqua, bicchierini, cucchiaini, zucchero.
+* qta rimasta, milk, water, bicchierini, cucchiaini, zucchero.
 *
 * Latte (litri)
 Milk	999.3399999999998

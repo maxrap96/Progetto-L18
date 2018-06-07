@@ -6,7 +6,6 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -21,11 +20,11 @@ import java.util.ArrayList;
 import static ServerSide.StringCommandList.OVERWRITE_MENU;
 
 public class MenuTable extends TableView {
-    private RowTabel[] rowtabel;
+    private RowTable[] rowTable;
     private VBox vBox = new VBox();
     private ObservableList<String> obsvMenu;
-    private TableView<RowTabel> tableView = new TableView<>();
-    private ObservableList<RowTabel> data = FXCollections.observableArrayList();
+    private TableView<RowTable> tableView = new TableView<>();
+    private ObservableList<RowTable> data = FXCollections.observableArrayList();
     private ArrayList<String> menu = new ArrayList<>();
     private ServerConnection serverConnection;
 
@@ -35,52 +34,52 @@ public class MenuTable extends TableView {
 
         obsvMenu.addListener((ListChangeListener) change -> Platform.runLater(() -> {
             // Aggiorna UI
-            System.out.println("Detected a change! ");
-            setRowtabel(obsvMenu);
+            System.out.println("Detected a change!");
+            setRowTable(obsvMenu);
         }));
 
         tableView.setEditable(true);
 
         // Creazione colonne
-        // Aggiunta ad ogni colonna dei valori contenuti nella classe rowtabel e resi i valori modificabili
+        // Aggiunta ad ogni colonna dei valori contenuti nella classe rowTable e resi i valori modificabili
         TableColumn id = new TableColumn("ID");
         this.initTableColumn(id,"id");
 
         TableColumn type = new TableColumn("Tipo");
-        this.initTableColumn(type,"tipo");
-        type.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<RowTabel, String>>() {
-            public void handle(TableColumn.CellEditEvent<RowTabel, String> event) {
-                ((RowTabel) event.getTableView().getItems().get(event.getTablePosition().getRow())
-                ).setTipo(event.getNewValue());
+        this.initTableColumn(type,"type");
+        type.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<RowTable, String>>() {
+            public void handle(TableColumn.CellEditEvent<RowTable, String> event) {
+                ((RowTable) event.getTableView().getItems().get(event.getTablePosition().getRow())
+                ).setType(event.getNewValue());
                 changeMenu();
             }
         });
 
         TableColumn name = new TableColumn("Nome");
-        this.initTableColumn(name,"nome");
-        name.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<RowTabel, String>>() {
-            public void handle(TableColumn.CellEditEvent<RowTabel, String> event) {
-                ((RowTabel) event.getTableView().getItems().get(event.getTablePosition().getRow())
-                ).setNome(event.getNewValue());
+        this.initTableColumn(name,"name");
+        name.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<RowTable, String>>() {
+            public void handle(TableColumn.CellEditEvent<RowTable, String> event) {
+                ((RowTable) event.getTableView().getItems().get(event.getTablePosition().getRow())
+                ).setName(event.getNewValue());
                 changeMenu();
             }
         });
 
         TableColumn price = new TableColumn("Costo");
-        this.initTableColumn(price,"costo");
-        price.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<RowTabel, String>>() {
-            public void handle(TableColumn.CellEditEvent<RowTabel, String> event) {
-                ((RowTabel) event.getTableView().getItems().get(event.getTablePosition().getRow())
-                ).setCosto(event.getNewValue());
+        this.initTableColumn(price,"price");
+        price.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<RowTable, String>>() {
+            public void handle(TableColumn.CellEditEvent<RowTable, String> event) {
+                ((RowTable) event.getTableView().getItems().get(event.getTablePosition().getRow())
+                ).setPrice(event.getNewValue());
                 changeMenu();
             }
         });
 
         TableColumn Q_max = new TableColumn("Q_max");
         this.initTableColumn(Q_max,"q_max");
-        Q_max.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<RowTabel, String>>() {
-            public void handle(TableColumn.CellEditEvent<RowTabel, String> event) {
-                ((RowTabel) event.getTableView().getItems().get(event.getTablePosition().getRow())
+        Q_max.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<RowTable, String>>() {
+            public void handle(TableColumn.CellEditEvent<RowTable, String> event) {
+                ((RowTable) event.getTableView().getItems().get(event.getTablePosition().getRow())
                 ).setQ_max(event.getNewValue());
                 changeMenu();
             }
@@ -88,9 +87,9 @@ public class MenuTable extends TableView {
 
         TableColumn temp = new TableColumn("Temp");
         this.initTableColumn(temp,"temp");
-        temp.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<RowTabel, String>>() {
-            public void handle(TableColumn.CellEditEvent<RowTabel, String> event) {
-                ((RowTabel) event.getTableView().getItems().get(event.getTablePosition().getRow())
+        temp.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<RowTable, String>>() {
+            public void handle(TableColumn.CellEditEvent<RowTable, String> event) {
+                ((RowTable) event.getTableView().getItems().get(event.getTablePosition().getRow())
                 ).setTemp(event.getNewValue());
                 changeMenu();
             }
@@ -98,85 +97,62 @@ public class MenuTable extends TableView {
 
         TableColumn dose = new TableColumn("Dose");
         this.initTableColumn(dose,"dose");
-        dose.setOnEditCommit( new EventHandler<TableColumn.CellEditEvent<RowTabel, String>>() {
-            public void handle( TableColumn.CellEditEvent<RowTabel, String> event) {
-                ((RowTabel) event.getTableView().getItems().get(event.getTablePosition().getRow())
+        dose.setOnEditCommit( new EventHandler<TableColumn.CellEditEvent<RowTable, String>>() {
+            public void handle( TableColumn.CellEditEvent<RowTable, String> event) {
+                ((RowTable) event.getTableView().getItems().get(event.getTablePosition().getRow())
                 ).setDose(event.getNewValue());
                 changeMenu();
             }
         });
 
         TableColumn milk = new TableColumn("Latte");
-        this.initTableColumn(milk,"latte");
-        milk.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<RowTabel, String>>() {
-            public void handle(TableColumn.CellEditEvent<RowTabel, String> event) {
-                ((RowTabel) event.getTableView().getItems().get(event.getTablePosition().getRow())
-                ).setLatte(event.getNewValue());
+        this.initTableColumn(milk,"milk");
+        milk.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<RowTable, String>>() {
+            public void handle(TableColumn.CellEditEvent<RowTable, String> event) {
+                ((RowTable) event.getTableView().getItems().get(event.getTablePosition().getRow())
+                ).setMilk(event.getNewValue());
                 changeMenu();
             }
         });
 
         TableColumn water = new TableColumn("Acqua");
-        this.initTableColumn(water,"acqua");
-        water.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<RowTabel, String>>() {
-            public void handle(TableColumn.CellEditEvent<RowTabel, String> event) {
-                ((RowTabel) event.getTableView().getItems().get(event.getTablePosition().getRow())
-                ).setAcqua(event.getNewValue());
+        this.initTableColumn(water,"water");
+        water.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<RowTable, String>>() {
+            public void handle(TableColumn.CellEditEvent<RowTable, String> event) {
+                ((RowTable) event.getTableView().getItems().get(event.getTablePosition().getRow())
+                ).setWater(event.getNewValue());
                 changeMenu();
             }
         });
 
         TableColumn vodka = new TableColumn("Vodka");
         this.initTableColumn(vodka,"vodka");
-        vodka.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<RowTabel, String>>() {
-            public void handle(TableColumn.CellEditEvent<RowTabel, String> event) {
-                ((RowTabel) event.getTableView().getItems().get(event.getTablePosition().getRow())
+        vodka.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<RowTable, String>>() {
+            public void handle(TableColumn.CellEditEvent<RowTable, String> event) {
+                ((RowTable) event.getTableView().getItems().get(event.getTablePosition().getRow())
                 ).setVodka(event.getNewValue());
                 changeMenu();
             }
         });
 
-
-        final TextField addID = new TextField();
-        addID.setPromptText("Id");
-        addID.setMaxWidth(75);
-        final TextField addType = new TextField();
-        addType.setMaxWidth(75);
-        addType.setPromptText("Tipo");
-        final TextField addName = new TextField();
-        addName.setMaxWidth(75);
-        addName.setPromptText("Nome");
-        final TextField addPrice = new TextField();
-        addPrice.setMaxWidth(75);
-        addPrice.setPromptText("Costo");
-        final TextField addQ_max = new TextField();
-        addQ_max.setMaxWidth(75);
-        addQ_max.setPromptText("Q_max");
-        final TextField addTemp = new TextField();
-        addTemp.setMaxWidth(75);
-        addTemp.setPromptText("Temp");
-        final TextField addDose = new TextField();
-        addDose.setMaxWidth(75);
-        addDose.setPromptText("Dose");
-        final TextField addMilk = new TextField();
-        addMilk.setMaxWidth(75);
-        addMilk.setPromptText("Latte");
-        final TextField addWater = new TextField();
-        addWater.setMaxWidth(75);
-        addWater.setPromptText("Acqua");
-        final TextField addVodka = new TextField();
-        addVodka.setMaxWidth(75);
-        addVodka.setPromptText("Vodka");
+        final TextField addID = createTextField("Id");
+        final TextField addType = createTextField("Tipo");
+        final TextField addName = createTextField("Nome");
+        final TextField addPrice = createTextField("Costo");
+        final TextField addQ_max = createTextField("Q_Max");
+        final TextField addTemp = createTextField("Temp");
+        final TextField addDose = createTextField("Dose");
+        final TextField addMilk = createTextField("Latte");
+        final TextField addWater = createTextField("Acqua");
+        final TextField addVodka = createTextField("Vodka");
 
         final Button addButton = new Button("Add");
-        addButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
+        addButton.setOnAction(event -> {
                 String stringToAdd = addID.getText() + "\t" + addType.getText() + "\t" + addName.getText() + "\t" +
                         addPrice.getText() + "\t" + addQ_max.getText() + "\t" + addTemp.getText() + "\t" +
                         addDose.getText() + "\t" + addMilk.getText() + "\t" + addWater.getText() + "\t" +
                         addVodka.getText();
-                data.add(new RowTabel(stringToAdd));
+                data.add(new RowTable(stringToAdd));
                 addID.clear();
                 addType.clear();
                 addName.clear();
@@ -188,21 +164,18 @@ public class MenuTable extends TableView {
                 addWater.clear();
                 addVodka.clear();
                 changeMenu();
-            }
         });
         final Button remButton = new Button("Remove");
-        remButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
+        remButton.setOnAction(event -> {
                 int index = tableView.getSelectionModel().getSelectedIndex();
                 data.remove(index);
                 changeId(index);
-            }
         });
 
         addButton.setPrefWidth(50);
         final HBox hb = new HBox();
-        hb.getChildren().addAll(addID,addType,addName,addPrice,addQ_max,addTemp,addDose,addMilk,addWater, addVodka);
+        hb.getChildren().addAll(addID, addType, addName, addPrice, addQ_max, addTemp, addDose, addMilk, addWater,
+                addVodka);
         hb.setSpacing(3);
         final HBox hBox = new HBox(addButton,remButton);
         tableView.setItems(data);
@@ -217,32 +190,41 @@ public class MenuTable extends TableView {
         vBox.prefWidthProperty().bind(stage.widthProperty());
     }
 
+    private TextField createTextField(String nameOfTextField) {
+        TextField textFieldTmp = new TextField();
+        textFieldTmp.setMaxWidth(75);
+        textFieldTmp.setPromptText(nameOfTextField);
+        return textFieldTmp;
+    }
+
+
+
     /**
-     * Classe menu utilizzata per l'aggiunta dei dati nella rowtabel.
+     * Classe menu utilizzata per l'aggiunta dei dati nella rowTable.
      */
-    public static class RowTabel {
+    public static class RowTable {
         private SimpleStringProperty id;
-        private SimpleStringProperty tipo;
-        private SimpleStringProperty nome;
-        private SimpleStringProperty costo;
+        private SimpleStringProperty type;
+        private SimpleStringProperty name;
+        private SimpleStringProperty price;
         private SimpleStringProperty q_max;
         private SimpleStringProperty temp;
         private SimpleStringProperty dose;
-        private SimpleStringProperty latte;
-        private SimpleStringProperty acqua;
+        private SimpleStringProperty milk;
+        private SimpleStringProperty water;
         private SimpleStringProperty vodka;
 
-        private RowTabel(String menuDati) {
+        private RowTable(String menuDati) {
             String[] dati = menuDati.split("\t");
             this.id = new SimpleStringProperty(dati[0]);
-            this.tipo = new SimpleStringProperty(dati[1]);
-            this.nome = new SimpleStringProperty(dati[2]);
-            this.costo = new SimpleStringProperty(dati[3]);
+            this.type = new SimpleStringProperty(dati[1]);
+            this.name = new SimpleStringProperty(dati[2]);
+            this.price = new SimpleStringProperty(dati[3]);
             this.q_max = new SimpleStringProperty(dati[4]);
             this.temp = new SimpleStringProperty(dati[5]);
             this.dose = new SimpleStringProperty(dati[6]);
-            this.latte = new SimpleStringProperty(dati[7]);
-            this.acqua = new SimpleStringProperty(dati[8]);
+            this.milk = new SimpleStringProperty(dati[7]);
+            this.water = new SimpleStringProperty(dati[8]);
             this.vodka = new SimpleStringProperty(dati[9]);
         }
 
@@ -250,16 +232,16 @@ public class MenuTable extends TableView {
             return id;
         }
 
-        public SimpleStringProperty tipoProperty() {
-            return tipo;
+        public SimpleStringProperty typeProperty() {
+            return type;
         }
 
-        public SimpleStringProperty nomeProperty() {
-            return nome;
+        public SimpleStringProperty nameProperty() {
+            return name;
         }
 
-        public SimpleStringProperty costoProperty() {
-            return costo;
+        public SimpleStringProperty priceProperty() {
+            return price;
         }
 
         public SimpleStringProperty q_maxProperty() {
@@ -274,72 +256,32 @@ public class MenuTable extends TableView {
             return dose;
         }
 
-        public SimpleStringProperty latteProperty() {
-            return latte;
+        public SimpleStringProperty milkProperty() {
+            return milk;
         }
 
-        public SimpleStringProperty acquaProperty() {
-            return acqua;
+        public SimpleStringProperty waterProperty() {
+            return water;
         }
 
         public SimpleStringProperty vodkaProperty() {
             return vodka;
         }
 
-        public String getId() {
-            return id.get();
-        }
-
-        public String getTipo() {
-            return tipo.get();
-        }
-
-        public String getNome() {
-            return nome.get();
-        }
-
-        public String getCosto() {
-            return costo.get();
-        }
-
-        public String getQ_max() {
-            return q_max.get();
-        }
-
-        public String getTemp() {
-            return temp.get();
-        }
-
-        public String getDose() {
-            return dose.get();
-        }
-
-        public String getLatte() {
-            return latte.get();
-        }
-
-        public String getAcqua() {
-            return acqua.get();
-        }
-
-        public String getVodka() {
-            return vodka.get();
-        }
-
         public void setId(String id) {
             this.id.set(id);
         }
 
-        public void setTipo(String tipo) {
-            this.tipo.set(tipo);
+        public void setType(String type) {
+            this.type.set(type);
         }
 
-        public void setNome(String nome) {
-            this.nome.set(nome);
+        public void setName(String name) {
+            this.name.set(name);
         }
 
-        public void setCosto(String costo) {
-            this.costo.set(costo);
+        public void setPrice(String price) {
+            this.price.set(price);
         }
 
         public void setQ_max(String q_max) {
@@ -354,12 +296,12 @@ public class MenuTable extends TableView {
             this.dose.set(dose);
         }
 
-        public void setLatte(String latte) {
-            this.latte.set(latte);
+        public void setMilk(String milk) {
+            this.milk.set(milk);
         }
 
-        public void setAcqua(String acqua) {
-            this.acqua.set(acqua);
+        public void setWater(String water) {
+            this.water.set(water);
         }
 
         public void setVodka(String vodka) {
@@ -367,7 +309,7 @@ public class MenuTable extends TableView {
         }
     }
 
-    public void setRowtabel(ObservableList<String> obsvMenu) {
+    protected void setRowTable(ObservableList<String> obsvMenu) {
         int size = 0;
         for (int i = 0; i < obsvMenu.size(); i++) {
             if (!obsvMenu.get(i).contains("*")) {
@@ -375,35 +317,35 @@ public class MenuTable extends TableView {
             }
         }
 
-        rowtabel = new RowTabel[size];
-        data.clear();
+        rowTable = new RowTable[size];
         int tabindex = 0;
+        data.clear();
         menu.clear();
         for (int i = 0; i < obsvMenu.size(); i++ ) {
             menu.add(obsvMenu.get(i));
             if (!obsvMenu.get(i).contains("*")) {
-                rowtabel[tabindex] = new RowTabel(obsvMenu.get(i));
+                rowTable[tabindex] = new RowTable(obsvMenu.get(i));
                 tabindex++;
             }
         }
         for (int j = 0; j < size; j++) {
-            data.addAll(rowtabel[j]);
+            data.addAll(rowTable[j]);
         }
     }
 
-    public VBox getvBox() {
+    protected VBox getvBox() {
         return vBox;
     }
 
     private void initTableColumn(TableColumn tableColumn, String name) {
-        tableColumn.setCellValueFactory(new PropertyValueFactory<RowTabel, String>(name));
+        tableColumn.setCellValueFactory(new PropertyValueFactory<RowTable, String>(name));
         tableColumn.setCellFactory(TextFieldTableCell.forTableColumn());
     }
 
     private void changeMenu() {
         menu.clear();
         menu.add("* le righe con * vengono saltate nella lettura");
-        menu.add("* ID  TIPO  \tNOME  \t    COSTO  Q_MAX TEMP DOSE latte acqua\tvodka");
+        menu.add("* ID  TIPO  \tNOME  \t    COSTO  Q_MAX TEMP DOSE milk water\tvodka");
         for (int row = 0; row < tableView.getItems().size(); row++) {
             String tmp = "";
             for (int column = 0; column < 10; column++ ) {
@@ -418,6 +360,7 @@ public class MenuTable extends TableView {
         }
         menu.add("*");
     }
+
     private void changeId(int index) {
         for (int i = index; i < data.size(); i++) {
             String newId = "0" + (i + 1);
@@ -426,7 +369,8 @@ public class MenuTable extends TableView {
             //data.get(i).setId(newId);
         }
     }
-    public void sendMenu() {
+
+    protected void sendMenu() {
         obsvMenu.clear();
         obsvMenu.addAll(menu);
         menu.clear();

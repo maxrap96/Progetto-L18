@@ -1,7 +1,10 @@
 package ServerGUI;
 
 import ServerSide.ServerConnection;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.ToolBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -13,47 +16,38 @@ import static ServerSide.StringCommandList.*;
 
 public class ToolbarServer extends ToolBar {
     private Button home = new Button();
-    Button refreshBtn = new Button();
+    private Button refreshBtn = new Button();
     private Button save = new Button("Save");
-    private MenuItem acqB = new MenuItem("Acquisto Bevande");
-    private MenuItem utilizzo = new MenuItem("Utilizzo");
-    private MenuItem monete = new MenuItem("Monete");
-    private MenuItem bevande = new MenuItem("Bevande");
+    private MenuItem bvgPurchase = new MenuItem("Acquisto Bevande");
+    private MenuItem usage = new MenuItem("Utilizzo");
+    private MenuItem coins = new MenuItem("Monete");
+    private MenuItem beverage = new MenuItem("Bevande");
     private MenuItem items = new MenuItem("Varie");
-    private Button menuTool = new Button("Menu");
-    private MenuButton stats = new MenuButton("Stats",null, monete, acqB, utilizzo, bevande, items);
-    private MenuButton vendMachines = new MenuButton("Distributore",null);
+    private Button menuToolbar = new Button("Menu");
+    private MenuButton stats = new MenuButton("Stats",null, coins, bvgPurchase, usage, beverage, items);
+    private MenuButton vendMachine = new MenuButton("Distributore",null);
     private ServerConnection serverConnection;
-    MenuItem[] vend;
+    private MenuItem[] dispenser;
 
-    public ToolbarServer(ServerConnection serverConnection) {
+    ToolbarServer(ServerConnection serverConnection) {
         this.serverConnection = serverConnection;
         //createdVend();
 
         //Associazione di immagini ai bottoni
-        ImageView immHome = new ImageView(loadImage("src/ServerImages/home.png"));
-        ImageView immStats = new ImageView(loadImage("src/ServerImages/stats.jpg"));
-        ImageView immMenu = new ImageView(loadImage("src/ServerImages/menu.png"));
-        ImageView immRefresh = new ImageView(loadImage("src/ServerImages/RefreshBtn.jpg"));
+        ImageView imgHome = setImage("src/ServerImages/home.png");
+        ImageView imgStats = setImage("src/ServerImages/stats.jpg");
+        ImageView imgMenu = setImage("src/ServerImages/menu.png");
+        ImageView imgRefresh = setImage("src/ServerImages/RefreshBtn.jpg");
 
-        immStats.setFitHeight(20);
-        immStats.setFitWidth(20);
-        immMenu.setFitWidth(20);
-        immMenu.setFitHeight(20);
-        immHome.setFitHeight(20);
-        immHome.setFitWidth(20);
-        immRefresh.setFitHeight(20);
-        immRefresh.setFitWidth(20);
+        menuToolbar.setGraphic(imgMenu);
+        stats.setGraphic(imgStats);
+        home.setGraphic(imgHome);
+        refreshBtn.setGraphic(imgRefresh);
 
-        menuTool.setGraphic(immMenu);
-        stats.setGraphic(immStats);
-        home.setGraphic(immHome);
-        refreshBtn.setGraphic(immRefresh);
-
-        vendMachines.setPrefHeight(28);
+        vendMachine.setPrefHeight(28);
         save.setPrefHeight(28);
 
-        getItems().addAll(home, vendMachines, stats, menuTool, refreshBtn, save);
+        getItems().addAll(home, vendMachine, stats, menuToolbar, refreshBtn, save);
     }
 
     /**
@@ -68,28 +62,28 @@ public class ToolbarServer extends ToolBar {
         });
 
         //Apertura delle tab delle statisctiche ognuna caratterizzata dall indice i
-        monete.setOnAction(event -> {
+        coins.setOnAction(event -> {
             menuTable.getvBox().setVisible(false);
             anchor.setVisible(false);
             statsPage.getMainPanel().setVisible(true);
             statsPage.openTab(0);
             sendFile();
         });
-        acqB.setOnAction(event -> {
+        bvgPurchase.setOnAction(event -> {
             menuTable.getvBox().setVisible(false);
             anchor.setVisible(false);
             statsPage.getMainPanel().setVisible(true);
             statsPage.openTab(1);
             sendFile();
         });
-        utilizzo.setOnAction(event -> {
+        usage.setOnAction(event -> {
             menuTable.getvBox().setVisible(false);
             anchor.setVisible(false);
             statsPage.getMainPanel().setVisible(true);
             statsPage.openTab(2);
             sendFile();
         });
-        bevande.setOnAction(event -> {
+        beverage.setOnAction(event -> {
             menuTable.getvBox().setVisible(false);
             anchor.setVisible(false);
             statsPage.getMainPanel().setVisible(true);
@@ -105,7 +99,7 @@ public class ToolbarServer extends ToolBar {
         });
 
         //Apertura della tabella del menu
-        menuTool.setOnAction(event -> {
+        menuToolbar.setOnAction(event -> {
             menuTable.getvBox().setVisible(true);
             anchor.setVisible(false);
             statsPage.getMainPanel().setVisible(false);
@@ -114,7 +108,7 @@ public class ToolbarServer extends ToolBar {
 
         save.setOnAction(event -> {menuTable.sendMenu();});
 
-        vendMachines.setOnMouseClicked(event -> {
+        vendMachine.setOnMouseClicked(event -> {
             createdVend();
         });
 
@@ -122,27 +116,42 @@ public class ToolbarServer extends ToolBar {
 
     private void createdVend(){
 
-            vend = new MenuItem[serverConnection.getIndex()];
-            vendMachines.getItems().clear();
+            dispenser = new MenuItem[serverConnection.getIndex()];
+            vendMachine.getItems().clear();
             for(int i = 0; i < serverConnection.getIndex(); i++){
-                vend[i] = null;
+                dispenser[i] = null;
                 String name = "Distributore"+(i+1);
-                vend[i] = new MenuItem(name);
-                vendMachines.getItems().addAll(vend[i]);
+                dispenser[i] = new MenuItem(name);
+                vendMachine.getItems().addAll(dispenser[i]);
 
                 final int index = i;
-                vend[i].setOnAction(event -> {
-                    vendMachines.setText(vend[index].getText());
+                dispenser[i].setOnAction(event -> {
+                    vendMachine.setText(dispenser[index].getText());
                     serverConnection.setSelectedClient(index);
                     System.out.println("check");
                 });
             }
-        if (vendMachines.isShowing()){
-            vendMachines.hide();
-            vendMachines.show();
+        if (vendMachine.isShowing()){
+            vendMachine.hide();
+            vendMachine.show();
         }
     }
 
+    /**
+     * Funzione per caricare un'immagine di dimensioni prefissate.
+     * @param url percorso dell'immagine.
+     */
+    private ImageView setImage(String url) {
+        ImageView imageViewTmp = new ImageView(loadImage(url));
+        imageViewTmp.setFitHeight(20);
+        imageViewTmp.setFitWidth(20);
+        return imageViewTmp;
+    }
+
+    /**
+     * Funzione per caricare un'immagine.
+     * @param url percorso dell'immagine.
+     */
     private Image loadImage(String url){
         Image imgTmp = null;
         try {
@@ -156,6 +165,9 @@ public class ToolbarServer extends ToolBar {
         return imgTmp;
     }
 
+    /**
+     * Funzione per inviare tutti i file dal client.
+     */
     private void sendFile(){
         serverConnection.chooseCommandExecutedByThread(SEND_STATS);
         serverConnection.chooseCommandExecutedByThread(SEND_COINS);

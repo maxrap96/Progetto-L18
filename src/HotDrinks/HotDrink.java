@@ -21,7 +21,7 @@ public abstract class HotDrink {
         this.name = rowSplitted[2];
         this.price = parseDouble(rowSplitted[3]);
         this.maxQuantity = parseDouble(rowSplitted[4]);
-        this.leftQuantity = maxQuantity; // todo Inizializzo come pieno ma c'è da sistemarlo
+        this.leftQuantity = maxQuantity;
         this.temperature = parseDouble(rowSplitted[5]);
         this.milk = parseDouble(rowSplitted[7]);
         this.water = parseDouble(rowSplitted[8]);

@@ -1,5 +1,5 @@
 * le righe con * vengono saltate nella lettura
-* ID  TIPO  	NOME  	    COSTO  Q_MAX TEMP DOSE latte acqua	vodka
+* ID  TIPO  	NOME  	    COSTO  Q_MAX TEMP DOSE milk water	vodka
 01	CAPSULE	Cioccolata	0.50	30	90	1	0	0.200	0
 02	CAPSULE	Latte Caldo	0.55	25	80	0.30	0	0.200	0
 03	CAPSULE	Caffè Lungo	0.55	55	85	0	0	0.060	0
