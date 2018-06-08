@@ -26,7 +26,7 @@ public class ReceiverServer {
      * @param whereToSaveFileFromClient ArrayList in cui salvo i dati.
      * @throws IOException
      */
-    protected void saveStringsFromClient(ArrayList whereToSaveFileFromClient, BufferedReader inFromClient)
+    protected void saveStringsFromClient(ArrayList<String> whereToSaveFileFromClient, BufferedReader inFromClient)
             throws IOException {
         whereToSaveFileFromClient.clear();
         String tmp;

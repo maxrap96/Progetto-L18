@@ -1,20 +1,22 @@
 package ClientSide;
 
-import ServerSide.StringCommandList;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class OverwriteCommand implements Command, StringCommandList {
+import static ServerSide.StringCommandList.END_SENDING;
+
+public class OverwriteCommand implements Command {
     private ReceiverOverwrite receiverOverwrite;
     private BufferedReader bufferedReader;
     private ArrayList<String> menuFromServer;
+    private String path;
 
-    public OverwriteCommand(ReceiverOverwrite receiverOverwrite, BufferedReader bufferedReader) {
+    public OverwriteCommand(ReceiverOverwrite receiverOverwrite, BufferedReader bufferedReader, String path) {
         this.receiverOverwrite = receiverOverwrite;
         this.bufferedReader = bufferedReader;
         this.menuFromServer = new ArrayList<>();
+        this.path = path;
     }
 
     @Override
@@ -29,7 +31,7 @@ public class OverwriteCommand implements Command, StringCommandList {
                     break;
                 }
             }
-            receiverOverwrite.overwriteFileReceiver(menuFromServer);
+            receiverOverwrite.overwriteFileReceiver(menuFromServer, path);
         } catch (IOException e) {
             e.printStackTrace();
         }

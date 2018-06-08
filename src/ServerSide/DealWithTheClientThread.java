@@ -61,13 +61,13 @@ public class DealWithTheClientThread extends Thread implements StringCommandList
     private void initServerHashMap() {
         this.commandServerHashMap = new HashMap<>();
         ReceiverServer receiverServer = new ReceiverServer();
-        this.commandServerHashMap.put(SEND_COINS, new ServerCommandGetter(receiverServer, clientSocket, obsvCoins,
+        this.commandServerHashMap.put(SEND_COINS, new GetterCommandServer(receiverServer, clientSocket, obsvCoins,
                 inFromClient, SEND_COINS));
-        this.commandServerHashMap.put(SEND_DATA, new ServerCommandGetter(receiverServer, clientSocket, obsvData,
+        this.commandServerHashMap.put(SEND_DATA, new GetterCommandServer(receiverServer, clientSocket, obsvData,
                 inFromClient, SEND_DATA));
-        this.commandServerHashMap.put(SEND_MENU, new ServerCommandGetter(receiverServer, clientSocket, obsvMenu,
+        this.commandServerHashMap.put(SEND_MENU, new GetterCommandServer(receiverServer, clientSocket, obsvMenu,
                 inFromClient, SEND_MENU));
-        this.commandServerHashMap.put(SEND_STATS, new ServerCommandGetter(receiverServer, clientSocket, obsvStats,
+        this.commandServerHashMap.put(SEND_STATS, new GetterCommandServer(receiverServer, clientSocket, obsvStats,
                 inFromClient, SEND_STATS));
         this.commandServerHashMap.put(OVERWRITE_MENU, new OverwriteCommandServer(receiverServer, clientSocket, obsvMenu,
                 OVERWRITE_MENU));

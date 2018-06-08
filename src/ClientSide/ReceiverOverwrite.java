@@ -1,14 +1,14 @@
 package ClientSide;
 
 import HotDrinkVendingMachine.Data;
-import HotDrinkVendingMachine.TextPathFiles;
 
 import java.util.ArrayList;
 
-public class ReceiverOverwrite implements TextPathFiles {
-    private Data menuData = new Data(MENU_PATH);
+public class ReceiverOverwrite {
+    private Data menuData;
 
-    protected void overwriteFileReceiver(ArrayList<String> arrayFromCommand) {
+    protected void overwriteFileReceiver(ArrayList<String> arrayFromCommand, String path) {
+        this.menuData = new Data(path);
         saveFileReceived(arrayFromCommand);
     }
 

@@ -14,7 +14,7 @@ public class ReceiverRefill implements MaxValue, TextPathFiles, CoinsNumbers {
     private Data coinsFile;
     private ArrayList<String[]> menu;
     private final String[] ITEMS = {"Milk", "Sugar", "Spoons", "Cups", "Vodka"};
-    private final double[] MAX_VAL = {MILK_MAX, SUGAR_MAX, SPOON_MAX, CUP_MAX,VODKA_MAX};
+    private final double[] MAX_VAL = {MILK_MAX, SUGAR_MAX, SPOON_MAX, CUP_MAX, VODKA_MAX};
 
     public ReceiverRefill() {
         this.menuFile = new Data(MENU_PATH);

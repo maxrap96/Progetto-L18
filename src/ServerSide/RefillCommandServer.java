@@ -24,7 +24,6 @@ public class RefillCommandServer implements CommandServer {
             BufferedReader inFromClient = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
             receiverServer.sendString(stringCommand, clientSocket);
             receiverServer.saveStringsFromClient(arrayListTmp, inFromClient);
-            //receiverServer.sendString(END_SENDING, clientSocket);
         } catch (IOException e) {
             e.printStackTrace();
         }

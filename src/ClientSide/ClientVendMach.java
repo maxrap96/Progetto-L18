@@ -78,7 +78,7 @@ public class ClientVendMach extends Thread implements StringCommandList, TextPat
         this.commandHashMap.put(SEND_DATA, new SendCommand(receiverSend, channelOutToServer, DATA_PATH));
         this.commandHashMap.put(SEND_COINS, new SendCommand(receiverSend, channelOutToServer, COINS_PATH));
         this.commandHashMap.put(SEND_STATS, new SendCommand(receiverSend, channelOutToServer, STATS_PATH));
-        this.commandHashMap.put(OVERWRITE_MENU, new OverwriteCommand(receiverOverwrite, inFromServer));
+        this.commandHashMap.put(OVERWRITE_MENU, new OverwriteCommand(receiverOverwrite, inFromServer, MENU_PATH));
         this.commandHashMap.put(REFILL_COINS, new RefillCoinsCommand(receiverRefill, booleanRefill));
         this.commandHashMap.put(REFILL_INGREDIENTS, new RefillIngredientsCommand(receiverRefill, booleanRefill));
         this.commandHashMap.put(REFILL_ITEMS, new RefillItemsCommand(receiverRefill, booleanRefill));
