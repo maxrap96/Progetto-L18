@@ -91,7 +91,7 @@ public class DrinkChart extends BarChart {
         }
     }
 
-    public void colorChartBars(BarChart barChart, int i, double qty) {
+    private void colorChartBars(BarChart barChart, int i, double qty) {
         String st = ".data" + i + ".chart-bar";
         Node node = barChart.lookup(st);
 

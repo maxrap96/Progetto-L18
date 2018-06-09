@@ -1,8 +1,6 @@
 package ServerGUI;
 
 import ServerSide.ServerConnection;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
@@ -54,7 +52,7 @@ public class ToolbarServer extends ToolBar {
     /**
      * Funzione che inizializza le azioni che eseguiranno i bottoni.
     **/
-    void Action(AnchorPane anchor, MenuTable menuTable, StatsPage statsPage){
+    void Action(AnchorPane anchor, MenuTable menuTable, StatsPage statsPage) {
         home.setOnAction(event -> {
             //Apertura della schermata di home
             menuTable.getvBox().setVisible(false);
@@ -140,7 +138,7 @@ public class ToolbarServer extends ToolBar {
             });
         }
 
-        if (vendMachine.isShowing()){
+        if (vendMachine.isShowing()) {
             vendMachine.hide();
             vendMachine.show();
         }
@@ -161,7 +159,7 @@ public class ToolbarServer extends ToolBar {
      * Funzione per caricare un'immagine.
      * @param url percorso dell'immagine.
      */
-    private Image loadImage(String url){
+    private Image loadImage(String url) {
         Image imgTmp = null;
         try {
             FileInputStream input = new FileInputStream(url);
@@ -177,7 +175,7 @@ public class ToolbarServer extends ToolBar {
     /**
      * Funzione per inviare tutti i file dal client.
      */
-    private void sendFile(){
+    private void sendFile() {
         serverConnection.chooseCommandExecutedByThread(SEND_STATS);
         serverConnection.chooseCommandExecutedByThread(SEND_COINS);
         serverConnection.chooseCommandExecutedByThread(SEND_DATA);

@@ -16,9 +16,8 @@ public class DrinkPieChart extends PieChart {
 
     /**
      * Funzione per inizializzare il borderpane.
-     * @return borderpane.
      */
-    public BorderPane setChart() {
+    protected BorderPane setChart() {
         BorderPane borderPane = new BorderPane();
 
         if (obsvStats == null) {

@@ -21,7 +21,7 @@ public class UsageChart extends LineChart {
         this.stats = obsvStats;
     }
 
-    public BorderPane setGraph() {
+    protected BorderPane setGraph() {
         BorderPane b = new BorderPane();
 
         if (stats.isEmpty())
@@ -54,7 +54,7 @@ public class UsageChart extends LineChart {
      * @param xAxis asse x.
      * @param yAxis asse y.
      */
-    void chartSettings(LineChart<Number, Number> lineChart, NumberAxis xAxis, NumberAxis yAxis) {
+    private void chartSettings(LineChart<Number, Number> lineChart, NumberAxis xAxis, NumberAxis yAxis) {
         lineChart.setTitle("Utilizzo macchinetta");
 
         xAxis.setLabel("Giorno");

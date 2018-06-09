@@ -21,7 +21,7 @@ public class CoinsChart extends BarChart {
         this.coins = coins;
     }
 
-    public BorderPane setBars() {
+    protected BorderPane setBars() {
         BorderPane borderPane = new BorderPane();
 
         if (coins == null) {
@@ -112,7 +112,7 @@ public class CoinsChart extends BarChart {
      * @param i contatore che indica la barra considerata.
      * @param money quantità di monete.
      */
-    private void colorChartBars(BarChart barChart, int i, int money[]) {
+    private void colorChartBars(BarChart barChart, int i, int[] money) {
         String st = ".data" + i + ".chart-bar";
         Node node = barChart.lookup(st);
 

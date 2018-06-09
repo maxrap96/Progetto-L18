@@ -30,7 +30,7 @@ public class ItemsTab {
         this.obsvData = obsvData;
     }
 
-    public BorderPane setProgressBar() {
+    protected BorderPane setProgressBar() {
         BorderPane mainPanel = new BorderPane();
 
         if (obsvData.isEmpty()) {
@@ -140,7 +140,7 @@ public class ItemsTab {
         return mainPanel;
     }
 
-    public void setServerConnection(ServerConnection serverConnection) {
+    protected void setServerConnection(ServerConnection serverConnection) {
         this.serverConnection = serverConnection;
     }
 }
