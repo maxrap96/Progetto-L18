@@ -5,8 +5,6 @@ import HotDrinkVendingMachine.HotDrinkVendMachine;
 import ClientSide.ClientVendMach;
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -15,7 +13,6 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -89,16 +86,13 @@ public class VendingMachine extends Application {
                     "-fx-focus-color: transparent;" +
                     "-fx-faint-focus-color: transparent;"
             );
-            key.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    vendMachine.setConnectionKey();
-                    display.setCreditRow(String.valueOf(vendMachine.getCredit()));
-                    key.setStyle(
-                            "-fx-background-radius: 1em;" +
-                            "-fx-focus-color: blue;"
-                    );
-                }
+            key.setOnAction(event -> {
+                vendMachine.setConnectionKey();
+                display.setCreditRow(String.valueOf(vendMachine.getCredit()));
+                key.setStyle(
+                        "-fx-background-radius: 1em;" +
+                        "-fx-focus-color: blue;"
+                );
             });
             purchasePane.setCenter(key);
 
@@ -117,6 +111,7 @@ public class VendingMachine extends Application {
             primaryStage.setResizable(false);
             primaryStage.show();
 
+            // Avvio del thread che si occupa dell'update
             updateChecker = new UpdateChecker(vendMachine, beverageGrid, display, resetDisplay, root, booleanRefill);
             updateChecker.start();
 
@@ -125,13 +120,10 @@ public class VendingMachine extends Application {
             System.out.println("Error caused by " + e);
         }
 
-        // Termina l'applicazione cliccando la x rossa
-        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent t) {
+        // Termina l'applicazione chiudendo la GUI
+        primaryStage.setOnCloseRequest(windowEvent -> {
                 Platform.exit();
                 System.exit(0);
-            }
         });
     }
 }

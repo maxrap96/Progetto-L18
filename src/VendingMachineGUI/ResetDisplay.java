@@ -9,10 +9,11 @@ public class ResetDisplay {
     private final String DEFAULT_MESSAGE = "Scegliere una bevanda";
     private Display display;
     private HotDrinkVendMachine vendMachine;
-    private Timer timer = new Timer();
+    private Timer timer;
     private TimerTask timerTask;
 
     public ResetDisplay(Display display, HotDrinkVendMachine vendMachine) {
+        this.timer = new Timer();
         this.display = display;
         this.vendMachine = vendMachine;
     }
@@ -20,7 +21,7 @@ public class ResetDisplay {
     /**
      * Funzione che nel caso il credito sia 0 riporta il distributore ad uno stato di default.
      */
-    public void runTimer() {
+    protected void runTimer() {
         resetTimer();
         int time;
         if (vendMachine.getCredit() == 0) {
@@ -60,7 +61,7 @@ public class ResetDisplay {
     /**
      * Funzione che aggiorna il display dello zucchero in base alla quantità selezionata.
      */
-    public void setDots() {
+    protected void setDots() {
         String quantity;
         switch (vendMachine.getSelectedSugar()) {
             // u25cf pallino pieno

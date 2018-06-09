@@ -10,14 +10,19 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 
 public class Display extends GridPane {
-    private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    private Dimension screenSize;
     private final String DEFAULT_MESSAGE = "Scegliere una bevanda";
-    private Text beverage = new Text();
-    private Text beverageCost = new Text();
-    private Text creditRow = new Text();
-    private Text sugar = new Text();
+    private Text beverage;
+    private Text beverageCost;
+    private Text creditRow;
+    private Text sugar;
 
     public Display() {
+        this.screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        this.beverage = new Text();
+        this.beverageCost = new Text();
+        this.creditRow = new Text();
+        this.sugar = new Text();
         createDisplay();
     }
 

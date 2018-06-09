@@ -15,8 +15,8 @@ public class UpdateChecker extends Thread {
     private BorderPane root;
     private Display display;
     private ResetDisplay resetDisplay;
-    private File menuFile = new File(MENU_PATH);
-    private long oldTimestamp = menuFile.lastModified();
+    private File menuFile;
+    private long oldTimestamp;
     private BooleanRefill booleanRefill;
 
     public UpdateChecker(HotDrinkVendMachine vendMachine, BeverageGrid beverageGrid, Display display,
@@ -27,17 +27,8 @@ public class UpdateChecker extends Thread {
         this.resetDisplay = resetDisplay;
         this.root = root;
         this.booleanRefill = booleanRefill;
-    }
-
-    private boolean isFileChanged() {
-        long currentTimestamp = menuFile.lastModified();
-        if (oldTimestamp != currentTimestamp) {
-            oldTimestamp = currentTimestamp;
-            return true;
-        }
-        else {
-            return false;
-        }
+        this.menuFile = new File(MENU_PATH);
+        this.oldTimestamp = menuFile.lastModified();
     }
 
     public void  run() {
@@ -59,6 +50,20 @@ public class UpdateChecker extends Thread {
                 booleanRefill.setItemRefilled(false);
                 vendMachine = new HotDrinkVendMachine();
             }
+        }
+    }
+
+    /**
+     * Funzione che controlla se il file ha subito delle modifiche.
+     */
+    private boolean isFileChanged() {
+        long currentTimestamp = menuFile.lastModified();
+        if (oldTimestamp != currentTimestamp) {
+            oldTimestamp = currentTimestamp;
+            return true;
+        }
+        else {
+            return false;
         }
     }
 }

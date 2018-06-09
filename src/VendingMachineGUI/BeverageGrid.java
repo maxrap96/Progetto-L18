@@ -14,7 +14,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 
 public class BeverageGrid extends GridPane {
-    private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    private Dimension screenSize;
     private HotDrinkVendMachine vendMachine;
     private Display display;
     private ResetDisplay resetDisplay;
@@ -23,6 +23,7 @@ public class BeverageGrid extends GridPane {
     private final int NUM_LINES = 4;
 
     public BeverageGrid(HotDrinkVendMachine vendMachine, Display display, ResetDisplay resetDisplay) {
+        this.screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         this.vendMachine = vendMachine;
         this.display = display;
         this.resetDisplay = resetDisplay;

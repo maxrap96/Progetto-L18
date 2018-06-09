@@ -14,7 +14,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 
 public class MoneyGrid extends GridPane {
-    private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    private Dimension screenSize;
     private HotDrinkVendMachine vendMachine;
     private Display display;
     private ResetDisplay resetDisplay;
@@ -23,6 +23,7 @@ public class MoneyGrid extends GridPane {
     private final int NUM_BUTTON_LINES = 3;
 
     public MoneyGrid(HotDrinkVendMachine vendMachine, Display display, ResetDisplay resetDisplay) {
+        this.screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         this.vendMachine = vendMachine;
         this.display = display;
         this.resetDisplay = resetDisplay;
@@ -39,12 +40,9 @@ public class MoneyGrid extends GridPane {
         Button change = new Button();
         change.setText("C");
         setPurchaseButton(change);
-        change.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                vendMachine.giveChange();
-                display.setCreditRow(String.format("%.2f", vendMachine.getCredit()));
-            }
+        change.setOnAction(event -> {
+            vendMachine.giveChange();
+            display.setCreditRow(String.format("%.2f", vendMachine.getCredit()));
         });
         this.add(change, 0, 0);
 
@@ -52,13 +50,10 @@ public class MoneyGrid extends GridPane {
         Button minus = new Button();
         minus.setText("-");
         setPurchaseButton(minus);
-        minus.setOnAction(new EventHandler<ActionEvent>() {
-              @Override
-              public void handle(ActionEvent event) {
-                  vendMachine.lessSugar();
-                  resetDisplay.setDots();
-                  resetDisplay.runTimer();
-              }
+        minus.setOnAction(event -> {
+            vendMachine.lessSugar();
+            resetDisplay.setDots();
+            resetDisplay.runTimer();
         });
         this.add(minus, 1, 0);
 
@@ -66,13 +61,10 @@ public class MoneyGrid extends GridPane {
         Button plus = new Button();
         plus.setText("+");
         setPurchaseButton(plus);
-        plus.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                vendMachine.moreSugar();
-                resetDisplay.setDots();
-                resetDisplay.runTimer();
-            }
+        plus.setOnAction(event -> {
+            vendMachine.moreSugar();
+            resetDisplay.setDots();
+            resetDisplay.runTimer();
         });
         this.add(plus, 2, 0);
 
