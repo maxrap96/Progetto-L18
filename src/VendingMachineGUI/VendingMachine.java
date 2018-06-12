@@ -112,7 +112,8 @@ public class VendingMachine extends Application {
             primaryStage.show();
 
             // Avvio del thread che si occupa dell'update
-            updateChecker = new UpdateChecker(vendMachine, beverageGrid, display, resetDisplay, root, booleanRefill);
+            updateChecker = new UpdateChecker(vendMachine, beverageGrid, display, resetDisplay, root, booleanRefill,
+                    backgroundImage);
             updateChecker.start();
 
         } catch (IOException e) {
