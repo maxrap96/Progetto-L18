@@ -137,7 +137,7 @@ public class HotDrinkVendMachine implements MaxValue, TextPathFiles {
      * @param ID id della bevanda selezionata.
      */
     public String selectBeverage(String ID) {
-        if (!list.get(ID).isAvailable()) {
+        if (!list.get(ID).isAvailable() && dispenser.checkAvaibility(list.get(ID),selected_sugar)) {
             return "Bevanda non disponibile";
         }
         boolean transaction;
@@ -157,7 +157,8 @@ public class HotDrinkVendMachine implements MaxValue, TextPathFiles {
         }
 
         //funzione che si occupa della gestione tramite monete
-        if (coins.getCredit() >= list.get(ID).getPrice() && list.get(ID).isAvailable()) {
+        if (coins.getCredit() >= list.get(ID).getPrice() && list.get(ID).isAvailable() &&
+                dispenser.checkAvaibility(list.get(ID), selected_sugar)) {
             // Se il credito è uguale o maggiore significa che si puo' potenzialmente acquistare la bevanda
             transaction = true;
             dispenser.subtractIngredients(list.get(ID), selected_sugar);
@@ -255,23 +256,23 @@ public class HotDrinkVendMachine implements MaxValue, TextPathFiles {
     private void updateData(String ID) {
         String valDati[] = dispenser.getData();
         String newLine = "";
-        String current = "";
+        String oldLine = "";
 
         try {
             for (int i = 0; i < valDati.length; i++) {
-                current = data.get(i)[0] + "\t" + data.get(i)[1];
+                oldLine = data.get(i)[0] + "\t" + data.get(i)[1];
 
                 if (data.get(i)[0].equals("Cups") || data.get(i)[0].equals("Spoons")) {
                     newLine = data.get(i)[0] + "\t" + valDati[i];
                 }
                 else {newLine = data.get(i)[0] + "\t" + Double.parseDouble(valDati[i]);}
-                ingredientsData.overwriteFile(newLine, current);
+                ingredientsData.overwriteFile(newLine, oldLine);
             }
 
-            current = ID + "\t" + list.get(ID).getLeftQuantity();
+            oldLine = ID + "\t" + list.get(ID).getLeftQuantity();
             list.get(ID).subtractDose();
             newLine = ID + "\t" + (float)list.get(ID).getLeftQuantity();
-            ingredientsData.overwriteFile(newLine, current);
+            ingredientsData.overwriteFile(newLine, oldLine);
 
         } catch (IOException e) {
             e.printStackTrace();
