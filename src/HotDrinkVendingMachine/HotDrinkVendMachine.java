@@ -137,9 +137,10 @@ public class HotDrinkVendMachine implements MaxValue, TextPathFiles {
      * @param ID id della bevanda selezionata.
      */
     public String selectBeverage(String ID) {
-        if (!list.get(ID).isAvailable() && dispenser.checkAvaibility(list.get(ID),selected_sugar)) {
+        if (!list.get(ID).isAvailable() || !dispenser.checkAvailability(list.get(ID),selected_sugar)) {
             return "Bevanda non disponibile";
         }
+
         boolean transaction;
 
         if (key.isConnected()) {
@@ -156,9 +157,9 @@ public class HotDrinkVendMachine implements MaxValue, TextPathFiles {
             }
         }
 
-        //funzione che si occupa della gestione tramite monete
-        if (coins.getCredit() >= list.get(ID).getPrice() && list.get(ID).isAvailable() &&
-                dispenser.checkAvaibility(list.get(ID), selected_sugar)) {
+        //funzione che si occupa della gestione tramite monete ed erogazione della bevanda
+        if (coins.getCredit() >= list.get(ID).getPrice() && list.get(ID).isAvailable()
+                && dispenser.checkAvailability(list.get(ID), selected_sugar)) {
             // Se il credito è uguale o maggiore significa che si puo' potenzialmente acquistare la bevanda
             transaction = true;
             dispenser.subtractIngredients(list.get(ID), selected_sugar);
@@ -268,7 +269,7 @@ public class HotDrinkVendMachine implements MaxValue, TextPathFiles {
                 else {newLine = data.get(i)[0] + "\t" + Double.parseDouble(valDati[i]);}
                 ingredientsData.overwriteFile(newLine, oldLine);
             }
-
+            setValues(ingredientsData.readFile());
             oldLine = ID + "\t" + list.get(ID).getLeftQuantity();
             list.get(ID).subtractDose();
             newLine = ID + "\t" + (float)list.get(ID).getLeftQuantity();

@@ -34,7 +34,7 @@ public class Dispenser implements MaxValue {
      * @param sugar zucchero richiesto
      * @return segnala la possibilità o meno di eseguire una operazione
      */
-    public boolean checkAvaibility (HotDrink beverage, int sugar){
+    public boolean checkAvailability(HotDrink beverage, int sugar){
         double askedSugar = (double) sugar * SUGAR_DOSE;
         double askedVodka = beverage.getVodka();
         double askedMilk = beverage.getMilk();
