@@ -33,10 +33,10 @@ public class ToolbarServer extends ToolBar {
         this.serverConnection = serverConnection;
 
         //Associazione di immagini ai bottoni
-        ImageView imgHome = setImage("src/ServerImages/home.png");
-        ImageView imgStats = setImage("src/ServerImages/stats.jpg");
-        ImageView imgMenu = setImage("src/ServerImages/menu.png");
-        ImageView imgRefresh = setImage("src/ServerImages/RefreshBtn.jpg");
+        ImageView imgHome = setImage("home.png");
+        ImageView imgStats = setImage("stats.jpg");
+        ImageView imgMenu = setImage("menu.png");
+        ImageView imgRefresh = setImage("RefreshBtn.jpg");
 
         menuToolbar.setGraphic(imgMenu);
         stats.setGraphic(imgStats);
@@ -160,15 +160,7 @@ public class ToolbarServer extends ToolBar {
      * @param url percorso dell'immagine.
      */
     private Image loadImage(String url) {
-        Image imgTmp = null;
-        try {
-            FileInputStream input = new FileInputStream(url);
-            imgTmp = new Image(input);
-            input.close();
-            return imgTmp;
-        } catch (IOException e){
-            e.printStackTrace();
-        }
+        Image imgTmp = new Image(url);
         return imgTmp;
     }
 

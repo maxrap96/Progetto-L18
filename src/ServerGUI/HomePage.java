@@ -41,7 +41,7 @@ public class HomePage extends Application implements StringCommandList {
         label.setFont(Font.font("Rockwell", 50));
         label.setWrapText(true);
 
-        Image img = new Image("ServerImages/logo.jpg");
+        Image img = new Image("logo.jpg");
         Circle circle = new Circle(110);
         ImagePattern pattern = new ImagePattern(img);
         circle.setFill(pattern);

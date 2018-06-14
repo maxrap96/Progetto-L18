@@ -45,7 +45,7 @@ public class VendingMachine extends Application {
             BorderPane root = new BorderPane();
 
             // Immagine per lo sfondo
-            FileInputStream input = new FileInputStream("src/VendingMachineGUI/background.jpg");
+            FileInputStream input = new FileInputStream("Images/background.jpg");
             Image image = new Image(input);
             input.close();
 
