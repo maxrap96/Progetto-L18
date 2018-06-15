@@ -134,7 +134,7 @@ public class Data {
             arrayListTmp.add(line);
         }
 
-        for(int i = 0; i < arrayListTmp.size(); i++) {
+        for (int i = 0; i < arrayListTmp.size(); i++) {
             input += arrayListTmp.get(i);
             if (i < arrayListTmp.size() - 1) {
                 input += System.lineSeparator();

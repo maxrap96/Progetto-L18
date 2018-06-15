@@ -16,7 +16,7 @@ public abstract class HotDrink {
      */
     public HotDrink(String[] rowSplitted) {
         // Inizializzazione di tutto tranne type e dispensedQuantity che verranno inizializzati
-        // nelle singole classi in base alle differenze.
+        // nelle singole classi in base alle differenze
         this.id = rowSplitted[0];
         this.name = rowSplitted[2];
         this.price = parseDouble(rowSplitted[3]);
@@ -30,7 +30,7 @@ public abstract class HotDrink {
 
     /**
      * Costruttore alternativo che serve a ripristinare la quantità rimanente, se presente, all'ultimo uso della
-     * macchina.
+     * macchinetta.
      * @param rowSplitted contiene i dati della bevanda.
      * @param valueLeft contiene il dato della quantità rimanente.
      */

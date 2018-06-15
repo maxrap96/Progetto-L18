@@ -49,7 +49,7 @@ public class Coins implements CoinsNumbers, TextPathFiles{
         String s = "";
 
         for (int i = 0; i < money.length; i++) {
-            s += (money[i] + "\t");
+             s += (money[i] + "\t");
         }
         return s;
     }
@@ -76,7 +76,7 @@ public class Coins implements CoinsNumbers, TextPathFiles{
     private double getBalance() {
         double balance = 0;
         for (int i = 0; i < money.length; i++) {
-            balance += money[i] * COINS_VALUE[i];
+             balance += money[i] * COINS_VALUE[i];
         }
         return balance;
     }
@@ -110,7 +110,7 @@ public class Coins implements CoinsNumbers, TextPathFiles{
      */
     private void resetCredit(int[] change) {
         for (int i = 0 ; i < change.length; i++) {
-            credit = credit - (int)(change[i] * COINS_VALUE[i]);
+             credit = credit - (int)(change[i] * COINS_VALUE[i]);
         }
     }
 
@@ -135,7 +135,7 @@ public class Coins implements CoinsNumbers, TextPathFiles{
         int remnant = (credit);
         int[] divisor = {5, 10, 20, 50, 100, 200};
 
-        for (int i = COINS_VALUE.length-1; i > -1; i--) {
+        for (int i = COINS_VALUE.length - 1; i > -1; i--) {
             change[i] = (remnant) / divisor[i];
             remnant = remnant % divisor[i];
 
