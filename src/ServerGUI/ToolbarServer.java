@@ -1,6 +1,7 @@
 package ServerGUI;
 
 import ServerSide.ServerConnection;
+import ServerSide.StringCommandList;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
@@ -9,9 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
-import static ServerSide.StringCommandList.*;
-
-public class ToolbarServer extends ToolBar {
+public class ToolbarServer extends ToolBar implements StringCommandList {
     private Button home = new Button();
     private Button refreshBtn = new Button();
     private Button save = new Button("Save");
