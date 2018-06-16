@@ -32,7 +32,7 @@ public class HomePage extends Application implements StringCommandList {
         // Definizione dello stage principale e della barra del menu
         primaryStage.setTitle("Home");
         ToolbarServer toolbarServer = new ToolbarServer(server);
-        MenuTable menuTable = new MenuTable(primaryStage, classOfObservableLists.getObservMenu(), server);
+        MenuPage menuPage = new MenuPage(primaryStage, classOfObservableLists.getObservMenu(), server);
         StatsPage statsPage = new StatsPage(primaryStage, classOfObservableLists, server);
 
         // Creazione scritta correlata da un logo
@@ -102,15 +102,15 @@ public class HomePage extends Application implements StringCommandList {
         anchor.setBottomAnchor(hyperlink, 0.0);
 
         StackPane stackPane = new StackPane();
-        stackPane.getChildren().addAll(anchor, menuTable.getvBox(), statsPage.getMainPanel());
-        menuTable.getvBox().setVisible(false);
+        stackPane.getChildren().addAll(anchor, menuPage.getvBox(), statsPage.getMainPanel());
+        menuPage.getvBox().setVisible(false);
         anchor.setVisible(true);
         statsPage.getMainPanel().setVisible(false);
-        toolbarServer.Action(anchor, menuTable, statsPage);
+        toolbarServer.Action(anchor, menuPage, statsPage);
 
         // Gestione pressione del bottone "Statistiche"
         statsButton.setOnAction(event -> {
-            menuTable.getvBox().setVisible(false);
+            menuPage.getvBox().setVisible(false);
             anchor.setVisible(false);
             statsPage.getMainPanel().setVisible(true);
             server.chooseCommandExecutedByThread(SEND_STATS);
@@ -121,7 +121,7 @@ public class HomePage extends Application implements StringCommandList {
 
         // Gestione pressione del bottone "Menu"
         menuButton.setOnAction( event -> {
-            menuTable.getvBox().setVisible(true);
+            menuPage.getvBox().setVisible(true);
             statsPage.getMainPanel().setVisible(false);
             anchor.setVisible(false);
             server.chooseCommandExecutedByThread(SEND_MENU);

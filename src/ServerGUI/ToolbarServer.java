@@ -9,9 +9,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-
 import static ServerSide.StringCommandList.*;
 
 public class ToolbarServer extends ToolBar {
@@ -52,17 +49,17 @@ public class ToolbarServer extends ToolBar {
     /**
      * Funzione che inizializza le azioni che eseguiranno i bottoni.
     **/
-    void Action(AnchorPane anchor, MenuTable menuTable, StatsPage statsPage) {
+    void Action(AnchorPane anchor, MenuPage menuPage, StatsPage statsPage) {
         home.setOnAction(event -> {
             //Apertura della schermata di home
-            menuTable.getvBox().setVisible(false);
+            menuPage.getvBox().setVisible(false);
             anchor.setVisible(true);
             statsPage.getMainPanel().setVisible(false);
         });
 
         //Apertura delle tab delle statisctiche ognuna caratterizzata dall'indice i
         coins.setOnAction(event -> {
-            menuTable.getvBox().setVisible(false);
+            menuPage.getvBox().setVisible(false);
             anchor.setVisible(false);
             statsPage.getMainPanel().setVisible(true);
             statsPage.openTab(0);
@@ -70,7 +67,7 @@ public class ToolbarServer extends ToolBar {
         });
 
         bvgPurchase.setOnAction(event -> {
-            menuTable.getvBox().setVisible(false);
+            menuPage.getvBox().setVisible(false);
             anchor.setVisible(false);
             statsPage.getMainPanel().setVisible(true);
             statsPage.openTab(1);
@@ -78,7 +75,7 @@ public class ToolbarServer extends ToolBar {
         });
 
         usage.setOnAction(event -> {
-            menuTable.getvBox().setVisible(false);
+            menuPage.getvBox().setVisible(false);
             anchor.setVisible(false);
             statsPage.getMainPanel().setVisible(true);
             statsPage.openTab(2);
@@ -86,7 +83,7 @@ public class ToolbarServer extends ToolBar {
         });
 
         beverage.setOnAction(event -> {
-            menuTable.getvBox().setVisible(false);
+            menuPage.getvBox().setVisible(false);
             anchor.setVisible(false);
             statsPage.getMainPanel().setVisible(true);
             statsPage.openTab(3);
@@ -94,7 +91,7 @@ public class ToolbarServer extends ToolBar {
         });
 
         items.setOnAction(event -> {
-            menuTable.getvBox().setVisible(false);
+            menuPage.getvBox().setVisible(false);
             anchor.setVisible(false);
             statsPage.getMainPanel().setVisible(true);
             statsPage.openTab(4);
@@ -103,13 +100,14 @@ public class ToolbarServer extends ToolBar {
 
         //Apertura della tabella del menu
         menuToolbar.setOnAction(event -> {
-            menuTable.getvBox().setVisible(true);
+            menuPage.getvBox().setVisible(true);
             anchor.setVisible(false);
             statsPage.getMainPanel().setVisible(false);
             serverConnection.chooseCommandExecutedByThread(SEND_MENU);
         });
 
-        save.setOnAction(event -> {menuTable.sendMenu();});
+        save.setOnAction(event -> {
+            menuPage.sendMenu();});
 
         refreshBtn.setOnAction(event -> {
             sendFile();

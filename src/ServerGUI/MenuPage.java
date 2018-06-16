@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 import static ServerSide.StringCommandList.OVERWRITE_MENU;
 
-public class MenuTable extends TableView {
+public class MenuPage extends TableView {
     private RowTable[] rowTable;
     private VBox vBox = new VBox();
     private ObservableList<String> obsvMenu;
@@ -28,7 +28,7 @@ public class MenuTable extends TableView {
     private ArrayList<String> menu = new ArrayList<>();
     private ServerConnection serverConnection;
 
-    public MenuTable(Stage stage, ObservableList<String> obsvMenu, ServerConnection serverConnection) {
+    public MenuPage(Stage stage, ObservableList<String> obsvMenu, ServerConnection serverConnection) {
         this.obsvMenu = obsvMenu;
         this.serverConnection = serverConnection;
 
