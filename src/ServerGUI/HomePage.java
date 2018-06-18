@@ -30,13 +30,13 @@ public class HomePage extends Application implements StringCommandList {
         server.setSelectedClient(0);
 
         // Definizione dello stage principale e della barra del menu
-        primaryStage.setTitle("Home");
+        primaryStage.setTitle("Project Nobildonno");
         ToolbarServer toolbarServer = new ToolbarServer(server);
         MenuPage menuPage = new MenuPage(primaryStage, classOfObservableLists.getObservMenu(), server);
         StatsPage statsPage = new StatsPage(primaryStage, classOfObservableLists, server);
 
         // Creazione scritta correlata da un logo
-        Label label = new Label("Welcome to project Nobildonno Home Page");
+        Label label = new Label("Project L-18\nRemote management system");
         label.setTextFill(Color.FIREBRICK);
         label.setFont(Font.font("Rockwell", 50));
         label.setWrapText(true);
@@ -58,7 +58,7 @@ public class HomePage extends Application implements StringCommandList {
         linkBox.setFillWidth(true);
 
         Hyperlink hyperlink = new Hyperlink();
-        hyperlink.setText("Click here for Project L-18 web site!");
+        hyperlink.setText("Ulteriori informazioni");
 
         hyperlink.setOnAction(e -> {
             getHostServices().showDocument(URL);    // Pagina web aperta nel browser
