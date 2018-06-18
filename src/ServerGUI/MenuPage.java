@@ -146,7 +146,7 @@ public class MenuPage extends TableView {
         final TextField addWater = createTextField("Acqua");
         final TextField addVodka = createTextField("Vodka");
 
-        final Button addButton = new Button("Add");
+        final Button addButton = new Button("Aggiungi");
         addButton.setOnAction(event -> {
                 String stringToAdd = addID.getText() + "\t" + addType.getText() + "\t" + addName.getText() + "\t" +
                         addPrice.getText() + "\t" + addQ_max.getText() + "\t" + addTemp.getText() + "\t" +
@@ -165,7 +165,7 @@ public class MenuPage extends TableView {
                 addVodka.clear();
                 changeMenu();
         });
-        final Button remButton = new Button("Remove");
+        final Button remButton = new Button("Rimuovi");
         remButton.setOnAction(event -> {
                 int index = tableView.getSelectionModel().getSelectedIndex();
                 data.remove(index);

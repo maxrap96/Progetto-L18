@@ -93,7 +93,7 @@ public class CoinsChart extends BarChart {
      * @param yAxis asse y.
      */
     private void setChart(BarChart<Number, String> barChart, NumberAxis xAxis, CategoryAxis yAxis) {
-        barChart.setTitle("Coins");
+        barChart.setTitle("Monete");
 
         xAxis.setLabel("Numero monete rimaste");
         xAxis.setAutoRanging(false);

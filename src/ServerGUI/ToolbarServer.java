@@ -13,14 +13,14 @@ import javafx.scene.layout.AnchorPane;
 public class ToolbarServer extends ToolBar implements StringCommandList {
     private Button home = new Button();
     private Button refreshBtn = new Button();
-    private Button save = new Button("Save");
+    private Button save = new Button("Salva");
     private MenuItem bvgPurchase = new MenuItem("Acquisto Bevande");
     private MenuItem usage = new MenuItem("Utilizzo");
     private MenuItem coins = new MenuItem("Monete");
     private MenuItem beverage = new MenuItem("Bevande");
     private MenuItem items = new MenuItem("Varie");
     private Button menuToolbar = new Button("Menu");
-    private MenuButton stats = new MenuButton("Stats",null, coins, bvgPurchase, usage, beverage, items);
+    private MenuButton stats = new MenuButton("Statistiche",null, coins, bvgPurchase, usage, beverage, items);
     private MenuButton vendMachine = new MenuButton("Distributore",null);
     private ServerConnection serverConnection;
     private MenuItem[] dispenser;

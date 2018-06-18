@@ -54,6 +54,7 @@ public class DrinkChart extends BarChart {
             }
         }
         drinksChart.getData().add(series1);
+
         if (!data.isEmpty() && !menu.isEmpty()) {
             for (int i = 0; i < drinkName.size(); i++) {
                 colorChartBars(drinksChart, i, drinkQty.get(i));
@@ -77,7 +78,7 @@ public class DrinkChart extends BarChart {
                              ObservableList<String> data, ObservableList<String> menu) {
 
         for (int rows = 0; rows < menu.size(); rows++) {
-            if (menu.get(rows).startsWith("0")) {
+            if (menu.get(rows).startsWith("0") && !data.isEmpty()) {
                 String[] splitMenu = menu.get(rows).split("\t");
                 drinkName.add(splitMenu[2]);
             }
