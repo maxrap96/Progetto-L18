@@ -47,17 +47,25 @@ public class DrinkChart extends BarChart {
         ArrayList<Double> drinkQty = new ArrayList<>();
 
         analyzeData(drinkName, drinkQty, data, menu);
-
         if (!data.isEmpty() && !menu.isEmpty()) {
             for (int j = 0; j < drinkName.size(); j++) {
-                series1.getData().add(new XYChart.Data(drinkName.get(j), drinkQty.get(j)));
+                if (j < drinkQty.size()) {
+                    series1.getData().add(new XYChart.Data(drinkName.get(j), drinkQty.get(j)));
+                } else {
+                    series1.getData().add(new XYChart.Data(drinkName.get(j), 0)); //prova risolutiva del bug
+                }
             }
         }
         drinksChart.getData().add(series1);
 
         if (!data.isEmpty() && !menu.isEmpty()) {
             for (int i = 0; i < drinkName.size(); i++) {
-                colorChartBars(drinksChart, i, drinkQty.get(i));
+                if (i < drinkQty.size()) {
+                    colorChartBars(drinksChart, i, drinkQty.get(i));
+                }
+                else {
+                    colorChartBars(drinksChart, i, 0);
+                }
             }
         }
         HBox buttonBox = new HBox();
