@@ -362,12 +362,15 @@ public class MenuPage extends TableView {
     }
 
     private void changeId(int index) {
-        for (int i = index; i < data.size(); i++) {
-            String newId = "0" + (i + 1);
-            tableView.getItems().get(i).setId(newId);
-            changeMenu();
-            //data.get(i).setId(newId);
+        for (int i = index+1; i <= data.size(); i++) {
+            String newId = "0"+(i);
+            if(i == 0) {
+                tableView.getItems().get(i).setId(newId);
+            }
+            else {
+            tableView.getItems().get(i-1).setId(newId);}
         }
+        changeMenu();
     }
 
     protected void sendMenu() {
