@@ -38,6 +38,7 @@ public class ReceiverRefill implements MaxValue, TextPathFiles, CoinsNumbers {
      */
     protected void refillBeverage() throws IOException {
         ArrayList<String[]> oldData = beverageFile.readFile();
+        int sizeDifference = compareMenuAndData();
         for (String[] vettTmp : oldData) {
             if (vettTmp[0].startsWith("0")) {
                 String currentId = vettTmp[0];
@@ -47,6 +48,18 @@ public class ReceiverRefill implements MaxValue, TextPathFiles, CoinsNumbers {
                 beverageFile.overwriteFileRefill(newString, oldString);
             }
         }
+        String lastId = oldData.get(oldData.size() - 1)[0];
+        ArrayList<String> originalFile = beverageFile.readFileRefill();
+        for (int i = 0; i < sizeDifference; i++) {
+            String currentId = menuFile.findNextId(lastId, menuFile.readFile());
+            int currentMaxQuantity = getMaxQuantityFromMenu(currentId);
+            String newString = currentId + "\t" + String.valueOf(currentMaxQuantity);
+            originalFile.remove(originalFile.size() - 1);
+            originalFile.add(newString);
+            originalFile.add("*");
+            lastId = currentId;
+        }
+        beverageFile.saveFileFromCommand(originalFile);
     }
 
     /**
@@ -94,5 +107,18 @@ public class ReceiverRefill implements MaxValue, TextPathFiles, CoinsNumbers {
             tmp += integer + "\t";
         }
         return tmp;
+    }
+
+    public int compareMenuAndData () {
+        int beverageMenuCount = 0;
+        beverageMenuCount = menuFile.countBeverage(menuFile.readFileNotSplitted());
+        int beverageDataCount = 0;
+        beverageDataCount = beverageFile.countBeverage(beverageFile.readFileNotSplitted());
+        if (beverageDataCount < beverageMenuCount) {
+            return beverageMenuCount - beverageDataCount;
+        }
+        else {
+            return 0;
+        }
     }
 }

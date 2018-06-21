@@ -193,4 +193,40 @@ public class Data {
         }
         return arrayListNotSplitted;
     }
+
+    public ArrayList<String> readFileRefill() {
+        ArrayList<String> arrayListNotSplitted = new ArrayList<>();
+        try {
+            BufferedReader bReader = new BufferedReader(new FileReader(PATH_FILE));
+            String tmp;
+            while ((tmp = bReader.readLine()) != null) {
+                arrayListNotSplitted.add(tmp);
+            }
+            bReader.close();
+            return arrayListNotSplitted;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return arrayListNotSplitted;
+    }
+
+    public int countBeverage (ArrayList<String> arrayList) {
+        int count = 0;
+        for (int i = 0; i < arrayList.size(); i++) {
+            if (arrayList.get(i).startsWith("0")) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public String findNextId (String lastId, ArrayList<String[]> arrayList) {
+        String stringTmp = lastId;
+        for (int i = 0; i < arrayList.size(); i++) {
+            if (arrayList.get(i)[0].equals(stringTmp)) {
+                return arrayList.get(i + 1)[0];
+            }
+        }
+        return stringTmp;
+    }
 }
