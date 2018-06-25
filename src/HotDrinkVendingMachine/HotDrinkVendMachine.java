@@ -147,7 +147,9 @@ public class HotDrinkVendMachine implements MaxValue, TextPathFiles {
             transaction = key.pay(list.get(ID).getPrice());
             // Scrittura statistiche su file
             stats.writeFile(list.get(ID).getName(),transaction);
+            dispenser.subtractIngredients(list.get(ID), selected_sugar);
             updateData(ID);
+            setSugarToDefault();
 
             if (transaction) {
                 return "Bevanda erogata";
