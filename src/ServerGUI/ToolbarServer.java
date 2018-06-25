@@ -168,8 +168,12 @@ public class ToolbarServer extends ToolBar implements StringCommandList {
      */
     private void sendFile() {
         serverConnection.chooseCommandExecutedByThread(SEND_STATS);
+        serverConnection.chooseCommandExecutedByThread(SEND_STATS);
+        serverConnection.chooseCommandExecutedByThread(SEND_COINS);
         serverConnection.chooseCommandExecutedByThread(SEND_COINS);
         serverConnection.chooseCommandExecutedByThread(SEND_DATA);
+        serverConnection.chooseCommandExecutedByThread(SEND_DATA);
+        serverConnection.chooseCommandExecutedByThread(SEND_MENU);
         serverConnection.chooseCommandExecutedByThread(SEND_MENU);
     }
 }
