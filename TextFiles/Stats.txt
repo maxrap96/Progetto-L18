@@ -159,3 +159,12 @@ Ginseng	Transazione avvenuta il:	07-06-2018 22:05:39
 Cioccolata	Transazione avvenuta il:	07-06-2018 22:06:16
 Cappuccino	Transazione avvenuta il:	07-06-2018 22:11:13
 Tè ai Mirtilli	Transazione avvenuta il:	14-06-2018 15:35:03
+Cappuccino	Transazione avvenuta il:	25-06-2018 10:30:58
+Ginseng	Transazione avvenuta il:	25-06-2018 10:43:03
+Ginseng	Transazione avvenuta il:	25-06-2018 10:58:21
+Cappuccino	Transazione avvenuta il:	25-06-2018 11:00:10
+Cappuccino	Transazione avvenuta il:	25-06-2018 11:04:17
+Latte Caldo	Transazione avvenuta il:	25-06-2018 11:05:27
+Cappuccino	Transazione avvenuta il:	25-06-2018 11:07:05
+Caffè Corretto	Transazione avvenuta il:	25-06-2018 11:08:45
+Cioccolata	Transazione avvenuta il:	25-06-2018 11:13:50

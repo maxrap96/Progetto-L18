@@ -21,10 +21,11 @@ public class UpdateChecker extends Thread {
     private long oldTimestamp;
     private BooleanRefill booleanRefill;
     private BackgroundImage backgroundImage;
+    private PurchasePane purchasePane;
 
     public UpdateChecker(HotDrinkVendMachine vendMachine, BeverageGrid beverageGrid, Display display,
                          ResetDisplay resetDisplay, BorderPane root, BooleanRefill booleanRefill,
-                         BackgroundImage backgroundImage ) {
+                         BackgroundImage backgroundImage, PurchasePane purchasePane) {
         this.vendMachine = vendMachine;
         this.beverageGrid = beverageGrid;
         this.display = display;
@@ -34,27 +35,32 @@ public class UpdateChecker extends Thread {
         this.menuFile = new File(MENU_PATH);
         this.oldTimestamp = menuFile.lastModified();
         this.backgroundImage = backgroundImage;
+        this.purchasePane = purchasePane;
     }
 
     public void  run() {
         while(true) {
             if (isFileChanged()) {
                 vendMachine = new HotDrinkVendMachine();
-                beverageGrid = new BeverageGrid(vendMachine, display, resetDisplay);
-                beverageGrid.setBackground(new Background(backgroundImage));
-                Platform.runLater(() -> {root.setLeft(beverageGrid);});
+                Platform.runLater(() -> {
+                    beverageGrid = new BeverageGrid(vendMachine, display, resetDisplay);
+                    beverageGrid.setBackground(new Background(backgroundImage));
+                    root.setLeft(beverageGrid);});
+                Platform.runLater(() -> {
+                    purchasePane = new PurchasePane(display, resetDisplay, vendMachine);
+                    root.setRight(purchasePane);});
             }
             if (booleanRefill.isCoinsRefilled()) {
                 booleanRefill.setCoinsRefilled(false);
-                vendMachine = new HotDrinkVendMachine();
+                Platform.runLater(() -> {vendMachine = new HotDrinkVendMachine();});
             }
             if (booleanRefill.isIngredientsRefilled()) {
                 booleanRefill.setIngredientsRefilled(false);
-                vendMachine = new HotDrinkVendMachine();
+                Platform.runLater(() -> {vendMachine = new HotDrinkVendMachine();});
             }
             if (booleanRefill.isItemRefilled()) {
                 booleanRefill.setItemRefilled(false);
-                vendMachine = new HotDrinkVendMachine();
+                Platform.runLater(() -> {vendMachine = new HotDrinkVendMachine();});
             }
         }
     }

@@ -63,47 +63,15 @@ public class VendingMachine extends Application {
             );
 
             // Creazione pannello per il display, le monete e altri pulsanti
-            BorderPane purchasePane = new BorderPane();
-            purchasePane.setPadding(new Insets(11, 11, 11, 11));
-            purchasePane.setStyle(
-                    "-fx-background-color: dimGray;"
-            );
+            this.display = new Display();
+            this.resetDisplay = new ResetDisplay(display, vendMachine);
+            PurchasePane purchasePane = new PurchasePane(display, resetDisplay, vendMachine);
             root.setRight(purchasePane);
-
-            // Display del distributore
-            display = new Display();
-            purchasePane.setTop(display);
-            resetDisplay = new ResetDisplay(display, vendMachine);
-            resetDisplay.setDots();
-
-            // Creazione chiavetta
-            Button key = new Button("Chiavetta");
-            key.setFont(Font.font("California FB", 20));
-            key.setPrefSize(16 * screenSize.width / 100, screenSize.height / 9);
-            key.setStyle(
-                    "-fx-background-radius: 1em;" +
-                    "-fx-base: lightGray;" +
-                    "-fx-focus-color: transparent;" +
-                    "-fx-faint-focus-color: transparent;"
-            );
-            key.setOnAction(event -> {
-                vendMachine.setConnectionKey();
-                display.setCreditRow(String.valueOf(vendMachine.getCredit()));
-                key.setStyle(
-                        "-fx-background-radius: 1em;" +
-                        "-fx-focus-color: blue;"
-                );
-            });
-            purchasePane.setCenter(key);
 
             // Pannello delle bevande
             beverageGrid = new BeverageGrid(vendMachine, display, resetDisplay);
             beverageGrid.setBackground(new Background(backgroundImage));
             root.setLeft(beverageGrid);
-
-            // Pannello delle monete
-            GridPane moneyPane = new MoneyGrid(vendMachine, display, resetDisplay);
-            purchasePane.setBottom(moneyPane);
 
             Scene scene = new Scene(root, width, height, Color.LIGHTGRAY);
             primaryStage.setScene(scene);
@@ -113,7 +81,7 @@ public class VendingMachine extends Application {
 
             // Avvio del thread che si occupa dell'update
             updateChecker = new UpdateChecker(vendMachine, beverageGrid, display, resetDisplay, root, booleanRefill,
-                    backgroundImage);
+                    backgroundImage, purchasePane);
             updateChecker.start();
 
         } catch (IOException e) {

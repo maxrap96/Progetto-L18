@@ -63,28 +63,28 @@ public class StatsPage extends GridPane {
 
         obsvStats.addListener((ListChangeListener) change -> Platform.runLater(() -> {
             // Aggiorna UI
-            System.out.println("Detected a change! Stats");
-            tab2.setContent(pie.setChart());
-            tab3.setContent(usage.setGraph());
+            Platform.runLater(() ->{System.out.println("Detected a change! Stats");
+                tab2.setContent(pie.setChart());
+                tab3.setContent(usage.setGraph());});
         }));
 
         obsvCoins.addListener((ListChangeListener) change -> Platform.runLater(() -> {
             // Aggiorna UI
-            System.out.println("Detected a change! Coins");
-            tab1.setContent(coinsChart.setBars());
+            Platform.runLater(() ->{System.out.println("Detected a change! Coins");
+            tab1.setContent(coinsChart.setBars());});
         }));
 
         obsvData.addListener((ListChangeListener) change -> Platform.runLater(() -> {
             // Aggiorna UI
-            System.out.println("Detected a change! Data");
+            Platform.runLater(() ->{System.out.println("Detected a change! Data");
             tab4.setContent(drinks.initChart());
-            tab5.setContent(itemsStats.setProgressBar());
+            tab5.setContent(itemsStats.setProgressBar());});
         }));
 
         obsvMenu.addListener((ListChangeListener) change -> Platform.runLater(() -> {
             // Aggiorna UI
-            System.out.println("Detected a change! Menu");
-            tab4.setContent(drinks.initChart());
+            Platform.runLater(() ->{System.out.println("Detected a change! Menu");
+            tab4.setContent(drinks.initChart());});
         }));
 
         tabPane.getTabs().addAll(tab1, tab2, tab3, tab4, tab5);
