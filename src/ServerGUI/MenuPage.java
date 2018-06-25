@@ -146,6 +146,7 @@ public class MenuPage extends TableView {
         final TextField addWater = createTextField("Acqua");
         final TextField addVodka = createTextField("Vodka");
 
+        //Bottone per aggiungere le righe al menu
         final Button addButton = new Button("Aggiungi");
         addButton.setOnAction(event -> {
                 String stringToAdd = addID.getText() + "\t" + addType.getText() + "\t" + addName.getText() + "\t" +
@@ -165,6 +166,8 @@ public class MenuPage extends TableView {
                 addVodka.clear();
                 changeMenu();
         });
+
+        //Bottone per rimuovere la riga del menu selezionata
         final Button remButton = new Button("Rimuovi");
         remButton.setOnAction(event -> {
                 int index = tableView.getSelectionModel().getSelectedIndex();
@@ -178,6 +181,7 @@ public class MenuPage extends TableView {
                 addVodka);
         hb.setSpacing(3);
         final HBox hBox = new HBox(addButton,remButton);
+
         tableView.setItems(data);
         tableView.setStyle("-fx-font: 16px Serif");
         tableView.getColumns().addAll(id, type, name, price, Q_max, temp, dose, milk, water, vodka);
@@ -200,7 +204,7 @@ public class MenuPage extends TableView {
 
 
     /**
-     * Classe menu utilizzata per l'aggiunta dei dati nella rowTable.
+     * Classe RowTable utilizzata per l'aggiunta dei dati nella rowTable.
      */
     public static class RowTable {
         private SimpleStringProperty id;
@@ -337,11 +341,18 @@ public class MenuPage extends TableView {
         return vBox;
     }
 
+    public ArrayList<String> getMenu() {
+        return menu;
+    }
+
     private void initTableColumn(TableColumn tableColumn, String name) {
         tableColumn.setCellValueFactory(new PropertyValueFactory<RowTable, String>(name));
         tableColumn.setCellFactory(TextFieldTableCell.forTableColumn());
     }
 
+    /**
+     * Funzione per l'aggiornamento delle String all'interno dell'ArrayList<String> menu
+     */
     private void changeMenu() {
         menu.clear();
         menu.add("* le righe con * vengono saltate nella lettura");
@@ -361,6 +372,10 @@ public class MenuPage extends TableView {
         menu.add("*");
     }
 
+    /**
+     * Funzione per l'aggiornamento e l'ordinamento degli ID nel caso della rimozione di una riga
+     * @param index
+     */
     private void changeId(int index) {
         for (int i = index+1; i <= data.size(); i++) {
             String newId = "0"+(i);
@@ -373,6 +388,9 @@ public class MenuPage extends TableView {
         changeMenu();
     }
 
+    /**
+     * Funzione che invia al client il nuovo menu modificato
+     */
     protected void sendMenu() {
         obsvMenu.clear();
         obsvMenu.addAll(menu);

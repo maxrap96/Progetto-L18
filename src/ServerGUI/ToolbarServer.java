@@ -106,7 +106,9 @@ public class ToolbarServer extends ToolBar implements StringCommandList {
         });
 
         save.setOnAction(event -> {
-            menuPage.sendMenu();});
+            if(menuPage.getMenu().size() != 0){
+            menuPage.sendMenu();}
+        });
 
         refreshBtn.setOnAction(event -> {
             sendFile();
