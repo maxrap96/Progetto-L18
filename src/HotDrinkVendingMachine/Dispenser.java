@@ -26,7 +26,6 @@ public class Dispenser implements MaxValue {
         subtractSugar(sugar);
         cup--;
         vodka -= beverage.getVodka();
-        beverage.subtractDose();
     }
 
     /**
