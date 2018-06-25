@@ -42,7 +42,7 @@ public class ReceiverRefill implements MaxValue, TextPathFiles, CoinsNumbers {
         for (String[] vettTmp : oldData) {
             if (vettTmp[0].startsWith("0")) {
                 String currentId = vettTmp[0];
-                int currentMaxQuantity = getMaxQuantityFromMenu(currentId);
+                double currentMaxQuantity = getMaxQuantityFromMenu(currentId);
                 String oldString = recreateString(vettTmp);
                 String newString = currentId + "\t" + String.valueOf(currentMaxQuantity);
                 beverageFile.overwriteFileRefill(newString, oldString);
@@ -52,7 +52,7 @@ public class ReceiverRefill implements MaxValue, TextPathFiles, CoinsNumbers {
         ArrayList<String> originalFile = beverageFile.readFileRefill();
         for (int i = 0; i < sizeDifference; i++) {
             String currentId = menuFile.findNextId(lastId, menuFile.readFile());
-            int currentMaxQuantity = getMaxQuantityFromMenu(currentId);
+            double currentMaxQuantity = getMaxQuantityFromMenu(currentId);
             String newString = currentId + "\t" + String.valueOf(currentMaxQuantity);
             originalFile.remove(originalFile.size() - 1);
             originalFile.add(newString);
@@ -66,11 +66,11 @@ public class ReceiverRefill implements MaxValue, TextPathFiles, CoinsNumbers {
      * Funzione che ottiene la quantità massima.
      * @param id l'id associato alla quantità desiderata.
      */
-    private int getMaxQuantityFromMenu(String id) {
-        int tmpReturned = 0;
+    private double getMaxQuantityFromMenu(String id) {
+        double tmpReturned = 0;
         for (String[] rowTmp : menu) {
             if (id.equals(rowTmp[0])) {
-                tmpReturned = Integer.parseInt(rowTmp[4]);
+                tmpReturned = Double.parseDouble(rowTmp[4]);
             }
         }
         return tmpReturned;
