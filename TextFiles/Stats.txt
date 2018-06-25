@@ -168,3 +168,13 @@ Latte Caldo	Transazione avvenuta il:	25-06-2018 11:05:27
 Cappuccino	Transazione avvenuta il:	25-06-2018 11:07:05
 Caffè Corretto	Transazione avvenuta il:	25-06-2018 11:08:45
 Cioccolata	Transazione avvenuta il:	25-06-2018 11:13:50
+Caffè Espresso	Transazione avvenuta il:	25-06-2018 11:18:38
+Ginseng	Transazione avvenuta il:	25-06-2018 11:18:46
+Caffè Corretto	Transazione avvenuta il:	25-06-2018 11:18:56
+Cappuccino	Transazione avvenuta il:	25-06-2018 11:19:13
+Cappuccino	Transazione avvenuta il:	25-06-2018 11:19:18
+Latte Caldo	Transazione avvenuta il:	25-06-2018 11:19:45
+Cappuccin	Transazione avvenuta il:	25-06-2018 11:27:28
+Cappuccino	Transazione avvenuta il:	25-06-2018 11:30:42
+Cappuccin	Transazione avvenuta il:	25-06-2018 11:33:26
+Cappuccino	Transazione avvenuta il:	25-06-2018 11:39:03
