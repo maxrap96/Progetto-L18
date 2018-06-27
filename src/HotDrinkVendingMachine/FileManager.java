@@ -198,6 +198,9 @@ public class FileManager {
         return arrayListNotSplitted;
     }
 
+    /**
+     * Funzione che legge file per ricarica da remoto.
+     */
     public ArrayList<String> readFileRefill() {
         ArrayList<String> arrayListNotSplitted = new ArrayList<>();
         try {
@@ -214,16 +217,11 @@ public class FileManager {
         return arrayListNotSplitted;
     }
 
-    public int countBeverage (ArrayList<String> arrayList) {
-        int count = 0;
-        for (int i = 0; i < arrayList.size(); i++) {
-            if (arrayList.get(i).startsWith("0")) {
-                count++;
-            }
-        }
-        return count;
-    }
-
+    /**
+     * Funzione che restituisce l'id della bevanda successiva.
+     * @param lastId ultimo id letto.
+     * @param arrayList arraylist del menù da dove prendere l'id.
+     */
     public String findNextId (String lastId, ArrayList<String[]> arrayList) {
         String stringTmp = lastId;
         for (int i = 0; i < arrayList.size(); i++) {

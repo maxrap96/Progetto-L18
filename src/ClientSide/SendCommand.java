@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+/**
+ * Classe che si occupa della gestione del comando per inviare i file.
+ */
 public class SendCommand implements Command {
     private ReceiverSend receiverSend;
     private PrintWriter printWriter;
@@ -14,7 +17,9 @@ public class SendCommand implements Command {
         this.printWriter = printWriter;
         this.sendThisFile = new File(path);
     }
-
+    /**
+     * Funzione che esegue i comandi del receiver appropriato.
+     */
     @Override
     public void execute() {
         try {

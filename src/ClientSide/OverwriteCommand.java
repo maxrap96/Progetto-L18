@@ -6,6 +6,10 @@ import java.util.ArrayList;
 
 import static ServerSide.StringCommandList.END_SENDING;
 
+/**
+ * Classe che si occupa dell'esecuzione del comando di sovrascrittura del menù.
+ */
+
 public class OverwriteCommand implements Command {
     private ReceiverOverwrite receiverOverwrite;
     private BufferedReader bufferedReader;
@@ -19,6 +23,9 @@ public class OverwriteCommand implements Command {
         this.path = path;
     }
 
+    /**
+     * Funzione che sovrascrive il menù inviato da server.
+     */
     @Override
     public void execute() {
         menuFromServer.clear();

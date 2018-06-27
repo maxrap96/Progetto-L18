@@ -8,6 +8,10 @@ import HotDrinkVendingMachine.TextPathFiles;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Classe che si occupa della gestione della ricarica del file appropriato.
+ */
+
 public class ReceiverRefill implements MaxValue, TextPathFiles, CoinsNumbers {
     private FileManager menuFile;
     private FileManager beverageFile;
@@ -109,16 +113,34 @@ public class ReceiverRefill implements MaxValue, TextPathFiles, CoinsNumbers {
         return tmp;
     }
 
+    /**
+     * Funzione che confronta il numero di bevande tra data e menù.
+     */
     public int compareMenuAndData () {
         int beverageMenuCount = 0;
-        beverageMenuCount = menuFile.countBeverage(menuFile.readFileNotSplitted());
+        beverageMenuCount = countBeverage(menuFile.readFileNotSplitted());
         int beverageDataCount = 0;
-        beverageDataCount = beverageFile.countBeverage(beverageFile.readFileNotSplitted());
+        beverageDataCount = countBeverage(beverageFile.readFileNotSplitted());
         if (beverageDataCount < beverageMenuCount) {
             return beverageMenuCount - beverageDataCount;
         }
         else {
             return 0;
         }
+    }
+
+    /**
+     * Funzione che conta quante bevande ci sono nell'array passatogli.
+     * @param arrayList array passato.
+     * @return conteggio bevande.
+     */
+    private int countBeverage (ArrayList<String> arrayList) {
+        int count = 0;
+        for (int i = 0; i < arrayList.size(); i++) {
+            if (arrayList.get(i).startsWith("0")) {
+                count++;
+            }
+        }
+        return count;
     }
 }

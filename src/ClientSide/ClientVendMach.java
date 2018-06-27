@@ -10,6 +10,10 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.HashMap;
 
+/**
+ * Classe che si occupa della gestione della connessione e dei comandi ricevuti da server.
+ */
+
 public class ClientVendMach extends Thread implements StringCommandList, TextPathFiles {
     private String ip;
     private int serverPort;
@@ -31,6 +35,9 @@ public class ClientVendMach extends Thread implements StringCommandList, TextPat
         this.receiverRefill = new ReceiverRefill();
     }
 
+    /**
+     * Funzione che avvia la connesione al server.
+     */
     @Override
     public void run() {
         try {

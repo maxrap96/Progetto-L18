@@ -4,6 +4,10 @@ import java.io.*;
 
 import static ServerSide.StringCommandList.END_SENDING;
 
+/**
+ * Classe receiver che si occupa dell'invio dei file verso il server.
+ */
+
 public class ReceiverSend {
     /**
      * Funzione che invia un file.

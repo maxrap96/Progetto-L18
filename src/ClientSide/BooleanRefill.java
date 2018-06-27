@@ -1,5 +1,9 @@
 package ClientSide;
 
+/**
+ * Classe che contiene vairabili booleane controllate dall'UpdateChecker.
+ */
+
 public class BooleanRefill {
     private boolean isCoinsRefilled = false;
     private boolean isItemRefilled = false;

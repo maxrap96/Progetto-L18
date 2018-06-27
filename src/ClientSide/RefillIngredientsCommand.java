@@ -2,6 +2,10 @@ package ClientSide;
 
 import java.io.IOException;
 
+/**
+ * Classe che si occupa della ricarica degli ingredienti.
+ */
+
 public class RefillIngredientsCommand implements Command {
     private ReceiverRefill receiverRefill;
     private BooleanRefill booleanRefill;
@@ -11,6 +15,9 @@ public class RefillIngredientsCommand implements Command {
         this.booleanRefill = refilled;
     }
 
+    /**
+     * Funzione che esegue i comandi di ricarica del receiver appropriato.
+     */
     @Override
     public void execute() {
         try {
