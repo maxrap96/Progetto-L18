@@ -2,6 +2,10 @@ package HotDrinkVendingMachine;
 
 import HotDrinks.HotDrink;
 
+/**
+ * Classe che si occupa della distribuzione delle bevande.
+ */
+
 public class Dispenser implements MaxValue {
     private double milk;
     private double sugar;
@@ -29,7 +33,7 @@ public class Dispenser implements MaxValue {
     }
 
     /**
-     * funzione che controlla che sia possibile erogare gli ingredienti
+     * Funzione che controlla che sia possibile erogare gli ingredienti
      * @param beverage bevanda richiesta con le varie informazioni
      * @param sugar zucchero richiesto
      * @return segnala la possibilità o meno di eseguire una operazione

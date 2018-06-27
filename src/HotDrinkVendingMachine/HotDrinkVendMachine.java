@@ -8,6 +8,10 @@ import java.util.HashMap;
 
 import static java.lang.Integer.parseInt;
 
+/**
+ * Classe che definisce il distributore automatico.
+ */
+
 public class HotDrinkVendMachine implements MaxValue, TextPathFiles {
     private HashMap<String, HotDrink> list;
     private int selected_sugar;
@@ -282,6 +286,10 @@ public class HotDrinkVendMachine implements MaxValue, TextPathFiles {
         }
     }
 
+    /**
+     * Funzione che restituisce il credito della chiavetta.
+     * @return credito della chiavetta.
+     */
     public double getCredit() {
         if (key.isConnected()) {
             return key.getKeyBalance();
@@ -310,6 +318,9 @@ public class HotDrinkVendMachine implements MaxValue, TextPathFiles {
         coins.giveChange();
     }
 
+    /**
+     * Funzione che aggiorna il credito della chiavetta.
+     */
     public void setConnectionKey() {
         key.setConnected();
         if (coins.getCredit() !=0 ) {

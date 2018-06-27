@@ -1,5 +1,9 @@
 package HotDrinkVendingMachine;
 
+/**
+ * Interfaccia che contiene gli indirizzi dei TextFiles.
+ */
+
 public interface TextPathFiles {
     String STATS_PATH = "TextFiles/Stats.txt";
     String DATA_PATH = "TextFiles/Data.txt";

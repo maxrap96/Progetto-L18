@@ -5,6 +5,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * Classe che si occupa della gestione dei file.
+ */
+
 public class Data {
     private final String PATH_FILE;
 

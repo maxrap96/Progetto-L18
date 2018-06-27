@@ -4,6 +4,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import static java.lang.Double.parseDouble;
 
+/**
+ * Classe che si occupa della gestione della chiavetta.
+ */
+
 public class Key implements TextPathFiles{
     private String id;
     private double balance;
@@ -19,6 +23,9 @@ public class Key implements TextPathFiles{
         // initKey();
     }
 
+    /**
+     * Funzione che inizializza la chiavetta.
+     */
     private void initKey() {
         ArrayList<String[]> keyText = data.readFile();
 
@@ -31,6 +38,10 @@ public class Key implements TextPathFiles{
         }
     }
 
+    /**
+     * Funzione che verifica che la chiavetta sia collegata.
+     * @return booleano.
+     */
     public boolean isConnected() {
         return connected;
     }
@@ -39,10 +50,18 @@ public class Key implements TextPathFiles{
         connected = !connected;
     }
 
+    /**
+     * Funzione che ottiene il credito.
+     * @return credito.
+     */
     public double getKeyBalance() {
         return balance;
     }
 
+    /**
+     * Funzione che gestisce il saldo della chiavetta.
+     * @param amount totale da aggiungere.
+     */
     public void addBalance(double amount) {
         balance = (balance * 1000 + amount * 1000) / 1000;
         balance = Math.floor(balance * 100) / 100;
@@ -55,6 +74,11 @@ public class Key implements TextPathFiles{
         }
     }
 
+    /**
+     * Funzione che verifica se il credito è sufficiente.
+     * @param price prezzo della bevanda.
+     * @return booleano.
+     */
     public boolean pay(double price) {
         if (balance > price) {
             balance -= price;

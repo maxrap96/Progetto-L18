@@ -4,6 +4,10 @@ import java.util.ArrayList;
 
 import static java.lang.Integer.parseInt;
 
+/**
+ * Classe che si occupa della gestione delle monete.
+ */
+
 public class Coins implements CoinsNumbers, TextPathFiles{
     private int[] money;
     private int credit = 0;
@@ -183,6 +187,9 @@ public class Coins implements CoinsNumbers, TextPathFiles{
         }
     }
 
+    /**
+     * Funzione che ripristina money ai valori di default.
+     */
     public void resetStoredMoney(){
         this.money[0] = DEFAULT_MONEY[0];
         this.money[1] = DEFAULT_MONEY[1];

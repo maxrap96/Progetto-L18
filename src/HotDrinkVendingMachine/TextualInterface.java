@@ -4,6 +4,10 @@ import java.util.Scanner;
 
 import static java.lang.Integer.parseInt;
 
+/**
+ * Classe che si ocuupa dell'interfaccia testuale.
+ */
+
 public class TextualInterface {
     private HotDrinkVendMachine vendMachine;
 
