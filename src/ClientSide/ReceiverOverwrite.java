@@ -1,14 +1,14 @@
 package ClientSide;
 
-import HotDrinkVendingMachine.Data;
+import HotDrinkVendingMachine.FileManager;
 
 import java.util.ArrayList;
 
 public class ReceiverOverwrite {
-    private Data menuData;
+    private FileManager menuData;
 
     protected void overwriteFileReceiver(ArrayList<String> arrayFromCommand, String path) {
-        this.menuData = new Data(path);
+        this.menuData = new FileManager(path);
         saveFileReceived(arrayFromCommand);
     }
 

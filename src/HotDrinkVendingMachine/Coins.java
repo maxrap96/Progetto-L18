@@ -12,7 +12,7 @@ public class Coins implements CoinsNumbers, TextPathFiles{
     private int[] money;
     private int credit = 0;
     private final double[] COINS_VALUE = {5, 10, 20, 50 , 100, 200};
-    private Data coinsTxt = new Data(COINS_PATH);
+    private FileManager coinsTxt = new FileManager(COINS_PATH);
 
     public Coins() {
         this.money = new int[COINS_VALUE.length];

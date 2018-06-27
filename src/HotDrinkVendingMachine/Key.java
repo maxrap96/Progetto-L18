@@ -11,7 +11,7 @@ import static java.lang.Double.parseDouble;
 public class Key implements TextPathFiles{
     private String id;
     private double balance;
-    private Data data = new Data(KEY_PATH);
+    private FileManager data = new FileManager(KEY_PATH);
     private String currentLine;
     private boolean connected = false;
 

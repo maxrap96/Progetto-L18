@@ -9,10 +9,10 @@ import java.util.Date;
  * Classe che si occupa della gestione dei file.
  */
 
-public class Data {
+public class FileManager {
     private final String PATH_FILE;
 
-    public Data(String pathFile) {
+    public FileManager(String pathFile) {
         this.PATH_FILE = pathFile;
     }
 

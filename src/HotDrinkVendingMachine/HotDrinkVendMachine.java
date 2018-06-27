@@ -16,18 +16,18 @@ public class HotDrinkVendMachine implements MaxValue, TextPathFiles {
     private HashMap<String, HotDrink> list;
     private int selected_sugar;
     private Coins coins;
-    private Data stats;
-    private Data ingredientsData;
-    private Data menu;
+    private FileManager stats;
+    private FileManager ingredientsData;
+    private FileManager menu;
     private ArrayList<String[]> data;
     private Dispenser dispenser;
     private Key key;
 
     public HotDrinkVendMachine() {
         this.list = new HashMap<>();
-        this.stats = new Data(STATS_PATH);
-        this.ingredientsData = new Data(DATA_PATH);
-        this.menu = new Data(MENU_PATH);
+        this.stats = new FileManager(STATS_PATH);
+        this.ingredientsData = new FileManager(DATA_PATH);
+        this.menu = new FileManager(MENU_PATH);
         this.coins = new Coins();
         this.key = new Key();
         int lastRow = setValues(ingredientsData.readFile());
