@@ -2,6 +2,10 @@ import HotDrinkVendingMachine.HotDrinkVendMachine;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+/**
+ * Classe tester delle asserzioni
+ */
+
 public class TestAssertThat {
 
     @Test
