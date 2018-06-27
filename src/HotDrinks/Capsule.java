@@ -1,5 +1,9 @@
 package HotDrinks;
 
+/**
+ * Classe che definisce la bevanda sotto forma di capsula.
+ */
+
 public class Capsule extends HotDrink {
 
     public Capsule(String[] rowSplitted) {

@@ -2,6 +2,10 @@ package HotDrinks;
 
 import static java.lang.Double.parseDouble;
 
+/**
+ * Classe che definisce una bevanda.
+ */
+
 public abstract class HotDrink {
     protected String id;
     protected Type type;

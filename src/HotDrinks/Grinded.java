@@ -2,6 +2,10 @@ package HotDrinks;
 
 import static java.lang.Double.parseDouble;
 
+/**
+ * Classe che definisce la bevanda con preparato macinato.
+ */
+
 public class Grinded extends HotDrink {
 
     public Grinded(String[] rowSplitted) {

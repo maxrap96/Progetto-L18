@@ -2,6 +2,10 @@ package HotDrinks;
 
 import static java.lang.Double.parseDouble;
 
+/**
+ * Classe che definisce la bevanda con preparato solubile.
+ */
+
 public class Soluble extends HotDrink {
 
     public Soluble(String[] rowSplitted) {
