@@ -9,6 +9,11 @@ import javafx.scene.text.Font;
 
 import java.awt.*;
 
+/**
+ * Classe che definisce il pannello dove vengono aggiunti i pulsanti delle monete, dello zucchero, il resto, la
+ * chivetta e il display.
+ */
+
 public class PurchasePane extends BorderPane {
     private Dimension screenSize;
 

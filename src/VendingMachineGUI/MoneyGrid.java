@@ -13,6 +13,10 @@ import javafx.scene.text.Font;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
+/**
+ * Classe che definisce il pannello dove vengono aggiunti i pulsanti delle monete.
+ */
+
 public class MoneyGrid extends GridPane {
     private Dimension screenSize;
     private HotDrinkVendMachine vendMachine;
@@ -31,6 +35,9 @@ public class MoneyGrid extends GridPane {
         this.setAlignment(Pos.CENTER_RIGHT);
     }
 
+    /**
+     * Funzione che crea la griglia e i pulsanti delle monete, dello zucchero e del resto.
+     */
     private void createGrid() {
         this.setPadding(new Insets(BUTTON_PADDING));
         this.setHgap(BUTTON_PADDING);

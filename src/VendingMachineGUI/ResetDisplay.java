@@ -5,6 +5,10 @@ import HotDrinkVendingMachine.HotDrinkVendMachine;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * Classe che si occupa dell'aggiornamento del testo presente sul display.
+ */
+
 public class ResetDisplay {
     private final String DEFAULT_MESSAGE = "Scegliere una bevanda";
     private Display display;

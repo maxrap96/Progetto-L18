@@ -11,6 +11,11 @@ import java.io.File;
 
 import static HotDrinkVendingMachine.TextPathFiles.MENU_PATH;
 
+/**
+ * Classe che aggiorna gli elementi che compongono la GUI quando il menù viene modificato o quando gli
+ * ingredienti, le monete o gli items vengono ricaricati da server.
+ */
+
 public class UpdateChecker extends Thread {
     private HotDrinkVendMachine vendMachine;
     private BeverageGrid beverageGrid;
@@ -38,6 +43,9 @@ public class UpdateChecker extends Thread {
         this.purchasePane = purchasePane;
     }
 
+    /**
+     * Funzione che aggiorna la GUI dopo eventuali modifiche da server.
+     */
     public void  run() {
         while(true) {
             if (isFileChanged()) {

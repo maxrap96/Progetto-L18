@@ -4,6 +4,10 @@ import HotDrinkVendingMachine.HotDrinkVendMachine;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 
+/**
+ * Classe che gestisce la pressione dei pulsanti delle monete.
+ */
+
 public class MoneyEventHandler implements EventHandler {
     private final double VALUE;
     private Display display;

@@ -19,6 +19,10 @@ import java.awt.Toolkit;
 import java.io.FileInputStream;
 import java.io.IOException;
 
+/**
+ * Classe principale dell'interfaccia del distributore dove viene creata la finestra della GUI.
+ */
+
 public class VendingMachine extends Application {
     private HotDrinkVendMachine vendMachine = new HotDrinkVendMachine();
     private ResetDisplay resetDisplay;
@@ -28,6 +32,10 @@ public class VendingMachine extends Application {
     private ClientVendMach clientVendMach;
     private BooleanRefill booleanRefill = new BooleanRefill();
 
+    /**
+     * Funzione che crea e avvia il frame della GUI.
+     * @param primaryStage stage della GUI.
+     */
     @Override
     public void start(Stage primaryStage) {
         try {

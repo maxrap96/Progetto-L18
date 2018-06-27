@@ -9,6 +9,10 @@ import javafx.scene.text.Text;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
+/**
+ * Classe che definisce il display del distributore.
+ */
+
 public class Display extends GridPane {
     private Dimension screenSize;
     private final String DEFAULT_MESSAGE = "Scegliere una bevanda";

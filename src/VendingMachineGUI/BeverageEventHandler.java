@@ -4,6 +4,10 @@ import HotDrinkVendingMachine.HotDrinkVendMachine;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 
+/**
+ * Classe che gestisce la pressione dei pulsanti delle bevande.
+ */
+
 public class BeverageEventHandler implements EventHandler {
     private final String BEVERAGE_PRICE;
     private final String ID;
@@ -20,6 +24,10 @@ public class BeverageEventHandler implements EventHandler {
         this.BEVERAGE_PRICE = String.format("%.2f", vendMachine.getPrice(ID));
     }
 
+    /**
+     * Funzione che gestisce la pressione di un pulsante.
+     * @param event evento pressione di un pulsante.
+     */
     @Override
     public void handle(Event event) {
         if (vendMachine.getCredit() >= vendMachine.getPrice(ID)) {

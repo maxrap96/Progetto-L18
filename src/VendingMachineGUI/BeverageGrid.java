@@ -13,6 +13,10 @@ import javafx.scene.text.FontWeight;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
+/**
+ * Classe che definisce il pannello dove vengono aggiunti i pulsanti delle bevande.
+ */
+
 public class BeverageGrid extends GridPane {
     private Dimension screenSize;
     private HotDrinkVendMachine vendMachine;
@@ -30,6 +34,9 @@ public class BeverageGrid extends GridPane {
         createGrid();
     }
 
+    /**
+     * Funzione che crea la griglia e i pulsanti delle bevande.
+     */
     private void createGrid() {
         // Per una migliore lettura, usare al massimo 12 pulsanti
         this.setPadding(new Insets(BUTTON_PADDING));
