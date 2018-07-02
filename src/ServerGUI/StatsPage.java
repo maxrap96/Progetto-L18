@@ -11,6 +11,10 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
+/**
+ * Classe che si occupa della gestione delle statistiche.
+ */
+
 public class StatsPage extends GridPane {
     private GridPane mainPanel = new GridPane();
     private TabPane tabPane = new TabPane();

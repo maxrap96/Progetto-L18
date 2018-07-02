@@ -15,6 +15,10 @@ import HotDrinkVendingMachine.MaxValue;
 
 import static ServerSide.StringCommandList.REFILL_ITEMS;
 
+/**
+ * Classe che gestisce la tab degli items.
+ */
+
 public class ItemsTab {
     private ObservableList<String> obsvData;
     private ServerConnection serverConnection;
@@ -30,6 +34,9 @@ public class ItemsTab {
         this.obsvData = obsvData;
     }
 
+    /**
+     * Funzione che imposta le progress bar.
+     */
     protected BorderPane setProgressBar() {
         BorderPane mainPanel = new BorderPane();
 

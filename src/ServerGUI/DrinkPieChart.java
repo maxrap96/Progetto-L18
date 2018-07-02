@@ -7,6 +7,10 @@ import javafx.collections.FXCollections;
 
 import java.util.ArrayList;
 
+/**
+ * Classe che gestisce il grafico a torta delle bevande.
+ */
+
 public class DrinkPieChart extends PieChart {
     private ObservableList<String> obsvStats;
 

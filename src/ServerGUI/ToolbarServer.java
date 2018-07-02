@@ -10,6 +10,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
+/**
+ * Classe che si occupa della barra dei menù.
+ */
+
 public class ToolbarServer extends ToolBar implements StringCommandList {
     private Button home = new Button();
     private Button refreshBtn = new Button();

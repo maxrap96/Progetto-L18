@@ -11,6 +11,10 @@ import javafx.scene.layout.*;
 import HotDrinkVendingMachine.CoinsNumbers;
 import static ServerSide.StringCommandList.REFILL_COINS;
 
+/**
+ * Classe che gestisce l'istogramma delle monete.
+ */
+
 public class CoinsChart extends BarChart {
     private final static String[] COINS = {"0.05", "0.10", "0.20", "0.50", "1", "2"};
     private ObservableList<String> coins;
@@ -21,6 +25,9 @@ public class CoinsChart extends BarChart {
         this.coins = coins;
     }
 
+    /**
+     * Funzione che imposta i valori delle barre del grafico.
+     */
     protected BorderPane setBars() {
         BorderPane borderPane = new BorderPane();
 

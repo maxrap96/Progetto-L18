@@ -11,6 +11,10 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+/**
+ * Classe che gestisce il grafico dell'utilizzo.
+ */
+
 public class UsageChart extends LineChart {
     private ObservableList<String> stats;
     private final String MONTHS[] = {"Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno",
@@ -21,6 +25,9 @@ public class UsageChart extends LineChart {
         this.stats = obsvStats;
     }
 
+    /**
+     * Funzione che inizializza il grafico.
+     */
     protected BorderPane setGraph() {
         BorderPane b = new BorderPane();
 
@@ -72,6 +79,9 @@ public class UsageChart extends LineChart {
         yAxis.setMinorTickVisible(false);
     }
 
+    /**
+     * Funzione che conteggia utilizzo mensile.
+     */
     private Map<String, Long> dataAnalysis(ObservableList<String> stats) {
         //  Formato tipo delle stats: Tè ai mirtilli	Transazione avvenuta il:	16-04-2018 00:33:26
         Map<String, Long> dailyCount = stats.stream().map(s -> s.split("\t")[2].substring(0, 10))

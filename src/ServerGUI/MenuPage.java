@@ -19,6 +19,10 @@ import java.util.ArrayList;
 
 import static ServerSide.StringCommandList.OVERWRITE_MENU;
 
+/**
+ * Classe che gestisce la pagina del menù.
+ */
+
 public class MenuPage extends TableView {
     private RowTable[] rowTable;
     private VBox vBox = new VBox();
@@ -194,6 +198,10 @@ public class MenuPage extends TableView {
         vBox.prefWidthProperty().bind(stage.widthProperty());
     }
 
+    /**
+     * Funzione che crea una casella di testo.
+     * @param nameOfTextField casella.
+     */
     private TextField createTextField(String nameOfTextField) {
         TextField textFieldTmp = new TextField();
         textFieldTmp.setMaxWidth(75);
@@ -313,6 +321,9 @@ public class MenuPage extends TableView {
         }
     }
 
+    /**
+     * Funzione che imposta le righe della tabella.
+     */
     protected void setRowTable(ObservableList<String> obsvMenu) {
         int size = 0;
         for (int i = 0; i < obsvMenu.size(); i++) {
@@ -345,6 +356,11 @@ public class MenuPage extends TableView {
         return menu;
     }
 
+    /**
+     * Funzione che inizializza le colonne della tabella.
+     * @param tableColumn colonna della tabella.
+     * @param name nome della colonna.
+     */
     private void initTableColumn(TableColumn tableColumn, String name) {
         tableColumn.setCellValueFactory(new PropertyValueFactory<RowTable, String>(name));
         tableColumn.setCellFactory(TextFieldTableCell.forTableColumn());

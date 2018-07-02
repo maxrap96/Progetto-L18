@@ -13,6 +13,10 @@ import java.util.ArrayList;
 
 import static ServerSide.StringCommandList.REFILL_INGREDIENTS;
 
+/**
+ * Classe che si occupa del grafico a barre delle bevande.
+ */
+
 public class DrinkChart extends BarChart {
     private ObservableList<String> data;
     private ObservableList<String> menu;
@@ -24,6 +28,9 @@ public class DrinkChart extends BarChart {
         this.menu = menu;
     }
 
+    /**
+     *Funzione che inizializza la chart.
+     */
     protected BorderPane initChart() {
         BorderPane mainTabPane = new BorderPane();
 
@@ -82,6 +89,9 @@ public class DrinkChart extends BarChart {
         return mainTabPane;
     }
 
+    /**
+     * Funzione che che confronta il menù e il file data.
+     */
     private void analyzeData(ArrayList<String> drinkName, ArrayList<Double> drinkQty,
                              ObservableList<String> data, ObservableList<String> menu) {
 
@@ -100,6 +110,9 @@ public class DrinkChart extends BarChart {
         }
     }
 
+    /**
+     * Funzione che colora le barre del grafico.
+     */
     private void colorChartBars(BarChart barChart, int i, double qty) {
         String st = ".data" + i + ".chart-bar";
         Node node = barChart.lookup(st);

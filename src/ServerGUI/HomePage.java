@@ -17,6 +17,10 @@ import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+/**
+ * Classe che si occupa della gestione della schermata di benvenuto.
+ */
+
 public class HomePage extends Application implements StringCommandList {
     private ClassOfObservableLists classOfObservableLists = new ClassOfObservableLists();
     private ServerConnection server;
