@@ -5,6 +5,10 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashMap;
 
+/**
+ * Classe che si occupa della creazione della connessione lato server.
+ */
+
 public class ServerConnection extends Thread {
     private ClassOfObservableLists classOfObservableLists;
     private HashMap<Integer, DealWithTheClientThread> mapOfClient;
@@ -21,6 +25,9 @@ public class ServerConnection extends Thread {
         this.selectedClient = 0;
     }
 
+    /**
+     * Funzione che avvia la connesione.
+     */
     @Override
     public void run() {
         DealWithTheClientThread threadTmp;

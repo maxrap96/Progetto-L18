@@ -8,6 +8,10 @@ import java.io.InputStreamReader;
 import java.net.Socket;
 import java.util.HashMap;
 
+/**
+ * Classe che gestisce l'interazione con il client scelto.
+ */
+
 public class DealWithTheClientThread extends Thread implements StringCommandList {
     private ObservableList<String> obsvStats;
     private ObservableList<String> obsvMenu;
@@ -25,6 +29,9 @@ public class DealWithTheClientThread extends Thread implements StringCommandList
         this.obsvData = classOfObservableLists.getObservData();
     }
 
+    /**
+     * Funzione che gestisce le richieste client.
+     */
     @Override
     public void run() {
         try {

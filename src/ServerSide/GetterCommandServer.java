@@ -7,6 +7,10 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
 
+/**
+ * Classe che invia e salva stringhe client.
+ */
+
 public class GetterCommandServer implements CommandServer {
     private ReceiverServer receiverServer;
     private Socket clientSocket;
@@ -26,6 +30,9 @@ public class GetterCommandServer implements CommandServer {
         this.stringCommand = stringCommand;
     }
 
+    /**
+     * Funzione che esegue i comandi di invio e salvataggio del receiver appropriato.
+     */
     @Override
     public void execute() {
         try {

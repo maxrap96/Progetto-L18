@@ -1,5 +1,9 @@
 package ServerSide;
 
+/**
+ * Interfaccia contenente i comandi per pattern command server e client.
+ */
+
 public interface StringCommandList {
     String SEND_MENU = "SEND_MENU";
     String SEND_DATA = "SEND_DATA";

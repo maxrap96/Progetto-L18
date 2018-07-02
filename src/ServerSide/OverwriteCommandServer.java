@@ -7,6 +7,10 @@ import java.net.Socket;
 
 import static ServerSide.StringCommandList.END_SENDING;
 
+/**
+ * Classe che si occupa di inviare i comandi di sovrascrittura.
+ */
+
 public class OverwriteCommandServer implements CommandServer {
     private ReceiverServer receiverServer;
     private Socket clientSocket;
@@ -21,6 +25,9 @@ public class OverwriteCommandServer implements CommandServer {
         this.commandString = commandString;
     }
 
+    /**
+     * Funzione che esegue i comandi di sovrascrittura del receiver appropriato.
+     */
     @Override
     public void execute() {
         try {

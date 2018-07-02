@@ -8,6 +8,10 @@ import java.util.ArrayList;
 
 import static ServerSide.StringCommandList.END_SENDING;
 
+/**
+ * Classe che offre funzioni per inviare e salvare stringhe.
+ */
+
 public class ReceiverServer {
     /**
      * Funzione che invia una stringa.

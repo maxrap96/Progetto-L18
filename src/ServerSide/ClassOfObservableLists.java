@@ -3,6 +3,10 @@ package ServerSide;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+/**
+ * Classe che contiene observablelist che contengono i dati per GUI server.
+ */
+
 public class ClassOfObservableLists {
     private ObservableList<String> observStats = FXCollections.observableArrayList();
     private ObservableList<String> observMenu = FXCollections.observableArrayList();

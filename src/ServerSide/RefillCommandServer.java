@@ -6,6 +6,10 @@ import java.io.InputStreamReader;
 import java.net.Socket;
 import java.util.ArrayList;
 
+/**
+ * Classe che si occupa di inviare i comandi di refill.
+ */
+
 public class RefillCommandServer implements CommandServer {
     private Socket clientSocket;
     private ReceiverServer receiverServer;
@@ -17,6 +21,9 @@ public class RefillCommandServer implements CommandServer {
         this.stringCommand = stringCommand;
     }
 
+    /**
+     * Funzione che esegue i comandi di ricarica del receiver appropriato.
+     */
     @Override
     public void execute() {
         ArrayList<String> arrayListTmp = new ArrayList<>();
